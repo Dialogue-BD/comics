@@ -267,7 +267,7 @@ input[type=range]{width:100%;height:22px;accent-color:var(--green)}
     <div class="btnrow" role="group" aria-label="Phase 1 steps">
       <button class="bigbtn" id="btnNoise">A · 🔊 Hear it — NO pictures helping</button>
       <button class="bigbtn green" id="btnTeach">B · 👀 Now watch + listen</button>
-      <button class="bigbtn gold" id="btnTest" disabled>C · 👆 Your turn — tap ZORIN</button>
+      <button class="bigbtn gold" id="btnTest" disabled>C · 👆 Your turn — tap PLOKTA, then ZORIN</button>
     </div>
 
     <div class="alien" id="alienLine" aria-live="polite">✦ ✦ ✦</div>
@@ -712,6 +712,7 @@ var io = new IntersectionObserver(function(es){
 /* ================= PHASE 1 ================= */
 var alienWords = { apple:"Zorin", cup:"Plokta", dog:"Vamu", bike:"Trelo" };
 var p1Mode = "idle"; /* idle | noise | taught | test */
+var p1Step = "plokta"; /* plokta -> zorin */
 var p1LastLine = "Plokta zorin fek tor.";
 function setStatus(id, html, cls){
   var el = document.getElementById(id);
@@ -720,8 +721,8 @@ function setStatus(id, html, cls){
 function clearObjStates(){
   document.querySelectorAll("#objGrid .obj").forEach(function(o){ o.classList.remove("pointed","found","dim"); });
 }
-function pointAt(id, alien){
-  clearObjStates();
+function pointAt(id, alien, keepExisting){
+  if(!keepExisting) clearObjStates();
   var el = document.querySelector('#objGrid .obj[data-id="'+id+'"]');
   if(el){ el.classList.add("pointed"); var s = el.querySelector(".obj-alien"); if(s) s.textContent = alien ? "“"+alien+"”" : ""; }
 }
@@ -738,6 +739,7 @@ function startNoise(){
 document.getElementById("btnNoise").addEventListener("click", startNoise);
 document.getElementById("btnTeach").addEventListener("click", function(){
   p1Mode = "taught";
+  p1Step = "plokta";
   setStatus("p1Status","👀 Watch the highlight. Sound + picture together. Just absorb it…","");
   speak("Watch. Zorin.", {});
   pointAt("apple","Zorin"); document.getElementById("alienLine").textContent = "“Zorin.” 🍎";
@@ -755,19 +757,21 @@ document.getElementById("btnTeach").addEventListener("click", function(){
   }, 6300);
   setTimeout(function(){
     clearObjStates();
-    pointAt("apple","Zorin");
-    document.getElementById("alienLine").textContent = "“Plokta… zorin?”  (the cup… on the apple?)";
-    setStatus("p1Status","You just learned 4 words. <b>No translation. No grammar.</b> Ready? Press C.","good");
+    pointAt("cup","Plokta", true);
+    setTimeout(function(){ pointAt("apple","Zorin", true); }, 550);
+    document.getElementById("alienLine").textContent = "“Plokta… zorin?”  — Tap PLOKTA, then ZORIN!";
+    setStatus("p1Status","You just learned 4 words with <b>no translation and no grammar.</b> Now tap <b>PLOKTA</b>, then <b>ZORIN</b>!","good");
     speak("Plokta zorin? Now you try.");
     document.getElementById("btnTest").disabled = false;
   }, 8500);
 });
 document.getElementById("btnTest").addEventListener("click", function(){
   p1Mode = "test";
+  p1Step = "plokta";
   clearObjStates();
-  document.getElementById("alienLine").textContent = "Where is ZORIN?";
-  setStatus("p1Status","👆 <b>Tap ZORIN.</b> Trust the picture in your mind.","think");
-  speak("Where is Zorin?");
+  document.getElementById("alienLine").textContent = "“Plokta… zorin?” — Tap PLOKTA (1/2), then ZORIN (2/2)";
+  setStatus("p1Status","👆 <b>Step 1 of 2:</b> Tap <b>PLOKTA</b> first, then <b>ZORIN</b>.","think");
+  speak("Plokta zorin? Now you try.");
 });
 document.querySelectorAll("#objGrid .obj").forEach(function(btn){
   btn.addEventListener("click", function(){
@@ -777,18 +781,37 @@ document.querySelectorAll("#objGrid .obj").forEach(function(btn){
       setStatus("p1Status","That was a <b>guess</b> — and guessing is all anyone can do with noise. No picture, no pointing, no meaning. Now press <b>B</b> and feel the difference.","think");
       chime(false); speak("That was a guess. Sound alone is just noise. Now, watch and listen.");
     } else if(p1Mode==="test" || p1Mode==="taught"){
-      if(id==="apple"){
-        btn.classList.add("found"); btn.classList.remove("pointed");
-        document.querySelectorAll("#objGrid .obj-name").forEach(function(n){ n.hidden=false; });
-        setStatus("p1Status","🎉 <b>Yes! Zorin = apple.</b> And nobody ever translated it for you. Your brain matched sound → picture → meaning. That is acquisition.","good");
-        document.getElementById("alienLine").textContent = "ZORIN = 🍎  ·  PLOKTA = cup  ·  VAMU = dog  ·  TRELO = bicycle";
-        chime(true); speak("Yes! Zorin is the apple. You learned it — with no translation at all.");
-        markDone("p1");
+      if(p1Step==="plokta"){
+        if(id==="cup"){
+          clearObjStates();
+          btn.classList.add("found");
+          p1Step = "zorin";
+          document.getElementById("alienLine").textContent = "✓ PLOKTA (cup)  →  Now tap ZORIN!";
+          setStatus("p1Status","👍 <b>Yes — Plokta = cup!</b> Now tap <b>ZORIN</b> to complete “Plokta zorin”.","good");
+          chime(true); speakSeq(["Plokta.", "Where is Zorin?"]);
+        } else {
+          btn.classList.add("dim");
+          setStatus("p1Status","First word was <b>Plokta</b> — the warm cup with steam. Tap the cup first, then the apple!","think");
+          chime(false); speak("Plokta.");
+          setTimeout(function(){ btn.classList.remove("dim"); }, 900);
+        }
       } else {
-        btn.classList.add("dim");
-        setStatus("p1Status","Not that one — look again in your mind: <b>Zorin</b> was the round, red one. Try again, no pressure.","think");
-        chime(false); speak("Try again. Zorin was the round red fruit.");
-        setTimeout(function(){ btn.classList.remove("dim"); }, 900);
+        if(id==="apple"){
+          btn.classList.add("found"); btn.classList.remove("pointed");
+          var cupEl = document.querySelector('#objGrid .obj[data-id="cup"]');
+          if(cupEl) cupEl.classList.add("found");
+          document.querySelectorAll("#objGrid .obj-name").forEach(function(n){ n.hidden=false; });
+          setStatus("p1Status","🎉 <b>Yes! Plokta = cup, Zorin = apple.</b> Nobody ever translated it for you — your brain matched sound → picture → meaning. That is acquisition.","good");
+          document.getElementById("alienLine").textContent = "PLOKTA = ☕ cup  ·  ZORIN = 🍎 apple  ·  VAMU = dog  ·  TRELO = bicycle";
+          chime(true); speak("Yes! Zorin is the apple. You learned it — with no translation at all.");
+          p1Step = "plokta";
+          markDone("p1");
+        } else {
+          btn.classList.add("dim");
+          setStatus("p1Status","Not that one — look again in your mind: <b>Zorin</b> was the round, red one. Try again, no pressure.","think");
+          chime(false); speak("Try again. Zorin was the round red fruit.");
+          setTimeout(function(){ btn.classList.remove("dim"); }, 900);
+        }
       }
     } else {
       pointAt(id, alienWords[id]); speak(alienWords[id]+".");
