@@ -2,302 +2,184 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=03b">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png?v=03b">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=03b">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#103D21">
-<title>How the Brain Learns Language · Dialogue English &amp; Skills Center</title>
-<meta name="description" content="An interactive teaching module &amp; classroom slideshow on Comprehensible Input, the Iceberg Principle, the Affective Filter, and AI as a GPA Nurturer — with 96 natural Edge-TTS neural voice clips.">
+<title>How the Brain Learns Language</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../dialogue-brand.css?v=20261024">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700;800&family=Public+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --forest:#103D21; --forest2:#1a5c33; --gold:#B9924F; --gold-light:#D2B978; --paper:#F4F1E6; --paper2:#EDE8D6;
   --green:#2D9D33; --sage:#7BB369; --ink:#14231A; --muted:#5A6B5E; --card:#FFFDF6; --line:#DDD5BE;
   --red:#D94F3D; --amber:#E9A23B; --sky:#DCEFEA; --water:#7FC8BC; --deep:#1E6B5E;
-  --shadow:0 12px 34px rgba(16,61,33,.13);
-  --shadow-lg:0 20px 48px rgba(16,61,33,.20);
+  --shadow:0 10px 30px rgba(16,61,33,.14);
 }
 @media (prefers-color-scheme: dark){
-  :root{ --paper:#0F2418; --paper2:#14301F; --card:#173A26; --ink:#F4F1E6; --muted:#B9C8B4; --line:#2E533C; --sky:#173A2E; --shadow:0 12px 34px rgba(0,0,0,.45); }
+  :root{ --paper:#0F2418; --paper2:#14301F; --card:#173A26; --ink:#F4F1E6; --muted:#B9C8B4; --line:#2E533C; --sky:#173A2E; --shadow:0 10px 30px rgba(0,0,0,.4); }
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:"Public Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.45;-webkit-font-smoothing:antialiased}
+body{margin:0;font-family:"Public Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.45}
 h1,h2,h3,.serif{font-family:"Spectral",Georgia,serif}
-button{font:inherit;cursor:pointer;transition:transform .16s ease, box-shadow .16s ease, background .16s ease, border-color .16s ease}
+button{font:inherit;cursor:pointer}
 :focus-visible{outline:4px solid var(--gold);outline-offset:3px;border-radius:10px}
 
 /* ---------- TOP NAV / TIMELINE ---------- */
-.topbar{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, #0d331b 0%, var(--forest) 100%);color:#fff;padding:10px 16px 12px;box-shadow:0 6px 24px rgba(0,0,0,.28);border-bottom:2px solid rgba(210,185,120,.28)}
-.topbar-inner{max-width:1240px;margin:0 auto}
+.topbar{position:sticky;top:0;z-index:50;background:var(--forest);color:#fff;padding:10px 14px 12px;box-shadow:0 4px 18px rgba(0,0,0,.25)}
+.topbar-inner{max-width:1180px;margin:0 auto}
 .brandrow{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.brand-group{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.back-home{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:#fff;background:rgba(255,255,255,.10);border:1.5px solid rgba(255,255,255,.25);padding:6px 13px;border-radius:999px;font-weight:700;font-size:.86rem;transition:background .15s,border-color .15s}
-.back-home:hover{background:rgba(255,255,255,.20);border-color:var(--gold-light)}
-.brand{font-weight:800;letter-spacing:.02em;font-size:.98rem;display:flex;align-items:center;gap:8px}
+.brand{font-weight:800;letter-spacing:.02em;font-size:1rem}
 .brand span{color:var(--gold-light)}
-.voicebar{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
-.vbtn{border:2px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;border-radius:999px;padding:7px 13px;font-weight:700;font-size:.86rem;min-height:40px;display:inline-flex;align-items:center;gap:6px}
-.vbtn:hover{background:rgba(255,255,255,.16);border-color:var(--gold-light)}
-.vbtn[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#10281A;box-shadow:0 3px 12px rgba(185,146,79,.4)}
-.timer-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,.32);border:1.5px solid rgba(210,185,120,.45);color:var(--gold-light);border-radius:999px;padding:6px 13px;font-weight:800;font-size:.86rem;font-variant-numeric:tabular-nums;min-height:40px;cursor:pointer}
-.timer-pill:hover{border-color:#fff;color:#fff}
-.timer-pill.running{background:rgba(45,157,51,.28);border-color:#5EE265;color:#fff}
-
-.timeline{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:11px}
-.tl{border:2px solid transparent;text-align:left;border-radius:14px;padding:9px 11px;background:rgba(255,255,255,.10);color:#fff;min-height:60px;position:relative;overflow:hidden}
-.tl:hover{background:rgba(255,255,255,.16);border-color:rgba(210,185,120,.45)}
-.tl b{display:block;font-size:.95rem;line-height:1.15}
-.tl small{opacity:.85;font-weight:700;letter-spacing:.04em;font-size:.72rem}
-.tl.active{background:var(--gold);color:#10281A;border-color:#fff;box-shadow:0 4px 16px rgba(185,146,79,.4)}
+.voicebar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-left:auto}
+.logo-chip{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;padding:5px 10px;background:#FFFDF7;border-radius:10px;box-shadow:0 0 0 1.5px rgba(210,185,120,.55),0 2px 8px rgba(0,0,0,.22);text-decoration:none;transition:transform .18s ease,box-shadow .18s ease}
+.logo-chip:hover{transform:translateY(-1px);box-shadow:0 0 0 2px var(--gold-light),0 4px 14px rgba(0,0,0,.3)}
+.logo-chip img{height:32px;width:auto;max-width:116px;object-fit:contain;display:block}
+.vbtn{border:2px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;border-radius:999px;padding:9px 14px;font-weight:700;font-size:.9rem;min-height:44px}
+.vbtn[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#10281A}
+.timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px}
+.tl{border:none;text-align:left;border-radius:14px;padding:10px 12px;background:rgba(255,255,255,.10);color:#fff;min-height:64px}
+.tl b{display:block;font-size:1rem;line-height:1.1}
+.tl small{opacity:.85;font-weight:700;letter-spacing:.04em}
+.tl.active{background:var(--gold);color:#10281A}
 .tl.done{background:var(--green);color:#fff}
-.tl.done.active{background:var(--gold);color:#10281A;box-shadow:0 0 0 3px var(--green)}
 .progress{height:8px;background:rgba(255,255,255,.18);border-radius:99px;margin-top:10px;overflow:hidden}
-.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg, var(--gold-light), #5EE265);border-radius:99px;transition:width .5s ease}
-
-/* Live Audio Wave Indicator in Caption */
-.caption-wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px;min-height:30px;background:rgba(0,0,0,.25);border-radius:10px;padding:6px 14px;border:1px solid rgba(255,255,255,.14)}
-.caption-wrap:has(.caption:empty){display:none}
-.caption{font-weight:700;font-size:.98rem;color:var(--gold-light);flex:1}
-.eq-bars{display:inline-flex;align-items:flex-end;gap:3px;height:16px;opacity:0;transition:opacity .2s}
-.eq-bars.playing{opacity:1}
-.eq-bars i{display:block;width:3.5px;background:var(--gold-light);border-radius:2px;animation:eqBounce .7s ease-in-out infinite alternate}
-.eq-bars i:nth-child(1){height:6px;animation-delay:0s}
-.eq-bars i:nth-child(2){height:14px;animation-delay:.15s}
-.eq-bars i:nth-child(3){height:9px;animation-delay:.3s}
-.eq-bars i:nth-child(4){height:16px;animation-delay:.1s}
-@keyframes eqBounce{0%{transform:scaleY(.35)}100%{transform:scaleY(1)}}
-
-/* ---------- SLIDESHOW / PROJECTOR MODE ---------- */
-body.deck-mode .wrap{max-width:1280px;padding-bottom:96px}
-body.deck-mode .hero,
-body.deck-mode section.phase{display:none;margin-top:16px;animation:slideFadeIn .32s cubic-bezier(.16,1,.3,1)}
-body.deck-mode .hero.active-slide,
-body.deck-mode section.phase.active-slide{display:block}
-@keyframes slideFadeIn{from{opacity:0;transform:translateY(10px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
-
-/* Floating Lecture Deck Bottom Bar */
-.deck-bar{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:60;background:rgba(16,61,33,.96);backdrop-filter:blur(12px);color:#fff;border:2px solid var(--gold);border-radius:999px;padding:8px 16px;display:flex;align-items:center;gap:14px;box-shadow:0 12px 36px rgba(0,0,0,.38)}
-.deck-btn{border:2px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:#fff;border-radius:999px;padding:8px 16px;font-weight:800;font-size:.92rem;min-height:40px;display:inline-flex;align-items:center;gap:6px}
-.deck-btn:hover:not(:disabled){background:var(--gold);color:#10281A;border-color:var(--gold)}
-.deck-btn:disabled{opacity:.35;cursor:default}
-.deck-counter{font-weight:800;font-size:.92rem;color:var(--gold-light);min-width:130px;text-align:center;letter-spacing:.03em}
+.progress i{display:block;height:100%;width:0;background:var(--gold-light);border-radius:99px;transition:width .5s ease}
 
 /* ---------- LAYOUT ---------- */
-.wrap{max-width:1180px;margin:0 auto;padding:18px 16px 88px}
-.hero{text-align:center;padding:30px 20px 26px;background:var(--card);border:2px solid var(--line);border-radius:28px;box-shadow:var(--shadow);position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%, rgba(185,146,79,.14), transparent 65%);pointer-events:none}
-.hero h1{font-size:clamp(2.2rem,5.4vw,4rem);line-height:.96;margin:0;color:var(--forest);font-weight:800;position:relative}
+.wrap{max-width:1180px;margin:0 auto;padding:18px 16px 60px}
+.hero{text-align:center;padding:28px 10px 8px}
+.hero h1{font-size:clamp(2.2rem,6vw,4.2rem);line-height:.95;margin:0;color:var(--forest);font-weight:800}
 @media (prefers-color-scheme: dark){.hero h1{color:#F4F1E6}}
 .hero h1 em{font-style:normal;color:var(--green)}
-.hero p{font-size:clamp(1.12rem,2.3vw,1.42rem);font-weight:600;color:var(--muted);max-width:740px;margin:12px auto 0;position:relative}
-.hero-visual{display:flex;justify-content:center;gap:10px;align-items:flex-end;margin:20px auto 8px;max-width:680px;position:relative}
-.brainwrap{background:var(--paper);border:2px solid var(--line);border-radius:24px;padding:16px 20px;box-shadow:inset 0 2px 8px rgba(0,0,0,.04);width:100%}
-.chiprow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;position:relative}
-.chip{background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:8px 15px;font-weight:800;font-size:.96rem;box-shadow:0 3px 8px rgba(0,0,0,.04)}
+.hero p{font-size:clamp(1.15rem,2.6vw,1.5rem);font-weight:600;color:var(--muted);max-width:720px;margin:14px auto 0}
+.hero-visual{display:flex;justify-content:center;gap:10px;align-items:flex-end;margin:22px auto 4px;max-width:640px}
+.brainwrap{background:var(--card);border:2px solid var(--line);border-radius:24px;padding:18px;box-shadow:var(--shadow)}
+.chiprow{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.chip{background:var(--card);border:2px solid var(--line);border-radius:999px;padding:8px 14px;font-weight:800;font-size:.95rem}
 
-/* Hero Interactive Two Brains Comparison Cards */
-.two-brains-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:920px;margin:20px auto 6px;position:relative;text-align:left}
-.bpath{border-radius:22px;padding:18px 20px;border:3px solid var(--line);background:var(--paper);cursor:pointer;transition:transform .2s, box-shadow .2s, border-color .2s;display:flex;gap:14px;align-items:center}
-.bpath:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
-.bpath.trap{background:#FFF4F1;border-color:#EFC0B8;color:#14231A}
-.bpath.trap.selected{border-color:var(--red);box-shadow:0 0 0 3px rgba(217,79,61,.25)}
-.bpath.flow{background:#EDF8EB;border-color:#BFE0B8;color:#14231A}
-.bpath.flow.selected{border-color:var(--green);box-shadow:0 0 0 3px rgba(45,157,51,.25)}
-.bpath svg{width:70px;height:70px;flex:0 0 70px}
-.bpath h3{margin:0 0 4px;font-size:1.22rem;line-height:1.15}
-.bpath p{margin:0;font-size:.94rem;font-weight:600;color:#405144;line-height:1.35}
-.bpath .tag-pill{display:inline-block;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:99px;margin-bottom:4px}
-.bpath.trap .tag-pill{background:#FBE0DA;color:#8E2619}
-.bpath.flow .tag-pill{background:#D4F0D0;color:#145218}
-
-section.phase{background:var(--card);border:2px solid var(--line);border-radius:28px;padding:clamp(20px,3.2vw,34px);margin-top:28px;box-shadow:var(--shadow);scroll-margin-top:155px;position:relative}
-.phase-head{display:flex;gap:16px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
-.phase-head-left{display:flex;gap:16px;align-items:flex-start;flex:1;min-width:260px}
-.pnum{flex:0 0 auto;width:64px;height:64px;border-radius:20px;background:linear-gradient(145deg, var(--forest2), var(--forest));color:#fff;display:grid;place-items:center;font-family:"Spectral",serif;font-size:2rem;font-weight:800;box-shadow:0 6px 16px rgba(16,61,33,.25);border:2px solid rgba(210,185,120,.45)}
-.phase-head h2{margin:0;font-size:clamp(1.75rem,3.8vw,2.6rem);line-height:1.04;color:var(--forest)}
+section.phase{background:var(--card);border:2px solid var(--line);border-radius:28px;padding:clamp(18px,3vw,32px);margin-top:28px;box-shadow:var(--shadow);scroll-margin-top:150px}
+.phase-head{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.pnum{flex:0 0 auto;width:64px;height:64px;border-radius:20px;background:var(--forest);color:#fff;display:grid;place-items:center;font-family:"Spectral",serif;font-size:1.9rem;font-weight:800}
+.phase-head h2{margin:0;font-size:clamp(1.7rem,4vw,2.6rem);line-height:1;color:var(--forest)}
 @media (prefers-color-scheme: dark){.phase-head h2{color:#F4F1E6}}
-.phase-head .kicker{font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#7A5E26;font-size:.84rem;margin-bottom:6px}
+.phase-head .kicker{font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#7A5E26;font-size:.85rem;margin-bottom:6px}
 @media (prefers-color-scheme: dark){.phase-head .kicker{color:var(--gold-light)}}
-.bigline{font-size:clamp(1.22rem,2.6vw,1.62rem);font-weight:700;line-height:1.28;margin:10px 0 0;color:var(--ink)}
+.bigline{font-size:clamp(1.25rem,3vw,1.7rem);font-weight:700;line-height:1.25;margin:14px 0 0}
+.caption{margin-top:9px;font-weight:700;font-size:1rem;color:var(--gold-light);min-height:1.4em}
+.caption:empty{display:none}
 
-/* Teacher Cue Pill */
-.teacher-cue{background:var(--paper);border:2px dashed var(--gold);border-radius:16px;padding:12px 16px;margin-top:14px;font-size:.96rem;font-weight:600;color:var(--ink);display:none}
-body.show-notes .teacher-cue{display:block}
-.teacher-cue b{color:#10281A;text-transform:uppercase;letter-spacing:.05em;font-size:.80rem;display:inline-block;margin-right:6px;background:var(--gold-light);padding:2px 8px;border-radius:6px}
-
-.bigbtn{border:none;border-radius:18px;padding:16px 22px;font-weight:800;font-size:1.12rem;min-height:60px;background:var(--forest);color:#fff;box-shadow:0 6px 0 rgba(16,61,33,.35);display:inline-flex;align-items:center;justify-content:center;gap:8px}
-.bigbtn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 0 rgba(16,61,33,.38)}
-.bigbtn:active:not(:disabled){transform:translateY(3px);box-shadow:0 3px 0 rgba(16,61,33,.35)}
+.bigbtn{border:none;border-radius:18px;padding:18px 22px;font-weight:800;font-size:1.15rem;min-height:64px;background:var(--forest);color:#fff;box-shadow:0 6px 0 rgba(16,61,33,.35)}
+.bigbtn:active{transform:translateY(3px);box-shadow:0 3px 0 rgba(16,61,33,.35)}
 .bigbtn.gold{background:var(--gold);color:#10281A;box-shadow:0 6px 0 rgba(122,94,38,.4)}
-.bigbtn.gold:hover:not(:disabled){background:#c7a059;box-shadow:0 8px 0 rgba(122,94,38,.45)}
-.bigbtn.green{background:var(--green);color:#fff;box-shadow:0 6px 0 rgba(25,105,30,.38)}
-.bigbtn.green:hover:not(:disabled){background:#34b03b;box-shadow:0 8px 0 rgba(25,105,30,.42)}
+.bigbtn.green{background:var(--green);color:#fff}
 .bigbtn.ghost{background:transparent;color:var(--forest);border:3px solid var(--forest);box-shadow:none}
-.bigbtn.ghost:hover:not(:disabled){background:rgba(16,61,33,.07)}
 @media (prefers-color-scheme: dark){.bigbtn.ghost{color:#F4F1E6;border-color:#F4F1E6}}
-.bigbtn:disabled{opacity:.42;cursor:default;transform:none !important}
+.bigbtn:disabled{opacity:.45;cursor:default}
 .btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
 .speechbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.spbtn{border-radius:999px;border:2px solid var(--line);background:var(--paper);color:var(--ink);padding:10px 16px;font-weight:800;min-height:46px;display:inline-flex;align-items:center;gap:6px}
-.spbtn:hover{border-color:var(--gold);background:#fff}
-@media (prefers-color-scheme: dark){.spbtn:hover{background:var(--paper2)}}
-.status{margin-top:14px;border-radius:18px;padding:16px 20px;font-size:clamp(1.08rem,2.3vw,1.32rem);font-weight:700;background:var(--sky);min-height:64px;display:flex;align-items:center;gap:12px;border:2px solid rgba(16,61,33,.10)}
-.status.good{background:#DFF3DC;color:#14231A;border-color:#9FD498}
-.status.think{background:#FFF0D6;color:#14231A;border-color:#E9C78B}
+.spbtn{border-radius:999px;border:2px solid var(--line);background:var(--paper);color:var(--ink);padding:10px 16px;font-weight:800;min-height:48px}
+.status{margin-top:14px;border-radius:16px;padding:16px 18px;font-size:clamp(1.1rem,2.5vw,1.35rem);font-weight:700;background:var(--sky);min-height:64px;display:flex;align-items:center;gap:12px}
+.status.good{background:#DFF3DC}
+.status.think{background:#FFF0D6}
 
-/* ---------- PHASE 1: IMMERSION SHOCK ---------- */
-.stage-arena{position:relative;margin-top:20px}
-.objgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;position:relative}
-.obj{border:4px solid var(--line);background:#fff;border-radius:24px;padding:16px 10px 12px;text-align:center;min-height:184px;position:relative;transition:transform .24s cubic-bezier(.2,.9,.3,1),border-color .2s,box-shadow .2s,background .2s;color:#14231A;box-shadow:0 6px 18px rgba(0,0,0,.05)}
-.obj svg{width:100%;height:112px;display:block;margin:0 auto;transition:transform .3s ease}
-.obj:hover svg{transform:scale(1.06)}
-.obj b{font-size:1.15rem;display:block;margin-top:6px;letter-spacing:.03em;color:var(--forest)}
+/* Phase 1 objects */
+.objgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+.obj{border:4px solid var(--line);background:#fff;border-radius:24px;padding:14px 8px 10px;text-align:center;min-height:170px;position:relative;transition:transform .2s,border-color .2s;color:#14231A}
+.obj svg{width:100%;height:110px}
+.obj b{font-size:1.15rem;display:block}
 .obj b[hidden]{display:none !important}
-.obj small{font-weight:800;color:#7A5E26;font-size:1.05rem;display:block;min-height:1.3em;margin-top:2px}
-.obj:hover{transform:translateY(-5px);border-color:var(--gold);box-shadow:0 12px 26px rgba(16,61,33,.12)}
-.obj.pointed{border-color:var(--gold);background:#FFF6DE;transform:scale(1.04);box-shadow:0 14px 32px rgba(185,146,79,.32)}
-.obj.found{border-color:var(--green);background:#EAF7E8;box-shadow:0 12px 28px rgba(45,157,51,.28)}
-.obj.dim{opacity:.45;transform:scale(.97)}
-.obj.cup-over-apple{animation:cupHoverApple 1.7s ease-in-out infinite alternate;z-index:10}
-@keyframes cupHoverApple{
-  0%{transform:translate(0, 0) rotate(0deg)}
-  100%{transform:translate(-105%, -18px) rotate(-14deg)}
-}
-@media (max-width:760px){
-  @keyframes cupHoverApple{
-    0%{transform:translate(0, 0) rotate(0deg)}
-    100%{transform:translate(-92%, -12px) rotate(-12deg)}
-  }
-}
-
-/* Floating Animated Pointing Hand SVG */
-.floating-hand{position:absolute;width:68px;height:68px;pointer-events:none;z-index:20;opacity:0;transition:left .55s cubic-bezier(.34,1.56,.64,1), top .55s cubic-bezier(.34,1.56,.64,1), opacity .25s ease;filter:drop-shadow(0 8px 14px rgba(0,0,0,.28))}
-.floating-hand.visible{opacity:1;animation:handTap 0.9s ease-in-out infinite alternate}
-@keyframes handTap{from{transform:translateY(0) rotate(-8deg)}to{transform:translateY(8px) rotate(0deg)}}
-
-.alien{font-family:"Spectral",serif;font-size:clamp(1.65rem,4vw,2.45rem);font-weight:800;text-align:center;margin-top:18px;letter-spacing:.02em;padding:12px 18px;background:var(--paper);border-radius:18px;border:2px solid var(--line)}
-.legend{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
-.legend div{border-radius:18px;padding:16px 18px;font-size:1.05rem;font-weight:700}
-.legend .noise{background:#FBE9E5;border:2px solid #EFC0B8;color:#14231A}
+.obj small{font-weight:700;color:#5A6B5E}
+.obj:hover{transform:translateY(-4px)}
+.obj.pointed{border-color:var(--gold);background:#FFF6DE;transform:scale(1.03)}
+.obj.found{border-color:var(--green);background:#EAF7E8}
+.obj.dim{opacity:.55}
+.hand{position:absolute;font-size:0;pointer-events:none;transition:all .5s ease;z-index:3}
+.alien{font-family:"Spectral",serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;text-align:center;margin-top:16px;letter-spacing:.02em}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.legend div{border-radius:18px;padding:16px;font-size:1.05rem;font-weight:700}
+.legend .noise{background:#FBE9E5;border:2px solid #EFC0B8}
 .legend .ci{background:#E4F3E1;border:2px solid #BFE0B8;color:#173A26}
+@media (prefers-color-scheme: dark){.legend .noise,.legend .ci{color:#14231A}}
 
-/* ---------- PHASE 2: ICEBERG SANDBOX ---------- */
-.ice-stage{margin-top:18px;border-radius:24px;overflow:hidden;border:3px solid var(--line);position:relative;background:linear-gradient(#BFE6F0 0 31%, #6FB7CE 31% 66%, #1D5E7A 66% 100%);box-shadow:inset 0 4px 20px rgba(0,0,0,.12)}
+/* Phase 2 iceberg */
+.ice-stage{margin-top:18px;border-radius:24px;overflow:hidden;border:2px solid var(--line);position:relative;background:linear-gradient(#BFE6F0 0 32%, #6FB7CE 32% 100%)}
 .ice-svg{width:100%;height:auto;display:block}
 .counters{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
-.counter{border-radius:18px;padding:14px;text-align:center;border:2px solid var(--line);background:var(--paper);transition:transform .2s}
-.counter b{font-size:2.1rem;display:block;line-height:1;font-family:"Spectral",serif;color:var(--forest)}
-@media (prefers-color-scheme: dark){.counter b{color:var(--gold-light)}}
+.counter{border-radius:18px;padding:14px;text-align:center;border:2px solid var(--line);background:var(--paper)}
+.counter b{font-size:2rem;display:block;line-height:1;font-family:"Spectral",serif}
 .counter span{font-weight:800;font-size:.95rem}
-input[type=range]{width:100%;height:22px;accent-color:var(--green);cursor:pointer}
+input[type=range]{width:100%;height:22px;accent-color:var(--green)}
 .slider-labels{display:flex;justify-content:space-between;font-weight:800;gap:10px;font-size:1rem}
-.silent{display:flex;align-items:center;gap:8px;margin-top:16px}
-.silent .seg{flex:1;text-align:center;padding:12px 8px;border-radius:14px;font-weight:800;font-size:.95rem;background:var(--paper2);border:2px solid var(--line);cursor:pointer;transition:all .2s}
-.silent .seg:hover{border-color:var(--gold)}
-.silent .seg.on{background:var(--green);color:#fff;border-color:var(--green);box-shadow:0 4px 12px rgba(45,157,51,.3)}
+.silent{display:flex;align-items:center;gap:6px;margin-top:18px}
+.silent .seg{flex:1;text-align:center;padding:12px 6px;border-radius:12px;font-weight:800;font-size:.95rem;background:var(--paper2);border:2px solid var(--line)}
+.silent .seg.on{background:var(--green);color:#fff;border-color:var(--green)}
 
-/* ---------- PHASE 3: TWO WORLDS SPLIT SCREEN ---------- */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
-.world{border-radius:24px;padding:22px;border:3px solid var(--line);position:relative;overflow:hidden;transition:transform .2s, box-shadow .2s}
-.world.bad{background:#FFF3EF;border-color:#EFC0B8;color:#14231A}
-.world.goodw{background:#EDF7EA;border-color:#BFE0B8;color:#14231A}
-.world h3{margin:0 0 4px;font-size:1.52rem}
-.gear{width:88px;height:88px;margin:10px auto;display:block}
-.scene{width:100%;height:auto;display:block;margin-top:12px;border-radius:16px;box-shadow:0 4px 14px rgba(0,0,0,.08)}
+/* Phase 3 */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+.world{border-radius:22px;padding:20px;border:3px solid var(--line);position:relative;overflow:hidden}
+.world.bad{background:#FFF3EF}
+.world.goodw{background:#EDF7EA}
+@media (prefers-color-scheme: dark){.world.bad,.world.goodw{color:#14231A}}
+.world h3{margin:0 0 4px;font-size:1.5rem}
+.gear{width:92px;height:92px;margin:10px auto;display:block}
+.scene{width:100%;height:auto;display:block;margin-top:12px;border-radius:14px}
 .spin-fast{animation:spin 1.1s linear infinite;transform-origin:center}
 .spin-slow{animation:spin 9s linear infinite;transform-origin:center}
 @keyframes spin{to{transform:rotate(360deg)}}
 .gauge{margin-top:12px}
-.gauge-track{height:22px;border-radius:99px;background:#E5E0CC;overflow:hidden;border:2px solid rgba(0,0,0,.1)}
-.gauge-fill{height:100%;width:20%;border-radius:99px;transition:width .7s ease,background .7s}
-.bubblebox{min-height:112px;border-radius:16px;background:rgba(255,255,255,.85);padding:14px 16px;font-size:1.16rem;font-weight:700;margin-top:12px;border:2px solid rgba(0,0,0,.06);display:flex;align-items:center}
-.chunk{display:inline-block;background:#fff;border:2px solid var(--sage);border-radius:999px;padding:6px 13px;margin:4px;font-weight:800;animation:floaty 3s ease-in-out infinite;cursor:pointer;color:#14231A}
-.chunk:hover{background:var(--green);color:#fff;border-color:var(--green)}
-@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.gauge-track{height:22px;border-radius:99px;background:#E5E0CC;overflow:hidden;border:2px solid rgba(0,0,0,.08)}
+.gauge-fill{height:100%;width:20%;border-radius:99px;transition:width .8s ease,background .8s}
+.bubblebox{min-height:118px;border-radius:16px;background:rgba(255,255,255,.75);padding:14px;font-size:1.2rem;font-weight:700;margin-top:12px}
+.chunk{display:inline-block;background:#fff;border:2px solid var(--sage);border-radius:999px;padding:6px 12px;margin:4px;font-weight:800;animation:floaty 3s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 
-/* ---------- PHASE 4: AI NURTURER GAMES ---------- */
-.game-card{background:var(--paper);border:2px solid var(--line);border-radius:24px;padding:22px;margin-top:20px}
-.qdgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
-.qd{border:3px solid var(--line);background:#fff;border-radius:20px;padding:12px 8px;text-align:center;min-height:142px;color:#14231A;box-shadow:0 4px 12px rgba(0,0,0,.04)}
-.qd:hover{transform:translateY(-3px);border-color:var(--gold)}
-.qd svg{width:100%;height:84px;display:block;margin:0 auto}
-.qd b{display:block;font-size:1.02rem;margin-top:6px}
-.qd.found{border-color:var(--green);background:#EAF7E8;box-shadow:0 8px 20px rgba(45,157,51,.22)}
-.qd.pointed{border-color:var(--gold);background:#FFF6DE;transform:scale(1.03)}
-.chat{margin-top:16px;border:2px solid var(--line);border-radius:20px;padding:16px;background:var(--card);max-height:360px;overflow:auto;box-shadow:inset 0 2px 10px rgba(0,0,0,.04)}
-.msg{max-width:88%;padding:12px 16px;border-radius:18px;margin:10px 0;font-size:1.08rem;font-weight:600;line-height:1.4}
-.msg.ai{background:#fff;border:2px solid #BFE0B8;color:#14231A;box-shadow:0 4px 12px rgba(0,0,0,.04)}
-.msg.redpen{background:#FFF0ED;border:2px solid #EFC0B8;color:#7A1F14;box-shadow:0 4px 12px rgba(0,0,0,.04)}
+/* Phase 4 */
+.qdgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+.qd{border:3px solid var(--line);background:#fff;border-radius:20px;padding:10px 6px;text-align:center;min-height:138px;color:#14231A}
+.qd svg{width:100%;height:84px}
+.qd b{display:block;font-size:1rem}
+.qd.found{border-color:var(--green);background:#EAF7E8}
+.qd.pointed{border-color:var(--gold);background:#FFF6DE}
+.chat{margin-top:16px;border:2px solid var(--line);border-radius:20px;padding:14px;background:var(--paper);max-height:340px;overflow:auto}
+.msg{max-width:88%;padding:12px 14px;border-radius:16px;margin:8px 0;font-size:1.08rem;font-weight:600}
+.msg.ai{background:#fff;border:2px solid var(--line);color:#14231A}
 .msg.me{background:var(--forest);color:#fff;margin-left:auto}
-.msg .who{font-size:.76rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;opacity:.75;display:block;margin-bottom:3px}
-.recast-chips{display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:10px;margin-top:14px}
-.chipbtn{border-radius:16px;border:3px solid var(--forest);background:#fff;color:#14231A;padding:13px 16px;font-weight:800;font-size:1.04rem;text-align:left}
-.chipbtn:hover{background:#FFF6DE;border-color:var(--gold);transform:translateY(-2px)}
-.chipbtn small{display:block;font-weight:600;color:#5A6B5E;margin-top:2px}
-.stars{font-size:1.75rem;letter-spacing:.22em;color:var(--gold);min-height:38px;text-align:center;font-weight:800;margin-top:6px}
+.msg .who{font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;opacity:.7;display:block;margin-bottom:2px}
+.recast-chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.chipbtn{border-radius:16px;border:3px solid var(--forest);background:#fff;color:#14231A;padding:14px 16px;font-weight:800;font-size:1.05rem;text-align:left}
+.chipbtn small{display:block;font-weight:600;color:#5A6B5E}
+.stars{font-size:1.6rem;letter-spacing:.2em;color:var(--gold);min-height:36px;text-align:center;font-weight:800}
 
-/* Red Pen vs Nurturer Mode Switcher */
-.mode-toggle-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px;background:var(--card);padding:10px 14px;border-radius:16px;border:2px solid var(--line)}
-.mode-pill{border-radius:999px;padding:8px 16px;font-weight:800;font-size:.92rem;border:2px solid var(--line);background:var(--paper);color:var(--ink)}
-.mode-pill.active-nurturer{background:var(--green);color:#fff;border-color:var(--green)}
-.mode-pill.active-redpen{background:var(--red);color:#fff;border-color:var(--red)}
-
-/* Busy Picture Story Massaging Card (Phase 4 Game 3) */
-.story-massage-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:18px;align-items:center;margin-top:14px}
-.busy-scene-box{background:#fff;border:3px solid var(--line);border-radius:20px;padding:12px;box-shadow:0 6px 20px rgba(0,0,0,.06)}
-.busy-scene-box svg{width:100%;height:auto;display:block;border-radius:14px}
-.hotspot{cursor:pointer;transition:filter .2s, transform .2s}
-.hotspot:hover{filter:drop-shadow(0 0 8px rgba(212,175,55,.9))}
-
-/* ---------- PHASE 5: PROTOCOL CARDS & 4 GOLDEN LAWS ---------- */
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
-.pcard{border:2px solid var(--line);border-radius:22px;padding:18px;background:var(--paper);display:flex;flex-direction:column;justify-content:space-between}
-.pcard h3{margin:0 0 8px;font-size:1.32rem;color:var(--forest)}
-@media (prefers-color-scheme: dark){.pcard h3{color:var(--gold-light)}}
-.pcard pre{white-space:pre-wrap;font-family:inherit;font-size:.98rem;font-weight:600;background:#fff;color:#14231A;border:2px solid var(--line);border-radius:14px;padding:14px;margin:0 0 12px;line-height:1.5;flex:1}
-.copybtn{border:none;background:var(--forest);color:#fff;border-radius:14px;padding:13px 18px;font-weight:800;min-height:50px;width:100%}
-.copybtn:hover{background:var(--forest2)}
+/* Phase 5 */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.pcard{border:2px solid var(--line);border-radius:20px;padding:18px;background:var(--paper)}
+.pcard h3{margin:0 0 8px;font-size:1.3rem}
+.pcard pre{white-space:pre-wrap;font-family:inherit;font-size:1rem;font-weight:600;background:#fff;color:#14231A;border:2px solid var(--line);border-radius:14px;padding:14px;margin:0 0 12px;line-height:1.5}
+.copybtn{border:none;background:var(--forest);color:#fff;border-radius:12px;padding:13px 18px;font-weight:800;min-height:50px;width:100%}
 .copybtn.copied{background:var(--green)}
 .week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:14px}
 .day{border:2px solid var(--line);border-radius:14px;padding:10px 4px;text-align:center;font-weight:800;background:var(--paper)}
-.day:hover{border-color:var(--gold)}
 .day b{display:block;font-size:1.3rem;font-family:"Spectral",serif}
-.day.on{background:var(--forest);color:#fff;border-color:var(--gold)}
+.day.on{background:var(--forest);color:#fff}
 .routine{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
 .step{border-radius:18px;padding:16px;text-align:center;border:2px solid var(--line);background:var(--paper);font-weight:800}
-.step svg{width:54px;height:54px;margin-bottom:4px}
-.step span{display:block;font-size:1.35rem;font-family:"Spectral",serif;color:var(--forest)}
-@media (prefers-color-scheme: dark){.step span{color:var(--gold-light)}}
+.step svg{width:52px;height:52px}
+.step span{display:block;font-size:1.35rem;font-family:"Spectral",serif}
 
-/* 4 Golden Laws Medallion Grid */
-.laws-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
-.law-card{border:2px solid var(--line);background:var(--paper);border-radius:20px;padding:18px 14px;text-align:center;cursor:pointer;transition:transform .2s, border-color .2s, box-shadow .2s}
-.law-card:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:var(--shadow)}
-.law-icon{width:54px;height:54px;border-radius:50%;background:var(--forest);color:var(--gold-light);display:grid;place-items:center;font-size:1.5rem;margin:0 auto 10px;border:2px solid var(--gold)}
-.law-card h4{margin:0 0 6px;font-size:1.12rem;font-family:"Spectral",serif;color:var(--forest)}
-@media (prefers-color-scheme: dark){.law-card h4{color:var(--gold-light)}}
-.law-card p{margin:0;font-size:.9rem;font-weight:600;color:var(--muted);line-height:1.35}
 
-footer{text-align:center;padding:28px 16px 100px;color:var(--muted);font-weight:700}
-footer b{color:var(--forest)}
-@media (prefers-color-scheme: dark){footer b{color:#F4F1E6}}
-
-@media (max-width:860px){
-  .timeline{grid-template-columns:repeat(3,1fr);gap:6px}
-  .tl{padding:8px 8px;min-height:54px}.tl b{font-size:.82rem}.tl small{font-size:.66rem}
-  .objgrid,.qdgrid,.laws-grid{grid-template-columns:1fr 1fr}
-  .split,.cards,.legend,.story-massage-grid,.two-brains-grid{grid-template-columns:1fr}
-  .counters{grid-template-columns:1fr 1fr 1fr;gap:8px}.counter b{font-size:1.45rem}.counter span{font-size:.78rem}
+@media (max-width:760px){
+  .timeline{grid-template-columns:repeat(5,1fr);gap:5px}
+  .tl{padding:8px 6px;min-height:58px}.tl b{font-size:.82rem}.tl small{font-size:.68rem}
+  .objgrid{grid-template-columns:1fr 1fr}
+  .qdgrid{grid-template-columns:1fr 1fr}
+  .split,.cards,.legend{grid-template-columns:1fr}
+  .counters{grid-template-columns:1fr 1fr 1fr;gap:8px}.counter b{font-size:1.4rem}.counter span{font-size:.78rem}
   .routine{grid-template-columns:1fr 1fr}
   .week{gap:5px}.day{font-size:.75rem;padding:8px 2px}
-  .brandrow{justify-content:center}
-  .deck-bar{width:calc(100% - 24px);justify-content:space-between;padding:6px 12px}
+  .brandrow{justify-content:space-between}.logo-chip{padding:4px 8px}.logo-chip img{height:26px}
 }
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
@@ -309,45 +191,31 @@ footer b{color:var(--forest)}
 <header class="topbar">
   <div class="topbar-inner">
     <div class="brandrow">
-      <div class="brand-group">
-        <a class="back-home" href="../index.html" title="Back to Dialogue Learning Collection">← Activities</a>
-        <div class="brand">DIALOGUE <span>English &amp; Skills Center</span> · How the Brain Learns Language</div>
-      </div>
-      <div class="voicebar" role="group" aria-label="Module &amp; Voice controls">
-        <button class="timer-pill" id="sessionTimerBtn" title="Click to Start/Pause 25-Minute Lecture Timer">⏱️ <span id="timerDisplay">25:00</span></button>
-        <button class="vbtn" id="deckToggle" aria-pressed="false" title="Toggle Single-Slide Projector Mode (S)">📽️ Slideshow</button>
-        <button class="vbtn" id="notesToggle" aria-pressed="false" title="Toggle Teacher Lecture Notes (N)">📝 Teacher Cues</button>
-        <button class="vbtn" id="voiceToggle" aria-pressed="true" title="Toggle Neural Voice (M)">🔊 Voice ON</button>
-        <button class="vbtn" id="slowToggle" aria-pressed="false" title="Play Slower 0.75x">🐢 Slower</button>
+      <div class="brand"><span>How the Brain Learns Language</span> · Comprehensible Input &amp; GPA</div>
+      <div class="voicebar" role="group" aria-label="Voice controls">
+        <button class="vbtn" id="voiceToggle" aria-pressed="true">🔊 Voice ON</button>
+        <button class="vbtn" id="slowToggle" aria-pressed="false">🐢 Slower</button>
+        <a class="logo-chip" href="/" title="All Dialogue activities" aria-label="Dialogue English &amp; Skills Center — return to main activity grid"><img src="../brand/dialogue-logo.png?v=a53d061" alt="Dialogue English &amp; Skills Center"></a>
       </div>
     </div>
     <nav class="timeline" aria-label="Module phases">
-      <button class="tl active" data-target="p0"><small>INTRO · HOOK</small><b>0 · Two Brains</b></button>
-      <button class="tl" data-target="p1"><small>00:00 · 4 MIN</small><b>1 · Immersion Shock</b></button>
+      <button class="tl active" data-target="p1"><small>00:00 · 4 MIN</small><b>1 · Immersion Shock</b></button>
       <button class="tl" data-target="p2"><small>04:00 · 6 MIN</small><b>2 · Iceberg Lab</b></button>
       <button class="tl" data-target="p3"><small>10:00 · 6 MIN</small><b>3 · Two Worlds</b></button>
       <button class="tl" data-target="p4"><small>16:00 · 6 MIN</small><b>4 · AI Nurturer</b></button>
       <button class="tl" data-target="p5"><small>22:00 · 3 MIN</small><b>5 · Your Protocol</b></button>
     </nav>
     <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
-    <div class="caption-wrap">
-      <div class="eq-bars" id="eqBars" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-      <div class="caption" id="captionLine" aria-live="polite"></div>
-    </div>
+    <div class="caption" id="captionLine" aria-live="polite"></div>
   </div>
 </header>
 
 <div class="wrap">
 
-  <!-- ============ SLIDE 0 / HERO: PICTURE FIRST + THE TWO PATHS ============ -->
-  <div class="hero active-slide" id="p0">
+  <!-- HERO: picture first, almost no words -->
+  <div class="hero">
     <h1>Your brain already knows<br><em>how to learn a language.</em></h1>
     <p>Don't study the pictures. Just look, listen, and tap. You'll feel it happen — in the next 25 minutes.</p>
-
-    <div class="teacher-cue" style="text-align:left;max-width:920px;margin:14px auto 0">
-      <b>Teacher Cue</b> Ask the room: <em>"Who here has studied English grammar rules for 8–10 years, but still freezes when speaking?"</em> Tap the two brain cards below to contrast the Grammar-Translation Trap with Natural GPA Acquisition.
-    </div>
-
     <div class="brainwrap hero-visual" aria-hidden="true">
       <svg viewBox="0 0 600 170" width="100%" height="170" role="img" aria-label="An eye and ear taking in pictures and sound, flowing into a glowing brain, then out as speech">
         <defs>
@@ -381,96 +249,46 @@ footer b{color:var(--forest)}
         </g>
       </svg>
     </div>
-
-    <!-- Interactive Two Paths Comparison -->
-    <div class="two-brains-grid">
-      <div class="bpath trap" id="heroPathTrap" role="button" tabindex="0" onclick="selectHeroPath('trap')">
-        <svg viewBox="0 0 80 80" aria-hidden="true">
-          <circle cx="40" cy="40" r="34" fill="#FADCD6" stroke="#D94F3D" stroke-width="3"/>
-          <circle cx="33" cy="36" r="13" fill="none" stroke="#B03324" stroke-width="3.5" stroke-dasharray="5 3" class="spin-fast"/>
-          <rect x="33" y="38" width="16" height="14" rx="3" fill="#D94F3D"/>
-          <path d="M36 38v-5a5 5 0 0110 0v5" fill="none" stroke="#7A1F14" stroke-width="2.5"/>
-        </svg>
-        <div>
-          <span class="tag-pill">Path A · Grammar-Translation</span>
-          <h3>Conscious Rule Memorization</h3>
-          <p>10 years of textbook rules &amp; word lists → brain calculates every word and freezes.</p>
-        </div>
-      </div>
-
-      <div class="bpath flow" id="heroPathFlow" role="button" tabindex="0" onclick="selectHeroPath('flow')">
-        <svg viewBox="0 0 80 80" aria-hidden="true">
-          <circle cx="40" cy="40" r="34" fill="#D4F0D0" stroke="#2D9D33" stroke-width="3"/>
-          <path d="M22 42q18-16 36 0M26 52q14 10 28 0" fill="none" stroke="#103D21" stroke-width="3.5" stroke-linecap="round"/>
-          <circle cx="28" cy="36" r="4.5" fill="#B9924F"/><circle cx="52" cy="36" r="4.5" fill="#B9924F"/><circle cx="40" cy="28" r="5" fill="#2D9D33"/>
-        </svg>
-        <div>
-          <span class="tag-pill">Path B · Comprehensible Input (GPA)</span>
-          <h3>Subconscious Acquisition</h3>
-          <p>Sound coupled directly to pictures &amp; context → effortless, spontaneous speech.</p>
-        </div>
-      </div>
-    </div>
-
     <div class="chiprow">
       <span class="chip">👀 Look</span><span class="chip">👂 Listen</span><span class="chip">👆 Tap</span><span class="chip">💬 Speak — later</span>
     </div>
     <div class="btnrow" style="justify-content:center">
       <button class="bigbtn gold" onclick="goPhase('p1'); startNoise()">▶ Start — Phase 1</button>
-      <button class="bigbtn ghost" data-speak="Your brain already knows how to learn a language. Don't study the pictures. Just look, listen, and tap.">🔊 Hear Welcome</button>
     </div>
   </div>
 
   <!-- ============ PHASE 1 ============ -->
   <section class="phase" id="p1">
     <div class="phase-head">
-      <div class="phase-head-left">
-        <div class="pnum">1</div>
-        <div>
-          <div class="kicker">00:00 – 04:00 · Comprehensible Input vs. Noise</div>
-          <h2>The Immersion Shock</h2>
-          <p class="bigline">A language you have <u>never</u> heard. No words on the wall. No translation.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="teacher-cue">
-      <b>Teacher Cue</b> Ask students to press <strong>A</strong> first and try to pick the right picture. When they guess and feel confused, explain: <em>"Without picture context, any new language is just noise."</em> Then press <strong>B</strong> and watch the pointing hand connect sound directly to meaning!
+      <div class="pnum">1</div>
+      <div><div class="kicker">00:00 – 04:00 · Comprehensible Input vs. Noise</div><h2>The Immersion Shock</h2><p class="bigline">A language you have <u>never</u> heard. No words on the wall. No translation.</p></div>
     </div>
 
     <div class="btnrow" role="group" aria-label="Phase 1 steps">
       <button class="bigbtn" id="btnNoise">A · 🔊 Hear it — NO pictures helping</button>
       <button class="bigbtn green" id="btnTeach">B · 👀 Now watch + listen</button>
-      <button class="bigbtn gold" id="btnTest" disabled>C · 👆 Your turn — tap what you hear</button>
+      <button class="bigbtn gold" id="btnTest" disabled>C · 👆 Your turn — tap ZORIN</button>
     </div>
 
     <div class="alien" id="alienLine" aria-live="polite">✦ ✦ ✦</div>
 
-    <div class="stage-arena" id="p1Arena">
-      <!-- Animated Pointing Hand SVG -->
-      <svg class="floating-hand" id="pointingHand" viewBox="0 0 80 80" aria-hidden="true">
-        <circle cx="38" cy="14" r="11" fill="#F6C667" opacity=".55"/>
-        <path d="M34 12v28l-9-5a6 6 0 00-8 8l16 22a12 12 0 0010 5h14a10 10 0 0010-10V38a6 6 0 00-11-3v-3a6 6 0 00-11-2V12a5.5 5.5 0 00-11 0z" fill="#FFE3A1" stroke="#103D21" stroke-width="3.5" stroke-linejoin="round"/>
-      </svg>
-
-      <div class="objgrid" id="objGrid">
-        <button class="obj" data-id="apple" aria-label="Apple">
-          <svg viewBox="0 0 120 110"><defs><radialGradient id="p1Apple" cx="35%" cy="28%" r="85%"><stop offset="0%" stop-color="#FF9A82"/><stop offset="45%" stop-color="#E14B38"/><stop offset="100%" stop-color="#A8261A"/></radialGradient><linearGradient id="p1Leaf" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#5CC74E"/><stop offset="100%" stop-color="#1E7A24"/></linearGradient></defs><ellipse cx="60" cy="102" rx="34" ry="5" fill="#14231A" opacity=".13"/><path d="M60 31c-1-9 2-17 10-22" stroke="#7A4A21" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M63 25c2-12 13-18 25-17 0 13-9 21-21 21-2 0-4-2-4-4z" fill="url(#p1Leaf)"/><path d="M63 22q10-6 20-8" stroke="#1E7A24" stroke-width="2" fill="none" opacity=".6"/><path d="M60 33c7-8 23-10 33 2 12 15 5 45-9 61-8 9-16 6-24-1-8 7-16 10-24 1C22 80 15 50 27 35c10-12 26-10 33-2z" fill="url(#p1Apple)"/><ellipse cx="41" cy="55" rx="7" ry="15" fill="#fff" opacity=".5" transform="rotate(-14 41 55)"/><ellipse cx="52" cy="88" rx="13" ry="5" fill="#fff" opacity=".15"/></svg>
-          <b class="obj-name" hidden>APPLE</b><small class="obj-alien"></small>
-        </button>
-        <button class="obj" data-id="cup" aria-label="Cup">
-          <svg viewBox="0 0 120 110"><defs><linearGradient id="p1Cup" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#74AEDC"/><stop offset="100%" stop-color="#2C5F92"/></linearGradient></defs><ellipse cx="55" cy="102" rx="37" ry="5" fill="#14231A" opacity=".13"/><path d="M38 14c-4 6 4 8 0 14M56 9c-4 6 4 8 0 14M74 14c-4 6 4 8 0 14" stroke="#8FC6DE" stroke-width="4" fill="none" stroke-linecap="round"/><ellipse cx="55" cy="97" rx="34" ry="5" fill="#DCEFEA" stroke="#B9D8D2" stroke-width="1.5"/><path d="M24 36h62l-5 50a10 10 0 01-10 9H39a10 10 0 01-10-9z" fill="url(#p1Cup)"/><path d="M86 48c13-5 24 4 21 15-3 10-14 14-24 11l1-9c7 2 13-1 14-6 1-6-5-9-11-6z" fill="#2C5F92"/><ellipse cx="55" cy="36" rx="31" ry="6" fill="#4A2E14"/><ellipse cx="55" cy="35" rx="25" ry="4.4" fill="#7A4A21"/><ellipse cx="47" cy="34" rx="9" ry="2" fill="#A9743B" opacity=".8"/><path d="M36 56q9 7 19 0t19 0" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" opacity=".85"/><path d="M36 70q9 7 19 0t19 0" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" opacity=".5"/><ellipse cx="41" cy="62" rx="4.5" ry="13" fill="#fff" opacity=".3"/></svg>
-          <b class="obj-name" hidden>CUP</b><small class="obj-alien"></small>
-        </button>
-        <button class="obj" data-id="dog" aria-label="Dog">
-          <svg viewBox="0 0 120 110"><defs><linearGradient id="p1Dog" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#DCBE6E"/><stop offset="100%" stop-color="#A87F35"/></linearGradient><linearGradient id="p1DogEar" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9A7430"/><stop offset="100%" stop-color="#77571F"/></linearGradient></defs><ellipse cx="60" cy="103" rx="41" ry="5" fill="#14231A" opacity=".13"/><path d="M28 58q-19-6-16-25" stroke="#A87F35" stroke-width="9" fill="none" stroke-linecap="round"/><ellipse cx="56" cy="66" rx="33" ry="25" fill="url(#p1Dog)"/><ellipse cx="43" cy="57" rx="11" ry="8" fill="#8A6E34" opacity=".5"/><ellipse cx="66" cy="76" rx="9" ry="6" fill="#8A6E34" opacity=".35"/><rect x="38" y="82" width="10" height="20" rx="5" fill="#8A6E34"/><rect x="68" y="82" width="10" height="20" rx="5" fill="#8A6E34"/><ellipse cx="43" cy="101" rx="7" ry="3" fill="#77571F"/><ellipse cx="73" cy="101" rx="7" ry="3" fill="#77571F"/><circle cx="90" cy="46" r="21" fill="url(#p1Dog)"/><path d="M75 36q-6-17 5-22 9 9 5 20z" fill="url(#p1DogEar)"/><path d="M101 33q7-13 16-10 2 12-8 17z" fill="url(#p1DogEar)"/><ellipse cx="92" cy="56" rx="11" ry="8" fill="#EBD9A8"/><circle cx="84" cy="44" r="3.6" fill="#14231A"/><circle cx="99" cy="44" r="3.6" fill="#14231A"/><circle cx="85.3" cy="42.7" r="1.2" fill="#fff"/><circle cx="100.3" cy="42.7" r="1.2" fill="#fff"/><ellipse cx="92" cy="53" rx="6.5" ry="5" fill="#14231A"/><path d="M92 58v4M92 62q-3 5-8 3M92 62q3 5 8 3" stroke="#14231A" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M88 61q4 10-2 13-7-4-4-13z" fill="#E87A90"/><path d="M73 57l17 8" stroke="#D94F3D" stroke-width="7" stroke-linecap="round"/><circle cx="87" cy="67" r="4.2" fill="#F6C667" stroke="#B9924F" stroke-width="1.5"/></svg>
-          <b class="obj-name" hidden>DOG</b><small class="obj-alien"></small>
-        </button>
-        <button class="obj" data-id="bike" aria-label="Bicycle">
-          <svg viewBox="0 0 120 110"><defs><linearGradient id="p1Bike" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#41C747"/><stop offset="100%" stop-color="#1E7A24"/></linearGradient></defs><ellipse cx="61" cy="102" rx="49" ry="4" fill="#14231A" opacity=".11"/><g stroke="#7A8B93" stroke-width="1.8" opacity=".6"><path d="M30 60v36M12 78h36M18 66l24 24M42 66L18 90M92 60v36M74 78h36M80 66l24 24M104 66l-24 24"/></g><circle cx="30" cy="78" r="20" fill="none" stroke="#22303A" stroke-width="5"/><circle cx="92" cy="78" r="20" fill="none" stroke="#22303A" stroke-width="5"/><path d="M30 78L55 42h21l16 36M55 42L48 78h44" fill="none" stroke="url(#p1Bike)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M55 42l-3-10M44 30h17" stroke="#22303A" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M76 40l6-12M78 26h16q5 1 4 6" stroke="#22303A" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="30" cy="78" r="4.5" fill="#22303A"/><circle cx="92" cy="78" r="4.5" fill="#22303A"/><circle cx="55" cy="78" r="5.5" fill="#B9924F" stroke="#7A5E26" stroke-width="1.5"/><path d="M55 78l9-9" stroke="#7A5E26" stroke-width="3" stroke-linecap="round"/></svg>
-          <b class="obj-name" hidden>BICYCLE</b><small class="obj-alien"></small>
-        </button>
-      </div>
+    <div class="objgrid" id="objGrid">
+      <button class="obj" data-id="apple" aria-label="Apple">
+        <svg viewBox="0 0 120 110"><defs><radialGradient id="p1Apple" cx="35%" cy="28%" r="85%"><stop offset="0%" stop-color="#FF9A82"/><stop offset="45%" stop-color="#E14B38"/><stop offset="100%" stop-color="#A8261A"/></radialGradient><linearGradient id="p1Leaf" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#5CC74E"/><stop offset="100%" stop-color="#1E7A24"/></linearGradient></defs><ellipse cx="60" cy="102" rx="34" ry="5" fill="#14231A" opacity=".13"/><path d="M60 31c-1-9 2-17 10-22" stroke="#7A4A21" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M63 25c2-12 13-18 25-17 0 13-9 21-21 21-2 0-4-2-4-4z" fill="url(#p1Leaf)"/><path d="M63 22q10-6 20-8" stroke="#1E7A24" stroke-width="2" fill="none" opacity=".6"/><path d="M60 33c7-8 23-10 33 2 12 15 5 45-9 61-8 9-16 6-24-1-8 7-16 10-24 1C22 80 15 50 27 35c10-12 26-10 33-2z" fill="url(#p1Apple)"/><ellipse cx="41" cy="55" rx="7" ry="15" fill="#fff" opacity=".5" transform="rotate(-14 41 55)"/><ellipse cx="52" cy="88" rx="13" ry="5" fill="#fff" opacity=".15"/></svg>
+        <b class="obj-name" hidden>APPLE</b><small class="obj-alien"></small>
+      </button>
+      <button class="obj" data-id="cup" aria-label="Cup">
+        <svg viewBox="0 0 120 110"><defs><linearGradient id="p1Cup" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#74AEDC"/><stop offset="100%" stop-color="#2C5F92"/></linearGradient></defs><ellipse cx="55" cy="102" rx="37" ry="5" fill="#14231A" opacity=".13"/><path d="M38 14c-4 6 4 8 0 14M56 9c-4 6 4 8 0 14M74 14c-4 6 4 8 0 14" stroke="#8FC6DE" stroke-width="4" fill="none" stroke-linecap="round"/><ellipse cx="55" cy="97" rx="34" ry="5" fill="#DCEFEA" stroke="#B9D8D2" stroke-width="1.5"/><path d="M24 36h62l-5 50a10 10 0 01-10 9H39a10 10 0 01-10-9z" fill="url(#p1Cup)"/><path d="M86 48c13-5 24 4 21 15-3 10-14 14-24 11l1-9c7 2 13-1 14-6 1-6-5-9-11-6z" fill="#2C5F92"/><ellipse cx="55" cy="36" rx="31" ry="6" fill="#4A2E14"/><ellipse cx="55" cy="35" rx="25" ry="4.4" fill="#7A4A21"/><ellipse cx="47" cy="34" rx="9" ry="2" fill="#A9743B" opacity=".8"/><path d="M36 56q9 7 19 0t19 0" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" opacity=".85"/><path d="M36 70q9 7 19 0t19 0" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" opacity=".5"/><ellipse cx="41" cy="62" rx="4.5" ry="13" fill="#fff" opacity=".3"/></svg>
+        <b class="obj-name" hidden>CUP</b><small class="obj-alien"></small>
+      </button>
+      <button class="obj" data-id="dog" aria-label="Dog">
+        <svg viewBox="0 0 120 110"><defs><linearGradient id="p1Dog" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#DCBE6E"/><stop offset="100%" stop-color="#A87F35"/></linearGradient><linearGradient id="p1DogEar" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9A7430"/><stop offset="100%" stop-color="#77571F"/></linearGradient></defs><ellipse cx="60" cy="103" rx="41" ry="5" fill="#14231A" opacity=".13"/><path d="M28 58q-19-6-16-25" stroke="#A87F35" stroke-width="9" fill="none" stroke-linecap="round"/><ellipse cx="56" cy="66" rx="33" ry="25" fill="url(#p1Dog)"/><ellipse cx="43" cy="57" rx="11" ry="8" fill="#8A6E34" opacity=".5"/><ellipse cx="66" cy="76" rx="9" ry="6" fill="#8A6E34" opacity=".35"/><rect x="38" y="82" width="10" height="20" rx="5" fill="#8A6E34"/><rect x="68" y="82" width="10" height="20" rx="5" fill="#8A6E34"/><ellipse cx="43" cy="101" rx="7" ry="3" fill="#77571F"/><ellipse cx="73" cy="101" rx="7" ry="3" fill="#77571F"/><circle cx="90" cy="46" r="21" fill="url(#p1Dog)"/><path d="M75 36q-6-17 5-22 9 9 5 20z" fill="url(#p1DogEar)"/><path d="M101 33q7-13 16-10 2 12-8 17z" fill="url(#p1DogEar)"/><ellipse cx="92" cy="56" rx="11" ry="8" fill="#EBD9A8"/><circle cx="84" cy="44" r="3.6" fill="#14231A"/><circle cx="99" cy="44" r="3.6" fill="#14231A"/><circle cx="85.3" cy="42.7" r="1.2" fill="#fff"/><circle cx="100.3" cy="42.7" r="1.2" fill="#fff"/><ellipse cx="92" cy="53" rx="6.5" ry="5" fill="#14231A"/><path d="M92 58v4M92 62q-3 5-8 3M92 62q3 5 8 3" stroke="#14231A" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M88 61q4 10-2 13-7-4-4-13z" fill="#E87A90"/><path d="M73 57l17 8" stroke="#D94F3D" stroke-width="7" stroke-linecap="round"/><circle cx="87" cy="67" r="4.2" fill="#F6C667" stroke="#B9924F" stroke-width="1.5"/></svg>
+        <b class="obj-name" hidden>DOG</b><small class="obj-alien"></small>
+      </button>
+      <button class="obj" data-id="bike" aria-label="Bicycle">
+        <svg viewBox="0 0 120 110"><defs><linearGradient id="p1Bike" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#41C747"/><stop offset="100%" stop-color="#1E7A24"/></linearGradient></defs><ellipse cx="61" cy="102" rx="49" ry="4" fill="#14231A" opacity=".11"/><g stroke="#7A8B93" stroke-width="1.8" opacity=".6"><path d="M30 60v36M12 78h36M18 66l24 24M42 66L18 90M92 60v36M74 78h36M80 66l24 24M104 66l-24 24"/></g><circle cx="30" cy="78" r="20" fill="none" stroke="#22303A" stroke-width="5"/><circle cx="92" cy="78" r="20" fill="none" stroke="#22303A" stroke-width="5"/><path d="M30 78L55 42h21l16 36M55 42L48 78h44" fill="none" stroke="url(#p1Bike)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M55 42l-3-10M44 30h17" stroke="#22303A" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M76 40l6-12M78 26h16q5 1 4 6" stroke="#22303A" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="30" cy="78" r="4.5" fill="#22303A"/><circle cx="92" cy="78" r="4.5" fill="#22303A"/><circle cx="55" cy="78" r="5.5" fill="#B9924F" stroke="#7A5E26" stroke-width="1.5"/><path d="M55 78l9-9" stroke="#7A5E26" stroke-width="3" stroke-linecap="round"/></svg>
+        <b class="obj-name" hidden>BICYCLE</b><small class="obj-alien"></small>
+      </button>
     </div>
 
     <div class="status" id="p1Status" aria-live="polite">Press <b>A</b>. Just listen. Try to guess. Guessing is the point.</div>
@@ -489,18 +307,8 @@ footer b{color:var(--forest)}
   <!-- ============ PHASE 2 ============ -->
   <section class="phase" id="p2">
     <div class="phase-head">
-      <div class="phase-head-left">
-        <div class="pnum">2</div>
-        <div>
-          <div class="kicker">04:00 – 10:00 · The Iceberg &amp; The Silent Period</div>
-          <h2>Most of your English is underwater</h2>
-          <p class="bigline">Speaking is only the tip. Understanding grows <u>below</u> first — silently.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="teacher-cue">
-      <b>Teacher Cue</b> Push <strong>20 drill words onto the tip</strong> first and let students watch them melt off after 2 seconds. Ask: <em>"How many vocabulary lists have you crammed for exams and forgotten a week later?"</em> Then pour in <strong>Comprehensible Input</strong> to show how underwater comprehension buoys up spoken words naturally.
+      <div class="pnum">2</div>
+      <div><div class="kicker">04:00 – 10:00 · The Iceberg &amp; The Silent Period</div><h2>Most of your English is underwater</h2><p class="bigline">Speaking is only the tip. Understanding grows <u>below</u> first — silently.</p></div>
     </div>
 
     <div class="ice-stage" aria-label="Iceberg diagram">
@@ -539,9 +347,9 @@ footer b{color:var(--forest)}
     </div>
 
     <div class="counters">
-      <div class="counter"><b id="cSay">6</b><span>💬 CAN SAY (Active)</span></div>
-      <div class="counter"><b id="cUnderstand">30</b><span>👂 UNDERSTAND (Passive)</span></div>
-      <div class="counter"><b id="cFamiliar">24</b><span>🌫️ FEELS FAMILIAR (Base)</span></div>
+      <div class="counter"><b id="cSay">6</b><span>💬 CAN SAY</span></div>
+      <div class="counter"><b id="cUnderstand">30</b><span>👂 UNDERSTAND</span></div>
+      <div class="counter"><b id="cFamiliar">24</b><span>🌫️ FEELS FAMILIAR</span></div>
     </div>
 
     <div style="margin-top:20px">
@@ -554,13 +362,9 @@ footer b{color:var(--forest)}
     </div>
     <div class="status" id="p2Status" aria-live="polite">Try both. Watch what <b>stays</b> — and what melts away.</div>
 
-    <h3 style="margin:24px 0 6px;font-size:1.38rem">The Silent Period is not empty. It is loading…</h3>
+    <h3 style="margin:22px 0 6px;font-size:1.35rem">The Silent Period is not empty. It is loading…</h3>
     <div class="silent" id="silentBar" aria-label="Silent period timeline">
-      <div class="seg on" data-wk="0">Wk 1–2<br>👂 Listen</div>
-      <div class="seg on" data-wk="1">Wk 3–4<br>👆 Point</div>
-      <div class="seg on" data-wk="2">Wk 5–6<br>🙂 Nod / Yes-No</div>
-      <div class="seg" data-wk="3">Wk 7–8<br>🧩 Chunks</div>
-      <div class="seg" data-wk="4">Wk 9+<br>💬 Own sentences</div>
+      <div class="seg on">Wk 1–2<br>👂 Listen</div><div class="seg on">Wk 3–4<br>👆 Point</div><div class="seg on">Wk 5–6<br>🙂 Nod / Yes-No</div><div class="seg">Wk 7–8<br>🧩 Chunks</div><div class="seg">Wk 9+<br>💬 Own sentences</div>
     </div>
     <div class="btnrow"><button class="bigbtn ghost" id="btnSilent">▶ Play the silent weeks</button></div>
 
@@ -569,25 +373,11 @@ footer b{color:var(--forest)}
   <!-- ============ PHASE 3 ============ -->
   <section class="phase" id="p3">
     <div class="phase-head">
-      <div class="phase-head-left">
-        <div class="pnum">3</div>
-        <div>
-          <div class="kicker">10:00 – 16:00 · Acquisition vs. Learning · The Monitor · Affective Filter</div>
-          <h2>Two students. One coffee shop.</h2>
-          <p class="bigline">Same English course. Completely different brain at the counter.</p>
-        </div>
-      </div>
+      <div class="pnum">3</div>
+      <div><div class="kicker">10:00 – 16:00 · Acquisition vs. Learning · The Monitor · Affective Filter</div><h2>Two students. One coffee shop.</h2><p class="bigline">Same English course. Completely different brain at the counter.</p></div>
     </div>
 
-    <div class="teacher-cue">
-      <b>Teacher Cue</b> Contrast Krashen's <strong>Conscious Monitor</strong> (left cogwheel spinning furiously checking grammar rules) with the <strong>Growing Participator</strong> (right, where ready-made audio chunks float out effortlessly because the Affective Filter anxiety wall is low). Tap any floating green chunk to hear it!
-    </div>
-
-    <div class="btnrow">
-      <button class="bigbtn gold" id="btnPlayWorlds">▶ Play both — order a coffee</button>
-      <button class="bigbtn ghost" id="btnPlayBadOnly">😰 Hear Over-Monitored Student</button>
-      <button class="bigbtn ghost" id="btnPlayGoodOnly">😌 Hear Growing Participator</button>
-    </div>
+    <div class="btnrow"><button class="bigbtn gold" id="btnPlayWorlds">▶ Play both — order a coffee</button></div>
 
     <div class="split">
       <div class="world bad" id="worldBad">
@@ -618,7 +408,7 @@ footer b{color:var(--forest)}
         </svg>
         <svg class="gear spin-fast" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6l6 12 13-5 2 14 14 2-5 13 12 6-12 6 5 13-14 2-2 14-13-5-6 12-6-12-13 5-2-14-14-2 5-13L8 50l12-6-5-13 14-2 2-14 13 5z" fill="#D94F3D"/><circle cx="50" cy="50" r="17" fill="#fff"/><text x="50" y="56" text-anchor="middle" font-size="11" font-weight="800" fill="#7A1F14">RULES?</text></svg>
         <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;font-weight:800;font-size:.85rem"><span style="background:#fff;border:2px solid #EFC0B8;border-radius:8px;padding:4px 8px">past tense?</span><span style="background:#fff;border:2px solid #EFC0B8;border-radius:8px;padding:4px 8px">a / the?</span><span style="background:#fff;border:2px solid #EFC0B8;border-radius:8px;padding:4px 8px">⚠ don't make a mistake</span></div>
-        <div class="gauge"><div style="display:flex;justify-content:space-between;font-weight:800"><span>AFFECTIVE FILTER — anxiety wall</span><span id="badPct">HIGH (92%)</span></div><div class="gauge-track"><div class="gauge-fill" id="badGauge" style="background:var(--red);width:92%"></div></div><small style="font-weight:700">High wall = input bounces OFF &amp; speech locks up.</small></div>
+        <div class="gauge"><div style="display:flex;justify-content:space-between;font-weight:800"><span>AFFECTIVE FILTER — anxiety wall</span><span id="badPct">HIGH</span></div><div class="gauge-track"><div class="gauge-fill" id="badGauge" style="background:var(--red);width:18%"></div></div></div>
         <div class="bubblebox" id="badBubble">“I… would… like… uh… is it ‘a coffee’ or…? Sorry, sorry…” 🧊 <b>Frozen.</b></div>
       </div>
 
@@ -649,145 +439,51 @@ footer b{color:var(--forest)}
           <rect x="104" y="6" width="118" height="34" rx="12" fill="#103D21"/><path d="M122 40l-3 10 13-8z" fill="#103D21"/><text x="163" y="30" text-anchor="middle" font-size="14.5" font-weight="800" fill="#F4F1E6">For here, thanks!</text>
         </svg>
         <svg class="gear spin-slow" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6l6 12 13-5 2 14 14 2-5 13 12 6-12 6 5 13-14 2-2 14-13-5-6 12-6-12-13 5-2-14-14-2 5-13L8 50l12-6-5-13 14-2 2-14 13 5z" fill="#2D9D33"/><circle cx="50" cy="50" r="17" fill="#fff"/><text x="50" y="56" text-anchor="middle" font-size="11" font-weight="800" fill="#103D21">CHUNKS</text></svg>
-        <div style="text-align:center">
-          <button type="button" class="chunk" data-speak="Can I have...">“Can I have…”</button>
-          <button type="button" class="chunk" data-speak="the usual, please.">“the usual, please”</button>
-          <button type="button" class="chunk" data-speak="for here, thanks!">“for here, thanks!”</button>
-        </div>
-        <div class="gauge"><div style="display:flex;justify-content:space-between;font-weight:800"><span>AFFECTIVE FILTER — anxiety wall</span><span id="goodPct">LOW (16%)</span></div><div class="gauge-track"><div class="gauge-fill" id="goodGauge" style="background:var(--green);width:16%"></div></div><small style="font-weight:700">Low wall = input gets IN &amp; chunks flow OUT.</small></div>
+        <div style="text-align:center"><span class="chunk">“Can I have…”</span><span class="chunk">“the usual, please”</span><span class="chunk">“for here, thanks!”</span></div>
+        <div class="gauge"><div style="display:flex;justify-content:space-between;font-weight:800"><span>AFFECTIVE FILTER — anxiety wall</span><span id="goodPct">LOW</span></div><div class="gauge-track"><div class="gauge-fill" id="goodGauge" style="background:var(--green);width:82%"></div></div><small style="font-weight:700">Low wall = input gets IN. High wall = input bounces off.</small></div>
         <div class="bubblebox" id="goodBubble">“Hi! Can I have a coffee, please — for here. Thanks!” ☕ <b>Done. Smiling.</b></div>
       </div>
     </div>
 
     <div class="status" id="p3Status" aria-live="polite">The difference is not talent. It is <b>how the words got in</b> — and how high the anxiety wall is.</div>
-    <div class="speechbar">
-      <button class="spbtn" data-speak="The monitor checks rules. The filter blocks input when we feel stressed. Low anxiety lets language in.">🔊 Hear the idea</button>
-      <button class="spbtn" data-speak-slow="true" data-speak="The monitor checks rules. The filter blocks input when we feel stressed. Low anxiety lets language in.">🐢 Slower</button>
-    </div>
+    <div class="speechbar"><button class="spbtn" data-speak="The monitor checks rules. The filter blocks input when we feel stressed. Low anxiety lets language in.">🔊 Hear the idea</button><button class="spbtn" data-speak-slow="true" data-speak="The monitor checks rules. The filter blocks input when we feel stressed. Low anxiety lets language in.">🐢 Slower</button></div>
 
   </section>
 
   <!-- ============ PHASE 4 ============ -->
   <section class="phase" id="p4">
     <div class="phase-head">
-      <div class="phase-head-left">
-        <div class="pnum">4</div>
-        <div>
-          <div class="kicker">16:00 – 22:00 · GPA · The AI as Nurturer · No red pens</div>
-          <h2>Your pocket Nurturer</h2>
-          <p class="bigline">A good Nurturer never says “wrong.” She just says it <u>beautifully</u> — and you absorb it.</p>
-        </div>
-      </div>
+      <div class="pnum">4</div>
+      <div><div class="kicker">16:00 – 22:00 · GPA · The AI as Nurturer · No red pens</div><h2>Your pocket Nurturer</h2><p class="bigline">A good Nurturer never says “wrong.” She just says it <u>beautifully</u> — and you absorb it.</p></div>
     </div>
 
-    <div class="teacher-cue">
-      <b>Teacher Cue</b> Walk through the 3 core AI Nurturer games: (1) <strong>Quick Dozen</strong> Listen &amp; Point, (2) <strong>Implicit Recasting</strong> (switch between Nurturer Mode and Red-Pen Mode so students feel the difference!), and (3) <strong>Busy Picture Story Massaging</strong>.
+    <h3 style="margin:18px 0 0;font-size:1.45rem">Game 1 — Quick Dozen: Listen &amp; Point</h3>
+    <p style="font-weight:700;margin:6px 0 0">Listen. Tap what you hear. That's it. Comprehension first — speaking comes later.</p>
+    <div class="stars" id="qdStars" aria-label="Progress stars">☆ ☆ ☆ ☆ ☆ ☆</div>
+    <div class="qdgrid" id="qdGrid"></div>
+    <div class="btnrow">
+      <button class="bigbtn green" id="btnQDStart">▶ Start Quick Dozen</button>
+      <button class="bigbtn ghost" id="btnQDReplay">↻ Hear it again</button>
+      <button class="bigbtn ghost" id="btnQDSlow">🐢 Slower</button>
     </div>
+    <div class="status" id="qdStatus" aria-live="polite">Press Start. The Nurturer will ask you to find something.</div>
 
-    <div class="game-card">
-      <h3 style="margin:0;font-size:1.45rem">Game 1 — Quick Dozen: Listen &amp; Point (GPA Phase 1)</h3>
-      <p style="font-weight:700;margin:6px 0 0;color:var(--muted)">Listen. Tap what you hear. That's it. Comprehension first — speaking comes later.</p>
-      <div class="stars" id="qdStars" aria-label="Progress stars">☆ ☆ ☆ ☆ ☆ ☆</div>
-      <div class="qdgrid" id="qdGrid"></div>
-      <div class="btnrow">
-        <button class="bigbtn green" id="btnQDStart">▶ Start Quick Dozen</button>
-        <button class="bigbtn ghost" id="btnQDReplay">↻ Hear it again</button>
-        <button class="bigbtn ghost" id="btnQDSlow">🐢 Slower</button>
-      </div>
-      <div class="status" id="qdStatus" aria-live="polite">Press Start. The Nurturer will ask you to find something.</div>
+    <h3 style="margin:26px 0 0;font-size:1.45rem">Game 2 — Say it your way. Hear it grow.</h3>
+    <p style="font-weight:700;margin:6px 0 0">Tap a learner sentence. Listen to what a Nurturer does — <b>no correction, just a recast.</b></p>
+    <div class="recast-chips">
+      <button class="chipbtn" data-recast="0">🗣️ “Boy run road.”<small>Tap to hear the recast →</small></button>
+      <button class="chipbtn" data-recast="1">🗣️ “He go store.”<small>Tap to hear the recast →</small></button>
+      <button class="chipbtn" data-recast="2">🗣️ “She have two child.”<small>Tap to hear the recast →</small></button>
+      <button class="chipbtn" data-recast="3">🗣️ “Yesterday I buy phone.”<small>Tap to hear the recast →</small></button>
     </div>
-
-    <div class="game-card">
-      <h3 style="margin:0;font-size:1.45rem">Game 2 — Say it your way. Hear it grow. (Implicit Recasting)</h3>
-      <p style="font-weight:700;margin:6px 0 0;color:var(--muted)">Tap a learner sentence. Compare what a <b>GPA Nurturer</b> does versus a <b>Red-Pen Teacher</b>:</p>
-
-      <div class="mode-toggle-row" role="group" aria-label="Response style">
-        <span style="font-weight:800;font-size:.92rem">Response Mode:</span>
-        <button type="button" class="mode-pill active-nurturer" id="modeNurturerBtn" onclick="setRecastMode('nurturer')">💚 GPA Nurturer (Implicit Recast)</button>
-        <button type="button" class="mode-pill" id="modeRedPenBtn" onclick="setRecastMode('redpen')">❌ Traditional Red Pen (Grammar Lecture)</button>
-      </div>
-
-      <div class="recast-chips">
-        <button class="chipbtn" data-recast="0">🗣️ “Boy run road.”<small>Tap to hear response →</small></button>
-        <button class="chipbtn" data-recast="1">🗣️ “He go store.”<small>Tap to hear response →</small></button>
-        <button class="chipbtn" data-recast="2">🗣️ “She have two child.”<small>Tap to hear response →</small></button>
-        <button class="chipbtn" data-recast="3">🗣️ “Yesterday I buy phone.”<small>Tap to hear response →</small></button>
-        <button class="chipbtn" data-recast="4">🗣️ “Tea very hot no drink.”<small>Tap to hear response →</small></button>
-        <button class="chipbtn" data-recast="5">🗣️ “Bus late I walk school.”<small>Tap to hear response →</small></button>
-      </div>
-      <div class="chat" id="chatLog" aria-live="polite">
-        <div class="msg ai"><span class="who">Nurturer (Emma)</span>Welcome! I will never mark you wrong. I will play, point, and say things in a way you can understand — at your level, plus one small step. That step is called <b>i+1</b>: 95% familiar, 5% new.</div>
-      </div>
+    <div class="chat" id="chatLog" aria-live="polite">
+      <div class="msg ai"><span class="who">Nurturer</span>Welcome! I will never mark you wrong. I will play, point, and say things in a way you can understand — at your level, plus one small step. That step is called <b>i+1</b>: 95% familiar, 5% new.</div>
     </div>
-
-    <div class="game-card">
-      <h3 style="margin:0;font-size:1.45rem">Game 3 — Busy Picture Story Massaging (GPA Phase 2)</h3>
-      <p style="font-weight:700;margin:6px 0 0;color:var(--muted)">Tap any part of the market scene (or the buttons) to hear the Nurturer describe it clearly in context.</p>
-      <div class="story-massage-grid">
-        <div class="busy-scene-box">
-          <svg viewBox="0 0 420 220" role="img" aria-label="Busy Rajshahi market scene with a woman buying mangoes, a boy pointing at bananas, and a sleeping dog under the table">
-            <rect x="0" y="0" width="420" height="220" rx="12" fill="#FFF9E8"/>
-            <rect x="0" y="165" width="420" height="55" fill="#E6DEC8"/>
-            <!-- Market canopy -->
-            <path d="M20 12h380l-12 32H32z" fill="#103D21"/>
-            <path d="M40 12h40v32H40zM120 12h40v32h-40zM200 12h40v32h-40zM280 12h40v32h-40zM360 12h30v32h-30z" fill="#D94F3D"/>
-            <!-- Wooden Table -->
-            <rect x="135" y="118" width="195" height="14" rx="4" fill="#8A5A33"/>
-            <rect x="148" y="132" width="12" height="52" fill="#774926"/>
-            <rect x="304" y="132" width="12" height="52" fill="#774926"/>
-            <!-- Hotspot 1: Woman in green sari & mangoes -->
-            <g class="hotspot" onclick="playStoryPart(0)" title="Tap: Woman buying mangoes">
-              <circle cx="82" cy="76" r="18" fill="#C98A54"/>
-              <path d="M64 74a18 18 0 0136 0z" fill="#14231A"/>
-              <path d="M58 96q24-10 48 0l8 74H50z" fill="#2D9D33"/>
-              <path d="M64 96l38 42" stroke="#D2B978" stroke-width="6" stroke-linecap="round"/>
-              <!-- Mango basket -->
-              <ellipse cx="182" cy="112" rx="32" ry="10" fill="#B9924F"/>
-              <circle cx="170" cy="103" r="9" fill="#F6C667"/><circle cx="184" cy="101" r="9" fill="#E9A23B"/><circle cx="196" cy="104" r="9" fill="#F6C667"/>
-            </g>
-            <!-- Hotspot 2: Boy pointing at bananas -->
-            <g class="hotspot" onclick="playStoryPart(1)" title="Tap: Boy pointing at bananas">
-              <circle cx="364" cy="96" r="15" fill="#C98A54"/>
-              <path d="M349 93a15 15 0 0130 0z" fill="#14231A"/>
-              <rect x="348" y="112" width="32" height="56" rx="8" fill="#3E7CB1"/>
-              <path d="M350 122l-38-12" stroke="#C98A54" stroke-width="7" stroke-linecap="round"/>
-              <!-- Banana basket -->
-              <ellipse cx="272" cy="112" rx="32" ry="10" fill="#B9924F"/>
-              <path d="M254 98q16 12 34 0" stroke="#FFE38A" stroke-width="7" fill="none" stroke-linecap="round"/>
-              <path d="M258 104q16 12 32 0" stroke="#F6C667" stroke-width="6" fill="none" stroke-linecap="round"/>
-            </g>
-            <!-- Hotspot 3: Sleeping dog under table -->
-            <g class="hotspot" onclick="playStoryPart(2)" title="Tap: Sleeping dog in the shade">
-              <ellipse cx="228" cy="176" rx="34" ry="14" fill="#DCBE6E"/>
-              <circle cx="256" cy="170" r="12" fill="#DCBE6E"/>
-              <path d="M252 162q-4-8 3-10 5 4 3 10z" fill="#8A6E34"/>
-              <text x="272" y="156" font-size="13" font-weight="800" fill="#103D21">zZz</text>
-            </g>
-          </svg>
-        </div>
-        <div>
-          <div class="btnrow" style="margin-top:0;flex-direction:column">
-            <button class="spbtn" style="justify-content:flex-start;text-align:left" onclick="playStoryPart(0)">🥭 1 · Woman buying fresh mangoes</button>
-            <button class="spbtn" style="justify-content:flex-start;text-align:left" onclick="playStoryPart(1)">🍌 2 · Boy pointing at sweet bananas</button>
-            <button class="spbtn" style="justify-content:flex-start;text-align:left" onclick="playStoryPart(2)">🐕 3 · Dog sleeping in the shade</button>
-            <button class="bigbtn gold" onclick="playAllStory()">▶ Play Full 3-Sentence Story</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-top:16px;background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:16px">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
-        <b style="font-size:1.1rem">The i+1 dial — feel &amp; hear it:</b>
-        <div style="display:flex;gap:6px;flex-wrap:wrap">
-          <button type="button" class="spbtn" style="min-height:36px;padding:5px 12px;font-size:.85rem" onclick="setIDial(15)">😴 Hear i − 1</button>
-          <button type="button" class="spbtn" style="min-height:36px;padding:5px 12px;font-size:.85rem" onclick="setIDial(50)">🎯 Hear i + 1</button>
-          <button type="button" class="spbtn" style="min-height:36px;padding:5px 12px;font-size:.85rem" onclick="setIDial(88)">😱 Hear i + 10</button>
-        </div>
-      </div>
-      <div class="slider-labels" style="margin-top:8px"><span>😴 i − 1<br><small>too easy, nothing new</small></span><span style="text-align:center;color:var(--green)">🎯 i + 1<br><small>just right (95% known)</small></span><span style="text-align:right">😱 i + 10<br><small>noise again</small></span></div>
+    <div style="margin-top:12px;background:var(--paper);border:2px solid var(--line);border-radius:16px;padding:14px">
+      <b style="font-size:1.1rem">The i+1 dial — feel it:</b>
+      <div class="slider-labels" style="margin-top:8px"><span>😴 i − 1<br><small>too easy, nothing new</small></span><span style="text-align:center;color:var(--green)">🎯 i + 1<br><small>just right</small></span><span style="text-align:right">😱 i + 10<br><small>noise again</small></span></div>
       <input type="range" id="iSlider" min="0" max="100" value="50" aria-label="i plus one dial">
-      <div class="status good" id="iStatus" style="margin-top:8px">🎯 <b>Just right — i+1:</b> “The sleepy orange cat is <u>stretching</u> on the warm sunlit windowsill.” (1 new word rides in on the picture!)</div>
+      <div class="status" id="iStatus" style="margin-top:8px">🎯 <b>Just right.</b> You understand almost everything — and one new word rides in on the meaning.</div>
     </div>
 
   </section>
@@ -795,18 +491,8 @@ footer b{color:var(--forest)}
   <!-- ============ PHASE 5 ============ -->
   <section class="phase" id="p5">
     <div class="phase-head">
-      <div class="phase-head-left">
-        <div class="pnum">5</div>
-        <div>
-          <div class="kicker">22:00 – 25:00 · Your Daily Protocol</div>
-          <h2>Take the Nurturer home</h2>
-          <p class="bigline">Copy a card. Paste it into ChatGPT Voice, Gemini, or Claude. Press the mic. Play for 15 minutes a day.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="teacher-cue">
-      <b>Teacher Cue</b> Have students pull out their phones right now, tap <strong>Copy this prompt</strong> on the Master Card, and paste it into ChatGPT Voice or Gemini Live so they leave the lecture with a working personal GPA Nurturer!
+      <div class="pnum">5</div>
+      <div><div class="kicker">22:00 – 25:00 · Your Daily Protocol</div><h2>Take the Nurturer home</h2><p class="bigline">Copy a card. Paste it into ChatGPT Voice, Gemini, or Claude. Press the mic. Play for 15 minutes a day.</p></div>
     </div>
 
     <h3 style="margin:20px 0 4px;font-size:1.4rem">Your 15 minutes — every day</h3>
@@ -853,31 +539,6 @@ footer b{color:var(--forest)}
       </div>
     </div>
 
-    <!-- 4 Golden Laws Summary Medallions (Tap to hear each law) -->
-    <h3 style="margin:26px 0 4px;font-size:1.4rem">The 4 Golden Laws of Natural Acquisition <small style="font-size:.85rem;color:var(--muted);font-family:'Public Sans',sans-serif">(tap any card to hear)</small></h3>
-    <div class="laws-grid">
-      <div class="law-card" role="button" tabindex="0" data-speak="Law one: Input precedes output. Listen and point before you try to speak.">
-        <div class="law-icon">👂</div>
-        <h4>1 · Input First</h4>
-        <p>Listen &amp; point before speaking. Comprehension leads production.</p>
-      </div>
-      <div class="law-card" role="button" tabindex="0" data-speak="Law two: Grow the underwater iceberg. Passive comprehension lifts spoken fluency.">
-        <div class="law-icon">🌊</div>
-        <h4>2 · Grow the Base</h4>
-        <p>Fill the underwater 90% with stories &amp; context; the tip rises by itself.</p>
-      </div>
-      <div class="law-card" role="button" tabindex="0" data-speak="Law three: Lower the anxiety wall. Quiet the grammar monitor so chunks can flow.">
-        <div class="law-icon">🧘</div>
-        <h4>3 · Lower the Wall</h4>
-        <p>Quiet the conscious grammar monitor so ready-made chunks flow out.</p>
-      </div>
-      <div class="law-card" role="button" tabindex="0" data-speak="Law four: Practice fifteen minutes daily with your pocket Nurturer. No red pens.">
-        <div class="law-icon">🤖</div>
-        <h4>4 · No Red Pens</h4>
-        <p>Play 15 minutes a day with your AI Nurturer through warm recasts.</p>
-      </div>
-    </div>
-
     <div class="status good" style="margin-top:18px">🌱 <span><b>You already proved it in Phase 1:</b> with pictures + sound + zero pressure, your brain learns. Do that — in English — for 15 minutes a day.</span></div>
     <div class="speechbar"><button class="spbtn" data-speak="Remember: look, listen, tap, play. Fifteen minutes every day. Your underwater English will grow, and speaking will rise on its own.">🔊 Hear the finish</button></div>
 
@@ -885,28 +546,17 @@ footer b{color:var(--forest)}
 
 </div>
 
-<!-- Floating Classroom Slide Deck Bar -->
-<div class="deck-bar" role="navigation" aria-label="Slide navigation">
-  <button class="deck-btn" id="prevSlideBtn" title="Previous Phase (←)">← Prev</button>
-  <span class="deck-counter" id="slideCounterText">0 · Two Brains (1/6)</span>
-  <button class="deck-btn" id="nextSlideBtn" title="Next Phase (→)">Next →</button>
-</div>
-
-<footer><b>Dialogue English &amp; Skills Center</b> · Rajshahi · bd.dialogue@simbd.org<br><span style="font-size:.9rem">Show, don't tell — built for the classroom projector and the phone in your hand.</span></footer>
-
-<script src="../dialogue-brand.js"></script>
 <script>
 /* ================= AUDIO: pre-rendered edge-tts clips (no robot voice) =================
-   Every line is rendered at build time with Microsoft Edge neural TTS
+   Every line was rendered at build time with Microsoft Edge neural TTS
    (en-US-EmmaNeural, learner lines en-US-AvaNeural) at rate -15%.
-   "Slower" replays the same natural clip at playbackRate 0.75. */
+   "Slower" replays the same natural clip at playbackRate 0.75.
+   If a clip is ever missing, the caption line shows the text instead —
+   the browser's built-in robot voice is never used. */
 var voiceOn = true, slowMode = false;
 var lastSpoken = "", lastSeq = null;
 var CLIPMAP = {
   "voice on":"voice-on",
-  "your brain already knows how to learn a language don t study the pictures just look listen and tap":"hero-intro",
-  "studying grammar rules and vocabulary lists locks the brain in conscious calculation in real conversation it freezes":"trap-brain",
-  "connecting sound directly to pictures and real life builds automatic neural pathways speech flows out naturally":"flow-brain",
   "the monitor checks rules the filter blocks input when we feel stressed low anxiety lets language in":"monitor-idea",
   "remember look listen tap play fifteen minutes every day your underwater english will grow and speaking will rise on its own":"finish-line",
   "plokta zorin fek tor which picture is it take a guess":"noise-question",
@@ -915,16 +565,9 @@ var CLIPMAP = {
   "zorin":"zorin", "plokta":"plokta", "vamu":"vamu", "trelo":"trelo",
   "plokta zorin now you try":"plokta-zorin-try",
   "where is zorin":"where-zorin",
-  "where is plokta":"where-plokta",
-  "where is vamu":"where-vamu",
-  "where is trelo":"where-trelo",
   "that was a guess sound alone is just noise now watch and listen":"guess-noise",
   "yes zorin is the apple you learned it with no translation at all":"yes-zorin",
-  "yes plokta is the cup you matched the sound right to the picture":"yes-plokta",
-  "yes vamu is the dog zero grammar rules needed":"yes-vamu",
-  "yes trelo is the bicycle you acquired all four words naturally":"yes-trelo",
   "try again zorin was the round red fruit":"try-again",
-  "not that one trust the picture in your mind and try again":"try-again-general",
   "twenty drill words pushed onto the tip watch them melt":"drill-melt",
   "comprehensible input flows in understanding grows below the surface and speaking rises on its own":"ci-flows",
   "week one and two just listen":"silent-1",
@@ -934,10 +577,6 @@ var CLIPMAP = {
   "week nine your own sentences arrive because the iceberg is ready":"silent-5",
   "two students order coffee the first one is checking rules and freezes the second one listened in context for months and the words simply come":"two-students",
   "hi can i have a coffee please for here thanks":"coffee-line",
-  "i would like uh is it a coffee or sorry sorry":"frozen-line",
-  "can i have":"chunk-can-i-have",
-  "the usual please":"chunk-the-usual",
-  "for here thanks":"chunk-for-here",
   "find the boots where are the boots":"qd-ask-boots",
   "yes those are the black boots":"qd-yes-boots",
   "now show me the red scarf":"qd-ask-scarf",
@@ -957,52 +596,24 @@ var CLIPMAP = {
   "that s the hat":"thats-hat", "that s the chair":"thats-chair",
   "boots":"label-boots", "red scarf":"label-scarf", "banana":"label-banana", "book":"label-book",
   "key":"label-key", "umbrella":"label-umbrella", "hat":"label-hat", "chair":"label-chair",
-  "boy run road":"recast-me-0", "he go store":"recast-me-1", "she have two child":"recast-me-2",
-  "yesterday i buy phone":"recast-me-3", "tea very hot no drink":"recast-me-4", "bus late i walk school":"recast-me-5",
+  "boy run road":"recast-me-0", "he go store":"recast-me-1", "she have two child":"recast-me-2", "yesterday i buy phone":"recast-me-3",
   "yes the young boy is running down the busy road where is he headed":"recast-ai-0",
   "ah yes he went to the grocery store to buy apples what did he buy":"recast-ai-1",
   "she has two children are they playing outside today":"recast-ai-2",
-  "you bought a new phone yesterday exciting is it fast":"recast-ai-3",
-  "oh the tea is too hot to drink right now let s wait a minute for it to cool down":"recast-ai-4",
-  "the bus was late so you walked all the way to school were you tired when you arrived":"recast-ai-5",
-  "incorrect grammar missing auxiliary verb and article say the boy is running down the road":"redpen-0",
-  "wrong tense go is present tense use past simple he went to the store":"redpen-1",
-  "subject verb agreement error use has and plural irregular noun children":"redpen-2",
-  "error yesterday requires past tense bought plus indefinite article a":"redpen-3",
-  "fragment missing copula is and infinitive structure too hot to drink":"redpen-4",
-  "incorrect missing past tense copula was and regular past suffix walked":"redpen-5",
-  "look at the busy market a woman in a green sari is buying fresh mangoes":"story-1",
-  "beside her a little boy is pointing at a basket of sweet bananas":"story-2",
-  "a stray dog is sleeping peacefully under the wooden table in the shade":"story-3",
-  "the cat is big it is a cat you already know every word so nothing new grows":"i-minus-1",
-  "the sleepy orange cat is stretching on the warm sunlit windowsill you understand the picture and a new word rides in naturally":"i-plus-1",
-  "the crepuscular feline exhibited somnolent pandiculation upon the fenestral sill too many unknown words it becomes noise again":"i-plus-10",
-  "law one input precedes output listen and point before you try to speak":"law-1",
-  "law two grow the underwater iceberg passive comprehension lifts spoken fluency":"law-2",
-  "law three lower the anxiety wall quiet the grammar monitor so chunks can flow":"law-3",
-  "law four practice fifteen minutes daily with your pocket nurturer no red pens":"law-4"
+  "you bought a new phone yesterday exciting is it fast":"recast-ai-3"
 };
 var player = new Audio();
 player.preload = "auto";
-var eqBars = document.getElementById("eqBars");
 function normText(t){ return (t||"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim(); }
 function clipFor(text){ var f = CLIPMAP[normText(text)]; return f ? "assets/audio/"+f+".mp3" : null; }
 function setCaption(text){ var c = document.getElementById("captionLine"); if(c) c.textContent = text ? "🔊 " + text : ""; }
-function stopAudio(){ try{ player.pause(); if(eqBars) eqBars.classList.remove("playing"); }catch(e){} }
+function stopAudio(){ try{ player.pause(); }catch(e){} }
 function playOne(text, slow){
   return new Promise(function(resolve){
     var src = clipFor(text);
     if(!src){ setCaption(text); resolve(false); return; }
     var settled = false;
-    function done(ok){
-      if(!settled){
-        settled = true;
-        if(eqBars) eqBars.classList.remove("playing");
-        player.removeEventListener("ended", onEnd);
-        player.removeEventListener("error", onErr);
-        resolve(ok);
-      }
-    }
+    function done(ok){ if(!settled){ settled = true; player.removeEventListener("ended", onEnd); player.removeEventListener("error", onErr); resolve(ok); } }
     function onEnd(){ done(true); }
     function onErr(){ setCaption(text); done(false); }
     player.addEventListener("ended", onEnd);
@@ -1010,7 +621,6 @@ function playOne(text, slow){
     try{
       player.src = src;
       player.playbackRate = slow ? 0.75 : 1;
-      if(eqBars) eqBars.classList.add("playing");
       var p = player.play();
       if(p && p.catch) p.catch(function(){ done(false); });
     }catch(e){ done(false); }
@@ -1069,111 +679,15 @@ document.getElementById("slowToggle").addEventListener("click", function(){
   if(lastSeq) speakSeq(lastSeq); else if(lastSpoken) speak(lastSpoken);
 });
 document.querySelectorAll("[data-speak]").forEach(function(b){
-  b.addEventListener("click", function(){
-    chime(true);
-    speak(b.getAttribute("data-speak"), {slow: b.getAttribute("data-speak-slow")==="true"});
-  });
+  b.addEventListener("click", function(){ speak(b.getAttribute("data-speak"), {slow: b.getAttribute("data-speak-slow")==="true"}); });
 });
 
-/* ================= 25-MINUTE CLASSROOM PACING TIMER ================= */
-var timerSec = 25 * 60, timerRunning = false, timerIv = null;
-function renderTimer(){
-  var m = Math.floor(timerSec / 60), s = timerSec % 60;
-  document.getElementById("timerDisplay").textContent = (m < 10 ? "0"+m : m) + ":" + (s < 10 ? "0"+s : s);
-}
-document.getElementById("sessionTimerBtn").addEventListener("click", function(){
-  timerRunning = !timerRunning;
-  this.classList.toggle("running", timerRunning);
-  if(timerRunning){
-    timerIv = setInterval(function(){
-      if(timerSec > 0){ timerSec--; renderTimer(); }
-      else { clearInterval(timerIv); timerRunning = false; chime(true); }
-    }, 1000);
-  } else {
-    clearInterval(timerIv);
-  }
-});
-
-/* ================= HERO INTERACTIVE TWO BRAINS ================= */
-function selectHeroPath(which){
-  document.getElementById("heroPathTrap").classList.toggle("selected", which === "trap");
-  document.getElementById("heroPathFlow").classList.toggle("selected", which === "flow");
-  if(which === "trap"){
-    chime(false);
-    speak("Studying grammar rules and vocabulary lists locks the brain in conscious calculation. In real conversation, it freezes.");
-  } else {
-    chime(true);
-    speak("Connecting sound directly to pictures and real life builds automatic neural pathways. Speech flows out naturally.");
-  }
-}
-
-/* ================= SLIDESHOW / DECK MODE & NAV ================= */
-var slideIds = ["p0", "p1", "p2", "p3", "p4", "p5"];
-var slideNames = ["0 · Two Brains", "1 · Immersion", "2 · Iceberg", "3 · Two Worlds", "4 · AI Nurturer", "5 · Protocol"];
-var currentSlideIdx = 0;
-var deckMode = false;
+/* ================= NAV / PROGRESS ================= */
 var donePhases = {};
-
-function updateSlideDeckUI(){
-  slideIds.forEach(function(id, idx){
-    var el = document.getElementById(id);
-    if(el) el.classList.toggle("active-slide", idx === currentSlideIdx);
-  });
-  setActive(slideIds[currentSlideIdx]);
-  document.getElementById("slideCounterText").textContent = slideNames[currentSlideIdx] + " (" + (currentSlideIdx + 1) + "/6)";
-  document.getElementById("prevSlideBtn").disabled = currentSlideIdx === 0;
-  document.getElementById("nextSlideBtn").disabled = currentSlideIdx === slideIds.length - 1;
-}
-
 function goPhase(id){
-  var idx = slideIds.indexOf(id);
-  if(idx !== -1) currentSlideIdx = idx;
-  updateSlideDeckUI();
-  var targetEl = document.getElementById(id);
-  if(targetEl){
-    if(deckMode) window.scrollTo({top: 0, behavior: "smooth"});
-    else targetEl.scrollIntoView({behavior:"smooth", block:"start"});
-  }
+  document.getElementById(id).scrollIntoView({behavior:"smooth", block:"start"});
+  setActive(id);
 }
-
-document.getElementById("deckToggle").addEventListener("click", function(){
-  deckMode = !deckMode;
-  this.setAttribute("aria-pressed", deckMode);
-  document.body.classList.toggle("deck-mode", deckMode);
-  updateSlideDeckUI();
-  window.scrollTo({top: 0, behavior: "smooth"});
-});
-
-document.getElementById("notesToggle").addEventListener("click", function(){
-  var on = !document.body.classList.contains("show-notes");
-  document.body.classList.toggle("show-notes", on);
-  this.setAttribute("aria-pressed", on);
-});
-
-document.getElementById("prevSlideBtn").addEventListener("click", function(){
-  if(currentSlideIdx > 0){
-    goPhase(slideIds[currentSlideIdx - 1]);
-  }
-});
-document.getElementById("nextSlideBtn").addEventListener("click", function(){
-  if(currentSlideIdx < slideIds.length - 1){
-    goPhase(slideIds[currentSlideIdx + 1]);
-  }
-});
-
-window.addEventListener("keydown", function(e){
-  if(e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
-  if(e.key === "ArrowRight"){
-    if(currentSlideIdx < slideIds.length - 1) goPhase(slideIds[currentSlideIdx + 1]);
-  } else if(e.key === "ArrowLeft"){
-    if(currentSlideIdx > 0) goPhase(slideIds[currentSlideIdx - 1]);
-  } else if(e.key.toLowerCase() === "s"){
-    document.getElementById("deckToggle").click();
-  } else if(e.key.toLowerCase() === "n"){
-    document.getElementById("notesToggle").click();
-  }
-});
-
 function setActive(id){
   document.querySelectorAll(".tl").forEach(function(t){
     t.classList.toggle("active", t.getAttribute("data-target")===id);
@@ -1185,126 +699,75 @@ function markDone(id){
     if(donePhases[t.getAttribute("data-target")]) t.classList.add("done");
   });
   var n = Object.keys(donePhases).length;
-  document.getElementById("progressBar").style.width = Math.min(100, (n/5*100))+"%";
+  document.getElementById("progressBar").style.width = (n/5*100)+"%";
 }
 document.querySelectorAll(".tl").forEach(function(t){
   t.addEventListener("click", function(){ goPhase(t.getAttribute("data-target")); });
 });
 var io = new IntersectionObserver(function(es){
-  if(deckMode) return;
-  es.forEach(function(e){
-    if(e.isIntersecting){
-      setActive(e.target.id);
-      var idx = slideIds.indexOf(e.target.id);
-      if(idx !== -1){
-        currentSlideIdx = idx;
-        document.getElementById("slideCounterText").textContent = slideNames[currentSlideIdx] + " (" + (currentSlideIdx + 1) + "/6)";
-        document.getElementById("prevSlideBtn").disabled = currentSlideIdx === 0;
-        document.getElementById("nextSlideBtn").disabled = currentSlideIdx === slideIds.length - 1;
-      }
-    }
-  });
-},{rootMargin:"-35% 0px -45% 0px"});
-["p0","p1","p2","p3","p4","p5"].forEach(function(id){ io.observe(document.getElementById(id)); });
+  es.forEach(function(e){ if(e.isIntersecting) setActive(e.target.id); });
+},{rootMargin:"-40% 0px -50% 0px"});
+["p1","p2","p3","p4","p5"].forEach(function(id){ io.observe(document.getElementById(id)); });
 
 /* ================= PHASE 1 ================= */
 var alienWords = { apple:"Zorin", cup:"Plokta", dog:"Vamu", bike:"Trelo" };
-var testTargets = [
-  { id:"apple", word:"Zorin", ask:"Where is Zorin?", yes:"Yes! Zorin is the apple. You learned it — with no translation at all." },
-  { id:"cup", word:"Plokta", ask:"Where is Plokta?", yes:"Yes! Plokta is the cup. You matched the sound right to the picture." },
-  { id:"dog", word:"Vamu", ask:"Where is Vamu?", yes:"Yes! Vamu is the dog. Zero grammar rules needed." },
-  { id:"bike", word:"Trelo", ask:"Where is Trelo?", yes:"Yes! Trelo is the bicycle. You acquired all four words naturally!" }
-];
-var testStepIdx = 0;
 var p1Mode = "idle"; /* idle | noise | taught | test */
-var p1Timers = [];
-function clearP1Timers(){ p1Timers.forEach(clearTimeout); p1Timers = []; }
-
+var p1LastLine = "Plokta zorin fek tor.";
 function setStatus(id, html, cls){
   var el = document.getElementById(id);
   el.innerHTML = html; el.className = "status" + (cls ? " "+cls : "");
 }
 function clearObjStates(){
-  document.querySelectorAll("#objGrid .obj").forEach(function(o){
-    o.classList.remove("pointed","found","dim","cup-over-apple");
-  });
-  var hand = document.getElementById("pointingHand");
-  if(hand) hand.classList.remove("visible");
-}
-function moveHandTo(id){
-  var hand = document.getElementById("pointingHand");
-  var card = document.querySelector('#objGrid .obj[data-id="'+id+'"]');
-  var arena = document.getElementById("p1Arena");
-  if(!hand || !card || !arena) return;
-  var cRect = card.getBoundingClientRect();
-  var aRect = arena.getBoundingClientRect();
-  hand.style.left = (cRect.left - aRect.left + cRect.width * 0.52) + "px";
-  hand.style.top = (cRect.top - aRect.top + 8) + "px";
-  hand.classList.add("visible");
+  document.querySelectorAll("#objGrid .obj").forEach(function(o){ o.classList.remove("pointed","found","dim"); });
 }
 function pointAt(id, alien){
   clearObjStates();
   var el = document.querySelector('#objGrid .obj[data-id="'+id+'"]');
-  if(el){
-    el.classList.add("pointed");
-    var s = el.querySelector(".obj-alien");
-    if(s) s.textContent = alien ? "“"+alien+"”" : "";
-    moveHandTo(id);
-  }
+  if(el){ el.classList.add("pointed"); var s = el.querySelector(".obj-alien"); if(s) s.textContent = alien ? "“"+alien+"”" : ""; }
 }
 function startNoise(){
-  clearP1Timers();
   p1Mode = "noise";
   clearObjStates();
   document.querySelectorAll("#objGrid .obj-name").forEach(function(n){ n.hidden = true; });
   document.querySelectorAll("#objGrid .obj-alien").forEach(function(n){ n.textContent=""; });
   document.getElementById("alienLine").textContent = "“Plokta zorin fek tor.”";
+  p1LastLine = "Plokta zorin fek tor.";
   setStatus("p1Status","🔊 You heard a sentence. <b>Tap the correct picture.</b> …Which one? Nobody knows. That's the feeling.","think");
   speak("Plokta zorin fek tor. Which picture is it? Take a guess.");
 }
 document.getElementById("btnNoise").addEventListener("click", startNoise);
 document.getElementById("btnTeach").addEventListener("click", function(){
-  clearP1Timers();
   p1Mode = "taught";
-  setStatus("p1Status","👀 Watch the pointing hand. Sound + picture together. Just absorb it…","");
+  setStatus("p1Status","👀 Watch the highlight. Sound + picture together. Just absorb it…","");
   speak("Watch. Zorin.", {});
   pointAt("apple","Zorin"); document.getElementById("alienLine").textContent = "“Zorin.” 🍎";
-  p1Timers.push(setTimeout(function(){
-    pointAt("cup","Plokta"); document.getElementById("alienLine").textContent = "“Plokta.” ☕";
+  setTimeout(function(){
+    pointAt("cup","Plokta"); document.getElementById("alienLine").textContent = "“Plokta.” ☕ → cup";
     speak("Plokta.");
-  }, 2200));
-  p1Timers.push(setTimeout(function(){
-    pointAt("dog","Vamu"); document.getElementById("alienLine").textContent = "“Vamu.” 🐕";
+  }, 2100);
+  setTimeout(function(){
+    pointAt("dog","Vamu"); document.getElementById("alienLine").textContent = "“Vamu.”";
     speak("Vamu.");
-  }, 4300));
-  p1Timers.push(setTimeout(function(){
-    pointAt("bike","Trelo"); document.getElementById("alienLine").textContent = "“Trelo.” 🚲";
+  }, 4200);
+  setTimeout(function(){
+    pointAt("bike","Trelo"); document.getElementById("alienLine").textContent = "“Trelo.”";
     speak("Trelo.");
-  }, 6400));
-  p1Timers.push(setTimeout(function(){
+  }, 6300);
+  setTimeout(function(){
     clearObjStates();
-    var appleCard = document.querySelector('#objGrid .obj[data-id="apple"]');
-    var cupCard = document.querySelector('#objGrid .obj[data-id="cup"]');
-    if(appleCard) appleCard.classList.add("pointed");
-    if(cupCard) cupCard.classList.add("cup-over-apple");
-    document.getElementById("alienLine").textContent = "“Plokta… zorin?”  (the cup… over the apple?)";
-    setStatus("p1Status","You just learned 4 words. <b>No translation. No grammar.</b> Ready? Press C!","good");
+    pointAt("apple","Zorin");
+    document.getElementById("alienLine").textContent = "“Plokta… zorin?”  (the cup… on the apple?)";
+    setStatus("p1Status","You just learned 4 words. <b>No translation. No grammar.</b> Ready? Press C.","good");
     speak("Plokta zorin? Now you try.");
     document.getElementById("btnTest").disabled = false;
-  }, 8500));
+  }, 8500);
 });
-function askCurrentTestTarget(){
-  var t = testTargets[testStepIdx];
-  document.getElementById("alienLine").textContent = t.ask.toUpperCase();
-  setStatus("p1Status","👆 <b>Tap " + t.word.toUpperCase() + ".</b> Trust the picture in your mind.","think");
-  speak(t.ask);
-}
 document.getElementById("btnTest").addEventListener("click", function(){
-  clearP1Timers();
   p1Mode = "test";
-  testStepIdx = 0;
   clearObjStates();
-  askCurrentTestTarget();
+  document.getElementById("alienLine").textContent = "Where is ZORIN?";
+  setStatus("p1Status","👆 <b>Tap ZORIN.</b> Trust the picture in your mind.","think");
+  speak("Where is Zorin?");
 });
 document.querySelectorAll("#objGrid .obj").forEach(function(btn){
   btn.addEventListener("click", function(){
@@ -1314,33 +777,17 @@ document.querySelectorAll("#objGrid .obj").forEach(function(btn){
       setStatus("p1Status","That was a <b>guess</b> — and guessing is all anyone can do with noise. No picture, no pointing, no meaning. Now press <b>B</b> and feel the difference.","think");
       chime(false); speak("That was a guess. Sound alone is just noise. Now, watch and listen.");
     } else if(p1Mode==="test" || p1Mode==="taught"){
-      if(p1Mode==="taught"){ p1Mode="test"; testStepIdx=0; }
-      var target = testTargets[testStepIdx] || testTargets[0];
-      if(id === target.id){
+      if(id==="apple"){
         btn.classList.add("found"); btn.classList.remove("pointed");
-        var nameEl = btn.querySelector(".obj-name");
-        if(nameEl) nameEl.hidden = false;
-        chime(true);
-        speak(target.yes);
-        setStatus("p1Status","🎉 <b>" + target.yes + "</b>","good");
+        document.querySelectorAll("#objGrid .obj-name").forEach(function(n){ n.hidden=false; });
+        setStatus("p1Status","🎉 <b>Yes! Zorin = apple.</b> And nobody ever translated it for you. Your brain matched sound → picture → meaning. That is acquisition.","good");
+        document.getElementById("alienLine").textContent = "ZORIN = 🍎  ·  PLOKTA = cup  ·  VAMU = dog  ·  TRELO = bicycle";
+        chime(true); speak("Yes! Zorin is the apple. You learned it — with no translation at all.");
         markDone("p1");
-        if(testStepIdx < testTargets.length - 1){
-          testStepIdx++;
-          p1Timers.push(setTimeout(function(){
-            askCurrentTestTarget();
-          }, 3400));
-        } else {
-          document.getElementById("alienLine").textContent = "ZORIN = 🍎  ·  PLOKTA = ☕  ·  VAMU = 🐕  ·  TRELO = 🚲";
-        }
       } else {
         btn.classList.add("dim");
-        if(target.id === "apple"){
-          setStatus("p1Status","Not that one — look again in your mind: <b>Zorin</b> was the round, red fruit. Try again!","think");
-          chime(false); speak("Try again. Zorin was the round red fruit.");
-        } else {
-          setStatus("p1Status","Not that one — listen to the sound in your mind for <b>" + target.word + "</b> and try again.","think");
-          chime(false); speak("Not that one. Trust the picture in your mind and try again.");
-        }
+        setStatus("p1Status","Not that one — look again in your mind: <b>Zorin</b> was the round, red one. Try again, no pressure.","think");
+        chime(false); speak("Try again. Zorin was the round red fruit.");
         setTimeout(function(){ btn.classList.remove("dim"); }, 900);
       }
     } else {
@@ -1404,25 +851,12 @@ document.getElementById("iceSlider").addEventListener("input", function(){
   if(v < -25){ document.getElementById("btnDrill").click(); this.value = 0; }
   if(v > 25){ document.getElementById("btnCI").click(); this.value = 0; }
 });
-var silentLines = [
-  "Week one and two. Just listen.",
-  "Week three and four. Point, tap, play.",
-  "Week five and six. Yes, no, nod — understanding is already here.",
-  "Week seven and eight. Chunks pop out by themselves.",
-  "Week nine. Your own sentences arrive — because the iceberg is ready."
-];
-document.querySelectorAll("#silentBar .seg").forEach(function(seg){
-  seg.addEventListener("click", function(){
-    var idx = parseInt(seg.getAttribute("data-wk"), 10);
-    seg.classList.add("on");
-    speak(silentLines[idx]);
-  });
-});
 document.getElementById("btnSilent").addEventListener("click", function(){
   var segs = document.querySelectorAll("#silentBar .seg");
   segs.forEach(function(s){ s.classList.remove("on"); });
-  silentLines.forEach(function(line,i){
-    setTimeout(function(){ segs[i].classList.add("on"); speak(line); if(i===silentLines.length-1) markDone("p2"); }, i*2200);
+  var lines = ["Week one and two. Just listen.","Week three and four. Point, tap, play.","Week five and six. Yes, no, nod — understanding is already here.","Week seven and eight. Chunks pop out by themselves.","Week nine. Your own sentences arrive — because the iceberg is ready."];
+  lines.forEach(function(line,i){
+    setTimeout(function(){ segs[i].classList.add("on"); speak(line); if(i===lines.length-1) markDone("p2"); }, i*1900);
   });
 });
 renderCounts();
@@ -1430,21 +864,13 @@ renderCounts();
 /* ================= PHASE 3 ================= */
 document.getElementById("btnPlayWorlds").addEventListener("click", function(){
   var badG = document.getElementById("badGauge"), goodG = document.getElementById("goodGauge");
-  badG.style.width="95%"; goodG.style.width="16%";
-  document.getElementById("badPct").textContent="VERY HIGH (95%)"; document.getElementById("goodPct").textContent="LOW (16%)";
+  badG.style.width="92%"; goodG.style.width="88%";
+  document.getElementById("badPct").textContent="VERY HIGH"; document.getElementById("goodPct").textContent="LOW";
   document.getElementById("badBubble").innerHTML = "“I… would… like… uh… is it ‘a coffee’ or…? Sorry, sorry…” 🧊 <b>Frozen.</b>";
   document.getElementById("goodBubble").innerHTML = "“Hi! Can I have a coffee, please — for here. Thanks!” ☕ <b>Done. Smiling.</b>";
-  setStatus("p3Status","Left brain: busy <b>checking rules</b>, anxiety wall high, mouth frozen. Right brain: wall low, <b>chunks flow out</b>.","good");
+  setStatus("p3Status","Left brain: busy <b>checking</b>, wall high, mouth frozen. Right brain: wall low, <b>chunks flow out</b>. Same shop. Different history of input.","");
   speakSeq(["Two students order coffee. The first one is checking rules, and freezes. The second one listened, in context, for months — and the words simply come.", "Hi! Can I have a coffee, please — for here. Thanks!"]);
   setTimeout(function(){ markDone("p3"); }, 1200);
-});
-document.getElementById("btnPlayBadOnly").addEventListener("click", function(){
-  chime(false);
-  speak("I... would... like... uh... is it a coffee or... Sorry, sorry...");
-});
-document.getElementById("btnPlayGoodOnly").addEventListener("click", function(){
-  chime(true);
-  speak("Hi! Can I have a coffee, please — for here. Thanks!");
 });
 
 /* ================= PHASE 4 ================= */
@@ -1466,6 +892,7 @@ var QD_SVG = {
   hat:'<svg viewBox="0 0 120 100"><defs><linearGradient id="qdHat" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F2B95E"/><stop offset="100%" stop-color="#C97F1E"/></linearGradient></defs><ellipse cx="60" cy="84" rx="50" ry="5" fill="#14231A" opacity=".13"/><path d="M30 62a30 27 0 0160 0z" fill="url(#qdHat)"/><path d="M30 56h60v9H30z" fill="#103D21"/><ellipse cx="60" cy="66" rx="52" ry="9" fill="url(#qdHat)"/><ellipse cx="60" cy="63" rx="52" ry="8" fill="#E9A23B"/><path d="M42 40a30 27 0 0116-11" stroke="#fff" stroke-width="5" fill="none" opacity=".4" stroke-linecap="round"/></svg>',
   chair:'<svg viewBox="0 0 120 100"><defs><linearGradient id="qdChair" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C9A35F"/><stop offset="100%" stop-color="#8A6E34"/></linearGradient></defs><ellipse cx="60" cy="94" rx="40" ry="4.5" fill="#14231A" opacity=".13"/><rect x="30" y="8" width="11" height="52" rx="4" fill="url(#qdChair)"/><rect x="79" y="8" width="11" height="52" rx="4" fill="url(#qdChair)"/><rect x="30" y="16" width="60" height="9" rx="4" fill="url(#qdChair)"/><rect x="30" y="32" width="60" height="9" rx="4" fill="url(#qdChair)"/><rect x="24" y="54" width="72" height="11" rx="4" fill="#D94F3D"/><rect x="24" y="54" width="72" height="5" rx="2.5" fill="#EE6A55"/><rect x="30" y="65" width="9" height="27" rx="3" fill="url(#qdChair)"/><rect x="81" y="65" width="9" height="27" rx="3" fill="url(#qdChair)"/></svg>'
 };
+var qdOrder = QD.map(function(q){return q.id;});
 var qdDistractors = [{id:"hat",label:"hat"},{id:"chair",label:"chair"}];
 var qdAll = QD.concat(qdDistractors);
 qdAll.sort(function(){ return 0.5 - Math.random(); });
@@ -1511,23 +938,12 @@ function qdTap(item, el){
     setTimeout(function(){ el.classList.remove("pointed"); }, 1000);
   }
 }
-
-/* Recasts vs Red Pen */
-var recastMode = "nurturer";
-function setRecastMode(m){
-  recastMode = m;
-  var nBtn = document.getElementById("modeNurturerBtn");
-  var rBtn = document.getElementById("modeRedPenBtn");
-  nBtn.className = "mode-pill" + (m === "nurturer" ? " active-nurturer" : "");
-  rBtn.className = "mode-pill" + (m === "redpen" ? " active-redpen" : "");
-}
+/* Recasts */
 var RECASTS = [
-  {me:"Boy run road.", ai:"Yes! The young boy is running down the busy road. Where is he headed?", red:"Incorrect grammar! Missing auxiliary verb and article. Say: The boy is running down the road."},
-  {me:"He go store.", ai:"Ah, yes! He went to the grocery store to buy apples. What did he buy?", red:"Wrong tense! Go is present tense. Use past simple: He went to the store."},
-  {me:"She have two child.", ai:"She has two children! Are they playing outside today?", red:"Subject-verb agreement error! Use has, and plural irregular noun children."},
-  {me:"Yesterday I buy phone.", ai:"You bought a new phone yesterday — exciting! Is it fast?", red:"Error! Yesterday requires past tense bought, plus indefinite article a."},
-  {me:"Tea very hot no drink.", ai:"Oh, the tea is too hot to drink right now! Let's wait a minute for it to cool down.", red:"Fragment! Missing copula is and infinitive structure too hot to drink."},
-  {me:"Bus late I walk school.", ai:"The bus was late, so you walked all the way to school! Were you tired when you arrived?", red:"Incorrect! Missing past tense copula was and regular past suffix walked."}
+  {me:"Boy run road.", ai:"Yes! The young boy is running down the busy road. Where is he headed?"},
+  {me:"He go store.", ai:"Ah, yes! He went to the grocery store to buy apples. What did he buy?"},
+  {me:"She have two child.", ai:"She has two children! Are they playing outside today?"},
+  {me:"Yesterday I buy phone.", ai:"You bought a new phone yesterday — exciting! Is it fast?"}
 ];
 function addMsg(who, text, cls){
   var log = document.getElementById("chatLog");
@@ -1538,74 +954,28 @@ function addMsg(who, text, cls){
 document.querySelectorAll("[data-recast]").forEach(function(b){
   b.addEventListener("click", function(){
     var r = RECASTS[parseInt(b.getAttribute("data-recast"),10)];
-    addMsg("Learner (Ava)", "“"+r.me+"”", "me");
-    speak(r.me).then(function(){
-      setTimeout(function(){
-        if(recastMode === "redpen"){
-          addMsg("❌ Red-Pen Teacher — explicit grammar correction", "“"+r.red+"”", "redpen");
-          speak(r.red);
-          chime(false);
-        } else {
-          addMsg("💚 Nurturer (Emma) — recast, no red pen", "“"+r.ai+"”", "ai");
-          speak(r.ai);
-          chime(true);
-          markDone("p4");
-        }
-      }, 300);
-    });
+    addMsg("Learner", "“"+r.me+"”", "me");
+    speak(r.me, {pitch:0.85});
+    setTimeout(function(){
+      addMsg("Nurturer — recast, no correction", "“"+r.ai+"”", "ai");
+      speak(r.ai);
+      chime(true);
+    }, 1900);
   });
 });
-
-/* Story Massaging (Phase 4 Game 3) */
-var STORY_LINES = [
-  "Look at the busy market. A woman in a green sari is buying fresh mangoes.",
-  "Beside her, a little boy is pointing at a basket of sweet bananas.",
-  "A stray dog is sleeping peacefully under the wooden table in the shade."
-];
-function playStoryPart(idx){
-  if(STORY_LINES[idx]){
-    speak(STORY_LINES[idx]);
-    markDone("p4");
-  }
-}
-function playAllStory(){
-  speakSeq(STORY_LINES);
-  markDone("p4");
-}
-
 /* i+1 dial */
-function updateIDial(v, playAudio){
-  var el = document.getElementById("iStatus");
-  if(v<33){
-    el.innerHTML="😴 <b>Too easy (i − 1):</b> “The cat is big. It is a cat.” You already know every word, so nothing new grows.";
-    el.className="status think";
-    if(playAudio) speak("The cat is big. It is a cat. You already know every word, so nothing new grows.");
-  } else if(v>66){
-    el.innerHTML="😱 <b>Too much new (i + 10):</b> “The crepuscular feline exhibited somnolent pandiculation upon the fenestral sill.” Noise again!";
-    el.className="status think";
-    if(playAudio) speak("The crepuscular feline exhibited somnolent pandiculation upon the fenestral sill. Too many unknown words — it becomes noise again!");
-  } else {
-    el.innerHTML="🎯 <b>Just right — i+1:</b> “The sleepy orange cat is <u>stretching</u> on the warm sunlit windowsill.” (1 new word rides in on the picture!)";
-    el.className="status good";
-    if(playAudio) speak("The sleepy orange cat is stretching on the warm sunlit windowsill. You understand the picture, and a new word rides in naturally!");
-  }
-}
-function setIDial(v){
-  document.getElementById("iSlider").value = v;
-  updateIDial(v, true);
-}
 document.getElementById("iSlider").addEventListener("input", function(){
-  updateIDial(parseInt(this.value,10), false);
-});
-document.getElementById("iSlider").addEventListener("change", function(){
-  updateIDial(parseInt(this.value,10), true);
+  var v = parseInt(this.value,10), el = document.getElementById("iStatus");
+  if(v<33){ el.innerHTML="😴 <b>Too easy.</b> Comfortable — but nothing new arrives, so nothing grows."; el.className="status think"; }
+  else if(v>66){ el.innerHTML="😱 <b>Too much new.</b> The meaning collapses — it's noise again, like Phase 1, Step A."; el.className="status think"; }
+  else { el.innerHTML="🎯 <b>Just right — i+1.</b> You understand almost everything, and one new word rides in on the meaning."; el.className="status good"; }
 });
 
 /* ================= PHASE 5: copy + week ================= */
 document.querySelectorAll("[data-copy]").forEach(function(btn){
   btn.addEventListener("click", function(){
     var txt = document.getElementById(btn.getAttribute("data-copy")).textContent.trim();
-    function done(){ btn.classList.add("copied"); btn.textContent="✓ Copied — now paste it into your AI app"; chime(true); setTimeout(function(){ btn.classList.remove("copied"); btn.textContent="📋 Copy this prompt"; }, 2600); markDone("p5"); }
+    function done(){ btn.classList.add("copied"); btn.textContent="✓ Copied — now paste it into your AI app"; setTimeout(function(){ btn.classList.remove("copied"); btn.textContent="📋 Copy this prompt"; }, 2600); markDone("p5"); }
     if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done).catch(function(){ fallback(); }); } else fallback();
     function fallback(){
       var ta=document.createElement("textarea"); ta.value=txt; ta.style.position="fixed"; ta.style.opacity="0";
