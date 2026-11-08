@@ -1,0 +1,2832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=03b">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png?v=03b">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=03b">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>How the Brain Really Acquires Language — Dialogue SLA Interactive Module</title>
+  <meta name="description" content="An interactive teaching slideshow on Comprehensible Input, the Iceberg Principle, the Affective Filter, and AI as a GPA Nurturer.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../dialogue-brand.css?v=20261024">
+  <style>
+    /* =====================================================================
+       DESIGN TOKENS & CLASSROOM PRESENTATION SYSTEM
+       ===================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-stage: #07130b;
+      --bg-gradient: radial-gradient(circle at 50% 20%, #0e2917 0%, #07140c 60%, #030805 100%);
+      --surface-glass: rgba(16, 48, 28, 0.75);
+      --surface-card: #0d2616;
+      --surface-card-hover: #133520;
+      --border-subtle: rgba(216, 211, 194, 0.16);
+      --border-highlight: rgba(185, 146, 79, 0.45);
+      --dialogue-forest: #103d21;
+      --dialogue-deep: #0c3319;
+      --dialogue-gold: #d4af37;
+      --dialogue-gold-glow: rgba(212, 175, 55, 0.35);
+      --dialogue-paper: #f4f1e6;
+      --dialogue-card: #fffdf7;
+      --dialogue-emerald: #10b981;
+      --dialogue-coral: #ef4444;
+      --dialogue-sky: #38bdf8;
+      --text-main: #f4f1e6;
+      --text-muted: #a3b899;
+      --header-h: 56px;
+      --footer-h: 68px;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --font-sans: 'Public Sans', system-ui, -apple-system, sans-serif;
+      --font-serif: 'Source Serif 4', Georgia, serif;
+    }
+
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: var(--bg-stage);
+      background-image: var(--bg-gradient);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Fixed Classroom Navigation Header ── */
+    #deck-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--header-h);
+      background: rgba(7, 19, 11, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--dialogue-gold);
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-link img {
+      height: 28px;
+      width: auto;
+    }
+
+    .module-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(185, 146, 79, 0.18);
+      border: 1px solid rgba(185, 146, 79, 0.35);
+      color: var(--dialogue-gold);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .header-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .phase-pill {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--dialogue-paper);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .phase-time {
+      font-size: 0.72rem;
+      color: var(--dialogue-gold);
+      font-weight: 600;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hud-btn {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid var(--border-subtle);
+      color: var(--dialogue-paper);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .hud-btn:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: var(--dialogue-gold);
+      color: #fff;
+    }
+
+    .hud-btn.active {
+      background: var(--dialogue-forest);
+      border-color: var(--dialogue-gold);
+      color: var(--dialogue-gold);
+      box-shadow: 0 0 12px var(--dialogue-gold-glow);
+    }
+
+    /* ── Progress Bar ── */
+    #progress-track {
+      position: fixed;
+      top: var(--header-h);
+      left: 0;
+      width: 100vw;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      z-index: 1001;
+    }
+
+    #progress-fill {
+      height: 100%;
+      width: 11%;
+      background: linear-gradient(90deg, #10b981, #d4af37);
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.7);
+      transition: width 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
+    }
+
+    /* ── Main Slides Stage ── */
+    #slides-viewport {
+      position: absolute;
+      top: calc(var(--header-h) + 4px);
+      bottom: var(--footer-h);
+      left: 0;
+      right: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 28px;
+    }
+
+    .slide {
+      position: absolute;
+      top: 16px;
+      bottom: 16px;
+      left: 28px;
+      right: 28px;
+      max-width: 1560px;
+      margin: 0 auto;
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.97) translateY(12px);
+      transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1) translateY(0);
+      z-index: 10;
+    }
+
+    /* ── Minimalist Slide Layout System ── */
+    .slide-headline {
+      text-align: center;
+      margin-bottom: 20px;
+      max-width: 1000px;
+    }
+
+    .slide-headline h1, .slide-headline h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3.2vw, 2.7rem);
+      font-weight: 700;
+      color: var(--dialogue-paper);
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+    }
+
+    .slide-headline .subhead {
+      font-family: var(--font-sans);
+      font-size: clamp(0.95rem, 1.4vw, 1.2rem);
+      color: var(--dialogue-gold);
+      font-weight: 600;
+      margin-top: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .stage-card {
+      background: var(--surface-glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      width: 100%;
+      height: 100%;
+      max-height: 640px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ── Lecture Bottom Controls Bar ── */
+    #deck-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: var(--footer-h);
+      background: rgba(7, 19, 11, 0.96);
+      backdrop-filter: blur(14px);
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      z-index: 1000;
+    }
+
+    .nav-arrow-btn {
+      background: var(--dialogue-forest);
+      border: 1px solid var(--dialogue-gold);
+      color: var(--dialogue-paper);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+      transition: all 0.2s cubic-bezier(0.2, 0.8, 0.3, 1);
+    }
+
+    .nav-arrow-btn:hover:not(:disabled) {
+      transform: scale(1.08);
+      background: #17522d;
+      box-shadow: 0 0 16px var(--dialogue-gold-glow);
+    }
+
+    .nav-arrow-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      border-color: var(--border-subtle);
+    }
+
+    .dots-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .slide-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .slide-dot:hover {
+      background: rgba(212, 175, 55, 0.5);
+    }
+
+    .slide-dot.active {
+      width: 32px;
+      border-radius: 8px;
+      background: var(--dialogue-gold);
+      box-shadow: 0 0 10px var(--dialogue-gold-glow);
+    }
+
+    .footer-lecture-cue {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      max-width: 500px;
+      text-align: center;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .footer-lecture-cue strong {
+      color: var(--dialogue-gold);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SLIDE 1: HOOK & THE TWO PATHS
+       ═══════════════════════════════════════════════════════════════ */
+    .brain-compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      padding: 32px 48px;
+      height: 100%;
+      align-items: center;
+    }
+
+    .brain-path-card {
+      background: rgba(10, 30, 18, 0.7);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      height: 100%;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .brain-path-card.trap {
+      border-color: rgba(239, 68, 68, 0.35);
+    }
+
+    .brain-path-card.trap:hover, .brain-path-card.trap.active {
+      border-color: var(--dialogue-coral);
+      box-shadow: 0 0 28px rgba(239, 68, 68, 0.25);
+    }
+
+    .brain-path-card.flow {
+      border-color: rgba(16, 185, 129, 0.35);
+    }
+
+    .brain-path-card.flow:hover, .brain-path-card.flow.active {
+      border-color: var(--dialogue-emerald);
+      box-shadow: 0 0 28px rgba(16, 185, 129, 0.25);
+    }
+
+    .path-badge {
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    .trap .path-badge {
+      background: rgba(239, 68, 68, 0.2);
+      color: #fca5a5;
+    }
+
+    .flow .path-badge {
+      background: rgba(16, 185, 129, 0.2);
+      color: #86efac;
+    }
+
+    .path-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .path-visual-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 12px 0;
+    }
+
+    .path-visual-wrap svg {
+      width: 100%;
+      max-width: 220px;
+      height: auto;
+    }
+
+    .path-outcome {
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: var(--radius-sm);
+      padding: 12px 18px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      width: 100%;
+    }
+
+    .trap .path-outcome {
+      color: #fca5a5;
+    }
+
+    .flow .path-outcome {
+      color: #86efac;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SLIDE 2 & 3: THE IMMERSION SHOCK & COMPREHENSIBLE INPUT
+       ═══════════════════════════════════════════════════════════════ */
+    .immersion-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      padding: 28px 40px;
+      position: relative;
+    }
+
+    .audio-cue-banner {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-highlight);
+      border-radius: 30px;
+      padding: 10px 24px;
+      margin-bottom: 20px;
+    }
+
+    .audio-pulse-bars {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      height: 20px;
+    }
+
+    .pulse-bar {
+      width: 4px;
+      height: 100%;
+      background: var(--dialogue-gold);
+      border-radius: 2px;
+      animation: pulseWave 1s infinite ease-in-out;
+    }
+
+    .pulse-bar:nth-child(2) { animation-delay: 0.2s; height: 70%; }
+    .pulse-bar:nth-child(3) { animation-delay: 0.4s; height: 90%; }
+    .pulse-bar:nth-child(4) { animation-delay: 0.1s; height: 50%; }
+
+    @keyframes pulseWave {
+      0%, 100% { transform: scaleY(0.3); }
+      50% { transform: scaleY(1); }
+    }
+
+    .audio-script-text {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 600;
+      font-style: italic;
+      color: var(--dialogue-paper);
+    }
+
+    .quad-objects-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      width: 100%;
+      max-width: 1100px;
+      margin: auto 0;
+    }
+
+    .target-object-card {
+      background: rgba(14, 38, 22, 0.85);
+      border: 2px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.2, 0.8, 0.3, 1);
+      position: relative;
+    }
+
+    .target-object-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--dialogue-gold);
+      background: rgba(20, 52, 30, 0.95);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+    }
+
+    .target-object-card svg {
+      width: 110px;
+      height: 110px;
+      transition: transform 0.3s ease;
+    }
+
+    .target-object-card.glow-gold {
+      border-color: var(--dialogue-gold) !important;
+      box-shadow: 0 0 35px var(--dialogue-gold) !important;
+      animation: pulseGold 1.5s infinite alternate;
+    }
+
+    .target-object-card.glow-green {
+      border-color: var(--dialogue-emerald) !important;
+      box-shadow: 0 0 35px var(--dialogue-emerald) !important;
+    }
+
+    .target-object-card.shake-red {
+      animation: shakeCard 0.4s ease-in-out;
+      border-color: var(--dialogue-coral) !important;
+    }
+
+    @keyframes shakeCard {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
+    }
+
+    @keyframes pulseGold {
+      from { box-shadow: 0 0 15px rgba(212, 175, 55, 0.5); }
+      to { box-shadow: 0 0 35px rgba(212, 175, 55, 0.9); }
+    }
+
+    /* Animated Teaching Hand Cursor */
+    #pointing-hand {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      pointer-events: none;
+      z-index: 50;
+      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+      opacity: 0;
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6));
+    }
+
+    /* Immersion Revelation Banner */
+    .revelation-banner {
+      width: 100%;
+      max-width: 900px;
+      padding: 16px 28px;
+      border-radius: var(--radius-md);
+      text-align: center;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: all 0.4s ease;
+    }
+
+    .revelation-banner.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .revelation-banner.noise-alert {
+      background: rgba(239, 68, 68, 0.2);
+      border: 1px solid var(--dialogue-coral);
+      color: #fca5a5;
+    }
+
+    .revelation-banner.ci-success {
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid var(--dialogue-emerald);
+      color: #86efac;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SLIDE 4: THE ICEBERG PRINCIPLE (SANDBOX)
+       ═══════════════════════════════════════════════════════════════ */
+    .iceberg-stage {
+      display: grid;
+      grid-template-columns: 1.8fr 1.2fr;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .iceberg-canvas-wrap {
+      position: relative;
+      background: linear-gradient(180deg, #133a25 0%, #0d281a 24%, #071f2b 25%, #031422 65%, #01080e 100%);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .water-line {
+      position: absolute;
+      top: 25%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(56, 189, 248, 0.6);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
+      z-index: 5;
+    }
+
+    .water-label {
+      position: absolute;
+      top: calc(25% - 20px);
+      right: 20px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dialogue-sky);
+    }
+
+    #iceberg-svg {
+      width: 90%;
+      height: 90%;
+      max-height: 520px;
+      z-index: 4;
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .floating-bubbles-area {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 6;
+      overflow: hidden;
+    }
+
+    .bubble-chunk {
+      position: absolute;
+      background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.9), rgba(16, 185, 129, 0.4));
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #fff;
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
+      animation: riseBubble 4s infinite linear;
+    }
+
+    @keyframes riseBubble {
+      0% { transform: translateY(500px) scale(0.6); opacity: 0; }
+      20% { opacity: 0.9; }
+      80% { opacity: 0.9; }
+      100% { transform: translateY(-40px) scale(1.1); opacity: 0; }
+    }
+
+    .melting-drill-word {
+      position: absolute;
+      top: 15%;
+      left: 48%;
+      background: rgba(239, 68, 68, 0.85);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      animation: meltOff 1.8s forwards ease-in;
+      z-index: 10;
+    }
+
+    @keyframes meltOff {
+      0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+      50% { transform: translate(60px, 40px) rotate(25deg); opacity: 0.8; }
+      100% { transform: translate(120px, 140px) rotate(60deg); opacity: 0; }
+    }
+
+    .iceberg-controls-panel {
+      padding: 32px 28px;
+      background: rgba(9, 25, 15, 0.92);
+      border-left: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .iceberg-breakdown {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .iceberg-layer-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .layer-color-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .layer-info {
+      flex: 1;
+    }
+
+    .layer-pct {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--dialogue-paper);
+    }
+
+    .layer-name {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .action-button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .iceberg-action-btn {
+      padding: 14px 20px;
+      border-radius: var(--radius-md);
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-drills {
+      background: rgba(239, 68, 68, 0.15);
+      border-color: rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
+    }
+
+    .btn-drills:hover {
+      background: rgba(239, 68, 68, 0.3);
+      box-shadow: 0 0 16px rgba(239, 68, 68, 0.3);
+    }
+
+    .btn-input {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: rgba(16, 185, 129, 0.4);
+      color: #86efac;
+    }
+
+    .btn-input:hover {
+      background: rgba(16, 185, 129, 0.3);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SLIDE 5: SPLIT-SCREEN DILEMMA & AFFECTIVE FILTER
+       ═══════════════════════════════════════════════════════════════ */
+    .split-stage {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100%;
+    }
+
+    .split-col {
+      padding: 24px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .split-col.left-col {
+      background: rgba(26, 14, 14, 0.8);
+      border-right: 2px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .split-col.right-col {
+      background: rgba(10, 32, 20, 0.8);
+    }
+
+    .student-badge-header {
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 20px;
+    }
+
+    .left-col .student-badge-header {
+      background: rgba(239, 68, 68, 0.25);
+      color: #fca5a5;
+      border: 1px solid var(--dialogue-coral);
+    }
+
+    .right-col .student-badge-header {
+      background: rgba(16, 185, 129, 0.25);
+      color: #86efac;
+      border: 1px solid var(--dialogue-emerald);
+    }
+
+    .cafe-scene-art {
+      width: 100%;
+      max-width: 380px;
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Spinning Monitor Cogwheel */
+    .spinning-cog {
+      animation: spinCog 3s infinite linear;
+      transform-origin: center;
+    }
+
+    @keyframes spinCog {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Affective Filter Gauge */
+    .gauge-card {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.45);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .gauge-top-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .gauge-track {
+      width: 100%;
+      height: 12px;
+      background: #111;
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gauge-fill {
+      height: 100%;
+      border-radius: 6px;
+      transition: width 0.4s ease, background 0.4s ease;
+    }
+
+    .speech-bubble {
+      background: #fff;
+      color: #111;
+      border-radius: 16px;
+      padding: 12px 20px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      position: relative;
+      margin-top: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .speech-bubble.stutter {
+      border: 2px solid var(--dialogue-coral);
+      color: #991b1b;
+      font-style: italic;
+    }
+
+    .speech-bubble.fluent {
+      border: 2px solid var(--dialogue-emerald);
+      color: #065f46;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SLIDE 6: AI NURTURER — QUICK DOZEN (LISTEN & POINT)
+       ═══════════════════════════════════════════════════════════════ */
+    .quick-dozen-stage {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 24px 36px;
+      justify-content: space-between;
+    }
+
+    .dozen-ai-voicebar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(14, 42, 24, 0.85);
+      border: 2px solid var(--dialogue-gold);
+      border-radius: var(--radius-md);
+      padding: 14px 24px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .dozen-ai-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .ai-avatar-glow {
+      width: 44px;
+      height: 44px;
+      background: var(--dialogue-forest);
+      border: 2px solid var(--dialogue-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      box-shadow: 0 0 16px var(--dialogue-gold-glow);
+    }
+
+    .dozen-prompt-text {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--dialogue-paper);
+    }
+
+    .dozen-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 20px;
+      margin: 16px 0;
+      flex: 1;
+    }
+
+    .dozen-item-card {
+      background: rgba(10, 30, 18, 0.8);
+      border: 2px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.2, 0.8, 0.3, 1);
+    }
+
+    .dozen-item-card:hover {
+      transform: scale(1.04);
+      border-color: var(--dialogue-gold);
+      background: rgba(20, 52, 30, 0.95);
+    }
+
+    .dozen-item-card.correct-found {
+      border-color: var(--dialogue-emerald);
+      background: rgba(16, 185, 129, 0.25);
+      box-shadow: 0 0 25px rgba(16, 185, 129, 0.5);
+    }
+
+    .dozen-item-card svg {
+      width: 68px;
+      height: 68px;
+    }
+
+    .dozen-item-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SLIDE 7: RECAST & EXPAND (NO RED PENS)
+       ═══════════════════════════════════════════════════════════════ */
+    .recast-stage {
+      display: grid;
+      grid-template-columns: 1.1fr 1.3fr;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .recast-visual-col {
+      padding: 24px;
+      background: rgba(8, 24, 14, 0.85);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      border-right: 1px solid var(--border-subtle);
+    }
+
+    .street-scene-frame {
+      width: 100%;
+      max-width: 440px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 2px solid var(--border-highlight);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+    }
+
+    .student-speech-badge {
+      background: #fef08a;
+      color: #854d0e;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .recast-interaction-col {
+      padding: 28px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .comparison-cards-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .reaction-card {
+      border-radius: var(--radius-md);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .reaction-card.bad-pen {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+    }
+
+    .reaction-card.good-nurturer {
+      background: rgba(16, 185, 129, 0.15);
+      border: 2px solid var(--dialogue-emerald);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+    }
+
+    .reaction-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .bad-pen .reaction-title { color: #f87171; }
+    .good-nurturer .reaction-title { color: #4ade80; }
+
+    .reaction-body {
+      font-size: 0.92rem;
+      line-height: 1.45;
+      color: var(--dialogue-paper);
+    }
+
+    .custom-input-box-row {
+      display: flex;
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 10px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .custom-input-box-row input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      padding: 6px 12px;
+      outline: none;
+    }
+
+    .preset-pill-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .preset-pill {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      padding: 5px 12px;
+      border-radius: 16px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .preset-pill:hover {
+      background: var(--dialogue-forest);
+      color: var(--dialogue-gold);
+      border-color: var(--dialogue-gold);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SLIDE 8: THE AUTONOMOUS STUDENT PROTOCOL
+       ═══════════════════════════════════════════════════════════════ */
+    .protocol-stage {
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 28px;
+      padding: 28px 36px;
+      height: 100%;
+      align-items: center;
+    }
+
+    .luxury-prompt-card {
+      background: #091c10;
+      border: 2px solid var(--dialogue-gold);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+    }
+
+    .prompt-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .prompt-app-badges {
+      display: flex;
+      gap: 8px;
+    }
+
+    .app-badge {
+      background: rgba(255, 255, 255, 0.1);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 12px;
+      color: var(--dialogue-gold);
+    }
+
+    .prompt-code-body {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      font-family: monospace;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: #86efac;
+      white-space: pre-wrap;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .copy-prompt-btn {
+      background: var(--dialogue-gold);
+      color: #0c3319;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 800;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .copy-prompt-btn:hover {
+      background: #f0cb54;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    }
+
+    .daily-habit-checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .habit-item-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .habit-time-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--dialogue-forest);
+      border: 2px solid var(--dialogue-gold);
+      color: var(--dialogue-gold);
+      font-weight: 800;
+      font-size: 0.82rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .habit-desc h4 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .habit-desc p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SLIDE 9: SUMMARY & THE 4 GOLDEN LAWS
+       ═══════════════════════════════════════════════════════════════ */
+    .summary-stage {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 24px 36px;
+      justify-content: space-between;
+    }
+
+    .laws-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin: 12px 0;
+    }
+
+    .law-medallion-card {
+      background: rgba(14, 40, 24, 0.8);
+      border: 2px solid var(--border-highlight);
+      border-radius: var(--radius-md);
+      padding: 24px 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .law-medallion-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--dialogue-gold);
+      box-shadow: 0 12px 30px var(--dialogue-gold-glow);
+    }
+
+    .law-icon-circle {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: var(--dialogue-forest);
+      border: 2px solid var(--dialogue-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+
+    .law-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--dialogue-paper);
+    }
+
+    .law-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .summary-action-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      padding: 10px 0;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       PRESENTER NOTES DRAWER & MODALS
+       ═══════════════════════════════════════════════════════════════ */
+    #presenter-notes-drawer {
+      position: fixed;
+      right: 0;
+      top: var(--header-h);
+      bottom: var(--footer-h);
+      width: 380px;
+      background: rgba(6, 18, 10, 0.97);
+      backdrop-filter: blur(20px);
+      border-left: 2px solid var(--dialogue-gold);
+      padding: 24px;
+      z-index: 1050;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.7);
+    }
+
+    #presenter-notes-drawer.open {
+      transform: translateX(0);
+    }
+
+    .notes-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+
+    .notes-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--dialogue-gold);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .notes-body {
+      flex: 1;
+      overflow-y: auto;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--dialogue-paper);
+    }
+
+    .notes-body h4 {
+      color: var(--dialogue-gold);
+      margin: 14px 0 6px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .notes-body p {
+      margin-bottom: 12px;
+    }
+
+    /* Toast notification */
+    #copy-toast {
+      position: fixed;
+      top: calc(var(--header-h) + 20px);
+      right: 24px;
+      background: var(--dialogue-emerald);
+      color: #064e3b;
+      font-weight: 800;
+      font-size: 0.9rem;
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      z-index: 2000;
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    #copy-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile Adaptations */
+    @media (max-width: 900px) {
+      .brain-compare-grid, .iceberg-stage, .split-stage, .recast-stage, .protocol-stage {
+        grid-template-columns: 1fr !important;
+        overflow-y: auto;
+      }
+      .quad-objects-grid, .dozen-grid, .laws-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+      .stage-card {
+        max-height: none;
+        height: auto;
+      }
+      .slide-headline h1, .slide-headline h2 {
+        font-size: 1.5rem;
+      }
+      #presenter-notes-drawer {
+        width: 100vw;
+      }
+    }
+  </style>
+</head>
+<body class="dialogue-activity-shell">
+
+  <!-- ===================================================================
+       HUD HEADER
+       =================================================================== -->
+  <header id="deck-header">
+    <div class="header-left">
+      <a href="../index.html" class="brand-link" title="Return to Dialogue Learning Collection">
+        <img src="../brand/dialogue-logo.svg" onerror="this.src='../brand/dialogue-logo.png?v=a53d061'" alt="Dialogue">
+        <span>Dialogue</span>
+      </a>
+      <span class="module-badge">SLA Interactive</span>
+    </div>
+
+    <div class="header-center">
+      <div class="phase-pill" id="hud-phase-label">
+        <span id="hud-phase-title">Phase 1: Immersion Shock</span>
+        <span class="phase-time" id="hud-phase-timer">00:00 – 04:00</span>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <button class="hud-btn" id="audio-toggle-btn" title="Toggle Sound (M)">
+        <span id="audio-btn-icon">🔊</span> <span id="audio-btn-label">Sound On</span>
+      </button>
+      <button class="hud-btn" id="notes-toggle-btn" title="Presenter Lecture Notes (N)">
+        📝 Notes
+      </button>
+      <button class="hud-btn" id="fullscreen-btn" title="Fullscreen Presentation (F)">
+        ⛶ Fullscreen
+      </button>
+    </div>
+  </header>
+
+  <!-- Progress Bar -->
+  <div id="progress-track">
+    <div id="progress-fill"></div>
+  </div>
+
+  <!-- Toast notification -->
+  <div id="copy-toast">✓ System Prompt Copied to Clipboard!</div>
+
+  <!-- ===================================================================
+       SLIDES VIEWPORT
+       =================================================================== -->
+  <main id="slides-viewport">
+
+    <!-- ─────────────────────────────────────────────────────────────
+         SLIDE 1: WELCOME & THE TWO PATHS TO LANGUAGE
+         ───────────────────────────────────────────────────────────── -->
+    <section class="slide active" id="slide-1" data-phase="Orientation" data-time="00:00 – 02:00">
+      <div class="slide-headline">
+        <h1>How the Brain Really Acquires Language</h1>
+        <div class="subhead">Comprehensible Input &amp; The GPA Model</div>
+      </div>
+
+      <div class="stage-card">
+        <div class="brain-compare-grid">
+          <!-- Path A: The Grammar Trap -->
+          <div class="brain-path-card trap" id="card-path-trap" onclick="selectBrainPath('trap')">
+            <span class="path-badge">The Traditional Trap</span>
+            <div class="path-title">Conscious Memorization</div>
+            <div class="path-visual-wrap">
+              <svg viewBox="0 0 200 200" fill="none">
+                <!-- Brain with gears & padlock -->
+                <path d="M100 25 C60 25 35 55 35 95 C35 130 55 160 85 170 C95 173 105 173 115 170 C145 160 165 130 165 95 C165 55 140 25 100 25 Z" fill="#2a1215" stroke="#ef4444" stroke-width="4"/>
+                <circle cx="85" cy="95" r="26" stroke="#f87171" stroke-width="4" stroke-dasharray="8 4" class="spinning-cog"/>
+                <circle cx="120" cy="115" r="20" stroke="#f87171" stroke-width="3" stroke-dasharray="6 3" style="animation: spinCog 2s infinite linear reverse; transform-origin: 120px 115px;"/>
+                <rect x="90" y="80" width="20" height="18" rx="3" fill="#ef4444"/>
+                <path d="M94 80 V72 A6 6 0 0 1 106 72 V80" stroke="#ef4444" stroke-width="3" fill="none"/>
+              </svg>
+            </div>
+            <div class="path-outcome">
+              10+ Years of Rules &amp; Drills → Freezes in real conversation.
+            </div>
+          </div>
+
+          <!-- Path B: Natural GPA Flow -->
+          <div class="brain-path-card flow" id="card-path-flow" onclick="selectBrainPath('flow')">
+            <span class="path-badge">The Natural GPA Engine</span>
+            <div class="path-title">Comprehensible Input</div>
+            <div class="path-visual-wrap">
+              <svg viewBox="0 0 200 200" fill="none">
+                <!-- Glowing Synaptic Brain -->
+                <path d="M100 25 C60 25 35 55 35 95 C35 130 55 160 85 170 C95 173 105 173 115 170 C145 160 165 130 165 95 C165 55 140 25 100 25 Z" fill="#0d3319" stroke="#10b981" stroke-width="4"/>
+                <path d="M60 90 Q100 60 140 90" stroke="#34d399" stroke-width="3" stroke-linecap="round"/>
+                <path d="M70 120 Q100 140 130 120" stroke="#34d399" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="70" cy="85" r="6" fill="#d4af37" filter="drop-shadow(0 0 6px #d4af37)"/>
+                <circle cx="130" cy="85" r="6" fill="#d4af37" filter="drop-shadow(0 0 6px #d4af37)"/>
+                <circle cx="100" cy="110" r="7" fill="#10b981" filter="drop-shadow(0 0 8px #10b981)"/>
+                <path d="M100 40 L100 160" stroke="rgba(212,175,55,0.4)" stroke-dasharray="4 4"/>
+              </svg>
+            </div>
+            <div class="path-outcome">
+              Sound Coupled to Reality → Spontaneous, instinctive fluency.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────────
+         SLIDE 2: PHASE 1A — THE IMMERSION SHOCK (NOISE EXPERIMENT)
+         ───────────────────────────────────────────────────────────── -->
+    <section class="slide" id="slide-2" data-phase="Phase 1: Immersion Shock" data-time="00:00 – 02:00">
+      <div class="slide-headline">
+        <h2>Experiment 1: Sound Without Meaning</h2>
+        <div class="subhead">Listen to the alien phrase and tap the correct image</div>
+      </div>
+
+      <div class="stage-card">
+        <div class="immersion-stage">
+          <div class="audio-cue-banner" onclick="playAlienAudio('plokta zorin fek tor')">
+            <div class="audio-pulse-bars">
+              <span class="pulse-bar"></span>
+              <span class="pulse-bar"></span>
+              <span class="pulse-bar"></span>
+              <span class="pulse-bar"></span>
+            </div>
+            <div class="audio-script-text">"Plokta zorin fek tor"</div>
+            <button class="hud-btn" style="padding: 4px 10px; margin-left: 8px;">▶ Replay Voice</button>
+          </div>
+
+          <div class="quad-objects-grid">
+            <!-- 1. Apple -->
+            <div class="target-object-card" id="obj-apple" onclick="handleAlienGuess('apple')">
+              <svg viewBox="0 0 100 100">
+                <path d="M50 22 C45 14 38 10 32 10" stroke="#854d0e" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <path d="M50 20 C54 12 62 14 66 18 C62 24 55 23 50 20" fill="#65a30d"/>
+                <path d="M50 32 C35 22 15 32 15 58 C15 82 38 90 50 90 C62 90 85 82 85 58 C85 32 65 22 50 32 Z" fill="#dc2626"/>
+                <ellipse cx="38" cy="48" rx="6" ry="12" fill="#ef4444" opacity="0.6"/>
+              </svg>
+            </div>
+            <!-- 2. Cup -->
+            <div class="target-object-card" id="obj-cup" onclick="handleAlienGuess('cup')">
+              <svg viewBox="0 0 100 100">
+                <rect x="22" y="32" width="46" height="50" rx="8" fill="#38bdf8"/>
+                <path d="M68 42 C78 42 84 50 84 58 C84 66 78 72 68 72" stroke="#38bdf8" stroke-width="6" fill="none" stroke-linecap="round"/>
+                <path d="M32 24 Q36 16 32 10 M44 24 Q48 16 44 10 M56 24 Q60 16 56 10" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              </svg>
+            </div>
+            <!-- 3. Dog -->
+            <div class="target-object-card" id="obj-dog" onclick="handleAlienGuess('dog')">
+              <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="28" fill="#d97706"/>
+                <!-- Ears -->
+                <path d="M30 40 C22 45 20 60 26 65" fill="#b45309"/>
+                <path d="M70 40 C78 45 80 60 74 65" fill="#b45309"/>
+                <!-- Eyes & Nose -->
+                <circle cx="42" cy="46" r="3" fill="#111"/>
+                <circle cx="58" cy="46" r="3" fill="#111"/>
+                <ellipse cx="50" cy="56" rx="6" ry="4" fill="#111"/>
+                <!-- Tongue -->
+                <path d="M48 62 C48 68 52 68 52 62" stroke="#ef4444" stroke-width="3" fill="#ef4444"/>
+              </svg>
+            </div>
+            <!-- 4. Bicycle -->
+            <div class="target-object-card" id="obj-bike" onclick="handleAlienGuess('bike')">
+              <svg viewBox="0 0 100 100">
+                <circle cx="30" cy="65" r="18" stroke="#cbd5e1" stroke-width="4" fill="none"/>
+                <circle cx="70" cy="65" r="18" stroke="#cbd5e1" stroke-width="4" fill="none"/>
+                <path d="M30 65 L48 65 L62 46 L70 65 M48 65 L52 46 L38 46 M62 46 L58 36 L66 36" stroke="#f59e0b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <rect x="34" y="44" width="10" height="3" rx="1.5" fill="#111"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="revelation-banner noise-alert" id="noise-banner">
+            ⚠️ Without Physical Context, Language Is Just Sound Waves (White Noise).
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────────
+         SLIDE 3: PHASE 1B — COMPREHENSIBLE INPUT (THE AHA! MOMENT)
+         ───────────────────────────────────────────────────────────── -->
+    <section class="slide" id="slide-3" data-phase="Phase 1: Immersion Shock" data-time="02:00 – 04:00">
+      <div class="slide-headline">
+        <h2>Experiment 2: Context + Physical Referent</h2>
+        <div class="subhead">Watch how meaning attaches directly to reality</div>
+      </div>
+
+      <div class="stage-card">
+        <div class="immersion-stage">
+          <!-- Animated Pointing Hand -->
+          <svg id="pointing-hand" viewBox="0 0 100 100">
+            <path d="M30 75 L45 55 L45 20 C45 15 52 15 52 20 L52 48 L58 48 C62 48 64 52 64 56 L64 65 L55 85 Z" fill="#fcd34d" stroke="#b45309" stroke-width="3"/>
+          </svg>
+
+          <div class="audio-cue-banner" id="ci-step-indicator">
+            <span id="ci-step-text">Click "Play Natural Acquisition" below to begin...</span>
+            <button class="hud-btn" id="play-ci-btn" onclick="startComprehensibleInputSequence()">
+              ▶ Play Natural Acquisition
+            </button>
+          </div>
+
+          <div class="quad-objects-grid">
+            <div class="target-object-card" id="ci-apple" onclick="verifyCiAnswer('apple')">
+              <svg viewBox="0 0 100 100">
+                <path d="M50 22 C45 14 38 10 32 10" stroke="#854d0e" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <path d="M50 20 C54 12 62 14 66 18 C62 24 55 23 50 20" fill="#65a30d"/>
+                <path d="M50 32 C35 22 15 32 15 58 C15 82 38 90 50 90 C62 90 85 82 85 58 C85 32 65 22 50 32 Z" fill="#dc2626"/>
+                <ellipse cx="38" cy="48" rx="6" ry="12" fill="#ef4444" opacity="0.6"/>
+              </svg>
+            </div>
+            <div class="target-object-card" id="ci-cup" onclick="verifyCiAnswer('cup')">
+              <svg viewBox="0 0 100 100">
+                <rect x="22" y="32" width="46" height="50" rx="8" fill="#38bdf8"/>
+                <path d="M68 42 C78 42 84 50 84 58 C84 66 78 72 68 72" stroke="#38bdf8" stroke-width="6" fill="none" stroke-linecap="round"/>
+                <path d="M32 24 Q36 16 32 10 M44 24 Q48 16 44 10 M56 24 Q60 16 56 10" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              </svg>
+            </div>
+            <div class="target-object-card" id="ci-dog" onclick="verifyCiAnswer('dog')">
+              <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="28" fill="#d97706"/>
+                <path d="M30 40 C22 45 20 60 26 65" fill="#b45309"/>
+                <path d="M70 40 C78 45 80 60 74 65" fill="#b45309"/>
+                <circle cx="42" cy="46" r="3" fill="#111"/>
+                <circle cx="58" cy="46" r="3" fill="#111"/>
+                <ellipse cx="50" cy="56" rx="6" ry="4" fill="#111"/>
+              </svg>
+            </div>
+            <div class="target-object-card" id="ci-bike" onclick="verifyCiAnswer('bike')">
+              <svg viewBox="0 0 100 100">
+                <circle cx="30" cy="65" r="18" stroke="#cbd5e1" stroke-width="4" fill="none"/>
+                <circle cx="70" cy="65" r="18" stroke="#cbd5e1" stroke-width="4" fill="none"/>
+                <path d="M30 65 L48 65 L62 46 L70 65 M48 65 L52 46 L38 46 M62 46 L58 36 L66 36" stroke="#f59e0b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="revelation-banner ci-success" id="ci-success-banner">
+            ✨ Sound + Physical Referent = Direct Subconscious Acquisition! (Zero Translation).
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────────
+         SLIDE 4: PHASE 2 — THE INTERACTIVE ICEBERG SANDBOX
+         ───────────────────────────────────────────────────────────── -->
+    <section class="slide" id="slide-4" data-phase="Phase 2: The Iceberg Sandbox" data-time="04:00 – 10:00">
+      <div class="slide-headline">
+        <h2>The Iceberg Principle</h2>
+        <div class="subhead">Receptive comprehension must precede spoken production</div>
+      </div>
+
+      <div class="stage-card">
+        <div class="iceberg-stage">
+          <!-- Visual Ocean Canvas -->
+          <div class="iceberg-canvas-wrap" id="iceberg-viewport">
+            <div class="water-line"></div>
+            <div class="water-label">Sea Level</div>
+
+            <div class="floating-bubbles-area" id="bubbles-container"></div>
+
+            <svg id="iceberg-svg" viewBox="0 0 400 480">
+              <defs>
+                <linearGradient id="iceTipGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#ffffff"/>
+                  <stop offset="100%" stop-color="#bae6fd"/>
+                </linearGradient>
+                <linearGradient id="iceDeepGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#38bdf8"/>
+                  <stop offset="50%" stop-color="#0284c7"/>
+                  <stop offset="100%" stop-color="#082f49"/>
+                </linearGradient>
+              </defs>
+              <!-- Above water tip: 10% Spoken Production -->
+              <polygon points="200,40 240,119 160,119" fill="url(#iceTipGrad)" stroke="#ffffff" stroke-width="2"/>
+              <text x="200" y="95" fill="#0369a1" font-size="12" font-weight="800" text-anchor="middle">10% SPEAKING</text>
+
+              <!-- Underwater mass: 50% Passive Comprehension -->
+              <polygon points="160,121 240,121 310,260 90,260" fill="url(#iceDeepGrad)" opacity="0.9"/>
+              <text x="200" y="190" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">50% PASSIVE COMPREHENSION</text>
+              <text x="200" y="210" fill="#e0f2fe" font-size="10" font-weight="600" text-anchor="middle">(Stories, Dialogues, Context)</text>
+
+              <!-- Deep base: 40% Subconscious Rhythm -->
+              <polygon points="90,260 310,260 360,420 40,420" fill="#082f49" stroke="rgba(56,189,248,0.3)" stroke-width="2"/>
+              <text x="200" y="340" fill="#bae6fd" font-size="14" font-weight="800" text-anchor="middle">40% SUBCONSCIOUS BASE</text>
+              <text x="200" y="360" fill="#7dd3fc" font-size="10" font-weight="600" text-anchor="middle">(Acoustic Cadence &amp; Phonemes)</text>
+            </svg>
+          </div>
+
+          <!-- Controls & Feedback Panel -->
+          <div class="iceberg-controls-panel">
+            <div class="iceberg-breakdown">
+              <div class="iceberg-layer-row">
+                <span class="layer-color-dot" style="background: #ffffff; box-shadow: 0 0 8px #fff;"></span>
+                <div class="layer-info">
+                  <div class="layer-pct">10% Active Production</div>
+                  <div class="layer-name">Words you speak spontaneously without hesitation</div>
+                </div>
+              </div>
+              <div class="iceberg-layer-row">
+                <span class="layer-color-dot" style="background: #38bdf8; box-shadow: 0 0 8px #38bdf8;"></span>
+                <div class="layer-info">
+                  <div class="layer-pct">50% Passive Comprehension</div>
+                  <div class="layer-name">Words instantly understood in rich context</div>
+                </div>
+              </div>
+              <div class="iceberg-layer-row">
+                <span class="layer-color-dot" style="background: #082f49; border: 1px solid #38bdf8;"></span>
+                <div class="layer-info">
+                  <div class="layer-pct">40% Subconscious Blueprint</div>
+                  <div class="layer-name">Rhythm, sentence melody, internalized grammar</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="action-button-group">
+              <button class="iceberg-action-btn btn-drills" onclick="simulateGrammarDrills()">
+                <span>⚡ Force Grammar Output</span>
+                <span style="font-size: 1.2rem;">🧊 ↘</span>
+              </button>
+              <button class="iceberg-action-btn btn-input" onclick="simulateComprehensibleInput()">
+                <span>🌊 Flood Comprehensible Input</span>
+                <span style="font-size: 1.2rem;">🫧 ↗</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────────
+         SLIDE 5: PHASE 3 — THE SPLIT-SCREEN DILEMMA
+         ───────────────────────────────────────────────────────────── -->
+    <section class="slide" id="slide-5" data-phase="Phase 3: The Split-Screen Dilemma" data-time="10:00 – 16:00">
+      <div class="slide-headline">
+        <h2>The Conscious Monitor vs. The Natural Flow</h2>
+        <div class="subhead">Coffee shop encounter: Why the conscious monitor paralyzes speech</div>
+      </div>
+
+      <div class="stage-card">
+        <div class="split-stage">
+          <!-- Left: Over-Monitored Student -->
+          <div class="split-col left-col">
+            <span class="student-badge-header">The Over-Monitored Learner</span>
+
+            <div class="cafe-scene-art">
+              <svg viewBox="0 0 300 200">
+                <!-- Barista counter -->
+                <rect x="20" y="140" width="260" height="50" rx="4" fill="#3f2717"/>
+                <rect x="40" y="110" width="30" height="30" rx="4" fill="#78350f"/>
+                <!-- Frozen Student Head with massive grinding cogwheel -->
+                <circle cx="150" cy="90" r="32" fill="#ef4444" opacity="0.3"/>
+                <circle cx="150" cy="90" r="28" stroke="#ef4444" stroke-width="4" stroke-dasharray="8 4" class="spinning-cog"/>
+                <circle cx="150" cy="90" r="14" fill="#7f1d1d"/>
+                <!-- Stress sweat drops -->
+                <path d="M125 70 Q120 80 125 85 Q130 80 125 70" fill="#38bdf8"/>
+                <path d="M175 70 Q170 80 175 85 Q180 80 175 70" fill="#38bdf8"/>
+              </svg>
+            </div>
+
+            <!-- Affective Filter Gauge High -->
+            <div class="gauge-card">
+              <div class="gauge-top-row">
+                <span style="color: #f87171;">Affective Filter: High Stress</span>
+                <span style="color: #f87171;" id="gauge-pct-left">95%</span>
+              </div>
+              <div class="gauge-track">
+                <div class="gauge-fill" style="width: 95%; background: linear-gradient(90deg, #f59e0b, #ef4444); box-shadow: 0 0 10px #ef4444;"></div>
+              </div>
+            </div>
+
+            <div class="speech-bubble stutter" id="speech-bubble-left">
+              "I... uh... would having want... no, am wanted..."
+            </div>
+
+            <button class="hud-btn" style="width: 100%; justify-content: center; border-color: rgba(239,68,68,0.5);" onclick="triggerMonitorDemo('stutter')">
+              ▶ Test Over-Monitored Brain
+            </button>
+          </div>
+
+          <!-- Right: The Growing Participator -->
+          <div class="split-col right-col">
+            <span class="student-badge-header">The Growing Participator</span>
+
+            <div class="cafe-scene-art">
+              <svg viewBox="0 0 300 200">
+                <!-- Barista counter -->
+                <rect x="20" y="140" width="260" height="50" rx="4" fill="#3f2717"/>
+                <rect x="40" y="110" width="30" height="30" rx="4" fill="#78350f"/>
+                <!-- Calm relaxed character with peaceful halo -->
+                <circle cx="150" cy="90" r="32" fill="#10b981" opacity="0.3"/>
+                <circle cx="150" cy="90" r="28" stroke="#10b981" stroke-width="4"/>
+                <!-- Smile -->
+                <path d="M138 95 Q150 110 162 95" stroke="#10b981" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <!-- Bypassed sleeping cog (feather) -->
+                <circle cx="190" cy="65" r="12" fill="#047857"/>
+                <text x="190" y="70" font-size="12" text-anchor="middle" fill="#fff">💤</text>
+              </svg>
+            </div>
+
+            <!-- Affective Filter Gauge Low -->
+            <div class="gauge-card">
+              <div class="gauge-top-row">
+                <span style="color: #34d399;">Affective Filter: Low Anxiety</span>
+                <span style="color: #34d399;" id="gauge-pct-right">15%</span>
+              </div>
+              <div class="gauge-track">
+                <div class="gauge-fill" style="width: 15%; background: #10b981; box-shadow: 0 0 10px #10b981;"></div>
+              </div>
+            </div>
+
+            <div class="speech-bubble fluent" id="speech-bubble-right">
+              "Could I get a large iced cappuccino, please?"
+            </div>
+
+            <button class="hud-btn" style="width: 100%; justify-content: center; border-color: rgba(16,185,129,0.5);" onclick="triggerMonitorDemo('fluent')">
+              ▶ Test Growing Participator Brain
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────────
+         SLIDE 6: PHASE 4A — AI NURTURER: QUICK DOZEN (LISTEN & POINT)
+         ───────────────────────────────────────────────────────────── -->
+    <section class="slide" id="slide-6" data-phase="Phase 4: AI Nurturer Simulation" data-time="16:00 – 19:00">
+      <div class="slide-headline">
+        <h2>GPA Phase 1: The Quick Dozen</h2>
+        <div class="subhead">Listen to the AI Nurturer and point non-verbally</div>
+      </div>
+
+      <div class="stage-card">
+        <div class="quick-dozen-stage">
+          <div class="dozen-ai-voicebar">
+            <div class="dozen-ai-left">
+              <div class="ai-avatar-glow">🤖</div>
+              <div class="dozen-prompt-text" id="dozen-ai-script">
+                "Find the boots. Where are the black boots?"
+              </div>
+            </div>
+            <button class="hud-btn" onclick="speakCurrentDozenPrompt()">
+              ▶ Replay Voice
+            </button>
+          </div>
+
+          <div class="dozen-grid" id="dozen-grid-board">
+            <!-- 8 Everyday items -->
+            <div class="dozen-item-card" data-item="boots" onclick="handleDozenClick('boots')">
+              <svg viewBox="0 0 80 80">
+                <path d="M25 15 L45 15 L45 50 L65 55 L65 70 L25 70 Z" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+              </svg>
+              <span class="dozen-item-name">Boots</span>
+            </div>
+            <div class="dozen-item-card" data-item="scarf" onclick="handleDozenClick('scarf')">
+              <svg viewBox="0 0 80 80">
+                <path d="M20 25 C30 15 50 15 60 25 C65 30 65 50 60 55 L40 55 L40 70 L30 70 L30 45 L20 40 Z" fill="#ef4444"/>
+              </svg>
+              <span class="dozen-item-name">Red Scarf</span>
+            </div>
+            <div class="dozen-item-card" data-item="mug" onclick="handleDozenClick('mug')">
+              <svg viewBox="0 0 80 80">
+                <rect x="22" y="25" width="36" height="42" rx="6" fill="#f59e0b"/>
+                <path d="M58 35 C66 35 70 42 70 48 C70 54 66 61 58 61" stroke="#f59e0b" stroke-width="5" fill="none"/>
+              </svg>
+              <span class="dozen-item-name">Coffee Mug</span>
+            </div>
+            <div class="dozen-item-card" data-item="umbrella" onclick="handleDozenClick('umbrella')">
+              <svg viewBox="0 0 80 80">
+                <path d="M15 45 C15 25 30 15 40 15 C50 15 65 25 65 45 Z" fill="#0284c7"/>
+                <line x1="40" y1="15" x2="40" y2="65" stroke="#cbd5e1" stroke-width="3"/>
+                <path d="M40 65 C40 70 34 70 34 65" stroke="#cbd5e1" stroke-width="3" fill="none"/>
+              </svg>
+              <span class="dozen-item-name">Umbrella</span>
+            </div>
+            <div class="dozen-item-card" data-item="backpack" onclick="handleDozenClick('backpack')">
+              <svg viewBox="0 0 80 80">
+                <rect x="22" y="22" width="36" height="46" rx="8" fill="#16a34a"/>
+                <rect x="28" y="38" width="24" height="22" rx="4" fill="#15803d"/>
+                <path d="M32 22 V14 A8 8 0 0 1 48 14 V22" stroke="#4ade80" stroke-width="3" fill="none"/>
+              </svg>
+              <span class="dozen-item-name">Backpack</span>
+            </div>
+            <div class="dozen-item-card" data-item="key" onclick="handleDozenClick('key')">
+              <svg viewBox="0 0 80 80">
+                <circle cx="30" cy="40" r="14" stroke="#d4af37" stroke-width="4" fill="none"/>
+                <path d="M44 40 L68 40 L68 48 M58 40 L58 46" stroke="#d4af37" stroke-width="4"/>
+              </svg>
+              <span class="dozen-item-name">Brass Key</span>
+            </div>
+            <div class="dozen-item-card" data-item="apple" onclick="handleDozenClick('apple')">
+              <svg viewBox="0 0 80 80">
+                <path d="M40 25 C30 18 15 25 15 45 C15 65 30 70 40 70 C50 70 65 65 65 45 C65 25 50 18 40 25 Z" fill="#10b981"/>
+                <path d="M40 25 V15" stroke="#78350f" stroke-width="3"/>
+              </svg>
+              <span class="dozen-item-name">Green Apple</span>
+            </div>
+            <div class="dozen-item-card" data-item="bicycle" onclick="handleDozenClick('bicycle')">
+              <svg viewBox="0 0 80 80">
+                <circle cx="25" cy="55" r="14" stroke="#e2e8f0" stroke-width="3" fill="none"/>
+                <circle cx="55" cy="55" r="14" stroke="#e2e8f0" stroke-width="3" fill="none"/>
+                <path d="M25 55 L38 55 L48 40 L55 55" stroke="#f59e0b" stroke-width="3" fill="none"/>
+              </svg>
+              <span class="dozen-item-name">Bicycle</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────────
+         SLIDE 7: PHASE 4B — RECAST & EXPAND (NO RED PENS!)
+         ───────────────────────────────────────────────────────────── -->
+    <section class="slide" id="slide-7" data-phase="Phase 4: AI Nurturer Simulation" data-time="19:00 – 22:00">
+      <div class="slide-headline">
+        <h2>Implicit Recasting (No Red Pens)</h2>
+        <div class="subhead">How conversational AI repairs errors organically</div>
+      </div>
+
+      <div class="stage-card">
+        <div class="recast-stage">
+          <!-- Left Visual: Action Street Scene -->
+          <div class="recast-visual-col">
+            <div class="street-scene-frame">
+              <svg viewBox="0 0 400 240">
+                <!-- Sunlit street & yellow school bus -->
+                <rect x="0" y="0" width="400" height="150" fill="#bae6fd"/>
+                <rect x="0" y="150" width="400" height="90" fill="#475569"/>
+                <!-- Yellow bus driving away -->
+                <rect x="220" y="110" width="160" height="70" rx="8" fill="#eab308"/>
+                <rect x="240" y="125" width="30" height="20" rx="2" fill="#38bdf8"/>
+                <rect x="280" y="125" width="30" height="20" rx="2" fill="#38bdf8"/>
+                <rect x="320" y="125" width="30" height="20" rx="2" fill="#38bdf8"/>
+                <circle cx="260" cy="180" r="14" fill="#0f172a"/>
+                <circle cx="350" cy="180" r="14" fill="#0f172a"/>
+                <!-- Young boy running with backpack -->
+                <circle cx="90" cy="130" r="12" fill="#fcd34d"/>
+                <path d="M90 142 L90 170 L75 190 M90 170 L105 190" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
+                <path d="M90 150 L115 140 M90 150 L68 155" stroke="#fcd34d" stroke-width="3" stroke-linecap="round"/>
+                <rect x="74" y="142" width="12" height="18" rx="3" fill="#dc2626"/>
+              </svg>
+            </div>
+
+            <div class="student-speech-badge">
+              <span>🗣️ Student Says:</span>
+              <strong id="current-student-utterance">"Boy run road."</strong>
+            </div>
+          </div>
+
+          <!-- Right Column: Reaction Comparison & Live Recast -->
+          <div class="recast-interaction-col">
+            <div class="comparison-cards-row">
+              <!-- Traditional Red Pen -->
+              <div class="reaction-card bad-pen">
+                <div class="reaction-title">❌ Traditional Correction</div>
+                <div class="reaction-body">
+                  "Incorrect grammar! Missing auxiliary verb 'is' and preposition. Say: <em>The boy is running down the road.</em>"
+                  <div style="color: #fca5a5; font-size: 0.78rem; margin-top: 6px;">Spikes anxiety; shuts down communication.</div>
+                </div>
+              </div>
+
+              <!-- AI Nurturer Recast -->
+              <div class="reaction-card good-nurturer">
+                <div class="reaction-title">💚 AI Nurturer Recast</div>
+                <div class="reaction-body" id="nurturer-recast-text">
+                  "Ah, yes! The young boy is running down the busy road! Where is he headed?"
+                  <div style="color: #86efac; font-size: 0.78rem; margin-top: 6px;">Validates meaning + Models natural syntax.</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div style="font-size: 0.85rem; font-weight: 700; color: var(--dialogue-gold); margin-bottom: 8px;">
+                Try Other Student Utterances:
+              </div>
+              <div class="preset-pill-group">
+                <button class="preset-pill" onclick="testPresetRecast('Yesterday I go market.')">"Yesterday I go market"</button>
+                <button class="preset-pill" onclick="testPresetRecast('She have two cat.')">"She have two cat"</button>
+                <button class="preset-pill" onclick="testPresetRecast('He no like tea.')">"He no like tea"</button>
+              </div>
+            </div>
+
+            <!-- Custom Teacher Input Box -->
+            <div class="custom-input-box-row">
+              <input type="text" id="teacher-custom-speech" placeholder="Type what a student just said..." value="Boy run road.">
+              <button class="hud-btn" style="background: var(--dialogue-forest); border-color: var(--dialogue-gold);" onclick="recastCustomTeacherInput()">
+                Recast Aloud 🔊
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────────
+         SLIDE 8: PHASE 5 — THE AUTONOMOUS STUDENT PROTOCOL
+         ───────────────────────────────────────────────────────────── -->
+    <section class="slide" id="slide-8" data-phase="Phase 5: Autonomous Protocol" data-time="22:00 – 25:00">
+      <div class="slide-headline">
+        <h2>Your 24/7 AI Language Nurturer</h2>
+        <div class="subhead">Transform ChatGPT, Claude, or Gemini Voice into your private GPA coach</div>
+      </div>
+
+      <div class="stage-card">
+        <div class="protocol-stage">
+          <!-- Left: Luxury System Prompt Card -->
+          <div class="luxury-prompt-card">
+            <div class="prompt-header-row">
+              <span style="font-weight: 800; color: var(--dialogue-gold); font-size: 0.95rem;">System Prompt Template</span>
+              <div class="prompt-app-badges">
+                <span class="app-badge">ChatGPT Voice</span>
+                <span class="app-badge">Gemini Live</span>
+                <span class="app-badge">Claude</span>
+              </div>
+            </div>
+
+            <div class="prompt-code-body" id="system-prompt-text">Act as my GPA (Growing Participator Approach) Language Nurturer for English.
+1. Speak to me only in simple, natural English at an i+1 level (short sentences, rich vocabulary).
+2. NEVER explicitly correct my grammar or lecture me on rules.
+3. If I make an error, simply recast my sentence correctly in your natural response.
+4. Keep your turns short (1–2 sentences max) and ask concrete questions about things in our shared context.</div>
+
+            <button class="copy-prompt-btn" onclick="copySystemPrompt()">
+              📋 Copy Prompt to Clipboard
+            </button>
+          </div>
+
+          <!-- Right: Daily 15-Minute Protocol Habit -->
+          <div class="daily-habit-checklist">
+            <div class="habit-item-card">
+              <div class="habit-time-circle">5m</div>
+              <div class="habit-desc">
+                <h4>Listen &amp; Point (Here &amp; Now)</h4>
+                <p>Send AI a photo or busy picture. Listen to it describe objects. Tap or verify.</p>
+              </div>
+            </div>
+            <div class="habit-item-card">
+              <div class="habit-time-circle">5m</div>
+              <div class="habit-desc">
+                <h4>1-Minute Story Massaging</h4>
+                <p>Ask AI to record a 1-minute narrative. Listen 3 times without reading text.</p>
+              </div>
+            </div>
+            <div class="habit-item-card">
+              <div class="habit-time-circle">5m</div>
+              <div class="habit-desc">
+                <h4>Recast Conversation</h4>
+                <p>Speak freely without fear. Let the AI reformulate errors into natural dialogue.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────────
+         SLIDE 9: SUMMARY & THE 4 GOLDEN LAWS
+         ───────────────────────────────────────────────────────────── -->
+    <section class="slide" id="slide-9" data-phase="Classroom Wrap-Up" data-time="25:00">
+      <div class="slide-headline">
+        <h2>The 4 Laws of Natural Acquisition</h2>
+        <div class="subhead">Core principles for autonomous English mastery</div>
+      </div>
+
+      <div class="stage-card">
+        <div class="summary-stage">
+          <div class="laws-grid">
+            <div class="law-medallion-card">
+              <div class="law-icon-circle">👂</div>
+              <div class="law-title">Input Precedes Output</div>
+              <div class="law-text">You cannot speak what you haven't heard 50 times in rich, meaningful context.</div>
+            </div>
+            <div class="law-medallion-card">
+              <div class="law-icon-circle">🌊</div>
+              <div class="law-title">Fill the Underwater Base</div>
+              <div class="law-text">Build passive listening comprehension first. Spoken fluency rises automatically.</div>
+            </div>
+            <div class="law-medallion-card">
+              <div class="law-icon-circle">🧘</div>
+              <div class="law-title">Lower the Filter</div>
+              <div class="law-text">Silence the conscious monitor. Anxiety locks the speech center; playfulness unlocks it.</div>
+            </div>
+            <div class="law-medallion-card">
+              <div class="law-icon-circle">🤖</div>
+              <div class="law-title">AI as Your Nurturer</div>
+              <div class="law-text">Use conversational AI for infinite, judgment-free listening and recasting practice.</div>
+            </div>
+          </div>
+
+          <div class="summary-action-row">
+            <button class="hud-btn" style="padding: 10px 24px; font-size: 0.95rem; border-color: var(--dialogue-gold);" onclick="goToSlide(0)">
+              ↺ Restart Slideshow
+            </button>
+            <a href="../index.html" class="hud-btn" style="padding: 10px 24px; font-size: 0.95rem; text-decoration: none; background: var(--dialogue-forest); border-color: var(--dialogue-gold); color: var(--dialogue-gold);">
+              Explore Dialogue Activities →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================================
+       FOOTER CONTROLS
+       =================================================================== -->
+  <footer id="deck-footer">
+    <button class="nav-arrow-btn" id="prev-slide-btn" onclick="prevSlide()" title="Previous Slide (←)">
+      ‹
+    </button>
+
+    <div class="dots-container" id="slide-dots-container"></div>
+
+    <div class="footer-lecture-cue" id="footer-lecture-cue">
+      <strong>Teaching Tip:</strong> Ask students how they felt when hearing pure noise.
+    </div>
+
+    <button class="nav-arrow-btn" id="next-slide-btn" onclick="nextSlide()" title="Next Slide (→ or Space)">
+      ›
+    </button>
+  </footer>
+
+  <!-- ===================================================================
+       PRESENTER NOTES DRAWER
+       =================================================================== -->
+  <aside id="presenter-notes-drawer">
+    <div class="notes-header">
+      <div class="notes-title">
+        <span>📝 Presenter Guide</span>
+      </div>
+      <button class="hud-btn" style="padding: 4px 8px;" onclick="toggleNotesDrawer()">✕</button>
+    </div>
+    <div class="notes-body" id="notes-content-body">
+      <!-- Dynamically filled per slide -->
+    </div>
+  </aside>
+
+  <script src="../dialogue-brand.js"></script>
+  <script>
+    /* ===================================================================
+       SLIDESHOW STATE & NAVIGATION CONTROLLER
+       =================================================================== */
+    const SLIDES_COUNT = 9;
+    let currentSlideIndex = 0;
+    let soundEnabled = true;
+
+    const LECTURE_NOTES = [
+      {
+        phase: "Orientation (00:00 – 02:00)",
+        cue: "Welcome the class. Ask: Who has studied grammar for 10 years but still freezes?",
+        notes: `
+          <h4>Teacher Script &amp; Pacing:</h4>
+          <p><strong>Hook:</strong> "Welcome everyone. Quick question: How many of you have memorized grammar rules, formulas, and vocabulary lists for years, but the moment a foreigner speaks to you, your mind goes blank?"</p>
+          <p>Let the students nod and smile. Validate them: <em>"It is not your fault. Your brain was designed to acquire language naturally, not compute it like a math equation."</em></p>
+          <h4>Slide Goal:</h4>
+          <p>Establish the dichotomy: Conscious Memorization (Gears &amp; Locks) vs Natural Acquisition (Direct Neural Flow).</p>
+        `
+      },
+      {
+        phase: "Phase 1: Immersion Shock (00:00 – 02:00)",
+        cue: "Play the alien audio. Do NOT explain anything. Ask them to choose!",
+        notes: `
+          <h4>Teacher Script &amp; Pacing:</h4>
+          <p><strong>The Trap:</strong> Click the audio button: <em>'Plokta zorin fek tor.'</em> Tell the room: 'Pick one! Which object did I say?'</p>
+          <p>They will hesitate, laugh, and guess blindly. When they click, point out the red shake and warning.</p>
+          <p><strong>Teaching Point:</strong> 'Notice how anxious you felt! You wanted to guess, but had zero basis. That is what raw English sounds like to a beginner when there is no physical context. Sound waves without referents are just white noise.'</p>
+        `
+      },
+      {
+        phase: "Phase 1: Comprehensible Input (02:00 – 04:00)",
+        cue: "Run the animation. Emphasize: 0 translations, 0 grammar rules!",
+        notes: `
+          <h4>Teacher Script &amp; Pacing:</h4>
+          <p><strong>The Discovery:</strong> Click 'Play Natural Acquisition'. Let the hand point to the apple ('Zorin') and the cup ('Plokta'). Then watch the cup hover over the apple ('Plokta zorin?').</p>
+          <p>Ask the room: 'Where is Zorin?' Have a student tap the Apple. Celebrate the chime!</p>
+          <p><strong>Core SLA Principle:</strong> 'Did I open a Bangla-English dictionary? Did I explain prepositions? No. Your brain acquired it in 3 seconds because the sound met physical reality. That is Krashen's Comprehensible Input.'</p>
+        `
+      },
+      {
+        phase: "Phase 2: The Iceberg Sandbox (04:00 – 10:00)",
+        cue: "Show why forcing spoken output fails. Flood the underwater base!",
+        notes: `
+          <h4>Teacher Script &amp; Pacing:</h4>
+          <p><strong>The Metaphor:</strong> Explain that 90% of language competence is submerged beneath the surface (listening, rhythm, gut instinct).</p>
+          <p><strong>Interactive Demo:</strong> Click 'Force Grammar Output'. Watch the memorized blocks fall off into the ocean and melt! 'When teachers force students to produce speech before their ears are ready, it melts away.'</p>
+          <p>Now click 'Flood Comprehensible Input'. Watch the glowing story bubbles push the iceberg up naturally: 'Fill the receptive base first, and spontaneous speech rises by itself!'</p>
+        `
+      },
+      {
+        phase: "Phase 3: The Split-Screen Dilemma (10:00 – 16:00)",
+        cue: "Act out the coffee shop encounter. Contrast the cogwheel vs relaxed flow.",
+        notes: `
+          <h4>Teacher Script &amp; Pacing:</h4>
+          <p><strong>The Scenario:</strong> You walk into a café. The barista says: <em>'What can I get for you?'</em></p>
+          <p>Test the Left Brain: Watch the cogwheel spin furiously, testing grammar rules. The Affective Filter shoots to 95% red! The student freezes and stutters.</p>
+          <p>Test the Right Brain: In a Growing Participator, the monitor is quiet. The Affective Filter is green (15%). Internalized chunks fire effortlessly: 'Could I get a large iced cappuccino, please?'</p>
+          <p><strong>Key Concept:</strong> Krashen's Affective Filter Hypothesis &amp; Monitor Model.</p>
+        `
+      },
+      {
+        phase: "Phase 4: AI Nurturer Quick Dozen (16:00 – 19:00)",
+        cue: "Invite a student or the class to point to objects as the AI calls them out.",
+        notes: `
+          <h4>Teacher Script &amp; Pacing:</h4>
+          <p><strong>GPA Phase 1 Simulation:</strong> Explain Greg Thomson's 'Growing Participator Approach'. In Phase 1, you don't speak—you Listen &amp; Point.</p>
+          <p>Demonstrate how the AI Nurturer asks for items without testing grammar: 'Find the boots... Now find the red scarf.'</p>
+          <p>Notice the relief: When students aren't forced to speak right away, their brains absorb vocabulary 4x faster without fear.</p>
+        `
+      },
+      {
+        phase: "Phase 4: Implicit Recasting (19:00 – 22:00)",
+        cue: "Show how a true Nurturer never uses a red pen. Try live student sentences!",
+        notes: `
+          <h4>Teacher Script &amp; Pacing:</h4>
+          <p><strong>No Red Pens:</strong> Student says: 'Boy run road.' Traditional school gives a red 'X'. The AI Nurturer recasts: <em>'Ah, yes! The young boy is running down the busy road! Where is he headed?'</em></p>
+          <p>Point out the 3 magic steps: (1) Confirm meaning, (2) Model natural phrasing, (3) Ask a real question.</p>
+          <p><strong>Live Interaction:</strong> Ask a student in your room to say any simple English sentence. Type it in the custom box and hear the AI recast it out loud!</p>
+        `
+      },
+      {
+        phase: "Phase 5: Autonomous Protocol (22:00 – 25:00)",
+        cue: "Show students how to use ChatGPT/Claude/Gemini Voice for 15 mins daily.",
+        notes: `
+          <h4>Teacher Script &amp; Pacing:</h4>
+          <p><strong>The Takeaway Gift:</strong> 'You no longer need an expensive native tutor. Your smartphone has a 24/7 GPA Nurturer.'</p>
+          <p>Show the System Prompt on screen. Click 'Copy Prompt to Clipboard'.</p>
+          <p>Walk through the 15-minute daily formula: 5 mins Listen &amp; Point, 5 mins Audio Massaging, 5 mins Recast Dialogue.</p>
+        `
+      },
+      {
+        phase: "Classroom Wrap-Up (25:00)",
+        cue: "Review the 4 Laws. Reassure the class that language is an instinct, not an exam.",
+        notes: `
+          <h4>Teacher Script &amp; Pacing:</h4>
+          <p><strong>Closing Words:</strong> Review the 4 Golden Laws.</p>
+          <p>Remind them: 'Fluency is not about how many rules you remember. It is about how many hours of joyful, comprehensible input you have given your subconscious mind. Go practice with your AI Nurturer!'</p>
+        `
+      }
+    ];
+
+    /* ── DOM Elements ── */
+    const slides = document.querySelectorAll('.slide');
+    const dotsContainer = document.getElementById('slide-dots-container');
+    const progressFill = document.getElementById('progress-fill');
+    const prevBtn = document.getElementById('prev-slide-btn');
+    const nextBtn = document.getElementById('next-slide-btn');
+    const hudPhaseTitle = document.getElementById('hud-phase-title');
+    const hudPhaseTimer = document.getElementById('hud-phase-timer');
+    const footerLectureCue = document.getElementById('footer-lecture-cue');
+    const notesDrawer = document.getElementById('presenter-notes-drawer');
+    const notesContent = document.getElementById('notes-content-body');
+    const audioToggleBtn = document.getElementById('audio-toggle-btn');
+    const audioBtnIcon = document.getElementById('audio-btn-icon');
+    const audioBtnLabel = document.getElementById('audio-btn-label');
+
+    // Build Dots
+    slides.forEach((_, idx) => {
+      const dot = document.createElement('div');
+      dot.className = `slide-dot ${idx === 0 ? 'active' : ''}`;
+      dot.title = `Slide ${idx + 1}`;
+      dot.addEventListener('click', () => goToSlide(idx));
+      dotsContainer.appendChild(dot);
+    });
+
+    function updateDeckUI() {
+      slides.forEach((s, idx) => {
+        s.classList.toggle('active', idx === currentSlideIndex);
+      });
+
+      const dots = dotsContainer.querySelectorAll('.slide-dot');
+      dots.forEach((d, idx) => {
+        d.classList.toggle('active', idx === currentSlideIndex);
+      });
+
+      const pct = ((currentSlideIndex + 1) / SLIDES_COUNT) * 100;
+      progressFill.style.width = `${pct}%`;
+
+      prevBtn.disabled = currentSlideIndex === 0;
+      nextBtn.disabled = currentSlideIndex === SLIDES_COUNT - 1;
+
+      // Update HUD
+      const activeSlide = slides[currentSlideIndex];
+      hudPhaseTitle.textContent = activeSlide.dataset.phase || "SLA Interactive";
+      hudPhaseTimer.textContent = activeSlide.dataset.time || "";
+
+      // Update Notes & Cue
+      const currentNote = LECTURE_NOTES[currentSlideIndex] || {};
+      footerLectureCue.innerHTML = `<strong>Lecture Cue:</strong> ${currentNote.cue || ''}`;
+      notesContent.innerHTML = currentNote.notes || '<p>No notes for this slide.</p>';
+    }
+
+    function goToSlide(idx) {
+      if (idx >= 0 && idx < SLIDES_COUNT) {
+        currentSlideIndex = idx;
+        updateDeckUI();
+      }
+    }
+
+    function nextSlide() {
+      if (currentSlideIndex < SLIDES_COUNT - 1) {
+        currentSlideIndex++;
+        updateDeckUI();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlideIndex > 0) {
+        currentSlideIndex--;
+        updateDeckUI();
+      }
+    }
+
+    // Toggle Notes Drawer
+    function toggleNotesDrawer() {
+      notesDrawer.classList.toggle('open');
+    }
+
+    document.getElementById('notes-toggle-btn').addEventListener('click', toggleNotesDrawer);
+
+    // Fullscreen Toggle
+    document.getElementById('fullscreen-btn').addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    });
+
+    // Keyboard Shortcuts
+    window.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key.toLowerCase() === 'n') {
+        toggleNotesDrawer();
+      } else if (e.key.toLowerCase() === 'f') {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        } else {
+          document.exitFullscreen().catch(() => {});
+        }
+      } else if (e.key.toLowerCase() === 'm') {
+        toggleSound();
+      }
+    });
+
+    function toggleSound() {
+      soundEnabled = !soundEnabled;
+      audioBtnIcon.textContent = soundEnabled ? '🔊' : '🔇';
+      audioBtnLabel.textContent = soundEnabled ? 'Sound On' : 'Muted';
+      audioToggleBtn.classList.toggle('active', soundEnabled);
+    }
+    audioToggleBtn.addEventListener('click', toggleSound);
+
+    /* ===================================================================
+       SYNTHETIC SOUND & AUDIO ENGINE (WEB AUDIO & SPEECH SYNTHESIS)
+       =================================================================== */
+    let audioCtx = null;
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    // High fidelity synthetic chime for correct acquisition
+    function playSuccessChime() {
+      if (!soundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        const freqs = [523.25, 659.25, 783.99, 1046.50]; // C-E-G-C major triad
+        freqs.forEach((freq, i) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now + i * 0.08);
+          gain.gain.setValueAtTime(0.2, now + i * 0.08);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.8);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now + i * 0.08);
+          osc.stop(now + i * 0.08 + 0.85);
+        });
+      } catch (err) {}
+    }
+
+    // Soft error / confusion buzz
+    function playErrorBuzz() {
+      if (!soundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(140, now);
+        osc.frequency.linearRampToValueAtTime(110, now + 0.3);
+        gain.gain.setValueAtTime(0.18, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.35);
+      } catch (err) {}
+    }
+
+    // Water bubbling sound
+    function playBubblePop() {
+      if (!soundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        const startFreq = 220 + Math.random() * 300;
+        osc.frequency.setValueAtTime(startFreq, now);
+        osc.frequency.exponentialRampToValueAtTime(startFreq * 2.2, now + 0.12);
+        gain.gain.setValueAtTime(0.15, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.14);
+      } catch (err) {}
+    }
+
+    // Alien language synthesizer (simulates exotic vowel formants)
+    function playAlienAudio(text) {
+      if (!soundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        const notes = [180, 240, 210, 290, 195];
+        notes.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.22);
+          gain.gain.setValueAtTime(0.2, now + idx * 0.22);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.22 + 0.24);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now + idx * 0.22);
+          osc.stop(now + idx * 0.22 + 0.26);
+        });
+      } catch (err) {}
+      speakNatural(text, 0.85, 0.9);
+    }
+
+    // Clear, slow natural TTS for English instructions (110–120 WPM)
+    function speakNatural(text, rate = 0.85, pitch = 1.0) {
+      if (!('speechSynthesis' in window) || !soundEnabled) return;
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = rate; // 110-120 WPM cadence
+      utterance.pitch = pitch;
+      utterance.lang = 'en-US';
+      const voices = window.speechSynthesis.getVoices();
+      const naturalVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Samantha')));
+      if (naturalVoice) utterance.voice = naturalVoice;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    /* ===================================================================
+       SLIDE 1: PATH SELECTION
+       =================================================================== */
+    function selectBrainPath(type) {
+      document.getElementById('card-path-trap').classList.toggle('active', type === 'trap');
+      document.getElementById('card-path-flow').classList.toggle('active', type === 'flow');
+      if (type === 'flow') {
+        playSuccessChime();
+      } else {
+        playErrorBuzz();
+      }
+    }
+
+    /* ===================================================================
+       SLIDE 2: IMMERSION SHOCK GUESSING
+       =================================================================== */
+    function handleAlienGuess(target) {
+      playErrorBuzz();
+      const el = document.getElementById(`obj-${target}`);
+      if (el) {
+        el.classList.add('shake-red');
+        setTimeout(() => el.classList.remove('shake-red'), 450);
+      }
+      const banner = document.getElementById('noise-banner');
+      banner.classList.add('show');
+    }
+
+    /* ===================================================================
+       SLIDE 3: COMPREHENSIBLE INPUT STEP-THROUGH
+       =================================================================== */
+    let ciStep = 0;
+    function startComprehensibleInputSequence() {
+      ciStep = 1;
+      const hand = document.getElementById('pointing-hand');
+      const stepText = document.getElementById('ci-step-text');
+      const apple = document.getElementById('ci-apple');
+      const cup = document.getElementById('ci-cup');
+      const btn = document.getElementById('play-ci-btn');
+      btn.style.display = 'none';
+
+      // Step 1: Point to Apple
+      stepText.innerHTML = `<strong>Hand Points to Apple:</strong> Voice says <em>"Zorin"</em>`;
+      const appleRect = apple.getBoundingClientRect();
+      const containerRect = apple.parentElement.getBoundingClientRect();
+      hand.style.opacity = '1';
+      hand.style.top = `${appleRect.top - containerRect.top + 30}px`;
+      hand.style.left = `${appleRect.left - containerRect.left + 50}px`;
+      apple.classList.add('glow-gold');
+      speakNatural("Zorin", 0.8, 1.05);
+
+      // Step 2: Move to Cup
+      setTimeout(() => {
+        apple.classList.remove('glow-gold');
+        const cupRect = cup.getBoundingClientRect();
+        hand.style.top = `${cupRect.top - containerRect.top + 30}px`;
+        hand.style.left = `${cupRect.left - containerRect.left + 50}px`;
+        cup.classList.add('glow-gold');
+        stepText.innerHTML = `<strong>Hand Points to Cup:</strong> Voice says <em>"Plokta"</em>`;
+        speakNatural("Plokta", 0.8, 1.0);
+      }, 2000);
+
+      // Step 3: Action Context
+      setTimeout(() => {
+        cup.classList.remove('glow-gold');
+        stepText.innerHTML = `<strong>Action Context:</strong> Cup hovers over Apple — <em>"Plokta zorin?"</em>`;
+        speakNatural("Plokta zorin?", 0.85, 1.1);
+      }, 4000);
+
+      // Step 4: Prompt
+      setTimeout(() => {
+        hand.style.opacity = '0';
+        stepText.innerHTML = `👉 <strong>Now select: "Where is Zorin?"</strong> (Click the apple!)`;
+        speakNatural("Where is Zorin?", 0.85, 1.0);
+      }, 5800);
+    }
+
+    function verifyCiAnswer(target) {
+      if (target === 'apple') {
+        playSuccessChime();
+        const apple = document.getElementById('ci-apple');
+        apple.classList.add('glow-green');
+        document.getElementById('ci-success-banner').classList.add('show');
+      } else {
+        playErrorBuzz();
+        const el = document.getElementById(`ci-${target}`);
+        el.classList.add('shake-red');
+        setTimeout(() => el.classList.remove('shake-red'), 400);
+      }
+    }
+
+    /* ===================================================================
+       SLIDE 4: THE ICEBERG SANDBOX
+       =================================================================== */
+    function simulateGrammarDrills() {
+      playErrorBuzz();
+      const viewport = document.getElementById('iceberg-viewport');
+      const words = ["Past Participle", "Third Person -s", "Subjunctive", "Grammar Rule 14", "Preposition Matrix"];
+      words.forEach((word, i) => {
+        setTimeout(() => {
+          const el = document.createElement('div');
+          el.className = 'melting-drill-word';
+          el.textContent = word;
+          el.style.top = `${12 + Math.random() * 8}%`;
+          el.style.left = `${45 + (Math.random() - 0.5) * 20}%`;
+          viewport.appendChild(el);
+          setTimeout(() => el.remove(), 2000);
+        }, i * 200);
+      });
+    }
+
+    function simulateComprehensibleInput() {
+      playSuccessChime();
+      const container = document.getElementById('bubbles-container');
+      const chunks = ["Picture Story", "Morning Coffee", "Audio Cartoon", "Walk in the Park", "Funny Joke", "Here & Now", "Dialogue", "Friendly Chat"];
+      chunks.forEach((chunk, i) => {
+        setTimeout(() => {
+          playBubblePop();
+          const bubble = document.createElement('div');
+          bubble.className = 'bubble-chunk';
+          bubble.textContent = `🫧 ${chunk}`;
+          bubble.style.left = `${20 + Math.random() * 60}%`;
+          bubble.style.animationDuration = `${3.5 + Math.random() * 1.5}s`;
+          container.appendChild(bubble);
+          setTimeout(() => bubble.remove(), 4500);
+        }, i * 250);
+      });
+
+      // Float the iceberg slightly higher
+      const svg = document.getElementById('iceberg-svg');
+      svg.style.transform = 'translateY(-14px)';
+      setTimeout(() => {
+        svg.style.transform = 'translateY(0)';
+      }, 2500);
+    }
+
+    /* ===================================================================
+       SLIDE 5: SPLIT-SCREEN COFFEE SHOP ENCOUNTER
+       =================================================================== */
+    function triggerMonitorDemo(type) {
+      if (type === 'stutter') {
+        playErrorBuzz();
+        const bubble = document.getElementById('speech-bubble-left');
+        bubble.textContent = "I... uh... would having want... no, am wanted coffee...";
+        speakNatural("I... uh... would having want... no, am wanted coffee...", 0.65, 0.9);
+      } else {
+        playSuccessChime();
+        const bubble = document.getElementById('speech-bubble-right');
+        bubble.textContent = "Could I get a large iced cappuccino, please?";
+        speakNatural("Could I get a large iced cappuccino, please?", 0.9, 1.05);
+      }
+    }
+
+    /* ===================================================================
+       SLIDE 6: AI NURTURER QUICK DOZEN
+       =================================================================== */
+    const DOZEN_SEQUENCE = [
+      { id: "boots", name: "black boots", prompt: "Find the boots. Where are the black boots?", praise: "Yes, those are the black boots! Now, show me the red scarf." },
+      { id: "scarf", name: "red scarf", prompt: "Where is the red scarf?", praise: "Terrific! You found the red scarf. Where is the coffee mug?" },
+      { id: "mug", name: "coffee mug", prompt: "Where is the hot coffee mug?", praise: "Great job! That's the coffee mug. Find the blue umbrella." },
+      { id: "umbrella", name: "umbrella", prompt: "Where is the blue umbrella?", praise: "Excellent! You found the umbrella. Show me the school backpack." },
+      { id: "backpack", name: "backpack", prompt: "Where is the backpack?", praise: "Well done! That's the green backpack. Find the brass key." },
+      { id: "key", name: "brass key", prompt: "Find the brass key. Where is the key?", praise: "Spot on! That is the brass key. Show me the green apple." },
+      { id: "apple", name: "green apple", prompt: "Where is the green apple?", praise: "Yes, that's the juicy green apple! Finally, find the bicycle." },
+      { id: "bicycle", name: "bicycle", prompt: "Show me the yellow bicycle.", praise: "Fantastic! You completed the Quick Dozen without memorizing a single grammar rule!" }
+    ];
+    let currentDozenIndex = 0;
+
+    function speakCurrentDozenPrompt() {
+      const step = DOZEN_SEQUENCE[currentDozenIndex];
+      if (step) {
+        document.getElementById('dozen-ai-script').textContent = `"${step.prompt}"`;
+        speakNatural(step.prompt, 0.85, 1.0);
+      }
+    }
+
+    function handleDozenClick(itemId) {
+      const target = DOZEN_SEQUENCE[currentDozenIndex];
+      const card = document.querySelector(`.dozen-item-card[data-item="${itemId}"]`);
+      if (target && target.id === itemId) {
+        playSuccessChime();
+        card.classList.add('correct-found');
+        document.getElementById('dozen-ai-script').textContent = `"${target.praise}"`;
+        speakNatural(target.praise, 0.88, 1.05);
+        currentDozenIndex = (currentDozenIndex + 1) % DOZEN_SEQUENCE.length;
+      } else {
+        playErrorBuzz();
+        card.classList.add('shake-red');
+        setTimeout(() => card.classList.remove('shake-red'), 400);
+      }
+    }
+
+    /* ===================================================================
+       SLIDE 7: RECAST & EXPAND (NO RED PENS)
+       =================================================================== */
+    const PRESET_RECASTS = {
+      "Yesterday I go market.": {
+        recast: "Ah, nice! You went to the market yesterday! What did you buy?",
+        speech: "Ah, nice! You went to the market yesterday! What did you buy?"
+      },
+      "She have two cat.": {
+        recast: "Oh, she has two cats! Are they playful?",
+        speech: "Oh, she has two cats! Are they playful?"
+      },
+      "He no like tea.": {
+        recast: "Right, he doesn't like tea at all! Does he prefer coffee?",
+        speech: "Right, he doesn't like tea at all! Does he prefer coffee?"
+      },
+      "Boy run road.": {
+        recast: "Ah, yes! The young boy is running down the busy road! Where is he headed?",
+        speech: "Ah, yes! The young boy is running down the busy road! Where is he headed?"
+      }
+    };
+
+    function testPresetRecast(phrase) {
+      document.getElementById('current-student-utterance').textContent = `"${phrase}"`;
+      document.getElementById('teacher-custom-speech').value = phrase;
+      const data = PRESET_RECASTS[phrase] || {
+        recast: `Yes! You said: ${phrase}. Tell me more!`,
+        speech: `Yes! Tell me more!`
+      };
+      playSuccessChime();
+      document.getElementById('nurturer-recast-text').innerHTML = `
+        "${data.recast}"
+        <div style="color: #86efac; font-size: 0.78rem; margin-top: 6px;">Validates meaning + Models natural syntax.</div>
+      `;
+      speakNatural(data.speech, 0.85, 1.05);
+    }
+
+    function recastCustomTeacherInput() {
+      const input = document.getElementById('teacher-custom-speech').value.trim();
+      if (!input) return;
+      document.getElementById('current-student-utterance').textContent = `"${input}"`;
+
+      // Smart heuristic recast simulation
+      let recast = "Yes, exactly! ";
+      if (input.toLowerCase().includes("go market")) {
+        recast = "Yes! You went to the market! What did you pick up?";
+      } else if (input.toLowerCase().includes("run")) {
+        recast = "Ah, yes! He is running fast down the road! Is he catching the bus?";
+      } else if (input.toLowerCase().includes("have")) {
+        recast = "Oh, she has them! Tell me what they look like.";
+      } else {
+        recast = `Ah, yes! You're telling me about that. What happened next?`;
+      }
+
+      playSuccessChime();
+      document.getElementById('nurturer-recast-text').innerHTML = `
+        "${recast}"
+        <div style="color: #86efac; font-size: 0.78rem; margin-top: 6px;">Validates meaning + Models natural syntax.</div>
+      `;
+      speakNatural(recast, 0.85, 1.05);
+    }
+
+    /* ===================================================================
+       SLIDE 8: COPY SYSTEM PROMPT TO CLIPBOARD
+       =================================================================== */
+    function copySystemPrompt() {
+      const text = document.getElementById('system-prompt-text').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        playSuccessChime();
+        const toast = document.getElementById('copy-toast');
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2800);
+      }).catch(() => {
+        // Fallback
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        playSuccessChime();
+        const toast = document.getElementById('copy-toast');
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2800);
+      });
+    }
+
+    // Initialize UI on load
+    updateDeckUI();
+  </script>
+</body>
+</html>
