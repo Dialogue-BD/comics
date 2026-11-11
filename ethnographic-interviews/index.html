@@ -2723,11 +2723,20 @@ body.bangla .bn-inline{display:inline}
 .scn-body{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s4);align-items:start;min-width:0}
 .scn-left{display:flex;flex-direction:column;align-items:center;gap:var(--s3);min-width:0}
 
-/* the comic: six squares stacked in one frame, one on at a time */
+/* One intact comic, centred before the camera pans to the spoken panel. */
 .scn-view{position:relative;width:100%;max-width:calc(560px*var(--ui));aspect-ratio:1/1;
   border-radius:calc(12px*var(--ui));overflow:hidden;background:var(--panel);cursor:pointer;
   box-shadow:0 0 0 1px var(--rule),0 10px 28px rgba(16,61,33,.14)}
 .scn-view:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.scn-canvas{position:absolute;left:50%;top:50%;transform-origin:center;
+  transform:translate(-50%,-50%) translate(var(--pan-x,0px),var(--pan-y,0px)) scale(var(--zoom,1));
+  transition:transform .6s ease;pointer-events:none}
+.scn-canvas>img{display:block;width:100%;height:100%;object-fit:contain}
+.scn-canvas.is-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr))}
+.scn-canvas.is-grid>img{min-width:0;min-height:0}
+.scn-focus{position:absolute;width:50%;height:calc(100% / 3);border:2px solid var(--gold);
+  box-sizing:border-box;pointer-events:none}
+@media(prefers-reduced-motion:reduce){.scn-canvas{transition:none}}
 .scn-pic{position:absolute;inset:0;opacity:0;transition:opacity .6s ease}
 .scn-pic.on{opacity:1}
 .scn-pic picture,.scn-pic img{display:block;width:100%;height:100%;object-fit:cover}
