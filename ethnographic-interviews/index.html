@@ -2803,6 +2803,7 @@ body.bangla .bn-inline{display:inline}
 .scn-words .tw,.scn-words .tp{position:relative;z-index:1;color:var(--tx-muted);opacity:.55;transition:opacity .12s ease,color .12s ease}
 .scn-words .tw.is-said,.scn-words .tp.is-said{opacity:1;color:var(--heading)}
 .scn-words .tw.is-now{opacity:1;color:var(--ink)}
+.scn-kara.is-ready .tw,.scn-kara.is-ready .tp{opacity:1;color:var(--heading)}
 .scn-word-glide{position:absolute;z-index:0;left:0;top:0;width:0;height:0;border-radius:4px;
   background:var(--gold);box-shadow:0 0 0 2px var(--gold);opacity:0;pointer-events:none;
   transform:translate3d(0,0,0);transition:transform .14s cubic-bezier(.22,.68,.2,1),
@@ -6739,17 +6740,19 @@ function scnPaint(){
 
   const kara = root.querySelector('.scn-kara');
   if (kara){
-    const li = L ? mine.li : -1;
+    const line = L || S.lines[0];
+    const li = L ? mine.li : 0;
+    kara.classList.toggle('is-ready', !mine);
     if (kara.dataset.li !== String(li)){
       kara.dataset.li = li;
       kara.innerHTML = '';
-      if (L){
-        const who = scnWho(L);
-        const row = el('div', 'scn-kara-in is-' + scnSide(L));
+      if (line){
+        const who = scnWho(line);
+        const row = el('div', 'scn-kara-in is-' + scnSide(line));
         row.appendChild(scnFace(who, 'is-kara'));
         const w = el('div', 'scn-kara-t');
         w.appendChild(el('span', 'scn-name', who.name));
-        w.appendChild(scnLineWords(scnMap(L).txt));
+        w.appendChild(scnLineWords(scnMap(line).txt));
         row.appendChild(w);
         kara.appendChild(row);
       } else {
