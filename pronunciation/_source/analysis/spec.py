@@ -13,10 +13,19 @@ WORDS = {
  'dec-happy':('hap·py','20'), 'dec-unhappy':('un·hap·py','120'), 'dec-agree':('a·gree','02'),
  'dec-disagree':('dis·a·gree','102'), 'dec-rewrite':('re·write','12'), 'dec-happiness':('hap·pi·ness','200'),
  'dec-quickly':('quick·ly','20'), 'dec-transport':('trans·port','21'), 'dec-interrupt':('in·ter·rupt','102'),
+ # November 2026 (ElevenLabs, eleven_tts.sh): a third member of the photograph family, and
+ # two more words for each ending that points to the beat
+ 'dec-photographer':('pho·tog·ra·pher','0200'),
+ 'dec-education':('ed·u·ca·tion','1020'), 'dec-conversation':('con·ver·sa·tion','1020'),
+ 'dec-discussion':('dis·cus·sion','020'), 'dec-permission':('per·mis·sion','020'),
+ 'dec-economic':('e·co·nom·ic','1020'), 'dec-scientific':('sci·en·tif·ic','1020'),
+ 'dec-university':('u·ni·ver·si·ty','10200'), 'dec-electricity':('e·lec·tric·i·ty','11200'),
+ 'dec-enormous':('e·nor·mous','020'), 'dec-delicious':('de·li·cious','020'),
  # vowels
  'vow-team':('team','2'),'vow-tim':('Tim','2'),'vow-fool':('fool','2'),'vow-full':('full','2'),'vow-beat':('beat','2'),
  'vow-bit':('bit','2'),'vow-pool':('pool','2'),'vow-pull':('pull','2'),
  'vow-about':('a·bout','02'),'vow-sofa':('so·fa','20'),'vow-supply':('sup·ply','02'),
+ 'vow-banana':('ba·na·na','020'), 'vow-today':('to·day','02'), 'vow-problem':('prob·lem','20'),
  # consonants
  'con-fan':('fan','2'),'con-van':('van','2'),'con-safe':('safe','2'),'con-save':('save','2'),'con-sip':('sip','2'),'con-zip':('zip','2'),
  'con-price':('price','2'),'con-prize':('prize','2'),'con-jew':('Jew','2'),'con-zoo':('zoo','2'),'con-west':('west','2'),'con-best':('best','2'),
@@ -49,6 +58,15 @@ SENTENCES = {
  'pro-sent3': "Let's:1 *eat:2 | *Grand·ma:21",
  'pro-nopause': "Let's:1 eat:1 *Grand·ma:21",
  'pro-sent4': 'The:0 teach·er:20 who:0 helped:1 me:0 the:0 *most:2 | was:0 my:0 *Eng·lish:20 teach·er:10 | in:0 high:1 *school:2',
+ # November 2026 (ElevenLabs): four more thought-group sentences, and two pairs where a pause changes the meaning
+ 'pro-sent5': "If:0 it:0 rains:1 *to·mor·row:020 | we'll:1 stay:1 at:0 *home:2",
+ 'pro-sent6': 'I:1 bought:1 *rice:2 | *eggs:2 | *on·ions:20 | and:0 *tea:2',
+ 'pro-sent7': 'When:0 I:1 ar·rived:02 at:0 the:0 *sta·tion:20 | the:0 train:1 had:0 al·read·y:120 *left:2',
+ 'pro-sent8': 'My:0 *sis·ter:20 | who:0 lives:1 in:0 *Dha·ka:20 | is:0 a:0 *doc·tor:20',
+ 'pro-john-comma': "I:1 don't:1 *know:2 | *John:2",
+ 'pro-john': "I:1 don't:1 know:1 *John:2",
+ 'pro-teacher-said': 'The:0 teach·er:20 said:1 the:0 stu·dent:20 is:0 *la·zy:20',
+ 'pro-teacher-comma': 'The:0 *teach·er:20 | said:1 the:0 *stu·dent:20 | is:0 *la·zy:20',
  # compound noun vs adjective + noun (each recording says "a ...")
  'cmp-blackboard-n': 'a:0 *black·board:21',
  'cmp-black-board-p': 'a:0 black:1 *board:2',
@@ -56,6 +74,11 @@ SENTENCES = {
  'cmp-green-house-p': 'a:0 green:1 *house:2',
  'cmp-hotdog-n': 'a:0 *hot·dog:21',
  'cmp-hot-dog-p': 'a:0 hot:1 *dog:2',
+ # noun / verb pairs: the beat tells you which (November 2026, ElevenLabs)
+ 'nv-record-n': 'a:0 *rec·ord:20', 'nv-record-v': 'to:0 *re·cord:02',
+ 'nv-present-n': 'a:0 *pres·ent:20', 'nv-present-v': 'to:0 *pre·sent:02',
+ 'nv-object-n': 'an:0 *ob·ject:20', 'nv-object-v': 'to:0 *ob·ject:02',
+ 'nv-increase-n': 'an:0 *in·crease:20', 'nv-increase-v': 'to:0 *in·crease:02',
  # linking
  'lnk-go-on': 'Go:1 *on:2',
  'lnk-an-apple': 'an:0 *ap·ple:20',

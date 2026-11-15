@@ -206,6 +206,8 @@ kbd{font:700 .85em var(--font-ui);border:1.5px solid var(--ink);border-bottom-wi
 .tb-sub{margin:0;font:700 calc(.84rem*var(--ui)) var(--font-ui);color:var(--tx-muted)}
 .tb-sub .bn{display:inline}
 .tb-btns{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+/* an ending with several example words: the buttons sit in a wrapping row, not a tall column */
+.tb-btns.many{flex-direction:row;flex-wrap:wrap;justify-content:flex-end;max-width:min(46vw,440px)}
 .tb-flow{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2em .6em}
 .tb-flow .arrow{font-size:1.6rem;color:var(--coral)}
 .tb-line{margin-top:4px}
@@ -245,6 +247,7 @@ kbd{font:700 .85em var(--font-ui);border:1.5px solid var(--ink);border-bottom-wi
 .cmp-word.inline{font-size:1.15em}
 .cw-big{color:var(--forest);background:linear-gradient(transparent 80%,var(--gold-hi) 80%,var(--gold-hi) 95%,transparent 95%)}
 .cw-small{font-weight:600}
+.cw-pre{font-weight:400;font-size:.55em;letter-spacing:0;opacity:.7}
 .cmp-mean{font:700 calc(.86rem*var(--ui)) var(--font-ui);color:var(--tx-muted)}
 .cmp-play{display:inline-flex;align-items:center;gap:.35em;font:800 .76rem var(--font-ui);letter-spacing:.06em;text-transform:uppercase}
 .cmp-play .ico{width:.9em;height:.9em}

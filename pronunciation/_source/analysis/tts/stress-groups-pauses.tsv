@@ -1,0 +1,10 @@
+# The thought-group lines again, with the pauses written in: ElevenLabs hardly pauses at a
+# comma, and these clips are about the pause. Run with 6 takes, so takes 4-6 are these
+# (eleven_tts.sh keeps takes 1-3 from tts/stress-groups.tsv); pick_takes.py then keeps
+# the take with the right number of clear pauses.
+pro-sent5	If it rains tomorrow, <break time="0.35s" /> we'll stay at home.
+pro-sent6	I bought rice, <break time="0.3s" /> eggs, <break time="0.3s" /> onions, <break time="0.3s" /> and tea.
+pro-sent7	When I arrived at the station, <break time="0.35s" /> the train had already left.
+pro-sent8	My sister, <break time="0.3s" /> who lives in Dhaka, <break time="0.3s" /> is a doctor.
+pro-john-comma	I don't know, <break time="0.4s" /> John.
+pro-teacher-comma	The teacher, <break time="0.3s" /> said the student, <break time="0.3s" /> is lazy.

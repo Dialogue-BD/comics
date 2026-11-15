@@ -1,0 +1,34 @@
+# Lines for eleven_tts.sh: clip id, a tab, then exactly what the voice says (see spec.py).
+# Word stress: single words
+dec-photographer	Photographer.
+dec-education	Education.
+dec-conversation	Conversation.
+dec-discussion	Discussion.
+dec-permission	Permission.
+dec-economic	Economic.
+dec-scientific	Scientific.
+dec-university	University.
+dec-electricity	Electricity.
+dec-enormous	Enormous.
+dec-delicious	Delicious.
+vow-banana	Banana.
+vow-today	Today.
+vow-problem	Problem.
+# Noun or verb: the little word in front makes the voice choose
+nv-record-n	a record.
+nv-record-v	to record.
+nv-present-n	a present.
+nv-present-v	to present.
+nv-object-n	an object.
+nv-object-v	to object.
+nv-increase-n	an increase.
+nv-increase-v	to increase.
+# Thought groups: the commas are where the voice pauses
+pro-sent5	If it rains tomorrow, we'll stay at home.
+pro-sent6	I bought rice, eggs, onions, and tea.
+pro-sent7	When I arrived at the station, the train had already left.
+pro-sent8	My sister, who lives in Dhaka, is a doctor.
+pro-john-comma	I don't know, John.
+pro-john	I don't know John.
+pro-teacher-said	The teacher said the student is lazy.
+pro-teacher-comma	The teacher, said the student, is lazy.
