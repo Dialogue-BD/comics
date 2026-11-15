@@ -4,6 +4,9 @@
 #   ./eleven_tts.sh tts/linking.tsv          # 3 takes per clip per voice
 #   ./eleven_tts.sh tts/linking.tsv 5        # 5 takes
 #
+# A line may have a third column, the words to keep: the voice says the whole sentence (a
+# primer that gives it the meaning) and pick_takes.py cuts those words out afterwards.
+#
 # Run it on your own computer (it needs your ElevenLabs key; the key is asked for and never
 # saved). It writes   tts-takes/<voice>/<clip-id>-<take>.mp3   next to this script and skips
 # takes that already exist, so it is safe to run again after a network hiccup.
@@ -100,7 +103,7 @@ explain() {   # http-code reply-file: say what a failure usually means, once per
   if [ -n "$why" ] && [ "$why" != "$said" ]; then echo "    → $why"; said="$why"; fi
 }
 
-while IFS=$'\t' read -r id text; do
+while IFS=$'\t' read -r id text keep; do      # keep: words pick_takes.py cuts out (not spoken alone)
   case "$id" in ''|\#*) continue;; esac
   [ -z "${text:-}" ] && continue
   echo "$id — \"$text\""
