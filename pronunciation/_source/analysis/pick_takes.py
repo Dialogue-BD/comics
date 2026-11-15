@@ -160,14 +160,16 @@ if __name__ == '__main__':
         i = argv.index('--choose'); k, v, t = argv[i + 1].split(':'); forced[(k, v)] = int(t); del argv[i:i + 2]
     argv = [a for a in argv if a != '--write']
     work = {v: os.environ.get(f'VOICELAB_WORK_{v.upper()}', f'/home/claude/work-{v}') for v in ('alice', 'brian')}
-    rows = list(lines(argv[0]))
+    # an id ending @alice / @brian belongs to that voice only (each voice's own accent)
+    rows = [(k.partition('@')[0], text, keep, (k.partition('@')[2],) if '@' in k else ('alice', 'brian'))
+            for k, text, keep in lines(argv[0])]
     meas = {}
-    for k, text, keep in rows:
+    for k, text, keep, voices in rows:
         if keep:
             sent = words_of(text); ws, pauses = sent, []
         else:
             ws, levels, pauses = plan(k) if (k in WORDS or k in SENTENCES) else (words_of(text), None, [])
-        for v in ('alice', 'brian'):
+        for v in voices:
             d = os.path.join(TAKES, v)
             takes = sorted(f for f in os.listdir(d) if f.startswith(k + '-') and f[len(k) + 1:-4].isdigit())
             ms = {}
@@ -179,8 +181,8 @@ if __name__ == '__main__':
             meas[(k, v)] = (ms, pauses, keep)
     # a pair cut from primers (…-n / …-p): the beat-first take that leans furthest forward and
     # the beat-second take that leans furthest back, so the difference comes through
-    for k, text, keep in rows:
-        for v in ('alice', 'brian'):
+    for k, text, keep, voices in rows:
+        for v in voices:
             ms, pauses, keep = meas[(k, v)]
             if not ms: print(f'{k:22s} {v}: no takes'); continue
             med = statistics.median(m['span'] for m in ms.values())
