@@ -1,0 +1,7 @@
+# Accent pairs where ElevenLabs said both voices the same way: each voice gets its own accent's
+# pronunciation, spelled out in IPA (<phoneme> tags make eleven_tts.sh use the Turbo model).
+# An id ending @alice / @brian is recorded in that voice only.
+acc-tomato@alice	<phoneme alphabet="ipa" ph="təˈmɑːtəʊ">tomato</phoneme>.
+acc-tomato@brian	<phoneme alphabet="ipa" ph="təˈmeɪɾoʊ">tomato</phoneme>.
+acc-schedule@alice	<phoneme alphabet="ipa" ph="ˈʃɛdjuːl">schedule</phoneme>.
+acc-schedule@brian	<phoneme alphabet="ipa" ph="ˈskɛdʒuːl">schedule</phoneme>.
