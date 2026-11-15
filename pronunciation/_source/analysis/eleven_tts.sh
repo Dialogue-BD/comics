@@ -32,6 +32,13 @@ if [ -z "$KEY" ]; then
   read -rs KEY; echo
 fi
 [ -z "$KEY" ] && { echo "No key, nothing to do."; exit 1; }
+case "$KEY" in
+  sk_*) ;;
+  *) echo "That doesn't look like an API key: real keys start with sk_. The short code shown in"
+     echo "the list of keys is only the key's name tag (its ID). Create a new key (or rotate one)"
+     echo "and copy the long sk_... value it shows you once, then run this again."
+     exit 1;;
+esac
 
 made=0; kept=0; failed=0; streak=0; said=""
 mkdir -p tts-takes; LOG="tts-takes/errors.log"
@@ -70,6 +77,7 @@ explain() {   # http-code reply-file: say what a failure usually means, once per
   local reply; reply=$(head -c 2000 "$2" 2>/dev/null)
   local why=""
   case "$1:$reply" in
+    *api_key_id_used_as_api_key*) why="That was the key's ID, not the key. Real keys start with sk_ and are shown once, when the key is created or rotated.";;
     000:*) why="curl could not reach ElevenLabs at all (no internet, a VPN or a firewall).";;
     *missing_permissions*) why="The key works but is not allowed to make speech. On the API keys page, edit the key and turn on Text to Speech access (or make a new key with no restrictions).";;
     *paid_plan_required*|*payment_required*|402:*) why="Your ElevenLabs plan does not allow this through the API (for example, library voices on the free plan).";;
