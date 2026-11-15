@@ -28,10 +28,15 @@ MODEL="${ELEVEN_MODEL:-eleven_multilingual_v2}"
 
 KEY="${ELEVENLABS_API_KEY:-}"
 if [ -z "$KEY" ]; then
-  printf "ElevenLabs API key (typing stays hidden): "
+  echo "Copy your ElevenLabs key (the long sk_... value), then press Enter here."
+  printf "(Or paste it now — typing stays hidden — and press Enter.) "
   read -rs KEY; echo
+  if [ -z "$KEY" ] && command -v pbpaste >/dev/null; then KEY="$(pbpaste)"; echo "Using the key on the clipboard."; fi
 fi
+# Drop spaces, line breaks and quotes that come along with a copy.
+KEY="$(printf '%s' "$KEY" | tr -d ' \t\r\n"'"'"'')"
 [ -z "$KEY" ] && { echo "No key, nothing to do."; exit 1; }
+echo "Key: ${#KEY} characters, ending …${KEY: -4}  (compare with the key on the ElevenLabs page)"
 case "$KEY" in
   sk_*) ;;
   *) echo "That doesn't look like an API key: real keys start with sk_. The short code shown in"
@@ -64,6 +69,12 @@ record() {   # voice-name voice-id clip-id text take
     head -c 300 "$TMP"; echo
     { printf '%s  %s %s take %s  HTTP %s  ' "$(date '+%F %T')" "$1" "$3" "$5" "$code"; head -c 1000 "$TMP"; echo; } >> "$LOG"
     explain "$code" "$TMP"
+    if grep -q '"authentication_error"' "$TMP" 2>/dev/null; then
+      echo; echo "ElevenLabs refused the key itself, so there is no point trying the rest."
+      echo "Check the length and last four characters above against the ElevenLabs page."
+      echo "If they differ, the copy was cut short: copy the key again (or make a new one)."
+      rm -f "$TMP"; exit 1
+    fi
     if [ "$streak" -ge 4 ]; then
       echo; echo "Four failures in a row, so I stopped. The replies are saved in $(pwd)/$LOG"
       rm -f "$TMP"; exit 1
@@ -84,7 +95,7 @@ explain() {   # http-code reply-file: say what a failure usually means, once per
     *quota_exceeded*|*insufficient*credit*) why="The account is out of credits for this month.";;
     *voice_not_found*|404:*) why="ElevenLabs does not know that voice id. Set ALICE_VOICE_ID / BRIAN_VOICE_ID to the voices you used before.";;
     429:*) why="Too many requests at once; wait a minute and run it again.";;
-    401:*) why="The key was refused: check it was copied whole, with no space before or after.";;
+    401:*) why="ElevenLabs does not recognise this key: usually a copy that was cut short, or a key that was rotated or deleted since.";;
   esac
   if [ -n "$why" ] && [ "$why" != "$said" ]; then echo "    → $why"; said="$why"; fi
 }
