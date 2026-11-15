@@ -100,7 +100,8 @@ def edge(y, sr, t, back=0.05, fwd=0.02):
 def cut(m, path, sentence, keep):
     """Keep only the words `keep` from a take of the whole sentence (the primer gives the voice
     the meaning; the clip is just the words). Adds the phones of the kept words for lean()."""
-    al = ps_align(path, sentence)
+    try: al = ps_align(path, sentence)
+    except Exception: al = []          # a take of a different primer (an earlier line) will not align
     if len(al) != len(sentence): m['ok'] = False; return m
     ks = keep.lower().split()
     i = next((j for j in range(len(sentence) - len(ks) + 1) if sentence[j:j + len(ks)] == ks), None)

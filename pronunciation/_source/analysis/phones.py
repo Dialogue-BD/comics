@@ -12,7 +12,7 @@ sys.path.insert(0, HERE)
 from analyse import analyse_clip, STEP
 from spec import WORDS, SAY
 from finalize import VOWEL, ASP
-from voice import app_json
+from voice import app_json, VOICE
 import phon
 
 APP = app_json()
@@ -47,11 +47,19 @@ def phones_for(k):
     return out
 
 
+# Alice's British accent words were cut by hand from spectrograms: espeak's guide is American
+# (it would give s-k-E-dZ and t@meI4oU), so phones_for() does not run for these.
+MANUAL_PH = {'alice': {
+    'acc-schedule': [['S', 0.04, 0.18], ['E', 0.18, 0.27], ['d', 0.27, 0.31], ['j', 0.31, 0.36], ['u', 0.36, 0.46], ['l', 0.46, 0.55]],
+    'acc-tomato': [['t', 0.04, 0.08], ['@', 0.08, 0.13], ['m', 0.13, 0.26], ['A', 0.26, 0.43], ['t', 0.43, 0.53], ['@U', 0.53, 0.83]],
+}}
+
+
 if __name__ == '__main__':
     pref = sys.argv[1:] or ['vow-', 'con-', 'asp-', 'th-', 'clu-', 'acc-']
     app = json.load(open(APP))
     for k in WORDS:
         if any(k.startswith(p) for p in pref) and k in app:
-            app[k]['ph'] = phones_for(k)
+            app[k]['ph'] = MANUAL_PH.get(VOICE, {}).get(k) or phones_for(k)
             print(k, ' '.join(f'{p}{a:.2f}-{b:.2f}' for p, a, b in app[k]['ph']))
     open(APP, 'w').write(json.dumps(dict(sorted(app.items())), separators=(',', ':')))
