@@ -1,0 +1,10 @@
+# One thing, or two words? Each pair is said inside a primer sentence that leaves the voice no
+# choice: the compound at the end of a sentence about the thing (beat first), the describing
+# word after a second adjective (beat on the noun). pick_takes.py cuts out the third column.
+# Columns: clip id, what the voice says, the words to keep.
+cmp-blackboard-n	The teacher wrote on the blackboard.	blackboard
+cmp-black-board-p	I found an old, black board.	black board
+cmp-greenhouse-n	The tomatoes grow in the greenhouse.	greenhouse
+cmp-green-house-p	They live in a small, green house.	green house
+cmp-hotdog-n	For lunch, I had a hotdog.	hotdog
+cmp-hot-dog-p	He lay in the sun all day. He was a tired, hot dog.	hot dog

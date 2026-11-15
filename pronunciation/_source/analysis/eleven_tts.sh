@@ -4,6 +4,9 @@
 #   ./eleven_tts.sh tts/linking.tsv          # 3 takes per clip per voice
 #   ./eleven_tts.sh tts/linking.tsv 5        # 5 takes
 #
+# A line may have a third column, the words to keep: the voice says the whole sentence (a
+# primer that gives it the meaning) and pick_takes.py cuts those words out afterwards.
+#
 # Run it on your own computer (it needs your ElevenLabs key; the key is asked for and never
 # saved). It writes   tts-takes/<voice>/<clip-id>-<take>.mp3   next to this script and skips
 # takes that already exist, so it is safe to run again after a network hiccup.
@@ -25,6 +28,9 @@ fi
 ALICE="${ALICE_VOICE_ID:-Xb7hH8MSUJpSbSDYk0k2}"   # Alice — British
 BRIAN="${BRIAN_VOICE_ID:-nPczCjzI2devNBz1zQrb}"   # Brian — American
 MODEL="${ELEVEN_MODEL:-eleven_multilingual_v2}"
+# <phoneme> tags (to say a word one exact way, e.g. a British or American "tomato") only work
+# on ElevenLabs' Turbo / Flash models, so a line that has one is sent to this model instead.
+PHONEME_MODEL="${ELEVEN_PHONEME_MODEL:-eleven_turbo_v2}"
 
 KEY="${ELEVENLABS_API_KEY:-}"
 if [ -z "$KEY" ]; then
@@ -55,7 +61,9 @@ record() {   # voice-name voice-id clip-id text take
   mkdir -p "tts-takes/$1"
   local text; text=$(printf '%s' "$4" | sed 's/\\/\\\\/g; s/"/\\"/g')
   local body
-  body=$(printf '{"text":"%s","model_id":"%s","seed":%d,"voice_settings":{"stability":0.5,"similarity_boost":0.75,"style":0,"use_speaker_boost":true}}' "$text" "$MODEL" "$5")
+  local model="$MODEL"
+  case "$4" in *"<phoneme"*) model="$PHONEME_MODEL";; esac
+  body=$(printf '{"text":"%s","model_id":"%s","seed":%d,"voice_settings":{"stability":0.5,"similarity_boost":0.75,"style":0,"use_speaker_boost":true}}' "$text" "$model" "$5")
   local code
   code=$(curl -sS -o "$TMP" -w '%{http_code}' -X POST \
     "https://api.elevenlabs.io/v1/text-to-speech/$2?output_format=mp3_44100_128" \
@@ -100,13 +108,16 @@ explain() {   # http-code reply-file: say what a failure usually means, once per
   if [ -n "$why" ] && [ "$why" != "$said" ]; then echo "    → $why"; said="$why"; fi
 }
 
-while IFS=$'\t' read -r id text; do
+while IFS=$'\t' read -r id text keep; do      # keep: words pick_takes.py cuts out (not spoken alone)
   case "$id" in ''|\#*) continue;; esac
   [ -z "${text:-}" ] && continue
-  echo "$id — \"$text\""
+  # an id ending @alice or @brian is recorded in that voice only (e.g. each voice's own accent)
+  only=""
+  case "$id" in *@alice) only=alice; id="${id%@alice}";; *@brian) only=brian; id="${id%@brian}";; esac
+  echo "$id${only:+ ($only)} — \"$text\""
   for n in $(seq 1 "$TAKES"); do
-    record alice "$ALICE" "$id" "$text" "$n"
-    record brian "$BRIAN" "$id" "$text" "$n"
+    [ "$only" != brian ] && record alice "$ALICE" "$id" "$text" "$n"
+    [ "$only" != alice ] && record brian "$BRIAN" "$id" "$text" "$n"
   done
 done < "$LIST"
 rm -f "$TMP"

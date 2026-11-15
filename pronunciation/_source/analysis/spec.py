@@ -68,12 +68,14 @@ SENTENCES = {
  'pro-teacher-said': 'The:0 teach·er:20 said:1 the:0 stu·dent:20 is:0 *la·zy:20',
  'pro-teacher-comma': 'The:0 *teach·er:20 | said:1 the:0 *stu·dent:20 | is:0 *la·zy:20',
  # compound noun vs adjective + noun (each recording says "a ...")
- 'cmp-blackboard-n': 'a:0 *black·board:21',
- 'cmp-black-board-p': 'a:0 black:1 *board:2',
- 'cmp-greenhouse-n': 'a:0 *green·house:21',
- 'cmp-green-house-p': 'a:0 green:1 *house:2',
- 'cmp-hotdog-n': 'a:0 *hot·dog:21',
- 'cmp-hot-dog-p': 'a:0 hot:1 *dog:2',
+ # (November 2026: re-recorded inside primer sentences and cut, so the clip is just the words;
+ # see tts/compounds.tsv)
+ 'cmp-blackboard-n': '*black·board:21',
+ 'cmp-black-board-p': 'black:1 *board:2',
+ 'cmp-greenhouse-n': '*green·house:21',
+ 'cmp-green-house-p': 'green:1 *house:2',
+ 'cmp-hotdog-n': '*hot·dog:21',
+ 'cmp-hot-dog-p': 'hot:1 *dog:2',
  # noun / verb pairs: the beat tells you which (November 2026, ElevenLabs)
  'nv-record-n': 'a:0 *rec·ord:20', 'nv-record-v': 'to:0 *re·cord:02',
  'nv-present-n': 'a:0 *pres·ent:20', 'nv-present-v': 'to:0 *pre·sent:02',
