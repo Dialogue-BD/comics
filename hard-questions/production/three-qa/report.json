@@ -1,0 +1,189 @@
+{
+  "timeline": {
+    "scenes": 27,
+    "transitions": 18,
+    "details": [
+      {
+        "id": "kamille",
+        "kind": "diagnosis",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "kamille",
+        "kind": "waiting",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "kamille",
+        "kind": "diagnosis",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "robert",
+        "kind": "family",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "robert",
+        "kind": "control",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "robert",
+        "kind": "infrastructure",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "larissa",
+        "kind": "compass",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "larissa",
+        "kind": "thinking",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "larissa",
+        "kind": "writing",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "daniel",
+        "kind": "work",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "daniel",
+        "kind": "research",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "daniel",
+        "kind": "tasks",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "scott",
+        "kind": "growing",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "scott",
+        "kind": "creativity",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "scott",
+        "kind": "time",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "tiffany",
+        "kind": "isolation",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "tiffany",
+        "kind": "empathy",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "tiffany",
+        "kind": "access",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "danielle",
+        "kind": "empathy",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "danielle",
+        "kind": "family",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "danielle",
+        "kind": "connection",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "gwen",
+        "kind": "environment",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "gwen",
+        "kind": "balance",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "gwen",
+        "kind": "nature",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "sarah",
+        "kind": "independence",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "sarah",
+        "kind": "path",
+        "seek": "passed",
+        "reduced": "passed"
+      },
+      {
+        "id": "sarah",
+        "kind": "support",
+        "seek": "passed",
+        "reduced": "passed"
+      }
+    ],
+    "render60FramesMs": 480.8999996185303,
+    "geometries": 151,
+    "textures": 5
+  },
+  "originalSpeed": 1,
+  "viewports": [
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "overflow": false
+    }
+  ],
+  "noWebGL": "matching rendered scene visible",
+  "browserErrors": [],
+  "failedLocalRequests": []
+}

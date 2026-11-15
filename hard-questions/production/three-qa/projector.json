@@ -1,0 +1,10 @@
+{
+  "renderer": "three",
+  "playback": "passed",
+  "keyboardSeek": "passed",
+  "nextVoice": "passed",
+  "fullScreen": "passed",
+  "reducedMotion": "passed",
+  "phoneOverflow": false,
+  "errors": []
+}

@@ -1,6 +1,6 @@
 import {LEVELS,scoreRound,passAccuracy,adapt,nextRound,shuffle} from './game.mjs?v=2';
 import {sceneAt,cueAt,followerAt} from './timing.mjs?v=1';
-import {createStage} from './motion/stage.js?v=1';
+import {createStage} from './motion-player.mjs?v=1';
 
 const $=id=>document.getElementById(id);
 const STORAGE='dialogue-hard-questions-v1';
@@ -209,7 +209,7 @@ function prepareWatch(){
   $('watch-words').replaceChildren(...[...new Map(voice.keywords.map(t=>[t.word,t])).values()].map(t=>{
     const b=node('button',t.word);b.onclick=()=>{$('word-note').textContent=`${t.word}: ${t.meaning}`;const cue=transcript.cues.find(c=>t.start>=c.start&&t.start<=c.end)||transcript.cues.find(c=>c.start>=t.start);play('watch',cue?.start??t.start);};return b;
   }));
-  $('download-srt').href=`subtitles/${voice.id}.srt`;
+  $('download-srt').href=`subtitles/${voice.id}.srt`;$('download-film').href=`films/${voice.id}.mp4?v=three1`;
   $('motion-toggle').setAttribute('aria-pressed',String(reducedMotion));renderWatch(0);
 }
 function timeLabel(seconds){return `${Math.floor(seconds/60)}:${String(Math.floor(seconds%60)).padStart(2,'0')}`;}

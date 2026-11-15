@@ -9,7 +9,7 @@
 <link rel="icon" type="image/png" sizes="48x48" href="../../favicon.png?v=a53d061">
 <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png?v=a53d061">
 <link rel="stylesheet" href="../../dialogue-brand.css">
-<link rel="stylesheet" href="../motion/stage.css?v=1">
+
 <style>
 :root{--forest:#103d21;--night:#06180e;--paper:#f4f1e6;--gold:#e7c178;--line:rgba(143,178,127,.25);color-scheme:dark}
 *{box-sizing:border-box}
@@ -55,7 +55,7 @@ footer{font-size:12px;color:#93a891;margin-top:26px;line-height:1.6}
 footer a{color:#dfe7da}
 button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 .theatre:fullscreen{display:flex;flex-direction:column;justify-content:center;border-radius:0;border:0;background:var(--night)}
-.theatre:fullscreen .hq-stage{max-height:calc(100vh - 170px);aspect-ratio:16/9;width:auto;margin:0 auto}
+.theatre:fullscreen #stage{max-height:calc(100vh - 170px);aspect-ratio:960/430;width:min(100%,calc((100vh - 170px) * 960 / 430));margin:0 auto}
 .theatre:fullscreen #cap span{font-size:clamp(28px,3.4vw,56px)}
 #err{color:#f0a3a0;font-size:14px}
 @media(max-width:640px){header .crumb span{display:none}.captions{padding:12px 10px 16px;min-height:110px}.bar button{padding:0 14px}.bar .time{min-width:0}.hint{display:none}}
@@ -80,16 +80,17 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button id="motion" aria-pressed="false">Reduce motion</button>
     <button id="full">⛶ Full screen</button>
   </div>
+  <p class="download-library"><a href="library.html" style="color:#e7c178">Film library · download MP4s and subtitles →</a></p>
   <p id="err" role="alert" hidden>This recording couldn’t load. Refresh to try again.</p>
   <p class="hint"><kbd>Space</kbd> play / pause · <kbd>←</kbd> <kbd>→</kbd> back or forward 3 seconds · <kbd>F</kbd> full screen · <kbd>N</kbd> next voice. Audio always plays at its original speed.</p>
   <footer>Original interviews and portraits: <a href="https://claude.com/hard-questions" target="_blank" rel="noopener">Anthropic · Hard Questions</a>. The pictures illustrate each speaker’s questions and hopes — they are not predictions about AI. Independent English listening activity by Dialogue.</footer>
 </main>
 <audio id="audio" preload="auto"></audio>
-<script src="../motion/vendor/gsap.min.js"></script>
-<script src="../motion/vendor/DrawSVGPlugin.min.js"></script>
-<script src="../motion/vendor/MotionPathPlugin.min.js"></script>
+
+
+
 <script type="module">
-import { createStage } from '../motion/stage.js?v=1';
+import { createStage } from '../motion-player.mjs?v=1';
 import { cueAt, followerAt } from '../timing.mjs?v=1';
 const $ = id => document.getElementById(id), audio = $('audio');
 const [voices, transcripts] = await Promise.all([fetch('../voices.json').then(r => r.json()), fetch('../transcripts.json').then(r => r.json())]);

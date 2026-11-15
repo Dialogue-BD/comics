@@ -1,0 +1,92 @@
+[
+  {
+    "id": "kamille",
+    "duration": 19.458333,
+    "width": 1280,
+    "height": 720,
+    "currentTime": 10.87373,
+    "speed": 1,
+    "seekable": 19.458333,
+    "error": null
+  },
+  {
+    "id": "robert",
+    "duration": 19.833333,
+    "width": 1280,
+    "height": 720,
+    "currentTime": 11.141279,
+    "speed": 1,
+    "seekable": 19.833333,
+    "error": null
+  },
+  {
+    "id": "larissa",
+    "duration": 31.963,
+    "width": 1280,
+    "height": 720,
+    "currentTime": 17.591676,
+    "speed": 1,
+    "seekable": 31.963,
+    "error": null
+  },
+  {
+    "id": "daniel",
+    "duration": 27.5,
+    "width": 1280,
+    "height": 720,
+    "currentTime": 15.141361,
+    "speed": 1,
+    "seekable": 27.5,
+    "error": null
+  },
+  {
+    "id": "scott",
+    "duration": 19.68,
+    "width": 1280,
+    "height": 720,
+    "currentTime": 10.842364,
+    "speed": 1,
+    "seekable": 19.68,
+    "error": null
+  },
+  {
+    "id": "tiffany",
+    "duration": 22.426,
+    "width": 1280,
+    "height": 720,
+    "currentTime": 12.358985,
+    "speed": 1,
+    "seekable": 22.426,
+    "error": null
+  },
+  {
+    "id": "danielle",
+    "duration": 28,
+    "width": 1280,
+    "height": 720,
+    "currentTime": 15.415774,
+    "speed": 1,
+    "seekable": 28,
+    "error": null
+  },
+  {
+    "id": "gwen",
+    "duration": 16.8,
+    "width": 1280,
+    "height": 720,
+    "currentTime": 9.258841,
+    "speed": 1,
+    "seekable": 16.8,
+    "error": null
+  },
+  {
+    "id": "sarah",
+    "duration": 19.333333,
+    "width": 1280,
+    "height": 720,
+    "currentTime": 10.646041,
+    "speed": 1,
+    "seekable": 19.333333,
+    "error": null
+  }
+]

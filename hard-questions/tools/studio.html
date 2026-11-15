@@ -1,0 +1,9 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Human voices · render studio</title><style>html,body{margin:0;background:#ecede3}canvas{display:block;width:100vw;height:auto}</style><canvas id="film" width="1280" height="720"></canvas><script type="module">
+import {createMotionStudio} from '../motion-3d.mjs';
+const data=await(await fetch('../transcripts.json')).json();
+const canvas=document.querySelector('canvas'),studio=createMotionStudio(canvas.getContext('2d'));
+await document.fonts.ready;
+let id=new URLSearchParams(location.search).get('voice')||'gwen';
+window.renderAt=(t,voice=id,options={})=>{id=voice;return studio.draw(data[id],t,{width:canvas.width,height:canvas.height,captions:true,...options});};
+window.studio=studio; window.data=data;window.renderAt(7.5);window.ready=true;
+</script></html>
