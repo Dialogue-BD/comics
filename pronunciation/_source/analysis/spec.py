@@ -59,7 +59,7 @@ SENTENCES = {
  'pro-nopause': "Let's:1 eat:1 *Grand·ma:21",
  'pro-sent4': 'The:0 teach·er:20 who:0 helped:1 me:0 the:0 *most:2 | was:0 my:0 *Eng·lish:20 teach·er:10 | in:0 high:1 *school:2',
  # November 2026 (ElevenLabs): four more thought-group sentences, and two pairs where a pause changes the meaning
- 'pro-sent5': "If:0 it:0 rains:1 to·*mor·row:020 | we'll:1 stay:1 at:0 *home:2",
+ 'pro-sent5': "If:0 it:0 rains:1 *to·mor·row:020 | we'll:1 stay:1 at:0 *home:2",
  'pro-sent6': 'I:1 bought:1 *rice:2 | *eggs:2 | *on·ions:20 | and:0 *tea:2',
  'pro-sent7': 'When:0 I:1 ar·rived:02 at:0 the:0 *sta·tion:20 | the:0 train:1 had:0 al·read·y:120 *left:2',
  'pro-sent8': 'My:0 *sis·ter:20 | who:0 lives:1 in:0 *Dha·ka:20 | is:0 a:0 *doc·tor:20',
