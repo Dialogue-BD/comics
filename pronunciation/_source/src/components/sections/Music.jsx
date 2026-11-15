@@ -11,6 +11,8 @@ import { ClipButton, Note, L1Note, Beats, partsOf, labelOf, TabBar, NarrowSwitch
 import { IPlay, IPause } from '../Icons';
 import { UI } from '../../content/units';
 
+const L = (en, bn) => ({ en, bn });
+
 const spanOf = (ids, lead = 0.08) => Math.max(...ids.map(id => { const c = getClip(id); return c.off - c.on + lead * 2; }));
 
 // ---------------------------------------------------------------- voice lines
@@ -24,13 +26,13 @@ export function LinesSection({ scene }) {
   return (
     <>
       {sentences && <TabBar items={scene.clips.map(id => labelOf(id).split(' ').slice(0, 4).join(' ') + '…')} k={k} onPick={setK} label="Sentences" next="Next sentence" />}
-      <div className={`board shadow-blue ${!sentences && shown.length === 2 ? 'cols-2' : ''}`}>
+      <div className={`board shadow-blue ${!sentences && shown.length === 2 ? 'cols-2' : ''} ${!sentences && shown.length === 3 ? 'cols-3' : ''}`}>
         {shown.map(id => {
           const multi = getClip(id).words.length > 1;
           return (
             <div className="board-row line-row" key={id}>
               <ClipButton ids={id} variant={multi ? 'sentence' : 'word'} label={multi ? labelOf(id) : getClip(id).words[0].syl.map(s => s.t).join('·')} />
-              <VoiceLine id={id} span={shared} size={multi ? 'md' : 'lg'} stack={scene.stack || 'auto'} labels={scene.labels || 'auto'} />
+              <VoiceLine id={id} span={shared} size={multi || shown.length > 2 ? 'md' : 'lg'} stack={scene.stack || 'auto'} labels={scene.labels || 'auto'} />
             </div>
           );
         })}
@@ -44,10 +46,16 @@ export function LinesSection({ scene }) {
 
 // ---------------------------------------------------------------- schwa
 export function SchwaSection({ scene }) {
+  // three cards at a time, so the section still fits one projector screen
+  const pages = [];
+  for (let i = 0; i < scene.words.length; i += 3) pages.push(scene.words.slice(i, i + 3));
+  const [k, setK] = useState(0);
+  const word = (w) => w.parts.map(p => p[0]).join('');
   return (
     <>
+      {pages.length > 1 && <TabBar items={pages.map(pg => pg.map(word).join(' · '))} k={k} onPick={setK} label="Words" next="More words" />}
       <div className="board cols-3 shadow-gold swipe">
-        {scene.words.map(w => <SchwaCard key={w.clip} w={w} />)}
+        {pages[k].map(w => <SchwaCard key={w.clip} w={w} />)}
       </div>
       <SwipeHint />
       <L1Note text={scene.l1} />
@@ -80,7 +88,8 @@ export function SuffixSection({ scene }) {
   );
 }
 function SuffixRow({ row }) {
-  const ids = row.compare ? [row.clip, row.compare] : [row.clip];
+  // `compare` = the word before the ending moved the beat; `also` = more words with the same ending
+  const ids = [row.clip, ...(row.compare ? [row.compare] : []), ...(row.also || [])];
   const playing = usePlayingId(ids);
   const shown = playing || row.clip;
   return (
@@ -91,7 +100,7 @@ function SuffixRow({ row }) {
         <T en={row.compare ? 'Compare PHO·to·graph: the beat moves when -ic arrives.' : `Stress the syllable before ${row.end}.`} bn={row.compare ? 'PHO·to·graph-এর সাথে তুলনা করুন: -ic এলে তাল সরে যায়।' : `${row.end}-এর ঠিক আগের অক্ষরে জোর দিন।`} as="p" className="tb-sub" />
         {playing && <VoiceLine id={playing} size="sm" labels="none" ball={false} className="tb-line" />}
       </div>
-      <div className="tb-btns">
+      <div className={`tb-btns ${ids.length > 2 ? 'many' : ''}`}>
         {ids.map(id => <ClipButton key={id} ids={id} variant="small" label={labelOf(id).replace(/·/g, '')} />)}
       </div>
     </div>
@@ -123,26 +132,38 @@ export function PrefixSection({ scene }) {
 }
 
 // ---------------------------------------------------------------- compound nouns
+// Two columns: the beat first, the beat second. Compounds by default (a BLACKboard / a black
+// BOARD); with `word: true` each row is one word, split for each column where its syllables
+// fall (nw: rec·ord, vw: re·cord), with the little word in front (pn / pp); `heads` names
+// the columns.
+const CMP_HEADS = [L('One thing: FIRST beat', 'একটা জিনিস: প্রথমে তাল'), L('Describing: SECOND beat', 'বর্ণনা: দ্বিতীয়তে তাল')];
 export function CompoundSection({ scene }) {
+  const heads = scene.heads || CMP_HEADS;
   return (
     <div className="board compound-board shadow-gold">
-      <div className="cb-head"><T en="One thing: FIRST beat" bn="একটা জিনিস: প্রথমে তাল" className="kick" /><T en="Describing: SECOND beat" bn="বর্ণনা: দ্বিতীয়তে তাল" className="kick" /></div>
+      <div className="cb-head">{heads.map((h, i) => <T key={i} en={h.en} bn={h.bn} className="kick" />)}</div>
       {scene.rows.map((r, i) => (
         <div className="cmp-row" key={i}>
           <span className="cmp-n">0{i + 1}</span>
-          <CmpCell id={r.n} big={r.a} small={r.b} joined mean={r.mn} />
-          <CmpCell id={r.p} big={r.b} small={r.a} mean={r.mp} second />
+          {scene.word ? <>
+            <CmpCell id={r.n} big={r.nw[0]} small={r.nw[1]} joined pre={r.pn} mean={r.mn} />
+            <CmpCell id={r.p} big={r.vw[1]} small={r.vw[0]} joined pre={r.pp} mean={r.mp} second />
+          </> : <>
+            <CmpCell id={r.n} big={r.a} small={r.b} joined mean={r.mn} />
+            <CmpCell id={r.p} big={r.b} small={r.a} mean={r.mp} second />
+          </>}
         </div>
       ))}
     </div>
   );
 }
-function CmpCell({ id, big, small, joined, second, mean }) {
+function CmpCell({ id, big, small, joined, second, pre, mean }) {
   const playing = usePlayingId(id);
   return (
     <button className={`cmp-cell ${playing ? 'is-playing' : ''}`} onClick={() => (playing ? engine.stop() : engine.play(id))}>
       <span className={`cmp-word ${joined ? 'joined' : ''}`}>
-        {second ? <><span className="cw-small">{small}</span>{' '}<span className="cw-big">{big.toUpperCase()}</span></> : <><span className="cw-big">{big.toUpperCase()}</span><span className="cw-small">{small}</span></>}
+        {pre && <span className="cw-pre">{pre} </span>}
+        {second ? <><span className="cw-small">{small}</span>{joined ? '' : ' '}<span className="cw-big">{big.toUpperCase()}</span></> : <><span className="cw-big">{big.toUpperCase()}</span><span className="cw-small">{small}</span></>}
       </span>
       <T en={mean.en} bn={mean.bn} className="cmp-mean" />
       <span className="cmp-play">{playing ? <IPause /> : <IPlay />} <T en="play" bn="শুনুন" block={false} /></span>
@@ -221,21 +242,37 @@ export function MelodySection({ scene }) {
 }
 
 // ---------------------------------------------------------------- the pause
+// Grandma by default (scene.a / scene.b). With `pairs`, any sentences, one pair at a time: the
+// text's commas are where the pauses go, and `label` names each button.
 export function PauseSection({ scene }) {
+  const [k, setK] = useState(0);
+  if (!scene.pairs) {
+    return (
+      <div className="meaning-board">
+        {[scene.a, scene.b].map((x, i) => <PauseCard key={x.clip} x={x} good={i === 0} art />)}
+      </div>
+    );
+  }
+  const pair = scene.pairs[k];
   return (
-    <div className="meaning-board">
-      {[scene.a, scene.b].map((x, i) => <PauseCard key={x.clip} x={x} good={i === 0} />)}
-    </div>
+    <>
+      {scene.pairs.length > 1 && <TabBar items={scene.pairs.map(p => p.a.text.replace(/[,!.?]/g, ''))} k={k} onPick={setK} label="Sentences" next="Next pair" />}
+      <div className="meaning-board">
+        {[pair.a, pair.b].map((x, i) => <PauseCard key={x.clip} x={x} good={i === 0} />)}
+      </div>
+    </>
   );
 }
-function PauseCard({ x, good }) {
+function PauseCard({ x, good, art }) {
   const playing = usePlayingId(x.clip);
+  const text = art ? (good ? 'Let’s eat, Grandma!' : 'Let’s eat Grandma!') : x.text;
+  const parts = text.split(',');
   return (
     <div className={`pause-card ${good ? 'good' : 'bad'} ${playing ? 'is-playing' : ''}`}>
-      <Grandma variant={good ? 'invited' : 'dinner'} />
-      <strong className="pc-text">{good ? <>Let’s eat<span className="comma">,</span> Grandma!</> : <>Let’s eat Grandma!</>}</strong>
+      {art && <Grandma variant={good ? 'invited' : 'dinner'} />}
+      <strong className="pc-text">{parts.map((t, i) => <React.Fragment key={i}>{i > 0 && <span className="comma">,</span>}{t}</React.Fragment>)}</strong>
       <T en={x.mean.en} bn={x.mean.bn} as="p" className="pc-mean" />
-      <ClipButton ids={x.clip} variant="pill" label={good ? 'With the pause' : 'No pause'} />
+      <ClipButton ids={x.clip} variant="pill" label={x.label || (good ? 'With the pause' : 'No pause')} />
       <VoiceLine id={x.clip} size="sm" labels="words" />
     </div>
   );

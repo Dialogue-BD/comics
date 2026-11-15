@@ -154,9 +154,18 @@ export function CompoundGame({ scene }) {
   const [results, setResults] = useState([]);
   const spark = useRef(null);
   const id = order[idx % order.length];
+  // -n = the beat goes first; anything else (-p, -v) = the beat goes second
   const kind = id.endsWith('-n') ? 'n' : 'p';
   const playing = usePlayingId(id);
-  const words = getClip(id).words.filter(w => w.w !== 'a');
+  const words = getClip(id).words.filter(w => !['a', 'an', 'to'].includes(w.w.toLowerCase()));
+  // noun / verb clips say "a record" / "to record": the hidden clip starts at the word itself,
+  // or "a" and "to" would give the answer away
+  const from = scene.word ? words[0].s : 0;
+  // `choices` renames the two answers (noun / verb); `word: true` = one word split at the beat
+  const choices = scene.choices || [
+    { big: 'FIRST', small: ' + second', mean: { en: 'one thing', bn: 'একটা জিনিস' } },
+    { big: 'SECOND', small: 'first + ', mean: { en: 'describing', bn: 'বর্ণনা' } },
+  ];
   const choose = (k, e) => {
     if (pick) return;
     setPick(k);
@@ -165,22 +174,24 @@ export function CompoundGame({ scene }) {
     if (ok && spark.current) spark.current.burst(e.currentTarget);
   };
   const next = () => { engine.stop(); setIdx(i => i + 1); setPick(null); };
-  const shown = kind === 'n'
+  const shown = scene.word
+    ? <>{words[0].syl.map((s, i) => <span key={i} className={s.lv === 2 ? 'cw-big' : 'cw-small'}>{s.lv === 2 ? s.t.toUpperCase() : s.t}</span>)}</>
+    : kind === 'n'
     ? <><span className="cw-big">{words[0].syl[0].t.toUpperCase()}</span><span className="cw-small">{words[0].syl.slice(1).map(s => s.t).join('')}</span></>
     : <><span className="cw-small">{words[0].w}</span> <span className="cw-big">{words[1].w.toUpperCase()}</span></>;
   return (
     <ClickSpark ref={spark} className="game">
       <div className="game-board">
-        <ListenPanel count={(idx % order.length) + 1} total={order.length} results={results} idx={idx % order.length} playing={!!playing} onPlay={() => (playing ? engine.stop() : engine.play(id, { quiz: true }))} label="Play hidden clip" hint="Listen first. The spelling is hidden until you answer." />
+        <ListenPanel count={(idx % order.length) + 1} total={order.length} results={results} idx={idx % order.length} playing={!!playing} onPlay={() => (playing ? engine.stop() : engine.play(id, { quiz: true, from }))} label="Play hidden clip" hint="Listen first. The spelling is hidden until you answer." />
         <div className="gb-light">
           <T en="Ear training" bn="কানের অনুশীলন" className="kick" />
           <h3 className="gb-q">Where was the stress?</h3>
           <div className="choices two">
             <button className={`choice cmp ${pick && kind === 'n' ? 'right' : ''} ${pick === 'n' && kind !== 'n' ? 'wrong' : ''}`} onClick={(e) => choose('n', e)} disabled={!!pick}>
-              <span className="cmp-word"><span className="cw-big">FIRST</span> + second</span><T en="one thing" bn="একটা জিনিস" className="cmp-mean" />
+              <span className="cmp-word"><span className="cw-big">{choices[0].big}</span>{choices[0].small}</span><T en={choices[0].mean.en} bn={choices[0].mean.bn} className="cmp-mean" />
             </button>
             <button className={`choice cmp ${pick && kind === 'p' ? 'right' : ''} ${pick === 'p' && kind !== 'p' ? 'wrong' : ''}`} onClick={(e) => choose('p', e)} disabled={!!pick}>
-              <span className="cmp-word">first + <span className="cw-big">SECOND</span></span><T en="describing" bn="বর্ণনা" className="cmp-mean" />
+              <span className="cmp-word">{choices[1].small}<span className="cw-big">{choices[1].big}</span></span><T en={choices[1].mean.en} bn={choices[1].mean.bn} className="cmp-mean" />
             </button>
           </div>
           {pick && (

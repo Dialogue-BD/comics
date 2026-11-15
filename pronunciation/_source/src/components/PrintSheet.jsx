@@ -3,7 +3,7 @@ import React from 'react';
 import { UNITS } from '../content/units';
 
 const EX = {
-  'word-stress': [<><b>PHO</b>·to·graph → pho·to·<b>GRAPH</b>·ic · un·<b>HAP</b>·py (un- stays light)</>, <>a·<b>BOUT</b> · <b>SO</b>·fa · sup·<b>PLY</b> <span className="pm">(weak = ə)</span></>, <>a <b>BLACK</b>board (one thing) · a black <b>BOARD</b> (a board that is black)</>],
+  'word-stress': [<><b>PHO</b>·to·graph → pho·<b>TOG</b>·ra·pher → pho·to·<b>GRAPH</b>·ic · un·<b>HAP</b>·py</>, <>a·<b>BOUT</b> · ba·<b>NA</b>·na <span className="pm">(weak = ə)</span> · ed·u·<b>CA</b>·tion</>, <>a <b>BLACK</b>board / a black <b>BOARD</b> · a <b>RE</b>cord / to re<b>CORD</b></>],
   'sentence-stress': [<>Big words big, small words rush: turn off the <b>LIGHT</b>.</>, <>the, a, to, for, and, my, was → quick and quiet.</>, <>One news word in each group: after the long <b>MEET</b>ing…</>],
   linking: [<>come‿in (“co-min”) · an‿hour · go‿on · I‿am (“I-yam”)</>, <>far‿away (“fa-ra-way”) · bus‿stop · pick‿it‿up</>, <>Don’t stop after every word. Carry the sound across.</>],
   numbers: [<>19 | 94 → nineteen ninety-<b>FOUR</b> · 20 | 26 → twenty twenty-<b>SIX</b></>, <>017 · 12 · 345 · 678 — small groups, small pauses</>, <>October twelfth · fourteen thousand taka · five thirty · four<b>TEEN</b> ≠ <b>FOR</b>ty</>],

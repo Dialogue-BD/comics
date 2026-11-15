@@ -132,8 +132,9 @@ class Engine {
     }
   }
 
-  // Resolves 'ended' or 'stopped'. opts: { voice, gain, quiz } — quiz plays are answers
-  // in a game, so nothing on screen may name them.
+  // Resolves 'ended' or 'stopped'. opts: { voice, gain, quiz, from } — quiz plays are answers
+  // in a game, so nothing on screen may name them; `from` starts that many seconds in (the
+  // clock still counts from the clip's start, so the pictures stay in step).
   play(id, opts = {}) {
     this.unlock();
     this.stop();
@@ -142,6 +143,7 @@ class Engine {
     const clip = this.data(id, voice) || {};
     const gain = (opts.gain != null ? opts.gain : 1) * (clip.gain || 1);
     const meta = { voice, quiz: !!opts.quiz, seq: opts.seq || null };
+    const from = Math.max(0, opts.from || 0);
     this._show(id, voice);            // redraw in this voice before the sound starts
     return new Promise((resolve) => {
       const c = this.context();
@@ -150,8 +152,8 @@ class Engine {
         const el = this.el;
         el.src = this.url(id, voice);
         el.volume = Math.min(1, gain / 2);
-        el.currentTime = 0;
-        this.cur = { id, el, token, resolve, startAt: performance.now() / 1000, ...meta };
+        el.currentTime = from;
+        this.cur = { id, el, token, resolve, startAt: performance.now() / 1000 - from, ...meta };
         el.onended = () => this._end(token);
         el.play().catch(() => { this._end(token, 'error'); });
       };
@@ -162,11 +164,13 @@ class Engine {
         src.buffer = buf;
         const g = c.createGain();
         g.gain.value = gain;
+        const t0 = c.currentTime + 0.03;
+        if (from > 0) { g.gain.setValueAtTime(0, t0); g.gain.linearRampToValueAtTime(gain, t0 + 0.02); }  // no click at the cut
         src.connect(g); g.connect(c.destination);
-        const startAt = c.currentTime + 0.03;
+        const startAt = t0 - from;
         this.cur = { id, src, token, resolve, startAt, dur: buf.duration, ...meta };
         src.onended = () => this._end(token);
-        src.start(startAt);
+        src.start(startAt + from, from);
       }).catch(() => { if (token === this.token) viaElement(); });
       if (c.state !== 'running') c.resume().then(go, go); else go();
     });
