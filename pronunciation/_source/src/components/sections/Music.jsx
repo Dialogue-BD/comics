@@ -309,7 +309,7 @@ function LinkRow({ r, n }) {
       <span className="tb-n">0{n}</span>
       <div className="tb-main">
         <T en={r.kind.en} bn={r.kind.bn} className="kick coral" />
-        <span className="lk-phrase" onClick={() => engine.play(r.clip)}>
+        <span className={`lk-phrase ${r.words.join(' ').length > 12 ? 'is-long' : ''}`} onClick={() => engine.play(r.clip)}>
           {r.words.map((w, i) => (
             <React.Fragment key={i}>
               <span className="lk-w">{w}</span>

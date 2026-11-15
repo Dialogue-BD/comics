@@ -179,6 +179,10 @@ export const UNITS = [
   },
 
   // ───────────────────────────────────────────────────────── 4 · LINKING
+  // Five kinds of join, one screen each, then a longer game with phrases students have not
+  // heard yet. The new phrases keep their `like` respellings true in both accents: none puts
+  // a t between two vowels, where Brian (American) flaps it and Alice (British) does not.
+  // (pick it up, from the first recordings, is the one exception.)
   {
     id: 'linking', n: 4, group: 'music', glyph: 'link',
     title: L('Linking', 'শব্দ জোড়া'),
@@ -188,7 +192,9 @@ export const UNITS = [
     heroClip: 'lnk-pick-it-up',
     manifesto: L('English does not always sound fast. <em>It often sounds connected.</em>', 'ইংরেজি সবসময় দ্রুত নয়। প্রায়ই এটা জোড়া লাগানো।'),
     takeaway: L('Don’t stop after every word. Carry the sound across.', 'প্রতিটি শব্দের পর থামবেন না। শব্দটা পরের শব্দে নিয়ে যান।'),
-    preload: ['lnk-go-on', 'lnk-an-apple', 'lnk-come-in', 'lnk-pick-it-up', 'lnk-turn-off', 'lnk-whats-up'],
+    preload: ['lnk-go-on', 'lnk-an-apple', 'lnk-come-in', 'lnk-an-hour', 'lnk-turn-off', 'lnk-do-it', 'lnk-i-am', 'lnk-see-it',
+      'lnk-far-away', 'lnk-where-is-it', 'lnk-more-and-more', 'lnk-bus-stop', 'lnk-black-coffee', 'lnk-some-more',
+      'lnk-pick-it-up', 'lnk-come-on-in', 'lnk-hold-on'],
     steps: [
       { key: 'hear', sections: [
         { type: 'links', id: 'glue', title: L('Hear the glue', 'জোড়াটা শুনুন'),
@@ -198,24 +204,60 @@ export const UNITS = [
             { clip: 'lnk-an-apple', words: ['an', 'apple'], links: [0], kind: L('consonant → vowel', 'ব্যঞ্জন → স্বর'), like: 'a-napple', how: L('The n carries forward into apple.', 'n-টা apple-এর দিকে চলে যায়।') },
           ],
           note: L('Do not rush. Keep the words clear and remove only the unnecessary stop.', 'তাড়াহুড়ো করবেন না। শব্দগুলো স্পষ্ট রাখুন, শুধু অপ্রয়োজনীয় থামাটা বাদ দিন।') },
-        { type: 'links', id: 'three-ways', title: L('Three ways words connect', 'শব্দ জোড়ার তিন উপায়'),
-          cue: L('A consonant carries forward. A chain of links. An r that joins the next vowel.', 'একটি ব্যঞ্জন সামনে চলে যায়। পরপর কয়েকটা জোড়া। একটা r পরের স্বরের সাথে জোড়ে।'),
+        { type: 'links', id: 'carry', title: L('A consonant carries forward', 'ব্যঞ্জন সামনে চলে যায়'),
+          cue: L('A word ends in a consonant. The next word starts with a vowel. The consonant moves across and starts the next word.', 'একটি শব্দ ব্যঞ্জনে শেষ, পরের শব্দ স্বরে শুরু। ব্যঞ্জনটা সরে গিয়ে পরের শব্দ শুরু করে।'),
           rows: [
-            { clip: 'lnk-come-in', words: ['come', 'in'], links: [0], kind: L('consonant → vowel', 'ব্যঞ্জন → স্বর'), like: 'co-min' },
+            { clip: 'lnk-come-in', words: ['come', 'in'], links: [0], kind: L('m → vowel', 'm → স্বর'), like: 'co-min' },
+            { clip: 'lnk-an-hour', words: ['an', 'hour'], links: [0], kind: L('n → vowel', 'n → স্বর'), like: 'a-nour', how: L('The h in hour is silent, so hour starts with a vowel.', 'hour-এর h উচ্চারিত হয় না, তাই শব্দটা স্বর দিয়ে শুরু।') },
+            { clip: 'lnk-turn-off', words: ['turn', 'off', 'the', 'light'], links: [0], kind: L('n → vowel', 'n → স্বর'), like: 'tur-noff the light', how: L('Only one join: off the and the light keep their own starts.', 'শুধু একটাই জোড়া: off the আর the light নিজের মতো শুরু হয়।') },
+          ] },
+        { type: 'links', id: 'glide', title: L('A tiny w or y', 'ছোট্ট একটা w বা y'),
+          cue: L('Two vowels meet. After oo or oh, a little w slips in. After ee, ay or eye, a little y slips in.', 'দুটি স্বর পাশাপাশি এলে: oo বা oh-এর পরে ছোট্ট একটা w, আর ee, ay বা eye-এর পরে ছোট্ট একটা y চলে আসে।'),
+          rows: [
+            { clip: 'lnk-do-it', words: ['do', 'it'], links: [0], kind: L('vowel → vowel: w', 'স্বর → স্বর: w'), like: 'doo-wit' },
+            { clip: 'lnk-i-am', words: ['I', 'am'], links: [0], kind: L('vowel → vowel: y', 'স্বর → স্বর: y'), like: 'I-yam' },
+            { clip: 'lnk-see-it', words: ['see', 'it'], links: [0], kind: L('vowel → vowel: y', 'স্বর → স্বর: y'), like: 'see-yit' },
+          ],
+          note: L('No stop between the vowels. The w or y is small: you hardly see it, but you hear it.', 'স্বর দুটির মাঝে থামবেন না। w বা y খুব ছোট: লেখায় নেই, কিন্তু শোনা যায়।') },
+        { type: 'links', id: 'linking-r', title: L('An r joins the next vowel', 'r পরের স্বরের সাথে জোড়ে'),
+          cue: L('Alice (British) says far with no r. Before a vowel, the r comes back and joins the words. Brian (American) always says the r, so it joins easily.', 'Alice (ব্রিটিশ) far-এর শেষে r বলেন না। কিন্তু পরে স্বর এলে r ফিরে আসে আর শব্দ দুটো জুড়ে দেয়। Brian (আমেরিকান) সবসময় r বলেন, তাই সহজেই জুড়ে যায়।'),
+          rows: [
+            { clip: 'lnk-far-away', words: ['far', 'away'], links: [0], kind: L('r → vowel', 'r → স্বর'), like: 'fa-ra-way' },
+            { clip: 'lnk-where-is-it', words: ['where', 'is', 'it'], links: [0, 1], kind: L('r, then z → vowel', 'r, তারপর z → স্বর'), like: 'whe-ri-zit' },
+            { clip: 'lnk-more-and-more', words: ['more', 'and', 'more'], links: [0], kind: L('r → vowel', 'r → স্বর'), like: 'mo-ran more' },
+          ] },
+        { type: 'links', id: 'same-sound', title: L('Same sound? Say it once', 'একই ধ্বনি? একবার বলুন'),
+          cue: L('A word ends with the same consonant sound the next word starts with. Say it once, just a little longer.', 'একটি শব্দ যে ব্যঞ্জনধ্বনিতে শেষ, পরের শব্দ সেই ধ্বনিতেই শুরু। ধ্বনিটা একবারই বলুন, শুধু একটু লম্বা করে।'),
+          rows: [
+            { clip: 'lnk-bus-stop', words: ['bus', 'stop'], links: [0], kind: L('s + s', 's + s'), like: 'bu-stop', how: L('One long s, not two.', 'দুটো s নয়, একটা লম্বা s।') },
+            { clip: 'lnk-black-coffee', words: ['black', 'coffee'], links: [0], kind: L('k + k', 'k + k'), like: 'bla-coffee', how: L('ck and c are the same sound: one k.', 'ck আর c একই ধ্বনি: একটাই k।') },
+            { clip: 'lnk-some-more', words: ['some', 'more'], links: [0], kind: L('m + m', 'm + m'), like: 'su-more', how: L('One long m.', 'একটা লম্বা m।') },
+          ] },
+        { type: 'links', id: 'chains', title: L('Chains of links', 'পরপর জোড়া'),
+          cue: L('Little words like it, on, in and a can join on both sides. The whole phrase becomes one smooth sound.', 'it, on, in, a-র মতো ছোট শব্দ দুই দিকেই জুড়তে পারে। পুরো বাক্যাংশ এক টানা ধ্বনি হয়ে যায়।'),
+          rows: [
             { clip: 'lnk-pick-it-up', words: ['pick', 'it', 'up'], links: [0, 1], kind: L('a chain of two links', 'পরপর দুটি জোড়া'), like: 'pi-cki-tup' },
-            { clip: 'lnk-turn-off', words: ['turn', 'off', 'the', 'light'], links: [0], kind: L('r carries across', 'r পার হয়ে যায়'), like: 'tur-noff the light' },
+            { clip: 'lnk-come-on-in', words: ['come', 'on', 'in'], links: [0, 1], kind: L('a chain of two links', 'পরপর দুটি জোড়া'), like: 'co-mo-nin' },
+            { clip: 'lnk-hold-on', words: ['hold', 'on', 'a', 'minute'], links: [0, 1], kind: L('a chain of two links', 'পরপর দুটি জোড়া'), like: 'hol-do-na minute' },
           ] },
       ] },
       { key: 'play', sections: [
         { type: 'linkgame', id: 'link-detective', title: L('Where do the words join?', 'শব্দগুলো কোথায় জোড়ে?'),
           cue: L('Play the phrase. Tap each space where the words join with no gap.', 'বাক্যাংশটা শুনুন। যেখানে শব্দগুলো ফাঁক ছাড়া জুড়ে যায়, সেই ফাঁকে চাপ দিন।'),
+          shuffle: true,
           rounds: [
-            { clip: 'lnk-go-on', words: ['Go', 'on'], links: [0], like: 'go-won' },
-            { clip: 'lnk-an-apple', words: ['An', 'apple'], links: [0], like: 'a-napple' },
-            { clip: 'lnk-come-in', words: ['Come', 'in'], links: [0], like: 'co-min' },
+            { clip: 'lnk-take-a-seat', words: ['Take', 'a', 'seat'], links: [0], like: 'ta-ka seat' },
+            { clip: 'lnk-come-in-sit-down', words: ['Come', 'in', 'and', 'sit', 'down'], links: [0, 1], like: 'co-mi-nand sit down' },
+            { clip: 'lnk-look-out', words: ['Look', 'out!'], links: [0], like: 'loo-kout' },
+            { clip: 'lnk-who-is-it', words: ['Who', 'is', 'it?'], links: [0, 1], like: 'who-wi-zit' },
+            { clip: 'lnk-go-away', words: ['Go', 'away!'], links: [0], like: 'go-wa-way' },
+            { clip: 'lnk-stop-it-now', words: ['Stop', 'it', 'now'], links: [0], like: 'sto-pit now' },
             { clip: 'lnk-whats-up', words: ['What’s', 'up?'], links: [0], like: 'wha-tsup' },
-            { clip: 'lnk-pick-it-up', words: ['Pick', 'it', 'up'], links: [0, 1], like: 'pi-cki-tup' },
+            { clip: 'lnk-black-coffee', words: ['Black', 'coffee'], links: [0], like: 'bla-coffee' },
+            { clip: 'lnk-where-is-it', words: ['Where', 'is', 'it?'], links: [0, 1], like: 'whe-ri-zit' },
             { clip: 'lnk-turn-off', words: ['Turn', 'off', 'the', 'light'], links: [0], like: 'tur-noff the light' },
+            { clip: 'lnk-hold-on', words: ['Hold', 'on', 'a', 'minute'], links: [0, 1], like: 'hol-do-na minute' },
+            { clip: 'lnk-more-and-more', words: ['More', 'and', 'more'], links: [0], like: 'mo-ran more' },
           ] },
       ] },
     ],

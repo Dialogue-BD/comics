@@ -5,7 +5,7 @@ import { UNITS } from '../content/units';
 const EX = {
   'word-stress': [<><b>PHO</b>·to·graph → pho·to·<b>GRAPH</b>·ic · un·<b>HAP</b>·py (un- stays light)</>, <>a·<b>BOUT</b> · <b>SO</b>·fa · sup·<b>PLY</b> <span className="pm">(weak = ə)</span></>, <>a <b>BLACK</b>board (one thing) · a black <b>BOARD</b> (a board that is black)</>],
   'sentence-stress': [<>Big words big, small words rush: turn off the <b>LIGHT</b>.</>, <>the, a, to, for, and, my, was → quick and quiet.</>, <>One news word in each group: after the long <b>MEET</b>ing…</>],
-  linking: [<>go‿on · an‿apple · come‿in (“co-min”)</>, <>pick‿it‿up (“pi-cki-tup”) · turn‿off the light</>, <>Don’t stop after every word. Carry the sound across.</>],
+  linking: [<>come‿in (“co-min”) · an‿hour · go‿on · I‿am (“I-yam”)</>, <>far‿away (“fa-ra-way”) · bus‿stop · pick‿it‿up</>, <>Don’t stop after every word. Carry the sound across.</>],
   numbers: [<>19 | 94 → nineteen ninety-<b>FOUR</b> · 20 | 26 → twenty twenty-<b>SIX</b></>, <>017 · 12 · 345 · 678 — small groups, small pauses</>, <>October twelfth · fourteen thousand taka · five thirty · four<b>TEEN</b> ≠ <b>FOR</b>ty</>],
   melody: [<>After the long <b>MEET</b>ing <i>//</i> I went straight <b>HOME</b> <i>//</i> and slept for <b>HOURS</b>.</>, <>Let’s eat, <i>//</i> Grandma! <span className="pm">≠</span> Let’s eat Grandma!</>, <>Hum the tune first: mm-<b>MM</b>-mm. Then say it.</>],
   vowels: [<>Long = tense, stretch and hold: team · beat · fool · pool. Short = relaxed: Tim · bit · full · pull</>, <>Open syllable → long: me, go, <b>ba</b>·by</>, <>Closed → short: cat, bed, <b>hop</b>·ping · <b>DES</b>ert (sand) ≠ des<b>SERT</b> (sweet)</>],
