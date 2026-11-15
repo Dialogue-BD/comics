@@ -64,7 +64,11 @@ def synth_words(say_words, gaps):
 
 def feats(y, sr, hop):
     M = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=20, hop_length=hop, n_fft=512)[1:]
-    d = librosa.feature.delta(M)
+    # a very short span (a word of a few frames in a fast linked phrase) has fewer frames
+    # than the default 9-frame delta window: shrink the window to fit, or skip the deltas
+    n = M.shape[1]
+    w = min(9, n if n % 2 else n - 1)
+    d = librosa.feature.delta(M, width=w) if w >= 3 else np.zeros_like(M)
     X = np.vstack([M, d * 0.5])
     return (X - X.mean(1, keepdims=True)) / (X.std(1, keepdims=True) + 1e-6)
 
