@@ -23,7 +23,7 @@ try{
    }
    console.log('Rendered 27 Three.js scene frames.');
  }else{
-   const backup=resolve(root,'production/previous-2d-films');await mkdir(backup,{recursive:true});
+   const backup=resolve(root,'../generated-artifacts/human-voices-original-films');await mkdir(backup,{recursive:true});
    const only=process.argv.slice(2).find(a=>!a.startsWith('--'));
    const fps=24;
    for(const [id,d] of Object.entries(data)){

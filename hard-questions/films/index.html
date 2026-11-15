@@ -90,7 +90,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 
 
 <script type="module">
-import { createStage } from '../motion-player.mjs?v=1';
+import { createStage } from '../motion-player.mjs?v=3';
 import { cueAt, followerAt } from '../timing.mjs?v=1';
 const $ = id => document.getElementById(id), audio = $('audio');
 const [voices, transcripts] = await Promise.all([fetch('../voices.json').then(r => r.json()), fetch('../transcripts.json').then(r => r.json())]);

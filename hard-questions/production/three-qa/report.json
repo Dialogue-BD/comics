@@ -166,9 +166,9 @@
         "reduced": "passed"
       }
     ],
-    "render60FramesMs": 480.8999996185303,
-    "geometries": 151,
-    "textures": 5
+    "render60FramesMs": 17355.40000000014,
+    "geometries": 818,
+    "textures": 3
   },
   "originalSpeed": 1,
   "viewports": [

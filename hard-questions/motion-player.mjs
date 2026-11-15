@@ -7,11 +7,11 @@ export function createStage(host){
  canvas.style.cssText='display:block;width:100%;height:auto;aspect-ratio:960/430';
  host.replaceChildren(canvas);const ctx=canvas.getContext('2d');
  let studio=null,data=null,frames=[],reduced=false,playing=false,time=0,loadId=0;
- const ready=import('./motion-3d.mjs?v=1').then(m=>{studio=m.createMotionStudio(ctx);}).catch(()=>{});
+ const ready=import('./motion-3d.mjs?v=3').then(m=>{studio=m.createMotionStudio(ctx);}).catch(()=>{});
  const stage={built:null,
    async load(voice,transcript){
      const id=++loadId;data=transcript;time=0;stage.built=voice.id;
-     frames=transcript.scenes.map((_,i)=>{const img=new Image();img.src=new URL(`production/frames-three/${voice.id}-${i+1}.png?v=1`,import.meta.url);img.onload=()=>{if(id===loadId&&!studio)stage.seek(time);};return img;});
+     frames=transcript.scenes.map((_,i)=>{const img=new Image();img.src=new URL(`production/frames-three/${voice.id}-${i+1}.png?v=meaning2`,import.meta.url);img.onload=()=>{if(id===loadId&&!studio)stage.seek(time);};return img;});
      stage.seek(0);await ready;if(id===loadId)stage.seek(time);
    },
    seek(seconds){

@@ -4,3 +4,4 @@
 - [Canonical branding](canonical-branding.md) — Keep site branding tied to the latest official brand repo; use Studio Modern lockups and the 03A on-light favicon.
 - [Design and writing](design-and-writing.md) — Present the visual/textual communication course as equally about writing and graphic design.
 - [Voice Lab accent](voice-lab-accent.md) — British is the initial default; retain each student's selected accent.
+- [Human Voices visuals](human-voices-visuals.md) — Use speech-timed people and actions as ESL comprehension support, not decorative metaphors.

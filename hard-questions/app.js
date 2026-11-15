@@ -1,6 +1,7 @@
 import {LEVELS,scoreRound,passAccuracy,adapt,nextRound,shuffle} from './game.mjs?v=2';
 import {sceneAt,cueAt,followerAt} from './timing.mjs?v=1';
-import {createStage} from './motion-player.mjs?v=1';
+import {createStage} from './motion-player.mjs?v=3';
+import {semanticAt} from './semantic-timeline.mjs?v=3';
 
 const $=id=>document.getElementById(id);
 const STORAGE='dialogue-hard-questions-v1';
@@ -209,7 +210,7 @@ function prepareWatch(){
   $('watch-words').replaceChildren(...[...new Map(voice.keywords.map(t=>[t.word,t])).values()].map(t=>{
     const b=node('button',t.word);b.onclick=()=>{$('word-note').textContent=`${t.word}: ${t.meaning}`;const cue=transcript.cues.find(c=>t.start>=c.start&&t.start<=c.end)||transcript.cues.find(c=>c.start>=t.start);play('watch',cue?.start??t.start);};return b;
   }));
-  $('download-srt').href=`subtitles/${voice.id}.srt`;$('download-film').href=`films/${voice.id}.mp4?v=three1`;
+  $('download-srt').href=`subtitles/${voice.id}.srt`;$('download-film').href=`films/${voice.id}.mp4?v=meaning2`;
   $('motion-toggle').setAttribute('aria-pressed',String(reducedMotion));renderWatch(0);
 }
 function timeLabel(seconds){return `${Math.floor(seconds/60)}:${String(Math.floor(seconds%60)).padStart(2,'0')}`;}
@@ -237,7 +238,13 @@ function renderWatch(t){
     glide.style.width=`${a.width}px`;glide.style.height=`${a.height}px`;glide.style.transform=`translate3d(${a.left-b.left}px,${a.top-b.top}px,0)`;
   }
   glide.classList.toggle('on',!!activeWord);$('karaoke-line').classList.toggle('motion-reduced',reducedMotion);
-  if(si!==watchScene){watchScene=si;$('scene-meaning').textContent=scene.meaning;motionHost.setAttribute('aria-label',`Animated picture: ${scene.meaning}`);
+  const teachingBeat=semanticAt(voice.id,si,reducedMotion?scene.start:t);
+  const pictureIdea=teachingBeat?.label||scene.meaning;
+  if($('scene-meaning').textContent!==pictureIdea){
+    $('scene-meaning').textContent=pictureIdea;
+  }
+  motionHost.setAttribute('aria-label',`Animated picture: ${pictureIdea}`);
+  if(si!==watchScene){watchScene=si;
     [...$('scene-chapters').children].forEach((b,i)=>{b.classList.toggle('current',i===si);if(i===si)b.setAttribute('aria-current','true');else b.removeAttribute('aria-current');});
   }
   $('watch-seek').value=t;$('watch-seek').setAttribute('aria-valuetext',`${timeLabel(t)} of ${timeLabel(voice.duration)}`);$('watch-time').textContent=`${timeLabel(t)} / ${timeLabel(voice.duration)}`;

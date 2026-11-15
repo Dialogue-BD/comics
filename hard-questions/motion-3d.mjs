@@ -2,6 +2,8 @@
    Three.js 0.180.0 is vendored: no CDN or network required during a lesson. */
 import * as T from './vendor/three.module.js';
 import {sceneAt,cueAt,followerAt,clamp} from './timing.mjs?v=1';
+import {semanticTimeline,semanticAt} from './semantic-timeline.mjs?v=3';
+import {createSemanticStage} from './semantic-stage.mjs?v=3';
 
 const P={bg:'#dce5d9',ivory:'#f5eddb',paper:'#fff9e9',green:'#255347',mint:'#7eaa8d',gold:'#c49a51',oak:'#b28252',terra:'#b96f55',blue:'#7396a5',ink:'#173e34',dark:'#203c37'};
 const smooth=x=>{x=clamp(x);return x*x*(3-2*x);};
@@ -132,31 +134,44 @@ export function createMotionStudio(ctx){
  const renderer=new T.WebGLRenderer({antialias:true,alpha:false,preserveDrawingBuffer:true,powerPreference:'high-performance'});
  renderer.setPixelRatio(1);renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFShadowMap;
  const scene=new T.Scene();scene.background=new T.Color(P.bg);const env=environment(renderer);scene.environment=env.texture;scene.environmentIntensity=.6;
- scene.add(new T.HemisphereLight('#fff7df','#6a8d77',.9));const sun=new T.DirectionalLight('#fff0d6',2.6);sun.position.set(-5,10,8);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-9,right:9,top:7,bottom:-7,near:.5,far:30});sun.shadow.normalBias=.025;sun.shadow.bias=-.0002;sun.shadow.radius=4;scene.add(sun);const fill=new T.DirectionalLight('#d5edff',.85);fill.position.set(7,5,-6);scene.add(fill);
+ scene.add(new T.HemisphereLight('#fff7df','#6a8d77',.9));const sun=new T.DirectionalLight('#fff0d6',2.6);sun.position.set(-5,10,8);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);Object.assign(sun.shadow.camera,{left:-9,right:9,top:7,bottom:-7,near:.5,far:30});sun.shadow.normalBias=.025;sun.shadow.bias=-.0002;sun.shadow.radius=4;scene.add(sun);const fill=new T.DirectionalLight('#d5edff',.85);fill.position.set(7,5,-6);scene.add(fill);
  const floor=mesh(scene,new T.PlaneGeometry(200,200),mat('#b0c0ac'),0,-.31,0);floor.rotation.x=-Math.PI/2;floor.castShadow=false;
  const camera=new T.OrthographicCamera(-8.5,8.5,3.3,-3.3,.1,100);camera.position.set(7,6.2,13);camera.lookAt(0,1.25,0);
- const sets=new Map(),outgoing=document.createElement('canvas'),outgoingContext=outgoing.getContext('2d');let lost=false,renderSize='';renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();lost=true;});renderer.domElement.addEventListener('webglcontextrestored',()=>{lost=false;});
+  const sets=new Map(),semanticSets=new Map(),outgoing=document.createElement('canvas'),outgoingContext=outgoing.getContext('2d');let lost=false,renderSize='';renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();lost=true;});renderer.domElement.addEventListener('webglcontextrestored',()=>{lost=false;});
  function get(kind){if(!sets.has(kind)){const s=buildSet(kind);sets.set(kind,s);scene.add(s.root);}return sets.get(kind);}
+  function getSemantic(data,index){const id=data.name.toLowerCase(),key=`${id}/${index}`;if(!semanticSets.has(key)){const config=semanticTimeline[id]?.[index];if(!config)throw Error(`Missing semantic scene: ${key}`);const s=createSemanticStage(data,index,config);semanticSets.set(key,s);scene.add(s.root);}return semanticSets.get(key);}
  function draw(data,time,{width=960,height=430,captions=false,reduced=false,poster=false}={}){
-   if(lost)throw Error('WebGL context lost');const s=sceneAt(data,time),index=data.scenes.indexOf(s),u=Math.max(0,time-s.start);const stageTime=poster?2.5:u;
-   for(const set of sets.values())set.root.visible=false;const active=get(s.kind);active.root.visible=true;active.update(stageTime,reduced);
-   active.root.rotation.y=reduced?-.035:-.035+.055*smooth(u/(s.end-s.start));
-   camera.position.set(7,6.2,13);camera.zoom=reduced?1:1+.035*smooth(u/(s.end-s.start));camera.updateProjectionMatrix();
+   if(lost)throw Error('WebGL context lost');const s=sceneAt(data,time),index=data.scenes.indexOf(s),u=Math.max(0,time-s.start);
+    for(const set of sets.values())set.root.visible=false;for(const set of semanticSets.values())set.root.visible=false;
+    const active=getSemantic(data,index),moment=semanticAt(data.name.toLowerCase(),index,reduced?s.start:time);active.root.visible=true;active.update(moment,poster?s.start:time,reduced);
+    active.root.rotation.y=reduced?-.035:-.035+.055*smooth(u/(s.end-s.start));
+   camera.position.set(7,6.2,13);camera.zoom=reduced?1.32:1.32+.04*smooth(u/(s.end-s.start));camera.updateProjectionMatrix();
    const size=`${width}/${height}/${captions}`;if(size!==renderSize){renderer.setSize(width,Math.round(width*338/960),false);outgoing.width=renderer.domElement.width;outgoing.height=renderer.domElement.height;renderSize=size;}
-   const blend=index>0&&u<.6&&!reduced&&!poster&&data.scenes[index-1].kind!==s.kind;
-   if(blend){active.root.visible=false;const prevScene=data.scenes[index-1],prev=get(prevScene.kind);prev.root.visible=true;prev.update(prevScene.end-prevScene.start,false);prev.root.rotation.y=.02;renderer.render(scene,camera);outgoingContext.drawImage(renderer.domElement,0,0);prev.root.visible=false;active.root.visible=true;}
+    const blend=index>0&&u<.6&&!reduced&&!poster;
+    if(blend){active.root.visible=false;const prevScene=data.scenes[index-1],prev=getSemantic(data,index-1);prev.root.visible=true;prev.update(semanticAt(data.name.toLowerCase(),index-1,prevScene.end-.001),prevScene.end-.001,false);prev.root.rotation.y=.02;renderer.render(scene,camera);outgoingContext.drawImage(renderer.domElement,0,0);prev.root.visible=false;active.root.visible=true;}
    renderer.render(scene,camera);
    ctx.save();ctx.scale(width/960,height/(captions?540:430));ctx.fillStyle=P.bg;ctx.fillRect(0,0,960,540);if(blend){ctx.drawImage(outgoing,0,83,960,338);ctx.globalAlpha=smooth(u/.6);}ctx.drawImage(renderer.domElement,0,83,960,338);ctx.globalAlpha=1;
    // The editorial typography and captions stay fixed while the set moves.
    ctx.fillStyle=P.ink;ctx.textAlign='left';ctx.font='600 11px Arial';ctx.fillText('HEARING HUMAN VOICES  /  '+data.name.toUpperCase(),34,27);
    ctx.font='500 31px Georgia';ctx.fillText(s.title,32,65);ctx.font='600 11px Arial';ctx.textAlign='right';ctx.fillText(`${String(index+1).padStart(2,'0')} / 03`,926,28);
    ctx.strokeStyle='#a8baa5';ctx.lineWidth=.6;ctx.beginPath();ctx.moveTo(34,79);ctx.lineTo(926,79);ctx.stroke();
+    ctx.fillStyle='rgba(255,249,233,.96)';ctx.beginPath();ctx.roundRect(40,94,148,34,5);ctx.fill();
+    ctx.fillStyle=P.ink;ctx.textAlign='center';ctx.font='700 21px Arial';ctx.fillText('PERSON',114,118);
+    ctx.fillStyle='rgba(23,62,52,.96)';ctx.beginPath();ctx.roundRect(746,94,166,34,5);ctx.fill();
+    ctx.fillStyle=P.paper;ctx.textAlign='center';ctx.fillText('AI  /  TOOL',829,118);
    for(let i=0;i<3;i++){ctx.fillStyle=i===index?P.green:'#b6c5b1';ctx.beginPath();ctx.roundRect(34+i*47,411,37,3,1.5);ctx.fill();}
-   ctx.fillStyle='#536c58';ctx.font='10px Arial';ctx.textAlign='right';ctx.fillText('Their questions. Their hopes. An illustration.',926,415);
+    if(moment){
+      ctx.fillStyle='rgba(23,62,52,.96)';ctx.beginPath();ctx.roundRect(34,352,892,54,5);ctx.fill();
+      ctx.textAlign='left';ctx.font='700 18px Arial';ctx.fillStyle=moment.status==='question'||moment.status==='uncertain'?'#efcb83':'#a9cdb0';
+      const marker=moment.status==='question'?'QUESTION':moment.status==='uncertain'?'POSSIBLE':moment.status==='hope'?'HOPE':moment.status==='concern'?'CONCERN':'';
+      if(marker)ctx.fillText(marker,49,386);
+      ctx.font='600 24px Arial';ctx.fillStyle=P.paper;ctx.fillText(moment.label,marker?179:49,386,730);
+    }
+    ctx.fillStyle='#536c58';ctx.font='10px Arial';ctx.textAlign='left';ctx.fillText('Their questions. Their hopes. An illustration.',34,423);
    if(captions)drawCaptions(ctx,data,time,reduced);
    ctx.restore();return {scene:s,index,renderer:'three',drawCalls:renderer.info.render.calls};
  }
- function dispose(){for(const set of sets.values()){set.root.traverse(o=>{if(o.material?.map){o.material.map.dispose();o.material.dispose();}});}env.dispose();floor.geometry.dispose();renderer.dispose();}
+ function dispose(){for(const set of sets.values()){set.root.traverse(o=>{if(o.material?.map){o.material.map.dispose();o.material.dispose();}});}for(const set of semanticSets.values()){set.root.traverse(o=>{if(o.material?.map){o.material.map.dispose();o.material.dispose();}});}env.dispose();floor.geometry.dispose();renderer.dispose();}
  return {draw,dispose,renderer,scene,camera};
 }
 
