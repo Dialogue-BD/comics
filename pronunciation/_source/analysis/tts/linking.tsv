@@ -1,0 +1,20 @@
+# Lines for analysis/eleven_tts.sh: clip id, a tab, then exactly what the voice says.
+# The words must match the clip's entry in spec.py and its words in src/content/units.js.
+lnk-an-hour	An hour.
+lnk-do-it	Do it.
+lnk-i-am	I am.
+lnk-see-it	See it.
+lnk-far-away	Far away.
+lnk-where-is-it	Where is it?
+lnk-more-and-more	More and more.
+lnk-bus-stop	Bus stop.
+lnk-black-coffee	Black coffee.
+lnk-some-more	Some more.
+lnk-come-on-in	Come on in.
+lnk-hold-on	Hold on a minute.
+lnk-take-a-seat	Take a seat.
+lnk-come-in-sit-down	Come in and sit down.
+lnk-look-out	Look out!
+lnk-who-is-it	Who is it?
+lnk-go-away	Go away!
+lnk-stop-it-now	Stop it now.
