@@ -181,7 +181,7 @@ export const UNITS = [
   // ───────────────────────────────────────────────────────── 4 · LINKING
   // Five kinds of join, one screen each, then a longer game with phrases students have not
   // heard yet. The new phrases keep their `like` respellings true in both accents: none puts
-  // a t between two vowels, where Brian (American) flaps it and Alice (British) does not.
+  // a t between two vowels, where American English flaps it and British English does not.
   // (pick it up, from the first recordings, is the one exception.)
   {
     id: 'linking', n: 4, group: 'music', glyph: 'link',
@@ -220,7 +220,7 @@ export const UNITS = [
           ],
           note: L('No stop between the vowels. The w or y is small: you hardly see it, but you hear it.', 'স্বর দুটির মাঝে থামবেন না। w বা y খুব ছোট: লেখায় নেই, কিন্তু শোনা যায়।') },
         { type: 'links', id: 'linking-r', title: L('An r joins the next vowel', 'r পরের স্বরের সাথে জোড়ে'),
-          cue: L('Alice (British) says far with no r. Before a vowel, the r comes back and joins the words. Brian (American) always says the r, so it joins easily.', 'Alice (ব্রিটিশ) far-এর শেষে r বলেন না। কিন্তু পরে স্বর এলে r ফিরে আসে আর শব্দ দুটো জুড়ে দেয়। Brian (আমেরিকান) সবসময় r বলেন, তাই সহজেই জুড়ে যায়।'),
+          cue: L('In British English, far has no r at the end. Before a vowel, the r comes back and joins the words. In American English the r is always there, so it joins easily.', 'ব্রিটিশ ইংরেজিতে far-এর শেষে r বলা হয় না। কিন্তু পরে স্বর এলে r ফিরে আসে আর শব্দ দুটো জুড়ে দেয়। আমেরিকান ইংরেজিতে r সবসময় থাকে, তাই সহজেই জুড়ে যায়।'),
           rows: [
             { clip: 'lnk-far-away', words: ['far', 'away'], links: [0], kind: L('r → vowel', 'r → স্বর'), like: 'fa-ra-way' },
             { clip: 'lnk-where-is-it', words: ['where', 'is', 'it'], links: [0, 1], kind: L('r, then z → vowel', 'r, তারপর z → স্বর'), like: 'whe-ri-zit' },

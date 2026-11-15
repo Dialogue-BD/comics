@@ -3,3 +3,4 @@
 - [Nested Node package installation](nested-node-installation.md) — The package-install callback has no directory option and rejects CLI flags; nested pnpm workspaces need shell installation.
 - [Canonical branding](canonical-branding.md) — Keep site branding tied to the latest official brand repo; use Studio Modern lockups and the 03A on-light favicon.
 - [Design and writing](design-and-writing.md) — Present the visual/textual communication course as equally about writing and graphic design.
+- [Voice Lab accent](voice-lab-accent.md) — British is the initial default; retain each student's selected accent.
