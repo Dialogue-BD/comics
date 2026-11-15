@@ -366,8 +366,11 @@ export function PauseGame({ scene }) {
 
 // ------------------------------------------------------------------ link detective
 export function LinkGame({ scene }) {
+  // `shuffle: true` deals the rounds in a new order each visit, so the phrases met in Hear
+  // don't always come first.
+  const rounds = useMemo(() => (scene.shuffle ? shuffle(scene.rounds) : scene.rounds), [scene.id]);
   const [ri, setRi] = useState(0);
-  const r = scene.rounds[ri];
+  const r = rounds[ri];
   const [sel, setSel] = useState([]);
   const [checked, setChecked] = useState(false);
   const [heard, setHeard] = useState(false);
@@ -387,7 +390,7 @@ export function LinkGame({ scene }) {
   return (
     <ClickSpark ref={spark} className="game">
       <div className="game-board">
-        <ListenPanel count={ri + 1} total={scene.rounds.length} results={results} idx={ri} playing={!!playing} onPlay={listen} label="Play phrase" hint="Listen before you choose." />
+        <ListenPanel count={ri + 1} total={rounds.length} results={results} idx={ri} playing={!!playing} onPlay={listen} label="Play phrase" hint="Listen before you choose." />
         <div className="gb-light">
           <T en="Link detective" bn="জোড়া গোয়েন্দা" className="kick" />
           <h3 className="gb-q">Where do the words join?</h3>
@@ -412,7 +415,7 @@ export function LinkGame({ scene }) {
           )}
           <div className="gb-next">
             {!checked && <button className="btn primary" disabled={!sel.length && r.links.length > 0} onClick={check}>{UI.check.en}</button>}
-            {checked && <button className="btn primary" onClick={() => { engine.stop(); setRi((ri + 1) % scene.rounds.length); }}>{ri < scene.rounds.length - 1 ? <>Next phrase <IArrowR /></> : <>Start again <IReplay /></>}</button>}
+            {checked && <button className="btn primary" onClick={() => { engine.stop(); setRi((ri + 1) % rounds.length); }}>{ri < rounds.length - 1 ? <>Next phrase <IArrowR /></> : <>Start again <IReplay /></>}</button>}
           </div>
         </div>
       </div>

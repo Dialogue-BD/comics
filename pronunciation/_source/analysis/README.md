@@ -60,3 +60,19 @@ python3 finalize.py --merge && python3 phones.py && python3 monotone.py
   there (`ASP`) were read off spectrograms by hand.
 - A clip a voice does not have simply is not in its data file: the app plays Alice instead,
   for that word and for any pair it is compared with.
+
+## New clips from ElevenLabs (November 2026)
+
+New phrases are recorded straight from ElevenLabs in both voices, so there is no export to
+import. List them in `tts/<name>.tsv` (clip id, a tab, the words), add each to `spec.py`, then
+on a computer with your ElevenLabs key:
+
+```
+./eleven_tts.sh tts/linking.tsv        # writes tts-takes/<voice>/<id>-<take>.mp3, 3 takes each
+```
+
+Short phrases vary from take to take, so pick one per clip and voice — for linking, the take
+with no silence at the joins — copy it to `../../audio/<id>.mp3` (Alice) or
+`../../audio/brian/<id>.mp3` (Brian), then measure it as above: `analyse.py <ids>` and
+`finalize.py --merge` for Alice; `align_ps.py` and `finalize.py --merge` with
+`VOICELAB_VOICE=brian` for Brian. `tts-takes/` is not committed.
