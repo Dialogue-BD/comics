@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Illustrated film render studio</title>
+<link rel="stylesheet" href="../../dialogue-brand.css"><link rel="stylesheet" href="../illustrated/scene.css?v=illustrated1">
+<style>html,body{margin:0;width:1280px;height:720px;background:#0c3319;color:#fffdf7;overflow:hidden}#stage{width:1066.666667px;height:600px;margin:auto}#captions{height:120px;display:flex;align-items:center;justify-content:center;padding:0 45px;background:#071d12;box-sizing:border-box;font:700 30px/1.35 'Public Sans',sans-serif;text-align:center}#line span{display:inline-block;padding:2px 7px;color:#9bb695}#line .said{color:#fffdf7}#line .on{background:#d2b978;color:#0c3319;border-radius:8px}</style></head>
+<body><div id="stage"></div><div id="captions"><div id="line"></div></div>
+<script src="../motion/vendor/gsap.min.js"></script><script type="module">
+import {createStage} from '../motion-player.mjs?v=illustrated1';
+import {cueAt,followerAt} from '../timing.mjs';
+const data=await(await fetch('../transcripts.json')).json();
+const id=new URLSearchParams(location.search).get('voice')||'gwen',tr=data[id];
+const stage=createStage(document.getElementById('stage'));await stage.load({id},tr);await document.fonts.ready;
+let last=-1;const line=document.getElementById('line');
+window.renderAt=t=>{stage.seek(t);const {cue,index}=cueAt(tr,t),f=followerAt(tr,t);if(index!==last){last=index;line.replaceChildren();for(let k=cue.first;k<=cue.last;k++){const s=document.createElement('span');s.textContent=tr.words[k].w;s.dataset.k=k;line.append(s)}}
+for(const s of line.children){const k=+s.dataset.k;s.classList.toggle('said',t>=tr.words[k].s);s.classList.toggle('on',f.active&&f.index===k)}};
+window.studio=stage;window.renderAt(0);window.ready=true;
+</script></body></html>

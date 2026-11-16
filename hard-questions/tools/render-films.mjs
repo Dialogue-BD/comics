@@ -1,2 +1,2 @@
-/* Compatibility entry point: both the lesson and films now use Three.js. */
-import './render-three-films.mjs';
+/* Shared illustrated renderer for live scenes and downloadable films. */
+import './render-illustrated-films.mjs';

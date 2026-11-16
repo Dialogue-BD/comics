@@ -31,48 +31,47 @@ Recordings and portraits are unchanged originals from the public source, retriev
 
 `sources.json` records each original URL. `voices.json` contains teaching prompts, glossary definitions, selected word/phrase timings, and a vocabulary set for excluding spoken words from distractors. `transcripts.json` adds all 588 timed transcript words, phrase cues and 27 illustration scenes. Timing came from local faster-whisper small.en recognition and was checked against audio duration and published quotations; recogniser-derived timing can still have small errors. Round scoring has no reaction-time requirement.
 
-## Three.js scenes and downloadable films
+## Illustrated scenes and downloadable films
 
-### Meaning-first listening support
+The nine films use Claude’s style B illustrated backgrounds, character poses,
+and word-timed labels. `illustrated/scene.mjs` builds the shared paused GSAP
+scene timeline; `illustrated/voices/` defines each speaker’s scenes and effects.
+`motion-player.mjs` drives those scenes from the original audio clock in both
+the listening lesson and the projector theatre. Scene chapters now follow the
+new illustrated cuts; transcript words, phrase cues, MP3s, and subtitles are unchanged.
+Reduced motion holds a representative still within each illustrated scene.
+No WebGL is required.
 
-The live lesson, projector theatre, fallback stills, and downloadable films share
-the same meaning-first scenes. `semantic-timeline.mjs` adds 77 teaching beats
-aligned to the existing transcript cues; `semantic-stage.mjs` provides the people,
-relationships, props, and deterministic actions. A child solves a puzzle, six
-cards reveal the long diagnosis wait, a writer steps aside then returns to work
-alongside AI, barriers separate people before they reconnect, and repetitive
-tasks move toward the AI tool. Larger figures and short plain-English picture
-explanations support the unchanged word-by-word captions. Questions and hopes
-are marked as such, rather than depicting predicted benefits as proven results.
-Figures are illustrations, not recreations of the interviewees.
+Daniel’s physics-lab background uses the full-resolution download supplied on
+16 November 2026. Tiffany’s third scene retains Claude’s town-square substitute
+for the intended string-lights gathering; Robert’s artwork is somewhat more detailed
+than the other characters. These are known art differences, not missing assets.
 
-All poses derive from absolute audio time, including backward seeks. Reduced
-motion holds a still teaching pose within each original scene. Original MP3s,
-transcript word/cue timing, and subtitle files are unchanged. Exported films copy
-the existing AAC audio without re-encoding. Render backups are kept in the
-ignored `generated-artifacts/human-voices-original-films/` directory.
+Serve the repository locally and run `node hard-questions/tools/render-films.mjs`.
+The exporter requires Playwright, Chromium, and FFmpeg. Set `PLAYWRIGHT_MODULE`,
+`CHROME_EXECUTABLE`, and optionally `STUDIO_URL` (the illustrated studio page)
+when using existing installations. Pass a speaker ID to render only that film,
+or `--frames` to regenerate the scene stills. Films are 1280×720 at 24 fps, H.264,
+with a stable caption band; existing normalized AAC packets are copied unchanged.
+Original film backups stay in ignored `generated-artifacts/human-voices-original-films/`.
+The exporter writes a temporary MP4 and replaces the destination only after success.
 
-`node hard-questions/tests/semantic-timeline.test.mjs` checks coverage of all nine
-voices, all 27 original scenes, and the teaching beats' cue/seek boundaries.
-`node hard-questions/tests/semantic-browser.test.mjs` checks all 77 readable
-picture explanations and accessible descriptions on a phone viewport.
-After exporting, `node hard-questions/tools/verify-meaning-films.mjs` checks full
-decodes, format/duration, and unchanged encoded AAC packets against the local
-render backups. It saves its report under ignored `generated-artifacts/`.
+`node hard-questions/tests/illustrated-browser.test.mjs` checks image loading,
+repeatable backward seeking, reduced motion, lesson playback and chapters,
+phone/landscape layouts, and projector controls. It uses the Playwright/Chromium
+overrides above, plus `BASE_URL` for the preview server and `PNG_MODULE` for pngjs.
+`node hard-questions/tools/verify-meaning-films.mjs` checks all nine full decodes,
+format, duration, and unchanged encoded AAC packets against the render backups.
+Browser and media reports go into ignored `generated-artifacts/`.
 
-`motion-3d.mjs` stages all 27 scenes in Three.js 0.180.0 with sage backgrounds, ivory plinths, terracotta figures, and studio shadows. A 0.6-second dissolve connects scenes; explanatory type stays still. ImageGen supplied the earlier materials reference, not the animated frames. Its exact prompt and original image are in `production/art-direction/`.
+The film library is `/hard-questions/films/library.html`; the live projector is
+`/hard-questions/films/`. Both accept `?voice=<id>`. Complete perceptual audiovisual
+review of every film has not been performed; automated checks and scene-frame
+review are recorded separately in `production/manifest.json`.
 
-The renderer follows the original audio clock, including seeking and replay. One WebGL context is reused across voices. The library is vendored under `vendor/` with its MIT licence, so no CDN is needed. When WebGL cannot start or its context is lost, the live lesson uses matching rendered scene stills with the original interactive captions. Reduced motion holds completed object poses and a stationary camera. The existing solid gold word follower, timing data, audio, language help and unrestricted lesson navigation remain intact.
-
-The teacher library at `/hard-questions/films/library.html` plays all nine newly rendered captioned MP4s and includes transcripts, timed storyboards and production notes. Films remain 1280 × 720 at 24 fps, H.264/yuv420p/limited-range BT.709. The existing normalized AAC track is copied into each new film without another audio encode. The live activity continues to use the unchanged source MP3s at 1×. SRT/VTT captions are unchanged.
-
-Regenerate captions/storyboards with `python3 hard-questions/tools/build-transcripts.py`. Start a static server at the repository root, then render with `node hard-questions/tools/render-films.mjs`. This invokes the deterministic Three.js browser renderer; it requires Playwright, Chromium and FFmpeg. Set `PLAYWRIGHT_MODULE` and `CHROME_EXECUTABLE` for existing installations; `STUDIO_URL` overrides the default local render page. `--frames` writes all 27 representative frames to `production/frames-three/`; a speaker argument, e.g. `gwen`, renders only that film. The encoder writes a temporary MP4 and replaces the destination only after success.
-
-`node hard-questions/tests/three-browser.test.mjs` checks repeatable seeks in all 27 scenes, stationary reduced-motion poses, all 18 scene transitions, unrestricted navigation, original playback speed, phone/landscape layouts and the no-WebGL fallback. It uses the same Playwright environment overrides. Screenshots and the actual browser report are in `production/three-qa/`. The production manifest distinguishes automated checks, sampled visual review and complete perceptual playback review.
-
-The existing projector theatre at `/hard-questions/films/` keeps full screen, keyboard shortcuts, speaker selection and reduced motion. `motion-player.mjs` adapts the Three.js renderer to the existing lesson and theatre controls. The existing page polish and branded title are preserved.
-
-Gwen’s spoken clip addresses the environment; her source job title mentions a sexual-assault support service. Sarah discusses autism, and Kamille describes chronic illness. Teachers can choose the voices suitable for their group.
+Gwen’s spoken clip addresses the environment; her source job title mentions a
+sexual-assault support service. Sarah discusses autism, and Kamille describes
+chronic illness. Teachers can choose voices suitable for their group.
 
 ## Verification
 

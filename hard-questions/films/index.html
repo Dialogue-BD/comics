@@ -89,8 +89,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 
 
 
+<script src="../motion/vendor/gsap.min.js"></script>
 <script type="module">
-import { createStage } from '../motion-player.mjs?v=3';
+import { createStage } from '../motion-player.mjs?v=illustrated1';
 import { cueAt, followerAt } from '../timing.mjs?v=1';
 const $ = id => document.getElementById(id), audio = $('audio');
 const [voices, transcripts] = await Promise.all([fetch('../voices.json').then(r => r.json()), fetch('../transcripts.json').then(r => r.json())]);
@@ -162,7 +163,7 @@ document.addEventListener('keydown', e => {
   else if (e.key.toLowerCase() === 'f') $('full').click();
   else if (e.key.toLowerCase() === 'n') { const i = voices.indexOf(voice); choose(voices[(i + 1) % voices.length]); }
 });
-choose(voices.find(v => v.id === location.hash.slice(1)) || voices[0]);
+choose(voices.find(v => v.id === (new URLSearchParams(location.search).get('voice') || location.hash.slice(1))) || voices[0]);
 </script>
 </body>
 </html>

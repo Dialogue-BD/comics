@@ -1,0 +1,73 @@
+{
+  "voices": [
+    {
+      "id": "kamille",
+      "scenes": 4,
+      "assets": true,
+      "deterministicSeek": true,
+      "reducedMotion": true
+    },
+    {
+      "id": "robert",
+      "scenes": 3,
+      "assets": true,
+      "deterministicSeek": true,
+      "reducedMotion": true
+    },
+    {
+      "id": "larissa",
+      "scenes": 4,
+      "assets": true,
+      "deterministicSeek": true,
+      "reducedMotion": true
+    },
+    {
+      "id": "daniel",
+      "scenes": 4,
+      "assets": true,
+      "deterministicSeek": true,
+      "reducedMotion": true
+    },
+    {
+      "id": "scott",
+      "scenes": 3,
+      "assets": true,
+      "deterministicSeek": true,
+      "reducedMotion": true
+    },
+    {
+      "id": "tiffany",
+      "scenes": 4,
+      "assets": true,
+      "deterministicSeek": true,
+      "reducedMotion": true
+    },
+    {
+      "id": "danielle",
+      "scenes": 4,
+      "assets": true,
+      "deterministicSeek": true,
+      "reducedMotion": true
+    },
+    {
+      "id": "gwen",
+      "scenes": 4,
+      "assets": true,
+      "deterministicSeek": true,
+      "reducedMotion": true
+    },
+    {
+      "id": "sarah",
+      "scenes": 4,
+      "assets": true,
+      "deterministicSeek": true,
+      "reducedMotion": true
+    }
+  ],
+  "lesson": true,
+  "projector": true,
+  "phone": true,
+  "allNineExportPlayback": true,
+  "errors": [],
+  "bad": []
+}

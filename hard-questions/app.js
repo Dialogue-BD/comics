@@ -1,7 +1,6 @@
 import {LEVELS,scoreRound,passAccuracy,adapt,nextRound,shuffle} from './game.mjs?v=2';
-import {sceneAt,cueAt,followerAt} from './timing.mjs?v=1';
-import {createStage} from './motion-player.mjs?v=3';
-import {semanticAt} from './semantic-timeline.mjs?v=3';
+import {cueAt,followerAt} from './timing.mjs?v=1';
+import {createStage} from './motion-player.mjs?v=illustrated1';
 
 const $=id=>document.getElementById(id);
 const STORAGE='dialogue-hard-questions-v1';
@@ -44,7 +43,7 @@ function choose(v){
   stop();voice=v;transcript=transcripts[v.id];round=null;cursor=0;passScore={hits:0,total:0,falseAlarms:0};
   $('portrait').src=v.portrait;$('portrait').alt=`Portrait of ${v.name}, from Anthropic’s Hard Questions`;
   $('speaker-title').textContent=v.name;$('speaker-role').textContent=v.role;$('speaker-topic').textContent=v.topic;$('duration').textContent=`${Math.round(v.duration)} seconds · original interview`;
-  stage.load(v,transcript).then(()=>{if(voice===v&&step===2)renderWatch(Number($('watch-seek').value));}).catch(()=>{});
+  stage.load(v,transcript).then(()=>{if(voice===v&&step===2){drawChapters();renderWatch(Number($('watch-seek').value));}}).catch(()=>{});
   $('support').value=saved.support;$('audio-error').hidden=true;$('complete-feedback').textContent='';drawVoices();drawStep();
   const loadId=++audioLoadId;
   $('play').disabled=true;$('replay').disabled=true;$('player-status').textContent='Loading the original recording…';
@@ -198,12 +197,16 @@ $('complete').onclick=()=>{record().done=true;save();updateJourney();$('complete
 $('projector').onclick=()=>{const enabled=document.body.classList.toggle('projector');$('projector').setAttribute('aria-pressed',String(enabled));};
 $('guide').onclick=()=>{if(playback&&!audio.paused){audio.pause();cancelAnimationFrame(raf);$('play').textContent='▶ Resume';}$('guide-dialog').showModal();};
 document.querySelectorAll('.close,.close-guide').forEach(b=>b.onclick=()=>$('guide-dialog').close());
+function drawChapters(){
+  watchScene=-1;
+  $('scene-chapters').replaceChildren(...(stage.scenes.length?stage.scenes:transcript.scenes).map((scene,i)=>{
+    const b=node('button',undefined,'scene-chapter');b.append(node('small',`0${i+1}`),node('span',scene.title));b.onclick=()=>play('watch',scene.start);return b;
+  }));
+}
 function prepareWatch(){
   watchCue=-1;watchScene=-1;$('watch-seek').max=voice.duration;$('watch-seek').value=0;
   $('transcript-details').open=false;$('word-note').textContent='Tap a word for its meaning and hear it in context.';
-  $('scene-chapters').replaceChildren(...transcript.scenes.map((scene,i)=>{
-    const b=node('button',undefined,'scene-chapter');b.append(node('small',`0${i+1}`),node('span',scene.title));b.onclick=()=>play('watch',scene.start);return b;
-  }));
+  drawChapters();
   $('full-transcript').replaceChildren(...transcript.cues.map(c=>{
     const b=node('button',c.text);b.setAttribute('aria-label',`Listen from ${timeLabel(c.start)}: ${c.text}`);b.onclick=()=>play('watch',c.start);return b;
   }));
@@ -217,7 +220,7 @@ function timeLabel(seconds){return `${Math.floor(seconds/60)}:${String(Math.floo
 function renderWatch(t){
   if(!transcript)return;
   if(stage.built===voice.id)stage.seek(t);
-  const {cue,index}=cueAt(transcript,t),scene=sceneAt(transcript,t),si=transcript.scenes.indexOf(scene);
+  const {cue,index}=cueAt(transcript,t),scenes=stage.scenes.length?stage.scenes:transcript.scenes,scene=scenes.findLast(s=>s.start<=t)||scenes[0],si=scenes.indexOf(scene);
   if(index!==watchCue){
     watchCue=index;$('karaoke-words').replaceChildren();
     for(let i=cue.first;i<=cue.last;i++){
@@ -238,8 +241,7 @@ function renderWatch(t){
     glide.style.width=`${a.width}px`;glide.style.height=`${a.height}px`;glide.style.transform=`translate3d(${a.left-b.left}px,${a.top-b.top}px,0)`;
   }
   glide.classList.toggle('on',!!activeWord);$('karaoke-line').classList.toggle('motion-reduced',reducedMotion);
-  const teachingBeat=semanticAt(voice.id,si,reducedMotion?scene.start:t);
-  const pictureIdea=teachingBeat?.label||scene.meaning;
+  const pictureIdea=scene.meaning;
   if($('scene-meaning').textContent!==pictureIdea){
     $('scene-meaning').textContent=pictureIdea;
   }
