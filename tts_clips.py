@@ -38,8 +38,8 @@ IS_DEPLOYMENT = os.environ.get("REPLIT_DEPLOYMENT") == "1"
 LOCAL_DIR = os.environ.get("TTS_LOCAL_DIR", os.path.join(ROOT, "tts-clips"))
 UPLOAD_TOKEN = os.environ.get("TTS_UPLOAD_TOKEN", "").strip()
 
-CLIP_PATH_RE = re.compile(r"^/api/tts/(v[0-9]{1,2})/([0-9a-z]{4,16})\.mp3$")
-ZIP_NAME_RE = re.compile(r"^(v[0-9]{1,2})/([0-9a-z]{4,16})\.mp3$")
+CLIP_PATH_RE = re.compile(r"^/api/tts/(v[0-9]{1,2})/([0-9a-z]{1,16})\.mp3$")
+ZIP_NAME_RE = re.compile(r"^(v[0-9]{1,2})/([0-9a-z]{1,16})\.mp3$")
 MAX_CLIP_BYTES = 400 * 1024
 MAX_UPLOAD_BYTES = 40 * 1024 * 1024
 MEMORY_CACHE_CLIPS = 2000          # ~30 MB of the most-played clips

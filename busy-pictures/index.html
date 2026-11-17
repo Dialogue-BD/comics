@@ -1134,9 +1134,10 @@
     <details class="filter-section voice-details">
       <summary class="filter-label voice-summary">English pronunciation</summary>
       <select id="accent-select" class="voice-select" aria-describedby="voice-help">
-        <option value="en-US">American English</option>
+        <option value="natural">Natural voice (recommended)</option>
+        <option value="en-US">American English (phone voice)</option>
       </select>
-      <div id="voice-help" class="voice-help">Accent choices use the best available installed English voice.</div>
+      <div id="voice-help" class="voice-help">Natural voice is a recording that sounds the same on every phone. The other choices use this phone's own voices.</div>
       <div id="voice-missing" class="voice-missing" style="display:none;"></div>
     </details>
     
@@ -1439,10 +1440,10 @@
 
     function getSavedAccent() {
       try {
-        var saved = window.localStorage.getItem("busyPicturesEnglishAccent") || "en-US";
-        return saved === "auto" || saved === "system" ? "en-US" : saved;
+        var saved = window.localStorage.getItem("busyPicturesEnglishAccent") || "natural";
+        return saved === "auto" || saved === "system" ? "natural" : saved;
       } catch (err) {
-        return "en-US";
+        return "natural";
       }
     }
 
@@ -1529,6 +1530,8 @@
     function getAccentVoiceCandidates() {
       if (!("speechSynthesis" in window)) return [];
       var wanted = String(accentSelect.value || getSavedAccent()).toLowerCase();
+      // The natural voice falls back to the phone's American English voice.
+      if (wanted === "natural") wanted = "en-us";
       var voices = window.speechSynthesis.getVoices();
       var matching = voices.filter(function(voice) {
         return regionTag(voice.lang) === wanted;
@@ -1552,7 +1555,7 @@
       // Start with the explicitly selected accent. In particular, do not try
       // macOS's generic system default first: Chrome can silently reject that
       // utterance and then block the real voice queued behind it.
-      addCandidate(accentVoices[accentSelect.value]);
+      addCandidate(accentVoices[accentSelect.value === "natural" ? "en-US" : accentSelect.value]);
       rankAccentVoices(matching).forEach(addCandidate);
       rankAccentVoices(otherEnglish).forEach(addCandidate);
       return candidates.map(function(candidate) { return candidate.voice; });
@@ -1580,8 +1583,9 @@
 
     function populateVoiceSelector() {
       if (!("speechSynthesis" in window)) {
-        accentSelect.innerHTML = '<option value="en-US">Speech unavailable</option>';
-        accentSelect.disabled = true;
+        // No phone voices, but recorded clips still work.
+        accentSelect.innerHTML = '<option value="natural">Natural voice (recommended)</option>';
+        accentSelect.disabled = false;
         return;
       }
 
@@ -1600,6 +1604,10 @@
 
       accentVoices = {};
       accentSelect.innerHTML = "";
+      var naturalOption = document.createElement("option");
+      naturalOption.value = "natural";
+      naturalOption.textContent = "Natural voice (recommended)";
+      accentSelect.appendChild(naturalOption);
 
       accentOptions.forEach(function(option) {
         var wanted = option.lang.toLowerCase();
@@ -1609,18 +1617,12 @@
         accentVoices[option.lang] = voice;
         var el = document.createElement("option");
         el.value = option.lang;
-        el.textContent = option.label;
+        el.textContent = option.label + " (phone voice)";
         accentSelect.appendChild(el);
       });
 
-      var fallbackAccent = accentVoices["en-US"] ? "en-US" : Object.keys(accentVoices)[0];
-      if (!fallbackAccent) {
-        accentSelect.innerHTML = '<option value="en-US">No English voice installed</option>';
-        accentSelect.disabled = true;
-      } else {
-        accentSelect.disabled = false;
-        accentSelect.value = accentVoices[current] ? current : fallbackAccent;
-      }
+      accentSelect.disabled = false;
+      accentSelect.value = (current === "natural" || !accentVoices[current]) ? "natural" : current;
       reportMissingAccents();
     }
 
@@ -1630,6 +1632,7 @@
     function reportMissingAccents() {
       var box = document.getElementById("voice-missing");
       if (!box) return;
+      if (accentSelect.value === "natural") { box.style.display = "none"; return; }
       var missing = accentOptions.filter(function(o) { return !accentVoices[o.lang]; });
       if (!missing.length) { box.style.display = "none"; return; }
 
@@ -1670,6 +1673,7 @@
 
       accentSelect.addEventListener("change", function() {
         saveAccent(accentSelect.value);
+        reportMissingAccents();
         if (tourState.active) presentTourObject(!tourState.paused);
         else refreshSpokenSentence(true);
       });
@@ -2163,6 +2167,7 @@
         var sentence = buildGrammarSentence(gData, prompt);
         showSpeechToast(obj.name, sentence || "");
         if (options.nameFirst) {
+          if (sentence) prefetchClip(sentence);
           speakText(obj.name, function() {
             if (sentence) speakText(sentence, options.onSpeechEnd);
             else if (options.onSpeechEnd) options.onSpeechEnd();
@@ -2337,6 +2342,17 @@
 
 
     // Every grammar point now has its own complete, stored sentence.
+    // Warm the natural-voice clips an object is about to need.
+    function prefetchObjectSpeech(obj, includeName) {
+      if (!obj) return;
+      if (learningMode === "vocab") {
+        prefetchClip(obj.name);
+        return;
+      }
+      if (includeName) prefetchClip(obj.name);
+      prefetchClip(buildGrammarSentence(obj.grammar_data, prompts[currentPromptIndex]));
+    }
+
     function buildGrammarSentence(gData, prompt) {
       var f = prompt && prompt.field;
       if (f && grammarForm !== "affirmative") f += "_" + grammarForm;
@@ -2538,6 +2554,8 @@
       var runId = ++tourState.runId;
       var obj = tourState.objects[tourState.index];
       updateTourControls();
+      prefetchObjectSpeech(obj, true);
+      prefetchObjectSpeech(tourState.objects[tourState.index + 1], true);
 
       function presentAfterLoad() {
         if (!tourState.active || runId !== tourState.runId) return;
@@ -2581,6 +2599,141 @@
       }, 3500);
     }
 
+    // ---- natural voice (pre-recorded Phonon clips) ----------------------
+    // Every sentence and object name has a recorded MP3 named by a hash of its
+    // exact text (made by tools/make_phonon_clips.py; served by /api/tts/).
+    // A corrected sentence therefore gets a new clip, and an old recording is
+    // never played for new text. If a clip is missing, the network is slow,
+    // or the browser refuses to play it, the phone's own voice reads instead.
+    var NATURAL_VOICE_ID = "v1";
+    var CLIP_BASE_URL = "../api/tts/";
+    var CLIP_START_TIMEOUT_MS = 3500;
+    var CLIP_MISSING_RETRY_MS = 120000;
+    var SILENT_MP3 = "data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjYwLjE2LjEwMAAAAAAAAAAAAAAA//NwwAAAAAAAAAAAAEluZm8AAAAPAAAABAAAAlgAenp6enp6enp6enp6enp6enp6enp6enp6pqampqampqampqampqampqampqampqamptPT09PT09PT09PT09PT09PT09PT09PT09P/////////////////////////////////AAAAAExhdmM2MC4zMQAAAAAAAAAAAAAAACQCcQAAAAAAAAJY+/rsqgAAAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NCxKMAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";
+    var clipAudio = null;
+    var clipMissingSince = {};
+    var clipPrefetched = {};
+
+    // cyrb53 over UTF-16 code units, base 36. Must match clip_key() in
+    // tools/make_phonon_clips.py exactly.
+    function clipKey(text) {
+      var h1 = 0xdeadbeef, h2 = 0x41c6ce57;
+      for (var i = 0, ch; i < text.length; i++) {
+        ch = text.charCodeAt(i);
+        h1 = Math.imul(h1 ^ ch, 2654435761);
+        h2 = Math.imul(h2 ^ ch, 1597334677);
+      }
+      h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507);
+      h1 ^= Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+      h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507);
+      h2 ^= Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+      return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(36);
+    }
+
+    function clipUrlFor(text) {
+      return CLIP_BASE_URL + NATURAL_VOICE_ID + "/" + clipKey(text) + ".mp3";
+    }
+
+    function naturalVoiceSelected() {
+      var value = accentSelect && accentSelect.value ? accentSelect.value : getSavedAccent();
+      return value === "natural";
+    }
+
+    function getClipAudio() {
+      if (!clipAudio) {
+        clipAudio = new Audio();
+        clipAudio.preload = "auto";
+      }
+      return clipAudio;
+    }
+
+    function stopClip() {
+      if (!clipAudio) return;
+      clipAudio.onended = null;
+      clipAudio.onerror = null;
+      clipAudio.onplaying = null;
+      try { clipAudio.pause(); } catch (err) {}
+    }
+
+    // Phones only let a page play sound after a tap. Play a moment of silence
+    // on the first touch so later clips (including the auto tour) may play.
+    function unlockClipAudio() {
+      var audio = getClipAudio();
+      if (audio.src) return;
+      audio.src = SILENT_MP3;
+      var played = audio.play();
+      if (played && played.then) {
+        played.then(function() {
+          if (audio.src === SILENT_MP3) audio.pause();
+        }).catch(function() {});
+      }
+    }
+    ["touchstart", "pointerdown", "keydown"].forEach(function(type) {
+      document.addEventListener(type, function unlockOnce() {
+        document.removeEventListener(type, unlockOnce, true);
+        unlockClipAudio();
+      }, true);
+    });
+
+    function prefetchClip(text) {
+      text = String(text || "").trim();
+      if (!text || narrationMuted || !naturalVoiceSelected() || !window.fetch) return;
+      var url = clipUrlFor(text);
+      if (clipPrefetched[url]) return;
+      clipPrefetched[url] = true;
+      // The server marks clips cacheable for a year, so this warms the cache.
+      fetch(url).then(function(response) {
+        if (!response.ok) clipMissingSince[url] = Date.now();
+      }).catch(function() { delete clipPrefetched[url]; });
+    }
+
+    function playClip(text, token, onEnd, onFail) {
+      var url = clipUrlFor(text);
+      var missingAt = clipMissingSince[url];
+      if (missingAt && Date.now() - missingAt < CLIP_MISSING_RETRY_MS) {
+        onFail();
+        return;
+      }
+      var audio = getClipAudio();
+      var settled = false;
+      var startTimer = null;
+
+      function settle() {
+        settled = true;
+        window.clearTimeout(startTimer);
+        audio.onended = null;
+        audio.onerror = null;
+        audio.onplaying = null;
+      }
+      function fail(missing) {
+        if (settled) return;
+        settle();
+        try { audio.pause(); } catch (err) {}
+        if (missing) clipMissingSince[url] = Date.now();
+        if (token === narrationToken) onFail();
+      }
+
+      audio.onended = function() {
+        if (settled) return;
+        settle();
+        if (token === narrationToken) onEnd();
+      };
+      // A 404 (no recording yet) or an undecodable file ends up here.
+      audio.onerror = function() { fail(true); };
+      audio.onplaying = function() { window.clearTimeout(startTimer); };
+      audio.src = url;
+      // On a very slow connection, read with the phone's voice rather than wait.
+      startTimer = window.setTimeout(function() { fail(false); }, CLIP_START_TIMEOUT_MS);
+      var played = audio.play();
+      if (played && played.catch) {
+        played.catch(function(err) {
+          // AbortError just means a newer clip replaced this one.
+          if (err && err.name === "AbortError") return;
+          fail(false);
+        });
+      }
+    }
+
     // ---- narration ------------------------------------------------------
     // Always use an explicitly selected installed English voice. Never fall
     // back to the operating system's generic default voice.
@@ -2593,6 +2746,7 @@
 
     function stopNarration() {
       narrationToken += 1;
+      stopClip();
       if ("speechSynthesis" in window) {
         var synth = window.speechSynthesis;
         narrationNeedsRestartDelay = !!(synth.speaking || synth.pending);
@@ -2634,6 +2788,10 @@
       if (narrationMuted) {
         // Preserve a comfortable autoplay pace while skipping the utterance.
         window.setTimeout(finish, Math.max(900, Math.min(5000, wordCount * 300 + 600)));
+        return;
+      }
+      if (naturalVoiceSelected()) {
+        playClip(text, token, finish, useSynthesis);
         return;
       }
       useSynthesis();
