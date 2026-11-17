@@ -286,19 +286,21 @@ def contrast_for(name: str, subject: str, action: str, plural: bool) -> str:
     if action in SOCIAL:
         return "stay quiet"
     if action in WORK:
-        return "stand idle" if kind in {"person", "animal"} else "fail"
+        # "The watering can doesn't sit unused" - not "doesn't fail", which
+        # sounded like the object might break.
+        return "stand idle" if kind in {"person", "animal"} else "sit unused"
     if action in LIGHT:
         return "go dark"
     if action in GROWTH:
-        return "shrink"
+        return "wilt"
     if kind in {"person", "animal"}:
         return "stand idle"
     vocabulary = words(name + " " + subject)
     if vocabulary & VEHICLE_NOUNS:
         return "break down"
     if vocabulary & WEARABLE_NOUNS:
-        return "wear out"
-    return "fail"
+        return "fall off"
+    return "sit unused"
 
 
 SMALL_POSITION_NOUNS = set(

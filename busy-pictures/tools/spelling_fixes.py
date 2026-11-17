@@ -38,6 +38,7 @@ WORD_FIXES = {
     "captur": "capture",
     "capturs": "captures",
     "hik": "hike",
+    "haves": "has",
     "cupcupboard": "cupboard",
     "hikked": "hiked",
     "hikking": "hiking",

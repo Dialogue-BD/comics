@@ -16,6 +16,7 @@ save. Safe to rerun.
     python3 busy-pictures/tools/repair_sentences.py
 """
 
+import re
 import sys
 from pathlib import Path
 
@@ -207,6 +208,93 @@ HAND = {
 }
 
 
+# Objects whose present-continuous sentence was stock filler; the other
+# tenses are rebuilt from these (see rebuild_stock_phrases).
+HAND.update({
+    'p2_obj_25': {"labels": ['Pink camper van'], PC: 'The pink camper van is standing behind the family.'},
+    'p2_obj_106': {"labels": ['Silver carriage roof'], PC: 'The silver carriage roof is gleaming in the sunlight.'},
+    'p2_obj_107': {"labels": ['Carriage door'], PC: 'The carriage door is staying closed.'},
+    'p2_obj_130': {"labels": ['White intercity carriage'], PC: 'The white carriage is waiting at the platform.'},
+    'p2_obj_159': {"labels": ['Purple suitcase'], PC: 'The purple suitcase is standing in the train doorway.'},
+    'p2_obj_163': {"labels": ['Second class carriage'], PC: 'The second class carriage is carrying passengers.'},
+    'p2_obj_236': {"labels": ['Beach ball'], PC: 'The colourful beach ball is sitting on the sand beside a child.'},
+    'p3_obj_15': {"labels": ['Rock spires in the valley'], PC: 'The rock spires are rising out of the water.'},
+    'p3_obj_71': {"labels": ["Molly's Hotel"], PC: "Molly's Hotel is standing in the middle of the town."},
+    'p3_obj_145': {"labels": ['Hotel steps'], PC: 'The hotel steps are leading up to the front door.'},
+    'p4_obj_27': {"labels": ['Thin green cactus'], PC: 'The thin green cactus is growing in the dry sand.'},
+    'p4_obj_46': {"labels": ['Joshua tree by the road'], PC: 'The Joshua tree is growing beside the road.'},
+    'p4_obj_48': {"labels": ['Round prickly pear'], PC: 'The prickly pear cactus is growing in the dry sand.'},
+    'p4_obj_115': {"labels": ['Right gate post'], PC: 'The wooden post is holding up the gate.'},
+    'p4_obj_144': {"labels": ['Cactus by the barn'], PC: 'The cactus is growing beside the barn.'},
+    'p5_obj_67': {"labels": ['Blue electric drill'], PC: 'The blue electric drill is lying on the shelf.'},
+    'p5_obj_129': {"labels": ['Tall stepladder'], PC: 'The tall stepladder is holding up the man by the lamp.'},
+    'p6_obj_56': {"labels": ['Village pond'], PC: 'The village pond is shining in the sun.'},
+    'p6_obj_57': {"labels": ['Wooden roof trusses'], PC: 'The wooden roof trusses are standing on top of the new house.'},
+    'p6_obj_117': {"labels": ['Football on the grass'], PC: 'The football is lying on the grass.'},
+    'p7_obj_220': {"labels": ['Concrete steps'], PC: 'The concrete steps are leading up to the front door.'},
+    'p7_obj_225': {"labels": ['Blue armchair in the loft'], PC: 'The blue armchair is standing in the loft with a plant on it.'},
+    'p8_obj_22': {"labels": ['Sailor doll on the box'], PC: 'The sailor doll is sitting on the box.'},
+    'p8_obj_57': {"labels": ['Yellow armchair'], PC: 'The yellow armchair is holding two rag dolls.'},
+    'p8_obj_167': {"labels": ['Bathroom mirror cabinet'], PC: 'The bathroom mirror cabinet is hanging on the wall.'},
+    'p9_obj_31': {"labels": ['Yellow curtains'], PC: 'The yellow curtains are hanging at the window.'},
+    'p9_obj_32': {"labels": ['Bucket of red flowers'], PC: 'The bucket of red flowers is standing outside the shop.'},
+    'p9_obj_42': {"labels": ['Potted palm outside the shop'], PC: 'The potted palm is standing outside the shop.'},
+    'p9_obj_55': {"labels": ['Chimney pot'], PC: 'The chimney pot is sitting on top of the roof.'},
+    'p9_obj_70': {"labels": ['Chimney with the metal cap'], PC: 'The chimney with the metal cap is rising above the roof.'},
+    'p10_obj_108': {"labels": ['Red park bench'], PC: 'The red park bench is holding a picnic bag.'},
+    'p25_obj_34': {"labels": ['Molehill in the grass'], PC: 'The molehill is rising out of the grass.'},
+    "p6_obj_16": {"labels": ["Dark spruce in the wood"], PC: "The dark spruce is standing at the edge of the wood."},
+    "p7_obj_53": {"labels": ["Village pond"], PC: "The village pond is shining in the sun."},
+    "p3_obj_27": {"labels": ["Sandstone rock face"], PC: "The sandstone rock face is towering over the town."},
+})
+
+
+# Stock filler the old "diversify" generators added for variety. Sentences
+# matching these say little or nothing true about the picture ("A cautious
+# animal never continues ...", "During a routine visit, a local specialist
+# checked the golden crown"), so they are rebuilt from the object's own
+# present-continuous sentence.
+STOCK_PHRASES = re.compile("|".join([
+    r"\bA cautious animal never\b",
+    r"\bWhen danger is close\b",
+    r"\bPeople nearby often notice\b",
+    r"\b(During a routine visit|After a brief inspection|Earlier that morning, the organizer|Last week, a local)\b",
+    r"\bchecks the route before\b",
+    r"\bOn an ordinary day\b",
+    r"\bAt this time of day\b",
+    r"\bpauses when .+ (comes|come|moves|move) (closer|nearby)\b",
+    r"\benough \w+ available\b",
+    r"\btown[- ]centre\b",
+    r"\b(useful supplies|daily activity|useful support|a daily task|useful items|plant life|animal activity|the next stage|shap(e|ing) the landscape|support its user|the surrounding landscape)\b",
+    r"\blonger than expected\b",
+    r"\bblocking anyone's route\b",
+    r"\bWhenever (enough|extra) \w+ is available\b|\bWhen extra \w+ is available\b",
+    r"\bbusiest part of the day\b",
+]))
+
+
+def rebuild_stock_phrases(index):
+    """Replace stock-filler affirmatives with plain sentences built from the
+    object's present-continuous action. Returns the number replaced."""
+    reverse = authoring.reverse_ing_map(index)
+    replaced = 0
+    for objects in index.values():
+        for obj in objects:
+            data = obj["grammar_data"]
+            fields = [f for f in authoring.MAIN_FIELDS if STOCK_PHRASES.search(data.get(f, ""))]
+            if not fields:
+                continue
+            if PC in fields:
+                continue  # no trustworthy source; needs a HAND entry
+            subject, plural, base, ing_phrase, passive = authoring.extract_visible_action(data, reverse)
+            static = authoring.entity_kind(obj["name"], subject) == "static"
+            plain = authoring.actual_clauses(subject, plural, base, ing_phrase, passive, static)
+            for field in fields:
+                data[field] = authoring.clean(plain[field])
+                replaced += 1
+    return replaced
+
+
 def apply_hand_repairs(index):
     applied, skipped = 0, []
     objects = {obj["id"]: obj for page in index.values() for obj in page}
@@ -230,6 +318,7 @@ def main():
     print("hand repairs applied to %d objects" % applied)
     if skipped:
         print("skipped (label changed or object gone): %s" % ", ".join(skipped))
+    print("stock-filler sentences rebuilt: %d" % rebuild_stock_phrases(index))
     # Re-author every negative and question from the repaired affirmatives.
     reverse = authoring.reverse_ing_map(index)
     for objects in index.values():
