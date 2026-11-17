@@ -124,6 +124,16 @@ depends on Python's string-hash order, so two runs can differ (and some runs
 produce clipped verbs such as "provid"). Run it with a fixed
 `PYTHONHASHSEED` and check the diff before committing.
 
+## Natural voice (Phonon clips) — 2026-11-17
+
+The viewer's default voice plays pre-recorded Phonon TTS clips (voice V1)
+from `/api/tts/v1/<key>.mp3`; `<key>` hashes the exact spoken text, so after
+any sentence or label change just rerun
+`tools/make_phonon_clips.py` (makes only the new/changed clips) and then
+`tools/make_phonon_clips.py --upload --token <TTS_UPLOAD_TOKEN>`.
+Missing clips fall back to the phone's voice automatically. Server side:
+`tts_clips.py` (Replit App Storage, or a local `tts-clips/` folder).
+
 ## Repo
 
 - GitHub: `github.com/Dialogue-BD/comics` — site at `/comics/busy-pictures/`
