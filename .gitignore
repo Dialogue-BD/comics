@@ -2,3 +2,6 @@
 __pycache__/
 *.pyc
 /generated-artifacts/
+
+# Local speech clips for testing (published site uses Replit App Storage)
+/tts-clips/
