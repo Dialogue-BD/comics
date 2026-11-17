@@ -62,8 +62,8 @@ all three grammar forms in the data but remain hidden pending box repair.
 distinct object updates across pages 10–22 (the newest entry wins when an
 object was submitted twice). Each corrected object has a hand-authored
 subject/action frame and all seven live `main_*` tense sentences were rebuilt.
-The script writes both `spatial_index.json` and the inline `spatialIndex` in
-`index.html`; it is safe to rerun with the same export.
+The script writes `spatial_index.json` and the viewer's `data/*.js` files; it
+is safe to rerun with the same export.
 
 The viewer's prompt list maps all 7 grammar points to `main_simple_present`,
 `main_present_continuous`, `main_simple_past`, `main_past_continuous`,
@@ -108,10 +108,21 @@ preview). It is idempotent.
 
 ## The one thing that will waste your time if you miss it
 
-`spatial_index.json` is **not loaded by the viewer**. There is no `fetch` in
-index.html. The index is embedded inline as `var spatialIndex = {...}`.
-Updating only the JSON changes nothing on the live site — this cost a full
-round of "it's fixed" / "no it isn't". `merge_page.py` writes **both**. Use it.
+`spatial_index.json` is **not loaded by the viewer**. Since 2026-11-17 the
+viewer loads one small file per picture, `data/wimmelbook_N.js`, when that
+picture opens (the old inline copy made index.html 23 MB). Those files hold
+only id, name, box and the 21 live `main_*` sentences per object.
+
+`spatial_index.json` stays the source of truth. Every tool writes it through
+`tools/bp_data.py`, which also rebuilds `data/*.js` and stamps
+`BUSY_DATA_VERSION` in index.html so phones refetch changed files. If you
+edit the JSON any other way, run `python3 tools/bp_data.py` afterwards —
+updating only the JSON changes nothing on the live site.
+
+**Known quirk:** `author_tense_forms.py` is not deterministic — its output
+depends on Python's string-hash order, so two runs can differ (and some runs
+produce clipped verbs such as "provid"). Run it with a fixed
+`PYTHONHASHSEED` and check the diff before committing.
 
 ## Repo
 
@@ -148,7 +159,7 @@ The fix is to read them off a grid, per tile.
    - last field is `plural`
 4. `python3 tools/merge_page.py N page_data.py`
    Generates all 42 grammar fields, drops tile-seam duplicates (IoU > 0.55),
-   renumbers ids, writes index.html **and** spatial_index.json, and renders
+   renumbers ids, writes spatial_index.json **and** data/*.js, and renders
    `tools/check_pageN.png`.
 5. **Look at `check_pageN.png`.** This catches drift nothing else catches.
    Do not commit a page without viewing it.

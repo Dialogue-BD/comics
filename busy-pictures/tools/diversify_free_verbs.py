@@ -782,11 +782,8 @@ def main() -> None:
     parser.add_argument("--apply", action="store_true")
     args = parser.parse_args()
 
-    html = HTML_PATH.read_text(encoding="utf-8")
-    match = grammar.INDEX_RE.search(html)
-    if not match:
-        raise SystemExit("Could not locate embedded spatial index")
-    index = json.loads(match.group(1))
+    # spatial_index.json is the source of truth (the viewer no longer embeds it).
+    index = json.loads(JSON_PATH.read_text(encoding="utf-8"))
     json_index = json.loads(JSON_PATH.read_text(encoding="utf-8"))
     identity = grammar.identity_snapshot(index)
     if identity != grammar.identity_snapshot(json_index):
@@ -994,14 +991,12 @@ def main() -> None:
         print("Dry run only. Re-run with --apply to write files.")
         return
 
-    encoded = json.dumps(index, ensure_ascii=False, separators=(",", ":"))
-    new_html = html[:match.start(1)] + encoded + html[match.end(1):]
-    HTML_PATH.write_text(new_html, encoding="utf-8")
     JSON_PATH.write_text(
         json.dumps(json_index, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
-    print(f"Wrote {HTML_PATH}")
+    import bp_data  # the viewer reads data/<picture>.js, not index.html
+    bp_data.write_viewer_data(json_index)
     print(f"Wrote {JSON_PATH}")
 
 

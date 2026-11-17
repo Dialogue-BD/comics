@@ -14,8 +14,8 @@ looking away, a fixed landmark moving versus remaining in place, and so on),
 then state what the object actually does.  That avoids nonsensical mechanical
 negation such as claiming that a visible mountain does not tower over a town.
 
-Both data copies are updated because the standalone viewer reads the inline
-``spatialIndex`` in index.html rather than fetching spatial_index.json.
+Writes spatial_index.json and rebuilds the viewer's per-picture files in
+data/ (bp_data.py).
 """
 
 from __future__ import annotations
@@ -120,10 +120,9 @@ def inflect_phrase(phrase: str, form: str, plural: bool = False) -> str:
 
 
 def load_inline() -> tuple[str, int, int, dict]:
-    html = HTML_PATH.read_text(encoding="utf-8")
-    start = html.index("var spatialIndex = ") + len("var spatialIndex = ")
-    end = html.index("};", start) + 1
-    return html, start, end, json.loads(html[start:end])
+    # spatial_index.json is the source of truth; the viewer no longer embeds
+    # the data. The extra return values keep main() unchanged.
+    return "", 0, 0, json.loads(JSON_PATH.read_text(encoding="utf-8"))
 
 
 def identity(index: dict) -> list[tuple[str, str, str, tuple]]:
@@ -564,12 +563,8 @@ def main() -> None:
             author_object(obj, reverse)
     validate(inline_index)
 
-    encoded = json.dumps(inline_index, ensure_ascii=False, separators=(",", ":"))
-    HTML_PATH.write_text(html[:start] + encoded + html[end:], encoding="utf-8")
-    JSON_PATH.write_text(
-        json.dumps(inline_index, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
-    )
+    import bp_data  # the viewer reads data/<picture>.js, not index.html
+    bp_data.save_index(inline_index)
 
     objects = sum(len(items) for items in inline_index.values())
     print(f"Authored {objects * len(MAIN_FIELDS) * 2:,} stored tense forms for {objects:,} objects.")
