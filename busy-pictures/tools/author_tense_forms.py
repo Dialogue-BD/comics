@@ -25,6 +25,7 @@ import re
 from pathlib import Path
 
 from main_tenses import IRREG, STATIVE, past, pp, third
+from spelling_fixes import fix_word
 
 
 HERE = Path(__file__).resolve().parent
@@ -142,7 +143,9 @@ def candidate_verbs(index: dict) -> set[str]:
                 value = str(data.get(field, ""))
                 match = re.search(r"(?:^|\b(?:will|can|to))\s+([a-z]+)\b", value, re.I)
                 if match:
-                    verbs.add(match.group(1).lower())
+                    # Older sentences hold clipped verbs ("provid", "danc"); mine
+                    # them corrected so they cannot shadow the real verb.
+                    verbs.add(fix_word(match.group(1).lower()))
     verbs.update(
         "bank circle creak reverse smoke cook cool clean drift gleam glow "
         "brighten darken shrink sparkle observe imagine transport supply "
@@ -154,7 +157,9 @@ def candidate_verbs(index: dict) -> set[str]:
 
 def reverse_ing_map(index: dict) -> dict[str, str]:
     result: dict[str, str] = {}
-    for verb in candidate_verbs(index):
+    # Sorted, so the result never depends on Python's string-hash order (it
+    # used to: two runs could disagree on "providing" -> provide/provid).
+    for verb in sorted(candidate_verbs(index)):
         result[present_participle(verb)] = verb
     # Corpus spellings emitted by the earlier generator also point back to the
     # correctly spelled base, so newly authored forms repair rather than repeat
@@ -169,7 +174,7 @@ def fallback_base(word: str) -> str:
     stem = word[:-3]
     if len(stem) >= 2 and stem[-1] == stem[-2]:
         stem = stem[:-1]
-    return stem
+    return fix_word(stem)
 
 
 def extract_visible_action(data: dict, reverse: dict[str, str]) -> tuple[str, bool, str, str, bool]:
@@ -303,6 +308,26 @@ SMALL_POSITION_NOUNS = set(
 )
 
 
+ATTRIBUTIVE_BEFORE = set(
+    "a an the this that his her its their my our your "
+    "in on under beside by near behind above below at across along between inside outside with of from into "
+    "yellow red pink blue green white black grey gray brown orange purple tan golden silver gold dark light "
+    "little big small tall old young wooden tiny large long short huge fat thin bright pale striped spotted "
+    "metal plastic paper toy".split()
+)
+
+
+def is_attributive_ing(label: str, match: "re.Match") -> bool:
+    """True when the -ing word in a label is used like an adjective."""
+    if match.group(0) == "being":
+        return True                      # passive labels ("panel being lifted")
+    before = label[:match.start()]
+    if not before.strip() or before.endswith("-"):
+        return True                      # first word, or "wall-washing"
+    previous = re.findall(r"[a-z']+", before)[-1]
+    return previous in ATTRIBUTIVE_BEFORE or previous.endswith("'s")
+
+
 def prefer_label_fact(
     name: str,
     subject: str,
@@ -318,6 +343,10 @@ def prefer_label_fact(
     for match in tokens:
         raw_ing = match.group(0)
         if raw_ing not in reverse or raw_ing in GERUND_NOUNS:
+            continue
+        if is_attributive_ing(lowered, match):
+            # "Running antelope", "red watering can", "the folding chair": the
+            # -ing word describes a noun, it is not what the object is doing.
             continue
         label_base = reverse[raw_ing]
         if label_base == base:

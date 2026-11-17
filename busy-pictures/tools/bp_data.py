@@ -8,7 +8,7 @@ file per picture from ``data/`` when that picture opens.
 Every tool that changes the data should end with::
 
     import bp_data
-    bp_data.save_index(index)        # writes spatial_index.json + data/*.js
+    bp_data.save_index(index)        # repairs spelling, writes spatial_index.json + data/*.js
 
 or, if it already wrote spatial_index.json itself::
 
@@ -105,7 +105,12 @@ def write_viewer_data(index, quiet=False):
 
 
 def save_index(index):
-    """Write spatial_index.json and the per-picture viewer files."""
+    """Repair known misspellings, then write spatial_index.json and the
+    per-picture viewer files."""
+    import spelling_fixes
+    repaired = spelling_fixes.fix_index(index)
+    if repaired:
+        print("spelling_fixes: repaired %d names/sentences" % repaired)
     with open(JSON_PATH, "w", encoding="utf-8") as f:
         json.dump(index, f, ensure_ascii=False, indent=2)
         f.write("\n")

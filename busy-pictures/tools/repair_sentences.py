@@ -1,0 +1,243 @@
+#!/usr/bin/env python3
+"""Hand repairs for Busy Pictures objects whose sentences were garbled (2026-11-17).
+
+The earlier generators sometimes took the wrong words as the subject
+("The tea is pouring the tea", "The down is whizzing down the slide"), used
+plural verbs for one person ("The boy sorting shapes are sorting"), or wrote
+sentences for a different object (a smartphone that is sipped). Those seven
+affirmative sentences are rewritten here by hand; each rewrite applies only
+if the object still has the expected label, so a renumbered page can never
+receive the wrong text.
+
+Then every negative and question form is re-authored with the (now
+deterministic, fixed) author_tense_forms rules, and spelling_fixes runs on
+save. Safe to rerun.
+
+    python3 busy-pictures/tools/repair_sentences.py
+"""
+
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import author_tense_forms as authoring  # noqa: E402
+import bp_data  # noqa: E402
+
+SP, PC, PAST, PASTC, PP, GOING, WILL = (
+    "main_simple_present", "main_present_continuous", "main_simple_past",
+    "main_past_continuous", "main_present_perfect", "main_future_going_to",
+    "main_future_will",
+)
+
+# object id -> labels it may currently carry, optional new label, and sentences
+HAND = {
+    "p1_obj_116": {"labels": ["A boy playing with two dogs", "Boy playing with two dogs"],
+                   "name": "Boy playing with two dogs", SP: "The boy usually plays with the two dogs on the grass.",
+                   PC: "The boy is playing with two dogs near the dome tents.",
+                   PAST: "The boy chased the two dogs around the orange dome tent all morning.",
+                   PASTC: "The boy was chasing the dogs round the tent when his mother called.",
+                   PP: "The boy has already tired himself out running across the grass.",
+                   GOING: "The boy is going to build a den behind the blue dome tent.",
+                   WILL: "The boy will fall asleep early tonight after all this running."},
+    "p1_obj_199": {"labels": ["Girl taking photo with smartphone", "Girl taking a photo with a smartphone"],
+                   "name": "Girl taking a photo with a smartphone",
+                   SP: "The girl often takes photos with her smartphone.",
+                   PC: "The girl is taking a photo with her smartphone.",
+                   PAST: "The girl took a photo of the mountains with her smartphone.",
+                   PASTC: "The girl was taking a photo when the boy with a camera pointed toward the mountains.",
+                   PP: "The girl has already taken several photos with her smartphone.",
+                   GOING: "The girl is going to send the photo to her friend.",
+                   WILL: "The girl will take another photo before the train arrives."},
+    "p1_obj_202": {"labels": ["Woman photographing the view"],
+                   SP: "The woman usually waits for the light to be just right before she takes a photo.",
+                   PC: "The woman is holding her camera up to her eye.",
+                   PAST: "The woman raised her camera and framed the snowy peak in the lens.",
+                   PASTC: "The woman was adjusting her camera settings when the hang glider soared overhead.",
+                   PP: "The woman has taken at least a dozen photos already.",
+                   GOING: "The woman is going to email these photos to her family tonight.",
+                   WILL: "The woman will probably print her favourite shot of the viaduct."},
+    "p2_obj_45": {"labels": ["Carousel horse"],
+                  PC: "The wooden horse is moving up and down on its pole.",
+                  PAST: "The wooden horse moved up and down on its pole.",
+                  PASTC: "The carousel horse was moving up and down on its pole.",
+                  PP: "The wooden horse has moved up and down on its pole all afternoon.",
+                  GOING: "The wooden horse is going to move up and down on its pole.",
+                  WILL: "The wooden horse will move up and down on its pole."},
+    "p2_obj_59": {"labels": ["Pigeon flying indoors"],
+                  SP: "The pigeon sometimes flies indoors.",
+                  PC: "The pigeon is flying around indoors.",
+                  PAST: "The pigeon flew in through the open door.",
+                  PASTC: "The pigeon was flying under the ceiling when people looked up.",
+                  PP: "The pigeon has flown all the way across the room.",
+                  GOING: "The pigeon is going to land on a high shelf.",
+                  WILL: "The pigeon will look for crumbs on the floor."},
+    "p4_obj_108": {"labels": ["Lamb lying down"],
+                   PASTC: "While people passed nearby, the lamb was lying on the grass."},
+    "p4_obj_52": {"labels": ["Brown riding horse"],
+                  SP: "The brown horse sometimes pauses when the man in the blue overalls moves nearby.",
+                  PC: "The brown horse is standing on the sandy path.",
+                  PAST: "The man in the blue overalls saw the brown horse stand on the sandy path.",
+                  PASTC: "While people passed nearby, the brown horse was standing on the sandy path."},
+    "p5_obj_50": {"labels": ["Workman bending over"],
+                  PC: "The workman is lifting the second radiator."},
+    "p5_obj_92": {"labels": ["Man with cupboard"],
+                  SP: "The man with the cupboard often carries furniture through the door."},
+    "p5_obj_159": {"labels": ["Man loading the truck"],
+                   PC: "The man is throwing soil into the truck.",
+                   PASTC: "Earlier in the day, the man was throwing soil into the truck."},
+    "p5_obj_202": {"labels": ["Man driving the car"],
+                   PC: "The man is looking at the road works."},
+    "p7_obj_101": {"labels": ["Big camera lens"],
+                   SP: "The big camera lens usually helps the photographer see far away.",
+                   PC: "The big camera lens is pointing at the scene below.",
+                   PAST: "The owner checked the big camera lens before taking a photo.",
+                   PASTC: "The big camera lens was pointing at the scene below when the picture was taken.",
+                   PP: "The big camera lens has zoomed in on the scene.",
+                   GOING: "The big camera lens is going to zoom in for the next shot.",
+                   WILL: "The big camera lens will capture the next shot."},
+    "p7_obj_241": {"labels": ["Red watering can"],
+                   SP: "The red watering can carries water to the garden plants.",
+                   PC: "The red watering can is sitting beside the garden plants.",
+                   PAST: "The red watering can carried water to the garden plants earlier.",
+                   PASTC: "The red watering can was sitting beside the plants when the picture was taken.",
+                   PP: "The red watering can has carried water to the garden plants.",
+                   GOING: "The red watering can is going to carry water to the garden plants.",
+                   WILL: "The red watering can will carry water to the garden plants."},
+    "p8_obj_133": {"labels": ["Woman pouring the tea"],
+                   PC: "The woman is pouring the tea into a cup.",
+                   PAST: "The woman poured the tea into a cup.",
+                   PASTC: "The woman was pouring the tea into a cup."},
+    "p9_obj_27": {"labels": ["Nurse changing bedding and spotting an escaping patient"],
+                  SP: "The nurse often changes the bedding in the hospital room.",
+                  PC: "The nurse is changing the bedding in the hospital room.",
+                  PAST: "The nurse changed the bedding and spotted an escaping patient.",
+                  PASTC: "The nurse was noticing the escaping patient when the woman began watering the balcony flowers.",
+                  PP: "The nurse has changed the bedding and spotted an escaping patient.",
+                  GOING: "The nurse is going to change the bedding and stop the escaping patient.",
+                  WILL: "The nurse will remove the old sheet after the woman moves away."},
+    "p9_obj_68": {"labels": ["Red balloon floating away"],
+                  PC: "The red balloon is escaping into the blue sky.",
+                  PAST: "The red balloon escaped into the blue sky.",
+                  PASTC: "While people passed nearby, the red balloon was escaping into the blue sky."},
+    "p9_obj_69": {"labels": ["Man leaving the toy shop"],
+                  PC: "The man is stepping out onto the pavement."},
+    "p9_obj_179": {"labels": ["Woman crossing the road"],
+                   PC: "The woman is holding her daughter's hand.",
+                   PAST: "The boy with the school bag saw the woman hold her daughter's hand."},
+    "p9_obj_189": {"labels": ["Man loading the car"],
+                   PC: "The man is lifting a bag into the car.",
+                   PAST: "The man lifted a bag into the car a moment ago.",
+                   PASTC: "At that moment, the man was lifting a bag into the car."},
+    "p10_obj_170": {"labels": ["Toy watering can"],
+                    SP: "The toy watering can stands at the edge of the sandpit.",
+                    PC: "The toy watering can is standing at the edge of the sandpit.",
+                    PAST: "The toy watering can stood at the edge of the sandpit all afternoon.",
+                    PASTC: "Earlier in the day, a child was playing with the toy watering can.",
+                    PP: "The toy watering can has stood at the edge of the sandpit all afternoon.",
+                    GOING: "The toy watering can is going to stay at the edge of the sandpit.",
+                    WILL: "The toy watering can will water the sandcastles later."},
+    "p10_obj_172": {"labels": ["Girl pouring sand"],
+                    SP: "The girl often pours sand out of her bucket.",
+                    PC: "The girl is pouring the sand out of the bucket.",
+                    PAST: "The girl poured the sand out of the bucket.",
+                    PASTC: "Just before this moment, the girl was pouring the sand out of the bucket."},
+    "p10_obj_178": {"labels": ["Boy sliding down"],
+                    PC: "The boy is whizzing down the blue slide.",
+                    PAST: "The boy whizzed down the blue slide.",
+                    PASTC: "The boy was whizzing down the blue slide."},
+    "p10_obj_182": {"labels": ["Red climbing net"],
+                    PC: "The red climbing net is sloping down from the tower."},
+    "p21_obj_224": {"labels": ["Boy sorting coloured shapes"],
+                    SP: "The boy generally sorts the shapes into groups.",
+                    PC: "The boy is sorting the shapes into groups.",
+                    PAST: "The boy sorted the shapes into groups earlier this morning.",
+                    PASTC: "The boy was sorting the shapes into groups while everyone else was busy.",
+                    PP: "The boy has already sorted the shapes into groups.",
+                    GOING: "The boy is going to sort the shapes into groups very soon.",
+                    WILL: "The boy will sort the shapes into groups in a little while."},
+    "p23_obj_116": {"labels": ["Boy reaching for coins"],
+                    SP: "The boy normally reaches down for the dropped coins.",
+                    PC: "The boy is reaching down for the dropped coins.",
+                    PAST: "The boy reached down for the dropped coins just before the picture was taken.",
+                    PASTC: "The boy was reaching down for the dropped coins when someone first looked over.",
+                    PP: "The boy has reached down for the dropped coins.",
+                    GOING: "The boy is going to reach down for the dropped coins any second now.",
+                    WILL: "The boy will reach down for the dropped coins in a little while."},
+    "p24_obj_126": {"labels": ["Boy holding hands with a girl"],
+                    SP: "The boy normally walks hand in hand with his friend.",
+                    PC: "The boy is walking hand in hand with his friend.",
+                    PAST: "The boy walked hand in hand with his friend just before the picture was taken.",
+                    PASTC: "The boy was walking hand in hand with his friend when someone first looked over.",
+                    PP: "The boy has already walked hand in hand with his friend.",
+                    GOING: "The boy is going to walk hand in hand with his friend very soon.",
+                    WILL: "The boy will walk hand in hand with his friend in a little while."},
+    "p24_obj_128": {"labels": ["Man with arms outstretched welcoming visitors"],
+                    SP: "The man often welcomes the children to the farm.",
+                    PC: "The man is welcoming the children to the farm.",
+                    PAST: "The man welcomed the children to the farm a few minutes ago.",
+                    PASTC: "The man was welcoming the children to the farm when the noise started.",
+                    PP: "The man has just welcomed the children to the farm.",
+                    GOING: "The man is going to welcome the children to the farm in a moment.",
+                    WILL: "The man will welcome the children to the farm later on."},
+    "p24_obj_137": {"labels": ["Woman shearing a sheep"],
+                    SP: "The woman often shears the wool from the sheep.",
+                    PC: "The woman is shearing the wool from the sheep.",
+                    PAST: "The woman sheared the wool from the sheep a few minutes ago.",
+                    PASTC: "The woman was shearing the wool from the sheep when the noise started.",
+                    PP: "The woman has already sheared the wool from the sheep.",
+                    GOING: "The woman is going to shear the wool from the sheep very soon.",
+                    WILL: "The woman will shear the wool from the sheep in a little while."},
+    "p24_obj_145": {"labels": ["Girl collecting eggs from a nesting box"],
+                    SP: "The girl generally collects eggs from the nesting box.",
+                    PC: "The girl is collecting eggs from the nesting box.",
+                    PAST: "The girl collected eggs from the nesting box earlier this morning.",
+                    PASTC: "The girl was collecting eggs from the nesting box while everyone else was busy.",
+                    PP: "The girl has already collected eggs from the nesting box.",
+                    GOING: "The girl is going to collect eggs from the nesting box very soon.",
+                    WILL: "The girl will collect eggs from the nesting box soon."},
+    "p24_obj_147": {"labels": ["Man walking with milk churns"],
+                    SP: "The man usually walks across the yard with the milk churns.",
+                    PC: "The man is walking across the yard with the milk churns.",
+                    PAST: "The man walked across the yard with the milk churns earlier today.",
+                    PASTC: "The man was walking across the yard with the milk churns just as the others arrived.",
+                    PP: "The man has just walked across the yard with the milk churns.",
+                    GOING: "The man is going to walk across the yard with the milk churns in a moment.",
+                    WILL: "The man will walk across the yard with the milk churns before long."},
+}
+
+
+def apply_hand_repairs(index):
+    applied, skipped = 0, []
+    objects = {obj["id"]: obj for page in index.values() for obj in page}
+    for oid, repair in HAND.items():
+        obj = objects.get(oid)
+        if obj is None or obj["name"] not in repair["labels"]:
+            skipped.append(oid)
+            continue
+        if "name" in repair:
+            obj["name"] = repair["name"]
+        for field, sentence in repair.items():
+            if field.startswith("main_"):
+                obj["grammar_data"][field] = sentence
+        applied += 1
+    return applied, skipped
+
+
+def main():
+    index = bp_data.load_index()
+    applied, skipped = apply_hand_repairs(index)
+    print("hand repairs applied to %d objects" % applied)
+    if skipped:
+        print("skipped (label changed or object gone): %s" % ", ".join(skipped))
+    # Re-author every negative and question from the repaired affirmatives.
+    reverse = authoring.reverse_ing_map(index)
+    for objects in index.values():
+        for obj in objects:
+            authoring.author_object(obj, reverse)
+    authoring.validate(index)
+    bp_data.save_index(index)
+
+
+if __name__ == "__main__":
+    main()

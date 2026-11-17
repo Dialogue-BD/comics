@@ -119,10 +119,13 @@ only id, name, box and the 21 live `main_*` sentences per object.
 edit the JSON any other way, run `python3 tools/bp_data.py` afterwards —
 updating only the JSON changes nothing on the live site.
 
-**Known quirk:** `author_tense_forms.py` is not deterministic — its output
-depends on Python's string-hash order, so two runs can differ (and some runs
-produce clipped verbs such as "provid"). Run it with a fixed
-`PYTHONHASHSEED` and check the diff before committing.
+**Spelling repairs (2026-11-17):** the generators produced ~170 kinds of
+misspelt verb forms ("provid", "coverred", "opene", "has writed").
+`tools/spelling_fixes.py` holds the corrections and `bp_data.save_index()`
+applies them on every save, so they cannot come back. Add any new
+misspelling there. Garbled whole objects were rewritten by hand in
+`tools/repair_sentences.py`. `author_tense_forms.py` is now deterministic
+(it used to depend on Python's string-hash order).
 
 ## Natural voice (Phonon clips) — 2026-11-17
 
