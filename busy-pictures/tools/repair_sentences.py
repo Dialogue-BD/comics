@@ -16,6 +16,7 @@ save. Safe to rerun.
     python3 busy-pictures/tools/repair_sentences.py
 """
 
+import json
 import re
 import sys
 from pathlib import Path
@@ -270,6 +271,8 @@ STOCK_PHRASES = re.compile("|".join([
     r"\bblocking anyone's route\b",
     r"\bWhenever (enough|extra) \w+ is available\b|\bWhen extra \w+ is available\b",
     r"\bbusiest part of the day\b",
+    r"\bWithout much assistance\b",
+    r"^With enough \w+, ",
 ]))
 
 
@@ -295,10 +298,33 @@ def rebuild_stock_phrases(index):
     return replaced
 
 
+CODES = {"SP": SP, "PC": PC, "PA": PAST, "PX": PASTC, "PP": PP, "GO": GOING, "WI": WILL}
+REVIEWS = Path(__file__).resolve().parent / "reviews"
+
+
+def load_reviews():
+    """Picture-by-picture review fixes (tools/reviews/<picture>.json)."""
+    entries = {}
+    for path in sorted(REVIEWS.glob("wimmelbook_*.json")):
+        for oid, entry in json.loads(path.read_text(encoding="utf-8")).items():
+            if oid.startswith("_"):
+                continue
+            fixed = {"labels": entry["labels"]}
+            if "name" in entry:
+                fixed["name"] = entry["name"]
+            for code, field in CODES.items():
+                if code in entry:
+                    fixed[field] = entry[code]
+            entries[oid] = fixed
+    return entries
+
+
 def apply_hand_repairs(index):
     applied, skipped = 0, []
     objects = {obj["id"]: obj for page in index.values() for obj in page}
-    for oid, repair in HAND.items():
+    repairs = dict(HAND)
+    repairs.update(load_reviews())
+    for oid, repair in repairs.items():
         obj = objects.get(oid)
         if obj is None or obj["name"] not in repair["labels"]:
             skipped.append(oid)

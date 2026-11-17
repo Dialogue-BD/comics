@@ -39,6 +39,8 @@ WORD_FIXES = {
     "capturs": "captures",
     "hik": "hike",
     "haves": "has",
+    "hous": "house",
+    "rais": "raise",
     "cupcupboard": "cupboard",
     "hikked": "hiked",
     "hikking": "hiking",
@@ -220,6 +222,12 @@ PERFECT_AUX = {"has", "have", "had", "hasn't", "haven't", "hadn't", "'s", "'ve"}
 ADVERBS = {"already", "just", "never", "ever", "always", "not", "still", "also",
            "recently", "only", "now", "finally", "since"}
 
+# Fixes that need context (the word alone may be a real word: "brows").
+PHRASE_FIXES = [
+    (re.compile(r"\bto brows\b"), "to browse"),
+    (re.compile(r"\bgoing to leaves\b"), "going to leave"),
+]
+
 _WORD_RE = re.compile(r"[A-Za-z]+(?:'[a-z]+)?")
 
 
@@ -264,7 +272,10 @@ def fix_text(text):
         out.append(replacement)
         last = match.end()
     out.append(text[last:])
-    return "".join(out)
+    text = "".join(out)
+    for pattern, replacement in PHRASE_FIXES:
+        text = pattern.sub(replacement, text)
+    return text
 
 
 def fix_index(index):
