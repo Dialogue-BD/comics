@@ -199,7 +199,11 @@ STATIC_NOUNS = set(
     "sign signboard poster mural frieze shelf cabinet table bench chair sofa bed crate "
     "box basket planter pole post lamp chimney pipe drainpipe gutter awning balcony "
     "terrace platform track runway sand soil rock rocks stone stones hay bale bales "
-    "curtain curtains carpet rug mat counter playground paddock".split()
+    "curtain curtains carpet rug mat counter playground paddock "
+    "chalet chalets cabin cottage farmhouse barn hotel motel viaduct tunnel ridge cliff "
+    "cliffs slope slopes waterfall canyon gorge glacier mesa butte silo silos windmill "
+    "lighthouse tent tents shed hut kiosk stall marquee pavilion grandstand arch "
+    "factory warehouse garage greenhouse stable stables coop hutch kennel".split()
 )
 
 PERSON_NOUNS = set(
@@ -207,14 +211,35 @@ PERSON_NOUNS = set(
     "teacher teachers student students player players rider riders driver drivers "
     "couple family families mother father grandmother grandfather lady gentleman "
     "policeman police officer officers clown clowns cook cooks painter painters "
-    "mechanic mechanics gardener gardeners customer customers visitor visitors".split()
+    "mechanic mechanics gardener gardeners customer customers visitor visitors "
+    "parachutist cyclist cyclists jogger hiker hikers skier climber climbers photographer "
+    "swimmer swimmers surfer windsurfer snowboarder skateboarder fisherman fiddler musician "
+    "musicians singer baker florist vendor seller waiter waitress nurse doctor vet "
+    "veterinarian farrier lumberjack logger roofer plumber builder builders bricklayer "
+    "plasterer electrician pilot passenger passengers shopper shoppers spectator spectators "
+    "guard conductor teenager toddler toddlers baby babies kid kids scout scouts referee "
+    "umpire goalkeeper goalie catcher pitcher batter fielder outfielder coach trainer "
+    "neighbour neighbor friend friends grandma grandpa son daughter sister brother rancher "
+    "cowboy cowgirl beekeeper birdwatcher binman postman mailman secretary guitarist dancer "
+    "drummer surveyor sunbather tourist tourists walker walkers runner fireman firefighter "
+    "parent parents gentleman boys girls men women staff crew".split()
 )
 
 ANIMAL_NOUNS = set(
     "dog dogs cat cats bird birds cow cows horse horses pony ponies sheep goat goats "
     "pig pigs chicken chickens hen hens rooster duck ducks goose geese rabbit rabbits "
     "frog frogs snail snails butterfly butterflies bee bees fish lion deer donkey "
-    "mouse mice squirrel squirrels fox bear calf calves lamb lambs flock herd".split()
+    "mouse mice squirrel squirrels fox bear calf calves lamb lambs flock herd "
+    "chamois ibex marmot marmots pigeon pigeons seagull seagulls gull gulls eagle hawk owl "
+    "owls swan swans heron crow crows magpie parrot robin sparrow sparrows swallow swallows "
+    "dove doves osprey vulture stork kingfisher woodpecker turkey lizard snake snakes turtle "
+    "crab badger hedgehog hedgehogs raccoon raccoons beaver bison buffalo antelope coyote "
+    "coyotes wolf boar piglet piglets foal mare stallion bull ox oxen dragonfly bat bats mole "
+    "rat rats seal dolphin whale insects puppy puppies kitten kittens duckling ducklings "
+    "chick chicks hare ponies llama alpaca camel elephant giraffe monkey tiger zebra "
+    "chipmunk ferret otter skunk fawn doe stag buck geese cattle swarm terrier terriers "
+    "poodle poodles beagle labrador retriever dane husky dalmatian spaniel collie sheepdog "
+    "appaloosa palomino pinto mustang dachshund chihuahua bulldog".split()
 
 )
 
@@ -233,13 +258,15 @@ POSTURE = set("stand sit lie lean rest wait sleep crouch kneel perch hide stay h
 MOTION = set(
     "bank circle drift float fly glide hover run walk stroll hurry climb ride roll pull "
     "push trot turn swing reach follow drive steer cross swoop hop swim paddle sail "
-    "waddle creep wander chase crawl dash soar jump skip spin flow slide rise fall".split()
+    "waddle creep wander chase crawl dash soar jump skip spin flow slide rise fall "
+    "splash tumble bubble ripple flap flutter sway bob bounce sink race zoom rush speed "
+    "gallop leap dive scurry scamper rumble chug cruise".split()
 )
 OBSERVATION = set("look watch peer check read listen point inspect search observe peek peep".split())
 FOOD = set("eat drink feed chew nibble graze cook grill pour".split())
 SOCIAL = set("wave chat talk smile hug clap sing dance play call welcome help".split())
 WORK = set("work fix cut sweep make dig clean paint build repair wash carry hold lift pick".split())
-LIGHT = set("shine glow gleam sparkle brighten light".split())
+LIGHT = set("shine glow gleam sparkle twinkle flash flicker light".split())
 GROWTH = set("grow bloom flower spread rise".split())
 GERUND_NOUNS = set(
     "building ceiling flooring lighting painting crossing railing awning edging covering "
@@ -270,17 +297,62 @@ def entity_kind(name: str, subject: str) -> str:
     return "object"
 
 
+ROUTE_NOUNS = set(
+    "road roads path paths track tracks street lane staircase stairs steps fence hedge wall "
+    "river stream railing line rail rails bridge frieze row trail runway canal pipe cable "
+    "rope wire garland bunting".split()
+)
+ROUTE_VERBS = set("run lead wind stretch curve continue extend sweep go cross climb follow edge line border".split())
+LIGHT_SOURCES = set(
+    "lamp lamps light lights lantern lanterns sun moon star stars beacon bulb candle candles "
+    "torch flashlight screen television tv fire campfire".split()
+)
+HOLDER_NOUNS = set(
+    "table tables shelf shelves box boxes crate crates basket baskets bucket buckets bag bags "
+    "tray trays bowl bowls cup cups jar jars vase cart wagon trolley trailer truck van rack "
+    "cabinet cupboard pot pots can bin bins wheelbarrow case chest drawer net pen cage "
+    "platform stand plate sack trough barrow counter".split()
+)
+GROWING = set("grow bloom flower sprout blossom ripen".split())
+HOLDING = set("hold carry keep contain store fill support display".split())
+SHOWING = set("show advertise mark announce welcome tell point name spell invite decorate brighten".split())
+OPENING = set("open let admit".split())
+FACING = set("look face overlook".split())
+SHELTER = set("shade cover shelter protect".split())
+
+
 def contrast_for(name: str, subject: str, action: str, plural: bool) -> str:
-    """Select a plausible *different* predicate instead of negating the fact."""
+    """Select a plausible *different* predicate instead of negating the fact.
+
+    The negative then reads "X isn't <contrast>; it is <what it does>", so the
+    contrast must never contradict the action ("the cloud isn't moving ...
+    it is rising") or sound like a riddle."""
     kind = entity_kind(name, subject)
-    if kind == "static":
-        return "move from their places" if plural else "move from its place"
+    vocabulary = words(name + " " + subject)
+    living = kind in {"person", "animal"}
+    if action in OBSERVATION and living:
+        return "turn away"
+    if action in GROWING and not living:
+        return "wilt"
+    if action in LIGHT:
+        return "go dark" if vocabulary & LIGHT_SOURCES else "look dull"
+    if not living:
+        if action in ROUTE_VERBS and (kind == "static" or vocabulary & ROUTE_NOUNS):
+            return "end here"
+        if action in POSTURE or (kind == "static" and action in {"rise", "tower", "loom", "soar", "poke"}):
+            return "go anywhere"
+        if action in OPENING:
+            return "stay shut"
+        if action in FACING:
+            return "point the other way"
+        if action in HOLDING and vocabulary & HOLDER_NOUNS:
+            return "sit empty"
+        if action in SHOWING or action in SHELTER:
+            return "sit unused"
     if action in POSTURE:
         return "move around"
     if action in MOTION:
         return "stay still"
-    if action in OBSERVATION:
-        return "look away"
     if action in FOOD:
         return "leave the food alone"
     if action in SOCIAL:
@@ -288,19 +360,14 @@ def contrast_for(name: str, subject: str, action: str, plural: bool) -> str:
     if action in WORK:
         # "The watering can doesn't sit unused" - not "doesn't fail", which
         # sounded like the object might break.
-        return "stand idle" if kind in {"person", "animal"} else "sit unused"
-    if action in LIGHT:
-        return "go dark"
-    if action in GROWTH:
-        return "wilt"
-    if kind in {"person", "animal"}:
+        return "stand idle" if living else "sit unused"
+    if living:
         return "stand idle"
-    vocabulary = words(name + " " + subject)
     if vocabulary & VEHICLE_NOUNS:
         return "break down"
     if vocabulary & WEARABLE_NOUNS:
         return "fall off"
-    return "sit unused"
+    return "go anywhere" if kind == "static" else "sit unused"
 
 
 SMALL_POSITION_NOUNS = set(
@@ -435,13 +502,16 @@ def actual_clauses(subject: str, plural: bool, base: str, ing_phrase: str, passi
     present_marker = "still" if static else "usually"
     past_marker = "still " if static else ""
     perfect_marker = "always " if static else "already "
+    perfect_tail = ""
+    if not static and base in POSTURE:
+        perfect_marker, perfect_tail = "", " all morning"
     future_head = "continue to " if static else ""
     return {
         "main_simple_present": f"{subject} {present_marker} {do_present}{rest}",
         "main_present_continuous": f"{subject} {be} {ing_phrase}",
-        "main_simple_past": f"{subject} {past_marker}{past(base)}{rest} earlier",
+        "main_simple_past": f"{subject} {past(base)}{rest} earlier",
         "main_past_continuous": f"{subject} {was} {ing_phrase} when the picture was taken",
-        "main_present_perfect": f"{subject} {have} {perfect_marker}{pp(base)}{rest}",
+        "main_present_perfect": f"{subject} {have} {perfect_marker}{pp(base)}{rest}{perfect_tail}",
         "main_future_going_to": f"{subject} {be} going to {future_head}{base}{rest}",
         "main_future_will": f"{subject} will {future_head}{base}{rest}",
     }
@@ -477,13 +547,16 @@ def question_clauses(subject: str, plural: bool, base: str, ing_phrase: str, pas
     rest = (" " + rest) if rest else ""
     present_marker = "still " if static else "usually "
     perfect_marker = "always " if static else "ever "
+    perfect_tail = ""
+    if not static and base in POSTURE:
+        perfect_marker, perfect_tail = "", " all morning"
     future_head = "continue to " if static else ""
     return {
         "main_simple_present": f"{do} {lower_initial(subject)} {present_marker}{base}{rest}",
         "main_present_continuous": f"{be} {lower_initial(subject)} {ing_phrase} right now",
-        "main_simple_past": f"Did {lower_initial(subject)} {'still ' if static else ''}{base}{rest} earlier",
-        "main_past_continuous": f"{was} {lower_initial(subject)} {'still ' if static else ''}{ing_phrase} when the picture was taken",
-        "main_present_perfect": f"{have} {lower_initial(subject)} {perfect_marker}{pp(base)}{rest}",
+        "main_simple_past": f"Did {lower_initial(subject)} {base}{rest} earlier",
+        "main_past_continuous": f"{was} {lower_initial(subject)} {ing_phrase} when the picture was taken",
+        "main_present_perfect": f"{have} {lower_initial(subject)} {perfect_marker}{pp(base)}{rest}{perfect_tail}",
         "main_future_going_to": f"{be} {lower_initial(subject)} going to {future_head}{base}{rest}",
         "main_future_will": f"Will {lower_initial(subject)} {future_head}{base}{rest}",
     }
@@ -527,6 +600,183 @@ HAND_AUTHORED = {
 }
 
 
+AUX_WORDS = {"is", "are", "was", "were", "has", "have", "will", "can"}
+ADVERBS = set(
+    "usually often always still sometimes normally generally never rarely also just "
+    "already even then soon really quickly slowly carefully quietly gently happily".split()
+)
+LEADING_TIME = re.compile(
+    r"^((?:Earlier|Just|At|While|When|Before|After|Last|This|Yesterday|Later|On|In|During|"
+    r"Around|Every|Each|Most|Once|Today|Tonight)\b[^,]{0,60}), (.+)$"
+)
+NEGATIVE_WORDS = re.compile(r"\b(?:not|never|nobody|no one|nothing|none|no)\b|n't\b", re.I)
+_VERB_FORMS: dict[str, dict[str, str]] = {}
+EXTRA_VERBS: set[str] = set()
+
+
+def mine_verbs(index: dict) -> None:
+    """Every verb the reviewed future sentences use ("will bark", "going to swim")."""
+    for objects in index.values():
+        for obj in objects:
+            data = obj["grammar_data"]
+            for field in ("main_future_will", "main_future_going_to"):
+                match = re.search(r"\b(?:will|going to)\s+(?:\w+ly\s+)?([a-z]+)\b", str(data.get(field, "")))
+                if match and match.group(1) not in {"be", "have", "not", "never"}:
+                    EXTRA_VERBS.add(fix_word(match.group(1)))
+    _VERB_FORMS.clear()
+
+
+def verb_forms(reverse: dict[str, str]) -> dict[str, dict[str, str]]:
+    """Inverse maps from inflected forms back to the base verb."""
+    key = id(reverse)
+    if _VERB_FORMS.get("_key") != key:
+        bases = set(reverse.values()) | set(IRREG) | set(STATIVE) | set(EXTRA_VERBS)
+        past_map, third_map, pp_map = {}, {}, {}
+        # Longer bases first, so "rises" maps back to "rise", not a clipped "ris".
+        for base in sorted(bases, key=lambda b: (-len(b), b)):
+            past_map.setdefault(past(base), base)
+            third_map.setdefault(third(base), base)
+            pp_map.setdefault(pp(base), base)
+        _VERB_FORMS.clear()
+        _VERB_FORMS.update({"_key": key, "past": past_map, "third": third_map,
+                            "pp": pp_map, "base": {b: b for b in bases}})
+    return _VERB_FORMS
+
+
+def split_affirmative(sentence: str, subjects: list[str]):
+    """(prefix, subject, rest) for a reviewed sentence, or None.
+
+    prefix is a leading time phrase ("Earlier in the day") moved out of the
+    way; subject is one of the object's known subjects, or the words before
+    the first auxiliary."""
+    text = sentence.strip().rstrip(".!?")
+    prefix = ""
+    lead = LEADING_TIME.match(text)
+    if lead:
+        prefix, text = lead.group(1), lead.group(2)
+        text = text[:1].upper() + text[1:]
+    lowered = text.lower()
+    for subject in sorted(subjects, key=len, reverse=True):
+        if lowered.startswith(subject.lower() + " "):
+            return prefix, text[:len(subject)], text[len(subject) + 1:]
+    tokens = text.split()
+    for i, token in enumerate(tokens[1:7], start=1):
+        if token.lower() in AUX_WORDS:
+            return prefix, " ".join(tokens[:i]), " ".join(tokens[i:])
+    return None
+
+
+def parse_predicate(rest: str, field: str, forms: dict, reverse: dict[str, str]):
+    """(head, adverbs, base, tail) of the verb phrase after the subject."""
+    tokens = rest.split()
+    if not tokens:
+        return None
+    head = ""
+    if tokens[0].lower() in AUX_WORDS and field not in ("main_simple_present", "main_simple_past"):
+        head, tokens = tokens[0].lower(), tokens[1:]
+    elif tokens[0].lower() in {"is", "are", "was", "were"}:
+        head, tokens = tokens[0].lower(), tokens[1:]   # copula: "The pond is full"
+    adverbs = []
+    while tokens and tokens[0].lower() in ADVERBS:
+        adverbs.append(tokens.pop(0))
+    if not tokens:
+        return None
+    word = tokens[0].lower()
+    if head in {"is", "are", "was", "were"} and tokens[:2] and word == "going" and len(tokens) > 2 and tokens[1] == "to":
+        base = forms["base"].get(tokens[2].lower())
+        return head, adverbs, base, " ".join(tokens)
+    if head in {"is", "are", "was", "were"}:
+        base = reverse.get(word) if word.endswith("ing") else None
+        return head, adverbs, base, " ".join(tokens)
+    if head in {"has", "have"}:
+        return head, adverbs, forms["pp"].get(word), " ".join(tokens)
+    if head in {"will", "can"}:
+        return head, adverbs, forms["base"].get(word), " ".join(tokens)
+    # No auxiliary: a simple present or simple past main verb.
+    if field == "main_simple_past":
+        base = forms["past"].get(word)
+    else:
+        base = forms["third"].get(word) or forms["base"].get(word)
+        if word in {"has", "have"}:
+            base = "have"
+    if not base:
+        return None
+    return "", adverbs, base, " ".join(tokens[1:])
+
+
+def question_from(prefix, subject, plural, field, parsed):
+    head, adverbs, base, tail = parsed
+    adv = (" ".join(adverbs) + " ") if adverbs else ""
+    who = lower_initial(subject)
+    if head:
+        sentence = f"{head.capitalize()} {who} {adv}{tail}"
+    else:
+        if field == "main_simple_past":
+            do = "Did"
+        else:
+            do = "Do" if plural else "Does"
+        sentence = f"{do} {who} {adv}{base}{(' ' + tail) if tail else ''}"
+    if prefix:
+        sentence += " " + lower_initial(prefix)
+    return clean(sentence, question=True)
+
+
+def author_from_affirmatives(obj: dict, subject: str, plural: bool, reverse: dict[str, str]) -> dict:
+    """Negatives and questions built from each tense's own sentence, so they
+    match what the student has just read. Fields that cannot be parsed are
+    left out and keep the frame-based version."""
+    data = obj["grammar_data"]
+    forms = verb_forms(reverse)
+    subjects = {subject}
+    for field in MAIN_FIELDS:
+        match = re.match(r"^(.+?)\s+(?:is|are|was|were|has|have|will)\b", str(data.get(field, "")))
+        if match and len(match.group(1).split()) <= 8 and not LEADING_TIME.match(match.group(1) + ", x"):
+            subjects.add(match.group(1))
+    own = {s.lower() for s in subjects}
+    out = {}
+    for field in MAIN_FIELDS:
+        sentence = str(data.get(field, ""))
+        if not sentence or " saw " in sentence:
+            continue
+        if NEGATIVE_WORDS.search(sentence):
+            # Already negative ("The man doesn't look where he walks"): it is
+            # the negative, and the question asks about the positive.
+            neg = re.match(r"^(.+?) (doesn't|don't|didn't|isn't|aren't|wasn't|weren't|hasn't|haven't|won't) (.+?)\.?$", sentence)
+            if neg and len(neg.group(1).split()) <= 8 and not NEGATIVE_WORDS.search(neg.group(1) + " " + neg.group(3)):
+                aux = {"doesn't": "Does", "don't": "Do", "didn't": "Did", "isn't": "Is", "aren't": "Are",
+                       "wasn't": "Was", "weren't": "Were", "hasn't": "Has", "haven't": "Have", "won't": "Will"}[neg.group(2)]
+                out[field + "_negative"] = clean(sentence)
+                out[field + "_question"] = clean(f"{aux} {lower_initial(neg.group(1))} {neg.group(3)}", question=True)
+            continue
+        split = split_affirmative(sentence, sorted(subjects))
+        if not split:
+            continue
+        prefix, subj, rest = split
+        parsed = parse_predicate(rest, field, forms, reverse)
+        if not parsed or (not parsed[0] and not parsed[2]):
+            continue
+        this_plural = plural
+        if parsed[0] in {"are", "were", "have"}:
+            this_plural = True
+        elif parsed[0] in {"is", "was", "has"}:
+            this_plural = False
+        out[field + "_question"] = question_from(prefix, subj, this_plural, field, parsed)
+        if subj.lower() not in own or not parsed[2]:
+            continue
+        contrast = contrast_for(obj["name"], subj, parsed[2], this_plural)
+        if parsed[2] in contrast.split() or (contrast in ("stay still",) and parsed[2] in POSTURE):
+            continue
+        negative = negative_clauses(subj, this_plural, contrast)[field]
+        pronoun = continuation_subject(obj["name"], subj, this_plural)
+        when = (" " + lower_initial(prefix)) if prefix else ""
+        if pronoun in {"he", "she", "it", "they"}:
+            out[field + "_negative"] = clean(negative + "; " + pronoun + " " + rest + when)
+        else:
+            # "The child in pink isn't standing idle but is holding the rail."
+            out[field + "_negative"] = clean(negative + " but " + rest + when)
+    return out
+
+
 def author_object(obj: dict, reverse: dict[str, str]) -> None:
     data = obj["grammar_data"]
     subject, plural, base, ing_phrase, passive = extract_visible_action(data, reverse)
@@ -548,10 +798,11 @@ def author_object(obj: dict, reverse: dict[str, str]) -> None:
             continuation_subject(obj["name"], subject, plural),
         )
         data[field + "_negative"] = clean(
-            negatives[field] + ", but " + continuation
+            negatives[field] + "; " + continuation
         )
         data[field + "_question"] = clean(questions[field], question=True)
 
+    data.update(author_from_affirmatives(obj, subject, plural, reverse))
     data.update(HAND_AUTHORED.get(obj["id"], {}))
 
 

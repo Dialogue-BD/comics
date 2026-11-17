@@ -434,6 +434,114 @@ def rebuild_stock_phrases(index):
     return replaced
 
 
+# Time markers the old generator rotated through. Some point at events that
+# are not in the picture ("when the noise started"), and the long-duration
+# ones only suit scenery ("the child has waited for the food for years").
+EVENT_MARKERS = {
+    " when the noise started.": " a moment ago.",
+    " just as the others arrived.": " when the picture was taken.",
+    " when someone first looked over.": " a few minutes ago.",
+    " long before the others noticed.": " all morning.",
+    " while everything else went on nearby.": " when the picture was taken.",
+}
+LIVING_PAST = {
+    " last week too.": " earlier today.",
+    " yesterday as well.": " earlier today.",
+    " long before anyone arrived.": " earlier this morning.",
+}
+
+
+def tidy_time_markers(index):
+    changed = 0
+    for objects in index.values():
+        for obj in objects:
+            data = obj["grammar_data"]
+            try:
+                subject = authoring.extract_visible_action(data, {})[0]
+            except ValueError:
+                continue
+            kind = authoring.entity_kind(obj["name"], subject)
+            living = kind in {"person", "animal"}
+            swaps = {PASTC: dict(EVENT_MARKERS)}
+            if kind != "static":
+                swaps[PP] = {" for years.": " for a long time."}
+                swaps[WILL] = {" for years to come.": " for a long time yet."}
+            if living:
+                swaps[PAST] = dict(LIVING_PAST)
+            past_sentence = data.get(PAST, "")
+            if " still " in past_sentence and past_sentence.endswith(" earlier."):
+                data[PAST] = past_sentence.replace(" still ", " ", 1)
+                changed += 1
+            perfect = data.get(PP, "")
+            match = re.search(r"\b(has|have) already (sat|stood|lain|hung|waited|rested|leaned)\b(.*)\.$", perfect)
+            if match and kind != "static":
+                data[PP] = perfect[: match.start()] + f"{match.group(1)} {match.group(2)}{match.group(3)} all morning."
+                changed += 1
+            for field, table in swaps.items():
+                sentence = data.get(field, "")
+                for old, new in table.items():
+                    if sentence.endswith(old):
+                        data[field] = sentence[: -len(old)] + new
+                        changed += 1
+                        break
+    return changed
+
+
+PAST_CLAUSE = re.compile(r"\b(as|while|when|until) (it|he|she|they|the [\w' -]{1,25}?) ([a-z]+?)s\b")
+
+
+def fix_past_clauses(index, reverse):
+    """'squeaked as it turns' -> 'squeaked as it turned' in past sentences."""
+    forms = authoring.verb_forms(reverse)
+    changed = 0
+
+    def repl(match):
+        word = match.group(3) + "s"
+        base = forms["third"].get(word)
+        if not base or base in {"be", "have", "do"}:
+            return match.group(0)
+        return f"{match.group(1)} {match.group(2)} {authoring.past(base)}"
+
+    for objects in index.values():
+        for obj in objects:
+            data = obj["grammar_data"]
+            for field in (PAST, PASTC):
+                new = PAST_CLAUSE.sub(repl, data.get(field, ""))
+                if new != data.get(field, ""):
+                    data[field] = new
+                    changed += 1
+    return changed
+
+
+AUX_PAIRS = {"are": "is", "were": "was", "have": "has", "is": "are", "was": "were", "has": "have"}
+
+
+def agree_auxiliaries(index, reverse):
+    """'The grey heron were wading' when the object is singular everywhere else."""
+    changed = 0
+    for objects in index.values():
+        for obj in objects:
+            data = obj["grammar_data"]
+            try:
+                subject, plural = authoring.extract_visible_action(data, reverse)[:2]
+            except ValueError:
+                continue
+            wrong = {"is", "was", "has"} if plural else {"are", "were", "have"}
+            for field in authoring.MAIN_FIELDS:
+                sentence = data.get(field, "")
+                lead = authoring.LEADING_TIME.match(sentence.rstrip("."))
+                body_start = len(lead.group(1)) + 2 if lead else 0
+                body = sentence[body_start:]
+                if not body.lower().startswith(subject.lower() + " "):
+                    continue
+                after = body[len(subject) + 1:]
+                aux = after.split(" ", 1)[0]
+                if aux in wrong:
+                    data[field] = sentence[:body_start] + body[: len(subject) + 1] + AUX_PAIRS[aux] + after[len(aux):]
+                    changed += 1
+    return changed
+
+
 CODES = {"SP": SP, "PC": PC, "PA": PAST, "PX": PASTC, "PP": PP, "GO": GOING, "WI": WILL}
 REVIEWS = Path(__file__).resolve().parent / "reviews"
 
@@ -494,6 +602,11 @@ def main():
     if skipped:
         print("skipped (label changed or object gone): %s" % ", ".join(skipped))
     print("stock-filler sentences rebuilt: %d" % rebuild_stock_phrases(index))
+    authoring.mine_verbs(index)
+    print("time markers tidied: %d" % tidy_time_markers(index))
+    reverse = authoring.reverse_ing_map(index)
+    print("past clauses fixed: %d" % fix_past_clauses(index, reverse))
+    print("auxiliaries agreed: %d" % agree_auxiliaries(index, reverse))
     # Re-author every negative and question from the repaired affirmatives.
     reverse = authoring.reverse_ing_map(index)
     for objects in index.values():

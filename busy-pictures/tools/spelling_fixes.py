@@ -15,6 +15,11 @@ import re
 
 # misspelt word -> correct word (lower case; capitals are preserved on use)
 WORD_FIXES = {
+    "ading": "adding",
+    "ris": "rise",
+    "scalling": "scaling",
+    "scals": "scales",
+    "scalled": "scaled",
     "nam": "name",
     "typ": "type",
     "admiting": "admitting",
@@ -234,7 +239,7 @@ PHRASE_FIXES = [
     (re.compile(r"\bto brows\b"), "to browse"),
     (re.compile(r"\bgoing to leaves\b"), "going to leave"),
     (re.compile(r"\b(will|to|usually|often|always|never) brows\b"), r"\1 browse"),
-    (re.compile(r"\b([Tt]he (?:boy|girl|man|woman|child|seagull|dog|cat|bird|pigeon|duck|baby|lady|worker|player)) were\b"), r"\1 was"),
+    (re.compile(r"\bstill (sits|stands|sat|stood) still\b"), r"\1 still"),
     # "the woman dancing was dancing" -> "the woman was dancing"
     (re.compile(r"\b([Tt]he \w+) (\w+ing) (is|was|are|were) \2\b"), r"\1 \3 \2"),
 ]
