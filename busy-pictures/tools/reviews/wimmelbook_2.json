@@ -1,0 +1,507 @@
+{
+ "_note": "Picture 2 sentence review (2026-11-17). Codes as in wimmelbook_1.json.",
+ "p2_obj_3": {
+  "labels": [
+   "Man in a green top hat playing an accordion"
+  ],
+  "PA": "The accordion player squeezed the bellows and started a lively tune.",
+  "PX": "The accordion player was playing a waltz when the couple stopped to listen.",
+  "PP": "The accordion player has already played three songs this evening.",
+  "GO": "The accordion player is going to switch to a faster song next.",
+  "WI": "The accordion player will need a short break after this long performance."
+ },
+ "p2_obj_6": {
+  "labels": [
+   "Man and woman listening to the accordion performer"
+  ],
+  "PA": "The man and woman stopped walking and turned toward the music.",
+  "PX": "The man and woman were listening closely when the rock singer's bass suddenly started.",
+  "PP": "The man and woman have already stayed for two whole songs.",
+  "GO": "The man and woman are going to drop a coin in the accordion player's hat.",
+  "WI": "The man and woman will probably stay until the song ends."
+ },
+ "p2_obj_11": {
+  "labels": [
+   "Man with hat waving"
+  ],
+  "SP": "The man with the hat often waves to his friends.",
+  "PC": "The man with the hat is waving to someone below.",
+  "PA": "The man with the hat waved to someone below.",
+  "PX": "The man with the hat was waving when the music started.",
+  "PP": "The man with the hat has waved twice already.",
+  "GO": "The man with the hat is going to wave again.",
+  "WI": "The man with the hat will wave until his friend sees him."
+ },
+ "p2_obj_26": {
+  "labels": [
+   "Photograph of a tropical palm-tree pirate scene"
+  ],
+  "PA": "The photograph hung on the wall behind the pirate all day.",
+  "PX": "The photograph was catching the light when the child posed in front of it.",
+  "PP": "The photograph has faded slightly in the strong afternoon sun.",
+  "GO": "The photograph is going to be replaced before the season ends.",
+  "WI": "The photograph will probably need a new frame before next summer."
+ },
+ "p2_obj_27": {
+  "labels": [
+   "Man in a pirate costume and pirate hat"
+  ],
+  "PA": "The pirate struck a bold pose beside the palm-tree photo.",
+  "PX": "The pirate was posing when the child in the pirate hat ran up to join him.",
+  "PP": "The pirate has already posed for a dozen photos today.",
+  "GO": "The pirate is going to raise his cardboard sword for the next photo.",
+  "WI": "The pirate will probably grin for every camera pointed his way."
+ },
+ "p2_obj_28": {
+  "labels": [
+   "Cameraman filming"
+  ],
+  "PA": "The cameraman raised the camera and zoomed in on the platform.",
+  "PX": "The cameraman was filming quietly when the pigeons suddenly scattered.",
+  "PP": "The cameraman has already filmed the train entering the tunnel.",
+  "GO": "The cameraman is going to film the carousel next.",
+  "WI": "The cameraman will need a new memory card soon at this rate."
+ },
+ "p2_obj_32": {
+  "labels": [
+   "Boy reaching for balloon"
+  ],
+  "SP": "The boy often reaches up for the balloons.",
+  "PA": "The boy reached up for the balloon.",
+  "PP": "The boy has reached for the balloon twice.",
+  "GO": "The boy is going to catch the balloon's string.",
+  "WI": "The boy will hold the balloon tightly."
+ },
+ "p2_obj_34": {
+  "labels": [
+   "Woman carrying a child in red pants on her shoulders"
+  ],
+  "PA": "The woman lifted the child onto her shoulders for a better view.",
+  "PX": "The woman was carrying the boy when the pirate waved hello.",
+  "PP": "The woman has already carried him past the accordion player.",
+  "GO": "The woman is going to set him down once her arms get tired.",
+  "WI": "The woman will need a short rest after carrying him this far."
+ },
+ "p2_obj_35": {
+  "labels": [
+   "Woman in yellow by the van"
+  ],
+  "SP": "The woman in yellow often chats with her family.",
+  "PC": "The woman in yellow is chatting with her family by the van.",
+  "PA": "The woman in yellow chatted with her family by the van.",
+  "PX": "The woman in yellow was chatting by the van when the music started.",
+  "PP": "The woman in yellow has chatted with her family for a while.",
+  "GO": "The woman in yellow is going to wave goodbye soon.",
+  "WI": "The woman in yellow will get back into the van later."
+ },
+ "p2_obj_36": {
+  "labels": [
+   "Child in a pirate hat posing with a pirate character"
+  ],
+  "PA": "The child grabbed the little pirate hat and put it on.",
+  "PX": "The child was giggling when the pirate growled playfully.",
+  "PP": "The child has already posed for three photos today.",
+  "GO": "The child is going to show the photo to everyone back home.",
+  "WI": "The child will probably wear the pirate hat all afternoon."
+ },
+ "p2_obj_40": {
+  "labels": [
+   "Stroller on the station platform"
+  ],
+  "SP": "The stroller stands still on the station platform."
+ },
+ "p2_obj_50": {
+  "labels": [
+   "Girl riding the carousel"
+  ],
+  "PA": "The girl on the carousel waved as she went past.",
+  "PX": "At that moment, the girl was waving as she went past.",
+  "PP": "The girl on the carousel has waved every time she went past."
+ },
+ "p2_obj_51": {
+  "labels": [
+   "Boy on the carousel platform"
+  ],
+  "PA": "The boy on the platform balanced as the ride turned.",
+  "PX": "Just before this moment, the boy was balancing as the ride turned.",
+  "PP": "The boy on the platform has balanced the whole time the ride has turned."
+ },
+ "p2_obj_69": {
+  "labels": [
+   "Girl rollerblading through the archway"
+  ],
+  "PA": "The girl ducked her head and shot straight through the archway.",
+  "PX": "The girl was gliding fast when the shadow of the archway swallowed her.",
+  "PP": "The girl has already skated under the archway three times today.",
+  "GO": "The girl is going to slow down just past the archway.",
+  "WI": "The girl will rollerblade back through the archway later."
+ },
+ "p2_obj_83": {
+  "labels": [
+   "Man with girl on shoulders"
+  ],
+  "SP": "The man often carries his daughter on his shoulders.",
+  "PC": "The man is carrying a girl on his shoulders.",
+  "PA": "The man lifted the girl onto his shoulders.",
+  "PX": "The man was carrying the girl on his shoulders when the music started.",
+  "PP": "The man has carried the girl on his shoulders all afternoon.",
+  "GO": "The man is going to put the girl down by the carousel.",
+  "WI": "The man will need a rest after carrying her so far."
+ },
+ "p2_obj_87": {
+  "labels": [
+   "Second pigeon on the roof"
+  ],
+  "SP": "The white pigeon often rests on the roof.",
+  "PC": "The white pigeon is resting on the roof.",
+  "PA": "The white pigeon rested on the roof.",
+  "PX": "The white pigeon was resting on the roof when the train passed.",
+  "PP": "The white pigeon has rested on the roof all morning.",
+  "GO": "The white pigeon is going to fly down to the platform.",
+  "WI": "The white pigeon will look for crumbs later."
+ },
+ "p2_obj_98": {
+  "labels": [
+   "Steel railway bridge"
+  ],
+  "SP": "The steel railway bridge crosses the river.",
+  "PC": "The bridge is carrying a train across the river.",
+  "PA": "The bridge carried the red train across the river.",
+  "PX": "The bridge was shaking as the red train rumbled over it.",
+  "PP": "The bridge has carried trains across the river for many years.",
+  "GO": "The bridge is going to carry the next train soon.",
+  "WI": "The bridge will need fresh paint next year."
+ },
+ "p2_obj_99": {
+  "labels": [
+   "Red train on the bridge"
+  ],
+  "SP": "The red express train crosses the bridge every hour."
+ },
+ "p2_obj_101": {
+  "labels": [
+   "Seagull over the bridge"
+  ],
+  "SP": "The white seagull glides over the bridge.",
+  "PC": "The white seagull is gliding over the bridge.",
+  "PA": "The white seagull glided over the bridge.",
+  "PX": "The white seagull was gliding over the bridge when the train came.",
+  "PP": "The white seagull has glided over the bridge twice.",
+  "GO": "The white seagull is going to land on the water.",
+  "WI": "The white seagull will look for fish later."
+ },
+ "p2_obj_105": {
+  "labels": [
+   "Dog urinating under the bridge"
+  ],
+  "PA": "The dog sniffed around the stone pillar and lifted its leg.",
+  "PX": "The dog was sniffing along the wall when it suddenly stopped to relieve itself.",
+  "PP": "The dog has already marked two different spots under the bridge.",
+  "GO": "The dog is going to trot off toward the promenade in a moment.",
+  "WI": "The dog will probably do the same thing at the next lamppost."
+ },
+ "p2_obj_111": {
+  "labels": [
+   "Bird perched on a lit balcony beam"
+  ],
+  "PA": "The bird hopped along the beam and puffed out its feathers.",
+  "PX": "The bird was resting on the beam when the accordion music started.",
+  "PP": "The bird has already sung a short trill this evening.",
+  "GO": "The bird is going to fly off once the lamp gets too warm.",
+  "WI": "The bird will probably return to the same beam tomorrow night."
+ },
+ "p2_obj_116": {
+  "labels": [
+   "Pigeon taking off"
+  ],
+  "PX": "Earlier in the day, the pigeon was flying away from the dogs."
+ },
+ "p2_obj_119": {
+  "labels": [
+   "Rock singer with an electric bass guitar"
+  ],
+  "PA": "The rock singer plugged in his bass guitar and struck the first chord.",
+  "PX": "The rock singer was tuning his bass guitar when the accordion player started up nearby.",
+  "PP": "The rock singer has already drawn a small crowd near the bandstand.",
+  "GO": "The rock singer is going to play one more song before the tide comes in.",
+  "WI": "The rock singer will need new strings after a summer of seaside gigs."
+ },
+ "p2_obj_133": {
+  "labels": [
+   "Train driver"
+  ],
+  "GO": "The train driver is going to sound the horn before she leaves."
+ },
+ "p2_obj_137": {
+  "labels": [
+   "Girl with a yellow cap"
+  ],
+  "SP": "The girl in the yellow cap carries a heavy rucksack."
+ },
+ "p2_obj_139": {
+  "labels": [
+   "Woman being pulled by a dog chasing pigeons"
+  ],
+  "SP": "The woman's dog often pulls hard on its lead.",
+  "PC": "The woman is being pulled along by her excited dog.",
+  "PA": "The woman stumbled forward as the dog lunged after the pigeons.",
+  "PX": "The woman was walking calmly when the dog suddenly ran after the pigeons.",
+  "PP": "The woman has already dropped her bag once.",
+  "GO": "The woman is going to lose her grip on the lead.",
+  "WI": "The woman will need both hands to control the dog."
+ },
+ "p2_obj_160": {
+  "labels": [
+   "Small brown dog"
+  ],
+  "SP": "The small brown dog sits quietly beside the purple suitcase.",
+  "PC": "The small brown dog is sitting beside the purple suitcase.",
+  "PA": "The small brown dog sat down beside the purple suitcase.",
+  "PX": "The small brown dog was sitting beside the suitcase when the train arrived.",
+  "PP": "The small brown dog has waited beside the suitcase for a long time.",
+  "GO": "The small brown dog is going to follow its owner onto the train.",
+  "WI": "The small brown dog will sleep on the train."
+ },
+ "p2_obj_165": {
+  "labels": [
+   "Man carrying a green backpacking pack"
+  ],
+  "SP": "The man often carries a big green pack.",
+  "PC": "The man is carrying a big green pack along the promenade.",
+  "PA": "The man lifted the heavy pack onto his shoulders and set off.",
+  "PX": "The man was fixing his straps when a girl on rollerblades sped past.",
+  "PP": "The man has already walked a long way with that heavy pack.",
+  "GO": "The man is going to put the pack down near the bench.",
+  "WI": "The man will have sore shoulders tonight."
+ },
+ "p2_obj_170": {
+  "labels": [
+   "Seagull on the rocks"
+  ],
+  "PX": "The seagull was settling on the grey rocks when the wave came in."
+ },
+ "p2_obj_171": {
+  "labels": [
+   "Green luggage bag"
+  ],
+  "SP": "The green bag sits on the platform.",
+  "PC": "The green bag is sitting on the platform.",
+  "PA": "The green bag sat on the platform all morning.",
+  "PX": "The green bag was sitting on the platform when the train arrived.",
+  "PP": "Nobody has picked up the green bag yet.",
+  "GO": "Someone is going to carry the green bag onto the train.",
+  "WI": "The green bag will travel to the city."
+ },
+ "p2_obj_176": {
+  "labels": [
+   "Pigeons frightening the people below"
+  ],
+  "SP": "The pigeons often fly up when someone claps.",
+  "PC": "The pigeons are swooping down over the people on the landing.",
+  "PA": "The pigeons swooped low over the crowded landing.",
+  "PX": "The pigeons were flapping wildly when the woman ducked.",
+  "PP": "The pigeons have already frightened two people.",
+  "GO": "The pigeons are going to fly back to the roof.",
+  "WI": "The pigeons will settle down when the noise stops."
+ },
+ "p2_obj_177": {
+  "labels": [
+   "Second dove"
+  ],
+  "PA": "The blue dove flew across the hall with the other pigeons."
+ },
+ "p2_obj_182": {
+  "labels": [
+   "Kneeling photographer capturing a pigeon photobomb"
+  ],
+  "SP": "The photographer often kneels to take a low photo.",
+  "PC": "The photographer is kneeling and photographing a flying pigeon.",
+  "PA": "The photographer knelt down and aimed his camera at the birds.",
+  "PX": "The photographer was kneeling quietly when a pigeon flew into his photo.",
+  "PP": "The photographer has caught a pigeon in his last photo.",
+  "GO": "The photographer is going to show everyone the funny photo.",
+  "WI": "The photographer will laugh when he sees the pigeon's face."
+ },
+ "p2_obj_188": {
+  "labels": [
+   "Pink ice cream cart"
+  ],
+  "SP": "The pink cart keeps the ice cream cold.",
+  "PC": "The pink cart is keeping the ice cream cold.",
+  "PA": "The pink cart kept the ice cream cold all afternoon.",
+  "PX": "The pink cart was standing in the sun when the queue started.",
+  "PP": "The pink cart has sold a lot of ice cream today.",
+  "GO": "The seller is going to push the pink cart home.",
+  "WI": "The pink cart will be empty by evening."
+ },
+ "p2_obj_197": {
+  "labels": [
+   "Woman beneath a wall-washing workman"
+  ],
+  "SP": "The woman in the orange sweater walks along the harbour wall.",
+  "PC": "The woman in the orange sweater is walking under a workman with a bucket.",
+  "PA": "The woman in the orange sweater walked under the workman without looking up.",
+  "PX": "The woman in the orange sweater was walking under the workman when his bucket tipped.",
+  "PP": "The woman in the orange sweater hasn't noticed the workman above her.",
+  "GO": "The woman in the orange sweater is going to get wet.",
+  "WI": "The woman in the orange sweater will look up in surprise."
+ },
+ "p2_obj_199": {
+  "labels": [
+   "Cat interested in the fishing bait"
+  ],
+  "SP": "The cat always comes when someone starts fishing.",
+  "PC": "The cat is sniffing at the fishing bait.",
+  "PA": "The cat crept closer and sniffed at the bucket of bait.",
+  "PX": "The cat was creeping closer when the boy looked down.",
+  "PP": "The cat has already knocked over the bait bucket once.",
+  "GO": "The cat is going to steal a piece of bait.",
+  "WI": "The boy will chase the cat away."
+ },
+ "p2_obj_205": {
+  "labels": [
+   "Metal ladder"
+  ],
+  "SP": "The metal ladder leads down into the sea.",
+  "PC": "The swimmer is climbing up the metal ladder.",
+  "PA": "The swimmer climbed down the metal ladder into the sea.",
+  "PX": "Water was splashing against the metal ladder all afternoon.",
+  "PP": "The sea has made the metal ladder rusty.",
+  "GO": "The swimmer is going to climb out on the metal ladder.",
+  "WI": "The metal ladder will be under water at high tide."
+ },
+ "p2_obj_209": {
+  "labels": [
+   "Chess board"
+  ],
+  "SP": "The chess board sits on the white table.",
+  "PC": "The chess board is sitting on the white table.",
+  "PA": "The boys set up the chess board on the table.",
+  "PX": "The chess board was sitting on the table when the boys arrived.",
+  "PP": "The boys have moved most of the pieces on the chess board.",
+  "GO": "The boys are going to pack up the chess board soon.",
+  "WI": "The chess board will be ready for the next game."
+ },
+ "p2_obj_210": {
+  "labels": [
+   "Chess table"
+  ],
+  "SP": "The white chess table stands on the promenade.",
+  "PC": "The white chess table is standing on the promenade.",
+  "PA": "The boys sat down at the white chess table.",
+  "PX": "The white table was standing empty before the boys came.",
+  "PP": "The white table has held many games of chess.",
+  "GO": "Two more players are going to use the table later.",
+  "WI": "The white table will stay on the promenade all summer."
+ },
+ "p2_obj_212": {
+  "labels": [
+   "Man with a rucksack"
+  ],
+  "PA": "The man in white walked quickly towards the beach.",
+  "PP": "The man in white has nearly reached the beach."
+ },
+ "p2_obj_213": {
+  "labels": [
+   "Woman offering a sausage to a little dog"
+  ],
+  "SP": "The woman often shares food with dogs.",
+  "PC": "The woman is offering a sausage to the little dog.",
+  "PA": "The woman held out a small piece of sausage.",
+  "PX": "The woman was crouching down when the little dog ran up to her.",
+  "PP": "The woman has already given the dog two pieces.",
+  "GO": "The woman is going to give the dog one more piece.",
+  "WI": "The little dog will not want its dinner tonight."
+ },
+ "p2_obj_220": {
+  "labels": [
+   "Wooden rowing boat"
+  ],
+  "SP": "The wooden boat floats near the harbour wall.",
+  "PC": "The wooden boat is floating near the harbour wall.",
+  "PA": "The wooden boat floated slowly away from the wall.",
+  "PX": "The wooden boat was rocking gently when the man cast his line.",
+  "PP": "The wooden boat has stayed in the same spot all morning.",
+  "GO": "The man is going to row the boat back to the harbour.",
+  "WI": "The wooden boat will carry home a few fish."
+ },
+ "p2_obj_221": {
+  "labels": [
+   "Child with a fishing rod"
+  ],
+  "SP": "The child often goes fishing with the man in the straw hat.",
+  "PA": "The child held the small fishing rod very still."
+ },
+ "p2_obj_225": {
+  "labels": [
+   "Green tent"
+  ],
+  "SP": "The green tent gives shade to a sleepy boy.",
+  "PC": "The green tent is giving shade to a sleepy boy.",
+  "PA": "Someone put up the green tent on the sand.",
+  "PX": "The green tent was flapping in the wind.",
+  "PP": "The green tent has kept the boy out of the sun.",
+  "GO": "The family is going to take down the green tent later.",
+  "WI": "The green tent will be packed away tonight."
+ },
+ "p2_obj_229": {
+  "labels": [
+   "Surprised skier with winter clothes"
+  ],
+  "SP": "The skier usually carries his skis to the mountains.",
+  "PC": "The surprised skier is carrying a pair of red skis on the beach.",
+  "PA": "The skier walked onto the beach in his winter clothes.",
+  "PX": "The skier was carrying his red skis when he saw the sea.",
+  "PP": "The skier has come to the wrong place!",
+  "GO": "The skier is going to feel very hot in that coat.",
+  "WI": "The skier will not find any snow here."
+ },
+ "p2_obj_241": {
+  "labels": [
+   "Red jet ski"
+  ],
+  "SP": "The red jet ski speeds across the bay.",
+  "PC": "The red jet ski is speeding across the bay.",
+  "PA": "The red jet ski sped across the bay.",
+  "PX": "The red jet ski was speeding across the bay when the windsurfer turned.",
+  "PP": "The red jet ski has crossed the bay twice.",
+  "GO": "The red jet ski is going to slow down near the beach.",
+  "WI": "The red jet ski will need more fuel soon."
+ },
+ "p2_obj_242": {
+  "labels": [
+   "Windsurfer's sail"
+  ],
+  "SP": "The yellow sail catches the wind."
+ },
+ "p2_obj_244": {
+  "labels": [
+   "Boy in the shallow water"
+  ],
+  "SP": "The boy in the sea wades into the cold water."
+ },
+ "p2_obj_245": {
+  "labels": [
+   "Inflatable dolphin"
+  ],
+  "SP": "The inflatable dolphin floats on the water.",
+  "PC": "The inflatable dolphin is floating behind the boy.",
+  "PA": "The boy pulled the inflatable dolphin into the sea.",
+  "PX": "The inflatable dolphin was floating behind the boy when a wave came.",
+  "PP": "The inflatable dolphin has drifted a little way out.",
+  "GO": "The boy is going to climb onto the inflatable dolphin.",
+  "WI": "The inflatable dolphin will need more air tomorrow."
+ },
+ "p2_obj_246": {
+  "labels": [
+   "Football on the sand"
+  ],
+  "SP": "The black and white football lies on the sand.",
+  "PC": "The black and white football is lying on the sand.",
+  "PA": "Someone kicked the football onto the sand.",
+  "PX": "The football was lying near the sandcastle when the children ran past.",
+  "PP": "Nobody has picked up the football yet.",
+  "GO": "The children are going to play football on the beach.",
+  "WI": "The football will roll into the sea if nobody stops it."
+ }
+}

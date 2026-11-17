@@ -15,6 +15,8 @@ import re
 
 # misspelt word -> correct word (lower case; capitals are preserved on use)
 WORD_FIXES = {
+    "nam": "name",
+    "typ": "type",
     "admiting": "admitting",
     "advertis": "advertise",
     "announc": "announce",
@@ -41,6 +43,7 @@ WORD_FIXES = {
     "haves": "has",
     "hous": "house",
     "rais": "raise",
+    "serv": "serve",
     "cupcupboard": "cupboard",
     "hikked": "hiked",
     "hikking": "hiking",
@@ -201,6 +204,10 @@ WORD_FIXES = {
 
 # wrong regular form -> (simple past, past participle)
 IRREGULAR = {
+    "bended": ("bent", "bent"),
+    "speeded": ("sped", "sped"),
+    "sayed": ("said", "said"),
+    "lighted": ("lit", "lit"),
     "beated": ("beat", "beaten"),
     "choosed": ("chose", "chosen"),
     "clinged": ("clung", "clung"),
@@ -226,6 +233,10 @@ ADVERBS = {"already", "just", "never", "ever", "always", "not", "still", "also",
 PHRASE_FIXES = [
     (re.compile(r"\bto brows\b"), "to browse"),
     (re.compile(r"\bgoing to leaves\b"), "going to leave"),
+    (re.compile(r"\b(will|to|usually|often|always|never) brows\b"), r"\1 browse"),
+    (re.compile(r"\b([Tt]he (?:boy|girl|man|woman|child|seagull|dog|cat|bird|pigeon|duck|baby|lady|worker|player)) were\b"), r"\1 was"),
+    # "the woman dancing was dancing" -> "the woman was dancing"
+    (re.compile(r"\b([Tt]he \w+) (\w+ing) (is|was|are|were) \2\b"), r"\1 \3 \2"),
 ]
 
 _WORD_RE = re.compile(r"[A-Za-z]+(?:'[a-z]+)?")

@@ -1,0 +1,309 @@
+{
+ "p3_obj_12": {
+  "labels": [
+   "Flock of birds"
+  ],
+  "SP": "The flock of birds flies over the valley every evening.",
+  "PC": "The flock of birds is flying over the valley.",
+  "PA": "The flock of birds flew low over the river.",
+  "PX": "The flock of birds was flying over the bridge when the train came.",
+  "PP": "The flock of birds has crossed the valley twice.",
+  "GO": "The flock of birds is going to land by the river.",
+  "WI": "The flock of birds will fly south in winter."
+ },
+ "p3_obj_37": {
+  "labels": [
+   "Flock of geese"
+  ],
+  "SP": "The geese fly in a long V shape.",
+  "PC": "The flock of geese is flying towards the mountains.",
+  "PA": "The flock of geese flew towards the mountains.",
+  "PX": "The flock of geese was flying over the farm when the windmill started turning.",
+  "PP": "The geese have flown a long way today.",
+  "GO": "The geese are going to rest by the river tonight.",
+  "WI": "The geese will fly south for the winter."
+ },
+ "p3_obj_22": {
+  "labels": [
+   "Bridge girders"
+  ],
+  "PA": "The bridge girders held the heavy train as it crossed."
+ },
+ "p3_obj_28": {
+  "labels": [
+   "Herd of bison grazing in a green meadow"
+  ],
+  "SP": "The bison graze in the meadow every morning.",
+  "PC": "The bison are grazing in the green meadow.",
+  "PA": "The bison wandered into the meadow at sunrise.",
+  "PX": "The bison were grazing quietly when the helicopter flew over.",
+  "PP": "The bison have eaten most of the grass.",
+  "GO": "The bison are going to move to the river for a drink.",
+  "WI": "The bison will need fresh grass tomorrow."
+ },
+ "p3_obj_48": {
+  "labels": [
+   "White church steeple"
+  ],
+  "PX": "The white steeple was shining in the afternoon sun."
+ },
+ "p3_obj_51": {
+  "labels": [
+   "Cliff on the right"
+  ],
+  "SP": "The red cliff rises above the town.",
+  "PC": "The red cliff is rising high above the town.",
+  "PA": "Climbers climbed the red cliff this morning.",
+  "PX": "The red cliff was glowing in the evening sun.",
+  "PP": "The river has cut the red cliff over many years.",
+  "GO": "The sun is going to set behind the red cliff.",
+  "WI": "The red cliff will look orange at sunset."
+ },
+ "p3_obj_58": {
+  "labels": [
+   "Teal pickup truck"
+  ],
+  "SP": "The old teal pickup truck carries chickens to the market.",
+  "PC": "The old teal pickup truck is standing by the market.",
+  "PA": "The old teal pickup truck stopped by the market.",
+  "PX": "The old teal pickup truck was rattling along the road before it stopped.",
+  "PP": "The old teal pickup truck has brought the chickens to town.",
+  "GO": "The farmer is going to drive the truck home later.",
+  "WI": "The old teal pickup truck will need new tyres soon."
+ },
+ "p3_obj_59": {
+  "labels": [
+   "Chickens in the pickup-truck bed"
+  ],
+  "PC": "The chickens are squeezing together in the small crate.",
+  "PA": "The chickens clucked loudly as the truck rumbled into town.",
+  "PP": "The chickens have ridden all the way to town.",
+  "GO": "The chickens are going to get out at the market."
+ },
+ "p3_obj_60": {
+  "labels": [
+   "Chicken on teal truck"
+  ],
+  "SP": "The chicken likes to sit on the teal truck.",
+  "PC": "The chicken is sitting on top of the teal truck.",
+  "PA": "The chicken jumped onto the top of the teal truck.",
+  "PX": "The chicken was sitting on the truck when the train went past.",
+  "PP": "The chicken has escaped from its crate.",
+  "GO": "The chicken is going to jump down onto the road.",
+  "WI": "The farmer will catch the chicken later."
+ },
+ "p3_obj_70": {
+  "labels": [
+   "Flying bird"
+  ],
+  "SP": "The little bird flies low over the gravel.",
+  "PC": "The little bird is flying low over the gravel.",
+  "PA": "The little bird flew low over the gravel.",
+  "PX": "The little bird was flying over the gravel when the dog barked.",
+  "PP": "The little bird has flown across the road.",
+  "GO": "The little bird is going to land on the roof.",
+  "WI": "The little bird will build a nest in the spring."
+ },
+ "p3_obj_71": {
+  "labels": [
+   "Molly's Hotel"
+  ],
+  "PX": "Molly's Hotel was standing in the sunshine when the woman arrived."
+ },
+ "p3_obj_80": {
+  "labels": [
+   "Mail banner"
+  ],
+  "SP": "The red and blue banner hangs on the post office.",
+  "PC": "The red and blue banner is hanging on the post office.",
+  "PA": "Someone hung the red and blue banner on the post office.",
+  "PX": "The red and blue banner was flapping in the wind.",
+  "PP": "The banner has hung there for years.",
+  "GO": "The postmaster is going to put up a new banner.",
+  "WI": "The banner will fade in the sun."
+ },
+ "p3_obj_83": {
+  "labels": [
+   "Snowboarder in blue"
+  ],
+  "PC": "The snowboarder in blue is racing down the snowy slope."
+ },
+ "p3_obj_87": {
+  "labels": [
+   "General store"
+  ],
+  "PA": "The general store sold tools, food and clothes.",
+  "PX": "The general store was selling fresh bread this morning.",
+  "PP": "The general store has sold almost all its bread today.",
+  "GO": "The general store is going to close at six o'clock.",
+  "WI": "The general store will open again tomorrow morning."
+ },
+ "p3_obj_95": {
+  "labels": [
+   "Dog dozing on the roof ledge"
+  ],
+  "SP": "The dog often sleeps on the roof ledge.",
+  "PC": "The dog is dozing on the edge of the roof.",
+  "PA": "The dog curled up in the sun and fell asleep.",
+  "PX": "The dog was snoring quietly when the helicopter flew over.",
+  "PP": "The dog hasn't moved all afternoon.",
+  "GO": "The dog is going to wake up when the helicopter comes back.",
+  "WI": "The dog will stretch and yawn later."
+ },
+ "p3_obj_103": {
+  "labels": [
+   "Girl at the motel window"
+  ],
+  "PX": "The girl at the window was holding a balloon when the wind blew it."
+ },
+ "p3_obj_104": {
+  "labels": [
+   "Motel flower boxes"
+  ],
+  "SP": "The flower boxes hang under the motel windows.",
+  "PC": "The flower boxes are hanging under the motel windows.",
+  "PA": "Someone filled the flower boxes with red flowers.",
+  "PX": "The flowers in the boxes were growing well in the sun.",
+  "PP": "Someone has watered the flower boxes today.",
+  "GO": "The flowers are going to open in the morning.",
+  "WI": "The flowers will need water tomorrow."
+ },
+ "p3_obj_121": {
+  "labels": [
+   "Girl mowing the lawn"
+  ],
+  "SP": "The girl mows the lawn every Saturday.",
+  "PC": "The girl is mowing the lawn beside the railway.",
+  "PA": "The girl mowed the lawn beside the railway.",
+  "PX": "The girl was mowing the lawn when the train went past.",
+  "PP": "The girl has mowed half of the lawn.",
+  "GO": "The girl is going to finish the lawn before lunch.",
+  "WI": "The girl will be tired after all that work."
+ },
+ "p3_obj_125": {
+  "labels": [
+   "Small dog barking"
+  ],
+  "SP": "The small dog barks at the cat.",
+  "PC": "The small dog is barking at the grey cat.",
+  "PA": "The small dog barked at the grey cat.",
+  "PX": "The small dog was barking when the man fell down.",
+  "PP": "The small dog has barked all morning.",
+  "GO": "The small dog is going to chase the cat.",
+  "WI": "The small dog will stop barking when the cat leaves."
+ },
+ "p3_obj_128": {
+  "labels": [
+   "Man who tripped and spilled his groceries"
+  ],
+  "SP": "The man drops his shopping when he trips."
+ },
+ "p3_obj_135": {
+  "labels": [
+   "Woman in yellow carrying a girl in red pants"
+  ],
+  "SP": "The woman in yellow often carries the little girl.",
+  "PA": "The woman in yellow lifted the girl onto her hip.",
+  "PX": "The woman in yellow was carrying the girl when the man tripped nearby.",
+  "PP": "The woman in yellow has carried the girl past two market stalls.",
+  "GO": "The woman in yellow is going to put the girl down near Greg's Cafe.",
+  "WI": "The woman in yellow will need a rest soon."
+ },
+ "p3_obj_148": {
+  "labels": [
+   "Boy in a red cap in the truck"
+  ],
+  "SP": "The boy in the red cap rides in the back of the truck.",
+  "PC": "The boy in the red cap is sitting among the boxes.",
+  "PA": "The boy in the red cap climbed into the back of the truck.",
+  "PX": "The boy in the red cap was sitting on a box when the truck stopped.",
+  "PP": "The boy in the red cap has helped to load the boxes.",
+  "GO": "The boy in the red cap is going to carry a box into the store.",
+  "WI": "The boy in the red cap will ride home in the truck."
+ },
+ "p3_obj_149": {
+  "labels": [
+   "Dark-skinned man wearing glasses"
+  ],
+  "SP": "The man in glasses often walks to the market.",
+  "PA": "The man in glasses looked down the busy street.",
+  "PX": "The man in glasses was reading a sign when the couple posed for a photo.",
+  "PP": "The man in glasses has already said hello to two neighbours.",
+  "GO": "The man in glasses is going to walk to the post office next.",
+  "WI": "The man in glasses will clean his glasses later."
+ },
+ "p3_obj_150": {
+  "labels": [
+   "Open box of spilling cheese"
+  ],
+  "SP": "The cheese falls out of the open box."
+ },
+ "p3_obj_152": {
+  "labels": [
+   "Couple posing for a photograph"
+  ],
+  "SP": "The couple like to take photos together.",
+  "PC": "The couple are posing for a photograph.",
+  "PX": "The couple were posing when the photographer called out to them.",
+  "PP": "The couple have smiled for three photos already.",
+  "GO": "The couple are going to look at the photo."
+ },
+ "p3_obj_153": {
+  "labels": [
+   "Man kneeling with a camera"
+  ],
+  "PA": "The photographer knelt down to take a picture of the couple."
+ },
+ "p3_obj_162": {
+  "labels": [
+   "Man stepping in dog poop"
+  ],
+  "SP": "The man doesn't look where he walks.",
+  "PC": "The man is stepping in dog poop outside the cafe.",
+  "PA": "The man stepped in dog poop outside the cafe.",
+  "PX": "The man was looking at his phone when he stepped in the dog poop.",
+  "PP": "The man has just stepped in dog poop!",
+  "GO": "The man is going to wipe his shoe on the grass.",
+  "WI": "The man will watch where he walks next time."
+ },
+ "p3_obj_163": {
+  "labels": [
+   "Husky dog"
+  ],
+  "SP": "The husky pulls hard on its lead.",
+  "PC": "The husky is tugging at its lead.",
+  "PA": "The husky tugged at its lead.",
+  "PX": "The husky was tugging at its lead when the groceries fell.",
+  "PP": "The husky has pulled its owner across the street.",
+  "GO": "The husky is going to sniff the spilled groceries.",
+  "WI": "The husky will need a long walk today."
+ },
+ "p3_obj_164": {
+  "labels": [
+   "Girl controlling a remote-control car"
+  ],
+  "SP": "The girl races her toy car here after school.",
+  "PA": "The girl steered the toy car in a tight circle.",
+  "PX": "The girl was steering the car when it hit the edge of the lawn.",
+  "PP": "The girl has raced the car past the lawn mower twice.",
+  "GO": "The girl is going to race the car down the pavement.",
+  "WI": "The girl will need new batteries soon."
+ },
+ "p3_obj_166": {
+  "labels": [
+   "Elderly man on a mobility scooter"
+  ],
+  "SP": "The old man rides his scooter to the market on Saturdays.",
+  "PA": "The old man steered his scooter carefully around the lawn mower.",
+  "PX": "The old man was driving slowly when the toy car zoomed past him.",
+  "PP": "The old man has driven to the end of the street.",
+  "GO": "The old man is going to turn towards the market.",
+  "WI": "The old man will charge his scooter tonight."
+ },
+ "p3_obj_167": {
+  "labels": [
+   "Hiker in a yellow cap"
+  ],
+  "PA": "The hiker in the yellow cap set off with his backpack."
+ }
+}
