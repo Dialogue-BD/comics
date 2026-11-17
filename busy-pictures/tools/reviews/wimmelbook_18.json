@@ -1,0 +1,80 @@
+{
+ "p18_obj_26": {
+  "labels": [
+   "Rolled canvas along the tent"
+  ],
+  "PC": "The rolled canvas is resting along the front of the tent."
+ },
+ "p18_obj_38": {
+  "labels": [
+   "Man talking on his cellphone"
+  ],
+  "PC": "The man is talking on his cellphone beside the arena."
+ },
+ "p18_obj_49": {
+  "labels": [
+   "Pig at the top of the steps"
+  ],
+  "PC": "The pig is standing at the top of the stand steps."
+ },
+ "p18_obj_71": {
+  "labels": [
+   "Dog being petted"
+  ],
+  "PC": "The dog is enjoying the man's attention."
+ },
+ "p18_obj_76": {
+  "labels": [
+   "Boy riding a wooden cart"
+  ],
+  "PC": "The boy is riding along in the wooden cart."
+ },
+ "p18_obj_78": {
+  "labels": [
+   "Boy riding in the cart"
+  ],
+  "PC": "The boy is sitting inside the wooden cart."
+ },
+ "p18_obj_97": {
+  "labels": [
+   "Child in a green dress skipping"
+  ],
+  "PC": "The child is skipping across the fairground."
+ },
+ "p18_obj_153": {
+  "labels": [
+   "Girl singing into microphone"
+  ],
+  "PC": "The girl is singing into the microphone."
+ },
+ "p18_obj_164": {
+  "labels": [
+   "Woman pushing a pushchair"
+  ],
+  "PC": "The woman is pushing her baby through the crowd."
+ },
+ "p18_obj_175": {
+  "labels": [
+   "Boy dancing"
+  ],
+  "PC": "The boy is dancing beside the other children."
+ },
+ "p18_obj_212": {
+  "labels": [
+   "Pregnant woman pushing a buggy at the market"
+  ],
+  "PC": "The pregnant woman is pushing the buggy past the market stalls."
+ },
+ "p18_obj_216": {
+  "labels": [
+   "Man carrying a child on his shoulders"
+  ],
+  "PC": "The man is carrying his son on his shoulders."
+ },
+ "p18_obj_220": {
+  "labels": [
+   "Man in a red top with a bucket"
+  ],
+  "PC": "The man is carrying his shopping in a bucket."
+ }
+}

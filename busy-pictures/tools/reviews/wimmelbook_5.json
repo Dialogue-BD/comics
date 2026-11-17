@@ -158,5 +158,11 @@
   "PP": "The boy has held her hand all the way.",
   "GO": "The boy is going to cross the road with his mother.",
   "WI": "The boy will wave at the excavator driver."
+ },
+ "p5_obj_10": {
+  "labels": [
+   "Green bush"
+  ],
+  "PC": "The green bush is growing beside the road."
  }
 }

@@ -1,0 +1,235 @@
+{
+ "p6_obj_3": {
+  "labels": [
+   "Brown hawk"
+  ],
+  "SP": "The brown hawk hunts over the forest.",
+  "PC": "The brown hawk is hunting over the forest.",
+  "PA": "The brown hawk dived towards the meadow.",
+  "PX": "The brown hawk was hunting when the rabbit ran into the bushes.",
+  "PP": "The brown hawk has not caught anything yet.",
+  "GO": "The brown hawk is going to land on a tall tree.",
+  "WI": "The brown hawk will try again later."
+ },
+ "p6_obj_11": {
+  "labels": [
+   "Beaver on a log"
+  ],
+  "PA": "The beaver climbed onto the log and shook the water from its fur.",
+  "PX": "The beaver was cleaning its fur when the squirrel ran past above.",
+  "PP": "The beaver has finished its work for the night.",
+  "GO": "The beaver is going to slide back into the stream.",
+  "WI": "The beaver will swim back to the dam."
+ },
+ "p6_obj_14": {
+  "labels": [
+   "White rocks in the stream"
+  ],
+  "SP": "The water flows around the white rocks.",
+  "PC": "The stream is splashing over the white rocks.",
+  "PA": "The heron stepped carefully between the white rocks.",
+  "PX": "The water was rushing over the white rocks.",
+  "PP": "The water has made the white rocks smooth.",
+  "GO": "The beaver is going to swim past the white rocks.",
+  "WI": "The white rocks will be under water after the rain."
+ },
+ "p6_obj_18": {
+  "labels": [
+   "Third wind turbine"
+  ],
+  "SP": "The third wind turbine makes electricity.",
+  "PC": "The third wind turbine is spinning in the wind.",
+  "PA": "The third wind turbine spun all night.",
+  "PX": "The third wind turbine was spinning fast when the wind got stronger.",
+  "PP": "The third wind turbine has made a lot of electricity today.",
+  "GO": "The third wind turbine is going to slow down when the wind drops.",
+  "WI": "The third wind turbine will keep spinning tomorrow."
+ },
+ "p6_obj_19": {
+  "labels": [
+   "Wooden lookout tower"
+  ],
+  "PC": "The wooden lookout tower is standing above the trees."
+ },
+ "p6_obj_36": {
+  "labels": [
+   "Snowy mountain peak"
+  ],
+  "SP": "The snowy peak shines in the sun.",
+  "PC": "The snowy peak is shining in the sun.",
+  "PA": "Snow fell on the peak last night.",
+  "PX": "The snowy peak was shining when the geese flew past.",
+  "PP": "The peak has kept its snow all summer.",
+  "GO": "The peak is going to turn pink at sunset.",
+  "WI": "The peak will have even more snow in winter."
+ },
+ "p6_obj_38": {
+  "labels": [
+   "Speckled osprey"
+  ],
+  "SP": "The speckled osprey catches fish in the lake.",
+  "PC": "The speckled osprey is soaring over the lake.",
+  "PA": "The speckled osprey soared over the lake.",
+  "PX": "The speckled osprey was soaring when it saw a fish.",
+  "PP": "The osprey has caught two fish today.",
+  "GO": "The osprey is going to dive into the water.",
+  "WI": "The osprey will take the fish to its nest."
+ },
+ "p6_obj_77": {
+  "labels": [
+   "Two raccoons together"
+  ],
+  "SP": "The two raccoons play together every evening.",
+  "PC": "The two raccoons are playing together.",
+  "PA": "The two raccoons played together in the grass.",
+  "PX": "The two raccoons were playing when the fox ran past.",
+  "PP": "The two raccoons have played all evening.",
+  "GO": "The two raccoons are going to look for food.",
+  "WI": "The two raccoons will sleep in the hollow tree."
+ },
+ "p6_obj_88": {
+  "labels": [
+   "Molehill in the meadow"
+  ],
+  "PC": "The molehill is sitting in the middle of the meadow."
+ },
+ "p6_obj_98": {
+  "labels": [
+   "Abandoned car chassis"
+  ],
+  "PA": "Someone left the old car chassis in the grass long ago."
+ },
+ "p6_obj_116": {
+  "labels": [
+   "Boy walking by the fence"
+  ],
+  "PC": "The boy is walking along the fence with his arms folded."
+ },
+ "p6_obj_145": {
+  "labels": [
+   "Plant on the cabinet"
+  ],
+  "PC": "The plant on the cabinet is growing towards the window."
+ },
+ "p6_obj_147": {
+  "labels": [
+   "Girl kneeling by the tank"
+  ],
+  "PC": "The girl is kneeling and feeding her pet lizard."
+ },
+ "p6_obj_164": {
+  "labels": [
+   "Spotted Great Dane"
+  ],
+  "PC": "The Great Dane is sniffing at the fence."
+ },
+ "p6_obj_165": {
+  "labels": [
+   "Orange traffic cone"
+  ],
+  "SP": "The orange cone warns people about the open manhole.",
+  "PC": "The orange cone is standing beside the open manhole.",
+  "PA": "The worker put the orange cone beside the manhole.",
+  "PX": "The orange cone was standing there when the rats ran past.",
+  "PP": "The cone has kept people away from the hole.",
+  "GO": "The worker is going to move the cone when he finishes.",
+  "WI": "The cone will go back in the van tonight."
+ },
+ "p6_obj_185": {
+  "labels": [
+   "Goose on the water"
+  ],
+  "SP": "The goose floats on the pond.",
+  "PC": "The goose is floating on the pond.",
+  "PA": "The goose floated quietly on the pond.",
+  "PX": "The goose was floating on the pond when the swan opened its wings.",
+  "PP": "The goose has floated to the middle of the pond.",
+  "GO": "The goose is going to swim to the bank.",
+  "WI": "The goose will sleep by the pond tonight."
+ },
+ "p6_obj_186": {
+  "labels": [
+   "Turtle on the stone"
+  ],
+  "SP": "The turtle likes to lie in the sun.",
+  "PC": "The turtle is sunbathing on the stone.",
+  "PA": "The turtle climbed onto the warm stone.",
+  "PX": "The turtle was sunbathing when the frog jumped into the water.",
+  "PP": "The turtle has lain on the stone all morning.",
+  "GO": "The turtle is going to slide back into the pond.",
+  "WI": "The turtle will come back tomorrow."
+ },
+ "p6_obj_187": {
+  "labels": [
+   "Tall bulrushes"
+  ],
+  "SP": "The tall bulrushes grow at the edge of the pond.",
+  "PC": "The tall bulrushes are swaying in the breeze.",
+  "PA": "The tall bulrushes swayed in the breeze.",
+  "PX": "The bulrushes were swaying when the ducks swam past.",
+  "PP": "The bulrushes have grown very tall this summer.",
+  "GO": "Birds are going to hide in the bulrushes.",
+  "WI": "The bulrushes will turn brown in autumn."
+ },
+ "p6_obj_188": {
+  "labels": [
+   "Reeds in the water"
+  ],
+  "SP": "The reeds grow in the shallow water.",
+  "PC": "The reeds are growing in the shallow water.",
+  "PA": "The reeds grew thick in the shallow water.",
+  "PX": "The reeds were moving in the wind.",
+  "PP": "The reeds have grown thick this year.",
+  "GO": "The ducklings are going to hide in the reeds.",
+  "WI": "The reeds will turn yellow in autumn."
+ },
+ "p6_obj_191": {
+  "labels": [
+   "Dragonfly over the water"
+  ],
+  "SP": "The dragonfly hunts small insects over the pond.",
+  "PC": "The dragonfly is hovering over the water.",
+  "PA": "The dragonfly hovered over the water.",
+  "PX": "The dragonfly was hovering when the frog jumped.",
+  "PP": "The dragonfly has caught a small fly.",
+  "GO": "The dragonfly is going to land on a lily pad.",
+  "WI": "The dragonfly will fly away soon."
+ },
+ "p6_obj_215": {
+  "labels": [
+   "Yellow ducklings"
+  ],
+  "SP": "The yellow ducklings paddle behind their mother.",
+  "PC": "The yellow ducklings are paddling in the pond.",
+  "PA": "The yellow ducklings paddled across the pond.",
+  "PX": "The ducklings were paddling when the butterfly flew over them.",
+  "PP": "The ducklings have paddled to the lily pads.",
+  "GO": "The ducklings are going to follow their mother home.",
+  "WI": "The ducklings will sleep under their mother's wings."
+ },
+ "p6_obj_228": {
+  "labels": [
+   "Metal bucket"
+  ],
+  "SP": "The woman uses the metal bucket to wash the camper.",
+  "PC": "The metal bucket is holding soapy water.",
+  "PA": "The woman filled the metal bucket with soapy water.",
+  "PX": "The bucket was standing by the camper while she washed it.",
+  "PP": "The woman has used most of the water.",
+  "GO": "The woman is going to empty the bucket.",
+  "WI": "The bucket will be empty soon."
+ },
+ "p6_obj_27": {
+  "labels": [
+   "Bush beside the track"
+  ],
+  "PC": "The bush is growing beside the forest track."
+ },
+ "p6_obj_47": {
+  "labels": [
+   "Small spruce on the hill"
+  ],
+  "PC": "The small spruce is growing on the hill above the lake.",
+  "PX": "The small spruce was swaying in the wind."
+ }
+}

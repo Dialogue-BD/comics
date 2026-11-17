@@ -202,5 +202,11 @@
    "Farm boy with a rake"
   ],
   "PC": "The farm boy is raking straw in the barn."
+ },
+ "p4_obj_6": {
+  "labels": [
+   "Desert tree"
+  ],
+  "PC": "The desert tree is growing on the open plain."
  }
 }

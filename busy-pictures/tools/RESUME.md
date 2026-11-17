@@ -127,6 +127,15 @@ misspelling there. Garbled whole objects were rewritten by hand in
 `tools/repair_sentences.py`. `author_tense_forms.py` is now deterministic
 (it used to depend on Python's string-hash order).
 
+**Hand review (2026-11-17):** every object on pictures 1–22 was read and
+fixed picture by picture. Fixes live in `tools/reviews/wimmelbook_N.json`
+(object id → `labels` plus any of `SP PC PA PX PP GO WI`); an entry only
+applies while the object's label is still one of its `labels`. A review
+that changes `PC` (the present-continuous action) rebuilds every tense it
+leaves out from the new action. Filler phrases go in `STOCK_PHRASES` in
+`repair_sentences.py`; matching tenses are rebuilt from the action. After
+any change run `python3 tools/repair_sentences.py` (stable on rerun).
+
 ## Natural voice (Phonon clips) — 2026-11-17
 
 The viewer's default voice plays pre-recorded Phonon TTS clips (voice V1)

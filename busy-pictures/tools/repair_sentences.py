@@ -375,6 +375,40 @@ STOCK_PHRASES = re.compile("|".join([
     r"\b(help a friend|prepare the materials) very soon\b",
     r"\b(keeps?|kept|keeping) helping a worker\b",
     r"\bsaving time during the job\b",
+    r"\bremain connected to the built space\b",
+    r"^Earlier that day, (a|an|the) [\w ]+? \w+ed the\b",
+    r"\ba wildlife expert examined\b",
+    r"\bserves the building for many years\b",
+    r"\bsearch for food without enough energy\b",
+    r"\bentertaining a child\b",
+    r"\bbefore anyone notices\b",
+    r"^On a busy day\b",
+    r"\battracting local wildlife\b",
+    r"\borganizing small objects\b",
+    r"\bchanging with the seasons\b",
+    r"\battracting new customers\b",
+    r"\b(veterinarian|ranger|keeper|wildlife expert|vet) examined\b",
+    r"\bduring a busy day\b",
+    r"^During a normal day\b",
+    r"\bproviding a resting place\b",
+    r"\bshap\w+ the landscape again\b",
+    r"\bcarrying water through the landscape\b",
+    r"\b\w+ing (naturally|gradually)\b",
+    r"\b(grows|grew|grown|rises|rose|risen|lies|lay|shines|shone|floats|floated|drifts|drifted) (naturally|gradually)\b",
+    r"\bin the suburban street\b",
+    r"\bafter the .+ moves away\b",
+    r"\bshelters local people\b",
+    r"\bshelf' surface\b",
+    r"\bstaying firmly in place\b",
+    r"^Around the school, police station, and road\b",
+    r"\bwas admitting daylight\b",
+    r"\bbegan reaching\b",
+    r"\btrying to finish\b",
+    r"\bsometimes pauses? when the .+ comes closer\b",
+    r"\bchange with the seasons without\b",
+    r"\bin the city park\b",
+    r"\bbegan \w+ing\b",
+    r"\bcarries water through the landscape\b",
 ]))
 
 
@@ -422,7 +456,7 @@ def load_reviews():
 
 
 def apply_hand_repairs(index):
-    applied, skipped = 0, []
+    applied, skipped, reverse = 0, [], None
     objects = {obj["id"]: obj for page in index.values() for obj in page}
     repairs = dict(HAND)
     repairs.update(load_reviews())
@@ -436,6 +470,19 @@ def apply_hand_repairs(index):
         for field, sentence in repair.items():
             if field.startswith("main_"):
                 obj["grammar_data"][field] = sentence
+        if PC in repair:
+            # A new present-continuous action: rebuild any tense the
+            # review left out, so it can't keep the old (wrong) action.
+            missing = [f for f in authoring.MAIN_FIELDS if f not in repair]
+            if missing:
+                if reverse is None:
+                    reverse = authoring.reverse_ing_map(index)
+                data = obj["grammar_data"]
+                subject, plural, base, ing_phrase, passive = authoring.extract_visible_action(data, reverse)
+                static = authoring.entity_kind(obj["name"], subject) == "static"
+                plain = authoring.actual_clauses(subject, plural, base, ing_phrase, passive, static)
+                for field in missing:
+                    data[field] = authoring.clean(plain[field])
         applied += 1
     return applied, skipped
 

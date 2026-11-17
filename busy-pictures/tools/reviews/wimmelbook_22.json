@@ -1,0 +1,74 @@
+{
+ "p22_obj_2": {
+  "labels": [
+   "Squirrel on roof"
+  ],
+  "PC": "The squirrel is sitting on the playhouse roof."
+ },
+ "p22_obj_39": {
+  "labels": [
+   "Yellow sun of the mobile"
+  ],
+  "PC": "The paper sun is hanging at the top of the mobile."
+ },
+ "p22_obj_45": {
+  "labels": [
+   "Woman holding a big umbrella"
+  ],
+  "PC": "The woman is opening the big umbrella."
+ },
+ "p22_obj_49": {
+  "labels": [
+   "Girl pushing a toy wagon"
+  ],
+  "PC": "The girl is pushing the toy wagon along the path."
+ },
+ "p22_obj_82": {
+  "labels": [
+   "Owl in knot of the trunk"
+  ],
+  "PC": "The owl is peering out through the knot in the trunk."
+ },
+ "p22_obj_95": {
+  "labels": [
+   "Man doing carpentry with tools"
+  ],
+  "PC": "The man is building something out of wood."
+ },
+ "p22_obj_128": {
+  "labels": [
+   "Girl pretending to be a pirate"
+  ],
+  "PC": "The girl is pretending to be a pirate in the play tower."
+ },
+ "p22_obj_141": {
+  "labels": [
+   "Boy with pulley"
+  ],
+  "PC": "The boy is pulling the pulley rope beside the tower."
+ },
+ "p22_obj_148": {
+  "labels": [
+   "Yellow bouncing ball"
+  ],
+  "PC": "The yellow ball is bouncing across the grass."
+ },
+ "p22_obj_179": {
+  "labels": [
+   "Man pushing a wheelchair"
+  ],
+  "PC": "The man is pushing his friend along the path."
+ },
+ "p22_obj_188": {
+  "labels": [
+   "Boy pushing a wheelbarrow"
+  ],
+  "PC": "The boy is pushing the wheelbarrow of pumpkins along the path."
+ },
+ "p22_obj_211": {
+  "labels": [
+   "Girl carrying a watering can"
+  ],
+  "PC": "The girl is carrying water to the vegetables."
+ }
+}

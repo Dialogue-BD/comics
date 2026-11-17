@@ -1,0 +1,56 @@
+{
+ "p12_obj_5": {
+  "labels": [
+   "Swan near the police boat"
+  ],
+  "PC": "The swan is swimming past the police boat."
+ },
+ "p12_obj_35": {
+  "labels": [
+   "Boy in the duck ring"
+  ],
+  "PC": "The boy is floating in the yellow duck ring."
+ },
+ "p12_obj_61": {
+  "labels": [
+   "Toddler in port-o-potty"
+  ],
+  "PC": "The toddler is peeping out of the portable toilet."
+ },
+ "p12_obj_69": {
+  "labels": [
+   "White cool box"
+  ],
+  "PC": "The white cool box is sitting by the car."
+ },
+ "p12_obj_106": {
+  "labels": [
+   "Cat on the garden path"
+  ],
+  "PC": "The cat is creeping along the garden path."
+ },
+ "p12_obj_133": {
+  "labels": [
+   "Grazing sheep in the paddock"
+  ],
+  "PC": "The sheep are grazing on the fresh green grass."
+ },
+ "p12_obj_135": {
+  "labels": [
+   "Rabbits in the hutch"
+  ],
+  "PC": "The rabbits are resting inside the wooden hutch."
+ },
+ "p12_obj_136": {
+  "labels": [
+   "Toddler at the rabbit hutch"
+  ],
+  "PC": "The toddler is peeking into the rabbit hutch."
+ },
+ "p12_obj_164": {
+  "labels": [
+   "Round yellow cheese"
+  ],
+  "PC": "The farmer is carrying the round yellow cheese."
+ }
+}
