@@ -9,62 +9,47 @@
 <link rel="icon" type="image/png" sizes="48x48" href="../favicon.png?v=03b">
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=03b">
 <link rel="stylesheet" href="../dialogue-brand.css">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
+<script>document.documentElement.classList.add("tabbed")</script>
 </head>
 <body class="dialogue-activity-shell">
 
 <header class="top">
   <a class="logo-chip" href="/" aria-label="All Dialogue activities"><img src="../brand/dialogue-logo.png?v=a53d061" alt="Dialogue English &amp; Skills Center"></a>
   <span class="brand-name"><span class="brand-txt">AI Tools: Stories &amp; Songs</span></span>
-  <nav class="jump" aria-label="Sections">
-    <a href="#song">Song</a><a href="#story">Story</a><a href="#yours">Your turn</a>
-  </nav>
 </header>
 
 <main>
   <section class="hero">
     <h1>Make English you want to hear.</h1>
     <p class="lead">Put your notes in a notebook. Ask Gemini for a <b>song</b> or a <b>picture book</b>. Listen and read again and again.</p>
-    <div class="pick">
-      <a class="pick-card c-song" href="#song">
-        <span class="pick-ico" aria-hidden="true">♫</span>
-        <b>Make a song</b><small>Remember it with music</small>
-      </a>
-      <a class="pick-card c-story" href="#story">
-        <span class="pick-ico" aria-hidden="true">📖</span>
-        <b>Make a storybook</b><small>Read and listen to a story</small>
-      </a>
-    </div>
     <p class="example"><span class="mini-gears" aria-hidden="true"><i class="md-del"></i><i class="md-des"></i><i class="md-dis"></i><i class="md-dil"></i></span>
-      Our example: a notebook about the <b>4Ds of AI Fluency</b>.</p>
+      <span>Our example: a notebook about the <b>4Ds of AI Fluency</b>.</span></p>
   </section>
 
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Activity parts">
+    <a class="tab tab-song" role="tab" href="#song" data-tab="song"><span class="ti" aria-hidden="true">♫</span><span class="tt"><b>Song</b><small>Remember with music</small></span></a>
+    <a class="tab tab-story" role="tab" href="#story" data-tab="story"><span class="ti" aria-hidden="true">📖</span><span class="tt"><b>Storybook</b><small>Read and listen</small></span></a>
+    <a class="tab tab-yours" role="tab" href="#yours" data-tab="yours"><span class="ti" aria-hidden="true">✋</span><span class="tt"><b>Your turn</b><small>Make your own</small></span></a>
+  </nav>
+
   <!-- ============ SONG ============ -->
-  <section class="block" id="song">
-    <div class="block-head">
-      <span class="step-tag">♫ Song</span>
-      <h2>Watch: notebook → song</h2>
-    </div>
+  <section class="panel" id="song" role="tabpanel" aria-label="Song">
+    <h2 class="sh"><span class="sn">1</span><span>Watch how Gemini makes the song</span></h2>
     <div class="demo" id="demo-song" data-track="song"></div>
-    <div class="result-head" id="sing">
-      <h3>Sing along: <em>The Boatman’s Four Steps</em></h3>
-      <p>Gemini made this song from our 4Ds notebook. Watch the gears.</p>
-    </div>
+
+    <h2 class="sh" id="sing"><span class="sn">2</span><span>Sing along: <em>The Boatman’s Four Steps</em></span></h2>
+    <p class="sh-sub">Gemini made this song from our 4Ds notebook. Watch each gear turn in when its D is sung.</p>
 
     <div class="stage" id="stage">
-      <div class="stage-top">
-        <button class="cover" id="sg-cover" type="button" aria-label="Play the song">
-          <img src="song/cover.jpg" alt="Song cover: an ektara floating on a river" width="640" height="640">
-          <span class="cover-play" aria-hidden="true"></span>
-        </button>
-        <div class="cluster-wrap">
-          <div class="cluster" id="cluster" aria-hidden="true"></div>
-          <div class="dplate" id="dplate" aria-live="polite"><b>The 4Ds</b><span>Press play</span></div>
-        </div>
+      <div class="gearbox">
+        <div class="cluster" id="cluster" aria-hidden="true"></div>
+        <div class="dplate" id="dplate" aria-live="polite"><b>The 4Ds</b><span>Press play</span></div>
       </div>
 
       <div class="karaoke" aria-live="off">
-        <p class="kline" id="kline"><span class="kidle">♪ The Boatman’s Four Steps ♪</span></p>
+        <button class="bigplay" id="sg-big" type="button"><span class="bp-i" aria-hidden="true"></span>Play the song</button>
+        <p class="kline" id="kline"></p>
         <p class="knext" id="knext"></p>
       </div>
 
@@ -73,58 +58,62 @@
           <svg viewBox="0 0 24 24" class="i-play"><path d="M8 5v14l11-7z"/></svg>
           <svg viewBox="0 0 24 24" class="i-pause"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
         </button>
-        <span class="ptime" id="sg-cur">0:00</span>
-        <input class="pbar" id="sg-bar" type="range" min="0" max="163" step="0.1" value="0" aria-label="Song position">
-        <span class="ptime" id="sg-dur">2:43</span>
+        <img class="pthumb" src="song/cover.jpg" alt="" width="48" height="48">
+        <div class="pmeta">
+          <b>The Boatman’s Four Steps</b>
+          <div class="prow">
+            <span class="ptime" id="sg-cur">0:00</span>
+            <input class="pbar" id="sg-bar" type="range" min="0" max="163" step="0.1" value="0" aria-label="Song position">
+            <span class="ptime" id="sg-dur">2:43</span>
+          </div>
+        </div>
         <button class="pchip" id="sg-rate" type="button" aria-label="Playback speed">1×</button>
       </div>
       <audio id="sg-audio" preload="metadata" src="song/boatmans-four-steps.mp3"></audio>
 
-      <details class="lyrics" open>
+      <details class="lyrics" id="lyrics">
         <summary>All the words <small>tap a line to jump there</small></summary>
         <ol class="lyric-list" id="lyric-list"></ol>
       </details>
     </div>
+    <a class="next-tab" href="#story">Next: make a storybook <span aria-hidden="true">→</span></a>
   </section>
 
   <!-- ============ STORYBOOK ============ -->
-  <section class="block" id="story">
-    <div class="block-head">
-      <span class="step-tag t-story">📖 Storybook</span>
-      <h2>Watch: notebook → storybook</h2>
-    </div>
+  <section class="panel" id="story" role="tabpanel" aria-label="Storybook">
+    <h2 class="sh"><span class="sn">1</span><span>Watch how Gemini makes the book</span></h2>
     <div class="demo" id="demo-story" data-track="story"></div>
-    <div class="result-head" id="read">
-      <h3>Read and listen: <em>The Captain of the Loop</em></h3>
-      <p>Gemini wrote and drew this 10-page book from the same notebook.</p>
-    </div>
+
+    <h2 class="sh" id="read"><span class="sn">2</span><span>Read and listen: <em>The Captain of the Loop</em></span></h2>
+    <p class="sh-sub">Gemini wrote and drew this 10-page book from the same notebook. Tap the picture or the arrows to turn the page.</p>
 
     <div class="reader" id="reader">
       <div class="spread">
-        <div class="sp-pic" id="rd-pic"></div>
+        <div class="sp-pic" id="rd-pic"><button class="tapzone tz-prev" type="button" tabindex="-1" aria-hidden="true"></button><button class="tapzone tz-next" type="button" tabindex="-1" aria-hidden="true"></button><div class="pic-in" id="rd-pic-in"></div></div>
         <div class="sp-text">
           <span class="sp-author">TIM HALL</span>
           <p id="rd-text"></p>
           <span class="sp-num" id="rd-num"></span>
         </div>
       </div>
+      <div class="rd-dots" id="rd-dots" aria-hidden="true"></div>
       <div class="rd-bar">
         <button class="rbtn" id="rd-prev" type="button" aria-label="Previous page">‹</button>
         <span class="rd-count" id="rd-count">1 / 10</span>
         <button class="rbtn" id="rd-next" type="button" aria-label="Next page">›</button>
         <button class="listen" id="rd-listen" type="button"><span aria-hidden="true">🔊</span> <span class="lbl">Listen</span></button>
-        <label class="auto"><input type="checkbox" id="rd-auto" checked> Keep reading</label>
       </div>
-      <p class="rd-note"><a href="https://share.gemini.google/7uBtSKKskJ8E" target="_blank" rel="noopener">Open the book in Gemini ↗</a> to hear Gemini’s own voice read it.</p>
+      <div class="rd-foot">
+        <label class="auto"><input type="checkbox" id="rd-auto" checked> Keep reading to the end</label>
+        <a href="https://share.gemini.google/7uBtSKKskJ8E" target="_blank" rel="noopener">Open the book in Gemini ↗</a>
+      </div>
     </div>
+    <a class="next-tab" href="#yours">Next: make your own <span aria-hidden="true">→</span></a>
   </section>
 
   <!-- ============ YOUR TURN ============ -->
-  <section class="block" id="yours">
-    <div class="block-head">
-      <span class="step-tag t-you">✋ Your turn</span>
-      <h2>Make one about <em>your</em> subject</h2>
-    </div>
+  <section class="panel" id="yours" role="tabpanel" aria-label="Your turn">
+    <h2 class="sh"><span class="sn">✋</span><span>Make one about <em>your</em> subject</span></h2>
 
     <div class="yt">
       <div class="yt-steps">
@@ -215,6 +204,6 @@
 </div>
 
 <script src="data.js?v=2"></script>
-<script src="app.js?v=2"></script>
+<script src="app.js?v=3"></script>
 </body>
 </html>
