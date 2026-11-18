@@ -516,7 +516,7 @@ $$('.demo').forEach(el => Demo(el));
   function show(i) {
     page = Math.max(0, Math.min(BOOK.length - 1, i));
     const p = BOOK[page];
-    pic.innerHTML = p.img ? `<img src="${p.img}" alt="Storybook picture, page ${page}">` : '<div class="blank-pic"><span>✦</span><small>(picture missing in the download)</small></div>';
+    pic.innerHTML = p.img ? `<img src="${p.img}" alt="Storybook picture, page ${page}">` : '<div class="blank-pic" aria-hidden="true"></div>';
     if (p.title) {
       txt.className = 'title-page'; txt.innerHTML = '<span class="tp-t">The Captain of the Loop</span><span class="tp-b">By Tim Hall</span>';
       num.textContent = '';

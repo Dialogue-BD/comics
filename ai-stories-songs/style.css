@@ -10,13 +10,22 @@ main{max-width:1080px;margin:0 auto;padding:0 16px 48px}
 section{scroll-margin-top:64px}
 
 /* ---------- header ---------- */
-.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--forest);color:#fff;box-shadow:0 2px 12px rgba(0,0,0,.18)}
-.top .home{color:var(--gold-l);text-decoration:none;font-weight:700;white-space:nowrap}
-.top b{flex:1;font-size:1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.jump{display:flex;gap:12px}
-.jump a{color:#fff;opacity:.85;text-decoration:none;font-size:13px;font-weight:600}
-.jump a:hover{opacity:1;text-decoration:underline}
-@media (max-width:560px){.top .home span{display:none}.top b{font-size:.92rem}.jump{gap:9px}.jump a{font-size:12px}}
+.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:12px;
+  padding:max(10px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 8px max(16px,env(safe-area-inset-left));
+  background:rgba(244,241,230,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.logo-chip{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;padding:5px 9px;background:#fff;border-radius:9px;
+  box-shadow:0 0 0 1px var(--line),0 1px 2px rgba(16,61,33,.08);text-decoration:none;transition:box-shadow .18s ease,transform .18s ease}
+a.logo-chip:hover{box-shadow:0 0 0 1px #c5bea8,0 4px 12px rgba(16,61,33,.14);transform:translateY(-1px)}
+.logo-chip img{width:92px;height:auto;display:block}
+.brand-name{display:flex;align-items:center;min-width:0;flex:1 1 auto;font-family:var(--serif);font-weight:600;font-size:clamp(1rem,4vw,1.15rem);
+  color:var(--forest);padding-left:10px;border-left:1px solid var(--line)}
+.brand-txt{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.jump{display:flex;gap:14px}
+.jump a{color:var(--forest);text-decoration:none;font-size:13px;font-weight:700}
+.jump a:hover{text-decoration:underline}
+@media (max-width:640px){.jump{display:none}}
+@media (max-width:540px){.logo-chip{padding:3px 5px}.logo-chip img{width:70px}.brand-name{padding-left:8px}}
+@media (max-width:380px){.logo-chip img{width:58px}.brand-name{font-size:.92rem}}
 
 /* ---------- hero ---------- */
 .hero{padding:26px 0 6px}
@@ -373,9 +382,7 @@ mark.chk{background:none;color:inherit;border-radius:3px;transition:background .
 .spread{display:grid;grid-template-columns:1fr;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.1)}
 .sp-pic{background:#f3efe6;min-height:200px}
 .sp-pic img{display:block;width:100%;height:100%;max-height:56vh;object-fit:cover;object-position:center 20%}
-.blank-pic{height:100%;min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--gold);font-size:40px;
-  background:repeating-linear-gradient(135deg,#f6f2e7 0 14px,#f1ecdf 14px 28px)}
-.blank-pic small{font-size:12px;color:#9b937e}
+.blank-pic{height:100%;min-height:240px;background:#f6f3ea}
 .sp-text{position:relative;display:flex;align-items:center;padding:34px 24px 36px;background:linear-gradient(90deg,#efede6,#fdfcf8 9%,#fdfcf8)}
 .sp-author{position:absolute;top:14px;right:18px;font-size:11px;letter-spacing:.2em;color:#8a8a8a}
 .sp-num{position:absolute;right:18px;bottom:12px;color:#9a9a9a;font-family:var(--serif)}
