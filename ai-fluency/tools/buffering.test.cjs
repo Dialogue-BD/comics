@@ -4,96 +4,138 @@ const fs=require('node:fs');
 const vm=require('node:vm');
 const path=require('node:path');
 
-// Run the real player with a controllable media clock and requestAnimationFrame.
-// A download can take arbitrarily long without advancing the media clock.
-function player(){
+// Drive the real film transport with a controllable download and media clock.
+function player({local=false,paused=false}={}){
   const animation=()=>({currentTime:0,pause(){},cancel(){}});
   const classes={add(){},remove(){},toggle(){}};
-  const node=()=>({textContent:'',hidden:false,style:{},dataset:{},classList:classes,setAttribute(){},appendChild(){},animate:animation,querySelectorAll:()=>[]});
-  const en=node(),bn=node(),status=node(),button=node(),generic=node();en.parentElement=node();bn.parentElement=node();
+  const node=()=>({textContent:'',hidden:false,style:{},dataset:{},classList:classes,
+    setAttribute(){},appendChild(){},animate:animation,querySelectorAll:()=>[]});
+  const en=node(),bn=node(),status=node(),button=node(),generic=node(),end=node();
+  en.parentElement=node();bn.parentElement=node();status.hidden=true;
+  end.querySelector=()=>node();
   const dots={children:[0,1].map(()=>({querySelector:()=>node()}))};
-  const stage=node();stage.querySelector=selector=>selector==='.i-cap .en'?en:selector==='.i-cap .bnc'?bn:generic;
+  const stage=node();
+  stage.querySelector=selector=>selector==='.i-cap .en'?en:selector==='.i-cap .bnc'?bn:selector==='.i-end'?null:generic;
   const root=node();root.querySelector=selector=>selector==='.i-load'?status:null;
-  const audios=[];
+  const audios=[],downloads=[];
+  let release;
   class Audio{
-    constructor(src){this.src=src;this.currentTime=0;this.paused=true;audios.push(this);}
-    play(){this.paused=false;return new Promise((resolve,reject)=>{this.resolve=resolve;this.reject=reject;});}
+    constructor(){this.currentTime=0;this.paused=true;this.playCalls=0;audios.push(this);}
+    set src(value){this.url=value;queueMicrotask(()=>this.onloadedmetadata?.());}
+    play(){this.playCalls++;this.paused=false;return new Promise((resolve,reject)=>{this.resolve=resolve;this.reject=reject;});}
     pause(){this.paused=true;}
   }
-  const context={window:{AFL:{audioKey:t=>t}},AFL:{audioKey:t=>t},Audio,performance:{now:()=>0},requestAnimationFrame:()=>1,cancelAnimationFrame(){},
-    speechSynthesis:{cancel(){},pause(){},resume(){},speak(u){context.utterance=u;}},SpeechSynthesisUtterance:function(text){this.text=text;},
-    document:{addEventListener(){},createElement:node,documentElement:{classList:classes}},fetch:async()=>({ok:true,json:async()=>({dur:{first:2,second:2}})})};
-  context.window.window=context.window;
+  const context={
+    window:{AFL:{audioKey:t=>t},INTRO_AUDIO:{src:'audio/film.mp3?v=1',dur:{first:2,second:2}}},
+    AFL:{audioKey:t=>t},Audio,performance:{now:()=>0},requestAnimationFrame:()=>1,cancelAnimationFrame(){},
+    document:{addEventListener(){},createElement:()=>end,documentElement:{classList:classes}},
+    setTimeout,clearTimeout,location:{protocol:local?'file:':'https:'},
+    URL:{createObjectURL:body=>'blob:'+body,revokeObjectURL(){}},
+    fetch:async src=>{downloads.push(src);return {ok:true,blob:()=>new Promise(resolve=>{release=resolve;})};}
+  };
   const source=fs.readFileSync(path.join(__dirname,'../intro.js'),'utf8').replace('const total=()=>',`window.testPlayer={
     init(o){root=o.root;stage=o.stage;capEn=o.en;capBn=o.bn;dotsEl=o.dots;btnPlay=btnSnd=o.button;
-      SCENES=[0,1].map(i=>({lines:[['first',''],['second','']],_t:[.8,3.4],_d:[2,2],_dur:6.6,_cam0:[960,470,1],html:()=>'',scr:()=>''}));
-      cur=0;DUR={first:2,second:2};played=[false,false];fired=[];master=o.master;anims=[master];},
-    tick,togglePlay,retryNarration,toggleSound,show,close,open,
-    get state(){return {time:sceneTime(),cur,playing,narration,played:[...played]};}
+      SCENES=[0,1].map((_,index)=>({lines:[['first',''],['second','']],_start:index*6.6,
+        _t:[.8,3.4],_dur:6.6,_cam0:[960,470,1],html:()=>'',scr:()=>''}));
+      cur=0;master=o.master;anims=[master];shouldAutoplay=!o.paused;btnPlay.disabled=true;},
+    tick,togglePlay,toggleSound,jump,close,prepareFilmAudio,
+    get state(){return {time:sceneTime(),cur,playing,ready:!btnPlay.disabled};}
   };const total=()=>`);
   vm.runInNewContext(source,context);
-  const api=context.window.testPlayer;api.init({root,stage,en,bn,dots,button,master:animation()});
-  return {api,audios,status,context,root};
+  const api=context.window.testPlayer;
+  api.init({root,stage,en,bn,dots,button,paused,master:animation()});
+  return {api,audios,status,context,root,downloads,release:()=>release('complete-track')};
 }
 
-test('a 30-second download and mid-line buffering freeze every animation without skipping narration',()=>{
-  const {api,audios}=player();api.tick(0);api.tick(1000);
-  assert.equal(audios.length,1);assert.equal(api.state.time,.8);
-  api.tick(31000);assert.equal(api.state.time,.8);assert.equal(api.state.cur,0);
-  audios[0].currentTime=1;api.tick(32000);assert.equal(api.state.time,1.8);
-  audios[0].onwaiting();api.tick(62000);assert.equal(api.state.time,1.8);
-  assert.equal(audios.length,1);assert.deepEqual(Array.from(api.state.played),[true,false]);
-  audios[0].onended();api.tick(63000);api.tick(64000);
-  assert.equal(audios.length,2);assert.equal(api.state.time,3.4);
+const flush=()=>new Promise(setImmediate);
+
+test('hosted playback waits for the last byte and keeps the same audio across scenes',async()=>{
+  const {api,audios,downloads,release}=player();
+  const loading=api.prepareFilmAudio(0);
+  await flush();
+  assert.deepEqual(downloads,['audio/film.mp3?v=1']);
+  assert.equal(audios.length,0);
+  api.togglePlay();api.tick();
+  assert(!api.state.ready);assert(!api.state.playing);
+  release();await loading;
+  const track=audios[0];
+  assert.equal(track.url,'blob:complete-track');
+  assert.equal(track.playCalls,1);
+  track.currentTime=4;api.tick();
+  assert.equal(api.state.cur,0);assert.equal(api.state.time,4);
+  track.currentTime=7.6;api.tick();
+  assert.equal(api.state.cur,1);assert.equal(api.state.time,1);
+  assert.equal(audios.length,1);assert.equal(track.playCalls,1);
+  assert.equal(downloads.length,1);
+  api.close();
 });
 
-test('a very late animation frame still starts the next unheard line in order',()=>{
-  const {api,audios}=player();api.tick(0);api.tick(60000);
-  assert.equal(audios.length,1);assert.equal(audios[0].src,'audio/first.mp3');
-  assert.equal(api.state.time,.8);assert.equal(api.state.cur,0);
+test('the local preview plays the complete local track without fetch',async()=>{
+  const {api,audios,downloads}=player({local:true,paused:true});
+  await api.prepareFilmAudio(0);
+  assert.equal(audios[0].url,'audio/film.mp3');
+  assert.deepEqual(downloads,[]);
+  assert(!api.state.playing);
+  api.togglePlay();
+  assert.equal(audios[0].playCalls,1);
+  api.close();
 });
 
-test('the final line cannot advance the scene until its actual ended event',()=>{
-  const {api,audios}=player();api.tick(0);api.tick(1000);audios[0].onended();api.tick(2000);api.tick(3000);
-  audios[1].currentTime=10;api.tick(60000);assert.equal(api.state.cur,0);assert.equal(api.state.time,5.4);
-  api.tick(120000);assert.equal(api.state.cur,0);
-  audios[1].onended();api.tick(121000);api.tick(123000);assert.equal(api.state.cur,1);
+test('pausing, muting and jumping keep the same player and reject stale play callbacks',async()=>{
+  const {api,audios,status}=player({local:true});
+  await api.prepareFilmAudio(0);
+  const track=audios[0];
+  track.currentTime=2;api.tick();
+  api.togglePlay();
+  track.reject(new Error('interrupted by pause'));await flush();
+  assert(track.paused);assert(!api.state.playing);assert(status.hidden);
+  api.toggleSound();assert(track.muted);
+  api.jump(1);
+  assert.equal(track.currentTime,6.6);
+  assert.equal(api.state.cur,1);assert.equal(api.state.time,0);
+  api.togglePlay();assert(!track.paused);
+  assert.equal(audios.length,1);
+  api.close();assert(track.paused);
 });
 
-test('pause while play is pending survives the eventual promise resolution',async()=>{
-  const {api,audios}=player();api.tick(0);api.tick(1000);api.togglePlay();
-  audios[0].resolve();await Promise.resolve();assert(audios[0].paused);assert(!api.state.playing);
-  api.tick(60000);assert.equal(api.state.time,.8);
-  api.togglePlay();audios[0].currentTime=.5;api.tick(61000);assert.equal(api.state.time,1.3);
+test('short waits stay invisible and sustained waits hold the media-clock frame',async()=>{
+  const {api,audios,status,context}=player({local:true});
+  const pending=new Map();
+  let clock=0,id=0;
+  context.setTimeout=(fn,delay)=>{pending.set(++id,{fn,at:clock+delay});return id;};
+  context.clearTimeout=key=>pending.delete(key);
+  function advance(ms){
+    clock+=ms;
+    for(const [key,timer] of pending)if(timer.at<=clock){pending.delete(key);timer.fn();}
+  }
+  await api.prepareFilmAudio(0);
+  const track=audios[0];
+  track.onplaying();track.currentTime=3;api.tick();
+  track.onwaiting();advance(100);track.onplaying();advance(1000);
+  assert(status.hidden);
+  track.onwaiting();advance(800);api.tick();
+  assert.equal(status.textContent,'Buffering narration…');assert.equal(api.state.time,3);
+  track.onplaying();assert(status.hidden);
+  api.close();
 });
 
-test('audio failure holds the line for retry, and stale completion cannot move the retry',()=>{
-  const {api,audios,status}=player();api.tick(0);api.tick(1000);const stale=audios[0].onended;
-  audios[0].onerror();assert(!api.state.playing);assert.match(status.textContent,/Retry/);
-  api.tick(60000);assert.equal(api.state.time,.8);api.retryNarration();assert.equal(audios.length,2);
-  stale();assert(api.state.narration);audios[1].currentTime=1;api.tick(61000);assert.equal(api.state.time,1.8);
+test('closing while the download is pending prevents it from starting playback',async()=>{
+  const {api,audios,release}=player();
+  const loading=api.prepareFilmAudio(0);
+  await flush();api.close();release();await loading;
+  assert.equal(audios.length,0);assert(!api.state.playing);
 });
 
-test('navigation and close invalidate late audio callbacks and pause abandoned downloads',async()=>{
-  const {api,audios,root}=player();api.tick(0);api.tick(1000);const stale=audios[0].onended;
-  api.show(1);stale();assert.equal(api.state.cur,1);assert.equal(api.state.time,0);
-  audios[0].resolve();await Promise.resolve();assert(audios[0].paused);
-  api.tick(2000);api.tick(3000);const current=audios[1],end=current.onended;
-  api.close();end();assert(root.hidden);assert(current.paused);assert.equal(api.state.narration,null);
-});
-
-test('muting releases a buffering hold and silent playback continues',()=>{
-  const {api,audios}=player();api.tick(0);api.tick(1000);api.toggleSound();
-  assert.equal(api.state.narration,null);assert(audios[0].paused);
-  api.tick(2000);api.tick(3000);assert.equal(api.state.time,1.8);
-});
-
-test('speech synthesis fallback also waits for completion before the next line',()=>{
-  const {api,context}=player();context.AFL.audioKey=()=>null;
-  api.tick(0);api.tick(1000);assert(context.utterance);api.tick(60000);assert.equal(api.state.time,.8);
-  context.utterance.onstart();api.tick(61000);api.tick(120000);assert.equal(api.state.time,2.8);
-  assert.equal(api.state.narration.index,0);context.utterance.onend();api.tick(121000);api.tick(122000);
-  assert.equal(api.state.narration.index,1);
+test('a browser autoplay refusal leaves the loaded track ready for Play',async()=>{
+  const {api,audios,status}=player({local:true});
+  await api.prepareFilmAudio(0);
+  const track=audios[0];
+  track.reject({name:'NotAllowedError'});await flush();
+  assert(api.state.ready);assert(!api.state.playing);
+  assert.match(status.textContent,/Press Play/);
+  api.togglePlay();track.resolve();await flush();
+  assert(api.state.playing);assert(status.hidden);
+  api.close();
 });
 
 function readingDemo(voiced=true){
@@ -124,15 +166,4 @@ test('late narration cannot advance a reading demo after manual navigation or re
   const {el,done,advance}=readingDemo();advance(250);
   el.click({target:{closest:()=>({dataset:{alt:'next'}})}});advance(30000);done[0]();assert.equal(el.dataset.step,1);
   const b=readingDemo();b.advance(30000);b.el.isConnected=false;b.done[0]();assert.equal(b.el.dataset.step,0);
-});
-
-test('closing while the narration manifest loads prevents a late open from rebuilding the film',async()=>{
-  const {api,root}=player();api.open();api.close();await new Promise(setImmediate);
-  assert(root.hidden);assert.equal(api.state.time,0);assert.equal(api.state.narration,null);
-});
-
-test('a rejected resume after the user pauses again does not turn pause into an audio error',async()=>{
-  const {api,audios,status}=player();api.tick(0);api.tick(1000);api.togglePlay();api.togglePlay();api.togglePlay();
-  audios[0].reject(new Error('interrupted by pause'));await Promise.resolve();
-  assert(!api.state.playing);assert(!api.state.narration.failed);assert(!status.textContent.includes('Retry'));
 });

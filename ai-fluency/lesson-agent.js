@@ -187,6 +187,14 @@ const goalBody=x=>{const sel=x.get('tasks',[]);return `<div class="ob-hero"><b>W
 
 /* ---------- rules ---------- */
 const PUZ=c=>Object.assign(c,{text:c.ok[0].t});
+const RULE_VISUALS={
+  Approval:{icon:'chat',cue:'Ask before sending'},
+  'Who does what':{icon:'edit',cue:'Orbit drafts. You send.'},
+  Money:{icon:'wallet',cue:'You decide what to pay'},
+  Secrets:{icon:'key',cue:'Stop at passwords or codes'},
+  Limits:{icon:'folder',cue:'Use allowed files and sites'},
+  Record:{icon:'history',cue:'Log every action'}
+};
 const RULE_CHIPS=[
  PUZ({id:'ra',tag:'Approval',goal:'Rule 1: when must Orbit ask?',goalbn:'নিয়ম ১: Orbit কখন জিজ্ঞেস করবে?',
    tiles:['ask me','before you','send any email or file','after you'],
@@ -221,13 +229,33 @@ const RULE_CHIPS=[
  {id:'x1',tag:'Shortcut',x:1,text:'Do whatever is fastest.',warn:'fast for the agent isn’t safe for Ayesha.',warnbn:'এজেন্টের জন্য দ্রুত মানে আয়েশার জন্য নিরাপদ নয়।'},
  {id:'x2',tag:'Shortcut',x:1,text:'Don’t bother me with small things.',warn:'Ayesha decides what is small — not the agent.',warnbn:'কোনটা ছোট তা আয়েশা ঠিক করবে — এজেন্ট নয়।'}
 ];
+/* Extra sentence pieces for the projector. The exercise still offers these as full rules. */
+const PROJECTOR_RULES={
+  r2:{goal:'Who decides whether to pay?',tiles:['never pay money.','send me the payment link','and I will decide.']},
+  r3:{goal:'What should Orbit do when asked for a secret?',tiles:['never type','a password, PIN or OTP.','stop and ask me.']},
+  r4:{goal:'Which files and sites can Orbit use?',tiles:['use only','my Masters Applications folder','and official university websites.']},
+  r5:{goal:'What record should Orbit leave?',tiles:['keep a log','of everything','you do.']}
+};
+function projectorRules(compose){
+  return {...compose,chips:compose.chips.map(chip=>{
+    const build=PROJECTOR_RULES[chip.id];
+    return build?{...chip,...build,ok:[{o:build.tiles.map((_,index)=>index),t:chip.text}]}:chip;
+  })};
+}
 const RULE_SLOTS=[
  {label:'Ask first',frame:'<em>Ask me before you</em> ___.',bn:'___ করার আগে আমাকে জিজ্ঞেস করো।',test:[/ask me before|ask me first|check with me/i]},
  {label:'Money',frame:'<em>Never pay</em> ___.',bn:'কখনো ___ দিও না।',test:[/never pay|no pay|don'?t pay|money/i]},
  {label:'Secrets',frame:'<em>Never type a</em> ___. <em>Stop and ask me.</em>',bn:'কখনো ___ টাইপ করো না। থেমে আমাকে জিজ্ঞেস করো।',test:[/password|pin|otp/i]},
  {label:'Limits',frame:'<em>Use only</em> ___.',bn:'শুধু ___ ব্যবহার করো।',test:[/use only|only my|official/i]}
 ];
-const ruleList=x=>{const t=x.get('rules','');if(!t.trim())return RULE_CHIPS.filter(c=>!c.x).map(c=>c.text);const used=RULE_CHIPS.filter(c=>t.includes(c.text)).map(c=>c.text);let rest=t;used.forEach(u=>rest=rest.replace(u,''));rest=rest.trim();return rest?used.concat([rest]):used};
+const ruleList=x=>{const demo=x.get('demoRules');if(demo)return demo;const t=x.get('rules','');if(!t.trim())return RULE_CHIPS.filter(c=>!c.x).map(c=>c.text);const used=RULE_CHIPS.filter(c=>t.includes(c.text)).map(c=>c.text);let rest=t;used.forEach(u=>rest=rest.replace(u,''));rest=rest.trim();return rest?used.concat([rest]):used};
+function ruleCard(rule, showVisuals){
+  const tag=showVisuals && RULE_CHIPS.find(chip=>chip.text===rule || chip.ok?.some(answer=>answer.t===rule))?.tag;
+  const visual=RULE_VISUALS[tag];
+  return visual
+    ? `<div class="rulecard orbit-rule-review">${ico(visual.icon)}<div><strong>${esc(tag)}</strong><p>${esc(rule)}</p></div></div>`
+    : `<div class="rulecard"><span>✅</span><span>${esc(rule)}</span></div>`;
+}
 const rulesText=x=>x.get('rules','')||RULE_CHIPS.filter(c=>!c.x).map(c=>c.text).join(' ');
 const shortcutUsed=x=>RULE_CHIPS.filter(c=>c.x&&x.get('rules','').includes(c.text));
 
@@ -309,6 +337,7 @@ const cmpRow=r=>`<span class="cmp"><span class="cmp-o"><small>📅 Orbit’s cal
 
 AFL.lesson({
  id:'agent', title:'Set up an AI agent', kicker:'Mission 2 · Agents', emoji:'🛰️', tint:'#FFDBCC', time:'30–40 min',
+ ruleVisuals:RULE_VISUALS,
  blurb:'Eight applications are due. Let an AI agent help — without letting it go too far.',
  blurbbn:'আটটা আবেদনের সময় ঘনিয়ে এসেছে। একটা AI এজেন্টকে সাহায্য করতে দাও — কিন্তু বেশি দূর যেতে দিও না।',
  notif:{app:'orbit',title:'Finish setting up Orbit',text:'Your AI agent is ready. Connect your apps to get started.',time:'8:40',hit:'start:agent'},
@@ -401,8 +430,9 @@ AFL.lesson({
    say:'Access is one wall. Rules are the second. Build the first two rules with the tiles — word order decides who acts. Then tap more rules, and send ➤.',bn:'অ্যাক্সেস একটা দেয়াল। নিয়ম হলো দ্বিতীয়টা। টুকরো দিয়ে প্রথম দুটো নিয়ম বানাও — শব্দের ক্রম ঠিক করে কে কাজ করবে। তারপর আরও নিয়ম চাপো, আর পাঠাও ➤।',
    sub:()=>AFL.byMode({solo:'Two orders can be good English — only one is a safe rule.',pair:'👥 Take turns: one tile each. Read your tile aloud as you place it.',class:'👥 Take turns with the person next to you: one tile each, read aloud.'}),
    subbn:()=>AFL.byMode({solo:'দুই রকম ক্রমেই ইংরেজি ঠিক হতে পারে — কিন্তু নিরাপদ নিয়ম একটাই।',pair:'পালা করে: একবারে একটা টুকরো। বসানোর সময় জোরে পড়ো।',class:'পাশের জনের সাথে পালা করে: একটা করে টুকরো, জোরে পড়ে।'}),
+   projectorCompose:projectorRules,
    compose:{key:'rules',slots:RULE_SLOTS,chips:RULE_CHIPS,best:['ra','rb','r2','r3','r4','r5']}},
-  {d:'des',stage:'rules',scene:x=>orbitSc(`<div class="sec-h">Orbit will follow these rules</div>${ruleList(x).map(r=>`<div class="rulecard"><span>✅</span><span>${esc(r)}</span></div>`).join('')}
+  {d:'des',stage:'rules',scene:x=>orbitSc(`<div class="sec-h">Orbit will follow these rules</div>${ruleList(x).map(rule=>ruleCard(rule,x.get('showRuleVisuals'))).join('')}
      <div class="sec-h">Access</div><div class="rulecard"><span>📅</span><span>Calendar</span></div><div class="rulecard"><span>✉️</span><span>Gmail — drafts only</span></div><div class="rulecard"><span>🗂️</span><span>Drive — Masters Applications folder</span></div>
      <div style="padding:16px"><button class="mdbtn" style="width:100%;background:#B4471B;padding:14px" data-hit="ob:go">Start working</button></div>`,{title:'Ready'}),tap:'ob:go',
    say:'Ayesha goes to class for three hours. Let Orbit start.',bn:'আয়েশা তিন ঘণ্টার জন্য ক্লাসে যাচ্ছে। Orbit-কে কাজ শুরু করতে দাও।',

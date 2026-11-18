@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useSettings, T } from '../lib/settings';
 import { IMenu, IClose, ITv, IPrint, IBook, STEP_ICON } from './Icons';
+import { AMERICAN_TRACK_HOME, AMERICAN_TRACK_TITLE } from '../content/americanTrack';
 import { UNITS, STEPS, UI } from '../content/units';
 import TeacherNotes from './TeacherNotes';
 import { getLenis, lockScroll } from '../lib/scroll';
@@ -33,7 +34,7 @@ export function VoiceToggle({ big = false }) {
   );
 }
 
-export default function AppBar({ unit, stepKey, onStep, go }) {
+export default function AppBar({ unit, stepKey, onStep, go, american = false, onCompare }) {
   const { stage, setStage, autoplay, setAutoplay, bangla } = useSettings();
   const [open, setOpen] = useState(false);
   const [notes, setNotes] = useState(false);
@@ -85,13 +86,14 @@ export default function AppBar({ unit, stepKey, onStep, go }) {
           <a className="logo-chip" href="../" aria-label="Dialogue — all activities" title="All Dialogue activities">
             <img src="../brand/dialogue-logo.png" alt="Dialogue English & Skills Center" />
           </a>
-          <a className="brand-name" href="#/" onClick={(e) => { e.preventDefault(); go('#/'); }}>
+          <a className="brand-name" href="#/" onClick={event => { event.preventDefault(); go('#/'); }}>
             <span className="brand-g" aria-hidden="true">🎵</span>
-            <span className="brand-t">Voice Lab{unit && <span className="brand-u"> · {unit.n} {unit.title.en}</span>}</span>
+            <span className="brand-t">Voice Lab{unit && !american && <span className="brand-u"> · {unit.n} {unit.title.en}</span>}</span>
             {stage && <span className="on-tv">ON TV</span>}
           </a>
           {unit && (
             <nav className="steps-ctl is-wide" aria-label="Steps">
+              {onCompare && <CompareButton onClick={onCompare} />}
               {unit.steps.map((s, i) => {
                 const I = STEP_ICON[STEPS[s.key].icon];
                 return (
@@ -114,7 +116,8 @@ export default function AppBar({ unit, stepKey, onStep, go }) {
         </div>
         <span className="bar-progress" aria-hidden="true"><i ref={prog} /></span>
         {unit && (
-          <nav className="steps-ctl is-narrow" aria-label="Steps">
+          <nav className={`steps-ctl is-narrow ${onCompare ? 'with-comparison' : ''}`} aria-label="Steps">
+            {onCompare && <CompareButton onClick={onCompare} />}
             {unit.steps.map((s, i) => (
               <button key={s.key} className={stepKey === s.key ? 'on' : ''} aria-current={stepKey === s.key ? 'step' : undefined} onClick={() => onStep(s.key)}>
                 <span className="n">{i + 1}</span><span className="lbl">{STEPS[s.key].en}</span>
@@ -133,6 +136,10 @@ export default function AppBar({ unit, stepKey, onStep, go }) {
               <button className="icon-btn" onClick={() => setOpen(false)} aria-label="Close menu"><IClose /></button>
             </div>
             <div className="sheet-units">
+              <a href={AMERICAN_TRACK_HOME} className={`sheet-unit ${american ? 'on' : ''}`}
+                onClick={event => { event.preventDefault(); setOpen(false); go(AMERICAN_TRACK_HOME); }}>
+                <T en={AMERICAN_TRACK_TITLE} bn="আমেরিকান ইংরেজি" className="st" />
+              </a>
               {UNITS.map(u => (
                 <a key={u.id} href={`#/u/${u.id}/0`} className={`sheet-unit ${unit && unit.id === u.id ? 'on' : ''}`}
                   onClick={(e) => { e.preventDefault(); setOpen(false); go(`#/u/${u.id}/0`); }}>
@@ -159,5 +166,13 @@ export default function AppBar({ unit, stepKey, onStep, go }) {
       )}
       {notes && <TeacherNotes onClose={() => setNotes(false)} />}
     </>
+  );
+}
+
+function CompareButton({ onClick }) {
+  return (
+    <button type="button" className="compare-jump" onClick={onClick}>
+      <T en="Compare US / UK" bn="US / UK তুলনা" block={false} />
+    </button>
   );
 }

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI Tools: Stories &amp; Songs · Dialogue</title>
+<meta name="description" content="Watch how to turn your study notes into a picture book and a song with Gemini, then read the book and sing along.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg?v=03b">
+<link rel="icon" type="image/png" sizes="48x48" href="../favicon.png?v=03b">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=03b">
+<link rel="stylesheet" href="../dialogue-brand.css">
+<link rel="stylesheet" href="style.css?v=4">
+<script>document.documentElement.classList.add("tabbed")</script>
+</head>
+<body class="dialogue-activity-shell">
+
+<header class="top">
+  <a class="logo-chip" href="/" aria-label="All Dialogue activities"><img src="../brand/dialogue-logo.png?v=a53d061" alt="Dialogue English &amp; Skills Center"></a>
+  <span class="brand-name"><span class="brand-txt">AI Tools: Stories &amp; Songs</span></span>
+  <div class="proj-bar" id="projbar"></div>
+  <button class="proj-btn" id="proj" type="button" aria-pressed="false" title="Projector view (P)"><span class="pb-on">⛶ Projector view</span><span class="pb-off">✕ Exit projector</span></button>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Make English you want to hear.</h1>
+    <p class="lead">Put your notes in a notebook. Ask Gemini for a <b>song</b> or a <b>picture book</b>. Listen and read again and again.</p>
+    <p class="example"><span class="mini-gears" aria-hidden="true"><i class="md-del"></i><i class="md-des"></i><i class="md-dis"></i><i class="md-dil"></i></span>
+      <span>Our example: a notebook about the <b>4Ds of AI Fluency</b>.</span></p>
+  </section>
+
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Activity parts">
+    <a class="tab tab-song" role="tab" href="#song" data-tab="song"><span class="ti" aria-hidden="true">♫</span><span class="tt"><b>Song</b><small>Remember with music</small></span></a>
+    <a class="tab tab-story" role="tab" href="#story" data-tab="story"><span class="ti" aria-hidden="true">📖</span><span class="tt"><b>Storybook</b><small>Read and listen</small></span></a>
+    <a class="tab tab-yours" role="tab" href="#yours" data-tab="yours"><span class="ti" aria-hidden="true">✋</span><span class="tt"><b>Your turn</b><small>Make your own</small></span></a>
+  </nav>
+
+  <!-- ============ SONG ============ -->
+  <section class="panel" id="song" role="tabpanel" aria-label="Song">
+    <div class="step" data-step="1" data-label="Watch how">
+    <h2 class="sh"><span class="sn">1</span><span>Watch how Gemini makes the song</span></h2>
+    <div class="demo" id="demo-song" data-track="song"></div>
+    </div>
+    <div class="step" data-step="2" data-label="Sing along">
+
+    <h2 class="sh" id="sing"><span class="sn">2</span><span>Sing along: <em>The Boatman’s Four Steps</em></span></h2>
+    <p class="sh-sub">Gemini made this song from our 4Ds notebook. Watch each gear turn in when its D is sung.</p>
+
+    <div class="stage" id="stage">
+      <div class="gearbox">
+        <div class="cluster" id="cluster" aria-hidden="true"></div>
+        <div class="dplate" id="dplate" aria-live="polite"><b>The 4Ds</b><span>Press play</span></div>
+      </div>
+
+      <div class="karaoke" aria-live="off">
+        <button class="bigplay" id="sg-big" type="button"><span class="bp-i" aria-hidden="true"></span>Play the song</button>
+        <p class="kline" id="kline"></p>
+        <p class="knext" id="knext"></p>
+      </div>
+
+      <div class="player">
+        <button class="pbtn" id="sg-play" type="button" aria-label="Play">
+          <svg viewBox="0 0 24 24" class="i-play"><path d="M8 5v14l11-7z"/></svg>
+          <svg viewBox="0 0 24 24" class="i-pause"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+        </button>
+        <img class="pthumb" src="song/cover.jpg" alt="" width="48" height="48">
+        <div class="pmeta">
+          <b>The Boatman’s Four Steps</b>
+          <div class="prow">
+            <span class="ptime" id="sg-cur">0:00</span>
+            <input class="pbar" id="sg-bar" type="range" min="0" max="163" step="0.1" value="0" aria-label="Song position">
+            <span class="ptime" id="sg-dur">2:43</span>
+          </div>
+        </div>
+        <button class="pchip" id="sg-rate" type="button" aria-label="Playback speed">1×</button>
+      </div>
+      <audio id="sg-audio" preload="metadata" src="song/boatmans-four-steps.mp3"></audio>
+
+      <details class="lyrics" id="lyrics">
+        <summary>All the words <small>tap a line to jump there</small></summary>
+        <ol class="lyric-list" id="lyric-list"></ol>
+      </details>
+    </div>
+    </div>
+    <a class="next-tab" href="#story">Next: make a storybook <span aria-hidden="true">→</span></a>
+  </section>
+
+  <!-- ============ STORYBOOK ============ -->
+  <section class="panel" id="story" role="tabpanel" aria-label="Storybook">
+    <div class="step" data-step="1" data-label="Watch how">
+    <h2 class="sh"><span class="sn">1</span><span>Watch how Gemini makes the book</span></h2>
+    <div class="demo" id="demo-story" data-track="story"></div>
+    </div>
+    <div class="step" data-step="2" data-label="Read and listen">
+
+    <h2 class="sh" id="read"><span class="sn">2</span><span>Read and listen: <em>The Captain of the Loop</em></span></h2>
+    <p class="sh-sub">Gemini wrote and drew this 10-page book from the same notebook. Tap the picture or the arrows to turn the page.</p>
+
+    <div class="reader" id="reader">
+      <div class="spread">
+        <div class="sp-pic" id="rd-pic"><button class="tapzone tz-prev" type="button" tabindex="-1" aria-hidden="true"></button><button class="tapzone tz-next" type="button" tabindex="-1" aria-hidden="true"></button><div class="pic-in" id="rd-pic-in"></div></div>
+        <div class="sp-text">
+          <span class="sp-author">TIM HALL</span>
+          <p id="rd-text"></p>
+          <span class="sp-num" id="rd-num"></span>
+        </div>
+      </div>
+      <div class="rd-dots" id="rd-dots" aria-hidden="true"></div>
+      <div class="rd-bar">
+        <button class="rbtn" id="rd-prev" type="button" aria-label="Previous page">‹</button>
+        <span class="rd-count" id="rd-count">1 / 10</span>
+        <button class="rbtn" id="rd-next" type="button" aria-label="Next page">›</button>
+        <button class="listen" id="rd-listen" type="button"><span aria-hidden="true">🔊</span> <span class="lbl">Listen</span></button>
+      </div>
+      <div class="rd-foot">
+        <label class="auto"><input type="checkbox" id="rd-auto" checked> Keep reading to the end</label>
+        <a href="https://share.gemini.google/7uBtSKKskJ8E" target="_blank" rel="noopener">Open the book in Gemini ↗</a>
+      </div>
+    </div>
+    </div>
+    <a class="next-tab" href="#yours">Next: make your own <span aria-hidden="true">→</span></a>
+  </section>
+
+  <!-- ============ YOUR TURN ============ -->
+  <section class="panel" id="yours" role="tabpanel" aria-label="Your turn">
+    <div class="step" data-step="1" data-label="Make your own">
+    <h2 class="sh"><span class="sn">✋</span><span>Make one about <em>your</em> subject</span></h2>
+
+    <div class="yt">
+      <div class="yt-steps">
+        <ol>
+          <li><b>Notebook.</b> Add your class notes, a PDF, or a video transcript.</li>
+          <li><b>Gemini.</b> Tap <kbd>＋</kbd> → <i>More uploads</i> → <i>Notebooks</i>.</li>
+          <li><b>Song:</b> <kbd>＋</kbd> → <i>Create music</i>. <b>Book:</b> <kbd>＋</kbd> → <i>More tools</i> → <i>Canvas</i>, then ask for a storybook.</li>
+          <li><b>Say it clearly.</b> Topic, who it is for, and the style.</li>
+          <li><b>Check it.</b> Does it match your notes?</li>
+        </ol>
+      </div>
+
+      <div class="builder">
+        <label class="bl">My topic
+          <input id="b-topic" type="text" placeholder="e.g. the water cycle, photosynthesis, IELTS linking words" maxlength="80">
+        </label>
+        <div class="b-row">
+          <label class="bl">Song style
+            <select id="b-style">
+              <option>Bengali folk</option><option>Baul</option><option>Pop</option><option>Rap</option>
+              <option>Lullaby</option><option>Rock</option><option>Country</option><option>Reggae</option>
+            </select>
+          </label>
+          <label class="bl">Book for
+            <select id="b-for">
+              <option>adults learning English</option><option>university students</option>
+              <option>teenagers</option><option>my younger brother or sister</option>
+            </select>
+          </label>
+        </div>
+        <div class="prompt-card pc-song">
+          <span class="pc-tag">♫ Song prompt</span>
+          <p id="p-song"></p>
+          <button class="copy" type="button" data-copy="p-song">Copy</button>
+        </div>
+        <div class="prompt-card pc-story">
+          <span class="pc-tag">📖 Storybook prompt</span>
+          <p id="p-story"></p>
+          <button class="copy" type="button" data-copy="p-story">Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="checks">
+      <div class="ck ck-dis"><i class="gi gi-dis" aria-hidden="true"></i><div><b>Discernment</b><span>AI can make mistakes. Check it against your notes.</span></div></div>
+      <div class="ck ck-dil"><i class="gi gi-dil" aria-hidden="true"></i><div><b>Diligence</b><span>No private information in your notebook. Say “AI helped me” when you share.</span></div></div>
+    </div>
+
+    <p class="small-print">Gemini’s Storybook and Create music need a personal Google account, age 18+. Some school and work accounts can’t share books.</p>
+    <p class="print-row"><button class="print-btn" type="button" onclick="window.print()">🖨 Print the one-page guide</button></p>
+    </div>
+  </section>
+</main>
+
+<!-- one-page printable guide (shown only when printing) -->
+<div class="print-sheet" aria-hidden="true">
+  <h1>AI Tools: Stories &amp; Songs</h1>
+  <p class="ps-sub">Turn your notes into English you want to hear — with Gemini (gemini.google.com)</p>
+  <div class="ps-cols">
+    <div>
+      <h2>① Make a notebook</h2>
+      <ol><li>In Gemini, tap <b>New notebook</b>.</li><li>Add your sources: notes, PDFs, transcripts.</li></ol>
+      <h2>② Make a song ♫</h2>
+      <ol><li>New chat → <b>＋</b> → <b>Create music</b>.</li><li>Pick a card, e.g. <b>Memorize something</b>.</li>
+        <li><b>＋</b> → <b>More uploads</b> → <b>Notebooks</b> → choose → <b>Add</b>.</li>
+        <li>Type: <i>I want to memorize ______. ______ style.</i></li><li>Send. Listen. Sing along.</li></ol>
+    </div>
+    <div>
+      <h2>③ Make a storybook 📖</h2>
+      <ol><li>New chat → <b>＋</b> → <b>More tools</b> → <b>Canvas</b>.</li><li><b>＋</b> → <b>More uploads</b> → <b>Notebooks</b> → choose → <b>Add</b>.</li>
+        <li>Type: <i>Make a storybook about ______ for ______.</i></li><li>Send. Turn the pages. Tap <b>Listen</b>.</li></ol>
+      <h2>④ Use the 4Ds</h2>
+      <ul class="ps-d">
+        <li><b>Delegation</b> — you choose the sources and the job.</li>
+        <li><b>Description</b> — say the topic, who it is for, and the style.</li>
+        <li><b>Discernment</b> — check it against your notes.</li>
+        <li><b>Diligence</b> — nothing private; say “AI helped me”.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ps-plan">
+    <h2>⑤ Plan yours</h2>
+    <p>My topic: <span class="ps-line"></span></p>
+    <p>Who it is for: <span class="ps-line"></span> &nbsp; Music style: <span class="ps-line s"></span></p>
+    <p>My prompt: <span class="ps-line"></span></p>
+    <p><span class="ps-line full"></span></p>
+  </div>
+  <p class="ps-foot">dialogue-bd.com/ai-stories-songs · Storybook and Create music need a personal Google account, 18+.</p>
+</div>
+
+<script src="data.js?v=2"></script>
+<script src="app.js?v=4"></script>
+</body>
+</html>

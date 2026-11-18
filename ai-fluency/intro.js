@@ -8,12 +8,10 @@
  * loop 1 (the big decisions) → loop 2 (the conversation) → the gears mesh and
  * turn → the sweet spot, with you at the centre → an example → the close.
  *
- * Timing follows the narration. Every caption is one recorded line
- * (audio/<key>.mp3, cut by tools/split_takes.py, durations in the manifest);
- * every movement is written against a line: "@2+.4" = 0.4 s after line 2
- * starts, "@end-1" = 1 s before the scene ends. So re-recording a line
- * re-times the film by itself. Before a line is recorded, its length is
- * estimated from its words and the browser voice reads it.
+ * One continuous narration track follows this scene timeline. The source clips
+ * and their durations come from audio/manifest.json. tools/build-intro-audio.cjs
+ * places each recording on the timeline, with the original scene gaps intact.
+ * Animation cues such as "@2+.4" stay relative to their recorded lines.
  *
  * Every animation is a Web Animation, so the film is a pure function of
  * (scene, t): the player runs it live, and INTRO.seek(i,t) renders any frame.
@@ -344,13 +342,13 @@ const LINES=SCENES.flatMap(s=>s.lines.map(l=>l[0]));
 let DUR={};          // audio key -> seconds, from audio/manifest.json
 const keyOf=t=>window.AFL&&AFL.audioKey?AFL.audioKey(t):null;
 const lineDur=t=>{const k=keyOf(t); if(k&&DUR[k]) return DUR[k]; return .35+t.replace(/[“”".,:;—-]/g,' ').split(/\s+/).filter(Boolean).length/2.35;};
-const has=t=>{const k=keyOf(t); return !!(k&&DUR[k]);};
 function plan(){
-  let ang=0, ai=0, cam=SCENES[0].cam0;
+  let ang=0, ai=0, offset=0, cam=SCENES[0].cam0;
   SCENES.forEach((sc,si)=>{
     sc._t=[]; let t=sc.lead||.8;
     sc.lines.forEach((l,i)=>{ sc._t[i]=t; sc._d=sc._d||[]; sc._d[i]=lineDur(l[0]); t+=sc._d[i]+(l[2]!=null?l[2]:.6); });
     sc._dur=+(t-(sc.lines[sc.lines.length-1][2]!=null?sc.lines[sc.lines.length-1][2]:.6)+(sc.tail||1.2)).toFixed(2);
+    sc._start=offset; offset+=sc._dur;
     sc._cam0=sc.cam0||cam; cam=(sc.cam&&sc.cam.length)?sc.cam[sc.cam.length-1].slice(2):sc._cam0;
     sc._ang0=ang; const tab=angleTable(sc,sc.spin,sc.tick,ang); sc._ang=tab; ang=tab[tab.length-1];
     sc._ai0=ai; if(sc.ai){const t2=angleTable(sc,sc.ai,null,ai); sc._aiang=t2; ai=t2[t2.length-1];}
@@ -460,10 +458,94 @@ function textures(){
 }
 
 /* ---------- player ---------- */
-let onStart=null,root,stage,capEn,capBn,dotsEl,btnPlay,btnSnd,cur=-1,anims=[],master=null,playing=true,raf=0,onExit=null,renderMode=false,sound=true,played=[],fired=[],clip=null,ready=null,narration=null,lastTick=null,openId=0;
-function loadDur(){ if(ready) return ready;
-  ready=fetch('audio/manifest.json',{cache:'no-cache'}).then(r=>r.ok?r.json():{}).then(m=>{DUR=(m&&m.dur)||{}}).catch(()=>{}).then(plan);
-  return ready; }
+let onStart=null,onExit=null,root,stage,capEn,capBn,dotsEl,btnPlay,btnSnd;
+let cur=-1,anims=[],master=null,fired=[],raf=0,playing=false,renderMode=false,sound=true;
+let ready=null,film=null,filmSource=null,openId=0,playId=0,shouldAutoplay=true;
+const localPreview=()=>typeof location!=='undefined'&&location.protocol==='file:';
+
+function loadDur(){
+  if(!ready){
+    const manifest=window.INTRO_AUDIO;
+    ready=(manifest?Promise.resolve(manifest):fetch('audio/manifest.json',{cache:'no-cache'}).then(r=>r.ok?r.json():{}))
+      .then(m=>{DUR=m.dur||{};}).catch(()=>{}).then(plan);
+  }
+  return ready;
+}
+
+function loadTrackSource(){
+  const src=window.INTRO_AUDIO?.src;
+  if(!src) return Promise.reject(new Error('Narration track is missing'));
+  // Local previews already have the complete file on disk. Hosted playback
+  // uses only this Blob, after fetch has read the final byte.
+  if(localPreview()) return Promise.resolve(src.split('?')[0]);
+  if(!filmSource){
+    filmSource=fetch(src).then(r=>{
+      if(!r.ok) throw new Error('Narration download failed');
+      return r.blob();
+    }).then(blob=>URL.createObjectURL(blob)).catch(error=>{
+      filmSource=null;
+      throw error;
+    });
+  }
+  return filmSource;
+}
+
+function prepareMedia(src){
+  const media=new Audio();
+  media.preload='auto';
+  media.muted=!sound;
+  const loaded=new Promise((resolve,reject)=>{
+    const done=error=>{
+      clearTimeout(timeout);
+      media.onloadedmetadata=media.onerror=null;
+      if(error) reject(error); else resolve(media);
+    };
+    const timeout=setTimeout(()=>done(new Error('Narration could not be read')),10000);
+    media.onloadedmetadata=()=>done();
+    media.onerror=()=>done(new Error('Narration could not be read'));
+    media.src=src;
+  });
+  return loaded;
+}
+
+function reportMediaError(){
+  setPlaying(false);
+  if(film){
+    film.onwaiting=film.onplaying=film.onended=film.onerror=null;
+    film=null;
+  }
+  if(!localPreview()&&filmSource){
+    filmSource.then(src=>URL.revokeObjectURL(src));
+    filmSource=null;
+  }
+  btnPlay.disabled=true;
+  loading('Narration could not load. Retry to start.',true);
+}
+
+async function prepareFilmAudio(id){
+  waitStatus('Preparing narration…');
+  let media;
+  try{
+    const src=await loadTrackSource();
+    if(id!==openId||root.hidden) return;
+    media=await prepareMedia(src);
+  }catch(e){
+    if(id===openId&&!root.hidden) reportMediaError();
+    return;
+  }
+  if(id!==openId||root.hidden) return;
+  film=media;
+  film.muted=!sound;
+  film.onplaying=()=>{if(id===openId&&film===media&&playing) loading();};
+  film.onwaiting=()=>{if(id===openId&&film===media&&playing) waitStatus('Buffering narration…');};
+  film.onended=()=>{if(id===openId&&film===media) finishFilm();};
+  film.onerror=()=>{if(id===openId&&film===media) reportMediaError();};
+  film.currentTime=SCENES[cur]._start+sceneTime();
+  btnPlay.disabled=false;
+  loading();
+  if(shouldAutoplay) setPlaying(true);
+}
+
 function build(){
   if(root) return;
   const tx=textures();
@@ -476,10 +558,10 @@ function build(){
   stage=root.querySelector('#i-stage'); dotsEl=root.querySelector('#i-dots'); btnPlay=root.querySelector('[data-i=play]'); btnSnd=root.querySelector('[data-i=snd]');
   dotsEl.innerHTML=SCENES.map((s,i)=>`<button data-go="${i}" aria-label="Scene ${i+1}"><i></i></button>`).join('');
   root.addEventListener('click',e=>{const b=e.target.closest('[data-i]');const g=e.target.closest('[data-go]');
-    if(g){show(+g.dataset.go);return}
+    if(g){jump(+g.dataset.go);return}
     if(!b){ if(e.target.closest('.i-end')) return; togglePlay();return}
-    const a=b.dataset.i; if(a==='prev')show(Math.max(0,cur-1)); else if(a==='next')advance(); else if(a==='play')togglePlay(); else if(a==='exit')close(); else if(a==='start'){ const go=onStart; if(go) go(); close(); }
-    else if(a==='snd') toggleSound(); else if(a==='retry') retryNarration();
+    const a=b.dataset.i; if(a==='prev')jump(Math.max(0,cur-1)); else if(a==='next')advance(); else if(a==='play')togglePlay(); else if(a==='exit')close(); else if(a==='start'){ const go=onStart; if(go) go(); close(); }
+    else if(a==='snd') toggleSound(); else if(a==='retry')prepareFilmAudio(openId);
     else if(a==='bn'){root.classList.toggle('bn')}});
   addEventListener('resize',fit); fit();
 }
@@ -499,7 +581,7 @@ function fit(){ if(!root) return;
   const narrow=!P&&innerWidth<900&&!renderMode; root.classList.toggle('narrow',narrow);
   const s=Math.min(innerWidth/SW,(innerHeight-(renderMode?0:narrow?200:64))/SH); stage.style.transform=`scale(${s})`; stage.parentElement.style.width=SW*s+'px'; stage.parentElement.style.height=SH*s+'px'; }
 function show(i,preserve=false){
-  cur=i; anims.forEach(a=>a.cancel()); anims=[]; if(!preserve) stopClip(); lastTick=null;
+  cur=i; anims.forEach(a=>a.cancel()); anims=[];
   const sc=SCENES[i];
   stage.innerHTML=`<div class="i-bg"></div><div class="i-back"><div class="i-guil"></div></div>
    <div class="world" id="world">${sc.html()}</div><div class="scr">${sc.scr()}</div>
@@ -515,8 +597,8 @@ function show(i,preserve=false){
   master=stage.animate([{opacity:1},{opacity:1}],{duration:sc._dur*1000+60000,fill:'both'}); anims.push(master);
   capEn=stage.querySelector('.i-cap .en'); capBn=stage.querySelector('.i-cap .bnc');
   [...dotsEl.children].forEach((d,k)=>d.className=k<i?'done':k===i?'on':'');
-  if(!preserve){ played=sc.lines.map(()=>false); fired=(sc.sfx||[]).map(()=>false); }
-  // One playhead drives every animation; narration owns it while a line plays.
+  if(!preserve) fired=(sc.sfx||[]).map(()=>false);
+  // Every animation uses the same playhead as the full narration track.
   anims.forEach(a=>a.pause()); frame(0);
   setCaption(0);
 }
@@ -529,103 +611,133 @@ function setCaption(t){
   if(!renderMode) capEn.parentElement.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:320,easing:E,fill:'both'});
 }
 function frame(t){ anims.forEach(a=>{a.currentTime=t*1000}); }
+let statusTimer=null, pendingStatus='';
 function loading(message='',retry=false){
+  clearTimeout(statusTimer);
+  statusTimer=null;
   const el=root&&root.querySelector('.i-load'); if(!el) return;
   el.hidden=!message; el.textContent=message;
   if(retry){const b=document.createElement('button');b.dataset.i='retry';b.textContent='Retry audio';el.appendChild(b);}
 }
+// Short waits are normal as the browser switches between local narration clips.
+function waitStatus(message){
+  const el=root?.querySelector('.i-load');
+  if(!el) return;
+  if(!el.hidden){ loading(message); return; }
+  pendingStatus=message;
+  if(statusTimer!==null) return;
+  statusTimer=setTimeout(()=>loading(pendingStatus),800);
+}
 function syncPlay(){btnPlay.textContent=playing?'❚❚':'▶';btnPlay.setAttribute('aria-label',playing?'Pause':'Play');}
-function stopClip(){
-  // Invalidate callbacks before pause/cancel: old downloads must not move a new scene.
-  narration=null;
-  if(clip){const a=clip;clip=null;a.onended=a.onerror=a.onwaiting=a.onplaying=null;try{a.pause()}catch(e){}}
-  try{speechSynthesis.cancel()}catch(e){} loading();
-}
-function say(text,index){
-  stopClip(); if(!sound||renderMode) return;
-  const sc=SCENES[cur],n={index,start:sc._t[index],duration:sc._d[index],started:false,failed:false};
-  narration=n; frame(n.start); loading('Loading narration…');
-  const live=()=>narration===n&&!root.hidden;
-  const done=()=>{if(!live())return;frame(n.start+n.duration);narration=null;clip=null;lastTick=null;loading();};
-  const fail=()=>{if(!live())return;n.failed=true;playing=false;if(clip)clip.pause();syncPlay();loading('Narration could not play. Retry to continue this line.',true);};
-  const k=keyOf(text);
-  if(k&&DUR[k]){
-    const a=new Audio(`audio/${k}.mp3`);clip=a;n.audio=a;a.preload='auto';
-    a.onended=done;a.onerror=fail;
-    a.onwaiting=()=>{if(live())loading('Buffering narration…');};
-    a.onplaying=()=>{if(live()){if(!playing)a.pause();else loading();}};
-    a.play().then(()=>{if(!live()||!playing)a.pause();},()=>{if(live()&&playing)fail();});
-  }else{
-    try{
-      const u=new SpeechSynthesisUtterance(text.replace(/Ayesha/g,'Eye-sha'));u.rate=.9;u.lang='en-GB';
-      u.onstart=()=>{if(live()){n.started=true;lastTick=null;loading();if(!playing)speechSynthesis.pause();}};
-      u.onend=done;u.onerror=fail;speechSynthesis.speak(u);
-    }catch(e){fail();}
-  }
-}
-function retryNarration(){
-  if(!narration)return;const i=narration.index;playing=true;lastTick=null;syncPlay();say(SCENES[cur].lines[i][0],i);
-}
 function toggleSound(){
-  sound=!sound;btnSnd.textContent=sound?'🔊':'🔇';
-  if(!sound){stopClip();lastTick=null;}
-  else if(!renderMode&&cur>=0){const i=capIdx(sceneTime());played[i]=true;say(SCENES[cur].lines[i][0],i);if(!playing&&clip)clip.pause();}
+  sound=!sound;
+  btnSnd.textContent=sound?'🔊':'🔇';
+  btnSnd.setAttribute('aria-pressed',String(sound));
+  if(film) film.muted=!sound;
 }
 function sceneTime(){ return master?(master.currentTime||0)/1000:0; }
-function tick(now=performance.now()){
-  if(!root||root.hidden) return;
-  const dt=lastTick===null?0:Math.max(0,(now-lastTick)/1000);lastTick=now;
-  const sc=SCENES[cur];let t=sceneTime();
-  if(playing&&!renderMode){
-    if(narration){
-      const n=narration;
-      // currentTime stops during download/buffering. Never use wall time for recorded speech.
-      t=n.audio?n.start+Math.min(n.duration,n.audio.currentTime||0):n.started?Math.min(t+dt,n.start+n.duration):n.start;
-    }else{
-      t+=dt;
-      const i=sc._t.findIndex((at,i)=>!played[i]&&t>=at);
-      if(i>=0){t=sc._t[i];played[i]=true;say(sc.lines[i][0],i);}
-    }
-    frame(t);
-    (sc.sfx||[]).forEach(([at,kind],i)=>{ if(!fired[i]&&t>=T(sc,at)){ fired[i]=true; if(sound&&t-T(sc,at)<.3) sfx(kind); } });
-  }
+
+function setPlaying(on){
+  const id=++playId, media=film;
+  playing=on;
+  syncPlay();
+  if(!on){if(media) media.pause();loading();return;}
+  waitStatus('Starting narration…');
+  media.play().then(()=>{
+    if(id===playId&&film===media&&playing) loading();
+  },error=>{
+    if(id!==playId||film!==media||!playing) return;
+    if(error?.name==='NotAllowedError'){
+      setPlaying(false);
+      loading('Press Play to start narration.');
+    }else reportMediaError();
+  });
+}
+
+function drawFilmTime(time){
+  let i=0;
+  while(i<SCENES.length-1&&time>=SCENES[i+1]._start) i++;
+  if(cur!==i) show(i);
+  const sc=SCENES[i],t=Math.max(0,Math.min(sc._dur,time-sc._start));
+  frame(t);
   setCaption(t);
-  const prog=Math.min(1,t/sc._dur); const on=dotsEl.children[cur]; if(on) on.querySelector('i').style.width=(prog*100)+'%';
-  if(playing&&!narration&&t>=sc._dur){ if(cur<SCENES.length-1) show(cur+1); else {playing=false;syncPlay();finale();} }
+  (sc.sfx||[]).forEach(([at,kind],j)=>{
+    const cue=T(sc,at);
+    if(!fired[j]&&t>=cue){fired[j]=true;if(sound&&playing&&t-cue<.3) sfx(kind);}
+  });
+  const dot=dotsEl.children[i]?.querySelector('i');
+  if(dot) dot.style.width=(t/sc._dur*100)+'%';
+}
+
+function tick(){
+  if(!root||root.hidden||renderMode) return;
+  if(film&&!film.seeking) drawFilmTime(film.currentTime);
   raf=requestAnimationFrame(tick);
 }
-function finale(){
+
+function finishFilm(){
+  drawFilmTime(total());
+  setPlaying(false);
   if(stage.querySelector('.i-end')) return;
   const d=document.createElement('div'); d.className='i-end';
   d.innerHTML=`<button data-i="start">Start with Ayesha’s phone</button><button data-replay="1">Watch again</button>`;
-  d.querySelector('[data-replay]').onclick=e=>{e.stopPropagation();d.remove();playing=true;btnPlay.textContent='❚❚';show(0)};
+  d.querySelector('[data-replay]').onclick=e=>{e.stopPropagation();jump(0);setPlaying(true);};
   stage.appendChild(d);
 }
-function advance(){ if(cur<SCENES.length-1) show(cur+1); }
+
+function jump(i){
+  if(btnPlay.disabled||!film||!SCENES[i]) return;
+  film.currentTime=SCENES[i]._start;
+  show(i);
+}
+function advance(){ if(cur<SCENES.length-1) jump(cur+1); }
 function togglePlay(){
-  if(narration&&narration.failed){retryNarration();return;}
-  playing=!playing;lastTick=null;syncPlay();
-  if(!playing){if(clip)clip.pause();try{speechSynthesis.pause()}catch(e){}}
-  else if(clip){const a=clip,n=narration;a.play().then(()=>{if(clip!==a||!playing)a.pause();},()=>{if(narration===n&&playing){n.failed=true;playing=false;syncPlay();loading('Narration could not play. Retry to continue this line.',true);}});}
-  else try{speechSynthesis.resume()}catch(e){}
+  if(btnPlay.disabled||!film) return;
+  if(film.ended) jump(0);
+  setPlaying(!playing);
 }
 function open(opts={}){
-  build(); root.hidden=false; document.documentElement.classList.add('intro-on'); onExit=opts.onExit||null; onStart=opts.onStart||null; playing=!opts.paused;renderMode=false;root.classList.remove('render');syncPlay();
-  root.classList.toggle('bn',!!opts.bn); if(opts.sound!=null)sound=!!opts.sound;btnSnd.textContent=sound?'🔊':'🔇';
+  build(); if(film) film.pause(); film=null; ++playId;
+  root.hidden=false; document.documentElement.classList.add('intro-on');
+  onExit=opts.onExit||null; onStart=opts.onStart||null;
+  shouldAutoplay=!opts.paused; playing=false; renderMode=false; root.classList.remove('render');
+  btnPlay.disabled=true; syncPlay();
+  root.classList.toggle('bn',!!opts.bn);
+  if(opts.sound!=null) sound=!!opts.sound;
+  btnSnd.textContent=sound?'🔊':'🔇';
+  btnSnd.setAttribute('aria-pressed',String(sound));
   try{ if(opts.fullscreen&&!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{}) }catch(e){}
-  const id=++openId;loadDur().then(()=>{ if(id!==openId||root.hidden)return;show(opts.scene||0); cancelAnimationFrame(raf); raf=requestAnimationFrame(tick); });
+  waitStatus('Preparing narration…');
+  const id=++openId;
+  loadDur().then(()=>{
+    if(id!==openId||root.hidden) return;
+    show(Math.min(SCENES.length-1,Math.max(0,opts.scene|0)));
+    cancelAnimationFrame(raf);
+    raf=requestAnimationFrame(tick);
+    prepareFilmAudio(id);
+  });
 }
-function close(){ ++openId;if(!root) return; root.hidden=true; document.documentElement.classList.remove('intro-on'); anims.forEach(a=>a.cancel()); anims=[]; stopClip(); cancelAnimationFrame(raf); if(onExit) onExit(); }
+function close(){
+  ++openId; ++playId;
+  if(!root) return;
+  root.hidden=true; playing=false;
+  if(film){film.pause();film=null;}
+  loading();
+  document.documentElement.classList.remove('intro-on');
+  anims.forEach(a=>a.cancel()); anims=[];
+  cancelAnimationFrame(raf);
+  if(onExit) onExit();
+}
 if(typeof document!=='undefined'&&document.addEventListener) document.addEventListener('keydown',e=>{
   if(!root||root.hidden) return;
   const k=e.key; let used=true;
-  if(k===' '||k==='k') togglePlay(); else if(k==='ArrowRight') advance(); else if(k==='ArrowLeft') show(Math.max(0,cur-1));
+  if(k===' '||k==='k') togglePlay(); else if(k==='ArrowRight') advance(); else if(k==='ArrowLeft') jump(Math.max(0,cur-1));
   else if(k==='Escape') close(); else if(k==='b'||k==='B') root.classList.toggle('bn'); else if(k==='m'||k==='M')toggleSound(); else used=false;
   if(used){e.preventDefault();e.stopImmediatePropagation()}
 },true);
 
 /* ---------- deterministic seek, for the video renderer ---------- */
-async function seek(i,t,o){ renderMode=true; if(o&&o.portrait!=null) forceP=!!o.portrait; await loadDur(); build(); root.hidden=false; root.classList.add('render'); const sw=SCENES; fit(); if(i!==cur||sw!==SCENES) show(i); frame(t); setCaption(t); }
+async function seek(i,t,o){ ++openId; ++playId; if(film){film.pause();film=null;} loading(); renderMode=true; if(o&&o.portrait!=null) forceP=!!o.portrait; await loadDur(); build(); root.hidden=false; root.classList.add('render'); const sw=SCENES; fit(); if(i!==cur||sw!==SCENES) show(i); frame(t); setCaption(t); }
 const total=()=>SCENES.reduce((s,sc)=>s+(sc._dur||0),0);
 
 if(typeof window!=='undefined'){ window.INTRO={open,close,seek,LINES,DEFS:ORDER4.map(d=>DEF[d].line[0]),W,H,plan,total,ready:loadDur}; Object.defineProperty(window.INTRO,'SCENES',{get:()=>SCENES,enumerable:true}); }

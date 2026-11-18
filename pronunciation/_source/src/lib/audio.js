@@ -36,6 +36,7 @@ class Engine {
     let saved = null;
     try { saved = localStorage.getItem(VKEY); } catch (e) {}
     this._voice = DATA[saved] ? saved : DEFAULT;
+    this._trackVoice = null;
     this.el = typeof Audio !== 'undefined' ? new Audio() : null;
     if (this.el) { this.el.preload = 'auto'; this.el.setAttribute('playsinline', ''); }
     this._tick = this._tick.bind(this);
@@ -61,11 +62,24 @@ class Engine {
   onUnlock(fn) { this.unlockSubs.add(fn); return () => this.unlockSubs.delete(fn); }
 
   // ---- voices ----
-  get voice() { return this._voice; }
+  get voice() { return this._trackVoice ?? this._voice; }
   setVoice(v) {
-    if (!DATA[v] || v === this._voice) return;
+    if (!DATA[v] || v === this.voice) return;
+    if (this._trackVoice !== null) {
+      this.setTrackVoice(v);
+      return;
+    }
     this._voice = v;
     try { localStorage.setItem(VKEY, v); } catch (e) {}
+    this.refreshVoice();
+  }
+  // Track choices last until the user returns to the wider lab.
+  setTrackVoice(v) {
+    const previous = this.voice;
+    this._trackVoice = v;
+    if (this.voice !== previous) this.refreshVoice();
+  }
+  refreshVoice() {
     if (this.cur) this.stop();
     this.shown.clear();
     this._voiceEmit(null);
@@ -79,7 +93,7 @@ class Engine {
     all.forEach(i => this.groups.set(i, all));
   }
   // The voice a clip plays in when nobody asks for a particular one.
-  resolve(id, want = this._voice) {
+  resolve(id, want = this.voice) {
     const group = this.groups.get(id) || [id];
     if ([...group].every(i => this.has(i, want))) return want;
     if (this.has(id, DEFAULT)) return DEFAULT;
@@ -101,7 +115,12 @@ class Engine {
     if (was !== v) this._voiceEmit([id]);
   }
 
-  url(id, v) { return `audio/${(VOICES.find(x => x.id === v) || VOICES[0]).dir}${id}.mp3`; }
+  url(id, voice) {
+    const directory = (VOICES.find(item => item.id === voice) || VOICES[0]).dir;
+    const version = DATA[voice]?.[id]?.audioRevision;
+    const path = `audio/${directory}${id}.mp3`;
+    return version ? `${path}?v=${encodeURIComponent(version)}` : path;
+  }
 
   load(id, v = this.resolve(id)) {
     const key = `${v}:${id}`;
@@ -194,7 +213,7 @@ class Engine {
 
   // The same clip `times` times in each voice that recorded it, the chosen voice first.
   everyVoice(id, times = 2) {
-    const vs = this.voicesOf(id).sort((a, b) => (b === this._voice) - (a === this._voice));
+    const vs = this.voicesOf(id).sort((a, b) => (b === this.voice) - (a === this.voice));
     const items = [];
     vs.forEach((v, vi) => { for (let k = 0; k < times; k++) items.push({ id, voice: v, gap: k === times - 1 && vi < vs.length - 1 ? 0.9 : 0.45 }); });
     return this.sequence(items, 0.45, { seq: { kind: 'every', id } });

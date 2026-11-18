@@ -67,7 +67,10 @@ export function useClip(id) {
 // The chosen voice, and a setter.
 export function useVoice() {
   const [v, setV] = useState(engine.voice);
-  useEffect(() => engine.onVoice(changed => { if (!changed) setV(engine.voice); }), []);
+  useEffect(() => {
+    setV(engine.voice);
+    return engine.onVoice(changed => { if (!changed) setV(engine.voice); });
+  }, []);
   return [v, (x) => engine.setVoice(x)];
 }
 

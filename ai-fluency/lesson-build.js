@@ -84,19 +84,48 @@ const PROMPT_SLOTS=[
  {label:'Where it may grow',frame:'<em>Later we may add</em> ___, <em>so structure the code</em> ___.',bn:'পরে হয়তো ___ যোগ হবে, তাই কোড ___ সাজাও।',test:[/later|future|without a rewrite/i]},
  {label:'Your call',frame:'<em>You choose</em> ___. <em>Explain your plan before you build.</em>',bn:'___ তুমি ঠিক করো। বানানোর আগে পরিকল্পনা ব্যাখ্যা করো।',test:[/you choose|your call|explain your plan/i]}
 ];
-const promptText=x=>x.get('desc','')||PROMPT_CHIPS.filter(c=>!c.x).map(c=>c.text).join(' ');
+/* The projector builds the whole app brief from short English phrases. */
+const sentenceParts=parts=>parts.map(({tiles,ok=[{o:tiles.map((_,i)=>i),t:tiles.join(' ')}],...part},index)=>
+  PUZ({...part,id:'sentence'+index,tiles,ok}));
+const sentenceVisuals=parts=>Object.fromEntries(parts.map(({tag,icon,cue})=>[tag,{icon,cue}]));
+const projectorSentences=parts=>compose=>({...compose,chips:parts,best:parts.map(part=>part.id)});
+const sentenceText=parts=>parts.map(part=>part.text).join('\n');
+
+const APP_BRIEF=sentenceParts([
+ {tag:'Users & goal',icon:'person',cue:'Who needs it, and why?',goal:'Who needs the app, and what problem does it solve?',
+   tiles:['Help our 15-person study circle','see which deadlines','are coming next.']},
+ {tag:'Version 1',icon:'cal',cue:'What must it do?',goal:'What should a friend be able to do in the first version?',
+   tiles:['Let users add deadlines','and see the days left,','with the nearest deadline first.']},
+ {tag:'Later',icon:'history',cue:'What can wait?',goal:'Which features can wait until a later version?',
+   tiles:['Leave room for','a shared list and reminders','in a later version.']},
+ {tag:'Devices',icon:'phone',cue:'Where must it work?',goal:'What should it cost, and whose phones should it work on?',
+   tiles:['Make it free','and easy to use','on low-cost Android phones.']},
+ {tag:'Privacy',icon:'lock',cue:'Where does data stay?',goal:'Where should the app save the deadlines?',
+   tiles:['Save each list on its own phone.','Leave out accounts','and cloud storage in version 1.']},
+ {tag:'Dates',icon:'edit',cue:'Day / month / year',goal:'Tell Studio the date order and give an example.',
+   tiles:['use day/month/year','for dates,','like 15/01/2026.'],
+   ok:[{o:[0,1,2],t:'Use day/month/year for dates, like 15/01/2026.'},
+       {o:[1,0,2],t:'For dates, use day/month/year like 15/01/2026.'}],
+   tip:'Start with “Use day/month/year” or “For dates,”. Put the example last.'},
+ {tag:'Plan',icon:'code',cue:'What happens before coding?',goal:'Who chooses the tools, and when do we check the plan?',
+   tiles:['Choose the tools','and show me your plan','before you start coding.']},
+ {tag:'Tests',icon:'check',cue:'How will we know it works?',goal:'What should happen with a real date and an impossible one?',
+   tiles:['Test a real date,','then check that 31/02/2026','shows an error.']}
+]);
+const promptText=x=>x.get('desc','')||(x.get('projectorBrief')?sentenceText(APP_BRIEF):PROMPT_CHIPS.filter(c=>!c.x).map(c=>c.text).join(' '));
 
 /* ---------- Discernment: reading the plan while it thinks ---------- */
 const PLAN_LINES=[
  ['Reading your request: a deadline tracker for a 15-person study circle, on low-cost Android phones.',''],
  ['Architecture: one screen, with separate parts for the list, the date maths and saving — so a shared list can plug in later.','ok'],
  ['Storage: keep each person’s list on their own phone for version 1.',''],
- ['Friends will want to share, so I’ll add Google sign-in, a cloud database and AI-written reminders now…','off'],
- ['Dates: I’ll use the browser’s built-in date reading (MM/DD/YYYY).','off'],
+ ['Friends will want to share, so I’ll add Google sign-in, a cloud database and AI-written reminders now…','off','a cloud database'],
+ ['Dates: I’ll use the browser’s built-in date reading (MM/DD/YYYY).','off','MM/DD/YYYY'],
  ['Starting the build…','']
 ];
 const FIRST_OFF=4, DATE_LINE=5;          // line numbers of the two drifts
-const planHTML=(n,stopped)=>`<div class="think"><div class="th-h">Thinking · plan</div>${PLAN_LINES.slice(0,n).map(([t,c])=>`<p class="${stopped?c:''}">${esc(t)}</p>`).join('')}${stopped?'<p class="stopped">■ Stopped by Ayesha</p>':''}</div>`;
+const planHTML=(n,stopped,visible)=>`<div class="think"><div class="th-h">Thinking · plan</div>${PLAN_LINES.slice(0,n).map(([t,c,drift],i)=>
+  `<p class="${stopped?c:''}"${drift?` data-plan-drift="${esc(drift)}"`:''}>${esc(visible?visible[i]:t)}</p>`).join('')}${stopped?'<p class="stopped">■ Stopped by Ayesha</p>':''}</div>`;
 const seen=x=>Math.max(FIRST_OFF,Math.min(DATE_LINE,x.get('stopN',DATE_LINE)));   // how much of the plan she saw (the line being written counts)
 const sawDates=x=>seen(x)>=DATE_LINE;
 const linesVisible=()=>[...document.querySelectorAll('[data-mid="plan1"] .think p')].filter(p=>p.textContent.trim()).length;
@@ -149,7 +178,15 @@ const BUG_SLOTS=[
  {label:'Expected',frame:'<em>I expected</em> ___.',bn:'আমি ___ আশা করেছিলাম।',test:[/expect|should/i]},
  {label:'Actual',frame:'<em>I got</em> ___.',bn:'আমি পেয়েছি ___।',test:[/i got|but it shows|but i see|instead/i]}
 ];
-const bugText=x=>x.get('bug','')||BUG_CHIPS.filter(c=>!c.x).map(c=>c.text).join(' ');
+const BUG_REPORT=sentenceParts([
+ {tag:'Input',icon:'cal',cue:'I entered …',goal:'What did you enter in the app?',
+   tiles:['I entered','31/02/2026','as the deadline.']},
+ {tag:'Expected',icon:'check',cue:'I expected …',goal:'What should the app have shown?',
+   tiles:['I expected','the app to show','an error.']},
+ {tag:'Actual',icon:'warn',cue:'I got …',goal:'What did the app actually show?',
+   tiles:['I got','a countdown','for that date.']}
+]);
+const bugText=x=>x.get('bug','')||(x.get('projectorBrief')?sentenceText(BUG_REPORT):BUG_CHIPS.filter(c=>!c.x).map(c=>c.text).join(' '));
 
 /* ---------- practice games (games.js) ---------- */
 const CAN_SIGNS=[{id:'1',i:'☝️',en:'No way',bn:'কখনোই না'},{id:'2',i:'✌️',en:'Maybe',bn:'হয়তো'},{id:'3',i:'🖐️',en:'Yes!',bn:'হ্যাঁ!'}];
@@ -177,7 +214,10 @@ const TILESBN=()=>AFL.byMode({solo:'দুই রকম ক্রমেই ই�
 const SC=(x,extra)=>Object.assign({app:'studio',title:'My Deadlines'},extra);
 const CHATS={group:'Economics Study Circle',members:'Riya, Tanvir, Mitu, you +12'};
 const LOCK={app:'lock',notifs:[{app:'chats',title:'Economics Study Circle',text:'Riya: Ayesha, can you make that deadline app you talked about? 🙏',time:'8:55'}]};
-const stoppedMsgs=x=>[{role:'u',text:promptText(x)},{role:'a',html:planHTML(seen(x),true),id:'plan1s',actions:false}];
+const stoppedMsgs=x=>{
+  const visible=x.get('stoppedPlan');
+  return [{role:'u',text:promptText(x)},{role:'a',html:planHTML(visible?.length??seen(x),true,visible),id:'plan1s',actions:false}];
+};
 const stopVerdict=x=>{const n=x.get('stopN',6);
   if(n<FIRST_OFF) return `<div class="note">You stopped before it went wrong. That’s cautious — but stop for a reason. Here is where it was heading.<span class="bn" lang="bn">ভুল হওয়ার আগেই থামিয়েছ। সতর্ক — কিন্তু কারণ নিয়ে থামাও। দেখো সে কোন দিকে যাচ্ছিল।</span></div>`;
   if(n<=DATE_LINE) return `<div class="good">Good timing: you stopped it as soon as it drifted.<span class="bn" lang="bn">ভালো সময়: লক্ষ্য থেকে সরতেই থামিয়েছ।</span></div>`;
@@ -224,6 +264,7 @@ const feb=(x,ver)=>x.get('items_'+ver,[]).find(i=>parseLoose(i.date)&&!parseStri
 const LOCKC={app:'lock',notifs:[{app:'chats',title:'Economics Study Circle',text:'Riya: Ayesha, can you make that deadline app you talked about? 🙏',time:'8:55',hit:'n:chat'}]};
 
 AFL.lesson({
+ appBriefVisuals:sentenceVisuals(APP_BRIEF), bugReportVisuals:sentenceVisuals(BUG_REPORT),
  id:'build', title:'Vibe-code an app', kicker:'Mission 3 · Building', emoji:'⌨️', tint:'#E3E3EA', time:'30–40 min',
  blurb:'Build an app without coding — and stop the AI when it goes off track.',
  blurbbn:'কোড না লিখে অ্যাপ বানাও — আর AI লক্ষ্য থেকে সরে গেলে থামাও।',
@@ -287,11 +328,11 @@ AFL.lesson({
    say:'Who should decide each thing: Ayesha, or the AI?',bn:'কোনটা কে ঠিক করবে: আয়েশা, নাকি AI?',
    sub:'🪢 The AI is the expert → give it rope. Only Ayesha knows → keep hold.',subbn:'AI বিশেষজ্ঞ → ছাড় দাও। শুধু আয়েশা জানে → শক্ত করে ধরো।',
    card:{type:'sort',key:'who',bins:[{id:'me',label:'Ayesha'},{id:'ai',label:'AI'}],items:[
-     {en:'How the code is organised (the architecture)',bn:'কোড কীভাবে সাজানো হবে (আর্কিটেকচার)',ans:'ai',why:'The AI is the expert here and Ayesha isn’t. Give it rope — and ask it to explain its plan.',whybn:'এখানে AI বিশেষজ্ঞ, আয়েশা নয়। ছাড় দাও — আর পরিকল্পনা ব্যাখ্যা করতে বলো।',hint:'Can Ayesha judge code structure better than the AI?',hintbn:'কোডের গঠন কি আয়েশা AI-এর চেয়ে ভালো বিচার করতে পারে?'},
-     {en:'Which programming tools to use',bn:'কোন প্রোগ্রামিং টুল ব্যবহার হবে',ans:'ai',why:'The AI knows the tools. Ayesha’s job is to say what the app must do, not how.',whybn:'টুল AI চেনে। আয়েশার কাজ বলা অ্যাপ কী করবে, কীভাবে নয়।',hint:'Does Ayesha know any programming tools?',hintbn:'আয়েশা কি কোনো প্রোগ্রামিং টুল চেনে?'},
-     {en:'What is in version 1 — and what is not',bn:'প্রথম সংস্করণে কী থাকবে — আর কী থাকবে না',ans:'me',why:'Only Ayesha knows her friends’ problem and her purpose.',whybn:'বন্ধুদের সমস্যা আর নিজের উদ্দেশ্য শুধু আয়েশা জানে।',hint:'Who talked to Mitu and Riya?',hintbn:'মিতু আর রিয়ার সাথে কে কথা বলেছে?'},
-     {en:'How it should feel on her friends’ cheap phones',bn:'বন্ধুদের সস্তা ফোনে এটা কেমন লাগবে',ans:'me',why:'She knows her users. The AI has never met them.',whybn:'সে তার ব্যবহারকারীদের চেনে। AI তাদের কখনো দেখেনি।',hint:'Who has met the users?',hintbn:'ব্যবহারকারীদের কে চেনে?'},
-     {en:'What a correct date looks like in Bangladesh',bn:'বাংলাদেশে সঠিক তারিখ দেখতে কেমন',ans:'me',why:'Local knowledge. AI tools often assume American habits.',whybn:'স্থানীয় জ্ঞান। AI টুল প্রায়ই আমেরিকান অভ্যাস ধরে নেয়।',hint:'Whose habits does the AI usually assume?',hintbn:'AI সাধারণত কাদের অভ্যাস ধরে নেয়?'}]}},
+     {en:'How the code is organised (the architecture)',demoTile:['code','Organize the code'],bn:'কোড কীভাবে সাজানো হবে (আর্কিটেকচার)',ans:'ai',why:'The AI is the expert here and Ayesha isn’t. Give it rope — and ask it to explain its plan.',whybn:'এখানে AI বিশেষজ্ঞ, আয়েশা নয়। ছাড় দাও — আর পরিকল্পনা ব্যাখ্যা করতে বলো।',hint:'Can Ayesha judge code structure better than the AI?',hintbn:'কোডের গঠন কি আয়েশা AI-এর চেয়ে ভালো বিচার করতে পারে?'},
+     {en:'Which programming tools to use',demoTile:['tune','Choose the tools'],bn:'কোন প্রোগ্রামিং টুল ব্যবহার হবে',ans:'ai',why:'The AI knows the tools. Ayesha’s job is to say what the app must do, not how.',whybn:'টুল AI চেনে। আয়েশার কাজ বলা অ্যাপ কী করবে, কীভাবে নয়।',hint:'Does Ayesha know any programming tools?',hintbn:'আয়েশা কি কোনো প্রোগ্রামিং টুল চেনে?'},
+     {en:'What is in version 1 — and what is not',demoTile:['apps','Choose features for version 1'],bn:'প্রথম সংস্করণে কী থাকবে — আর কী থাকবে না',ans:'me',why:'Only Ayesha knows her friends’ problem and her purpose.',whybn:'বন্ধুদের সমস্যা আর নিজের উদ্দেশ্য শুধু আয়েশা জানে।',hint:'Who talked to Mitu and Riya?',hintbn:'মিতু আর রিয়ার সাথে কে কথা বলেছে?'},
+     {en:'How it should feel on her friends’ cheap phones',demoTile:['phone','Decide what works on friends’ phones'],bn:'বন্ধুদের সস্তা ফোনে এটা কেমন লাগবে',ans:'me',why:'She knows her users. The AI has never met them.',whybn:'সে তার ব্যবহারকারীদের চেনে। AI তাদের কখনো দেখেনি।',hint:'Who has met the users?',hintbn:'ব্যবহারকারীদের কে চেনে?'},
+     {en:'What a correct date looks like in Bangladesh',demoTile:['cal','Set the local date format'],bn:'বাংলাদেশে সঠিক তারিখ দেখতে কেমন',ans:'me',why:'Local knowledge. AI tools often assume American habits.',whybn:'স্থানীয় জ্ঞান। AI টুল প্রায়ই আমেরিকান অভ্যাস ধরে নেয়।',hint:'Whose habits does the AI usually assume?',hintbn:'AI সাধারণত কাদের অভ্যাস ধরে নেয়?'}]}},
   {d:'del',stage:'delegate',view:'card',
    say:'Long rope where the AI is the expert; a firm hold on what only you know. That gear is Delegation.',bn:'যেখানে AI বিশেষজ্ঞ সেখানে লম্বা দড়ি; যা শুধু তুমি জানো তা শক্ত করে ধরো। এই গিয়ারের নাম Delegation।',
    card:{type:'level',d:'del',did:'The AI chooses the code and tools; Ayesha decides version 1, how it feels, and the local details.',didbn:'কোড আর টুল AI বাছবে; প্রথম সংস্করণ, ব্যবহারের অনুভূতি আর স্থানীয় খুঁটিনাটি আয়েশা ঠিক করবে।',
@@ -304,6 +345,7 @@ AFL.lesson({
    say:'Describe version 1 — and where it may grow. Build the version 1 sentence with the tiles, tap the other parts, then send ➤.',bn:'প্রথম সংস্করণ বর্ণনা করো — আর কোথায় বাড়তে পারে। টুকরো দিয়ে প্রথম সংস্করণের বাক্য বানাও, বাকি অংশগুলো চাপো, তারপর পাঠাও ➤।',
    sub:()=>TILES(),subbn:()=>TILESBN(),
    onTap:x=>{AFL.firstTry(x,'desc',!shortcut(PROMPT_CHIPS,'desc',x).length&&PROMPT_SLOTS.every(s=>s.test.some(r=>r.test(x.get('desc','')))))},
+   projectorCompose:projectorSentences(APP_BRIEF),
    compose:{key:'desc',slots:PROMPT_SLOTS,chips:PROMPT_CHIPS,best:['p1','pv','p3','p4','p5']}},
   {d:'des',stage:'describe',view:'card',
    say:'You described version 1 — and where it may grow. That gear is Description.',bn:'তুমি প্রথম সংস্করণ বর্ণনা করেছ — আর কোথায় বাড়তে পারে। এই গিয়ারের নাম Description।',
@@ -312,7 +354,10 @@ AFL.lesson({
 
   /* ===== STEER — Discernment while it thinks ===== */
   {d:'dis',id:'steer',stage:'steer',interrupt:true,
-   scene:x=>SC(x,{tab:'Chat',msgs:[{role:'u',text:promptText(x)},{role:'a',html:planHTML(PLAN_LINES.length,false),id:'plan1',stream:true,speed:1,actions:false}],composer:false,stopHit:'stop',stopLabel:'Studio is thinking…'}),
+   scene:x=>{
+     const briefOnly=x.get('briefOnly');
+     return SC(x,{tab:'Chat',msgs:[{role:'u',text:promptText(x)},{role:'a',html:planHTML(briefOnly?1:PLAN_LINES.length,false),id:'plan1',stream:true,speed:1,actions:false}],composer:false,stopHit:briefOnly?undefined:'stop',stopLabel:'Studio is thinking…'});
+   },
    tap:'stop',onTap:x=>{x.set('stopN',x.streaming?linesVisible():PLAN_LINES.length)},
    showMe:(x,h)=>{const at=x.beat;const t=setInterval(()=>{if(AFL.ctx().beat!==at){clearInterval(t);return}
      if(!x.streaming||linesVisible()>=DATE_LINE){clearInterval(t);const s=document.querySelector('[data-hit="stop"]');h.ghostTo(s,()=>s&&s.click())}},150)},
@@ -337,7 +382,7 @@ AFL.lesson({
    say:x=>x.streaming?'Studio is re-planning…':'Back on track — and built. Now test it: tap Preview.',bn:x=>x.streaming?'Studio আবার পরিকল্পনা করছে…':'আবার ঠিক পথে — আর বানানো শেষ। এবার পরীক্ষা করো: Preview চাপো।'},
 
   /* ===== TEST — Discernment of the result ===== */
-  {d:'dis',stage:'test',scene:x=>SC(x,{tab:'Preview',ver:'v1',mini:miniApp(x,'v1')}),
+  {d:'dis',id:'preview-v1',stage:'test',scene:x=>SC(x,{tab:'Preview',ver:'v1',mini:miniApp(x,'v1')}),
    onUi:onMini,showMe:autoTest('v1',[0,3,4]),done:x=>!!feb(x,'v1'),
    say:x=>feb(x,'v1')?`You broke it! ${feb(x,'v1').date} doesn’t exist — but the app shows ${daysLeft('v1',feb(x,'v1').date)} days left, as if it were a real day. It looks right. That’s what makes it dangerous.`:'Studio says “Built ✅”. That is a claim. You are the tester: add two deadlines from your own life — then break it with a date that can’t exist.',
    bn:x=>feb(x,'v1')?'ভেঙে ফেলেছ! এই তারিখটা আসলে নেই — অথচ অ্যাপ দেখাচ্ছে যেন সত্যিকারের দিন। দেখতে ঠিক মনে হয় — সেটাই বিপদ।':'Studio বলছে “বানানো শেষ ✅”। এটা একটা দাবি। তুমি টেস্টার: নিজের জীবনের দুটো ডেডলাইন যোগ করো — তারপর অসম্ভব একটা তারিখ দিয়ে অ্যাপ ভাঙো।',
@@ -345,11 +390,12 @@ AFL.lesson({
   {d:'des',id:'bug',stage:'test',scene:x=>SC(x,{tab:'Chat',msgs:[{role:'a',html:PLAN2,id:'plan2',actions:false}],composer:{key:'bug',placeholder:'Tell Studio what you saw…'},kb:{key:'bug',label:'BUG REPORT',chips:BUG_CHIPS,ai:'studio'}}),tap:'send',
    say:'Tell Studio exactly what you saw: what you did, what you expected, what you got.',bn:'Studio-কে ঠিক কী দেখেছ তা বলো: কী করেছ, কী আশা করেছিলে, কী পেয়েছ।',
    sub:()=>TILES(),subbn:()=>TILESBN(),
+   projectorCompose:projectorSentences(BUG_REPORT),
    compose:{key:'bug',slots:BUG_SLOTS,chips:BUG_CHIPS,best:['b1','be']}},
   {d:'dis',stage:'test',cq:x=>shortcut(BUG_CHIPS,'bug',x).length?Object.assign({},CQ_BUILD.bug,{rewind:x=>{AFL.unsay(x,'bug',shortcut(BUG_CHIPS,'bug',x).map(c=>c.text));AFL.goId('bug')}}):null,
    scene:x=>SC(x,{tab:'Chat',msgs:[{role:'a',html:PLAN2,id:'plan2',actions:false},{role:'u',text:bugText(x)},{role:'a',html:FIXED,id:'fixed',stream:true,actions:false}],composer:false,scrollTo:'[data-mid="fixed"]',tabHits:{Preview:'tab:prev2'}}),tap:'tab:prev2',
    say:x=>x.streaming?'Studio is fixing it…':'“Fixed ✅” — another claim. Tap Preview and check it yourself.',bn:x=>x.streaming?'Studio ঠিক করছে…':'“ঠিক হয়েছে ✅” — আরেকটা দাবি। Preview চাপো, নিজে যাচাই করো।'},
-  {d:'dis',stage:'test',scene:x=>SC(x,{tab:'Preview',ver:'v2',mini:miniApp(x,'v2')}),
+  {d:'dis',id:'preview-v2',stage:'test',scene:x=>SC(x,{tab:'Preview',ver:'v2',mini:miniApp(x,'v2')}),
    onUi:onMini,showMe:autoTest('v2',[0,4]),done:x=>!!feb(x,'v2'),
    say:x=>feb(x,'v2')?'“Not a real date” — fixed, and checked by you.':'Break it again: add an impossible date, like 31/02.',bn:x=>feb(x,'v2')?'“Not a real date” — ঠিক হয়েছে, আর তুমি নিজে যাচাই করেছ।':'আবার ভাঙার চেষ্টা করো: ৩১/০২-এর মতো অসম্ভব তারিখ দাও।'},
   {d:'dis',stage:'test',view:'card',
