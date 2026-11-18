@@ -14,6 +14,35 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;',
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ------------------------------------------------------------------ */
+/* 0. TABS — Song · Storybook · Your turn. No locks: any tab, any time. */
+/* ------------------------------------------------------------------ */
+const TAB_OF = { song: 'song', sing: 'song', story: 'story', read: 'story', yours: 'yours' };
+const tabsEl = $('#tabs');
+function showTab(id, scroll) {
+  $$('.panel').forEach(p => {
+    const on = p.id === id;
+    if (!on && !p.hidden) p.dispatchEvent(new Event('ss:hide'));
+    p.hidden = !on; p.classList.toggle('on', on);
+  });
+  $$('.tab').forEach(t => { const on = t.dataset.tab === id; t.classList.toggle('on', on); t.setAttribute('aria-selected', on); });
+  if (scroll) { const y = tabsEl.getBoundingClientRect().top + scrollY - 70; if (scrollY > y) scrollTo({ top: y, behavior: reduced ? 'auto' : 'smooth' }); }
+}
+function route(scroll) {
+  const h = location.hash.slice(1), id = TAB_OF[h] || 'song';
+  showTab(id, scroll);
+  if (h && h !== id) { const t = document.getElementById(h); if (t) setTimeout(() => t.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' }), 30); }
+}
+addEventListener('hashchange', () => route(true));
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]'); if (!a) return;
+  const h = a.getAttribute('href').slice(1); if (!TAB_OF[h]) return;
+  e.preventDefault();
+  if (location.hash.slice(1) !== h) history.pushState(null, '', '#' + h);
+  route(true);
+});
+route(false);
+
+/* ------------------------------------------------------------------ */
 /* 1. GEARS                                                            */
 /* ------------------------------------------------------------------ */
 const R = 36, A = 5.5, RR = R + A, NT = 12, TD = 360 / NT, DIST = 36 * Math.SQRT2;
@@ -145,16 +174,16 @@ function mockHTML(track) {
     </div>
 
     <div class="win-cursor">${POINTER}<i class="ripple"></i></div>
-    <button class="win-start" type="button"><span>▶</span> Watch how</button>
+    <button class="win-start" type="button"><span>▶</span><b class="ws-l">Watch how<small>${track === 'song' ? 'about 40 seconds' : 'about 45 seconds'} · pause any time</small></b></button>
   </div>
 </div>
 <div class="cap">
   <div class="cap-dots"></div>
-  <div class="cap-line"><span class="cap-n">1</span><p class="cap-t"></p><span class="cap-d"></span></div>
+  <div class="cap-line"><span class="cap-n">1</span><div class="cap-body"><span class="cap-of"></span><p class="cap-t"></p></div><span class="cap-d"></span></div>
   <div class="cap-ctl">
-    <button type="button" class="cb cb-prev" aria-label="Previous step">‹</button>
+    <button type="button" class="cb cb-prev" aria-label="Previous step"><span aria-hidden="true">‹</span><em>Back</em></button>
     <button type="button" class="cb cb-play" aria-label="Pause"><span class="ip">▶</span><span class="ipa">❚❚</span></button>
-    <button type="button" class="cb cb-next" aria-label="Next step">›</button>
+    <button type="button" class="cb cb-next" aria-label="Next step"><em>Next</em><span aria-hidden="true">›</span></button>
   </div>
 </div>
 <a class="demo-cta" href="${track === 'song' ? '#sing' : '#read'}">${track === 'song' ? '♫ Now sing along ↓' : '📖 Now read the book ↓'}</a>`;
@@ -336,6 +365,7 @@ function Demo(root) {
   function caption(i) {
     const s = STEPS[i];
     capN.textContent = i + 1; capT.textContent = s.cap;
+    $('.cap-of', root).textContent = `Step ${i + 1} of ${STEPS.length}`;
     capD.innerHTML = s.d ? `<span class="dbadge" style="--cl:${COL[s.d][1]}">${svgI(s.d)}${NAME[s.d][0]}</span>` : '';
     $$('.dot', root).forEach((d, k) => { d.classList.toggle('done', k < i); d.classList.toggle('now', k === i); });
   }
@@ -364,6 +394,8 @@ function Demo(root) {
   function pause() { token++; setPlaying(false); go(idx, false); }
 
   $('.win-start', root).addEventListener('click', () => go(0));
+  const panel = root.closest('.panel');
+  if (panel) panel.addEventListener('ss:hide', () => { if (playing) pause(); });
   $('.cb-play', root).addEventListener('click', () => {
     if (!started || root.classList.contains('ended')) return go(0);
     playing ? pause() : go(idx);
@@ -414,7 +446,7 @@ $$('.demo').forEach(el => Demo(el));
     else { pendingSeek = t; pendingPlay = pendingPlay || !!play; try { audio.currentTime = t; } catch (e) {} if (play && audio.paused) audio.play().catch(() => {}); ensureBlob(); }
     cur = -2; kick();
   }
-  list.addEventListener('click', e => { const li = e.target.closest('li'); if (!li) return; seekTo(SONG[+li.dataset.i].s + .05, true); });
+  list.addEventListener('click', e => { const li = e.target.closest('li'); if (!li) return; stage.classList.add('started'); seekTo(SONG[+li.dataset.i].s + .05, true); });
 
   let cur = -2, rot = 0, speed = 0, last = performance.now(), wasOn = {};
   const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
@@ -425,9 +457,10 @@ $$('.demo').forEach(el => Demo(el));
   }
   function paintLine(i) {
     if (i < 0) {
-      const nx = SONG.findIndex(l => l.s > audio.currentTime);
-      kline.innerHTML = `<span class="kidle">♪ ${audio.currentTime > 1 && nx > 0 ? '…' : 'The Boatman’s Four Steps'} ♪</span>`;
-      knext.textContent = nx >= 0 && audio.currentTime > 1 ? SONG[nx].t : '';
+      const tt = pendingSeek != null ? pendingSeek : audio.currentTime;
+      const nx = SONG.findIndex(l => l.s > tt);
+      kline.innerHTML = tt > 1 ? '<span class="kidle">♪ ♪ ♪</span>' : '';
+      knext.textContent = nx >= 0 && tt > 1 ? SONG[nx].t : '';
     } else {
       kline.innerHTML = SONG[i].w.map((w, k) => { const d = DKEY(w[0]);
         return `<span class="kw${d ? ' kd kd-' + d : ''}" data-k="${k}">${esc(w[0])}</span>`; }).join(' ');
@@ -480,13 +513,16 @@ $$('.demo').forEach(el => Demo(el));
 
   const toggle = () => (audio.paused ? audio.play() : audio.pause());
   $('#sg-play').addEventListener('click', toggle);
-  $('#sg-cover').addEventListener('click', toggle);
-  audio.addEventListener('play', () => { stage.classList.add('playing'); ensureBlob(); kick(); });
+  $('#sg-big').addEventListener('click', () => { audio.play(); });
+  if (matchMedia('(min-width: 720px)').matches) $('#lyrics').open = true;
+  const songPanel = stage.closest('.panel');
+  if (songPanel) songPanel.addEventListener('ss:hide', () => audio.pause());
+  audio.addEventListener('play', () => { stage.classList.add('playing', 'started'); ensureBlob(); kick(); });
   audio.addEventListener('pause', () => { stage.classList.remove('playing'); kick(); });
   audio.addEventListener('ended', () => stage.classList.remove('playing'));
   audio.addEventListener('seeked', kick);
   audio.addEventListener('loadedmetadata', () => { bar.max = audio.duration; $('#sg-dur').textContent = fmt(audio.duration); });
-  bar.addEventListener('input', () => seekTo(+bar.value, false));
+  bar.addEventListener('input', () => { stage.classList.add('started'); seekTo(+bar.value, false); });
   window.SS_seek = seekTo;
   const rates = [1, .85, .7]; let ri = 0;
   $('#sg-rate').addEventListener('click', e => { ri = (ri + 1) % rates.length; audio.playbackRate = rates[ri];
@@ -499,7 +535,7 @@ $$('.demo').forEach(el => Demo(el));
 /* ------------------------------------------------------------------ */
 (function reader() {
   if (!BOOK.length) return;
-  const pic = $('#rd-pic'), txt = $('#rd-text'), num = $('#rd-num'), count = $('#rd-count'), btn = $('#rd-listen'), auto = $('#rd-auto');
+  const pic = $('#rd-pic-in'), txt = $('#rd-text'), num = $('#rd-num'), count = $('#rd-count'), btn = $('#rd-listen'), auto = $('#rd-auto');
   const synth = window.speechSynthesis;
   let page = 0, speaking = false, voice = null;
 
@@ -525,6 +561,8 @@ $$('.demo').forEach(el => Demo(el));
       num.textContent = page;
     }
     $('#reader').dataset.d = p.d || '';
+    $('#reader').classList.toggle('is-cover', !!p.title);
+    $$('#rd-dots i').forEach((d, k) => d.classList.toggle('on', k === page));
     count.textContent = `${page + 1} / ${BOOK.length}`;
     $('#rd-prev').disabled = page === 0; $('#rd-next').disabled = page === BOOK.length - 1;
   }
@@ -544,11 +582,22 @@ $$('.demo').forEach(el => Demo(el));
     synth.speak(u);
   }
   btn.addEventListener('click', () => (speaking ? stop() : speak()));
+  $('#rd-dots').innerHTML = BOOK.map(() => '<i></i>').join('');
+  $('.tz-prev').addEventListener('click', () => $('#rd-prev').click());
+  $('.tz-next').addEventListener('click', () => $('#rd-next').click());
+  const storyPanel = $('#reader').closest('.panel');
+  if (storyPanel) storyPanel.addEventListener('ss:hide', stop);
+  document.addEventListener('keydown', e => {
+    if (e.target.closest('input,select,textarea') || (storyPanel && storyPanel.hidden)) return;
+    const r = $('#reader').getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
+    if (e.key === 'ArrowRight') $('#rd-next').click(); else if (e.key === 'ArrowLeft') $('#rd-prev').click();
+  });
   $('#rd-prev').addEventListener('click', () => { const was = speaking; stop(); show(page - 1); if (was) speak(); });
   $('#rd-next').addEventListener('click', () => { const was = speaking; stop(); show(page + 1); if (was) speak(); });
   let sx = null;
-  pic.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
-  pic.addEventListener('touchend', e => { if (sx == null) return; const dx = e.changedTouches[0].clientX - sx; sx = null;
+  const sp = $('#reader .spread');
+  sp.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+  sp.addEventListener('touchend', e => { if (sx == null) return; const dx = e.changedTouches[0].clientX - sx; sx = null;
     if (Math.abs(dx) > 50) $(dx < 0 ? '#rd-next' : '#rd-prev').click(); });
   show(0);
 })();
