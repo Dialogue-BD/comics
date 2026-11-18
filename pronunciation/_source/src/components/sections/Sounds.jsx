@@ -8,8 +8,8 @@ import SignalStrip from '../visuals/SignalStrip';
 import LengthBars from '../visuals/LengthBars';
 import Tiles, { tilesSpan } from '../visuals/Tiles';
 import PuffMeter from '../visuals/PuffMeter';
-import engine, { clip as getClip } from '../../lib/audio';
-import { usePlayingId, useClipFrame } from '../../lib/hooks';
+import engine, { clip as getClip, VOICES } from '../../lib/audio';
+import { usePlayingId, useClipFrame, useVoice } from '../../lib/hooks';
 import { T } from '../../lib/settings';
 import { ClipButton, Note, L1Note, Feel, Beats, labelOf, TabBar, NarrowSwitch, SwipeHint } from '../Bits';
 import { IPlay, IPause, IArrowR } from '../Icons';
@@ -121,8 +121,12 @@ function PairCard({ p, v, shared, tspan, vmax }) {
 }
 
 // ---------------------------------------------------------------- the "er" sound
-export function ErSection({ scene }) {
-  const all = [...scene.same, scene.vs.b];
+export function ErSection({ scene, americanFirst = false }) {
+  const [voice] = useVoice();
+  const practiceVoice = americanFirst ? voice : undefined;
+  const speaker = VOICES.find(item => item.id === practiceVoice);
+  const contrast = !americanFirst || engine.has(scene.vs.b, 'brian') ? scene.vs : null;
+  const all = contrast ? [...scene.same, contrast.b] : scene.same;
   const last = useLastPlayed(all, scene.same[0]);
   const er = (w) => {
     const m = w.match(/(ear|er|ar)/);
@@ -141,15 +145,18 @@ export function ErSection({ scene }) {
           <T en="Same sound in all three" bn="তিনটিতেই একই ধ্বনি" className="kick coral" />
           <div className="er-words">
             {scene.same.map(id => (
-              <button key={id} className="word-tile k0" onClick={() => engine.play(id)}>
+              <button key={id} className="word-tile k0" data-clip={id} onClick={() => engine.play(id, { voice: practiceVoice })}>
                 <span className="wt-word">{er(labelOf(id))}</span>
                 <span className="wt-meta"><IPlay /> er</span>
               </button>
             ))}
           </div>
-          <div className="pc-foot"><ClipButton ids={scene.same} variant="pill" label="Hear all three" /></div>
+          <div className="pc-foot">
+            <ClipButton ids={scene.same} variant="pill" voice={practiceVoice}
+              label={speaker ? `Hear all three · ${speaker.name}` : 'Hear all three'} />
+          </div>
         </div>
-        <div className="pair-card">
+        {contrast && <div className="pair-card">
           <T en={scene.vsCue.en} bn={scene.vsCue.bn} className="kick coral" />
           <div className="pc-words">
             {[scene.vs.a, scene.vs.b].map((id, k) => (
@@ -159,8 +166,8 @@ export function ErSection({ scene }) {
               </button>
             ))}
           </div>
-          <div className="pc-foot"><ClipButton ids={[scene.vs.a, scene.vs.b]} variant="pill" label={UI.both.en} /></div>
-        </div>
+          <div className="pc-foot"><ClipButton ids={[contrast.a, contrast.b]} variant="pill" label={UI.both.en} /></div>
+        </div>}
       </div>
     </div>
   );

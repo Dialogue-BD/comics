@@ -38,14 +38,15 @@ function VoiceCard({ id, side, voice }) {
   );
 }
 
-// Alice, then Brian, the same word
-export function BothVoices({ id, label = 'Alice, then Brian' }) {
+// Play the same word in both voices.
+export function BothVoices({ id, americanFirst = false, label = americanFirst ? 'Brian, then Alice' : 'Alice, then Brian' }) {
   const speaking = usePlayingVoice(id);
   const [on, setOn] = useState(false);
   const click = async () => {
     if (on) { engine.stop(); return; }
     setOn(true);
-    await engine.sequence([{ id, voice: 'alice' }, { id, voice: 'brian' }], 0.5);
+    const order = americanFirst ? ['brian', 'alice'] : ['alice', 'brian'];
+    await engine.sequence(order.map(voice => ({ id, voice })), 0.5);
     setOn(false);
   };
   return (
@@ -57,22 +58,22 @@ export function BothVoices({ id, label = 'Alice, then Brian' }) {
 }
 
 // ------------------------------------------------------------------ hero picture
-export function AccentHeroVisual({ unit }) {
+export function AccentHeroVisual({ unit, americanFirst = false }) {
   const row = unit.heroRow;
   return (
     <div className="ac-hero">
       <Word parts={row.uk.parts.map(([t]) => [t])} big />
       <div className="ac-hero-pair">
-        <VoiceCard id={row.clip} side={row.uk} voice="alice" />
+        <VoiceCard id={row.clip} side={americanFirst ? row.us : row.uk} voice={americanFirst ? "brian" : "alice"} />
         <span className="ac-both"><ICheck /> both correct</span>
-        <VoiceCard id={row.clip} side={row.us} voice="brian" />
+        <VoiceCard id={row.clip} side={americanFirst ? row.uk : row.us} voice={americanFirst ? "alice" : "brian"} />
       </div>
     </div>
   );
 }
 
 // ------------------------------------------------------------------ same word, two accents
-export function AccentPairsSection({ scene }) {
+export function AccentPairsSection({ scene, americanFirst = false }) {
   // one word at a time: both accents side by side on one screen
   const [k, setK] = useState(0);
   const r = scene.rows[k];
@@ -81,11 +82,11 @@ export function AccentPairsSection({ scene }) {
       <TabBar items={scene.rows.map(x => x.word)} k={k} onPick={setK} label="Words" next="Next word" />
       <div className="ac-row" key={r.clip}>
         <div className="ac-n"><b>{String(k + 1).padStart(2, '0')}</b><span>{r.word}</span>
-          <BothVoices id={r.clip} />
+          <BothVoices id={r.clip} americanFirst={americanFirst} />
         </div>
-        <VoiceCard id={r.clip} side={r.uk} voice="alice" />
+        <VoiceCard id={r.clip} side={americanFirst ? r.us : r.uk} voice={americanFirst ? "brian" : "alice"} />
         <span className="ac-both"><ICheck /> <span>both<br />correct</span></span>
-        <VoiceCard id={r.clip} side={r.us} voice="brian" />
+        <VoiceCard id={r.clip} side={americanFirst ? r.uk : r.us} voice={americanFirst ? "alice" : "brian"} />
       </div>
     </div>
   );

@@ -948,3 +948,178 @@ kbd{font:700 .85em var(--font-ui);border:1.5px solid var(--ink);border-bottom-wi
   .uc-tag{font-size:.82rem;line-height:1.3}
   .uc-go{width:28px;height:28px;right:10px;top:10px}
 }
+
+/* American English classroom track */
+.american-flag {
+  width: 1.9em;
+  height: auto;
+  flex: none;
+  box-shadow: 0 0 0 1px rgba(24, 54, 78, 0.2);
+}
+.american-kicker, .american-entry, .american-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+}
+.american-entry {
+  flex-wrap: wrap;
+  min-height: 44px;
+  margin-top: 12px;
+  color: #1d3b56;
+  font-weight: 750;
+  text-underline-offset: 3px;
+}
+.american-entry-label {
+  font-size: 0.83em;
+  color: var(--tx-muted);
+}
+.american-entry .ico {
+  width: 1em;
+  height: 1em;
+  flex: none;
+}
+.american-hero .uh-title {
+  color: #18364e;
+  max-width: 13ch;
+}
+.american-hero .stage-card {
+  border-top: 5px solid #a3413a;
+}
+.american-hero .ac-hero-pair {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.american-hero .ac-hero-pair .ac-both {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  order: 3;
+}
+.american-outline ol {
+  padding-left: 1.6em;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 36px;
+}
+.american-outline li::marker {
+  color: #8e3835;
+  font-weight: 800;
+}
+.american-outline li a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6em;
+  padding: 0.65em 0.85em;
+  min-height: 44px;
+  background: var(--surface-card);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-md);
+  color: var(--heading);
+  text-decoration: none;
+  font-weight: 700;
+}
+.american-outline li a:hover {
+  border-color: #284864;
+  background: #e9eef3;
+}
+.american-stop-heading {
+  width: min(1180px, calc(100% - 32px));
+  margin: 24px auto;
+  padding: clamp(16px, 3vw, 38px);
+  background: #e9eef3;
+  border-top: 4px solid #a3413a;
+  border-radius: var(--radius-md);
+  color: #18364e;
+}
+.american-stop-heading h1 {
+  margin: 0.15em 0 0;
+  font-size: clamp(2rem, 4.2vw, 4rem);
+  color: inherit;
+}
+.american-stop-heading .intro {
+  max-width: 70ch;
+  margin: 0.55em 0 0;
+}
+.american-back {
+  color: inherit;
+  text-underline-offset: 3px;
+}
+.american-count {
+  float: right;
+  font-weight: 800;
+}
+.american-stop-end nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.american-stop-end .btn {
+  white-space: normal;
+  text-align: center;
+}
+.american-recap {
+  margin-bottom: 24px;
+}
+@media (max-width: 680px) {
+  .american-outline ol { grid-template-columns: 1fr; }
+}
+
+.track-compare {
+  width: min(1180px, calc(100% - 32px));
+  margin: 24px auto;
+  padding: clamp(16px, 2.5vw, 30px);
+  background: var(--surface-card);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-md);
+}
+.track-compare h2 {
+  margin: 0 0 0.6em;
+  font-size: calc(1.5rem * var(--ui));
+}
+.track-compare ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.track-compare-row {
+  display: grid;
+  grid-template-columns: minmax(14ch, 1fr) auto;
+  gap: 10px 22px;
+  align-items: center;
+  padding: 12px 0;
+}
+.track-compare-row + .track-compare-row {
+  border-top: 1px solid var(--rule);
+}
+.track-compare-players {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+}
+.track-compare-players .ac-hear-both {
+  margin: 0;
+  min-height: calc(36px * var(--ui));
+}
+.track-compare-voice {
+  background: #e9eef3;
+}
+.track-compare-voice + .track-compare-voice {
+  background: var(--surface-card);
+}
+.track-compare-voice.is-playing {
+  background: var(--gold-hi);
+}
+.steps-ctl .compare-jump {
+  padding-inline: calc(12px * var(--ui));
+  background: #e9eef3;
+  color: #18364e;
+}
+.steps-ctl .compare-jump:hover {
+  background: #d8e4ee;
+}
+@media (max-width: 760px) {
+  .track-compare-row { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 600px) {
+  .steps-ctl.is-narrow.with-comparison { display: flex; }
+}

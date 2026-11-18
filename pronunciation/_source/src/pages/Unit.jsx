@@ -3,12 +3,15 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import AppBar from '../components/AppBar';
+import AmericanFlag from '../components/AmericanFlag';
+import TrackComparison from '../components/TrackComparison';
 import engine, { clip as getClip } from '../lib/audio';
 import { T, useSettings } from '../lib/settings';
 import { scrollToEl, scrollTop, ScrollTrigger, getLenis } from '../lib/scroll';
 import { L1Note } from '../components/Bits';
 import { IArrowR, IPlay, IPause, STEP_ICON } from '../components/Icons';
 import { UNITS, STEPS, UI } from '../content/units';
+import { AMERICAN_STOPS, AMERICAN_TRACK_HOME, AMERICAN_TRACK_TITLE, americanStopUrl } from '../content/americanTrack';
 import { usePlayingId, useClip } from '../lib/hooks';
 import VoiceLine from '../components/VoiceLine';
 import MouthDiagram from '../components/mouth/MouthDiagram';
@@ -29,10 +32,17 @@ const BODY = {
   accentpairs: A.AccentPairsSection, matters: A.MattersSection, accentgame: A.AccentGame,
 };
 
-export default function Unit({ unitId, idx, go }) {
-  const unit = UNITS.find(u => u.id === unitId) || UNITS[0];
-  const ui = UNITS.indexOf(unit);
-  const next = UNITS[ui + 1];
+export default function Unit({ unitId, idx, go, americanStop }) {
+  const sourceUnit = UNITS.find(u => u.id === unitId) || UNITS[0];
+  const next = UNITS[UNITS.indexOf(sourceUnit) + 1];
+  const unit = useMemo(() => {
+    if (!americanStop) return sourceUnit;
+    const steps = sourceUnit.steps.map(step => ({
+      ...step,
+      sections: step.sections.filter(scene => americanStop.sections.includes(scene.id)),
+    })).filter(step => step.sections.length);
+    return { ...sourceUnit, steps };
+  }, [sourceUnit, americanStop]);
   const { autoplay, bangla, stage } = useSettings();
   const sections = useMemo(() => {
     const out = [];
@@ -40,6 +50,7 @@ export default function Unit({ unitId, idx, go }) {
     return out;
   }, [unit]);
   const secEls = useRef([]);
+  const comparison = useRef(null);
   const root = useRef(null);
   const [active, setActive] = useState(-1);
   const autoplayed = useRef(new Set());
@@ -88,7 +99,8 @@ export default function Unit({ unitId, idx, go }) {
   // keep the address current (so a link or a refresh lands here), and autoplay
   useEffect(() => {
     if (active < 0) return;
-    try { history.replaceState(null, '', `#/u/${unit.id}/${active}`); } catch (e) {}
+    const href = americanStop ? americanStopUrl(americanStop.id, active) : `#/u/${unit.id}/${active}`;
+    try { history.replaceState(null, '', href); } catch (e) {}
     const sc = sections[active];
     if (!autoplay || !sc || !sc.autoplay || autoplayed.current.has(sc.id)) return;
     const t = setTimeout(() => {
@@ -141,14 +153,23 @@ export default function Unit({ unitId, idx, go }) {
   const stepKey = active >= 0 ? sections[active].step : null;
   const onStep = (key) => scrollToEl(secEls.current[sections.findIndex(s => s.step === key)]);
   const startHere = () => scrollToEl(secEls.current[0]);
+  const compare = () => {
+    const target = comparison.current;
+    if (!target) return startHere();
+    target.focus({ preventScroll: true });
+    scrollToEl(target);
+  };
 
   return (
     <div className="app unit-page" ref={root}>
-      <AppBar unit={unit} stepKey={stepKey} onStep={onStep} go={go} />
+      <AppBar unit={unit} stepKey={stepKey} onStep={onStep} go={go} american={!!americanStop} onCompare={americanStop ? compare : undefined} />
       <main>
-        <UnitHero unit={unit} onStart={startHere} />
-        <blockquote className="manifesto"><span dangerouslySetInnerHTML={{ __html: unit.manifesto.en }} />{bangla && <span className="bn" lang="bn">{unit.manifesto.bn}</span>}</blockquote>
-        <nav className="step-nav rv" aria-label="Steps">
+        {americanStop ? <AmericanStopHeader stop={americanStop} go={go} /> : <>
+          <UnitHero unit={unit} onStart={startHere} />
+          <blockquote className="manifesto"><span dangerouslySetInnerHTML={{ __html: unit.manifesto.en }} />{bangla && <span className="bn" lang="bn">{unit.manifesto.bn}</span>}</blockquote>
+        </>}
+        {americanStop?.examples && <TrackComparison examples={americanStop.examples} sectionRef={comparison} />}
+        {!americanStop && <nav className="step-nav rv" aria-label="Steps">
           {unit.steps.map((s, i) => {
             const I = STEP_ICON[STEPS[s.key].icon];
             return (
@@ -158,7 +179,7 @@ export default function Unit({ unitId, idx, go }) {
               </button>
             );
           })}
-        </nav>
+        </nav>}
         {sections.map((sc, i) => {
           const Body = BODY[sc.type];
           const I = STEP_ICON[STEPS[sc.step].icon];
@@ -180,15 +201,53 @@ export default function Unit({ unitId, idx, go }) {
                   {sc.cue && <T en={sc.cue.en} bn={sc.cue.bn} as="p" className="lesson-cue" />}
                 </div>
                 <div className="lesson-body rv">
-                  {Body ? <Body scene={sc} unit={unit} /> : <p>Unknown section {sc.type}</p>}
+                  {Body ? <Body scene={sc} unit={unit} americanFirst={!!americanStop} /> : <p>Unknown section {sc.type}</p>}
                 </div>
               </section>
             </React.Fragment>
           );
         })}
-        <UnitEnd unit={unit} next={next} go={go} />
+        {americanStop ? <AmericanStopEnd stop={americanStop} go={go} /> : <UnitEnd unit={unit} next={next} go={go} />}
       </main>
     </div>
+  );
+}
+
+function AmericanStopHeader({ stop, go }) {
+  const number = AMERICAN_STOPS.indexOf(stop) + 1;
+  return (
+    <section className="american-stop-heading">
+      <a className="eyebrow american-back" href={AMERICAN_TRACK_HOME} onClick={event => { event.preventDefault(); go(AMERICAN_TRACK_HOME); }}>
+        <AmericanFlag /> {AMERICAN_TRACK_TITLE}
+      </a>
+      <span className="american-count">{number} / {AMERICAN_STOPS.length}</span>
+      <T as="h1" en={stop.title} bn={stop.bn} />
+      <T as="p" className="intro" en={stop.prompt} bn={stop.promptBn} />
+    </section>
+  );
+}
+
+function AmericanStopEnd({ stop, go }) {
+  const number = AMERICAN_STOPS.indexOf(stop);
+  const previous = AMERICAN_STOPS[number - 1];
+  const next = AMERICAN_STOPS[number + 1];
+  const nextHref = next ? americanStopUrl(next.id) : AMERICAN_TRACK_HOME;
+  const previousHref = previous ? americanStopUrl(previous.id) : AMERICAN_TRACK_HOME;
+  return (
+    <section className="unit-end american-stop-end">
+      {!next && <div className="american-recap">
+        <T as="h2" en="Take it into your next conversation" bn="পরের কথোপকথনে কাজে লাগান" />
+        <T as="p" en="This week I’ll practice ____ so my listener can hear ____ more clearly." bn="এই সপ্তাহে আমি ____ অনুশীলন করব, যাতে শ্রোতা ____ আরও স্পষ্টভাবে শুনতে পারেন।" />
+      </div>}
+      <nav aria-label="American English track">
+        <a className="btn" href={previousHref} onClick={event => { event.preventDefault(); go(previousHref); }}>
+          {previous ? 'Previous' : 'Track overview'}
+        </a>
+        <a className="btn primary" href={nextHref} onClick={event => { event.preventDefault(); go(nextHref); }}>
+          {next ? `Next · ${next.title}` : 'Finish track'} <IArrowR />
+        </a>
+      </nav>
+    </section>
   );
 }
 

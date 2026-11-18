@@ -5,9 +5,12 @@
   "scripts": {
     "build": "vite build",
     "publish": "vite build && node tools/publish.mjs",
-    "serve": "cd ../.. && python3 -m http.server 8765"
+    "serve": "cd ../.. && python3 -m http.server 8765",
+    "record:brian": "node --env-file=../../.env.local analysis/record-clips.mjs",
+    "record:clips": "node --env-file=../../.env.local analysis/record-clips.mjs"
   },
   "devDependencies": {
+    "@elevenlabs/elevenlabs-js": "^2.79.0",
     "@vitejs/plugin-react": "^4.7.0",
     "vite": "^6.4.4"
   },

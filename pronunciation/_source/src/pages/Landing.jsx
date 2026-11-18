@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import AppBar from '../components/AppBar';
+import AmericanFlag from '../components/AmericanFlag';
 import VoiceLine from '../components/VoiceLine';
 import UnitGlyph from '../components/UnitGlyph';
 import TeacherNotes from '../components/TeacherNotes';
@@ -9,6 +10,7 @@ import { usePlayingId } from '../lib/hooks';
 import { T, useSettings } from '../lib/settings';
 import { scrollToEl, scrollTop, ScrollTrigger } from '../lib/scroll';
 import { IPlay, IPause, IArrowR, IEar, IGame, IBook, IPrint } from '../components/Icons';
+import { AMERICAN_TRACK_HOME, AMERICAN_TRACK_TITLE } from '../content/americanTrack';
 import { UNITS, UI } from '../content/units';
 import SplitText from '../reactbits/SplitText';
 import Threads from '../reactbits/Threads';
@@ -49,6 +51,11 @@ export default function Landing({ go, focus }) {
               <button className={`btn primary big ${heroPlaying ? 'is-playing' : ''}`} onClick={heroPlay}>{heroPlaying ? <IPause /> : <IPlay />} <T en="Hear the music" bn="সুরটা শুনুন" block={false} /></button>
               <button className="btn big ghost-ink" onClick={() => go(`#/u/${UNITS[0].id}/0`)}><T en="Start Unit 1" bn="ইউনিট ১ শুরু করুন" block={false} /> <IArrowR /></button>
             </div>
+            <a className="american-entry" href={AMERICAN_TRACK_HOME} onClick={event => { event.preventDefault(); go(AMERICAN_TRACK_HOME); }}>
+              <AmericanFlag />
+              <T en="Classroom track" bn="ক্লাসের জন্য" className="american-entry-label" />
+              <T en={AMERICAN_TRACK_TITLE} bn="আমেরিকান ইংরেজি" block={false} /> <IArrowR />
+            </a>
           </div>
           <div className="uh-visual stage-card">
             <div className="sc-top"><span>ONE SENTENCE · THREE SMALL TUNES</span><span className={`status ${heroPlaying ? 'on' : ''}`}>{heroPlaying ? 'Playing' : 'Ready'}</span></div>
