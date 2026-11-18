@@ -9,7 +9,7 @@
 <link rel="icon" type="image/png" sizes="48x48" href="../favicon.png?v=03b">
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=03b">
 <link rel="stylesheet" href="../dialogue-brand.css">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 <script>document.documentElement.classList.add("tabbed")</script>
 </head>
 <body class="dialogue-activity-shell">
@@ -17,6 +17,8 @@
 <header class="top">
   <a class="logo-chip" href="/" aria-label="All Dialogue activities"><img src="../brand/dialogue-logo.png?v=a53d061" alt="Dialogue English &amp; Skills Center"></a>
   <span class="brand-name"><span class="brand-txt">AI Tools: Stories &amp; Songs</span></span>
+  <div class="proj-bar" id="projbar"></div>
+  <button class="proj-btn" id="proj" type="button" aria-pressed="false" title="Projector view (P)"><span class="pb-on">⛶ Projector view</span><span class="pb-off">✕ Exit projector</span></button>
 </header>
 
 <main>
@@ -35,8 +37,11 @@
 
   <!-- ============ SONG ============ -->
   <section class="panel" id="song" role="tabpanel" aria-label="Song">
+    <div class="step" data-step="1" data-label="Watch how">
     <h2 class="sh"><span class="sn">1</span><span>Watch how Gemini makes the song</span></h2>
     <div class="demo" id="demo-song" data-track="song"></div>
+    </div>
+    <div class="step" data-step="2" data-label="Sing along">
 
     <h2 class="sh" id="sing"><span class="sn">2</span><span>Sing along: <em>The Boatman’s Four Steps</em></span></h2>
     <p class="sh-sub">Gemini made this song from our 4Ds notebook. Watch each gear turn in when its D is sung.</p>
@@ -76,13 +81,17 @@
         <ol class="lyric-list" id="lyric-list"></ol>
       </details>
     </div>
+    </div>
     <a class="next-tab" href="#story">Next: make a storybook <span aria-hidden="true">→</span></a>
   </section>
 
   <!-- ============ STORYBOOK ============ -->
   <section class="panel" id="story" role="tabpanel" aria-label="Storybook">
+    <div class="step" data-step="1" data-label="Watch how">
     <h2 class="sh"><span class="sn">1</span><span>Watch how Gemini makes the book</span></h2>
     <div class="demo" id="demo-story" data-track="story"></div>
+    </div>
+    <div class="step" data-step="2" data-label="Read and listen">
 
     <h2 class="sh" id="read"><span class="sn">2</span><span>Read and listen: <em>The Captain of the Loop</em></span></h2>
     <p class="sh-sub">Gemini wrote and drew this 10-page book from the same notebook. Tap the picture or the arrows to turn the page.</p>
@@ -108,11 +117,13 @@
         <a href="https://share.gemini.google/7uBtSKKskJ8E" target="_blank" rel="noopener">Open the book in Gemini ↗</a>
       </div>
     </div>
+    </div>
     <a class="next-tab" href="#yours">Next: make your own <span aria-hidden="true">→</span></a>
   </section>
 
   <!-- ============ YOUR TURN ============ -->
   <section class="panel" id="yours" role="tabpanel" aria-label="Your turn">
+    <div class="step" data-step="1" data-label="Make your own">
     <h2 class="sh"><span class="sn">✋</span><span>Make one about <em>your</em> subject</span></h2>
 
     <div class="yt">
@@ -164,6 +175,7 @@
 
     <p class="small-print">Gemini’s Storybook and Create music need a personal Google account, age 18+. Some school and work accounts can’t share books.</p>
     <p class="print-row"><button class="print-btn" type="button" onclick="window.print()">🖨 Print the one-page guide</button></p>
+    </div>
   </section>
 </main>
 
@@ -204,6 +216,6 @@
 </div>
 
 <script src="data.js?v=2"></script>
-<script src="app.js?v=3"></script>
+<script src="app.js?v=4"></script>
 </body>
 </html>

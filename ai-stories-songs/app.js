@@ -100,7 +100,7 @@ function mockHTML(track) {
   const src = SOURCES.map((s, i) => `<li class="src" data-n="${i}"><i class="ft ${/\.pdf$/.test(s) ? 'pdf' : 'txt'}">${/\.pdf$/.test(s) ? 'PDF' : 'TXT'}</i><span>${s}</span><b class="tick">✓</b></li>`).join('');
   const cards = CARDS.map(([t, e, c]) => `<div class="mcard ${c}"><span class="me">${e}</span><span class="mt">${t}</span><span class="mp">▶</span></div>`).join('');
   return `
-<div class="win">
+<div class="win-fit"><div class="win">
   <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><span class="u"></span></span></div>
   <div class="screen">
     <div class="v-nb">
@@ -176,7 +176,7 @@ function mockHTML(track) {
     <div class="win-cursor">${POINTER}<i class="ripple"></i></div>
     <button class="win-start" type="button"><span>▶</span><b class="ws-l">Watch how<small>${track === 'song' ? 'about 40 seconds' : 'about 45 seconds'} · pause any time</small></b></button>
   </div>
-</div>
+</div></div>
 <div class="cap">
   <div class="cap-dots"></div>
   <div class="cap-line"><span class="cap-n">1</span><div class="cap-body"><span class="cap-of"></span><p class="cap-t"></p></div><span class="cap-d"></span></div>
@@ -263,7 +263,8 @@ function Demo(root) {
   function pos(sel) {
     const el = typeof sel === 'string' ? $(sel, root) : sel; if (!el) return null;
     const a = el.getBoundingClientRect(), b = screen.getBoundingClientRect();
-    return { x: a.left - b.left + Math.min(a.width * .55, a.width - 8), y: a.top - b.top + a.height * .6, el };
+    const k = b.width / (screen.offsetWidth || b.width) || 1;   // projector view scales the window
+    return { x: (a.left - b.left + Math.min(a.width * .55, a.width - 8)) / k, y: (a.top - b.top + a.height * .6) / k, el };
   }
   async function point(sel, t) {
     $$('.hint', root).forEach(e => e.classList.remove('hint'));
@@ -394,8 +395,11 @@ function Demo(root) {
   function pause() { token++; setPlaying(false); go(idx, false); }
 
   $('.win-start', root).addEventListener('click', () => go(0));
-  const panel = root.closest('.panel');
-  if (panel) panel.addEventListener('ss:hide', () => { if (playing) pause(); });
+  [root.closest('.panel'), root.closest('.step')].forEach(el => el && el.addEventListener('ss:hide', () => { if (playing) pause(); }));
+  root.ssDemo = {
+    toggle: () => $('.cb-play', root).click(),
+    next: () => $('.cb-next', root).click(),
+    prev: () => $('.cb-prev', root).click() };
   $('.cb-play', root).addEventListener('click', () => {
     if (!started || root.classList.contains('ended')) return go(0);
     playing ? pause() : go(idx);
@@ -515,8 +519,14 @@ $$('.demo').forEach(el => Demo(el));
   $('#sg-play').addEventListener('click', toggle);
   $('#sg-big').addEventListener('click', () => { audio.play(); });
   if (matchMedia('(min-width: 720px)').matches) $('#lyrics').open = true;
-  const songPanel = stage.closest('.panel');
-  if (songPanel) songPanel.addEventListener('ss:hide', () => audio.pause());
+  [stage.closest('.panel'), stage.closest('.step')].forEach(el => el && el.addEventListener('ss:hide', () => audio.pause()));
+  stage.ssSong = {
+    toggle: () => { if (audio.paused) { stage.classList.add('started'); audio.play(); } else audio.pause(); },
+    line: d => {
+      const t = pendingSeek != null ? pendingSeek : audio.currentTime;
+      let cur = -1; SONG.forEach((l, i) => { if (l.s <= t + .05) cur = i; });
+      const j = d > 0 ? Math.min(SONG.length - 1, cur + 1) : Math.max(0, cur >= 0 && t - SONG[cur].s < 1.5 ? cur - 1 : cur);
+      stage.classList.add('started'); seekTo(SONG[j].s + .05, true); } };
   audio.addEventListener('play', () => { stage.classList.add('playing', 'started'); ensureBlob(); kick(); });
   audio.addEventListener('pause', () => { stage.classList.remove('playing'); kick(); });
   audio.addEventListener('ended', () => stage.classList.remove('playing'));
@@ -586,9 +596,9 @@ $$('.demo').forEach(el => Demo(el));
   $('.tz-prev').addEventListener('click', () => $('#rd-prev').click());
   $('.tz-next').addEventListener('click', () => $('#rd-next').click());
   const storyPanel = $('#reader').closest('.panel');
-  if (storyPanel) storyPanel.addEventListener('ss:hide', stop);
+  [storyPanel, $('#reader').closest('.step')].forEach(el => el && el.addEventListener('ss:hide', stop));
   document.addEventListener('keydown', e => {
-    if (e.target.closest('input,select,textarea') || (storyPanel && storyPanel.hidden)) return;
+    if (e.target.closest('input,select,textarea') || (storyPanel && storyPanel.hidden) || document.body.classList.contains('projector')) return;
     const r = $('#reader').getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
     if (e.key === 'ArrowRight') $('#rd-next').click(); else if (e.key === 'ArrowLeft') $('#rd-prev').click();
   });
@@ -619,5 +629,85 @@ $$('.demo').forEach(el => Demo(el));
     catch (e) { const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); }
     b.textContent = 'Copied ✓'; setTimeout(() => (b.textContent = 'Copy'), 1600);
   }));
+})();
+/* ------------------------------------------------------------------ */
+/* 6. PROJECTOR VIEW — one step per screen, scaled to fit, keyboard   */
+/* ------------------------------------------------------------------ */
+(function projector() {
+  const btn = $('#proj'), bar = $('#projbar'), body = document.body, tabsHome = tabsEl.parentNode, tabsNext = tabsEl.nextSibling;
+  const stepOf = { song: '1', story: '1', yours: '1' };
+  const on = () => body.classList.contains('projector');
+  const curPanel = () => $('.panel.on');
+  const curStep = () => { const p = curPanel(); return p && $('.step.on', p); };
+  const steps = document.createElement('div'); steps.className = 'proj-steps'; steps.setAttribute('role', 'tablist');
+  const hint = document.createElement('span'); hint.className = 'proj-hint';
+  hint.innerHTML = '<kbd>←</kbd><kbd>→</kbd> step · <kbd>Space</kbd> play · <kbd>F</kbd> full screen';
+
+  function paintSteps() {
+    const p = curPanel(); if (!p) return;
+    const list = $$('.step', p);
+    steps.innerHTML = list.length < 2 ? '' : list.map(st => `<button type="button" data-s="${st.dataset.step}" class="${st.dataset.step === stepOf[p.id] ? 'on' : ''}"><i>${st.dataset.step}</i>${st.dataset.label}</button>`).join('');
+  }
+  function applySteps() {
+    $$('.panel').forEach(p => $$('.step', p).forEach(st => {
+      const show = !on() || st.dataset.step === stepOf[p.id];
+      if (!show && st.classList.contains('on') && on()) st.dispatchEvent(new Event('ss:hide'));
+      st.classList.toggle('on', show);
+    }));
+    paintSteps(); fit();
+  }
+  function setStep(n) { const p = curPanel(); if (!p || !$(`.step[data-step="${n}"]`, p)) return; stepOf[p.id] = String(n); applySteps(); }
+  steps.addEventListener('click', e => { const b = e.target.closest('button'); if (b) setStep(b.dataset.s); });
+
+  /* scale the walk-through window to the space left on screen */
+  const DW = 980, DH = 532;   // .win width; .screen 500 + 32 bar (style.css)
+  function fit() {
+    $$('.demo').forEach(d => {
+      const wf = $('.win-fit', d), win = $('.win', d);
+      if (!on() || !d.offsetParent) { wf.style.width = wf.style.height = ''; win.style.transform = ''; d.style.removeProperty('--capw'); return; }
+      const capH = $('.cap', d).offsetHeight + 14, top = d.getBoundingClientRect().top;
+      const availH = innerHeight - top - capH - 18, availW = d.clientWidth;
+      const k = Math.max(.3, Math.min(availW / DW, availH / DH));
+      win.style.transform = `scale(${k})`; wf.style.width = DW * k + 'px'; wf.style.height = DH * k + 'px';
+      d.style.setProperty('--capw', DW * k + 'px');
+    });
+  }
+  addEventListener('resize', () => on() && fit());
+  document.addEventListener('fullscreenchange', () => setTimeout(fit, 120));
+
+  function set(v, fromUser) {
+    body.classList.toggle('projector', v);
+    btn.setAttribute('aria-pressed', String(v));
+    if (v) { bar.append(tabsEl, steps, hint); if (fromUser && document.documentElement.requestFullscreen && !document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => {}); scrollTo(0, 0); }
+    else { tabsHome.insertBefore(tabsEl, tabsNext); if (document.fullscreenElement) document.exitFullscreen().catch(() => {}); }
+    applySteps();
+  }
+  btn.addEventListener('click', () => { set(!on(), true); btn.blur(); });
+  /* a tab change re-applies the step for that tab */
+  new MutationObserver(() => on() && applySteps()).observe(tabsEl, { subtree: true, attributes: true, attributeFilter: ['class'] });
+  /* "Sing along ↓" / "Read the book ↓" at the end of a walk-through jump to step 2 */
+  document.addEventListener('click', e => { const a = e.target.closest('.demo-cta'); if (a && on()) { e.preventDefault(); e.stopPropagation(); setStep(2); } }, true);
+
+  document.addEventListener('keydown', e => {
+    if (e.target.closest('input,select,textarea') || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === 'p' || e.key === 'P') { set(!on(), true); return; }
+    if (!on()) return;
+    const st = curStep(); if (!st) return;
+    const demo = $('.demo', st), stage = $('.stage', st), reader = $('.reader', st);
+    const k = e.key;
+    if (k === 'f' || k === 'F') { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen().catch(() => {}); }
+    else if (k === '1' || k === '2') setStep(k);
+    else if (k === ' ' || k === 'Enter') {
+      if (k === 'Enter' && e.target.closest('button,a')) return;   // Space always means play/pause here
+      if (demo) { const ws = $('.win-start', demo); (ws && ws.offsetParent ? ws : null) ? ws.click() : demo.ssDemo.toggle(); }
+      else if (stage) stage.ssSong.toggle();
+      else if (reader) $('#rd-listen').click();
+    }
+    else if (k === 'ArrowRight' || k === 'PageDown') { if (demo) demo.ssDemo.next(); else if (stage) stage.ssSong.line(1); else if (reader) $('#rd-next').click(); }
+    else if (k === 'ArrowLeft' || k === 'PageUp') { if (demo) demo.ssDemo.prev(); else if (stage) stage.ssSong.line(-1); else if (reader) $('#rd-prev').click(); }
+    else return;
+    e.preventDefault();
+  });
+  if (/[?&]projector\b/.test(location.search)) set(true, false); else applySteps();
 })();
 })();
