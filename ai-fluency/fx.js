@@ -3,17 +3,32 @@
  *   FX.gearTurned(el,d)     a gear locks in: it ticks faster and faster, clunks, chimes, confetti
  *   FX.missionDone(root)    four gears lock one after another, fanfare, the stars count up
  *   FX.unlock()             call from the first tap so phones allow sound later
- * Sound follows the "Cog reads aloud" switch (FX.on); motion respects reduced-motion. */
+ * Sound follows the current mode's sound switch (FX.on). Motion respects reduced-motion. */
 (function(){
 const FX={on:()=>true};
 let ac=null,master=null;
 const reduced=()=>{try{return matchMedia('(prefers-reduced-motion:reduce)').matches}catch(e){return false}};
 function ensure(){
-  if(ac) return ac;
+  if(ac&&ac.state!=='closed') return ac;
   try{ ac=new (window.AudioContext||window.webkitAudioContext)(); master=ac.createGain(); master.gain.value=.8; master.connect(ac.destination); }catch(e){ ac=null; }
   return ac;
 }
-FX.unlock=()=>{ try{ ensure(); if(ac&&ac.state==='suspended') ac.resume(); }catch(e){} };
+const audioRunning=()=>ac?.state==='running';
+FX.unlock=()=>{
+  const context=ensure();
+  if(!context) return Promise.resolve(false);
+  if(context.state==='running') return Promise.resolve(true);
+  // Call resume in the gesture handler, including when WebKit reports "interrupted".
+  try{ return Promise.resolve(context.resume()).then(()=>context.state==='running',()=>false); }
+  catch(e){ return Promise.resolve(false); }
+};
+function resumeForEffect(){
+  let timeout;
+  return Promise.race([
+    FX.unlock(),
+    new Promise(resolve=>{ timeout=setTimeout(()=>resolve(false),1000); })
+  ]).finally(()=>clearTimeout(timeout));
+}
 const T=()=>ac.currentTime;
 function tone(f,t0,d,type,v,f2){
   const o=ac.createOscillator(),g=ac.createGain(); o.type=type||'sine';
@@ -62,7 +77,15 @@ const SOUNDS={
     [NOTE.G5,NOTE.C6,NOTE.E6,NOTE.G6].forEach((f,i)=>bell(f,t+.18+i*.11,1.3,.22));
     sparkle(t+.4,16); }
 };
-FX.sfx=(name,arg)=>{ try{ if(!FX.on()) return; if(!ensure()) return; if(ac.state==='suspended') ac.resume(); const f=SOUNDS[name]; if(f) f(arg); }catch(e){} };
+function playSound(name,arg){
+  if(!FX.on()||!audioRunning()||!SOUNDS[name]) return false;
+  try{ SOUNDS[name](arg); return true; }catch(e){ return false; }
+}
+FX.sfx=(name,arg)=>{
+  if(!FX.on()) return;
+  if(audioRunning()) playSound(name,arg);
+  else resumeForEffect().then(ready=>{if(ready)playSound(name,arg);});
+};
 
 /* ---------------- confetti on one full-screen canvas ---------------- */
 let cv=null,cx=null,parts=[],raf=0,last=0;
@@ -114,10 +137,11 @@ FX.gearTurned=(root,d)=>{
      (timers drift when the page is busy drawing; the audio clock does not). When sound is off, it is the page clock. */
   let go=false;
   const start=()=>{ if(go) return; go=true;
-    const useAudio=!!(FX.on()&&ensure()&&ac.state==='running');
-    const now=useAudio?(()=>ac.currentTime):(()=>performance.now()/1000);
-    const base=now()+.18;                       /* a short run-up so the card has drawn before the first click */
-    if(useAudio) SOUNDS.gear(base);
+    if(!document.body.contains(g)) return;
+    const audioStart=audioRunning()?T()+.18:0;
+    const useAudio=!!audioStart&&playSound('gear',audioStart);
+    const now=useAudio?T:()=>performance.now()/1000;
+    const base=useAudio?audioStart:now()+.18; // Turn the first tooth when the first click sounds.
     const rots=[...g.querySelectorAll('.rot')];
     const sg=rots.map(r=>{ const on=r.closest('.gear')&&r.closest('.gear').classList.contains('on'); return on?-1:1; });
     const setRem=(rem)=>rots.forEach((r,i)=>{ r.style.transform='rotate(calc(var(--o) + var(--ga,0deg) * var(--s) + '+(sg[i]*rem)+'deg * var(--s)))'; });
@@ -143,7 +167,8 @@ FX.gearTurned=(root,d)=>{
     setTimeout(()=>burst(x+r.width*.4,y+10,col,20,{speed:520,dir:-Math.PI*.22,spread:.9}),160);
     const k=root.querySelector('.lvl-k'); if(k){ k.classList.remove('bump'); void k.offsetWidth; k.classList.add('bump'); }
   };
-  if(FX.on()&&ensure()&&ac.state==='suspended'){ try{ ac.resume().then(start,start); }catch(e){ start(); } setTimeout(start,350); } else start();
+  if(FX.on()&&!audioRunning()) resumeForEffect().then(start);
+  else start();
 };
 
 /* ---------------- the mission is done ---------------- */

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#103d2c">
+  <title>Projector demo · AI Fluency Lab</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="phone.css?v=1">
+  <link rel="stylesheet" href="play.css?v=18">
+  <link rel="stylesheet" href="demo.css?v=19">
+  <script src="compass.js?v=17" defer></script>
+  <script src="fx.js?v=5" defer></script>
+  <script src="engine.js?v=44" defer></script>
+  <script src="cv-art.js?v=4" defer></script>
+  <script src="lesson-cv.js?v=31" defer></script>
+  <script src="lesson-agent.js?v=21" defer></script>
+  <script src="lesson-build.js?v=22" defer></script>
+  <script src="demo-missions.js?v=14" defer></script>
+  <script src="demo.js?v=19" defer></script>
+</head>
+<body>
+  <header class="demo-header">
+    <a class="demo-brand" href="#" aria-label="Dialogue AI Fluency Lab, all missions">
+      <img src="../brand/dialogue-logo.svg" width="1020" height="610" alt="">
+      <span>AI Fluency Lab <small>Projector demo</small></span>
+    </a>
+    <nav class="mission-switch" aria-label="Projector missions">
+      <a href="#" data-mission-tab="">All missions</a>
+      <a href="#cv" data-mission-tab="cv">CV</a>
+      <a href="#agent" data-mission-tab="agent">AI agent</a>
+      <a href="#build" data-mission-tab="build">Vibe-coding</a>
+    </nav>
+    <nav class="demo-controls" aria-label="Demo controls">
+      <a href="index.html">Full exercises</a>
+      <button id="effects" type="button" aria-pressed="true">Gear sounds</button>
+      <button id="fullscreen" type="button" hidden>Full screen</button>
+    </nav>
+  </header>
+  <main id="demo">
+    <section id="chooser" aria-labelledby="chooser-title">
+      <h1 id="chooser-title" tabindex="-1">Teach the four Ds with Ayesha</h1>
+      <p class="lead">Choose a mission to demo on Ayesha’s phone.</p>
+      <nav class="missions" aria-label="Choose a mission">
+        <a class="mission-card mission-cv" href="#cv">
+          <div class="mission-preview" aria-hidden="true">
+            <div class="mission-paper"><span data-preview-icon="spark"></span><span>AI draft</span><b>7.0</b></div>
+            <span class="mission-preview-link" data-preview-icon="search"></span>
+            <div class="mission-paper"><span data-preview-icon="doc"></span><span>Mock report</span><b>6.0</b></div>
+          </div>
+          <h2>An honest CV with AI</h2>
+          <p>Check an AI claim against Ayesha’s evidence.</p>
+          <span class="mission-open" aria-hidden="true">→</span>
+        </a>
+        <a class="mission-card mission-agent" href="#agent">
+          <div class="mission-preview" aria-hidden="true">
+            <div class="mission-orbit"><span data-preview-icon="gear"></span>Orbit</div>
+            <span class="mission-preview-link" data-preview-icon="key"></span>
+            <div class="mission-permissions">
+              <span><i data-preview-icon="cal"></i>Calendar</span>
+              <span><i data-preview-icon="edit"></i>Drafts only</span>
+            </div>
+          </div>
+          <h2>Set up an AI agent</h2>
+          <p>Give Orbit jobs, rules, and limits.</p>
+          <span class="mission-open" aria-hidden="true">→</span>
+        </a>
+        <a class="mission-card mission-build" href="#build">
+          <div class="mission-preview" aria-hidden="true">
+            <div class="mission-app">
+              <b><span data-preview-icon="cal"></span>My Deadlines</b>
+              <span>My exam <em>3 days left</em></span>
+              <span>31 February <em>Not a real date</em></span>
+            </div>
+          </div>
+          <h2>Vibe-code an app</h2>
+          <p>Describe a small app, then test what it does.</p>
+          <span class="mission-open" aria-hidden="true">→</span>
+        </a>
+      </nav>
+    </section>
+    <section id="deck" aria-labelledby="slide-title" hidden>
+      <details class="presenter-tools">
+        <summary>Presenter controls</summary>
+        <nav aria-label="Presenter controls">
+          <label>Chapter <select id="chapter-jump"></select></label>
+          <label id="scene-picker">Scene <select id="scene-jumps"></select></label>
+          <button id="replay" type="button">Restart chapter</button>
+          <button id="back" type="button">← Previous chapter</button>
+        </nav>
+      </details>
+      <ol id="gear-track" aria-label="The four AI fluency gears"></ol>
+      <div class="demo-stage">
+        <article id="slide" class="slide"></article>
+        <section id="visual" aria-label="Worked scene">
+          <div class="scene-bar">
+            <p id="scene-caption" role="status"></p>
+            <button id="next" type="button">Next chapter →</button>
+          </div>
+          <div id="device"><div id="screen"></div><div id="phone-actions" hidden></div></div>
+        </section>
+      </div>
+    </section>
+  </main>
+  <noscript><p class="no-script">Enable JavaScript to use the projector slides.</p></noscript>
+</body>
+</html>

@@ -125,7 +125,8 @@ body.cq-on:not(.g-talk) #pcoach .g-frown{opacity:1}
 @media (max-width:400px){ .pb.tool .tl{display:none} .pb.tool{width:46px;padding:0} }
 /* the action is on the phone: the footer stays quiet and says so */
 #pfoot.acting .pb.quiet{color:var(--ink-muted)}
-.frow.hub{margin-bottom:8px}
+.frow.hub{margin-bottom:8px;flex-wrap:wrap}
+.frow.hub a.pb{text-decoration:none}
 .pb.film{flex:1;background:var(--gold-soft);border-color:var(--gold)}
 .pb.film small{font-weight:600;color:var(--kicker);font-size:12px}
 .modeseg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:rgba(16,61,33,.07);border-radius:12px;padding:4px}

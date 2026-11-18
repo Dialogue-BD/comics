@@ -17,6 +17,7 @@ const fn=(v,ctx)=>typeof v==='function'?v(ctx):v;
 const P={
  back:'M20 11H7.8l5.6-5.6L12 4l-8 8 8 8 1.4-1.4L7.8 13H20z',
  menu:'M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z',
+ steps:'M9 5h12v2H9zm0 6h12v2H9zm0 6h12v2H9zM3 4h3v4H4V6H3zm0 6h3v2L4 14h2v1H3v-2l2-2H3zm0 6h3v5H3v-1h2v-1H3v-1h2v-1H3z',
  more:'M12 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z',
  search:'M15.5 14h-.8l-.3-.3A6.5 6.5 0 1 0 14 15.5l.3.3v.8l5 5 1.5-1.5-5-5zm-6 0a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z',
  plus:'M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6z',
@@ -94,7 +95,7 @@ const S={lesson:null,beat:0,bn:false,ch:{},stage:false,mode:'pair',voice:true};
 const MODES={
  solo:{i:'👤',n:'Alone',bn:'একা',d:'At home, on your own phone',dbn:'বাড়িতে, নিজের ফোনে'},
  pair:{i:'👥',n:'Pair work',bn:'জোড়ায় কাজ',d:'Two students, one phone · choose Student A and Student B',dbn:'দুজন শিক্ষার্থী, একটা ফোন · কে শিক্ষার্থী A আর কে B ঠিক করো'},
- class:{i:'🙋',n:'Class',bn:'পুরো ক্লাস',d:'Teacher up front, on the projector',dbn:'শিক্ষক সামনে, প্রজেক্টরে'}
+ class:{i:'🙋',n:'Guided class',bn:'পুরো ক্লাস',d:'Full exercises with the whole class',dbn:'পুরো ক্লাসের সাথে সম্পূর্ণ অনুশীলন'}
 };
 function loadPrefs(){try{const v=JSON.parse(localStorage.getItem('afl-prefs')||'null');if(v){if(MODES[v.mode])S.mode=v.mode;if(typeof v.voice==='boolean')S.voice=v.voice}}catch(e){}}
 function savePrefs(){try{localStorage.setItem('afl-prefs',JSON.stringify({mode:S.mode,voice:S.voice}))}catch(e){}}
@@ -109,9 +110,87 @@ function load(){
  try{const v=JSON.parse(sessionStorage.getItem(KEY)||'null');if(v)Object.assign(S,v)}catch(e){}
  try{for(const id of JSON.parse(localStorage.getItem('afl-completed')||'[]'))if(LESSONS[id]){S.ch[id]=S.ch[id]||{};S.ch[id]._finished=true;}}catch(e){}
 }
+let demoContext=null;
 function ctx(){
+  if(demoContext) return demoContext;
   const L=LESSONS[S.lesson]; const ch=S.ch[S.lesson]||(S.ch[S.lesson]={});
   return {ch,L,beat:L&&L.beats[S.beat],get streaming(){return S.streaming},set(k,v){ch[k]=v;save()},get(k,d){return k in ch?ch[k]:d},bn:S.bn,files:FILES,esc,ico};
+}
+
+function demoDelegation(card,frame){
+  const ownerIcons={me:'person',ai:'spark',both:'share'};
+  const items=card.items.map((item,index)=>{
+    const [symbol,label]=item.demoTile||['file',item.en];
+    return {owner:item.ans, html:`<li class="delegation-job" data-demo-job="${index}">${ico(symbol)}<span>${esc(label)}</span></li>`};
+  });
+  return `<div class="delegation-board"${frame.unsolved?' data-awaiting':''}>
+    ${frame.unsolved?`<h2>Jobs to assign</h2><ul class="delegation-pool" role="list">${items.map(item=>item.html).join('')}</ul>`:''}
+    <div class="delegation-lanes">${card.bins.map(bin=>{
+      const label=bin.id==='ai'?(frame.aiName||bin.label):bin.label;
+      const jobs=frame.unsolved?[]:items.filter(item=>item.owner===bin.id);
+      return `<section class="delegation-lane" data-owner="${esc(bin.id)}">
+        <h${frame.unsolved?'3':'2'}>${ico(ownerIcons[bin.id]||'person')}${esc(label)}</h${frame.unsolved?'3':'2'}>
+        ${jobs.length?`<ul role="list">${jobs.map(item=>item.html).join('')}</ul>`:''}
+      </section>`;
+    }).join('')}</div>
+  </div>`;
+}
+
+/* Render a scripted mission frame without running learner actions or saving progress. */
+function demoFrame(id,frame){
+  const L=LESSONS[id];
+  const beat=L.beats.find(frame.find);
+  if(!beat) throw new Error('Missing demo beat for '+id+': '+frame.label);
+  const ch={...frame.values};
+  const x={L,beat,ch,files:FILES,esc,ico,bn:false,streaming:false,get:(k,d)=>k in ch?ch[k]:d};
+  if(frame.fill){
+    const c=fn(beat.compose,x);
+    ch[c.key]=c.best.map(key=>c.chips.find(chip=>chip.id===key).text).join(' ');
+  }
+
+  demoContext=x;
+  try{
+    if(frame.card){
+      const c=fn(beat.card,x);
+      let html=c.html;
+      if(c.type==='sort'){
+        html=demoDelegation(c,frame);
+      }else if(c.type==='choice'){
+        const option=c.options.find(o=>o.ok);
+        html=`${option.en}<p>${option.why}</p>`;
+      }
+      return {html:`<div class="view"><div class="scroll demo-card">${html}</div></div>`,app:'card'};
+    }
+    const options=beat.ask?.options||fn(beat.decide,x)?.options;
+    const result=frame.consequence!=null?options[frame.consequence].then:frame.counterfactual?fn(beat.cq,x):null;
+    const model=frame.scene||fn(result?.scene||beat.scene,x);
+    const sc=frame.buildPrompt?{...model,composer:{...model.composer,forceSend:true}}:model;
+    const promptBuilder=frame.buildPrompt?demoPromptParts(beat,x):undefined;
+    return {html:APPS[sc.app](sc,x)+overlays(sc),app:sc.app,scrollTo:frame.target||sc.scrollTo,promptBuilder};
+  }finally{
+    demoContext=null;
+  }
+}
+
+function demoPromptParts(beat,x){
+  const base=fn(beat.compose,x);
+  const compose=beat.projectorCompose?beat.projectorCompose(base):base;
+  const parts=compose.best.map(id=>{
+    const part=compose.chips.find(chip=>chip.id===id);
+    const example=beat.promptParts?.find(example=>example.t===part.tag);
+    const match=(option,picked)=>option.o.length===picked.length&&option.o.every((value,i)=>value===picked[i]);
+    return {
+      tag:part.tag, goal:part.goal, example, pool:pzPool(part),
+      tip:part.tip||'Try starting with the action Orbit should take.',
+      preview:picked=>pzShow(part,picked).join(' '),
+      check:picked=>({
+        answer:part.ok.find(option=>match(option,picked)),
+        trap:part.traps?.find(option=>match(option,picked)),
+        full:picked.length>=part.ok[0].o.length
+      })
+    };
+  });
+  return {key:compose.key,parts};
 }
 
 /* ------------------------------------------------------------- clock */
@@ -170,7 +249,7 @@ function composer(sc,dark){
   return `<div class="composer" ${c.hit?'':''}>${atts?`<div class="pend">${atts}</div>`:''}
    <div class="row"><button class="mi" ${c.attHit?`data-hit="${c.attHit}"`:''} aria-label="Add files">${ico('plus')}</button>
    <div class="cmpw">${hl?`<div class="cmp-hl" aria-hidden="true">${hl}&#8203;</div>`:''}<textarea id="cmp" class="${hl?'hl-on':''}" rows="1" inputmode="none" placeholder="${esc(c.placeholder||'Ask Sathi AI')}" ${c.key?`data-key="${c.key}"`:'readonly'}>${esc(val)}</textarea></div>
-   ${val.trim()||atts?`<button class="send" data-hit="${c.sendHit||'send'}" aria-label="Send">${ico('send')}</button>`:`<button class="mi" aria-label="Voice">${ico('mic')}</button>`}</div></div>`;
+   ${val.trim()||atts||c.forceSend?`<button class="send" data-hit="${c.sendHit||'send'}" aria-label="Send">${ico('send')}</button>`:`<button class="mi" aria-label="Voice">${ico('mic')}</button>`}</div></div>`;
 }
 function aiMsg(m,dark){
   return `<div class="msg-a" data-mid="${m.id||''}"><span class="spark">${ico('spark')}</span><div class="tx" ${m.stream?'data-stream="1"':''} ${m.speed?`data-speed="${m.speed}"`:''}>${m.html}</div></div>${m.actions!==false&&!m.thinking?`<div class="actions-row"><button class="mi">${ico('thumb')}</button><button class="mi">${ico('copy')}</button><button class="mi">${ico('share')}</button><button class="mi" ${m.moreHit?`data-hit="${m.moreHit}"`:''} aria-label="More">${ico('more')}</button></div>`:''}`;
@@ -215,9 +294,19 @@ APPS.studio=sc=>{
   </div>`;
 };
 
-APPS.chats=sc=>`<div class="view chats">${appBar(`<span style="display:flex;align-items:center;gap:10px"><span style="width:34px;height:34px;border-radius:99px;background:#0E5A2A;color:#fff;display:grid;place-items:center;font-size:15px">${esc(sc.group[0])}</span><span style="font-size:17px;line-height:1.1">${esc(sc.group)}<small style="display:block;font-size:12px;color:var(--md-on-surface-var);font-weight:400">${esc(sc.members||'')}</small></span></span>`,{right:`<button class="mi">${ico('phone')}</button><button class="mi">${ico('more')}</button>`})}
-  <div class="scroll" id="chatscroll" style="padding:8px 10px;background:#EFEAE2">${sc.msgs.map(m=>`<div class="cb ${m.me?'me':''}">${m.me?'':`<b style="color:${m.color||'#0E5A2A'}">${esc(m.from)}</b>`}${m.html||esc(m.text)}<small>${esc(m.time||'')}${m.me?' ✓✓':''}</small></div>`).join('')}</div>
-  <div class="composer" style="background:#fff;margin:6px 8px 8px"><div class="row"><button class="mi">${ico('plus')}</button><textarea rows="1" readonly placeholder="Message"></textarea><button class="mi">${ico('mic')}</button></div></div></div>`;
+APPS.chats=sc=>{
+  const transcript=sc.transcript;
+  const header=appBar(`<span style="display:flex;align-items:center;gap:10px"><span style="width:34px;height:34px;border-radius:99px;background:#0E5A2A;color:#fff;display:grid;place-items:center;font-size:15px">${esc(sc.group[0])}</span><span style="font-size:17px;line-height:1.1">${esc(sc.group)}<small style="display:block;font-size:12px;color:var(--md-on-surface-var);font-weight:400">${esc(sc.members||'')}</small></span></span>`,
+    transcript?{left:false}:{right:`<button class="mi">${ico('phone')}</button><button class="mi">${ico('more')}</button>`});
+  const messages=sc.msgs.map(m=>{
+    const sender=m.me&&!transcript?'':`<b style="color:${m.color||'#0E5A2A'}">${esc(m.from)}</b>`;
+    const time=transcript?'':`<small>${esc(m.time||'')}${m.me?' ✓✓':''}</small>`;
+    return `<div class="cb ${m.me?'me':''}"${m.id?` data-chat-message="${esc(m.id)}"`:''}>${sender}${m.html||esc(m.text)}${time}</div>`;
+  }).join('');
+  return `<div class="view chats${transcript?' chat-transcript':''}">${header}
+    <div class="scroll" id="chatscroll" style="padding:8px 10px;background:#EFEAE2">${transcript?`<p class="chat-context">${esc(transcript)}</p>`:''}${messages}</div>
+    ${transcript?'':`<div class="composer" style="background:#fff;margin:6px 8px 8px"><div class="row"><button class="mi">${ico('plus')}</button><textarea rows="1" readonly placeholder="Message"></textarea><button class="mi">${ico('mic')}</button></div></div>`}</div>`;
+};
 APPS.blank=sc=>`<div class="view">${sc.body||''}</div>`;
 
 /* ------------------------------------------------------------- overlays */
@@ -571,7 +660,7 @@ function renderFoot(){
   f.classList.toggle('acting',!!st.act&&!st.card);
 }
 function hubFoot(){
-  return `<div class="frow hub"><button class="pb ghost film" data-c="intro"><span aria-hidden="true">▶</span> ${tr('Watch: the four Ds','দেখো: চারটা D')} <small>3 min</small></button></div>
+  return `<div class="frow hub"><button class="pb ghost film" data-c="intro"><span aria-hidden="true">▶</span> ${tr('Watch: the four Ds','দেখো: চারটা D')} <small>3 min</small></button><a class="pb ghost film" href="demo.html">${tr('Projector demo','প্রজেক্টর ডেমো')}</a></div>
    <div class="modeseg" role="group" aria-label="How are you working?">${Object.keys(MODES).map(k=>`<button class="${S.mode===k?'on':''}" data-mode="${k}" aria-pressed="${S.mode===k}"><span aria-hidden="true">${MODES[k].i}</span> ${MODES[k].n}</button>`).join('')}</div>`;
 }
 /* the prompt recipe as a row of pills that light up as the parts go in */
@@ -1296,15 +1385,17 @@ function showMe(){
 function openMenu(){
   const m=$('#menu'); m.hidden=false;
   m.innerHTML=`<div class="panel" role="dialog" aria-label="Menu"><div class="mh"><h2>AI Fluency Lab</h2><button class="p-ic" data-m="close" aria-label="Close">${IC.x}</button></div>
-   <h3>Missions</h3><div class="pick-cards">${ORDER.map(id=>{const L=LESSONS[id];return `<button class="pcard${missionLocked(id)?' locked':''}" aria-disabled="${missionLocked(id)}" data-m="start:${id}"><span class="pi" style="background:${L.tint}">${L.emoji}</span><span><em>${esc(L.kicker)}</em><b>${esc(L.title)}</b><span>${missionLocked(id)?tr('Complete Mission 1 to unlock','মিশন ১ শেষ করলে খুলবে'):esc(L.time||'')}</span></span>${S.ch[id]&&S.ch[id]._finished?'<span class="done">✓</span>':missionLocked(id)?'<span class="done lk" aria-label="Locked">🔒</span>':''}</button>`}).join('')}</div>
+   <p><a href="demo.html">Watch the missions on the projector</a></p>
+   <h3>Full exercises</h3><div class="pick-cards">${ORDER.map(id=>{const L=LESSONS[id];return `<button class="pcard${missionLocked(id)?' locked':''}" aria-disabled="${missionLocked(id)}" data-m="start:${id}"><span class="pi" style="background:${L.tint}">${L.emoji}</span><span><em>${esc(L.kicker)}</em><b>${esc(L.title)}</b><span>${missionLocked(id)?tr('Complete Mission 1 to unlock','মিশন ১ শেষ করলে খুলবে'):esc(L.time||'')}</span></span>${S.ch[id]&&S.ch[id]._finished?'<span class="done">✓</span>':missionLocked(id)?'<span class="done lk" aria-label="Locked">🔒</span>':''}</button>`}).join('')}</div>
    <h3>How are you working?</h3>${modeButtons()}
-   <div class="mrow"><button class="btn quiet" data-m="voice">${S.voice?'🔊 Cog reads aloud — turn off':'🔇 Cog is silent — read aloud'}</button><button class="btn quiet" data-m="tour">❓ How this works</button><button class="btn gold" data-m="intro">▶ The four Ds (film)</button><button class="btn quiet" data-m="legend">⚙ The four Ds (gears)</button><button class="btn quiet" data-m="hub">📱 Ayesha’s lock screen</button><button class="btn quiet" data-m="stage">${S.stage?'Leave':'Present on'} projector (P)</button><button class="btn quiet" data-m="fs">Full screen</button><button class="btn quiet" data-m="print">Paper version</button><button class="btn quiet" data-m="reset">Start over</button></div>
+   <div class="mrow"><button class="btn quiet" data-m="voice">${S.voice?'🔊 Cog reads aloud — turn off':'🔇 Cog is silent — read aloud'}</button><button class="btn quiet" data-m="tour">❓ How this works</button><button class="btn gold" data-m="intro">▶ The four Ds (film)</button><button class="btn quiet" data-m="legend">⚙ The four Ds (gears)</button><button class="btn quiet" data-m="hub">📱 Ayesha’s lock screen</button><button class="btn quiet" data-m="stage">${S.stage?'Leave':'Use'} large layout (P)</button><button class="btn quiet" data-m="fs">Full screen</button><button class="btn quiet" data-m="print">Paper version</button><button class="btn quiet" data-m="reset">Start over</button></div>
    <h3>For the teacher</h3>
    <p><b>One screen at a time.</b> Cog (top) says what to do and reads it aloud. The middle is either Ayesha’s phone — where students act — or a card: a question, a sort, a gear earned. The button at the bottom is always the next thing. Feedback slides up from the bottom: green, amber or red. Stars count good calls made first time.</p>
    <p><b>Students find the problems themselves.</b> The AI’s mistakes are never pointed out in advance: students send the quick prompt, judge what comes back, spot what isn’t true in her documents, and see risky choices play out (⏩) before they rewind and choose again.</p>
    <ul class="tlist"><li><b>👤 Alone</b> — homework. No warm-up and no partner talk: the English is in the action — the sentences they choose to send, and the phrase at each gear.</li>
    <li><b>👥 Pair work</b> — one phone, two students. Choose Student A and Student B; keep those labels and swap jobs when asked. Each workflow opens with a warm-up (picture words, a story, the four phrases), and talk moments follow the key steps with a one-minute timer (T).</li>
-   <li><b>🙋 Class</b> — you drive on the projector (large type). Same warm-up and talk moments; neighbours talk while the timer runs.</li></ul>
+   <li><b>🙋 Guided class</b> — work through the full exercise together, with the warm-up and partner talk.</li>
+   <li><b>Projector demo</b> — teach through each mission. Tap the highlighted phone controls to demonstrate the decisions and advance at the teaching points.</li></ul>
    <p><b>The four Ds are also four jobs for English</b>: Delegation = planning and sharing jobs (<i>I will… The AI can…</i>); Description = clear instructions (<i>Use only… If…, ask me first</i>); Discernment = judging and disagreeing politely (<i>That’s not true. Her report says…</i>); Diligence = limits and responsibility (<i>I won’t share… It’s private</i>). Each gear turned ends with its phrase to say aloud.</p>
    <p>Mission 1 unlocks the later missions. Inside an activity, Skip and Show me (S) remain available. Cog reads aloud (V turns it off). The AI replies are scripted from real assistants, mistakes included. No data leaves the phone. Students without a phone: the Paper version (one A4 page per workflow).</p>
    <h3>Keys</h3><p>→ next · ← back · S show me · T talk timer · V read aloud · P projector · B Bangla</p>
@@ -1434,7 +1525,7 @@ function boot(){
 
 function sheetFrom(o){ UI.sheet=Object.assign(fbSheet(o,o.retry?()=>{}:null),o.sheet||{}); renderUI(); }
 const GI={get S(){return S},esc,BN,tr,T,speak,hush,sayBtn,gapped,canon,renderStage,renderFoot,renderUI,renderTop,renderSheet,firstTry,resetTalk,toggleTimer,paintTimer,recToggle,rec:()=>REC,timer:()=>TIMER,fileThumb,FILES,next,ctx,fn,IC,ico,ui:()=>UI};
-window.AFL={_g:GI,fb:sheetFrom,HUB,TOUR,_mode:k=>{S.mode=k},audioKey,audioDuration,canon,LESSONS,ORDER,cardHTML,sayBtn,byMode,mode:()=>S.mode,speak,recap,openLegend,boot,openView,closeView,lesson(L){LESSONS[L.id]=L;ORDER.push(L.id)},esc,ico,FILES,fileThumb,go,goId,next,ctx,conseq,CQS,unsay,renderPhone:()=>renderPhone(false),renderCoach:renderUI,renderUI,start,hub,dateLabel,get STORY_DATE(){return dateLabel()},firstTry,huntMark,shown};
+window.AFL={_g:GI,fb:sheetFrom,HUB,TOUR,_mode:k=>{S.mode=k},audioKey,audioDuration,canon,demoFrame,LESSONS,ORDER,cardHTML,sayBtn,byMode,mode:()=>S.mode,speak,recap,openLegend,boot,openView,closeView,lesson(L){LESSONS[L.id]=L;ORDER.push(L.id)},esc,ico,FILES,fileThumb,go,goId,next,ctx,conseq,CQS,unsay,renderPhone:()=>renderPhone(false),renderCoach:renderUI,renderUI,start,hub,dateLabel,get STORY_DATE(){return dateLabel()},firstTry,huntMark,shown};
 /* for tools/sheet-lines.cjs: reach the sheet builders from a test browser (not used by the page) */
 AFL._t={missionLocked,evidenceDone,kwDone,pzDone,openLine,huntVerdict,huntDone,askPick,pzTrap,ctx,fbSheet,renderUI,renderSheet,activeKB,goId,S,get UI(){return UI},set UI(v){UI=v}};
 })();
