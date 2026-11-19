@@ -1,0 +1,225 @@
+{
+ "p8_obj_5": {
+  "labels": [
+   "Yellow cottage on the hill"
+  ],
+  "PC": "The yellow cottage is standing on the hill."
+ },
+ "p8_obj_10": {
+  "labels": [
+   "Mouse in the attic"
+  ],
+  "PC": "The mouse is hiding in the attic."
+ },
+ "p8_obj_18": {
+  "labels": [
+   "Small cardboard box"
+  ],
+  "PC": "The small cardboard box is sitting on the attic floor."
+ },
+ "p8_obj_21": {
+  "labels": [
+   "Green crocodile puppet"
+  ],
+  "PC": "The crocodile puppet is dangling from a hook."
+ },
+ "p8_obj_27": {
+  "labels": [
+   "Attic workbench"
+  ],
+  "PC": "The attic workbench is holding brushes and paint pots."
+ },
+ "p8_obj_35": {
+  "labels": [
+   "Green building blocks"
+  ],
+  "PC": "The green building blocks are lying on the floor."
+ },
+ "p8_obj_43": {
+  "labels": [
+   "Red dining chair"
+  ],
+  "PC": "The red dining chair is standing at the table."
+ },
+ "p8_obj_64": {
+  "labels": [
+   "White towels on the shelf"
+  ],
+  "PC": "The white towels are lying on the shelf."
+ },
+ "p8_obj_65": {
+  "labels": [
+   "Toothbrushes in the glass"
+  ],
+  "PC": "The toothbrushes are standing in the glass."
+ },
+ "p8_obj_73": {
+  "labels": [
+   "Yellow star on the nursery wall"
+  ],
+  "PC": "The yellow star is shining on the nursery wall."
+ },
+ "p8_obj_76": {
+  "labels": [
+   "Big panda teddy"
+  ],
+  "PC": "The big panda teddy is sitting beside the wardrobe."
+ },
+ "p8_obj_84": {
+  "labels": [
+   "Man carrying a box"
+  ],
+  "PC": "The man is carrying a box up the stairs."
+ },
+ "p8_obj_85": {
+  "labels": [
+   "Cardboard box on the landing"
+  ],
+  "PC": "The cardboard box is sitting on the landing."
+ },
+ "p8_obj_92": {
+  "labels": [
+   "Snake terrarium visible through the balcony window"
+  ],
+  "PC": "The snake's glass tank is standing behind the balcony window."
+ },
+ "p8_obj_94": {
+  "labels": [
+   "Cat asleep on the windowsill"
+  ],
+  "PC": "The cat is dozing on the windowsill."
+ },
+ "p8_obj_95": {
+  "labels": [
+   "Bus stop sign"
+  ],
+  "PC": "The bus stop sign is standing by the road."
+ },
+ "p8_obj_105": {
+  "labels": [
+   "Grandmother welcoming a child in a red dress with a doll"
+  ],
+  "PC": "The grandmother is welcoming the little girl at the door."
+ },
+ "p8_obj_120": {
+  "labels": [
+   "Round coffee table"
+  ],
+  "PC": "The round coffee table is standing in front of the sofa."
+ },
+ "p8_obj_121": {
+  "labels": [
+   "Vase of red flowers"
+  ],
+  "PC": "The vase is holding red flowers."
+ },
+ "p8_obj_138": {
+  "labels": [
+   "Wooden kitchen chair"
+  ],
+  "PC": "The wooden kitchen chair is standing by the table."
+ },
+ "p8_obj_145": {
+  "labels": [
+   "Hanging ivy in the living room"
+  ],
+  "PC": "The hanging ivy is trailing down the wall."
+ },
+ "p8_obj_157": {
+  "labels": [
+   "Toilet by the window"
+  ],
+  "PC": "The toilet is standing by the window."
+ },
+ "p8_obj_166": {
+  "labels": [
+   "Red shoes on the bedroom floor"
+  ],
+  "PC": "The red shoes are lying on the bedroom floor."
+ },
+ "p8_obj_171": {
+  "labels": [
+   "Bunk bed with the blue quilt"
+  ],
+  "PC": "The bunk bed is standing against the wall."
+ },
+ "p8_obj_177": {
+  "labels": [
+   "Yellow banister on the middle floor"
+  ],
+  "PC": "The yellow banister is running along the stairs."
+ },
+ "p8_obj_186": {
+  "labels": [
+   "Purple hydrangea"
+  ],
+  "PC": "The purple hydrangea is flowering in the garden."
+ },
+ "p8_obj_194": {
+  "labels": [
+   "Zebra crossing",
+   "Zebra crossing stripes"
+  ],
+  "PC": "The zebra crossing is stretching across the wide road.",
+  "SP": "People cross the wide road at the zebra crossing.",
+  "PA": "Workers painted the zebra crossing on the wide road.",
+  "PX": "The zebra crossing was shining in the sunshine.",
+  "PP": "The zebra crossing has helped many people cross the road.",
+  "GO": "The cars are going to stop at the zebra crossing.",
+  "WI": "The children will cross the road at the zebra crossing."
+ },
+ "p8_obj_197": {
+  "labels": [
+   "Toy dolphin stuffed animal on the sofa"
+  ],
+  "PC": "The toy dolphin is sitting on the sofa."
+ },
+ "p8_obj_199": {
+  "labels": [
+   "Pink flowering bush"
+  ],
+  "PC": "The pink bush is flowering in the garden."
+ },
+ "p8_obj_206": {
+  "labels": [
+   "Blue armchair"
+  ],
+  "PC": "The blue armchair is standing by the window."
+ },
+ "p8_obj_213": {
+  "labels": [
+   "Cat lying on the hedge"
+  ],
+  "PC": "The cat is sunbathing on top of the hedge."
+ },
+ "p8_obj_220": {
+  "labels": [
+   "Table with the white cloth"
+  ],
+  "PC": "The table is holding the family lunch."
+ },
+ "p8_obj_228": {
+  "labels": [
+   "Purple hydrangeas in the hedge"
+  ],
+  "PC": "The purple hydrangeas are flowering in the hedge."
+ },
+ "p8_obj_232": {
+  "labels": [
+   "Front wheel of the dustcart"
+  ],
+  "PC": "The front wheel is turning slowly."
+ },
+ "p8_obj_245": {
+  "labels": [
+   "Back wheels of the dustcart"
+  ],
+  "PC": "The back wheels are turning slowly."
+ },
+ "p8_obj_89": {
+  "labels": [
+   "Man holding a pet snake on the balcony"
+  ],
+  "PC": "The man is holding a pet snake on the balcony."
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "p17_obj_23": {
+  "labels": [
+   "Horse and rider jumping a fence"
+  ],
+  "PC": "The horse and rider are jumping over the wooden fence."
+ },
+ "p17_obj_50": {
+  "labels": [
+   "Woman with electric drill"
+  ],
+  "PC": "The woman is using an electric drill beside the stable."
+ },
+ "p17_obj_69": {
+  "labels": [
+   "Man getting down from a carriage"
+  ],
+  "PC": "The man is climbing down from the carriage."
+ },
+ "p17_obj_128": {
+  "labels": [
+   "Boy carrying a crate of tools"
+  ],
+  "PC": "The boy is carrying a crate of tools toward the stable."
+ },
+ "p17_obj_130": {
+  "labels": [
+   "Man holding saddle"
+  ],
+  "PC": "The man is carrying the saddle toward the horse."
+ },
+ "p17_obj_181": {
+  "labels": [
+   "Dog in the bushes"
+  ],
+  "PC": "The dog is peering out from the green bushes."
+ }
+}

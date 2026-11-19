@@ -23,7 +23,7 @@ JSON_PATH = ROOT / "spatial_index.json"
 PAGES = [f"wimmelbook_{n}" for n in range(1, 11)]
 
 PROMPTS_RE = re.compile(
-    r"var prompts = (\[.*?\]);\n\s*var spatialIndex", re.DOTALL
+    r"var prompts = (\[.*?\]);\n", re.DOTALL
 )
 INDEX_RE = re.compile(
     r"var spatialIndex = (\{.*?\});\n\s*// State", re.DOTALL
@@ -1326,13 +1326,13 @@ def main() -> None:
 
     html = HTML_PATH.read_text(encoding="utf-8")
     prompts_match = PROMPTS_RE.search(html)
-    index_match = INDEX_RE.search(html)
-    if not prompts_match or not index_match:
-        raise SystemExit("Could not locate embedded prompts or spatial index")
+    if not prompts_match:
+        raise SystemExit("Could not locate embedded prompts")
 
     prompts = json.loads(prompts_match.group(1))
     prompt_fields = {prompt["field"] for prompt in prompts}
-    index = json.loads(index_match.group(1))
+    # spatial_index.json is the source of truth (the viewer no longer embeds it).
+    index = json.loads(JSON_PATH.read_text(encoding="utf-8"))
     json_index = json.loads(JSON_PATH.read_text(encoding="utf-8"))
     before = identity_snapshot(index)
     if before != identity_snapshot(json_index):
@@ -1421,14 +1421,12 @@ def main() -> None:
         print("Dry run only. Re-run with --apply to write files.")
         return
 
-    encoded_index = json.dumps(index, ensure_ascii=False, separators=(",", ":"))
-    new_html = html[:index_match.start(1)] + encoded_index + html[index_match.end(1):]
-    HTML_PATH.write_text(new_html, encoding="utf-8")
     JSON_PATH.write_text(
         json.dumps(json_index, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
-    print(f"Wrote {HTML_PATH}")
+    import bp_data  # the viewer reads data/<picture>.js, not index.html
+    bp_data.write_viewer_data(json_index)
     print(f"Wrote {JSON_PATH}")
 
 

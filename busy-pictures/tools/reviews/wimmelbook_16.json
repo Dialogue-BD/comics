@@ -1,0 +1,26 @@
+{
+ "p16_obj_24": {
+  "labels": [
+   "Vet driving the golf cart"
+  ],
+  "PC": "The vet is driving the golf cart along the farm track."
+ },
+ "p16_obj_111": {
+  "labels": [
+   "Chicken sitting on the tractor"
+  ],
+  "PC": "The chicken is sitting on the tractor."
+ },
+ "p16_obj_131": {
+  "labels": [
+   "Metal combine part"
+  ],
+  "PC": "The metal part is shining on the side of the combine."
+ },
+ "p16_obj_151": {
+  "labels": [
+   "Woman pushing a stroller"
+  ],
+  "PC": "The woman is pushing the stroller up the path."
+ }
+}

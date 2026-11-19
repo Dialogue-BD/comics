@@ -3,7 +3,7 @@
 Write the 7 `main_*` tense fields into pages 11-25 and repair bad past
 participles across all 25 pages.
 
-Writes BOTH the inline `var spatialIndex` in index.html and spatial_index.json.
+Writes spatial_index.json and the viewer's per-picture files (see bp_data.py).
 The viewer reads the inline copy; updating only the JSON does nothing.
 
 Usage:  python3 tools/apply_main_tenses.py [--dry-run]
@@ -95,10 +95,10 @@ DRY = '--dry-run' in sys.argv
 
 
 def load_inline():
-    s = open(os.path.join(BP, 'index.html')).read()
-    i = s.index('var spatialIndex = ') + len('var spatialIndex = ')
-    j = s.index('};', i) + 1
-    return s, i, j, json.loads(s[i:j])
+    # The viewer no longer carries the data inline; spatial_index.json is the
+    # source of truth. The extra return values keep main() unchanged.
+    import bp_data
+    return None, 0, 0, bp_data.load_index()
 
 
 # Verbs whose regular participle is also correct English — leave them alone
@@ -179,12 +179,9 @@ def main():
         print('\n--dry-run: nothing written')
         return
 
-    out = s[:i] + json.dumps(idx, ensure_ascii=False, separators=(',', ':')) + s[j:]
-    open(os.path.join(BP, 'index.html'), 'w').write(out)
-    with open(os.path.join(BP, 'spatial_index.json'), 'w') as f:
-        json.dump(idx, f, ensure_ascii=False, indent=2)
-        f.write('\n')
-    print('\nwrote index.html and spatial_index.json')
+    import bp_data
+    bp_data.save_index(idx)
+    print('\nwrote spatial_index.json and data/*.js')
 
 
 if __name__ == '__main__':

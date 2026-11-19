@@ -1,0 +1,168 @@
+{
+ "p5_obj_1": {
+  "labels": [
+   "White cloud"
+  ],
+  "SP": "The white cloud drifts across the sky.",
+  "PC": "The white cloud is drifting across the sky.",
+  "PA": "The white cloud drifted over the hill.",
+  "PX": "The white cloud was drifting over the village when the balloon rose.",
+  "PP": "The white cloud has moved behind the hill.",
+  "GO": "The white cloud is going to cover the sun.",
+  "WI": "The white cloud will disappear by the afternoon."
+ },
+ "p5_obj_3": {
+  "labels": [
+   "Bundle of wooden beams"
+  ],
+  "PC": "The bundle of wooden beams is lying on the truck.",
+  "PA": "The builders tied the wooden beams together.",
+  "PX": "The bundle of beams was bouncing on the truck on the bumpy road.",
+  "PP": "The truck has brought the beams from the timber yard.",
+  "GO": "The crane is going to lift the beams onto the house.",
+  "WI": "The beams will become part of the new roof."
+ },
+ "p5_obj_18": {
+  "labels": [
+   "Tall yellow crane"
+  ],
+  "SP": "The tall yellow crane lifts heavy things on the building site.",
+  "PC": "The tall yellow crane is lifting timber over the house.",
+  "PA": "The tall yellow crane lifted the timber over the house.",
+  "PX": "The tall yellow crane was lifting timber when the balloon floated past.",
+  "PP": "The crane has lifted all the roof beams today.",
+  "GO": "The crane is going to lift the roof tiles next.",
+  "WI": "The crane will leave when the house is finished."
+ },
+ "p5_obj_24": {
+  "labels": [
+   "Blue wooden house"
+  ],
+  "SP": "The blue wooden house stands on a quiet street."
+ },
+ "p5_obj_26": {
+  "labels": [
+   "Mounted light"
+  ],
+  "PC": "The mounted light is lighting the hallway."
+ },
+ "p5_obj_31": {
+  "labels": [
+   "Wooden roof rafters"
+  ],
+  "SP": "The rafters hold up the roof.",
+  "PC": "The wooden roof rafters are holding up the roof.",
+  "PA": "The carpenters fixed the rafters in place.",
+  "PX": "The rafters were standing bare before the tiles went on.",
+  "PP": "The workers have put insulation between the rafters.",
+  "GO": "The roofers are going to cover the rafters with tiles.",
+  "WI": "The rafters will hold the roof for many years."
+ },
+ "p5_obj_33": {
+  "labels": [
+   "Table"
+  ],
+  "SP": "The workmen stand on the table to reach the roof.",
+  "PC": "The two workmen are standing on the table.",
+  "PA": "The two workmen climbed onto the table.",
+  "PX": "The two workmen were standing on the table when the hose started.",
+  "PP": "The workmen have used the table as a platform all day.",
+  "GO": "The workmen are going to climb down from the table.",
+  "WI": "The table will need a good clean after this."
+ },
+ "p5_obj_60": {
+  "labels": [
+   "House with a red roof"
+  ],
+  "SP": "The house with the red roof stands on the hill.",
+  "PC": "The house with the red roof is standing on the hill.",
+  "PA": "Builders built the house with the red roof many years ago.",
+  "PX": "The house with the red roof was shining in the sun.",
+  "PP": "A family has lived in the house for many years.",
+  "GO": "The family is going to watch the balloon from the window.",
+  "WI": "The house with the red roof will look lovely at sunset."
+ },
+ "p5_obj_64": {
+  "labels": [
+   "Builder singing into a broom like a microphone"
+  ],
+  "SP": "The builder often sings when a good song comes on the radio.",
+  "PA": "The builder grabbed the broom and started to sing.",
+  "PX": "The builder was sweeping the yard when he started to sing into the broom.",
+  "PP": "The builder has only swept half the yard.",
+  "GO": "The builder is going to finish his song first.",
+  "WI": "The builder will feel silly if someone turns around."
+ },
+ "p5_obj_70": {
+  "labels": [
+   "Garden bushes"
+  ],
+  "SP": "The garden bushes grow along the fence.",
+  "PC": "The garden bushes are growing along the fence.",
+  "PA": "Someone planted the garden bushes last year.",
+  "PX": "The garden bushes were growing well in the sun.",
+  "PP": "The garden bushes have grown thick and green.",
+  "GO": "The gardener is going to cut the bushes.",
+  "WI": "The garden bushes will have flowers in the summer."
+ },
+ "p5_obj_80": {
+  "labels": [
+   "Wooden playhouse"
+  ],
+  "PC": "The wooden playhouse is standing in the garden.",
+  "WI": "The wooden playhouse will be full of children at the weekend."
+ },
+ "p5_obj_97": {
+  "labels": [
+   "Kitchen stepladder"
+  ],
+  "SP": "The worker stands on the stepladder to reach the wall.",
+  "PC": "The kitchen stepladder is standing by the wall.",
+  "PA": "The worker carried the stepladder into the kitchen.",
+  "PX": "The stepladder was wobbling a little when the man climbed it.",
+  "PP": "The man has used the stepladder all morning.",
+  "GO": "The man is going to fold up the stepladder.",
+  "WI": "The stepladder will go back in the van tonight."
+ },
+ "p5_obj_105": {
+  "labels": [
+   "Woman being splashed with paint from above"
+  ],
+  "SP": "The woman doesn't look up when she walks.",
+  "PA": "The woman looked up just as the paint tin tipped.",
+  "PX": "The woman was walking underneath when the painter's tin tipped over.",
+  "PP": "The woman has got paint in her hair.",
+  "GO": "The woman is going to need a long shower.",
+  "WI": "The woman will laugh about it later."
+ },
+ "p5_obj_174": {
+  "labels": [
+   "Pile of sand"
+  ],
+  "SP": "The builders take sand from the pile.",
+  "PC": "The pile of sand is sitting next to the wall.",
+  "PA": "The truck dropped the sand next to the wall.",
+  "PX": "The pile of sand was getting smaller as the builders worked.",
+  "PP": "The builders have used half of the sand.",
+  "GO": "The builders are going to mix the sand with cement.",
+  "WI": "The pile of sand will be gone by Friday."
+ },
+ "p5_obj_181": {
+  "labels": [
+   "Boy holding hands"
+  ],
+  "SP": "The boy holds his mother's hand on the street.",
+  "PC": "The boy is holding his mother's hand.",
+  "PA": "The boy held his mother's hand.",
+  "PX": "The boy was holding his mother's hand when they passed the digger.",
+  "PP": "The boy has held her hand all the way.",
+  "GO": "The boy is going to cross the road with his mother.",
+  "WI": "The boy will wave at the excavator driver."
+ },
+ "p5_obj_10": {
+  "labels": [
+   "Green bush"
+  ],
+  "PC": "The green bush is growing beside the road."
+ }
+}

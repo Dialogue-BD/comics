@@ -1,0 +1,212 @@
+{
+ "p4_obj_14": {
+  "labels": [
+   "Bison at the edge"
+  ],
+  "SP": "The bison stays at the edge of the herd.",
+  "PC": "The bison is wandering at the edge of the herd.",
+  "PA": "The bison wandered away from the herd.",
+  "PX": "The bison was wandering slowly when the riders came past.",
+  "PP": "The bison has wandered a long way.",
+  "GO": "The bison is going to walk back to the herd.",
+  "WI": "The bison will join the others soon."
+ },
+ "p4_obj_17": {
+  "labels": [
+   "Red sandstone cliff"
+  ],
+  "SP": "The red sandstone cliff rises above the desert.",
+  "PC": "The red sandstone cliff is glowing in the sun.",
+  "PA": "The wind shaped the red sandstone cliff over thousands of years.",
+  "PX": "The red sandstone cliff was glowing when the sun came up.",
+  "PP": "The red sandstone cliff has stood here for a very long time.",
+  "GO": "The red sandstone cliff is going to turn orange at sunset.",
+  "WI": "The red sandstone cliff will cast a long shadow tonight."
+ },
+ "p4_obj_19": {
+  "labels": [
+   "White clouds"
+  ],
+  "SP": "The white clouds change shape as they drift.",
+  "PC": "The white clouds are floating across the blue sky.",
+  "PA": "The white clouds floated across the sky.",
+  "PX": "The white clouds were floating over the cliffs.",
+  "PP": "The white clouds have drifted towards the mountains.",
+  "GO": "The white clouds are going to cover the sun.",
+  "WI": "The white clouds will bring a little shade."
+ },
+ "p4_obj_37": {
+  "labels": [
+   "Yucca plant"
+  ],
+  "SP": "The yucca plant grows well in the dry desert.",
+  "PC": "The yucca plant is growing in the dry sand.",
+  "PA": "The yucca plant grew tall spiky leaves.",
+  "PX": "The yucca plant was growing slowly in the heat.",
+  "PP": "The yucca plant has survived many dry summers.",
+  "GO": "The yucca plant is going to flower in the spring.",
+  "WI": "The yucca plant will need very little water."
+ },
+ "p4_obj_57": {
+  "labels": [
+   "Bald eagle"
+  ],
+  "SP": "The bald eagle hunts over the desert.",
+  "PC": "The bald eagle is soaring over the desert.",
+  "PA": "The bald eagle soared high over the cliffs.",
+  "PX": "The bald eagle was soaring over the riders.",
+  "PP": "The bald eagle has spotted something below.",
+  "GO": "The bald eagle is going to dive down.",
+  "WI": "The bald eagle will fly back to its nest."
+ },
+ "p4_obj_63": {
+  "labels": [
+   "Vulture"
+  ],
+  "SP": "The vulture perches on the windmill.",
+  "PC": "The vulture is perching on the windmill tower.",
+  "PA": "The vulture landed on the windmill tower.",
+  "PX": "The vulture was perching on the tower when the blades started turning.",
+  "PP": "The vulture has watched the ranch all morning.",
+  "GO": "The vulture is going to fly over the desert.",
+  "WI": "The vulture will look for food later."
+ },
+ "p4_obj_83": {
+  "labels": [
+   "Bird with its nest and chicks on the roof"
+  ],
+  "PC": "The bird is feeding its chicks on the roof.",
+  "GO": "The bird is going to fly off to find more insects."
+ },
+ "p4_obj_106": {
+  "labels": [
+   "Grazing sheep"
+  ],
+  "PC": "The sheep is grazing in the green pen."
+ },
+ "p4_obj_112": {
+  "labels": [
+   "Ranch gate sign"
+  ],
+  "SP": "The ranch sign shows the name of the ranch.",
+  "PC": "The ranch sign is hanging over the gate.",
+  "PA": "The rancher hung the sign over the gate.",
+  "PX": "The ranch sign was swinging in the wind.",
+  "PP": "The sign has welcomed visitors for many years.",
+  "GO": "The rancher is going to paint the sign again.",
+  "WI": "Visitors will see the sign from the road."
+ },
+ "p4_obj_126": {
+  "labels": [
+   "Beagle dog"
+  ],
+  "SP": "The beagle follows the pony everywhere.",
+  "PC": "The beagle is running beside the pony.",
+  "PA": "The beagle ran beside the girl on the pony.",
+  "PX": "The beagle was running beside the pony when it started to bark.",
+  "PP": "The beagle has run around the yard three times.",
+  "GO": "The beagle is going to lie down in the shade.",
+  "WI": "The beagle will sleep well tonight."
+ },
+ "p4_obj_134": {
+  "labels": [
+   "Luggage on the roof rack"
+  ],
+  "SP": "The suitcases travel on top of the jeep.",
+  "PC": "The suitcases are sitting on the roof rack.",
+  "PA": "The man tied the suitcases onto the roof rack.",
+  "PX": "The suitcases were bouncing on the roof rack on the bumpy road.",
+  "PP": "The suitcases have stayed on the roof rack all day.",
+  "GO": "The man is going to lift the suitcases down.",
+  "WI": "The suitcases will be dusty after the trip."
+ },
+ "p4_obj_143": {
+  "labels": [
+   "Window on the barn wall"
+  ],
+  "PC": "The window is letting daylight into the barn."
+ },
+ "p4_obj_145": {
+  "labels": [
+   "Rocks by the fence"
+  ],
+  "SP": "The rocks lie along the fence.",
+  "PC": "The rocks are lying by the fence.",
+  "PA": "Someone piled the rocks by the fence.",
+  "PX": "The rocks were lying in the sun.",
+  "PP": "The rocks have been there for years.",
+  "GO": "The lizard is going to sit on the warm rocks.",
+  "WI": "The rocks will stay hot until the evening."
+ },
+ "p4_obj_155": {
+  "labels": [
+   "White spotted pony rolling on the ground"
+  ],
+  "SP": "The pony likes to roll in the dirt after its dinner.",
+  "PA": "The pony lay down and rolled happily in the dust.",
+  "PX": "The pony was rolling in the dust when the rooster crowed.",
+  "PP": "The pony has rolled over three times.",
+  "GO": "The pony is going to stand up and shake off the dust.",
+  "WI": "The pony will need a good brush later."
+ },
+ "p4_obj_160": {
+  "labels": [
+   "Palomino draft horse"
+  ],
+  "SP": "The palomino horse waits patiently in the corral.",
+  "PC": "The palomino horse is waiting in the corral.",
+  "PA": "The palomino horse waited by the fence.",
+  "PX": "The palomino horse was waiting when the girl brought the hay.",
+  "PP": "The palomino horse has waited all morning for its food.",
+  "GO": "The palomino horse is going to eat some hay.",
+  "WI": "The palomino horse will pull the cart tomorrow."
+ },
+ "p4_obj_169": {
+  "labels": [
+   "Black and white piglet"
+  ],
+  "SP": "The piglet runs around the pen.",
+  "PC": "The piglet is running around the pen.",
+  "PA": "The piglet ran around the pen.",
+  "PX": "The piglet was running around when the farmer opened the gate.",
+  "PP": "The piglet has run around the pen all morning.",
+  "GO": "The piglet is going to sleep in the mud.",
+  "WI": "The piglet will grow big and strong."
+ },
+ "p4_obj_182": {
+  "labels": [
+   "Baby donkey"
+  ],
+  "PC": "The baby donkey is kicking up its legs.",
+  "SP": "The baby donkey likes to kick up its legs.",
+  "PA": "The baby donkey kicked up its legs.",
+  "PX": "The baby donkey was kicking up its legs in the sun.",
+  "PP": "The baby donkey has played all morning.",
+  "GO": "The baby donkey is going to rest beside its mother.",
+  "WI": "The baby donkey will grow big like its mother."
+ },
+ "p4_obj_189": {
+  "labels": [
+   "Red and white cow"
+  ],
+  "SP": "The red and white cow eats hay in the yard.",
+  "PC": "The red and white cow is eating hay.",
+  "PA": "The red and white cow ate some hay.",
+  "PX": "The red and white cow was eating hay when the bull jumped.",
+  "PP": "The cow has eaten most of the hay.",
+  "GO": "The cow is going to drink from the trough.",
+  "WI": "The farmer will milk the cow this evening."
+ },
+ "p4_obj_205": {
+  "labels": [
+   "Farm boy with a rake"
+  ],
+  "PC": "The farm boy is raking straw in the barn."
+ },
+ "p4_obj_6": {
+  "labels": [
+   "Desert tree"
+  ],
+  "PC": "The desert tree is growing on the open plain."
+ }
+}

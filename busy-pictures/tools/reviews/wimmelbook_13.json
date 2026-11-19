@@ -1,0 +1,27 @@
+{
+ "p13_obj_148": {
+  "labels": [
+   "Shoes under the table"
+  ],
+  "PC": "The shoes are lying under the kitchen table."
+ },
+ "p13_obj_221": {
+  "labels": [
+   "Rabbit in the hedge"
+  ],
+  "PC": "The rabbit is hiding inside the hedge."
+ },
+ "p13_obj_206": {
+  "labels": [
+   "Zebra crossing",
+   "Zebra crossing stripes"
+  ],
+  "SP": "People cross the dark road at the zebra crossing.",
+  "PC": "The zebra crossing is stretching across the dark road.",
+  "PA": "Workers painted the zebra crossing on the dark road.",
+  "PX": "The zebra crossing was shining under the street lights.",
+  "PP": "The zebra crossing has helped many people cross the road.",
+  "GO": "The cars are going to stop at the zebra crossing.",
+  "WI": "The children will cross the road at the zebra crossing."
+ }
+}

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Apply an exported label-suggestion batch and rewrite the seven live tenses.
 
-The viewer reads the inline spatialIndex in index.html, so this updates both
-that snapshot and spatial_index.json. Repeated suggestions are resolved by
+Updates spatial_index.json and rebuilds the viewer's per-picture files in
+data/ (bp_data.py). Repeated suggestions are resolved by
 keeping the newest record for each object. The grammar frames below are
 hand-authored from the corrected visual identifications; build_main only
 inflects those authored frames across the seven tense prompts.
@@ -289,11 +289,10 @@ STATIC_IDS = {'p14_obj_102', 'p16_obj_131', 'p22_obj_102', 'p22_obj_103',
 
 
 def load_inline():
-    html_path = os.path.join(BP, 'index.html')
-    text = open(html_path, encoding='utf-8').read()
-    start = text.index('var spatialIndex = ') + len('var spatialIndex = ')
-    end = text.index('};', start) + 1
-    return html_path, text, start, end, json.loads(text[start:end])
+    # spatial_index.json is the source of truth; the viewer no longer carries
+    # the data inline. The extra return values keep main() unchanged.
+    import bp_data
+    return None, None, 0, 0, bp_data.load_index()
 
 
 def main():
@@ -333,17 +332,13 @@ def main():
             stative_override=stative_override))
         changed += 1
 
-    compact = json.dumps(index, ensure_ascii=False, separators=(',', ':'))
-    with open(html_path, 'w', encoding='utf-8') as f:
-        f.write(html[:start] + compact + html[end:])
-    with open(os.path.join(BP, 'spatial_index.json'), 'w', encoding='utf-8') as f:
-        json.dump(index, f, ensure_ascii=False, indent=2)
-        f.write('\n')
+    import bp_data
+    bp_data.save_index(index)
 
     print('applied %d distinct updates from %d suggestions' % (
         changed, len(exported['suggestions'])))
     print('rewrote %d active grammar sentences' % (changed * 7))
-    print('wrote index.html and spatial_index.json')
+    print('wrote spatial_index.json and data/*.js')
 
 
 if __name__ == '__main__':

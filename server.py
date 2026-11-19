@@ -5,6 +5,9 @@ Endpoints
 ---------
 GET  /api/poll?window=<key>   – fetch current vote counts for a time window
 GET  /api/health              – report backend and durable-storage readiness
+GET  /api/tts/<voice>/<key>.mp3 – a pre-recorded speech clip (see tts_clips.py)
+GET  /api/tts/status          – which clip storage is in use
+POST /api/tts/upload          – upload a zip of clips (needs TTS_UPLOAD_TOKEN)
 POST /api/poll                – submit / update a vote (upserts by responseToken)
 GET  /api/fgd/session         – fetch a public, participant, or teacher session view
 POST /api/fgd/sessions        – create a focus-group discussion session
@@ -16,6 +19,7 @@ POST /api/fgd/teacher         – advance phases and manage the room dashboard
 Everything else is served as static files from the same directory.
 """
 
+import gzip
 import http.server
 import json
 import os
@@ -28,6 +32,7 @@ from urllib.parse import parse_qs, urlparse
 
 from classroom_db import ClassroomDatabase
 from brand_assets import BrandAssets
+from tts_clips import TtsClips
 
 PORT = int(os.environ.get("PORT", "5000"))
 DIRECTORY = os.path.dirname(os.path.abspath(__file__))
@@ -35,6 +40,25 @@ DB_PATH = os.environ.get("DIALOGUE_DB_PATH", os.path.join(DIRECTORY, "poll.db"))
 DATABASE_URL = os.environ.get("DATABASE_URL", "").strip()
 IS_DEPLOYMENT = os.environ.get("REPLIT_DEPLOYMENT") == "1"
 BRAND_ASSETS = BrandAssets()
+TTS_CLIPS = TtsClips()
+
+# Busy Pictures loads one labels file per picture. They are versioned with
+# ?v=<hash> by busy-pictures/tools/bp_data.py, so a versioned request can be
+# cached for a year and compressed once.
+BUSY_DATA_PATH_RE = re.compile(r"^/busy-pictures/data/wimmelbook_[0-9]{1,2}\.js$")
+_GZIP_CACHE = {}
+_GZIP_LOCK = threading.Lock()
+
+
+def _gzip_cached(path: str, body: bytes, stamp) -> bytes:
+    with _GZIP_LOCK:
+        hit = _GZIP_CACHE.get(path)
+        if hit and hit[0] == stamp:
+            return hit[1]
+    packed = gzip.compress(body, compresslevel=6)
+    with _GZIP_LOCK:
+        _GZIP_CACHE[path] = (stamp, packed)
+    return packed
 
 if IS_DEPLOYMENT and not DATABASE_URL:
     raise RuntimeError(
@@ -329,12 +353,49 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         super().__init__(*args, directory=DIRECTORY, **kwargs)
 
     def end_headers(self):
-        # The Replit preview iframe may otherwise retain stale static files
-        # across workflow restarts based on their Last-Modified timestamp.
-        self.send_header("Cache-Control", "no-store, no-cache, must-revalidate")
-        self.send_header("Pragma", "no-cache")
-        self.send_header("Expires", "0")
+        policy = getattr(self, "_cache_policy", None)
+        if policy:
+            # A route chose its own caching (versioned data files, speech clips).
+            self.send_header("Cache-Control", policy)
+            self._cache_policy = None
+        else:
+            # The Replit preview iframe may otherwise retain stale static files
+            # across workflow restarts based on their Last-Modified timestamp.
+            self.send_header("Cache-Control", "no-store, no-cache, must-revalidate")
+            self.send_header("Pragma", "no-cache")
+            self.send_header("Expires", "0")
         super().end_headers()
+
+    def _accepts_gzip(self) -> bool:
+        return "gzip" in self.headers.get("Accept-Encoding", "").lower()
+
+    def _serve_busy_pictures_data(self, path: str, query: str, head: bool = False) -> None:
+        """Serve one picture's labels file, compressed, cacheable when versioned."""
+        file_path = os.path.join(DIRECTORY, path.lstrip("/"))
+        try:
+            stat = os.stat(file_path)
+            with open(file_path, "rb") as source:
+                body = source.read()
+        except FileNotFoundError:
+            self.send_error(404)
+            return
+        versioned = "v=" in query
+        self._cache_policy = "public, max-age=31536000, immutable" if versioned else "no-cache"
+        encoded = self._accepts_gzip()
+        if encoded:
+            body = _gzip_cached(file_path, body, (stat.st_mtime_ns, stat.st_size))
+        self.send_response(200)
+        self.send_header("Content-Type", "text/javascript; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Vary", "Accept-Encoding")
+        if encoded:
+            self.send_header("Content-Encoding", "gzip")
+        self.end_headers()
+        if not head:
+            try:
+                self.wfile.write(body)
+            except (BrokenPipeError, ConnectionResetError):
+                pass
 
     def copyfile(self, source, outputfile):
         try:
@@ -360,10 +421,17 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             b'<script src="../dialogue-brand.js"></script>\n</body>',
             1,
         )
+        encoded = self._accepts_gzip()
+        if encoded:
+            stat = os.stat(path)
+            body = _gzip_cached(path, body, (stat.st_mtime_ns, stat.st_size))
+        self._cache_policy = "no-cache"
         self.send_response(200)
         self.send_header("Content-Type", "text/html; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
-        self.send_header("Cache-Control", "no-cache")
+        self.send_header("Vary", "Accept-Encoding")
+        if encoded:
+            self.send_header("Content-Encoding", "gzip")
         self.end_headers()
         try:
             self.wfile.write(body)
@@ -385,7 +453,13 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     # ── GET classroom APIs ────────────────────────────────────────────────────
     def do_HEAD(self):
-        if BRAND_ASSETS.serve(self, urlparse(self.path).path):
+        parsed = urlparse(self.path)
+        if TTS_CLIPS.serve(self, parsed.path, head=True):
+            return
+        if BUSY_DATA_PATH_RE.match(parsed.path):
+            self._serve_busy_pictures_data(parsed.path, parsed.query, head=True)
+            return
+        if BRAND_ASSETS.serve(self, parsed.path):
             return
         super().do_HEAD()
 
@@ -398,6 +472,14 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             return
         if parsed.path in {"/busy-pictures/", "/busy-pictures/index.html"}:
             self._serve_branded_busy_pictures()
+            return
+        if BUSY_DATA_PATH_RE.match(parsed.path):
+            self._serve_busy_pictures_data(parsed.path, parsed.query)
+            return
+        if TTS_CLIPS.serve(self, parsed.path):
+            return
+        if parsed.path == "/api/tts/status":
+            _json_response(self, 200, TTS_CLIPS.status())
             return
         if parsed.path == "/api/health":
             database = _get_db()
@@ -475,6 +557,10 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     # ── POST classroom APIs ───────────────────────────────────────────────────
     def do_POST(self):
         parsed = urlparse(self.path)
+        if parsed.path == "/api/tts/upload":
+            status, payload = TTS_CLIPS.upload(self)
+            _json_response(self, status, payload)
+            return
         if parsed.path.startswith("/api/fgd/"):
             length = int(self.headers.get("Content-Length", 0))
             try:

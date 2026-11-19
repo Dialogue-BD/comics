@@ -1,0 +1,144 @@
+{
+ "p10_obj_16": {
+  "labels": [
+   "Round cafe table by the parasol"
+  ],
+  "PC": "The cafe table is standing under the parasol."
+ },
+ "p10_obj_52": {
+  "labels": [
+   "Blue pushchair"
+  ],
+  "PC": "The blue pushchair is standing behind the little audience."
+ },
+ "p10_obj_63": {
+  "labels": [
+   "Seagull on the kiosk roof"
+  ],
+  "PC": "The seagull is perching on the kiosk roof."
+ },
+ "p10_obj_77": {
+  "labels": [
+   "Blue jacket on the bench"
+  ],
+  "PC": "The blue jacket is lying on the bench."
+ },
+ "p10_obj_79": {
+  "labels": [
+   "Grandmother running to her crying granddaughter at the fountain"
+  ],
+  "PC": "The grandmother is running to her crying granddaughter."
+ },
+ "p10_obj_81": {
+  "labels": [
+   "Man resting under a tree as an acorn falls on him"
+  ],
+  "PC": "The man is resting in the shade under the tree.",
+  "GO": "An acorn is going to fall on the man's head.",
+  "WI": "The man will move out from under the branch."
+ },
+ "p10_obj_86": {
+  "labels": [
+   "Bench where the couple sit"
+  ],
+  "PC": "The bench is facing the sunny lawn."
+ },
+ "p10_obj_90": {
+  "labels": [
+   "Hedge along the path"
+  ],
+  "PC": "The hedge is running along the path."
+ },
+ "p10_obj_111": {
+  "labels": [
+   "Nesting box on the trunk"
+  ],
+  "PC": "The nesting box is hanging on the tree trunk."
+ },
+ "p10_obj_114": {
+  "labels": [
+   "Man lying on the grass"
+  ],
+  "PC": "The man is stretching out in the sunshine."
+ },
+ "p10_obj_122": {
+  "labels": [
+   "Stroller beside the swings"
+  ],
+  "PC": "The stroller is standing beside the swings."
+ },
+ "p10_obj_126": {
+  "labels": [
+   "Piece of litter"
+  ],
+  "PC": "The piece of litter is blowing across the sand."
+ },
+ "p10_obj_142": {
+  "labels": [
+   "Pair of ducks"
+  ],
+  "PC": "The two ducks are searching for food."
+ },
+ "p10_obj_144": {
+  "labels": [
+   "Purple flowering bush"
+  ],
+  "PC": "The purple bush is blooming beside the path."
+ },
+ "p10_obj_147": {
+  "labels": [
+   "Boy littering as a policeman catches him"
+  ],
+  "PC": "The boy in the red cap is dropping litter on the path.",
+  "GO": "The policeman is going to catch the boy.",
+  "WI": "The boy will pick up his litter."
+ },
+ "p10_obj_152": {
+  "labels": [
+   "Sandal lying on the grass"
+  ],
+  "PC": "The sandal is lying on the grass."
+ },
+ "p10_obj_153": {
+  "labels": [
+   "Woman kneeling by the bench"
+  ],
+  "PC": "The woman is packing the picnic things away."
+ },
+ "p10_obj_168": {
+  "labels": [
+   "Red toy moulds"
+  ],
+  "PC": "The red toy moulds are lying in the sand."
+ },
+ "p10_obj_171": {
+  "labels": [
+   "Boy digging in the sand"
+  ],
+  "PC": "The boy is scooping sand into his bucket."
+ },
+ "p10_obj_174": {
+  "labels": [
+   "Boy in the green top"
+  ],
+  "PC": "The boy in the green top is playing in the sand."
+ },
+ "p10_obj_175": {
+  "labels": [
+   "Child lying in the sand"
+  ],
+  "PC": "The child is rolling about in the sandpit."
+ },
+ "p10_obj_186": {
+  "labels": [
+   "Yellow duck spring rider"
+  ],
+  "PC": "The duck rider is bouncing on its big spring."
+ },
+ "p10_obj_166": {
+  "labels": [
+   "Girl digging in the sand"
+  ],
+  "PC": "The girl is digging a deep hole."
+ }
+}

@@ -1,0 +1,141 @@
+{
+ "p11_obj_8": {
+  "labels": [
+   "Boy watching by the fence"
+  ],
+  "PC": "The boy by the fence is watching the football match."
+ },
+ "p11_obj_49": {
+  "labels": [
+   "Catcher behind first base"
+  ],
+  "PC": "The catcher is crouching behind first base."
+ },
+ "p11_obj_50": {
+  "labels": [
+   "Fielder behind second base"
+  ],
+  "PC": "The fielder is standing behind second base."
+ },
+ "p11_obj_73": {
+  "labels": [
+   "Boy leaning on the fence"
+  ],
+  "PC": "The boy is leaning on the fence."
+ },
+ "p11_obj_75": {
+  "labels": [
+   "Boy crouching by the court"
+  ],
+  "PC": "The boy by the court is tying his shoelace."
+ },
+ "p11_obj_86": {
+  "labels": [
+   "Palm fronds over the awning"
+  ],
+  "PC": "The palm fronds are drooping over the awning."
+ },
+ "p11_obj_106": {
+  "labels": [
+   "Spotted dress in the window"
+  ],
+  "PC": "The spotted dress is hanging in the shop window."
+ },
+ "p11_obj_107": {
+  "labels": [
+   "fabric in window"
+  ],
+  "PC": "The fabric is hanging in the shop window."
+ },
+ "p11_obj_108": {
+  "labels": [
+   "Woman looking in the window"
+  ],
+  "PC": "The woman is looking at the summer dresses in the window."
+ },
+ "p11_obj_109": {
+  "labels": [
+   "Man in the shop doorway"
+  ],
+  "PC": "The man is standing in the open shop door."
+ },
+ "p11_obj_120": {
+  "labels": [
+   "White bag in the boot"
+  ],
+  "PC": "The white bag is sitting in the open boot."
+ },
+ "p11_obj_133": {
+  "labels": [
+   "Man relaxing in the folding chair"
+  ],
+  "PC": "The man is relaxing in the folding chair."
+ },
+ "p11_obj_149": {
+  "labels": [
+   "Boy licking the ice cream"
+  ],
+  "PC": "The boy is licking his dripping ice cream cone."
+ },
+ "p11_obj_151": {
+  "labels": [
+   "Boy splashing at the fountain"
+  ],
+  "PC": "The boy is flicking water at his friends."
+ },
+ "p11_obj_159": {
+  "labels": [
+   "Round cafe table"
+  ],
+  "PC": "The round cafe table is holding the sundae glasses."
+ },
+ "p11_obj_170": {
+  "labels": [
+   "Woman sitting on the fountain edge"
+  ],
+  "PC": "The woman is licking her ice cream on the edge of the fountain."
+ },
+ "p11_obj_177": {
+  "labels": [
+   "Mother with yoga mat"
+  ],
+  "PC": "The mother is carrying her yoga mat along the pavement."
+ },
+ "p11_obj_180": {
+  "labels": [
+   "Woman pushing stroller"
+  ],
+  "PC": "The woman is pushing the stroller along the pavement."
+ },
+ "p11_obj_184": {
+  "labels": [
+   "Girl riding the pink scooter"
+  ],
+  "PC": "The girl is riding the pink scooter along the road."
+ },
+ "p11_obj_197": {
+  "labels": [
+   "Woman waving by the road"
+  ],
+  "PC": "The woman is waving at the passing pickup truck."
+ },
+ "p11_obj_202": {
+  "labels": [
+   "Girl playing the violin"
+  ],
+  "PC": "The girl is playing her violin on the deck."
+ },
+ "p11_obj_113": {
+  "labels": [
+   "Zebra crossing",
+   "Zebra crossing stripes"
+  ],
+  "SP": "People cross the wide road at the zebra crossing.",
+  "PC": "The zebra crossing is stretching across the wide road.",
+  "PA": "Workers painted the zebra crossing on the wide road.",
+  "PX": "The zebra crossing was shining in the sunshine.",
+  "PP": "The zebra crossing has helped many people cross the road.",
+  "GO": "The cars are going to stop at the zebra crossing.",
+  "WI": "The children will cross the road at the zebra crossing."
+ }
+}

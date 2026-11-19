@@ -1,0 +1,20 @@
+{
+ "p14_obj_21": {
+  "labels": [
+   "Mouse in doorway"
+  ],
+  "PC": "The mouse is peering out from the doorway."
+ },
+ "p14_obj_80": {
+  "labels": [
+   "Man beside the yellow truck"
+  ],
+  "PC": "The farmer is standing beside the yellow truck."
+ },
+ "p14_obj_102": {
+  "labels": [
+   "Green lawn"
+  ],
+  "PC": "The green lawn is spreading out beside the path."
+ }
+}

@@ -62,8 +62,8 @@ all three grammar forms in the data but remain hidden pending box repair.
 distinct object updates across pages 10–22 (the newest entry wins when an
 object was submitted twice). Each corrected object has a hand-authored
 subject/action frame and all seven live `main_*` tense sentences were rebuilt.
-The script writes both `spatial_index.json` and the inline `spatialIndex` in
-`index.html`; it is safe to rerun with the same export.
+The script writes `spatial_index.json` and the viewer's `data/*.js` files; it
+is safe to rerun with the same export.
 
 The viewer's prompt list maps all 7 grammar points to `main_simple_present`,
 `main_present_continuous`, `main_simple_past`, `main_past_continuous`,
@@ -108,10 +108,43 @@ preview). It is idempotent.
 
 ## The one thing that will waste your time if you miss it
 
-`spatial_index.json` is **not loaded by the viewer**. There is no `fetch` in
-index.html. The index is embedded inline as `var spatialIndex = {...}`.
-Updating only the JSON changes nothing on the live site — this cost a full
-round of "it's fixed" / "no it isn't". `merge_page.py` writes **both**. Use it.
+`spatial_index.json` is **not loaded by the viewer**. Since 2026-11-17 the
+viewer loads one small file per picture, `data/wimmelbook_N.js`, when that
+picture opens (the old inline copy made index.html 23 MB). Those files hold
+only id, name, box and the 21 live `main_*` sentences per object.
+
+`spatial_index.json` stays the source of truth. Every tool writes it through
+`tools/bp_data.py`, which also rebuilds `data/*.js` and stamps
+`BUSY_DATA_VERSION` in index.html so phones refetch changed files. If you
+edit the JSON any other way, run `python3 tools/bp_data.py` afterwards —
+updating only the JSON changes nothing on the live site.
+
+**Spelling repairs (2026-11-17):** the generators produced ~170 kinds of
+misspelt verb forms ("provid", "coverred", "opene", "has writed").
+`tools/spelling_fixes.py` holds the corrections and `bp_data.save_index()`
+applies them on every save, so they cannot come back. Add any new
+misspelling there. Garbled whole objects were rewritten by hand in
+`tools/repair_sentences.py`. `author_tense_forms.py` is now deterministic
+(it used to depend on Python's string-hash order).
+
+**Hand review (2026-11-17):** every object on pictures 1–22 was read and
+fixed picture by picture. Fixes live in `tools/reviews/wimmelbook_N.json`
+(object id → `labels` plus any of `SP PC PA PX PP GO WI`); an entry only
+applies while the object's label is still one of its `labels`. A review
+that changes `PC` (the present-continuous action) rebuilds every tense it
+leaves out from the new action. Filler phrases go in `STOCK_PHRASES` in
+`repair_sentences.py`; matching tenses are rebuilt from the action. After
+any change run `python3 tools/repair_sentences.py` (stable on rerun).
+
+## Natural voice (Phonon clips) — 2026-11-17
+
+The viewer's default voice plays pre-recorded Phonon TTS clips (voice V1)
+from `/api/tts/v1/<key>.mp3`; `<key>` hashes the exact spoken text, so after
+any sentence or label change just rerun
+`tools/make_phonon_clips.py` (makes only the new/changed clips) and then
+`tools/make_phonon_clips.py --upload --token <TTS_UPLOAD_TOKEN>`.
+Missing clips fall back to the phone's voice automatically. Server side:
+`tts_clips.py` (Replit App Storage, or a local `tts-clips/` folder).
 
 ## Repo
 
@@ -148,7 +181,7 @@ The fix is to read them off a grid, per tile.
    - last field is `plural`
 4. `python3 tools/merge_page.py N page_data.py`
    Generates all 42 grammar fields, drops tile-seam duplicates (IoU > 0.55),
-   renumbers ids, writes index.html **and** spatial_index.json, and renders
+   renumbers ids, writes spatial_index.json **and** data/*.js, and renders
    `tools/check_pageN.png`.
 5. **Look at `check_pageN.png`.** This catches drift nothing else catches.
    Do not commit a page without viewing it.

@@ -47,3 +47,6 @@ build = ["sh", "-c", "npm ci --omit=dev --ignore-scripts"]
 [postMerge]
 path = "scripts/post-merge.sh"
 timeoutMs = 30000
+
+[objectStorage]
+defaultBucketID = "replit-objstore-68525313-1d47-443b-88ba-89ccf1ac903f"

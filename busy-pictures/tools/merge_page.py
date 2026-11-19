@@ -13,13 +13,13 @@ Does the whole job:
   - generates all 42 grammar fields per object (core 17 + 25 extended)
   - drops tile-seam duplicates (IoU > 0.55)
   - renumbers ids
-  - writes the page into BOTH the inline spatialIndex in index.html AND
-    spatial_index.json, which must stay in step
+  - writes the page into spatial_index.json and rebuilds the viewer's
+    per-picture files in data/ (bp_data.py)
   - renders a verification PNG of the boxes over the artwork
 
-The viewer reads the INLINE copy in index.html. spatial_index.json alone does
-nothing — updating only that file was a real bug once. Always run this script
-rather than editing either file by hand.
+The viewer reads data/<picture>.js, not spatial_index.json. If you ever edit
+spatial_index.json by hand, run `python3 tools/bp_data.py` afterwards or the
+viewer will not see the change.
 """
 import json, sys, os, importlib.util
 
@@ -70,18 +70,10 @@ def build_objects(page, rows):
 
 
 def write_page(page, objs):
-    html = os.path.join(BP, 'index.html')
-    s = open(html).read()
-    i = s.index('var spatialIndex = ') + len('var spatialIndex = ')
-    j = s.index('};', i) + 1
-    idx = json.loads(s[i:j])
+    import bp_data
+    idx = bp_data.load_index()
     idx['wimmelbook_%d' % page] = objs
-    s = s[:i] + json.dumps(idx, ensure_ascii=False, separators=(',', ':')) + s[j:]
-    open(html, 'w').write(s)
-
-    with open(os.path.join(BP, 'spatial_index.json'), 'w') as f:
-        json.dump(idx, f, ensure_ascii=False, indent=2)
-        f.write('\n')
+    bp_data.save_index(idx)
     return idx
 
 

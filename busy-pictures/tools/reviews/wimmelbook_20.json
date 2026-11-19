@@ -1,0 +1,38 @@
+{
+ "p20_obj_11": {
+  "labels": [
+   "Boy with remote controller"
+  ],
+  "PC": "The boy is steering a toy with the remote controller."
+ },
+ "p20_obj_27": {
+  "labels": [
+   "Hat on shelf"
+  ],
+  "PC": "The hat is sitting on the hallway shelf."
+ },
+ "p20_obj_72": {
+  "labels": [
+   "Bush by the shed"
+  ],
+  "PC": "The bush is growing beside the shed door."
+ },
+ "p20_obj_86": {
+  "labels": [
+   "Girl's height being measured"
+  ],
+  "PC": "The girl is standing against the measuring chart."
+ },
+ "p20_obj_97": {
+  "labels": [
+   "Girl measuring"
+  ],
+  "PC": "The girl is measuring her friend's height."
+ },
+ "p20_obj_174": {
+  "labels": [
+   "Frog under drainpipe"
+  ],
+  "PC": "The frog is sitting under the drainpipe."
+ }
+}
