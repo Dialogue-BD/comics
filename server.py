@@ -33,6 +33,7 @@ from urllib.parse import parse_qs, urlparse
 from classroom_db import ClassroomDatabase
 from brand_assets import BrandAssets
 from tts_clips import TtsClips
+from analytics import analytics_status, get_measurement_id, inject_ga_html
 
 PORT = int(os.environ.get("PORT", "5000"))
 DIRECTORY = os.path.dirname(os.path.abspath(__file__))
@@ -403,9 +404,74 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         except (BrokenPipeError, ConnectionResetError):
             pass
 
-    def _serve_branded_busy_pictures(self) -> None:
+    def _send_html(self, cache_key: str, body: bytes, stat, ga_id: str, head: bool = False) -> None:
+        """Send an HTML payload with optional gzip compression and cache headers."""
+        encoded = self._accepts_gzip()
+        if encoded:
+            body = _gzip_cached(cache_key, body, (stat.st_mtime_ns, stat.st_size, ga_id))
+        self._cache_policy = "no-cache"
+        self.send_response(200)
+        self.send_header("Content-Type", "text/html; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Vary", "Accept-Encoding")
+        if encoded:
+            self.send_header("Content-Encoding", "gzip")
+        self.end_headers()
+        if not head:
+            try:
+                self.wfile.write(body)
+            except (BrokenPipeError, ConnectionResetError):
+                pass
+
+    def _serve_html_with_analytics(self, head: bool = False) -> bool:
+        """Serve local .html/.htm files with GA4 injected when configured."""
+        ga_id = get_measurement_id()
+        if not ga_id:
+            return False
+
+        file_path = self.translate_path(self.path)
+        real_root = os.path.realpath(DIRECTORY)
+        real_target = os.path.realpath(file_path)
+        try:
+            inside = os.path.commonpath([real_root, real_target]) == real_root
+        except ValueError:
+            inside = False
+        if not inside:
+            return False
+
+        if os.path.isdir(real_target):
+            if not urlparse(self.path).path.endswith("/"):
+                return False
+            for index_name in ("index.html", "index.htm"):
+                candidate = os.path.realpath(os.path.join(real_target, index_name))
+                try:
+                    cand_inside = os.path.commonpath([real_root, candidate]) == real_root
+                except ValueError:
+                    cand_inside = False
+                if cand_inside and os.path.isfile(candidate):
+                    real_target = candidate
+                    break
+            else:
+                return False
+
+        if not real_target.lower().endswith((".html", ".htm")) or not os.path.isfile(real_target):
+            return False
+
+        try:
+            stat = os.stat(real_target)
+            with open(real_target, "rb") as source:
+                body = source.read()
+        except OSError:
+            return False
+
+        body = inject_ga_html(body, ga_id)
+        self._send_html(real_target, body, stat, ga_id, head=head)
+        return True
+
+    def _serve_branded_busy_pictures(self, head: bool = False) -> None:
         """Serve the large bundled viewer with the shared brand shell injected."""
         path = os.path.join(DIRECTORY, "busy-pictures", "index.html")
+        stat = os.stat(path)
         with open(path, "rb") as source:
             body = source.read()
         body = body.replace(b"../favicon.svg?v=03a", b"../favicon.svg?v=a53d061")
@@ -421,22 +487,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             b'<script src="../dialogue-brand.js"></script>\n</body>',
             1,
         )
-        encoded = self._accepts_gzip()
-        if encoded:
-            stat = os.stat(path)
-            body = _gzip_cached(path, body, (stat.st_mtime_ns, stat.st_size))
-        self._cache_policy = "no-cache"
-        self.send_response(200)
-        self.send_header("Content-Type", "text/html; charset=utf-8")
-        self.send_header("Content-Length", str(len(body)))
-        self.send_header("Vary", "Accept-Encoding")
-        if encoded:
-            self.send_header("Content-Encoding", "gzip")
-        self.end_headers()
-        try:
-            self.wfile.write(body)
-        except (BrokenPipeError, ConnectionResetError):
-            pass
+        ga_id = get_measurement_id()
+        body = inject_ga_html(body, ga_id)
+        self._send_html(path, body, stat, ga_id, head=head)
 
     def log_message(self, format, *args):
         # Suppress routine access logs; keep 4xx/5xx
@@ -460,6 +513,11 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             self._serve_busy_pictures_data(parsed.path, parsed.query, head=True)
             return
         if BRAND_ASSETS.serve(self, parsed.path):
+            return
+        if parsed.path in {"/busy-pictures/", "/busy-pictures/index.html"}:
+            self._serve_branded_busy_pictures(head=True)
+            return
+        if self._serve_html_with_analytics(head=True):
             return
         super().do_HEAD()
 
@@ -487,6 +545,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 "ok": True,
                 "database": database.backend_name,
                 "durable": database.dialect == "postgres",
+                "analytics": analytics_status(),
             })
             return
         if parsed.path == "/api/poll":
@@ -551,6 +610,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                     _json_response(self, 200, {"active": False})
             except Exception as e:
                 _json_response(self, 200, {"active": False, "error": str(e)})
+            return
+        if self._serve_html_with_analytics(head=False):
             return
         super().do_GET()
 
