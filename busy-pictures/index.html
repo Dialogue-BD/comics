@@ -2439,8 +2439,14 @@
       tourState.active = true;
       tourState.paused = false;
       tourState.completed = false;
-      tourState.objects = objects;
       var resumeIndex = objects.indexOf(lastTappedObject);
+      if (resumeIndex < 0 && objects.length > 1) {
+        // A fresh tour starts at a random object and wraps round the whole
+        // picture, so students don't always get the top-left corner first.
+        var start = Math.floor(Math.random() * objects.length);
+        objects = objects.slice(start).concat(objects.slice(0, start));
+      }
+      tourState.objects = objects;
       tourState.index = resumeIndex >= 0 ? resumeIndex : 0;
       tourState.runId += 1;
       document.body.classList.add("tour-active");
@@ -2493,7 +2499,13 @@
     function toggleTourPlayback() {
       if (!tourState.active) return startTour();
       if (!tourState.paused && !tourState.completed) return pauseTour();
-      if (tourState.completed) tourState.index = 0;
+      if (tourState.completed) {
+        // A replay also begins somewhere new.
+        var all = tourState.objects;
+        var restart = Math.floor(Math.random() * all.length);
+        tourState.objects = all.slice(restart).concat(all.slice(0, restart));
+        tourState.index = 0;
+      }
       tourState.paused = false;
       tourState.completed = false;
       updateTourControls();
