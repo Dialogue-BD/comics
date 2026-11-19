@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GitHub for Vibecoders · Dialogue</title>
+<meta name="description" content="Spacious, visual and audio step-by-step lesson teaching ESL vibecoders with no coding experience how GitHub keeps AI projects safe.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg?v=03b">
+<link rel="icon" type="image/png" sizes="48x48" href="../favicon.png?v=03b">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=03b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Noto+Sans+Bengali:wght@400;600;700&family=Public+Sans:wght@400;500;600;700;800&family=Spectral:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../dialogue-brand.css">
+<link rel="stylesheet" href="style.css?v=18">
+</head>
+<body class="dialogue-activity-shell show-bn">
+
+<div id="app">
+  <!-- Minimal Iconographic Header -->
+  <header class="appbar" id="appbar">
+    <a class="logo-chip" href="../index.html" aria-label="All Dialogue activities">
+      <img src="../brand/dialogue-logo.png?v=a53d061" alt="Dialogue English &amp; Skills Center">
+    </a>
+
+    <nav class="prog-rail" id="prog-rail" aria-label="Lesson progress"></nav>
+
+    <div class="bar-tools">
+      <button type="button" class="ic-pill" id="sound-btn" aria-pressed="true" aria-label="Toggle voice audio" title="Voice audio (V)">🔊</button>
+      <button type="button" class="ic-pill bn-pill" id="lang-btn" aria-pressed="true" aria-label="Toggle Bangla helper" title="বাংলা (B)">বাংলা</button>
+      <button type="button" class="ic-pill gold-pill" id="toolkit-btn" aria-label="QR code and audio glossary" title="QR &amp; Audio Glossary (G)">📱</button>
+      <button type="button" class="ic-pill stage-pill" id="stage-btn" aria-pressed="false" aria-label="Toggle projector stage size" title="Projector Stage (P)">⛶</button>
+    </div>
+  </header>
+
+  <!-- Single-Line Voice Coach Bar (hidden on Screen 0 Welcome) -->
+  <section class="coachbar" id="coachbar" hidden aria-live="polite">
+    <button type="button" class="ear-btn" id="coach-ear" aria-label="Hear instruction again" title="Hear instruction (R)">🔊</button>
+    <div class="coach-copy">
+      <p class="coach-en" id="coach-en"></p>
+      <p class="bn coach-bn" id="coach-bn" lang="bn"></p>
+    </div>
+  </section>
+
+  <!-- Spacious One-Thing-at-a-Time Main Stage -->
+  <main class="stage-main" id="stage-main">
+
+    <!-- ======== SCREEN 0: WELCOME ======== -->
+    <section class="step-screen on" data-idx="0" aria-label="Welcome">
+      <div class="step-wrap welcome-wrap">
+        <div class="welcome-card">
+          <div class="welcome-art" aria-hidden="true">
+            <svg viewBox="0 0 360 150" class="welcome-svg">
+              <defs>
+                <linearGradient id="wl-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#174d2c"/>
+                  <stop offset="100%" stop-color="#0a2615"/>
+                </linearGradient>
+                <linearGradient id="wl-gold" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#fff0bd"/>
+                  <stop offset="100%" stop-color="#c99f53"/>
+                </linearGradient>
+              </defs>
+              <rect x="0" y="0" width="360" height="150" rx="18" fill="url(#wl-bg)"/>
+              <!-- Left Speech Bubble -->
+              <rect x="26" y="42" width="76" height="52" rx="12" fill="#fffdf7" stroke="#f2d68c" stroke-width="2"/>
+              <polygon points="44,94 36,108 56,94" fill="#fffdf7"/>
+              <rect x="40" y="59" width="6" height="18" rx="3" fill="#1b5832" class="ga-vibe-w1"/>
+              <rect x="52" y="52" width="6" height="32" rx="3" fill="#16a34a" class="ga-vibe-w2"/>
+              <rect x="64" y="56" width="6" height="24" rx="3" fill="#1b5832" class="ga-vibe-w3"/>
+              <rect x="76" y="60" width="6" height="16" rx="3" fill="#b9924f" class="ga-vibe-w4"/>
+              <!-- Center AI Spark Beam -->
+              <path class="ga-vibe-beam" d="M108 68 C132 54, 152 82, 178 68" fill="none" stroke="url(#wl-gold)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="7 5"/>
+              <polygon class="ga-vibe-spark" points="143,49 148,63 161,68 148,73 143,87 138,73 125,68 138,63" fill="url(#wl-gold)"/>
+              <!-- Right Safe Timeline & Cloud -->
+              <rect x="184" y="34" width="148" height="82" rx="14" fill="#0d311c" stroke="#4c8c62" stroke-width="1.8"/>
+              <line x1="204" y1="75" x2="312" y2="75" stroke="#6f8f62" stroke-width="5" stroke-linecap="round"/>
+              <circle cx="216" cy="75" r="10" fill="#22c55e" stroke="#fff" stroke-width="2"/>
+              <circle cx="258" cy="75" r="10" fill="#22c55e" stroke="#fff" stroke-width="2"/>
+              <circle cx="300" cy="75" r="12" fill="url(#wl-gold)" stroke="#fff" stroke-width="2" class="ga-commit-dot"/>
+              <path d="M295 75 L299 79 L306 71" fill="none" stroke="#103d21" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <h1 class="welcome-title">GitHub for Vibecoders</h1>
+
+          <div class="welcome-phonetic">
+            <button type="button" class="vibe-chip" id="welcome-vibe-btn" data-audio="vocab-vibecoding">
+              <span>Vibecoding</span>
+              <span class="vp-dot">·</span>
+              <em>VIBE-co-ding</em>
+              <span aria-hidden="true">🔊</span>
+            </button>
+          </div>
+
+          <p class="bn welcome-bn" lang="bn">কোডিং ছাড়াই ছবি ও অ্যানিমেশনে শিখুন কীভাবে GitHub এআই প্রজেক্ট নিরাপদ রাখে</p>
+
+          <button type="button" class="start-btn" id="welcome-start">
+            <span aria-hidden="true">▶</span> Start
+          </button>
+
+          <div class="welcome-sublinks">
+            <button type="button" class="quiet-link" id="welcome-qr">📱 QR &amp; Glossary</button>
+            <button type="button" class="quiet-link" id="welcome-print">🖨️ Print Handout</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SCREEN 1: PROMPT #15 CRASH ======== -->
+    <section class="step-screen" data-idx="1" aria-label="Prompt 15 Crash" hidden>
+      <div class="step-wrap">
+        <div class="stage-card" id="nightmare-sim">
+          <div class="ctrl-row">
+            <div class="seg-pill" role="group" aria-label="Save mode">
+              <button type="button" class="nm-mode active" data-mode="zip">🗜️ ZIP</button>
+              <button type="button" class="nm-mode" data-mode="git">🛡️ GitHub</button>
+            </div>
+            <div class="ctrl-actions">
+              <button type="button" class="act-btn" id="nm-prev" aria-label="Previous prompt">◀</button>
+              <span class="step-count-pill" id="nm-step-badge">1 / 4</span>
+              <button type="button" class="act-btn primary" id="nm-next" aria-label="Next prompt">▶</button>
+              <button type="button" class="act-btn gold" id="nm-restore" hidden>⏪ #3</button>
+              <button type="button" class="act-btn" id="nm-auto" aria-label="Auto-play crash story">🎬 Auto</button>
+            </div>
+          </div>
+
+          <div class="crash-grid">
+            <div class="crash-left">
+              <div class="prompt-pill" id="nm-prompt-box">
+                <span class="pp-who" id="nm-who">Prompt #1</span>
+                <p id="nm-prompt-text">“Mango crate price calculator (৳)”</p>
+                <p class="bn pp-bn" id="nm-prompt-bn" lang="bn">“টাকায় (৳) আমের দাম হিসাবের অ্যাপ”</p>
+              </div>
+              <div class="nm-storage" id="nm-storage"></div>
+            </div>
+
+            <div class="mango-app" id="mango-app">
+              <div class="ma-head">
+                <span>🥭 Rajshahi Mango Direct</span>
+                <span class="nm-health ok" id="nm-health">● OK</span>
+              </div>
+              <div class="ma-body">
+                <div class="ma-row"><span>2 Crates Fazli</span><b id="ma-base">৳ 3,000</b></div>
+                <div class="ma-row" id="ma-bkash-row" hidden><span>bKash Fee (1.85%)</span><b>৳ 56</b></div>
+                <div class="ma-row" id="ma-deliv-row" hidden><span>Dhaka Courier</span><b>৳ 250</b></div>
+                <div class="ma-total"><span>Total</span><b id="ma-total">৳ 3,000</b></div>
+                <button type="button" class="ma-order-btn" id="ma-btn">Confirm</button>
+              </div>
+              <div class="ma-crash-overlay" id="ma-crash" hidden>
+                <strong>💥 Total = ❌ Error</strong>
+                <span>❓ 1.85%</span>
+                <span class="bn" lang="bn">বিকাশ হিসাব ভেঙে গেছে!</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SCREEN 2: DIFF X-RAY ======== -->
+    <section class="step-screen" data-idx="2" aria-label="Diff X-Ray" hidden>
+      <div class="step-wrap">
+        <div class="stage-card" id="diff-lens">
+          <div class="ctrl-row">
+            <div class="seg-pill" role="group" aria-label="Compare view">
+              <button type="button" class="dl-btn" data-view="zip">🗜️ ZIP</button>
+              <button type="button" class="dl-btn active" data-view="diff">🔍 Diff (- / +)</button>
+            </div>
+            <span class="legend-pills">
+              <span class="badge-red">− Deleted</span>
+              <span class="badge-green">+ Added</span>
+            </span>
+          </div>
+
+          <div class="dl-pane" id="dl-pane-zip" hidden>
+            <div class="zip-compare">
+              <div class="zip-box">
+                <span class="zb-icon">🗜️</span>
+                <b>mango_v3.zip</b>
+                <span class="badge-green">✓ OK</span>
+              </div>
+              <div class="zip-vs">❓</div>
+              <div class="zip-box broken">
+                <span class="zb-icon">🗜️</span>
+                <b>mango_REAL_v4.zip</b>
+                <span class="badge-red">💥 ❌ Error</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dl-pane" id="dl-pane-diff">
+            <div class="diff-xray-grid">
+              <div class="diff-window">
+                <div class="dw-head">
+                  <span>📄 app.js</span>
+                  <div class="dw-head-right">
+                    <button type="button" class="dw-code-toggle" id="dl-raw-toggle" aria-pressed="false">{} Raw JS</button>
+                    <span><b class="st-del">−1</b> <b class="st-add">+2</b></span>
+                  </div>
+                </div>
+                <div class="dw-code" role="list">
+                  <button type="button" class="dw-line ctx" data-part="base" data-audio="diff-base" data-plain=" 14   Mango Price = crates × ৳1,500" data-raw=" 14   const basePrice = crates * 1500;" data-note="Sets mango price: 2 crates × ৳1,500 = ৳3,000" data-note-bn="আমের মূল দাম হিসাব করে: ২ ক্যারেট × ১,৫০০ = ৩,০০০৳"><code> 14   Mango Price = crates × ৳1,500</code><span class="dw-tag">৳</span></button>
+                  <button type="button" class="dw-line del" data-part="fee-ok" data-audio="diff-del" data-plain="-15 - bKash Fee = 1.85% (working!)" data-raw="-15 - const bkashFee = basePrice * 0.0185;" data-note="Deleted! This line calculated the 1.85% bKash fee (৳56)." data-note-bn="মুছে গেছে! এই লাইনটি ১.৮৫% bKash ফি (৳৫৬) হিসাব করত।"><code>-15 - bKash Fee = 1.85% (working!)</code><span class="dw-tag">🔊 −</span></button>
+                  <button type="button" class="dw-line add" data-part="fee-bad" data-audio="diff-add" data-plain="+15 + bKash Fee = ??? (broken!)" data-raw="+15 + const bkashFee = basePrice * bkashRate;" data-note="Broken line! Website does not understand ??? → ❌ Error." data-note-bn="ভুল লাইন! ওয়েবসাইট ??? বুঝতে পারছে না, তাই Total ভেঙে ❌ Error হচ্ছে!"><code>+15 + bKash Fee = ??? (broken!)</code><span class="dw-tag">🔊 +</span></button>
+                  <button type="button" class="dw-line add" data-part="btn" data-audio="diff-btn" data-plain="+16 + Order Button Color = Gold" data-raw="+16 + btn.style.background = &quot;#b9924f&quot;;" data-note="Changes Confirm button color to gold (#b9924f)." data-note-bn="Confirm বাটনের রঙ সবুজ থেকে সোনালি (#b9924f) করে।"><code>+16 + Order Button Color = Gold</code><span class="dw-tag">🎨 +</span></button>
+                </div>
+              </div>
+
+              <div class="dl-preview" id="dl-site" data-part="idle">
+                <div class="dlp-head">
+                  <b>🥭 Website Preview</b>
+                  <span class="dlp-status ok" id="dlp-status">👆 Tap line</span>
+                </div>
+                <div class="dlp-body">
+                  <button type="button" class="dlp-row" id="dlp-base" data-link-part="base"><span>2 Crates Fazli</span><b id="dlp-base-val">৳ 3,000</b></button>
+                  <button type="button" class="dlp-row" id="dlp-fee" data-link-part="fee-bad"><span>bKash Fee (1.85%)</span><b id="dlp-fee-val">৳ 56</b></button>
+                  <div class="dlp-row static"><span>Dhaka Courier</span><b>৳ 250</b></div>
+                  <button type="button" class="dlp-row total" id="dlp-total" data-link-part="fee-bad"><span>Total</span><b id="dlp-total-val">৳ 3,306</b></button>
+                  <button type="button" class="dlp-order-btn" id="dlp-btn" data-link-part="btn">Confirm Order</button>
+                  <div class="dlp-fx" id="dlp-fx">Tap any diff line ← to see what changes here</div>
+                </div>
+              </div>
+            </div>
+            <div class="focus-callout" id="dl-explain-box">
+              <b>👆 Tap any line to see what it does on the website</b>
+              <span class="bn" lang="bn">যেকোনো লাইনে ট্যাপ করে দেখুন ওয়েবসাইটে কী বদলায়</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SCREEN 3: GIT PRONUNCIATION VOICE LAB ======== -->
+    <section class="step-screen" data-idx="3" aria-label="Git vs geet Voice Lab" hidden>
+      <div class="step-wrap">
+        <div class="stage-card vl-card">
+          <div class="vl-main" id="vl-stage">
+            <div class="vl-left-col">
+              <div class="vl-top-bar">
+                <div class="vl-pair-tabs" role="tablist" aria-label="Word pairs">
+                  <button type="button" class="vl-pair-btn is-on" data-vl-pair="git" role="tab" aria-selected="true">geet / Git</button>
+                  <button type="button" class="vl-pair-btn" data-vl-pair="tim" role="tab" aria-selected="false">team / Tim</button>
+                </div>
+                <div class="vl-actions">
+                  <button type="button" class="act-btn" id="vl-both-btn">🔊 Both</button>
+                  <button type="button" class="act-btn" id="vl-quiz-toggle" aria-pressed="false">🎯 Which one?</button>
+                </div>
+              </div>
+
+            <div class="vl-pair-card" id="vl-pair-card">
+              <div class="pc-words" id="vl-words-row">
+                <button type="button" class="word-tile is-coral" id="vl-tile-long" data-vl-side="long">
+                  <span class="wt-badge">LONG · /iː/</span>
+                  <span class="wt-word" id="vl-word-long">geet</span>
+                  <span class="wt-sub" id="vl-sub-long">😬 cheeks tight</span>
+                </button>
+                <button type="button" class="word-tile is-blue is-active" id="vl-tile-short" data-vl-side="short">
+                  <span class="wt-badge">SHORT · /ɪ/ ✓</span>
+                  <span class="wt-word" id="vl-word-short">Git</span>
+                  <span class="wt-sub" id="vl-sub-short">😌 jaw relaxed</span>
+                </button>
+              </div>
+
+              <div class="lbars" id="vl-lbars">
+                <div class="lb-row">
+                  <span class="lb-lbl" id="vl-lbl-long">geet</span>
+                  <div class="lb-track"><div class="lb-fill coral" id="vl-bar-long" style="width: 100%"></div></div>
+                  <span class="lb-ms" id="vl-ms-long">tense</span>
+                </div>
+                <div class="lb-row">
+                  <span class="lb-lbl" id="vl-lbl-short">Git</span>
+                  <div class="lb-track"><div class="lb-fill blue" id="vl-bar-short" style="width: 64%"></div></div>
+                  <span class="lb-ms" id="vl-ms-short">short</span>
+                </div>
+              </div>
+
+              <div class="vl-quiz-bar" id="vl-quiz-bar" hidden>
+                <button type="button" class="act-btn primary" id="vl-quiz-play">🔊 Listen</button>
+                <span class="vl-quiz-score" id="vl-quiz-score">0 / 3</span>
+              </div>
+            </div>
+
+            <div class="vl-l1-note" id="vl-l1-note">
+              <span class="vl-l1-ico">💬</span>
+              <span><b>বাংলায় ই আর ঈ প্রায় একই</b> — ইংরেজি <b>Git (/ɪ/)</b> বলতে গাল ঢিলে দিন, টেনে বলবেন না!</span>
+            </div>
+          </div>
+
+          <div class="vl-mouth-col">
+            <div class="md-panels">
+              <div class="md-panel">
+                <span class="md-tag">FRONT</span>
+                <svg class="md-svg" id="vl-svg-front" viewBox="12 30 216 166" aria-hidden="true"></svg>
+              </div>
+              <div class="md-panel">
+                <span class="md-tag">SIDE</span>
+                <svg class="md-svg" id="vl-svg-side" viewBox="58 36 184 142" aria-hidden="true"></svg>
+              </div>
+            </div>
+            <div class="mouth-status relaxed" id="vl-mouth-status">
+              <span class="ms-dot"></span>
+              <span id="vl-status-text">Git · /ɪ/ · cheeks relaxed</span>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SCREEN 4: 6 CORE WORDS (GPA WATCH & HEAR) ======== -->
+    <section class="step-screen" data-idx="4" aria-label="Core 6 Words" hidden>
+      <div class="step-wrap wide">
+        <div class="stage-card gpa-shell" id="gpa-watch-core">
+          <div class="ctrl-row">
+            <div class="ctrl-actions">
+              <button type="button" class="act-btn primary js-gpa-play">▶</button>
+              <button type="button" class="act-btn js-gpa-slow" aria-pressed="false">🐢 0.8×</button>
+              <button type="button" class="act-btn js-gpa-rev" aria-pressed="false">👁️</button>
+            </div>
+            <span class="gpa-counter">1–6 · Core</span>
+          </div>
+          <div class="gpa-grid grid-6 js-gpa-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SCREEN 5: HEAR & POINT GAME (CORE 6) ======== -->
+    <section class="step-screen" data-idx="5" aria-label="Hear and Point Core 6" hidden>
+      <div class="step-wrap wide">
+        <div class="stage-card gpa-shell" id="gpa-game-core">
+          <div class="ctrl-row">
+            <div class="ctrl-actions">
+              <button type="button" class="act-btn primary js-game-replay">🔊</button>
+              <button type="button" class="act-btn js-game-slow" aria-pressed="false">🐢</button>
+              <button type="button" class="act-btn js-game-peek" aria-pressed="false" title="Show cue text">Aa</button>
+              <button type="button" class="act-btn js-game-reset" title="New random round">↺</button>
+            </div>
+            <div class="gpa-game-dots js-game-dots" aria-label="Progress"></div>
+          </div>
+          <div class="game-cue js-game-cue" hidden></div>
+          <div class="gpa-grid grid-6 js-game-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SCREEN 6: 5 TRACK WORDS (GPA WATCH & HEAR) ======== -->
+    <section class="step-screen" data-idx="6" aria-label="Tracks 5 Words" hidden>
+      <div class="step-wrap wide">
+        <div class="stage-card gpa-shell" id="gpa-watch-safety">
+          <div class="ctrl-row">
+            <div class="ctrl-actions">
+              <button type="button" class="act-btn primary js-gpa-play">▶</button>
+              <button type="button" class="act-btn js-gpa-slow" aria-pressed="false">🐢 0.8×</button>
+              <button type="button" class="act-btn js-gpa-rev" aria-pressed="false">👁️</button>
+            </div>
+            <span class="gpa-counter">7–11 · Tracks</span>
+          </div>
+          <div class="gpa-grid grid-5 js-gpa-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SCREEN 7: HEAR & POINT GAME (TRACKS 5) ======== -->
+    <section class="step-screen" data-idx="7" aria-label="Hear and Point Tracks 5" hidden>
+      <div class="step-wrap wide">
+        <div class="stage-card gpa-shell" id="gpa-game-safety">
+          <div class="ctrl-row">
+            <div class="ctrl-actions">
+              <button type="button" class="act-btn primary js-game-replay">🔊</button>
+              <button type="button" class="act-btn js-game-slow" aria-pressed="false">🐢</button>
+              <button type="button" class="act-btn js-game-peek" aria-pressed="false" title="Show cue text">Aa</button>
+              <button type="button" class="act-btn js-game-reset" title="New random round">↺</button>
+            </div>
+            <div class="gpa-game-dots js-game-dots" aria-label="Progress"></div>
+          </div>
+          <div class="game-cue js-game-cue" hidden></div>
+          <div class="gpa-grid grid-5 js-game-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SCREEN 8: 5 PRO WORDS (GPA WATCH & HEAR) ======== -->
+    <section class="step-screen" data-idx="8" aria-label="Pro 5 Words" hidden>
+      <div class="step-wrap wide">
+        <div class="stage-card gpa-shell" id="gpa-watch-pro">
+          <div class="ctrl-row">
+            <div class="ctrl-actions">
+              <button type="button" class="act-btn primary js-gpa-play">▶</button>
+              <button type="button" class="act-btn js-gpa-slow" aria-pressed="false">🐢 0.8×</button>
+              <button type="button" class="act-btn js-gpa-rev" aria-pressed="false">👁️</button>
+            </div>
+            <span class="gpa-counter">12–16 · GitHub</span>
+          </div>
+          <div class="gpa-grid grid-5 js-gpa-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SCREEN 9: HEAR & POINT GAME (PRO 5) ======== -->
+    <section class="step-screen" data-idx="9" aria-label="Hear and Point Pro 5" hidden>
+      <div class="step-wrap wide">
+        <div class="stage-card gpa-shell" id="gpa-game-pro">
+          <div class="ctrl-row">
+            <div class="ctrl-actions">
+              <button type="button" class="act-btn primary js-game-replay">🔊</button>
+              <button type="button" class="act-btn js-game-slow" aria-pressed="false">🐢</button>
+              <button type="button" class="act-btn js-game-peek" aria-pressed="false" title="Show cue text">Aa</button>
+              <button type="button" class="act-btn js-game-reset" title="New random round">↺</button>
+            </div>
+            <div class="gpa-game-dots js-game-dots" aria-label="Progress"></div>
+          </div>
+          <div class="game-cue js-game-cue" hidden></div>
+          <div class="gpa-grid grid-5 js-game-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SCREEN 10: GIT RAILWAY ANIMATOR ======== -->
+    <section class="step-screen" data-idx="10" aria-label="Git Railway Network" hidden>
+      <div class="step-wrap">
+        <div class="stage-card" id="git-tree-stage">
+          <div class="ctrl-row">
+            <div class="tree-controls" role="group" aria-label="Railway stations">
+              <button type="button" class="tc-btn active" data-scene="repo">① Repo</button>
+              <button type="button" class="tc-btn" data-scene="commit">② Commit</button>
+              <button type="button" class="tc-btn" data-scene="branch">③ Branch</button>
+              <button type="button" class="tc-btn danger" data-scene="discard">④ 💥 Discard</button>
+              <button type="button" class="tc-btn good" data-scene="merge">⑤ ✨ Merge</button>
+            </div>
+            <button type="button" class="act-btn primary" id="tc-auto">▶ Tour</button>
+          </div>
+
+          <div class="tree-canvas-wrap">
+            <svg id="git-svg" viewBox="0 0 760 305" class="git-svg" role="img" aria-label="Animated Git railway network">
+              <defs>
+                <filter id="glowGold" x="-30%" y="-30%" width="160%" height="160%">
+                  <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#d2b978" flood-opacity="0.85"/>
+                </filter>
+              </defs>
+              <rect x="18" y="18" width="724" height="268" rx="20" fill="#0d351c" stroke="#4a6e54" stroke-width="2"/>
+              <text x="38" y="46" fill="#d2b978" font-family="Public Sans, sans-serif" font-weight="800" font-size="14">📦 mango-orders</text>
+
+              <rect x="38" y="96" width="72" height="26" rx="13" fill="#103d21" stroke="#86a87a" stroke-width="1.5"/>
+              <text x="74" y="114" text-anchor="middle" fill="#f4f1e6" font-family="JetBrains Mono, monospace" font-weight="700" font-size="13">main</text>
+
+              <line x1="134" y1="109" x2="540" y2="109" stroke="#6f8f62" stroke-width="6" stroke-linecap="round"/>
+              <line id="track-main-merge" x1="540" y1="109" x2="670" y2="109" stroke="#6f8f62" stroke-width="6" stroke-linecap="round" class="track-anim track-draw"/>
+
+              <path id="track-branch" d="M 390 109 C 430 109, 435 208, 480 208 L 590 208" fill="none" stroke="#d2b978" stroke-width="5" stroke-linecap="round" class="track-anim track-draw"/>
+              <path id="track-merge-back" d="M 590 208 C 630 208, 630 109, 670 109" fill="none" stroke="#38b2a3" stroke-width="5" stroke-linecap="round" stroke-dasharray="8 6" class="track-anim"/>
+
+              <g id="g-branch-label" class="svg-group">
+                <rect x="260" y="195" width="146" height="26" rx="13" fill="#3a2c0f" stroke="#d2b978" stroke-width="1.5"/>
+                <text x="333" y="212" text-anchor="middle" fill="#f2d68c" font-family="JetBrains Mono, monospace" font-weight="700" font-size="12">🔀 new-design</text>
+              </g>
+
+              <g id="node-c1" class="svg-node">
+                <circle cx="170" cy="109" r="18" fill="#1f7a47" stroke="#f4f1e6" stroke-width="3"/>
+                <text x="170" y="114" text-anchor="middle" fill="#fff" font-family="JetBrains Mono, monospace" font-weight="700" font-size="13">c1</text>
+              </g>
+              <g id="node-c2" class="svg-node">
+                <circle cx="280" cy="109" r="18" fill="#1f7a47" stroke="#f4f1e6" stroke-width="3"/>
+                <text x="280" y="114" text-anchor="middle" fill="#fff" font-family="JetBrains Mono, monospace" font-weight="700" font-size="13">c2</text>
+              </g>
+              <g id="node-c3" class="svg-node">
+                <circle cx="390" cy="109" r="18" fill="#1f7a47" stroke="#f4f1e6" stroke-width="3" filter="url(#glowGold)"/>
+                <text x="390" y="114" text-anchor="middle" fill="#fff" font-family="JetBrains Mono, monospace" font-weight="700" font-size="13">c3</text>
+              </g>
+
+              <g id="node-b1" class="svg-node">
+                <circle cx="485" cy="208" r="17" fill="#b9924f" stroke="#fffdf7" stroke-width="3"/>
+                <text x="485" y="213" text-anchor="middle" fill="#1d211c" font-family="JetBrains Mono, monospace" font-weight="700" font-size="12">b1</text>
+              </g>
+              <g id="node-b2" class="svg-node">
+                <circle cx="585" cy="208" r="17" fill="#b0563a" stroke="#fffdf7" stroke-width="3"/>
+                <text x="585" y="213" text-anchor="middle" fill="#fff" font-family="JetBrains Mono, monospace" font-weight="700" font-size="12" id="b2-txt">💥</text>
+              </g>
+
+              <g id="node-c4" class="svg-node">
+                <circle cx="670" cy="109" r="20" fill="#38b2a3" stroke="#fffdf7" stroke-width="3" filter="url(#glowGold)"/>
+                <text x="670" y="114" text-anchor="middle" fill="#0c3319" font-family="JetBrains Mono, monospace" font-weight="800" font-size="13">c4</text>
+              </g>
+
+              <g id="svg-head-pill" transform="translate(170, 72)">
+                <rect x="-30" y="-13" width="60" height="22" rx="11" fill="#F2D68C" stroke="#103d21" stroke-width="2"/>
+                <text x="0" y="2" text-anchor="middle" fill="#103d21" font-family="JetBrains Mono, monospace" font-weight="800" font-size="11">▼ YOU</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="focus-callout" id="tic-callout">
+            <strong id="tic-app-state">📦 Vault · main → c1</strong>
+            <span class="bn" id="tic-bn" lang="bn">গিটহাবে প্রজেক্টের মূল ভল্ট ফোল্ডার তৈরি</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SCREEN 11: CLOUD SYNC ANIMATOR ======== -->
+    <section class="step-screen" data-idx="11" aria-label="Cloud Sync Flow" hidden>
+      <div class="step-wrap">
+        <div class="stage-card" id="sync-stage">
+          <div class="ctrl-row center-row">
+            <div class="sync-btns" role="group" aria-label="Sync actions">
+              <button type="button" class="sy-btn active" data-act="commit">📸 Commit</button>
+              <button type="button" class="sy-btn" data-act="push">⬆️ Push</button>
+              <button type="button" class="sy-btn" data-act="pull">⬇️ Pull</button>
+              <button type="button" class="sy-btn" data-act="clone">🧬 Clone</button>
+            </div>
+          </div>
+
+          <div class="sync-diagram" id="sync-diagram" data-act="commit">
+            <div class="sy-node">
+              <span class="sy-ico">💻</span>
+              <b>Laptop / AI Studio</b>
+              <div class="sy-badge" id="sy-local-badge">📸 c4 saved locally</div>
+            </div>
+
+            <div class="sy-pipe sy-pipe-1">
+              <div class="sy-track"></div>
+              <div class="sy-packet">📦</div>
+              <span class="sy-pipe-lbl" id="sy-pipe-1-lbl">Local only</span>
+            </div>
+
+            <div class="sy-node">
+              <span class="sy-ico">☁️</span>
+              <b>GitHub Cloud</b>
+              <div class="sy-badge" id="sy-cloud-badge">Waiting for Push…</div>
+            </div>
+
+            <div class="sy-pipe sy-pipe-2">
+              <div class="sy-track"></div>
+              <div class="sy-packet">🚀</div>
+              <span class="sy-pipe-lbl" id="sy-pipe-2-lbl">Not pushed</span>
+            </div>
+
+            <div class="sy-node">
+              <span class="sy-ico">🌐</span>
+              <b>Live Site</b>
+              <div class="sy-badge" id="sy-live-badge">v1.0 Online</div>
+            </div>
+          </div>
+
+          <div class="focus-callout" id="sync-caption">
+            <b>📸 Commit saves locally · ⬆️ Push uploads to GitHub</b>
+            <span class="bn" lang="bn">কমিট নিজের ডিভাইসে সেভ করে; ক্লাউডে পাঠাতে Push করুন</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SCREEN 12: WHERE DO YOU BUILD? BRIDGE ======== -->
+    <section class="step-screen" data-idx="12" aria-label="Where do you build" hidden>
+      <div class="step-wrap">
+        <div class="stage-card" id="where-build">
+          <div class="wb-grid">
+            <div class="wb-card is-browser active" data-wb="browser" tabindex="0">
+              <div class="wb-top">
+                <span class="wb-badge">⭐ Easiest First Step</span>
+                <button type="button" class="tk-mini-btn" id="wb-hear-browser" aria-label="Hear browser option">🔊</button>
+              </div>
+              <div class="wb-title">🌐 Browser · Google AI Studio</div>
+              <div class="wb-meta">📱 Phone or Laptop · Zero install · Free</div>
+              <div class="wb-flow">
+                <span class="wb-step">💬 Describe idea</span>
+                <span class="wb-arr">→</span>
+                <span class="wb-step">👀 Test live</span>
+                <span class="wb-arr">→</span>
+                <span class="wb-step">🐙 Save to GitHub</span>
+              </div>
+              <p class="wb-bn bn" lang="bn">কিছু ইনস্টল লাগবে না — ব্রাউজার থেকেই প্রথম অ্যাপ বানান!</p>
+            </div>
+
+            <div class="wb-card is-laptop" data-wb="laptop" tabindex="0">
+              <div class="wb-top">
+                <span class="wb-badge pro">🚀 Optional Pro Step</span>
+                <button type="button" class="tk-mini-btn" id="wb-hear-laptop" aria-label="Hear laptop IDE option">🔊</button>
+              </div>
+              <div class="wb-title">💻 Laptop App · AI IDE / CLI</div>
+              <div class="wb-meta">💻 Antigravity · Cursor · Claude · Codex</div>
+              <div class="wb-flow">
+                <span class="wb-step">🧬 Clone repo</span>
+                <span class="wb-arr">→</span>
+                <span class="wb-step">🔀 Safe branch</span>
+                <span class="wb-arr">→</span>
+                <span class="wb-step">☁️ Sync GitHub</span>
+              </div>
+              <p class="wb-bn bn" lang="bn">প্রজেক্ট বড় হলে ল্যাপটপে পুরো কন্ট্রোল ও নিরাপদ ব্রাঞ্চ পাবেন।</p>
+            </div>
+          </div>
+
+          <div class="focus-callout" id="wb-callout">
+            <b>💡 Start in the Browser today — move to a Laptop IDE anytime via GitHub!</b>
+            <span class="bn" lang="bn">আজ ব্রাউজারে শুরু করুন — পরে যেকোনো সময় GitHub থেকে ল্যাপটপে নিতে পারবেন!</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SCREEN 13: IDE vs CLI TOOLS ======== -->
+    <section class="step-screen" data-idx="13" aria-label="IDE vs CLI Tools" hidden>
+      <div class="step-wrap">
+        <div class="stage-card" id="tools-compare">
+          <div class="ctrl-row center-row">
+            <div class="seg-pill" role="group" aria-label="Compare IDE and CLI actions">
+              <button type="button" class="tool-act-btn active" data-tool-act="commit">📸 Commit</button>
+              <button type="button" class="tool-act-btn" data-tool-act="push">⬆️ Push</button>
+              <button type="button" class="tool-act-btn" data-tool-act="branch">🔀 Branch</button>
+            </div>
+          </div>
+
+          <div class="tools-compare-grid">
+            <div class="tool-card is-ide">
+              <div class="tool-head">
+                <span>🖥️ <b>Visual IDE</b> <small>Click Buttons</small></span>
+                <button type="button" class="tk-mini-btn" id="tc-hear-ide" aria-label="Hear IDE explanation">🔊</button>
+              </div>
+              <div class="tool-chips">
+                <span class="tool-chip">Antigravity</span>
+                <span class="tool-chip">Cursor</span>
+                <span class="tool-chip">VS Code</span>
+                <span class="tool-chip">AI Studio</span>
+              </div>
+              <div class="tc-ide-mock" id="tc-ide-mock">
+                <div class="tc-ide-bar"><span>📄 index.html</span><span>SOURCE CONTROL</span></div>
+                <div class="tc-ide-body">
+                  <div class="tc-ide-in">Add bKash fee</div>
+                  <span class="tc-ide-btn is-glow">✓ Commit</span>
+                </div>
+              </div>
+              <p class="tc-note">Click buttons + see files &amp; preview <span class="bn" lang="bn">বাটনে ক্লিক ও প্রিভিউ দেখে কাজ (নতুনদের জন্য সহজ)</span></p>
+            </div>
+
+            <div class="tool-card is-cli">
+              <div class="tool-head">
+                <span>⌨️ <b>Terminal CLI</b> <small>Commands &amp; Agents</small></span>
+                <button type="button" class="tk-mini-btn" id="tc-hear-cli" aria-label="Hear CLI explanation">🔊</button>
+              </div>
+              <div class="tool-chips">
+                <span class="tool-chip">Claude Code</span>
+                <span class="tool-chip">Codex CLI</span>
+                <span class="tool-chip">Git CLI</span>
+              </div>
+              <div class="tc-cli-mock" id="tc-cli-mock">
+                <div class="tc-ai-bubble" id="tc-cli-ai">🤖 Ask AI: “Save a checkpoint for bKash fee”</div>
+                <div class="tc-cmd-line"><span class="tc-ps">$</span> <code id="tc-cli-cmd">git commit -m "Add bKash fee"</code><i class="tc-cursor" aria-hidden="true"></i></div>
+                <div class="tc-out-line" id="tc-cli-out">[main 309c] Add bKash fee ✓</div>
+              </div>
+              <p class="tc-note">Type commands — or AI agent runs them! <span class="bn" lang="bn">টার্মিনালে কমান্ড টাইপ, অথবা Claude / Codex AI আপনার হয়ে চালায়!</span></p>
+            </div>
+          </div>
+
+          <div class="focus-callout" id="tools-callout">
+            <b>💡 Same Git engine underneath!</b> Start visual (IDE) — grow into CLI anytime.
+            <span class="bn" lang="bn">ভেতরে দুটোই একই Git! নতুন হলে IDE দিয়ে শুরু করুন, পরে CLI শিখতে পারবেন।</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SCREEN 14: GOOGLE AI STUDIO DEMO ======== -->
+    <section class="step-screen" data-idx="14" aria-label="AI Studio UI Demo" hidden>
+      <div class="step-wrap demo-wrap">
+        <div class="demo" id="demo-aistudio" data-track="aistudio"></div>
+      </div>
+    </section>
+
+    <!-- ======== SCREEN 15: AI IDE UI DEMO ======== -->
+    <section class="step-screen" data-idx="15" aria-label="AI IDE UI Demo" hidden>
+      <div class="step-wrap demo-wrap">
+        <div class="demo" id="demo-ide" data-track="ide"></div>
+      </div>
+    </section>
+
+    <!-- ======== SCREEN 16: 4-BUTTON IDE HOTSPOT MAP ======== -->
+    <section class="step-screen" data-idx="16" aria-label="IDE 4 Buttons" hidden>
+      <div class="step-wrap">
+        <div class="stage-card hotspot-stage" id="ide-hotspot-map">
+          <div class="hs-mock-ide">
+            <div class="hs-activity">
+              <span class="hs-ico" aria-hidden="true">📄</span>
+              <span class="hs-ico" aria-hidden="true">🔍</span>
+              <button type="button" class="hs-spot active" data-spot="sc" aria-label="1. Source Control">
+                🔀<em class="hs-badge">2</em>
+              </button>
+            </div>
+            <div class="hs-sidebar">
+              <div class="hs-sb-title">SOURCE CONTROL</div>
+              <button type="button" class="hs-spot hs-commit-box" data-spot="commit">
+                <div class="hs-input-mock">Add bKash fee</div>
+                <div class="hs-btn-mock">✓ Commit</div>
+              </button>
+              <button type="button" class="hs-spot hs-sync-box" data-spot="sync">
+                <span>☁️ Sync Changes</span>
+              </button>
+              <div class="hs-changes-mock">
+                <small>CHANGES</small>
+                <div>M app.js</div>
+                <div>M index.html</div>
+              </div>
+            </div>
+            <div class="hs-editor">
+              <div class="hs-ed-tab">app.js · Diff</div>
+              <div class="hs-ed-line add">+ const fee = price * 0.0185;</div>
+              <div class="hs-ed-line">  const total = price + fee;</div>
+            </div>
+            <div class="hs-statusbar">
+              <button type="button" class="hs-spot hs-branch-btn" data-spot="branch">🔀 main ▾</button>
+              <span>Ready</span>
+            </div>
+          </div>
+
+          <div class="hs-explain">
+            <div class="hs-top-row">
+              <span class="hs-num" id="hs-num">① / ④</span>
+              <button type="button" class="act-btn" id="hs-hear-btn">🔊</button>
+            </div>
+            <h3 id="hs-title">Source Control (🔀 2)</h3>
+            <p class="hs-when" id="hs-when">After each working AI prompt</p>
+            <p class="bn hs-bn" id="hs-bn" lang="bn">কয়টি ফাইল বদলেছে দেখায় — সফল প্রম্পটের পর চাপুন</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SCREEN 17: SECRET SHIELD & FREE PAGES ======== -->
+    <section class="step-screen" data-idx="17" aria-label="API Key Safety and Pages" hidden>
+      <div class="step-wrap demo-wrap">
+        <div class="ctrl-row center-row shield-tabs">
+          <div class="seg-pill" role="tablist" aria-label="Safety and Publishing">
+            <button type="button" class="sm-tab active" data-sub="keys" role="tab" aria-selected="true">🔐 .env Shield</button>
+            <button type="button" class="sm-tab" data-sub="pages" role="tab" aria-selected="false">🌐 Free Pages Demo</button>
+          </div>
+        </div>
+
+        <div class="submode-pane" id="sub-keys">
+          <div class="stage-card" id="secret-shield-sim">
+            <div class="sh-analogy-strip" aria-label="bKash PIN security analogy">
+              <span class="sh-an-pill">🔑 API Key = bKash PIN <small class="bn" lang="bn">গোপন পিন</small></span>
+              <span class="sh-an-pill">🔒 .env = Locked Pocket <small class="bn" lang="bn">তালাবদ্ধ পকেট</small></span>
+              <span class="sh-an-pill">📋 GitHub = Campus Noticeboard <small class="bn" lang="bn">নোটিশবোর্ড</small></span>
+            </div>
+
+            <div class="ctrl-row center-row">
+              <button type="button" class="sh-btn danger" id="sh-test-leak">⚠️ PIN on Noticeboard (app.js)</button>
+              <button type="button" class="sh-btn good active" id="sh-test-safe">🛡️ PIN in Locked Pocket (.env)</button>
+            </div>
+
+            <div class="sh-arena" id="sh-arena" data-state="safe">
+              <div class="sh-files">
+                <div class="sh-file ok">📄 index.html <span>OK</span></div>
+                <div class="sh-file ok" id="sh-appjs">📄 app.js <span>Reads .env</span></div>
+                <div class="sh-file secret" id="sh-env">🔒 .env (Locked Pocket) <code>PIN=AIza…</code></div>
+              </div>
+              <div class="sh-gate" id="sh-gate">
+                <b>🛡️ .gitignore</b>
+                <span id="sh-gate-msg">Blocks .env ✓<span class="bn" lang="bn">.env আটকে দেয়</span></span>
+              </div>
+              <div class="sh-cloud" id="sh-cloud">
+                <b>📋 Public GitHub (Campus Noticeboard)</b>
+                <p id="sh-cloud-msg">✅ Safe! PIN stayed in your locked pocket<span class="bn" lang="bn">নিরাপদ! গোপন পিন আপনার পকেটেই আছে</span></p>
+                <div class="sh-bot-alert" id="sh-bot-alert" hidden>
+                  🤖 Strangers stole your PIN in <b>14s</b>! <span class="bn" lang="bn">১৪ সেকেন্ডেই নোটিশবোর্ড থেকে পিন চুরি!</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="sh-emergency">
+              ⚠️ Leaked? <b>Revoke &amp; replace key!</b>
+              <span class="bn" lang="bn"> · লিক হলে পুরোনো Key বাতিল করুন</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="submode-pane" id="sub-pages" hidden>
+          <div class="demo" id="demo-pages" data-track="pages"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SCREEN 18: ESSENTIAL ENGLISH PROMPTS ======== -->
+    <section class="step-screen" data-idx="18" aria-label="Essential English Prompts" hidden>
+      <div class="step-wrap">
+        <div class="stage-card">
+          <div class="ctrl-row center-row">
+            <div class="seg-pill" role="tablist" aria-label="Practice mode">
+              <button type="button" class="en-tab active" data-en="ai" role="tab" aria-selected="true">🤖 AI Prompts</button>
+              <button type="button" class="en-tab" data-en="client" role="tab" aria-selected="false">💬 Client</button>
+              <button type="button" class="en-tab" data-en="commits" role="tab" aria-selected="false">🔍 Commits</button>
+            </div>
+          </div>
+
+          <div class="en-pane" id="en-pane-ai">
+            <div class="ctrl-row center-row">
+              <div class="prompt-pills" role="group" aria-label="Prompt situations">
+                <button type="button" class="pr-btn active" data-key="fix">💥 Fix crash</button>
+                <button type="button" class="pr-btn" data-key="branch">🎨 Redesign</button>
+                <button type="button" class="pr-btn" data-key="key">🔑 Hide key</button>
+                <button type="button" class="pr-btn" data-key="live">🌐 Go live</button>
+              </div>
+            </div>
+            <div class="esl-prompt-box">
+              <p class="esl-prompt-text" id="esl-prompt-text"></p>
+              <p class="bn esl-prompt-bn" id="esl-prompt-bn" lang="bn"></p>
+              <div class="esl-prompt-acts">
+                <button type="button" class="act-btn primary" id="esl-prompt-hear">🔊 Hear</button>
+                <button type="button" class="act-btn" id="esl-prompt-copy">📋 Copy</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="en-pane" id="en-pane-client" hidden>
+            <div class="client-cards" id="client-quick-list"></div>
+          </div>
+
+          <div class="en-pane" id="en-pane-commits" hidden>
+            <div id="commit-spotter">
+              <div class="ctrl-row">
+                <div class="seg-pill" role="group" aria-label="Commit history style">
+                  <button type="button" class="sp-tab active" data-style="messy">😵 Messy</button>
+                  <button type="button" class="sp-tab" data-style="clean">😎 Clear English</button>
+                </div>
+                <button type="button" class="act-btn gold" id="sp-rescue-btn">💡 Rescue</button>
+              </div>
+              <div class="sp-list" id="sp-list"></div>
+              <div class="focus-callout" id="sp-feedback">👆 Tap the WhatsApp save point</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SCREEN 19: READY / FINISH ======== -->
+    <section class="step-screen" data-idx="19" aria-label="Lesson Complete" hidden>
+      <div class="step-wrap">
+        <div class="stage-card finish-card">
+          <div class="finish-head">
+            <span class="finish-badge">✨ Ready!</span>
+            <h2>5 Golden Habits</h2>
+            <p class="bn" lang="bn">ট্যাপ করে ইংরেজি উচ্চারণ শুনুন</p>
+          </div>
+
+          <div class="habit-tiles" id="habits-list">
+            <button type="button" class="hb-tile" data-audio="habit-1"><b>① Test → Commit</b><span>🔊</span><small class="bn">আগে টেস্ট, তারপর সেভ</small></button>
+            <button type="button" class="hb-tile" data-audio="habit-2"><b>② Small Commits</b><span>🔊</span><small class="bn">১ ফিচার = ১ সেভ</small></button>
+            <button type="button" class="hb-tile" data-audio="habit-3"><b>③ Clear Labels</b><span>🔊</span><small class="bn">সহজ ইংরেজি নাম</small></button>
+            <button type="button" class="hb-tile" data-audio="habit-4"><b>④ Branch First</b><span>🔊</span><small class="bn">ঝুঁকির আগে ব্রাঞ্চ</small></button>
+            <button type="button" class="hb-tile" data-audio="habit-5"><b>⑤ .env Secret</b><span>🔊</span><small class="bn">API Key গোপন রাখুন</small></button>
+          </div>
+
+          <div class="finish-acts">
+            <button type="button" class="act-btn primary" id="fin-glossary">🔊 19 Words</button>
+            <button type="button" class="act-btn gold" id="fin-qr">📱 QR</button>
+            <button type="button" class="act-btn" id="fin-print">🖨️ Print</button>
+            <button type="button" class="act-btn" id="fin-restart">↺ Restart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Minimal Iconic Footer Bar -->
+  <footer class="footbar" id="footbar">
+    <button type="button" class="nav-btn back" id="nav-prev" aria-label="Previous step" disabled>←</button>
+    <div class="foot-mid">
+      <span class="step-chip" id="step-chip">0 / 19</span>
+      <span class="chapter-ico" id="chapter-ico" aria-hidden="true"></span>
+    </div>
+    <button type="button" class="nav-btn primary next" id="nav-next" aria-label="Next step">→</button>
+  </footer>
+</div>
+
+<!-- Classroom Toolkit, Audio Glossary & QR Dialog (modern-web-guidance light-dismiss-a-dialog) -->
+<dialog id="toolkit-dialog" closedby="any" aria-labelledby="tk-title">
+  <div class="tk-head">
+    <div>
+      <span class="tk-kicker">Student Toolkit</span>
+      <h2 id="tk-title">QR, Audio Glossary &amp; Phrases</h2>
+    </div>
+    <form method="dialog">
+      <button class="tk-close" type="submit" aria-label="Close toolkit dialog">✕</button>
+    </form>
+  </div>
+
+  <div class="tk-tabs" role="tablist" aria-label="Toolkit sections">
+    <button type="button" class="tk-tab active" data-tk="qr" role="tab" aria-selected="true">📱 QR Join</button>
+    <button type="button" class="tk-tab" data-tk="glossary" role="tab" aria-selected="false">🔊 Glossary (19)</button>
+    <button type="button" class="tk-tab" data-tk="english" role="tab" aria-selected="false">💬 Client Phrases</button>
+    <button type="button" class="tk-tab" data-tk="setup" role="tab" aria-selected="false">✅ Free Setup</button>
+  </div>
+
+  <div class="tk-body">
+    <section class="tk-pane" id="tk-pane-qr">
+      <div class="tk-qr-wrap">
+        <div class="tk-qr-card">
+          <div id="tk-qr-target" class="tk-qr-target" aria-label="QR code to open on phone"></div>
+        </div>
+        <div class="tk-qr-copy">
+          <h3>Open on Your Phone</h3>
+          <p class="bn" lang="bn">ক্লাসের পর নিজের ফোনে অ্যানিমেশন, বাংলা গাইড ও ইংরেজি প্রম্পট শুনতে QR স্ক্যান করুন।</p>
+          <div class="tk-url-row">
+            <code id="tk-url-text">https://dialogue-bd.com/github-vibecoding/</code>
+            <button type="button" class="tk-copy-btn" id="tk-copy-url">Copy</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tk-pane" id="tk-pane-glossary" hidden>
+      <div class="tk-list" id="tk-glossary-list"></div>
+    </section>
+
+    <section class="tk-pane" id="tk-pane-english" hidden>
+      <div class="tk-list" id="tk-english-list"></div>
+    </section>
+
+    <section class="tk-pane" id="tk-pane-setup" hidden>
+      <div class="tk-setup-list" id="tk-setup-list"></div>
+    </section>
+  </div>
+</dialog>
+
+<!-- Single-page A4 printable handout (shown only when printing) -->
+<div class="print-sheet" aria-hidden="true">
+  <div class="ps-head">
+    <div>
+      <h1>GitHub for Vibecoders</h1>
+      <p class="ps-sub">Dialogue English &amp; Skills Center · Rajshahi · Keep AI projects safe without coding</p>
+    </div>
+    <img src="../brand/dialogue-logo.png?v=a53d061" alt="Dialogue" class="ps-logo">
+  </div>
+  <div class="ps-cols">
+    <div>
+      <h2>① 16 Core Vibecoding &amp; Git Words</h2>
+      <ul>
+        <li><b>Vibecoding (VIBE-co-ding):</b> Build apps by telling AI what you want in plain language.</li>
+        <li><b>API Key:</b> Secret digital PIN connecting your app to AI — keep private!</li>
+        <li><b>Repository (re-POS-i-to-ry / Repo):</b> Master vault. <b>Commit:</b> Working save point.</li>
+        <li><b>Push:</b> Upload to GitHub. <b>Pull:</b> Download updates.</li>
+        <li><b>main:</b> Official live track. <b>HEAD:</b> Where you are now.</li>
+        <li><b>Branch:</b> Safe test track. <b>Merge:</b> Join branch into <code>main</code>.</li>
+        <li><b>Conflict:</b> Two edits clash. <b>Revert:</b> Rewind safely.</li>
+        <li><b>Clone:</b> Copy repo to IDE. <b>Fork:</b> Personal repo copy.</li>
+        <li><b>Diff:</b> Red/green line check. <b>Pull Request (PR):</b> Safe merge review.</li>
+      </ul>
+      <h2>② Google AI Studio Flow</h2>
+      <ol>
+        <li>Test live preview → click <b>Save to GitHub</b> → Private repo.</li>
+        <li>Save a checkpoint after every working prompt.</li>
+      </ol>
+      <h2>③ AI IDE Visual Git</h2>
+      <ol>
+        <li><b>Source Control (🔀)</b> → Diff → ✓ Commit → ☁️ Sync Changes.</li>
+        <li>Before risky redesigns: click <b>🔀 main</b> → new branch.</li>
+      </ol>
+    </div>
+    <div>
+      <h2>④ 5 Golden Rules</h2>
+      <ol>
+        <li>Test before Commit.</li>
+        <li>Commit small &amp; often (1 feature = 1 commit).</li>
+        <li>Use clear English commit labels.</li>
+        <li>Open a Branch before risky AI redesigns.</li>
+        <li>Store keys in <code>.env</code> + <code>.gitignore</code> (revoke leaked keys!).</li>
+      </ol>
+      <h2>⑤ Client English</h2>
+      <ul>
+        <li><i>“Here is the live preview link on GitHub Pages.”</i></li>
+        <li><i>“I created a safe branch so your live app stays untouched.”</i></li>
+        <li><i>“I reverted to our previous working commit with zero downtime.”</i></li>
+      </ul>
+      <h2>⑥ Free Setup (No Dollar Card)</h2>
+      <ol>
+        <li>Create free <code>github.com</code> account + sign into AI Studio / IDE.</li>
+        <li>Publish via <b>Settings → Pages → Branch: main</b>.</li>
+      </ol>
+    </div>
+  </div>
+  <p class="ps-foot">dialogue-bd.com/github-vibecoding · Audio glossary &amp; AI prompts included.</p>
+</div>
+
+<script src="../qr/qrcode.js"></script>
+<script src="gpa-art.js?v=6"></script>
+<script src="app.js?v=19"></script>
+</body>
+</html>
