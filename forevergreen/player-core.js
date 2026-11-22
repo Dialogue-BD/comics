@@ -515,6 +515,13 @@
     function loadLocalFile(file) {
       if (!file || !mount) return;
       unlockAudio();
+      loadLocalSource(null, file);
+    }
+
+    // url: a film file served next to the page (forevergreen.mp4, gitignored, for the
+    // classroom laptop). file: one the teacher picked with "Load local MP4".
+    function loadLocalSource(url, file) {
+      if (!mount) return;
       stopTick();
       stopBeatAudio(false);
       if (ytPlayer && typeof ytPlayer.destroy === "function") {
@@ -524,7 +531,7 @@
       cleanupLocalVideo();
 
       state.sourceMode = "local";
-      state.localFileName = file.name || "Local MP4";
+      state.localFileName = file ? (file.name || "Local MP4") : "Downloaded film";
       state.embedFailed = false;
       state.ytReady = false;
       state.ytPlaying = false;
@@ -533,18 +540,21 @@
       state.storyEndFired = false;
       state.actBoundaryFiredId = null;
 
-      localObjectUrl = URL.createObjectURL(file);
+      if (file) localObjectUrl = URL.createObjectURL(file);
       mount.innerHTML = "";
       const video = document.createElement("video");
       video.className = "local-video";
       video.controls = true;
       video.playsInline = true;
       video.preload = "metadata";
-      video.src = localObjectUrl;
+      video.src = file ? localObjectUrl : url;
       video.volume = effectiveFilmVolume() / 100;
       currentFilmVol = effectiveFilmVolume();
       localVideo = video;
       mount.appendChild(video);
+      if (!file) {
+        video.addEventListener("error", () => { if (localVideo === video) buildEmbed(); }, { once: true });
+      }
 
       video.addEventListener("loadedmetadata", () => {
         state.ytReady = true;
@@ -705,6 +715,18 @@
       const needle = String(phraseText || "").trim().toLowerCase();
       if (!needle) return;
 
+      // Recorded clip first (phrase · example · phrase, Phonon V1).
+      const clips = timings.phrases || {};
+      const clipKey = Object.keys(clips).find((k) => k.toLowerCase() === needle);
+      if (clipKey) {
+        stopSpeechFallback();
+        if (!phraseAudio) phraseAudio = new Audio();
+        phraseAudio.src = clips[clipKey] + "?v=" + encodeURIComponent(timings.version || story.version || "1");
+        phraseAudio.volume = Math.max(0, Math.min(1, state.voiceVolume / 100));
+        phraseAudio.play().catch(() => {});
+        return;
+      }
+
       if ("speechSynthesis" in window) {
         stopSpeechFallback();
         const u = new SpeechSynthesisUtterance(phraseText);
@@ -724,7 +746,16 @@
       }
     }
 
-    buildEmbed();
+    // Prefer a copy of the film sitting next to the page; the live site has none,
+    // so it falls through to YouTube. HEAD keeps the check to a few bytes.
+    const localFilm = options.localFilm || story.localFilm;
+    if (localFilm && mount && /^https?:$/.test(window.location.protocol)) {
+      fetch(localFilm, { method: "HEAD", cache: "no-store" })
+        .then((r) => (r.ok ? loadLocalSource(localFilm, null) : buildEmbed()))
+        .catch(() => buildEmbed());
+    } else {
+      buildEmbed();
+    }
 
     return {
       play,

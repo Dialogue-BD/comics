@@ -1,13 +1,14 @@
 const FOREVERGREEN_STORY = {
   id: "forevergreen",
   youtubeId: "B4EPW7JUMTM",
+  localFilm: "forevergreen.mp4",   // played instead of YouTube when present (never committed)
   title: "Forevergreen",
   titleBn: "চিরসবুজ",
   kicker: "GPA Phase 3 · Shared-story film activity",
   subtitle: "A wordless short film about belonging, temptation, and sacrificial love",
   duration: 785,
   storyEndSec: 719,
-  version: "20261122-v2",
+  version: "20261122-v3",
   credits: {
     directors: "Nathan Engelhardt and Jeremy Spears",
     music: "Josh Garrels (Small Voice Music)",

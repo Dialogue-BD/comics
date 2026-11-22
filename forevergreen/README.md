@@ -28,17 +28,29 @@ A top segmented toggle lets teachers and students choose **Full Film First (13 m
 4. **Act 4 — Wildfire & The Bridge** (`7:25 – 9:22`)
 5. **Act 5 — Grief, New Sapling & Legacy** (`9:23 – 11:58`, credits roll at `12:00`)
 
-## Audio Pipeline & Neural Voice Upgrade
+## Narration (Phonon V1)
 
-Current beat clips were built with macOS `say` (`Daniel`) + `ffmpeg` EBU R128 loudness normalization (`loudnorm=I=-15:TP=-1.5:LRA=11`) and verified via `ffprobe` for zero timing collisions.
-
-To regenerate or upgrade to a neural voice (`edge-tts`) or export the Gemini TTS script (`forevergreen/production/narration-script.txt`):
+All speech is **Phonon TTS, voice V1** (`gradium/phonon-31m-en`, Apache 2.0), the same
+model, voice and `phonon` conda env as Busy Pictures. It runs on the Mac: no key, no cost.
+It makes the 35 storyteller beats plus every glossary phrase as **phrase · example ·
+phrase** (`audio/phrases/`, played by the 🔊 in the phrase card), runs each clip through
+the same EBU R128 loudnorm, rewrites `beat-timings.js` (durations + phrase map), and
+checks for timing collisions.
 
 ```sh
-python3 forevergreen/tools/build_narration.py                 # macOS say (Daniel) + ffmpeg
-python3 forevergreen/tools/build_narration.py --engine edge   # neural edge-tts (requires edge-tts)
+conda activate phonon
+python3 forevergreen/tools/build_narration.py                 # Phonon V1 (default)
+python3 forevergreen/tools/build_narration.py --engine say    # macOS say (Daniel), the old voice
 python3 forevergreen/tools/build_narration.py --script-only   # export narration-script.txt
 ```
+
+## The downloaded film
+
+If `forevergreen/forevergreen.mp4` sits next to the page (the classroom laptop), the
+player uses it in place of YouTube automatically; the file is gitignored and never
+committed, so the live site keeps the YouTube embed. Serve locally with
+`python3 forevergreen/tools/serve.py` (byte-range support: the browser cannot seek in an
+MP4 through python's plain http.server or `server.py`, so act jumps would restart at 0:00).
 
 ## Verification Checks
 
