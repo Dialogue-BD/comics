@@ -7,3 +7,6 @@ __pycache__/
 
 # Local speech clips for testing (published site uses Replit App Storage)
 /tts-clips/
+
+# Forevergreen film: local/classroom copy only, never committed
+/forevergreen/*.mp4

@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#103d21">
+  <title>Forevergreen · GPA Phase 3 Wordless Film Story</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=03b">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png?v=03b">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=03b">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../dialogue-brand.css">
+  <link rel="stylesheet" href="styles.css?v=20261122-v1">
+</head>
+<body>
+  <a class="screen-brand" href="/" aria-label="Dialogue home">
+    <img src="../brand/dialogue-logo.png?v=a53d061" alt="Dialogue">
+  </a>
+
+  <main class="app" id="app">
+    <header class="masthead">
+      <a class="brand" href="/" aria-label="Dialogue home">
+        <img class="brand-logo" src="../brand/dialogue-logo.png?v=a53d061" alt="Dialogue">
+      </a>
+      <div class="title-block">
+        <p class="eyebrow" id="kicker">GPA Phase 3 · Wordless Film Story</p>
+        <h1><span id="title">Forevergreen</span> <span class="title-bn" id="title-bn" lang="bn">চিরসবুজ</span></h1>
+      </div>
+      <button class="ghost-btn" id="transcript-open" type="button" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v2H4zm0 6h16v2H4zm0 6h11v2H4z"/></svg>
+        <span>Transcript</span>
+      </button>
+    </header>
+
+    <section class="lesson" aria-label="Forevergreen GPA Phase 3 activity">
+      <div class="top-strip">
+        <div class="pacing-toggle" role="group" aria-label="Film pacing mode">
+          <button class="pacing-btn active" type="button" data-pacing="full" aria-pressed="true">
+            Full Film First <small>(13 min)</small>
+          </button>
+          <button class="pacing-btn" type="button" data-pacing="acts" aria-pressed="false">
+            One Act at a Time <small>(2–3 min)</small>
+          </button>
+        </div>
+        <div class="classroom-option">
+          <a href="classroom.html">Tell it live →</a>
+          <button id="fullscreen" type="button" aria-label="Enter fullscreen">Fullscreen</button>
+        </div>
+      </div>
+
+      <nav class="passes" aria-label="Activity passes">
+        <button class="pass active" type="button" data-pass="1" aria-pressed="true">
+          <span>1</span>
+          <b>Just watch</b>
+          <small>শুধু দেখুন</small>
+        </button>
+        <button class="pass" type="button" data-pass="2" aria-pressed="false">
+          <span>2</span>
+          <b>Watch with storyteller</b>
+          <small>গল্পকারের সাথে শুনুন</small>
+        </button>
+        <button class="pass" type="button" data-pass="3" aria-pressed="false">
+          <span>3</span>
+          <b>Phrases &amp; retell</b>
+          <small>বাক্যাংশ ও নিজের ভাষায়</small>
+        </button>
+      </nav>
+
+      <div class="pass3-subbar" id="pass3-subbar" hidden>
+        <button class="submode-btn active" type="button" data-submode="film" aria-pressed="true">
+          Explore Phrases on Film
+        </button>
+        <button class="submode-btn" type="button" data-submode="blind" aria-pressed="false">
+          Tell It Without Looking (GPA Phase 3)
+        </button>
+      </div>
+
+      <section class="cinema-card" id="cinema-card" aria-label="Film player">
+        <div class="cinema-stage" id="cinema-stage">
+          <div class="yt-mount" id="yt-mount"></div>
+          <div class="embed-fallback" id="embed-fallback" hidden>
+            <p class="fallback-title">Watch <em>Forevergreen</em> on YouTube</p>
+            <p id="embed-fallback-reason"></p>
+            <div class="fallback-actions">
+              <a class="fallback-link" id="embed-fallback-link" href="https://www.youtube.com/watch?v=B4EPW7JUMTM" target="_blank" rel="noopener">Open Forevergreen on YouTube ↗</a>
+              <button class="fallback-local-btn" id="fallback-local-btn" type="button">Use local MP4 file</button>
+              <input id="local-file-input" type="file" accept="video/*" hidden>
+            </div>
+          </div>
+          <button class="audio-unlock-pill" id="audio-unlock-pill" type="button" hidden>
+            🔊 Tap to turn on storyteller voice
+          </button>
+        </div>
+
+        <div class="acts-bar" id="acts-bar" role="navigation" aria-label="Five story acts"></div>
+
+        <div class="caption-drawer" id="caption-drawer" hidden>
+          <div class="caption-top">
+            <span class="caption-badge" id="caption-badge">Storyteller · Act 1</span>
+            <div class="caption-actions">
+              <button class="mini-btn" id="seek-back" type="button" title="Jump back 10 seconds">−10s</button>
+              <button class="mini-btn" id="replay-beat" type="button" title="Replay current beat">↶ Replay beat</button>
+              <button class="mini-btn" id="mix-toggle" type="button" aria-expanded="false" aria-controls="mix-panel">Mix</button>
+              <button class="mini-btn" id="transcript-open-inline" type="button">Full script</button>
+            </div>
+          </div>
+
+          <div class="mix-panel" id="mix-panel" hidden>
+            <label>
+              <span>Film music</span>
+              <input id="mix-film" type="range" min="0" max="100" value="75">
+              <output id="mix-film-out">75%</output>
+            </label>
+            <label>
+              <span>Duck during voice</span>
+              <input id="mix-duck" type="range" min="0" max="60" value="20">
+              <output id="mix-duck-out">20%</output>
+            </label>
+            <label>
+              <span>Storyteller voice</span>
+              <input id="mix-voice" type="range" min="20" max="100" value="100">
+              <output id="mix-voice-out">100%</output>
+            </label>
+            <label>
+              <span>Voice pace</span>
+              <select id="mix-rate" aria-label="Voice pace">
+                <option value="0.9">Gentle (0.9×)</option>
+                <option value="1" selected>Natural (1.0×)</option>
+              </select>
+            </label>
+          </div>
+
+          <p class="beat-line" id="beat-line" aria-live="polite">
+            Press play on the film. The storyteller will chime in gently between musical moments.
+          </p>
+          <p class="beat-hint" id="beat-hint"></p>
+        </div>
+      </section>
+
+      <section class="act-reflection" id="act-reflection" aria-label="Act reflection and conversation">
+        <div class="act-boundary-banner" id="act-boundary-banner" hidden>
+          <div>
+            <p class="eyebrow" id="boundary-eyebrow">Act complete</p>
+            <h2 id="boundary-title">Pause &amp; share what happened</h2>
+          </div>
+          <button class="primary-pill" id="continue-next-act" type="button">Continue to Act 2 →</button>
+        </div>
+
+        <details class="reflection-details" id="reflection-details">
+          <summary>
+            <span>💬 Talk about <strong id="reflection-act-name">Act 1: Winter &amp; Shelter</strong></span>
+            <span class="summary-meta">Phase 3 pair / group prompt</span>
+          </summary>
+          <div class="reflection-body">
+            <p class="act-summary" id="act-summary"></p>
+            <p class="discussion-q" id="discussion-prompt"></p>
+            <details class="frames-box">
+              <summary>Help me say it (sentence starters)</summary>
+              <ul id="sentence-frames"></ul>
+            </details>
+          </div>
+        </details>
+      </section>
+
+      <section class="story-reaction" id="story-reaction" hidden>
+        <p class="eyebrow">After watching</p>
+        <h2>Which moment stayed with you most?</h2>
+        <p>Before diving into the English narration, tell a partner—or notice in your own mind—which scene hit hardest, then move to <strong>Pass 2: Watch with storyteller</strong>.</p>
+        <button class="primary-pill" id="go-pass-2" type="button">Move to Pass 2 · Watch with storyteller →</button>
+      </section>
+
+      <section class="blind-workspace" id="blind-workspace" hidden aria-label="Tell it without looking">
+        <div class="blind-header">
+          <div>
+            <p class="eyebrow">GPA Phase 3 · Shared-story retelling</p>
+            <h2>Tell It Without Looking</h2>
+            <p class="blind-lead">You already share this story together. Now hide the pictures and retell it in your own English—focusing on feelings, choices, and why things happened.</p>
+          </div>
+          <button class="ghost-btn-sm" id="show-video-again" type="button">Show film again</button>
+        </div>
+
+        <div class="partner-banner">
+          <strong>In pairs:</strong> Partner A tells <strong>Acts 1–2</strong> while Partner B listens warmly, asks one follow-up question, and gently recasts (never lecture grammar). Then swap for <strong>Acts 3–5</strong>.
+        </div>
+
+        <div class="memory-grid" id="memory-grid"></div>
+
+        <div class="solo-cards">
+          <article class="nurturer-card">
+            <p class="eyebrow">Practicing alone at home?</p>
+            <h3>Your GPA Phase 3 AI Nurturer</h3>
+            <p>Copy this prompt into your voice or chat assistant so it plays the role of a patient Phase 3 Language Nurturer who knows <em>Forevergreen</em> with you.</p>
+            <pre id="ai-prompt-box"></pre>
+            <div class="nurturer-actions">
+              <button class="primary-pill" id="copy-ai-prompt" type="button">Copy GPA Nurturer Prompt</button>
+              <span class="copy-status" id="copy-status" role="status"></span>
+            </div>
+          </article>
+
+          <article class="connection-card">
+            <p class="eyebrow">Story connection</p>
+            <h3>Compare with <em>The Lost Son</em></h3>
+            <p><em>Forevergreen</em> shares deep echoes with another story on this site: leaving a safe home for short-term thrills, hitting rock bottom, and being rescued by costly love.</p>
+            <p class="connection-q">Ask a partner: <em>What felt similar between the bear cub and the younger son—and what felt different?</em></p>
+            <a class="link-pill" href="/lost-son/">Open The Lost Son →</a>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <footer class="source-credit" aria-label="Source credit">
+      <small>
+        Film: <a href="https://www.youtube.com/watch?v=B4EPW7JUMTM" target="_blank" rel="noopener"><em>Forevergreen</em></a> (Nathan Engelhardt &amp; Jeremy Spears, @ForevergreenFilm).
+        Independent ESL / GPA Phase 3 learning activity with original English narration and Bangla phrase notes.
+      </small>
+    </footer>
+  </main>
+
+  <dialog class="transcript-dialog" id="transcript-dialog" aria-labelledby="transcript-title">
+    <div class="dialog-head">
+      <div>
+        <p class="eyebrow">Full narration script</p>
+        <h2 id="transcript-title">Listen, jump to any moment, and explore phrases</h2>
+      </div>
+      <button class="close-btn" id="transcript-close" type="button" aria-label="Close transcript">×</button>
+    </div>
+    <p class="transcript-help">Tap ▶ on any line to hear it (and jump the film there). Tap an underlined phrase for English and Bangla help.</p>
+    <div class="transcript" id="transcript"></div>
+  </dialog>
+
+  <dialog class="gloss-dialog" id="gloss-dialog" aria-labelledby="gloss-title">
+    <button class="close-btn gloss-close" id="gloss-close" type="button" aria-label="Close explanation">×</button>
+    <p class="gloss-kind" id="gloss-kind"></p>
+    <h2 id="gloss-title"></h2>
+    <p class="gloss-meaning" id="gloss-meaning"></p>
+    <p class="gloss-example" id="gloss-example"></p>
+    <p class="gloss-bn" id="gloss-bn" lang="bn"></p>
+    <div class="gloss-actions">
+      <button class="mini-btn" id="gloss-speak" type="button">🔊 Hear phrase</button>
+    </div>
+  </dialog>
+
+  <audio id="voice-audio" preload="auto"></audio>
+  <script src="story.js?v=20261122-v3"></script>
+  <script src="beat-timings.js?v=20261122-v3"></script>
+  <script src="player-core.js?v=20261122-v3"></script>
+  <script src="app.js?v=20261122-v3"></script>
+</body>
+</html>

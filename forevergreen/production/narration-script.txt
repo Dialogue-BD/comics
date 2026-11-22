@@ -1,0 +1,45 @@
+FOREVERGREEN — GPA PHASE 3 NARRATION SCRIPT
+Voice direction: Warm, unhurried storyteller (British or neutral General American),
+~155-165 words per minute. Leave calm pauses between beats so the film music breathes.
+Model recommendation: Gemini 2.5 Pro Preview TTS (Gacrux) or edge-tts en-GB-RyanNeural.
+
+=== Act 1: Winter & Shelter (14s-138s) ===
+[b01] (0:19 / 19s) Deep in a freezing twilight forest, a tiny cub lay exhausted in the snow.
+[b02] (0:34 / 34s) Orphaned and alone, he was left to fend for himself in the cold.
+[b03] (0:49 / 49s) Searching for food, he reached toward a few red berries beside a giant trunk.
+[b04] (1:04 / 64s) Suddenly the ancient evergreen creaked awake, startling the frightened cub.
+[b05] (1:25 / 85s) Instead of harming him, the gentle tree offered a golden pinecone.
+[b06] (1:42 / 102s) Delighted and warm, the cub was tucked into the boughs high above the snow.
+[b07] (2:02 / 122s) When spring arrived, he rolled in the grass beside a friendly little hedgehog.
+=== Act 2: Growing Up & Temptation (139s-299s) ===
+[b08] (2:21 / 141s) Under the tree's watchful smile, the cub carried his treasured pinecone everywhere.
+[b09] (2:39 / 159s) Soon he planted the pinecone in a sunny mound of dark soil.
+[b10] (2:58 / 178s) Out of the earth grew a tiny green sapling they could care for together.
+[b11] (3:16 / 196s) Seasons turned, and the young bear grew taller beside his leafy guardian.
+[b12] (3:46 / 226s) One afternoon, a bright bag of potato chips caught his curious eye.
+[b13] (4:07 / 247s) He gave in to temptation, sneaking the salty crumbs even after a firm warning.
+[b14] (4:34 / 274s) Stubborn and angry, he turned his back on home and marched past the sapling.
+=== Act 3: The Canyon & Campsite 316 (300s-444s) ===
+[b15] (5:03 / 303s) The evergreen watched with heavy heart as the young bear walked away.
+[b16] (5:28 / 328s) Beside a misty waterfall, the bear scrambled across a fallen log over roaring rapids.
+[b17] (5:55 / 355s) Following noisy crows through the trees, he spotted human trash ahead.
+[b18] (6:18 / 378s) Past sign 316, careless campers had left behind a mess of food and cans.
+[b19] (6:44 / 404s) Through dusk and darkness, he gorged himself on leftovers among overturned bins.
+[b20] (7:08 / 428s) Lounging beside a blazing campfire, he never noticed danger closing in behind him.
+=== Act 4: Wildfire & The Bridge (445s-562s) ===
+[b21] (7:27 / 447s) A fierce wildfire broke out in the night, turning the forest orange with flames.
+[b22] (7:42 / 462s) Even while running for his life, he clung stubbornly to his stolen trash.
+[b23] (7:57 / 477s) Across the canyon, the evergreen saw the glow and strained its deep roots.
+[b24] (8:13 / 493s) To bridge the burning chasm, the fatherly tree uprooted itself.
+[b25] (8:31 / 511s) Trapped before a wall of fire, the terrified bear climbed onto the fallen trunk.
+[b26] (8:54 / 534s) As embers drifted down, the dying tree closed its eyes in tender love.
+[b27] (9:09 / 549s) To save his reckless child, the evergreen paid the ultimate price.
+=== Act 5: Grief, New Sapling & Legacy (563s-718s) ===
+[b28] (9:28 / 568s) Morning fog drifted over a silent, grey canyon.
+[b29] (9:47 / 587s) Heartbroken, the bear mourned in silence beside the charred wooden trunk.
+[b30] (10:08 / 608s) Then, shining out of the dark ruins, a bright green shoot sprouted from the ashes.
+[b31] (10:28 / 628s) At sunrise, the humbled bear stood watch over that fragile new life.
+[b32] (10:43 / 643s) Spring returned with wildflowers, and three little hedgehogs played at his paws.
+[b33] (11:02 / 662s) Years later, the sapling towered into a magnificent new evergreen holding a golden pinecone.
+[b34] (11:18 / 678s) The story came full circle as the grown bear shared that gift with a new cub.
+[b35] (11:36 / 696s) Having known grace himself, he passed on the gift to the next generation.

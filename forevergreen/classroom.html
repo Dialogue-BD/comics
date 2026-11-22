@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#090d0b">
+  <title>Forevergreen · Tell it live (GPA Phase 3)</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=03b">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png?v=03b">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=03b">
+  <link rel="stylesheet" href="classroom.css?v=20261122-v3">
+</head>
+<body>
+  <header class="toolbar">
+    <a class="brand" href="/" aria-label="Dialogue home">
+      <img src="../brand/dialogue-logo.png?v=a53d061" alt="Dialogue">
+    </a>
+    <div class="title">
+      <strong>Forevergreen</strong>
+      <span>Tell it live · GPA Phase 3 Shared-Story Session</span>
+    </div>
+    <div class="toolbar-actions">
+      <span class="source-badge" id="source-badge">Source: YouTube</span>
+      <button class="tool-btn" id="load-local-btn" type="button">Load local MP4</button>
+      <button class="tool-btn" id="use-youtube-btn" type="button" hidden>Switch to YouTube</button>
+      <input id="local-file-input" type="file" accept="video/*" hidden>
+      <a class="student-link" href="./">Student practice →</a>
+    </div>
+  </header>
+
+  <main class="projector-shell" id="projector-shell">
+    <div class="stage-wrap">
+      <div class="cinema-stage" id="cinema-stage" tabindex="0" aria-label="Forevergreen projector stage">
+        <div class="yt-mount" id="yt-mount"></div>
+        <div class="embed-fallback" id="embed-fallback" hidden>
+          <p class="fallback-title">Video embed unavailable</p>
+          <p id="embed-fallback-reason"></p>
+          <div class="fallback-actions">
+            <button class="accent-btn" id="fallback-local-btn" type="button">Load local MP4 file</button>
+            <a class="ghost-link" id="embed-fallback-link" href="https://www.youtube.com/watch?v=B4EPW7JUMTM" target="_blank" rel="noopener">Open on YouTube ↗</a>
+          </div>
+        </div>
+        <button class="audio-unlock-pill" id="audio-unlock-pill" type="button" hidden>
+          🔊 Tap to turn on storyteller voice
+        </button>
+      </div>
+
+      <div class="caption-strip" id="caption-strip" hidden>
+        <span class="caption-act" id="caption-act">Act 1</span>
+        <p class="caption-text" id="caption-text" aria-live="polite">Ready to tell the story live, or toggle Storyteller Voice on.</p>
+      </div>
+
+      <div class="boundary-toast" id="boundary-toast" hidden>
+        <span id="boundary-msg">End of Act 1</span>
+        <button class="accent-btn" id="boundary-continue" type="button">Continue →</button>
+      </div>
+    </div>
+
+    <aside class="nurturer-drawer" id="nurturer-drawer" hidden aria-label="Teacher GPA Nurturer Guide">
+      <div class="drawer-head">
+        <div>
+          <p class="eyebrow" id="drawer-act-label">Act 1 · Teacher Nurturer Guide</p>
+          <h2 id="drawer-act-title">Winter &amp; Shelter</h2>
+        </div>
+        <button class="close-drawer" id="close-drawer" type="button" aria-label="Close Nurturer Guide">×</button>
+      </div>
+      <p class="drawer-summary" id="drawer-summary"></p>
+
+      <div class="drawer-section">
+        <h3>Live Storytelling Cues</h3>
+        <ul id="drawer-cues"></ul>
+      </div>
+
+      <div class="drawer-section">
+        <h3>Phase 3 Discussion Prompts</h3>
+        <ul id="drawer-questions"></ul>
+      </div>
+
+      <div class="drawer-section">
+        <h3>Target Phrases to Weave In</h3>
+        <div class="drawer-phrases" id="drawer-phrases"></div>
+      </div>
+
+      <div class="drawer-recast">
+        <strong>Gentle GPA Recast Example:</strong>
+        <p class="recast-learner" id="recast-learner"></p>
+        <p class="recast-teacher" id="recast-teacher"></p>
+      </div>
+    </aside>
+  </main>
+
+  <nav class="controls" aria-label="Projector controls">
+    <button class="ctrl-btn primary" id="play-pause" type="button">▶ Play</button>
+    <button class="ctrl-btn" id="back-10" type="button" title="Jump back 10 seconds (J)">−10s</button>
+
+    <div class="act-pills" id="act-pills" role="group" aria-label="Jump to Act"></div>
+
+    <button class="ctrl-btn" id="pacing-toggle" type="button" aria-pressed="false">Full Film</button>
+    <button class="ctrl-btn" id="voice-toggle" type="button" aria-pressed="false">Storyteller Voice: Off</button>
+    <button class="ctrl-btn" id="captions-toggle" type="button" aria-pressed="false">Captions: Off</button>
+    <button class="ctrl-btn" id="guide-toggle" type="button" aria-pressed="false" aria-controls="nurturer-drawer">Nurturer Guide</button>
+    <button class="ctrl-btn" id="fullscreen-btn" type="button">Fullscreen</button>
+  </nav>
+
+  <footer class="classroom-credit">
+    <small>Forevergreen · Classroom Projector Mode (Shortcuts: Space play/pause · 1–5 Acts · J −10s · V voice · C captions · G guide · F fullscreen)</small>
+  </footer>
+
+  <audio id="voice-audio" preload="auto"></audio>
+  <script src="story.js?v=20261122-v3"></script>
+  <script src="beat-timings.js?v=20261122-v3"></script>
+  <script src="player-core.js?v=20261122-v3"></script>
+  <script src="classroom.js?v=20261122-v3"></script>
+</body>
+</html>
