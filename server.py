@@ -19,6 +19,7 @@ POST /api/fgd/teacher         – advance phases and manage the room dashboard
 Everything else is served as static files from the same directory.
 """
 
+import argparse
 import gzip
 import http.server
 import json
@@ -1230,10 +1231,19 @@ class ThreadedTCPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
 
 
 if __name__ == "__main__":
-    BRAND_ASSETS.start()
-    # Warm up the DB on the main thread before accepting connections
-    database = _get_db()
-    print(f"Classroom database: {database.backend_name}")
-    with ThreadedTCPServer(("0.0.0.0", PORT), Handler) as httpd:
-        print(f"Serving on port {PORT}")
+    parser = argparse.ArgumentParser(description="Serve Dialogue activities and classroom APIs.")
+    parser.add_argument(
+        "--local-preview",
+        action="store_true",
+        help="Listen on localhost and skip classroom database and brand refresh startup.",
+    )
+    args = parser.parse_args()
+    if not args.local_preview:
+        BRAND_ASSETS.start()
+        # Warm up the DB on the main thread before accepting connections.
+        database = _get_db()
+        print(f"Classroom database: {database.backend_name}")
+    host = "127.0.0.1" if args.local_preview else "0.0.0.0"
+    with ThreadedTCPServer((host, PORT), Handler) as httpd:
+        print(f"Serving on http://{host}:{httpd.server_address[1]}", flush=True)
         httpd.serve_forever()
