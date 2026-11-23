@@ -1,0 +1,245 @@
+.thinking {
+  max-width: 960px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: 0 10px 30px rgba(24, 34, 30, 0.08);
+}
+
+.thinking-header {
+  padding: clamp(18px, 3vw, 26px);
+  background: var(--forest);
+  color: #fffdf8;
+}
+
+.thinking-header h2 {
+  margin: 0 0 6px;
+  font: 700 clamp(1.5rem, 3vw, 1.9rem)/1.15 Georgia, serif;
+}
+
+.thinking-header p {
+  max-width: 64ch;
+  margin: 0;
+  color: #e1ede7;
+  line-height: 1.55;
+}
+
+.thinking-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 12px clamp(14px, 3vw, 26px);
+  border-bottom: 1px solid var(--line);
+  background: #f4efe5;
+}
+
+.thinking-topics button {
+  min-height: 44px;
+  padding: 6px 12px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--forest);
+  font-size: 0.86rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.thinking-topics button:hover {
+  background: #fffdf8;
+}
+
+.thinking-topics button[aria-pressed="true"] {
+  border-color: #bfcea8;
+  background: #e0eacf;
+  box-shadow: inset 0 -2px var(--forest-2);
+}
+
+.thinking-topic {
+  padding: clamp(14px, 3vw, 26px);
+}
+
+.thinking-topic h3 {
+  margin: 0 0 8px;
+  color: var(--forest);
+  font: 700 clamp(1.35rem, 3vw, 1.8rem)/1.18 Georgia, serif;
+  text-wrap: balance;
+}
+
+.thinking-prompt {
+  margin: 0 0 16px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.thinking-frames,
+.thinking-media {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 145px), 1fr));
+  gap: 10px;
+  margin: 0 0 16px;
+}
+
+.thinking-frames figure {
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #f5f2eb;
+}
+
+.thinking-frames img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--forest);
+}
+
+.thinking-frames figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2px 8px;
+  padding: 8px 10px;
+  color: var(--forest);
+  font-size: 0.82rem;
+  line-height: 1.4;
+  font-weight: 720;
+}
+
+.thinking-frames figcaption span {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.thinking-frames figcaption a {
+  color: var(--forest-2);
+  text-underline-offset: 3px;
+}
+
+.thinking-media {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+
+.thinking-media-item {
+  min-width: 0;
+}
+
+.thinking-topic video,
+.thinking-topic audio {
+  display: block;
+  width: 100%;
+}
+
+.thinking-topic video {
+  max-width: 680px;
+  margin-top: 10px;
+  aspect-ratio: 640 / 268;
+  border-radius: 10px;
+  background: #101310;
+}
+
+.thinking-media-label {
+  margin: 0 0 6px;
+  color: var(--forest);
+  font-size: 0.86rem;
+  font-weight: 750;
+}
+
+.thinking-watch {
+  margin: 0 0 16px;
+}
+
+.thinking-answer {
+  overflow: hidden;
+  border: 1px solid #c8d5bd;
+  border-radius: 12px;
+  background: #eff3e9;
+}
+
+.thinking-answer summary {
+  padding: 12px 15px;
+  color: var(--forest);
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.thinking-answer summary:focus-visible {
+  outline: 2px solid var(--forest-2);
+  outline-offset: -4px;
+}
+
+.thinking-answer-body {
+  padding: 2px 15px 15px;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.thinking-answer-body p,
+.thinking-readings,
+.thinking-sources {
+  margin: 0;
+}
+
+.thinking-readings dt {
+  margin-top: 9px;
+  color: var(--forest);
+  font: 700 1.18rem/1.2 Georgia, serif;
+}
+
+.thinking-readings dd {
+  margin: 3px 0 12px;
+}
+
+.thinking-followup {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #c8d5bd;
+}
+
+.thinking-followup h4 {
+  margin: 0 0 3px;
+  color: var(--forest);
+  font-size: 0.9rem;
+}
+
+.thinking-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 16px;
+  margin-top: 10px;
+  padding: 0;
+  list-style: none;
+  font-size: 0.85rem;
+}
+
+.thinking-sources a {
+  color: var(--forest-2);
+  text-underline-offset: 3px;
+}
+
+.thinking-loading {
+  margin: 0;
+  padding: 16px;
+  color: var(--muted);
+}
+
+@media (max-width: 560px) {
+  .thinking-topics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 4px;
+  }
+
+  .thinking-topics button {
+    padding: 6px 3px;
+    font-size: 0.78rem;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 360px) {
+  .thinking-topics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}

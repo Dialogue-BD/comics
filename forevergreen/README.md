@@ -12,6 +12,7 @@ Instead of pausing every few seconds and breaking emotional immersion, the activ
    - **Explore Phrases on Film**: Every single word in the live captions and full transcript is clickable for an instant English + Bangla definition tooltip (`word-glossary.js`), while multi-word idioms also open full phrase notes (`gloss-dialog`).
    - **Build the Storyboard**: Learners put four phrase cards in order to make two sentences for each of ten film stills. The bear tells the story in the first person. The [printable two-page A4 worksheet](storyboard/forevergreen-storyboard.pdf) uses the same images with space for students to write their own version.
    - **Tell It Without Looking**: Collapses the film so learners practice blind retelling using 5 Act Memory Cards, partner speaking instructions, a copyable *Forevergreen*-grounded AI speaking partner prompt for home study, and a reflection link to `/lost-son/`.
+   - **Critical thinking**: Eight discussion questions about the film’s title, motifs, grace, music, and handmade look. Students compare stills, replay short clips, listen to the score, and consider the Annecy making-of before revealing sample interpretations.
 
 A top segmented toggle lets teachers and students choose **Full Film First (13 min)** or **One Act at a Time (2–3 min)** (which pauses cleanly only at natural Act boundaries).
 
@@ -52,6 +53,8 @@ Beat clips are synthesized with **Phonon 31M EN** (`gradium/phonon-31m-en`, voic
 ## Verification Checks
 
 To rebuild the storyboard stills and worksheet after editing `storyboard/scenes.json`, run `python3 forevergreen/tools/build_storyboard.py` with FFmpeg and ReportLab installed.
+
+To rebuild the critical-thinking stills and clips after editing `critical-thinking/topics.json`, run `python3 forevergreen/tools/build_critical_thinking_media.py` with FFmpeg installed.
 
 ```sh
 node --check forevergreen/story.js forevergreen/word-glossary.js forevergreen/beat-timings.js forevergreen/player-core.js forevergreen/app.js forevergreen/classroom.js
