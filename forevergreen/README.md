@@ -15,6 +15,8 @@ Instead of pausing every few seconds and breaking emotional immersion, the activ
 
 A top segmented toggle lets teachers and students choose **Full Film First (13 min)** or **One Act at a Time (2–3 min)** (which pauses cleanly only at natural Act boundaries).
 
+The student player has a **Data saver** toggle for the 360p edition (about 26 MB of video for a full viewing). It also starts in that mode when the browser signals a data-saving preference. The classroom player starts in 720p.
+
 ## Classroom Projector Mode (`classroom.html`)
 
 - **Live Teacher Storytelling**: Opens with Storyteller Voice **Off** and Captions **Off** so the teacher can narrate live or lead class discussion.
@@ -29,7 +31,7 @@ Run this from the repository root and open [Forevergreen](http://127.0.0.1:8843/
 PORT=8843 python3 server.py --local-preview
 ```
 
-This preview uses the same byte-range support as the deployed app, so the act buttons and video timeline can jump ahead before the film fully buffers.
+This preview uses the same byte-range support as the deployed app, so the act buttons and video timeline can jump ahead before the film fully buffers. The server limits Forevergreen MP4 range responses to 8 MiB because the Replit proxy rejects responses over 32 MiB.
 
 ## Frame-Verified 5 Acts (2-Second Dense Inspection)
 

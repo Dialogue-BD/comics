@@ -13,6 +13,7 @@
     const state = {
       sourceMode: "video",
       localFileName: "",
+      dataSaver: options.dataSaver === true,
       pacingMode: options.pacingMode === "acts" ? "acts" : "full",
       voiceoverEnabled: !!options.voiceoverEnabled,
       filmVolume: Number.isFinite(options.filmVolume) ? options.filmVolume : 75,
@@ -555,10 +556,21 @@
       emit("onSourceChange", { mode, name });
     }
 
-    function useDefaultVideo() {
+    function useDefaultVideo(preservePosition = false) {
+      const position = preservePosition && video ? video.currentTime : 0;
+      const resume = preservePosition && video && !video.paused;
       cleanupObjectUrl();
-      const src = `${story.videoSrc}?v=${encodeURIComponent(story.version || "1")}`;
+      const file = state.dataSaver ? story.dataSaverVideoSrc : story.videoSrc;
+      const src = `${file}?v=${encodeURIComponent(story.version || "1")}`;
       mountVideo(src, { mode: "video", name: "Forevergreen MP4" });
+      if (position > 0) seekTo(position, false);
+      if (resume) play();
+    }
+
+    function setDataSaver(enabled) {
+      if (state.dataSaver === enabled) return;
+      state.dataSaver = enabled;
+      useDefaultVideo(true);
     }
 
     function loadLocalFile(file) {
@@ -862,6 +874,7 @@
       replayCurrentBeat,
       playBeatStandalone: (beatId) => playBeatClip(getBeat(beatId), { standalone: true }),
       setPacingMode,
+      setDataSaver,
       setVoiceover,
       setMix,
       speakPhrase,

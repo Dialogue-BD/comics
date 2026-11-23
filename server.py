@@ -49,6 +49,7 @@ TTS_CLIPS = TtsClips()
 # cached for a year and compressed once.
 BUSY_DATA_PATH_RE = re.compile(r"^/busy-pictures/data/wimmelbook_[0-9]{1,2}\.js$")
 BYTE_RANGE_RE = re.compile(r"^bytes=(\d*)-(\d*)$")
+FOREVERGREEN_VIDEO_RANGE_LIMIT = 8 * 1024 * 1024
 _GZIP_CACHE = {}
 _GZIP_LOCK = threading.Lock()
 
@@ -559,6 +560,13 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Content-Range", f"bytes */{total}")
             self.end_headers()
             return True
+
+        if (
+            os.path.dirname(real_target) == os.path.join(real_root, "forevergreen", "video")
+            and real_target.endswith(".mp4")
+        ):
+            # Replit's proxy rejects responses over 32 MiB, including open-ended video ranges.
+            end = min(end, start + FOREVERGREEN_VIDEO_RANGE_LIMIT - 1)
 
         length = end - start + 1
         ctype = self.guess_type(real_target)
