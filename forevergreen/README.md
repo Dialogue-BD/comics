@@ -21,6 +21,16 @@ A top segmented toggle lets teachers and students choose **Full Film First (13 m
 - **Collapsible Teacher Story Guide Drawer** (`G` key): Shows live storytelling cues, discussion prompts, target phrases, and a gentle recast example for the active Act.
 - **Local HD Film (`video/forevergreen.mp4`)**: Served cleanly with HTTP `Range` (`206 Partial Content`) support in `server.py` for instant seeking across all browsers, with an optional **Load custom MP4** override in the toolbar.
 
+## Local Preview
+
+Run this from the repository root and open [Forevergreen](http://127.0.0.1:8843/forevergreen/).
+
+```sh
+PORT=8843 python3 server.py --local-preview
+```
+
+This preview uses the same byte-range support as the deployed app, so the act buttons and video timeline can jump ahead before the film fully buffers.
+
 ## Frame-Verified 5 Acts (2-Second Dense Inspection)
 
 1. **Act 1 — Winter & Shelter** (`0:14 – 2:05`)
