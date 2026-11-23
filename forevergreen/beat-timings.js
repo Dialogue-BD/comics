@@ -1,8 +1,8 @@
 const FOREVERGREEN_TIMINGS = {
-  "version": "20261123-v19",
+  "version": "20261123-v20",
   "engine": "phonon",
   "voice": "phonon-31m-en/V1",
-  "generatedAt": "2026-11-23T10:03:18+00:00",
+  "generatedAt": "2026-11-23T10:35:33+00:00",
   "durations": {
     "b01": 3.84,
     "b02": 3.44,
