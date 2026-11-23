@@ -1,6 +1,7 @@
 const FOREVERGREEN_STORY = {
   id: "forevergreen",
   videoSrc: "video/forevergreen.mp4",
+  dataSaverVideoSrc: "video/forevergreen-data-saver.mp4",
   title: "Forevergreen",
   titleBn: "চিরসবুজ",
   kicker: "Shared-story film activity",

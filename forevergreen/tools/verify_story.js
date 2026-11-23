@@ -19,6 +19,9 @@ assert.equal(S.videoSrc, "video/forevergreen.mp4");
 const videoPath = path.join(ROOT, S.videoSrc);
 assert.ok(fs.existsSync(videoPath), `Missing local film file: ${S.videoSrc}`);
 assert.ok(fs.statSync(videoPath).size > 10 * 1024 * 1024, "Local film MP4 unexpectedly small");
+const dataSaverVideo = path.join(ROOT, S.dataSaverVideoSrc);
+assert.ok(fs.existsSync(dataSaverVideo), `Missing data saver film file: ${S.dataSaverVideoSrc}`);
+assert.ok(fs.statSync(dataSaverVideo).size < 30 * 1024 * 1024, "Data saver film must fit under the proxy response limit");
 assert.equal(S.acts.length, 5, "Expected exactly 5 acts");
 
 for (let i = 0; i < S.acts.length; i++) {

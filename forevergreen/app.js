@@ -8,6 +8,7 @@
   const $$ = (q, root = document) => [...root.querySelectorAll(q)];
 
   const STORAGE_PACING = "forevergreen-pacing-mode";
+  const STORAGE_DATA_SAVER = "forevergreen-data-saver";
   const WORD_RE = /[A-Za-z0-9À-ÖØ-öø-ÿ’'-]+/;
   const PART_RE = /[A-Za-z0-9À-ÖØ-öø-ÿ’'-]+|[^A-Za-z0-9À-ÖØ-öø-ÿ’'-]+/g;
 
@@ -55,6 +56,7 @@
     copyAiPrompt: $("#copy-ai-prompt"),
     copyStatus: $("#copy-status"),
     fullscreenBtn: $("#fullscreen"),
+    dataSaverBtn: $("#data-saver"),
     transcriptOpen: $("#transcript-open"),
     transcriptOpenInline: $("#transcript-open-inline"),
     transcriptDialog: $("#transcript-dialog"),
@@ -74,9 +76,12 @@
   };
 
   let savedPacing = "full";
+  let initialDataSaver = navigator.connection?.saveData === true;
   try {
     const stored = window.localStorage.getItem(STORAGE_PACING);
     if (stored === "acts" || stored === "full") savedPacing = stored;
+    const savedDataSaver = window.localStorage.getItem(STORAGE_DATA_SAVER);
+    if (savedDataSaver !== null) initialDataSaver = savedDataSaver === "on";
   } catch (_) {}
 
   let currentPass = 1;
@@ -93,6 +98,7 @@
     mount: els.videoMount,
     audio: els.voiceAudio,
     pacingMode: savedPacing,
+    dataSaver: initialDataSaver,
     voiceoverEnabled: false,
     callbacks: {
       onActChange: (act) => {
@@ -560,6 +566,7 @@
     const voiceover = showFilm && currentPass !== 1;
     if (player.getState().voiceoverEnabled !== voiceover) player.setVoiceover(voiceover);
     els.cinemaCard.hidden = !showFilm;
+    els.dataSaverBtn.hidden = !showFilm;
     els.actReflection.hidden = !showFilm;
     els.blindWorkspace.hidden = currentPass !== 3 || mode !== "blind";
     els.storyboard.hidden = currentPass !== 3 || mode !== "storyboard";
@@ -568,6 +575,16 @@
   // Event wiring
   els.pacingBtns.forEach((btn) => {
     btn.addEventListener("click", () => applyPacingMode(btn.dataset.pacing));
+  });
+
+  els.dataSaverBtn.setAttribute("aria-pressed", String(initialDataSaver));
+  els.dataSaverBtn.addEventListener("click", () => {
+    const enabled = !player.getState().dataSaver;
+    player.setDataSaver(enabled);
+    els.dataSaverBtn.setAttribute("aria-pressed", String(enabled));
+    try {
+      window.localStorage.setItem(STORAGE_DATA_SAVER, enabled ? "on" : "off");
+    } catch (_) {}
   });
 
   els.passBtns.forEach((btn) => {

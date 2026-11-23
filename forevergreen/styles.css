@@ -170,6 +170,12 @@ h1 {
   cursor: pointer;
 }
 
+.classroom-option #data-saver[aria-pressed="true"] {
+  border-color: var(--forest);
+  background: var(--forest);
+  color: #fff;
+}
+
 .passes {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
