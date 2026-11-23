@@ -115,7 +115,7 @@
   }
 
   function renderDrawer(act) {
-    els.drawerActLabel.textContent = `Act ${act.id} · Teacher Nurturer Guide`;
+    els.drawerActLabel.textContent = `Act ${act.id} · Teacher Story Guide`;
     els.drawerActTitle.textContent = act.title;
     els.drawerSummary.textContent = act.summary;
 

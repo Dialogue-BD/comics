@@ -3,11 +3,11 @@ const FOREVERGREEN_STORY = {
   videoSrc: "video/forevergreen.mp4",
   title: "Forevergreen",
   titleBn: "চিরসবুজ",
-  kicker: "GPA Phase 3 · Shared-story film activity",
+  kicker: "Shared-story film activity",
   subtitle: "A wordless short film about belonging, temptation, and sacrificial love",
   duration: 785,
   storyEndSec: 721,
-  version: "20261123-v19",
+  version: "20261123-v20",
   credits: {
     directors: "Nathan Engelhardt and Jeremy Spears",
     music: "Josh Garrels (Small Voice Music)",
@@ -789,11 +789,11 @@ const FOREVERGREEN_STORY = {
       example: "In the smiling branches of the new evergreen, he passed on the gift."
     }
   },
-  aiNurturerPrompt: `Act as my GPA (Growing Participator Approach) Phase 3 Language Nurturer for English.
+  aiNurturerPrompt: `Act as my friendly English speaking partner.
 We have both just watched the wordless animated short film "Forevergreen" (about an orphaned bear cub caught off a crumbling snowy ledge by a living evergreen tree, given a pinecone play doll, tempted by a crow's potato chip bag to leave, accidentally knocking a campfire ember into trash, having to let go of his stolen trash to reach the uprooted tree's saving branch, and later finding a new green shoot sprouting out of his childhood pinecone play doll).
 
-Rules for our Phase 3 Shared-Story conversation:
-1. Speak to me in natural, warm English at an i+1 level (1–2 short sentences per turn).
+Rules for our shared-story conversation:
+1. Speak to me in natural, warm, clear English (1–2 short sentences per turn).
 2. NEVER lecture me on grammar rules or mark me wrong.
 3. If I make a mistake, gently recast my idea in natural English inside your reply and keep the conversation moving.
 4. Ask one open question at a time about feelings, motives, choices, or connections to real life—not simple yes/no quiz questions.

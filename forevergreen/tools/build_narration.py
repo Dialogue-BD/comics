@@ -191,7 +191,7 @@ def export_script(story: dict) -> None:
     SCRIPT_TXT.parent.mkdir(parents=True, exist_ok=True)
     acts_by_id = {a["id"]: a for a in story["acts"]}
     lines = [
-        "FOREVERGREEN — GPA PHASE 3 NARRATION SCRIPT (ZERO-SPOILER TIMED)",
+        "FOREVERGREEN — NARRATION SCRIPT (ZERO-SPOILER TIMED)",
         "Voice: Phonon 31M EN V1 (voices/LMDIYE0Oa377Qh6Z.safetensors)",
         "Direction: Warm, unhurried storyteller. Leave calm pauses between beats so film music breathes.",
         "",
