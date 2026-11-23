@@ -10,6 +10,7 @@ Instead of pausing every few seconds and breaking emotional immersion, the activ
 2. **Pass 2 — Watch with storyteller (`গল্পকারের সাথে শুনুন`)**: Synchronized **Phonon TTS V1** storyteller narration (`audio/beats/b01.mp3`–`b46.mp3`) played via Web Audio API over the film with automatic volume ducking (`20%` during each beat, swelling smoothly back to `75%` between beats) and zero-spoiler timestamps placed 1–3s *after* each visual reveal appears on screen.
 3. **Pass 3 — Phrases & retell (`বাক্যাংশ ও নিজের ভাষায়`)**:
    - **Explore Phrases on Film**: Every single word in the live captions and full transcript is clickable for an instant English + Bangla definition tooltip (`word-glossary.js`), while multi-word idioms also open full phrase notes (`gloss-dialog`).
+   - **Build the Storyboard**: Learners put four phrase cards in order to make two sentences for each of ten film stills. The bear tells the story in the first person. The [printable two-page A4 worksheet](storyboard/forevergreen-storyboard.pdf) uses the same images with space for students to write their own version.
    - **Tell It Without Looking**: Collapses the film so learners practice blind retelling using 5 Act Memory Cards, partner speaking instructions, a copyable *Forevergreen*-grounded AI speaking partner prompt for home study, and a reflection link to `/lost-son/`.
 
 A top segmented toggle lets teachers and students choose **Full Film First (13 min)** or **One Act at a Time (2–3 min)** (which pauses cleanly only at natural Act boundaries).
@@ -37,6 +38,8 @@ Beat clips are synthesized with **Phonon 31M EN** (`gradium/phonon-31m-en`, voic
 ```
 
 ## Verification Checks
+
+To rebuild the storyboard stills and worksheet after editing `storyboard/scenes.json`, run `python3 forevergreen/tools/build_storyboard.py` with FFmpeg and ReportLab installed.
 
 ```sh
 node --check forevergreen/story.js forevergreen/word-glossary.js forevergreen/beat-timings.js forevergreen/player-core.js forevergreen/app.js forevergreen/classroom.js
