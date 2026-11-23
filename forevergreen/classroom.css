@@ -121,26 +121,13 @@ body {
   width: 100%;
 }
 
-.yt-mount, .yt-mount iframe, .yt-mount video.local-video {
+.video-mount, .video-mount video.film-video {
   width: 100%;
   height: 100%;
   border: 0;
   display: block;
   background: #000;
 }
-
-.embed-fallback {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-content: center;
-  text-align: center;
-  padding: 24px;
-  gap: 10px;
-  background: radial-gradient(circle at center, #183027, #090d0b);
-}
-.fallback-title { font: 700 1.25rem Georgia, serif; margin: 0; }
-.fallback-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
 
 .accent-btn {
   border: 0;
@@ -152,21 +139,11 @@ body {
   font-weight: 800;
   cursor: pointer;
 }
-.ghost-link {
-  display: inline-flex;
-  align-items: center;
-  padding: 8px 16px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  color: #fff;
-  text-decoration: none;
-  font-weight: 700;
-}
 
 .audio-unlock-pill {
   position: absolute;
   left: 50%;
-  bottom: 16px;
+  bottom: 58px;
   transform: translateX(-50%);
   z-index: 8;
   border: 0;
@@ -264,6 +241,11 @@ body {
   border: 1px solid #425b4d;
   font-size: 0.78rem;
   color: #f7e6b7;
+  cursor: pointer;
+}
+.drawer-phrase-chip:hover {
+  background: #284235;
+  border-color: #6f947e;
 }
 .drawer-recast {
   padding: 11px 12px;

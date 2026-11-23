@@ -1,0 +1,1657 @@
+[
+  {
+    "id": "s45",
+    "act": 3,
+    "start": 320.5,
+    "end": 325.2,
+    "frameSec": 322.9,
+    "title": "Watching With a Heavy Heart",
+    "items": [
+      {
+        "id": "s45_face",
+        "name": "Tree face",
+        "bn": "গাছের মুখ",
+        "box": [125, 285, 345, 420],
+        "sentence": "The sad evergreen face gazes down silently after the stubborn bear walks away.",
+        "sentenceBn": "জেদি ভালুকটি চলে যাওয়ার পর ব্যথিত চিরসবুজ গাছের মুখটি নীরবে নিচের দিকে তাকিয়ে থাকে।",
+        "audio": "audio/items/s45_face.mp3",
+        "grammar": {
+          "presentContinuous": "The sad evergreen face is watching from the ridge in deep sorrow.",
+          "simplePast": "The sad evergreen face frowned as the young bear disappeared down the slope.",
+          "simplePresent": "A sad evergreen face shows how deeply a guardian cares.",
+          "question": "Why does the sad evergreen face look heartbroken instead of angry?"
+        }
+      },
+      {
+        "id": "s45_trunk",
+        "name": "Tree trunk",
+        "bn": "গাছের গুঁড়ি",
+        "box": [125, 275, 870, 495],
+        "sentence": "Rooted high above the path, the tall evergreen trunk leans slightly forward in worry.",
+        "sentenceBn": "পথের অনেক ওপরে শিকড় গেড়ে থাকা লম্বা চিরসবুজ গুঁড়িটি দুশ্চিন্তায় একটু সামনের দিকে ঝুঁকে আছে।",
+        "audio": "audio/items/s45_trunk.mp3",
+        "grammar": {
+          "presentContinuous": "Warm light is touching one side of the tall evergreen trunk.",
+          "simplePast": "The tall evergreen trunk stood rooted on the ridge after the parting.",
+          "simplePresent": "A tall evergreen trunk cannot chase after someone who runs away.",
+          "question": "What keeps the tall evergreen trunk anchored on the hillside?"
+        }
+      },
+      {
+        "id": "s45_branch",
+        "name": "Pine branch",
+        "bn": "পাইন ডাল",
+        "box": [530, 195, 805, 680],
+        "sentence": "An outstretched pine branch hangs low across the trunk like a tired arm.",
+        "sentenceBn": "একটি প্রসারিত পাইন ডাল ক্লান্ত হাতের মতো গুঁড়ির সামনে নিচু হয়ে ঝুলে আছে।",
+        "audio": "audio/items/s45_branch.mp3",
+        "grammar": {
+          "presentContinuous": "The outstretched pine branch is drooping quietly in the shade.",
+          "simplePast": "The outstretched pine branch dipped low as the bear marched off.",
+          "simplePresent": "An outstretched pine branch carries long clusters of green needles.",
+          "question": "How does the outstretched pine branch reflect the tree's mood?"
+        }
+      },
+      {
+        "id": "s45_side_branch",
+        "name": "Side branch",
+        "bn": "পাশের ডাল",
+        "box": [305, 440, 585, 715],
+        "sentence": "A drooping side branch extends toward the sunlit canyon wall in stillness.",
+        "sentenceBn": "একটি নুইয়ে পড়া পাশের ডাল রোদেলা খাদের দেয়ালের দিকে স্থির হয়ে ছড়িয়ে আছে।",
+        "audio": "audio/items/s45_side_branch.mp3",
+        "grammar": {
+          "presentContinuous": "The drooping side branch is resting motionless against the sunlit cliff.",
+          "simplePast": "A drooping side branch held onto small tufts of needles in the breeze.",
+          "simplePresent": "A drooping side branch softens the silhouette of an old pine.",
+          "question": "Which direction does the drooping side branch point?"
+        }
+      },
+      {
+        "id": "s45_tuft",
+        "name": "Pine tuft",
+        "bn": "পাইন গোছা",
+        "box": [125, 230, 260, 315],
+        "sentence": "A bright green pine tuft brushes beside the evergreen's furrowed brow.",
+        "sentenceBn": "একটি উজ্জ্বল সবুজ পাইন গোছা চিরসবুজ গাছটির কুঁচকানো কপালের পাশে লেগে আছে।",
+        "audio": "audio/items/s45_tuft.mp3",
+        "grammar": {
+          "presentContinuous": "Sunlight is catching the edge of the green pine tuft near his face.",
+          "simplePast": "The green pine tuft framed the worried eyes of the old tree.",
+          "simplePresent": "A green pine tuft stays bright even in deep forest shade.",
+          "question": "Where does the green pine tuft grow on the tree's face?"
+        }
+      },
+      {
+        "id": "s45_canopy",
+        "name": "Canopy",
+        "bn": "পাতার আচ্ছাদন",
+        "box": [125, 0, 745, 285],
+        "sentence": "Behind the trunk, the dark leafy canopy fills the quiet left side of the frame.",
+        "sentenceBn": "গুঁড়ির পেছনে গাঢ় পাতার আচ্ছাদন ছবির বাঁ দিকের শান্ত অংশ জুড়ে রয়েছে।",
+        "audio": "audio/items/s45_canopy.mp3",
+        "grammar": {
+          "presentContinuous": "Deep shadows are gathering beneath the dark leafy canopy.",
+          "simplePast": "The dark leafy canopy sheltered the cub for many peaceful seasons.",
+          "simplePresent": "A dark leafy canopy blocks harsh sunbeams on the mountain ridge.",
+          "question": "Who used to sleep safely beneath that dark leafy canopy?"
+        }
+      },
+      {
+        "id": "s45_cliff",
+        "name": "Cliff",
+        "bn": "পাহাড়",
+        "box": [125, 500, 840, 1000],
+        "sentence": "Across the gap, a sunlit canyon cliff drops down toward the distant river valley.",
+        "sentenceBn": "ফাঁকা জায়গার ওপারে একটি রোদেলা গিরিখাতের পাহাড় দূরের নদী উপত্যকার দিকে নেমে গেছে।",
+        "audio": "audio/items/s45_cliff.mp3",
+        "grammar": {
+          "presentContinuous": "Afternoon light is glowing warmly across the sunlit canyon cliff.",
+          "simplePast": "The sunlit canyon cliff rose steeply behind the grieving evergreen.",
+          "simplePresent": "A sunlit canyon cliff marks the edge of the rocky gorge.",
+          "question": "What lies far beyond the sunlit canyon cliff?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s46",
+    "act": 3,
+    "start": 325.2,
+    "end": 328.7,
+    "frameSec": 326.9,
+    "title": "Walking Away Into the Canyon",
+    "items": [
+      {
+        "id": "s46_bear",
+        "name": "Bear",
+        "bn": "ভালুক",
+        "box": [415, 365, 755, 545],
+        "sentence": "Head lowered in determination, the young brown bear strides forward on all fours.",
+        "sentenceBn": "দৃঢ় সংকল্পে মাথা নিচু করে তরুণ বাদামি ভালুকটি চার পায়ে সামনের দিকে এগিয়ে যাচ্ছে।",
+        "audio": "audio/items/s46_bear.mp3",
+        "grammar": {
+          "presentContinuous": "The young brown bear is walking away along the sunny rock ledge.",
+          "simplePast": "The young brown bear crossed the ridge without looking back once.",
+          "simplePresent": "A young brown bear moves fast when curiosity pulls him forward.",
+          "question": "Where is the young brown bear heading on his own?"
+        }
+      },
+      {
+        "id": "s46_golden_pines",
+        "name": "Autumn pines",
+        "bn": "শরতের পাইন",
+        "box": [220, 0, 625, 355],
+        "sentence": "Rows of golden autumn pines brighten the left slope along the canyon rim.",
+        "sentenceBn": "সোনালি শরতের পাইন গাছের সারি খাদের কিনারার বাঁ দিকের ঢালকে উজ্জ্বল করে তুলেছে।",
+        "audio": "audio/items/s46_golden_pines.mp3",
+        "grammar": {
+          "presentContinuous": "The golden autumn pines are glowing in the clear afternoon sunlight.",
+          "simplePast": "Bright golden autumn pines stood beside the dusty mountain trail.",
+          "simplePresent": "Golden autumn pines stand out sharply against dark rock walls.",
+          "question": "Why do the golden autumn pines look so vivid against the cliff?"
+        }
+      },
+      {
+        "id": "s46_green_pines",
+        "name": "Pine trees",
+        "bn": "পাইন গাছ",
+        "box": [275, 460, 595, 710],
+        "sentence": "Clustered along the horizon, dark green pines point like spears toward the sky.",
+        "sentenceBn": "দিগন্ত বরাবর ঘন হয়ে থাকা গাঢ় সবুজ পাইন গাছগুলো বর্শার মতো আকাশের দিকে উঠে গেছে।",
+        "audio": "audio/items/s46_green_pines.mp3",
+        "grammar": {
+          "presentContinuous": "Silhouettes of dark green pines are lining the far canyon edge.",
+          "simplePast": "The dark green pines watched silently as the bear wandered farther.",
+          "simplePresent": "Dark green pines thrive along high rocky ridges.",
+          "question": "How many dark green pines can you count behind the bear?"
+        }
+      },
+      {
+        "id": "s46_cliff",
+        "name": "Cliff",
+        "bn": "পাহাড়",
+        "box": [125, 685, 620, 1000],
+        "sentence": "A towering rocky cliff rises on the right like a silent stone wall.",
+        "sentenceBn": "একটি উঁচু পাথুরে পাহাড় ডান দিকে নীরব পাথরের দেয়ালের মতো দাঁড়িয়ে আছে।",
+        "audio": "audio/items/s46_cliff.mp3",
+        "grammar": {
+          "presentContinuous": "Cool blue shadow is covering the face of the towering rocky cliff.",
+          "simplePast": "The towering rocky cliff framed the wide canyon pass.",
+          "simplePresent": "A towering rocky cliff channels mountain winds through the gorge.",
+          "question": "What kind of terrain waits past that towering rocky cliff?"
+        }
+      },
+      {
+        "id": "s46_path",
+        "name": "Dirt path",
+        "bn": "মাটির পথ",
+        "box": [545, 0, 685, 370],
+        "sentence": "A sunlit dirt path winds out from among the colorful trees toward the edge.",
+        "sentenceBn": "একটি রোদেলা মাটির পথ রঙিন গাছগুলোর ভেতর থেকে বেরিয়ে কিনারার দিকে এঁকেবেঁকে গেছে।",
+        "audio": "audio/items/s46_path.mp3",
+        "grammar": {
+          "presentContinuous": "Bright sunbeams are warming the dry sunlit dirt path.",
+          "simplePast": "The bear followed the sunlit dirt path out of the woods.",
+          "simplePresent": "A sunlit dirt path makes walking easy until the cliffs begin.",
+          "question": "Where does the sunlit dirt path lead the bear?"
+        }
+      },
+      {
+        "id": "s46_ledge",
+        "name": "Rock ledge",
+        "bn": "পাথরের তাক",
+        "box": [610, 275, 870, 1000],
+        "sentence": "The bear pads across a mossy rock ledge split by a narrow canyon crack.",
+        "sentenceBn": "ভালুকটি সরু ফাটলযুক্ত একটি শ্যাওলা ধরা পাথরের তাকের ওপর দিয়ে হেঁটে চলেছে।",
+        "audio": "audio/items/s46_ledge.mp3",
+        "grammar": {
+          "presentContinuous": "A beam of light is falling onto the mossy rock ledge under his paws.",
+          "simplePast": "The heavy bear stepped smoothly across the mossy rock ledge.",
+          "simplePresent": "A mossy rock ledge can turn slippery near canyon water.",
+          "question": "What shines across the middle of the mossy rock ledge?"
+        }
+      },
+      {
+        "id": "s46_sky",
+        "name": "Sky",
+        "bn": "আকাশ",
+        "box": [125, 185, 310, 770],
+        "sentence": "Above the sharp treetops, a bright blue sky stretches wide over the open canyon.",
+        "sentenceBn": "তীক্ষ্ণ গাছের চূড়ার ওপরে উজ্জ্বল নীল আকাশ খোলা গিরিখাতের ওপর বিস্তৃত হয়ে আছে।",
+        "audio": "audio/items/s46_sky.mp3",
+        "grammar": {
+          "presentContinuous": "Thin white clouds are drifting lazily across the bright blue sky.",
+          "simplePast": "The bright blue sky promised warm weather at the start of his trip.",
+          "simplePresent": "A bright blue sky makes distant cliffs look crisp and inviting.",
+          "question": "Does the bright blue sky hint at any danger ahead?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s47",
+    "act": 3,
+    "start": 328.7,
+    "end": 342.1,
+    "frameSec": 335.4,
+    "title": "Perched Above the Misty Waterfall",
+    "items": [
+      {
+        "id": "s47_bear",
+        "name": "Bear",
+        "bn": "ভালুক",
+        "box": [255, 675, 425, 780],
+        "sentence": "High above the drop, the small perched bear clings to a narrow shelf of stone.",
+        "sentenceBn": "গভীর খাদের অনেক ওপরে খাদের কিনারায় বসা ভালুকটি সরু পাথরের তাক আঁকড়ে ধরে আছে।",
+        "audio": "audio/items/s47_bear.mp3",
+        "grammar": {
+          "presentContinuous": "The small perched bear is peering down at the rushing water below.",
+          "simplePast": "The small perched bear paused on the high cliff before scrambling down.",
+          "simplePresent": "A small perched bear looks tiny beside a giant mountain waterfall.",
+          "question": "How did the small perched bear climb onto such a narrow ledge?"
+        }
+      },
+      {
+        "id": "s47_waterfall",
+        "name": "Waterfall",
+        "bn": "জলপ্রপাত",
+        "box": [125, 100, 620, 520],
+        "sentence": "A roaring waterfall stream plunges straight down the steep canyon wall.",
+        "sentenceBn": "একটি গর্জনশীল জলপ্রপাতের ধারা খাড়া গিরিখাতের দেয়াল বেয়ে সোজা নিচে আছড়ে পড়ছে।",
+        "audio": "audio/items/s47_waterfall.mp3",
+        "grammar": {
+          "presentContinuous": "The roaring waterfall stream is crashing down in foaming white sheets.",
+          "simplePast": "A roaring waterfall stream filled the whole canyon with thunder.",
+          "simplePresent": "A roaring waterfall stream throws thick spray far into the air.",
+          "question": "How loud must that roaring waterfall stream sound from the cliff?"
+        }
+      },
+      {
+        "id": "s47_mist",
+        "name": "Mist",
+        "bn": "কুয়াশা",
+        "box": [550, 0, 870, 695],
+        "sentence": "Thick rising waterfall mist swallows the bottom of the gorge in a pale cloud.",
+        "sentenceBn": "ঘন উড়ন্ত জলপ্রপাতের কুয়াশা খাদের নিচের অংশকে ফ্যাকাশে মেঘের মতো ঢেকে দিয়েছে।",
+        "audio": "audio/items/s47_mist.mp3",
+        "grammar": {
+          "presentContinuous": "Cold rising waterfall mist is swirling upward from the hidden river.",
+          "simplePast": "Rising waterfall mist hid the swirling rapids far below the ledge.",
+          "simplePresent": "Rising waterfall mist soaks nearby rocks and makes them slick.",
+          "question": "What lies hidden beneath the thick rising waterfall mist?"
+        }
+      },
+      {
+        "id": "s47_canyon_wall",
+        "name": "Canyon wall",
+        "bn": "গিরিখাতের দেয়াল",
+        "box": [125, 505, 580, 775],
+        "sentence": "Behind the spray, a sunlit canyon wall glows golden orange in the afternoon light.",
+        "sentenceBn": "জলকণার পেছনে একটি রোদেলা গিরিখাতের দেয়াল বিকেলের আলোয় সোনালি কমলা রঙে জ্বলজ্বল করছে।",
+        "audio": "audio/items/s47_canyon_wall.mp3",
+        "grammar": {
+          "presentContinuous": "Golden sunlight is shining through the mist onto the sunlit canyon wall.",
+          "simplePast": "The vertical sunlit canyon wall towered right beside the waterfall.",
+          "simplePresent": "A sunlit canyon wall warms the air high above the shaded gorge.",
+          "question": "Why does the sunlit canyon wall glow orange behind the spray?"
+        }
+      },
+      {
+        "id": "s47_cliff",
+        "name": "Cliff",
+        "bn": "পাথুরে খাঁজ",
+        "box": [125, 725, 750, 1000],
+        "sentence": "A sheer dark rocky cliff forms the steep shadow side where the bear holds on.",
+        "sentenceBn": "একটি খাড়া অন্ধকার পাথুরে খাঁজ ছায়াঘেরা ঢাল তৈরি করেছে যেখানে ভালুকটি ধরে আছে।",
+        "audio": "audio/items/s47_cliff.mp3",
+        "grammar": {
+          "presentContinuous": "The bear is resting carefully against the cold dark rocky cliff.",
+          "simplePast": "He climbed down the dark rocky cliff one careful paw at a time.",
+          "simplePresent": "A dark rocky cliff leaves little room for slipping.",
+          "question": "Can the bear climb safely down that dark rocky cliff?"
+        }
+      },
+      {
+        "id": "s47_ledge",
+        "name": "Rock step",
+        "bn": "পাথরের ধাপ",
+        "box": [735, 635, 870, 1000],
+        "sentence": "Farther below, a sharp rock step juts out over the misty chasm.",
+        "sentenceBn": "আরও নিচে একটি তীক্ষ্ণ পাথরের ধাপ কুয়াশাচ্ছন্ন খাদের ওপর বেরিয়ে আছে।",
+        "audio": "audio/items/s47_ledge.mp3",
+        "grammar": {
+          "presentContinuous": "Wet spray is drifting past the sharp rock step at the bottom.",
+          "simplePast": "The sharp rock step jutted straight out into the rising mist.",
+          "simplePresent": "A sharp rock step drops abruptly into deep canyon water.",
+          "question": "What waits just past that sharp rock step?"
+        }
+      },
+      {
+        "id": "s47_left_rock",
+        "name": "Rock",
+        "bn": "পাথর",
+        "box": [125, 0, 870, 115],
+        "sentence": "On the left border, a shaded canyon rock frames the roaring cascade.",
+        "sentenceBn": "বাঁ দিকের প্রান্তে একটি ছায়াঘেরা খাদের পাথর গর্জনশীল জলপ্রপাতকে ঘিরে রেখেছে।",
+        "audio": "audio/items/s47_left_rock.mp3",
+        "grammar": {
+          "presentContinuous": "Waterfall spray is brushing past the wet shaded canyon rock.",
+          "simplePast": "The shaded canyon rock stood damp and dark beside the falls.",
+          "simplePresent": "A shaded canyon rock stays slick from constant river mist.",
+          "question": "Why is the shaded canyon rock darker than the cliff behind the falls?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s48",
+    "act": 3,
+    "start": 342.1,
+    "end": 357.0,
+    "frameSec": 349.6,
+    "title": "Swept Into Roaring Rapids",
+    "items": [
+      {
+        "id": "s48_face",
+        "name": "Bear face",
+        "bn": "ভালুকের মুখ",
+        "box": [305, 480, 495, 735],
+        "sentence": "Wide-eyed in the swirl, the bear's wet face bobs just inside the rushing current.",
+        "sentenceBn": "ঘূর্ণিতে চোখ বড় বড় করে ভালুকের ভেজা মুখটি প্রবল স্রোতের ভেতরে ভেসে উঠছে।",
+        "audio": "audio/items/s48_face.mp3",
+        "grammar": {
+          "presentContinuous": "The bear's wet face is fighting to stay steady in the swift rapids.",
+          "simplePast": "The bear's wet face dipped beneath the foaming green water.",
+          "simplePresent": "A bear's wet face shows shock when river rapids pull too hard.",
+          "question": "How is the bear's wet face reacting to the strong current?"
+        }
+      },
+      {
+        "id": "s48_ear",
+        "name": "Bear ear",
+        "bn": "ভালুকের কান",
+        "box": [265, 705, 445, 820],
+        "sentence": "A soaked wet bear ear flattens back as the river sweeps him along.",
+        "sentenceBn": "স্রোত তাকে ভাসিয়ে নেওয়ার সময় ভেজা ভালুকের কানটি পেছনের দিকে চেপে গেছে।",
+        "audio": "audio/items/s48_ear.mp3",
+        "grammar": {
+          "presentContinuous": "Water is streaming past the dark wet bear ear in the rapids.",
+          "simplePast": "His wet bear ear disappeared briefly under a cold wave.",
+          "simplePresent": "A wet bear ear flattens naturally while swimming through fast water.",
+          "question": "Why is the wet bear ear pressed back against his head?"
+        }
+      },
+      {
+        "id": "s48_fur",
+        "name": "Bear fur",
+        "bn": "ভালুকের লোম",
+        "box": [390, 215, 735, 455],
+        "sentence": "Ribbons of sunlit wet fur stream backward across his shoulders in the water.",
+        "sentenceBn": "জলের ভেতর তার কাঁধ বেয়ে রোদে ভেজা লোমের গুচ্ছ পেছনের দিকে ভেসে যাচ্ছে।",
+        "audio": "audio/items/s48_fur.mp3",
+        "grammar": {
+          "presentContinuous": "Golden bubbles are tangling inside his sunlit wet fur underwater.",
+          "simplePast": "His thick sunlit wet fur grew heavy with cold river water.",
+          "simplePresent": "Sunlit wet fur gleams like amber beneath clear mountain streams.",
+          "question": "What makes his sunlit wet fur glow gold under the surface?"
+        }
+      },
+      {
+        "id": "s48_boulder",
+        "name": "Boulder",
+        "bn": "বড় পাথর",
+        "box": [435, 370, 870, 1000],
+        "sentence": "A huge foreground river boulder blocks the lower corner as the current rushes past.",
+        "sentenceBn": "প্রবল স্রোত বয়ে যাওয়ার সময় একটি বিশাল সামনের নদীর বড় পাথর নিচের কোণটি আড়াল করে রেখেছে।",
+        "audio": "audio/items/s48_boulder.mp3",
+        "grammar": {
+          "presentContinuous": "White water is surging right beside the smooth foreground river boulder.",
+          "simplePast": "The bear tumbled straight past a massive foreground river boulder.",
+          "simplePresent": "A foreground river boulder splits fast rapids into dangerous eddies.",
+          "question": "What hazard sits right in front of the swimming bear?"
+        }
+      },
+      {
+        "id": "s48_splash",
+        "name": "Splash",
+        "bn": "জলরাশি",
+        "box": [325, 0, 615, 165],
+        "sentence": "A bright churning whitewater splash erupts on the left edge of the rapids.",
+        "sentenceBn": "স্রোতের বাঁ প্রান্তে একটি উজ্জ্বল উথাল-পাতাল সাদা জলরাশি ফেনিয়ে উঠছে।",
+        "audio": "audio/items/s48_splash.mp3",
+        "grammar": {
+          "presentContinuous": "Foaming air bubbles are bursting inside the churning whitewater splash.",
+          "simplePast": "A churning whitewater splash roared behind the struggling bear.",
+          "simplePresent": "A churning whitewater splash marks where water crashes over hidden stones.",
+          "question": "What causes the bright churning whitewater splash on the left?"
+        }
+      },
+      {
+        "id": "s48_water",
+        "name": "River",
+        "bn": "নদী",
+        "box": [125, 120, 380, 700],
+        "sentence": "Cold deep green river water closes overhead as the rapids carry him downstream.",
+        "sentenceBn": "স্রোত তাকে ভাটির দিকে টেনে নেওয়ার সময় মাথার ওপরে গভীর সবুজ নদীর জল ঘিরে ধরে।",
+        "audio": "audio/items/s48_water.mp3",
+        "grammar": {
+          "presentContinuous": "Fast deep green river water is swirling all around the bear.",
+          "simplePast": "The deep green river water pulled him rapidly away from the cliff.",
+          "simplePresent": "Deep green river water hides rocks and sunken branches beneath the surface.",
+          "question": "How fast is the deep green river water moving through the gorge?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s49",
+    "act": 3,
+    "start": 357.0,
+    "end": 366.2,
+    "frameSec": 361.6,
+    "title": "Reaching the Fallen River Log",
+    "items": [
+      {
+        "id": "s49_face",
+        "name": "Bear face",
+        "bn": "ভালুকের মুখ",
+        "box": [125, 420, 500, 755],
+        "sentence": "Panting behind the spray, the soaked bear face peeks over the wet log.",
+        "sentenceBn": "জলকণার আড়াল থেকে হাঁপাতে হাঁপাতে ভিজে যাওয়া ভালুকের মুখটি ভেজা গুঁড়ির ওপর উঁকি দিচ্ছে।",
+        "audio": "audio/items/s49_face.mp3",
+        "grammar": {
+          "presentContinuous": "The soaked bear face is peering upward through a veil of mist.",
+          "simplePast": "A soaked bear face emerged from the rushing water at last.",
+          "simplePresent": "A soaked bear face drips icy water after escaping the rapids.",
+          "question": "What expression do you see on the soaked bear face?"
+        }
+      },
+      {
+        "id": "s49_ear",
+        "name": "Bear ear",
+        "bn": "ভালুকের কান",
+        "box": [225, 675, 315, 760],
+        "sentence": "Sunlight catches the bear's amber ear above the dark canyon rim.",
+        "sentenceBn": "অন্ধকার খাদের কিনারার ওপরে রোদের আলো ভালুকের সোনালি কানে এসে পড়েছে।",
+        "audio": "audio/items/s49_ear.mp3",
+        "grammar": {
+          "presentContinuous": "Warm rays are shining onto the bear's amber ear in the evening air.",
+          "simplePast": "The bear's amber ear perked up as he grabbed the wooden log.",
+          "simplePresent": "A bear's amber ear glows softly when backlit by canyon sun.",
+          "question": "Why does the bear's amber ear look brighter than the rest of his fur?"
+        }
+      },
+      {
+        "id": "s49_log",
+        "name": "Fallen log",
+        "bn": "পড়ে থাকা গুঁড়ি",
+        "box": [595, 0, 870, 1000],
+        "sentence": "A thick fallen wooden log stretches across the water like a steady rescue bridge.",
+        "sentenceBn": "একটি মোটা পড়ে থাকা কাঠের গুঁড়ি জলের ওপর স্থির উদ্ধার সেতুর মতো আড়াআড়ি পড়ে আছে।",
+        "audio": "audio/items/s49_log.mp3",
+        "grammar": {
+          "presentContinuous": "The bear is pulling himself onto the sturdy fallen wooden log.",
+          "simplePast": "A fallen wooden log stopped him from washing farther downstream.",
+          "simplePresent": "A fallen wooden log gives wet travelers a firm place to climb out.",
+          "question": "How does the fallen wooden log help the bear escape the current?"
+        }
+      },
+      {
+        "id": "s49_rock",
+        "name": "River rock",
+        "bn": "নদীর পাথর",
+        "box": [280, 0, 750, 350],
+        "sentence": "To the left, a dark stepped river rock rises above the misty bank.",
+        "sentenceBn": "বাঁ দিকে একটি কালচে ধাপ কাটা নদীর পাথর কুয়াশাচ্ছন্ন তীরের ওপর উঠে আছে।",
+        "audio": "audio/items/s49_rock.mp3",
+        "grammar": {
+          "presentContinuous": "Cool river mist is drifting across the dark stepped river rock.",
+          "simplePast": "The stepped river rock stood anchored beside the fallen log.",
+          "simplePresent": "A stepped river rock blocks part of the swirling stream.",
+          "question": "What plants grow along the base of the stepped river rock?"
+        }
+      },
+      {
+        "id": "s49_saplings",
+        "name": "Saplings",
+        "bn": "চারাগাছ",
+        "box": [545, 35, 765, 355],
+        "sentence": "Tiny young pine saplings sprout up along the shaded left riverbank.",
+        "sentenceBn": "ছায়াঘেরা বাঁ দিকের নদীর তীর ঘেঁষে ছোট ছোট কচি পাইন চারাগাছ বেড়ে উঠেছে।",
+        "audio": "audio/items/s49_saplings.mp3",
+        "grammar": {
+          "presentContinuous": "The young pine saplings are swaying slightly in the wet breeze.",
+          "simplePast": "Sharp-tipped young pine saplings grew right behind the fallen log.",
+          "simplePresent": "Young pine saplings need sunlight and damp soil beside streams.",
+          "question": "Where are the young pine saplings growing in this canyon?"
+        }
+      },
+      {
+        "id": "s49_cliff",
+        "name": "Canyon wall",
+        "bn": "খাদের দেয়াল",
+        "box": [125, 575, 625, 1000],
+        "sentence": "On the right, a smooth sunlit canyon wall angles steeply toward the sky.",
+        "sentenceBn": "ডান দিকে একটি মসৃণ রোদেলা খাদের দেয়াল খাড়াভাবে আকাশের দিকে উঠে গেছে।",
+        "audio": "audio/items/s49_cliff.mp3",
+        "grammar": {
+          "presentContinuous": "Golden evening light is painting the high sunlit canyon wall.",
+          "simplePast": "The sunlit canyon wall loomed behind the bear as he climbed out.",
+          "simplePresent": "A sunlit canyon wall reflects warm light into deep river gorges.",
+          "question": "How steep is the sunlit canyon wall behind the bear?"
+        }
+      },
+      {
+        "id": "s49_mist",
+        "name": "Mist",
+        "bn": "কুয়াশা",
+        "box": [125, 0, 355, 580],
+        "sentence": "Pale cyan sky and mist blur across the upper corner above the wet rocks.",
+        "sentenceBn": "ভেজা পাথরগুলোর ওপরে ফ্যাকাশে আকাশি রঙের আকাশ ও কুয়াশা ঝাপসা হয়ে মিশে আছে।",
+        "audio": "audio/items/s49_mist.mp3",
+        "grammar": {
+          "presentContinuous": "Cool cyan sky and mist are brightening the upper canyon air.",
+          "simplePast": "Cyan sky and mist shimmered above the roaring water.",
+          "simplePresent": "Cyan sky and mist mingle whenever cold water meets warm sun.",
+          "question": "Why does the upper-left corner look hazy with cyan sky and mist?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s50",
+    "act": 3,
+    "start": 366.2,
+    "end": 372.0,
+    "frameSec": 369.1,
+    "title": "Pulling Onto the Fallen Log",
+    "items": [
+      {
+        "id": "s50_bear",
+        "name": "Bear",
+        "bn": "ভালুক",
+        "box": [460, 345, 805, 755],
+        "sentence": "Catching his breath, the relieved brown bear rests his chin near the wood and looks up.",
+        "sentenceBn": "দম নিয়ে স্বস্তি পাওয়া বাদামি ভালুকটি কাঠের কাছে মাথা রেখে ওপরের দিকে তাকায়।",
+        "audio": "audio/items/s50_bear.mp3",
+        "grammar": {
+          "presentContinuous": "The relieved brown bear is resting safely on top of the timber.",
+          "simplePast": "The relieved brown bear dragged himself out of the rushing rapids.",
+          "simplePresent": "A relieved brown bear pauses to catch his breath after danger.",
+          "question": "What is the relieved brown bear looking at up in the trees?"
+        }
+      },
+      {
+        "id": "s50_paws",
+        "name": "Paws",
+        "bn": "থাবা",
+        "box": [645, 345, 795, 645],
+        "sentence": "His heavy clawed paws spread wide across the sunlit surface of the log.",
+        "sentenceBn": "তার ভারী নখযুক্ত থাবাগুলো রোদেলা গুঁড়ির ওপর ছড়িয়ে রয়েছে।",
+        "audio": "audio/items/s50_paws.mp3",
+        "grammar": {
+          "presentContinuous": "The bear's heavy clawed paws are gripping the rough wet bark.",
+          "simplePast": "His heavy clawed paws dug into the wood to pull him free.",
+          "simplePresent": "Heavy clawed paws help a bear climb slippery logs and rocks.",
+          "question": "How do his heavy clawed paws hold onto the smooth timber?"
+        }
+      },
+      {
+        "id": "s50_log",
+        "name": "Fallen log",
+        "bn": "পড়ে থাকা গুঁড়ি",
+        "box": [715, 0, 870, 1000],
+        "sentence": "Warm light shines across the wide fallen log supporting the exhausted traveler.",
+        "sentenceBn": "ক্লান্ত পথিককে ধরে রাখা চওড়া পড়ে থাকা গুঁড়িটির ওপর উষ্ণ আলো ঝলমল করছে।",
+        "audio": "audio/items/s50_log.mp3",
+        "grammar": {
+          "presentContinuous": "Golden rays are warming the top of the wide fallen log.",
+          "simplePast": "The wide fallen log saved the bear from the swirling current.",
+          "simplePresent": "A wide fallen log forms a natural bridge across forest streams.",
+          "question": "Why is the wide fallen log glowing warm orange in the front?"
+        }
+      },
+      {
+        "id": "s50_snag",
+        "name": "Dead branch",
+        "bn": "শুকনো ডাল",
+        "box": [295, 130, 725, 255],
+        "sentence": "Beside the rock wall, a bare dead branch reaches upward with leafless curves.",
+        "sentenceBn": "পাথরের দেয়ালের পাশে একটি পাতাহীন শুকনো ডাল বাঁকা হয়ে ওপরের দিকে উঠে আছে।",
+        "audio": "audio/items/s50_snag.mp3",
+        "grammar": {
+          "presentContinuous": "The bare dead branch is standing empty against the canyon cliff.",
+          "simplePast": "A bare dead branch jutted up from behind the fallen log.",
+          "simplePresent": "A bare dead branch has no green needles left to shade the bank.",
+          "question": "How does that bare dead branch differ from the pine on the right?"
+        }
+      },
+      {
+        "id": "s50_pine",
+        "name": "Pine tree",
+        "bn": "পাইন গাছ",
+        "box": [125, 615, 670, 855],
+        "sentence": "A tall pine tree with layered green branches stands silently behind the bear.",
+        "sentenceBn": "স্তরে স্তরে সাজানো সবুজ ডালপালা নিয়ে একটি লম্বা পাইন গাছ ভালুকটির পেছনে নীরবে দাঁড়িয়ে আছে।",
+        "audio": "audio/items/s50_pine.mp3",
+        "grammar": {
+          "presentContinuous": "Golden sky light is glowing behind the tall pine tree.",
+          "simplePast": "The tall pine tree stood near the bright canyon clearing.",
+          "simplePresent": "A tall pine tree reminds travelers of the quiet woods they left behind.",
+          "question": "Does the tall pine tree remind the bear of home?"
+        }
+      },
+      {
+        "id": "s50_bushes",
+        "name": "Bushes",
+        "bn": "ঝোপঝাড়",
+        "box": [425, 0, 705, 155],
+        "sentence": "Rounded green riverside bushes cluster along the shadowy left side of the bank.",
+        "sentenceBn": "গোল গোল নদীর ধারের সবুজ ঝোপগুলো তীরের ছায়াঘেরা বাঁ পাশে ঘন হয়ে আছে।",
+        "audio": "audio/items/s50_bushes.mp3",
+        "grammar": {
+          "presentContinuous": "The green riverside bushes are growing thick in the damp shade.",
+          "simplePast": "Dark green riverside bushes bordered the edge of the log.",
+          "simplePresent": "Green riverside bushes thrive close to misty canyon rivers.",
+          "question": "Why are the green riverside bushes darker than the sunlit log?"
+        }
+      },
+      {
+        "id": "s50_cliff",
+        "name": "Cliff",
+        "bn": "গিরিখাতের পাহাড়",
+        "box": [125, 0, 560, 640],
+        "sentence": "Behind the clearing, a towering canyon cliff rises with vertical ridges of stone.",
+        "sentenceBn": "ফাঁকা জায়গার পেছনে একটি সুউচ্চ গিরিখাতের পাহাড় খাড়া পাথরের ভাঁজ নিয়ে দাঁড়িয়ে আছে।",
+        "audio": "audio/items/s50_cliff.mp3",
+        "grammar": {
+          "presentContinuous": "Afternoon rays are angling down across the towering canyon cliff.",
+          "simplePast": "The towering canyon cliff blocked out the western sky.",
+          "simplePresent": "A towering canyon cliff casts long shadows across deep valleys.",
+          "question": "What lines run down the face of the towering canyon cliff?"
+        }
+      },
+      {
+        "id": "s50_far_pines",
+        "name": "Forest pines",
+        "bn": "বনের পাইন",
+        "box": [340, 835, 660, 1000],
+        "sentence": "Farther ahead, distant golden pines shimmer softly inside a warm sunlit haze.",
+        "sentenceBn": "আরও সামনে দূরের সোনালি পাইন গাছগুলো উষ্ণ রোদেলা কুয়াশার ভেতর মৃদু ঝলমল করছে।",
+        "audio": "audio/items/s50_far_pines.mp3",
+        "grammar": {
+          "presentContinuous": "Golden haze is glowing around the distant golden pines on the right.",
+          "simplePast": "The distant golden pines marked the trail leading deeper into the woods.",
+          "simplePresent": "Distant golden pines look soft and dreamy in late afternoon light.",
+          "question": "What awaits the bear beyond those distant golden pines?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s51",
+    "act": 3,
+    "start": 372.0,
+    "end": 377.3,
+    "frameSec": 374.6,
+    "title": "Spotting Crows in the Clearing",
+    "items": [
+      {
+        "id": "s51_crows",
+        "name": "Crows",
+        "bn": "কাক",
+        "box": [505, 245, 560, 305],
+        "sentence": "In the glowing clearing below, tiny pecking crows gather around scraps on the ground.",
+        "sentenceBn": "নিচের আলোকিত ফাঁকা জায়গায় খুঁটে খাওয়া ছোট কাকগুলো মাটিতে পড়ে থাকা খাবারের টুকরোর চারপাশে জড়ো হয়েছে।",
+        "audio": "audio/items/s51_crows.mp3",
+        "grammar": {
+          "presentContinuous": "Tiny pecking crows are hopping across the bright patch of dirt.",
+          "simplePast": "The tiny pecking crows spotted spilled snacks before the bear arrived.",
+          "simplePresent": "Tiny pecking crows flock wherever campers drop tasty crumbs.",
+          "question": "What drew those tiny pecking crows to the sunny spot below?"
+        }
+      },
+      {
+        "id": "s51_trail",
+        "name": "Trail",
+        "bn": "পথ",
+        "box": [515, 145, 745, 555],
+        "sentence": "A wide sunlit dirt trail leads straight toward the rocky ledge above the clearing.",
+        "sentenceBn": "একটি চওড়া রোদেলা মাটির ট্রেইল ফাঁকা জায়গার ওপরের পাথুরে কিনারার দিকে সোজা এগিয়ে এসেছে।",
+        "audio": "audio/items/s51_trail.mp3",
+        "grammar": {
+          "presentContinuous": "Warm sunbeams are lighting up the dusty sunlit dirt trail.",
+          "simplePast": "The sunlit dirt trail stretched down through the middle of camp.",
+          "simplePresent": "A sunlit dirt trail stands out clearly against cool blue forest shadows.",
+          "question": "Where does the sunlit dirt trail lead from the trees?"
+        }
+      },
+      {
+        "id": "s51_pines",
+        "name": "Pine trees",
+        "bn": "পাইন গাছ",
+        "box": [340, 15, 545, 450],
+        "sentence": "A row of pointed pine trees catches golden sunbeams beside the clearing.",
+        "sentenceBn": "ফাঁকা জায়গার পাশে সারি বাঁধা চূড়াওয়ালা পাইন গাছগুলোতে সোনালি রোদের আলো পড়েছে।",
+        "audio": "audio/items/s51_pines.mp3",
+        "grammar": {
+          "presentContinuous": "Bright rays are slicing across the small pointed pine trees.",
+          "simplePast": "Several pointed pine trees ringed the edge of the sunny camp.",
+          "simplePresent": "Pointed pine trees glow pale green when low sunlight hits them.",
+          "question": "Why are the pointed pine trees brighter in the center than on the edge?"
+        }
+      },
+      {
+        "id": "s51_tufts",
+        "name": "Grass",
+        "bn": "ঘাস",
+        "box": [550, 135, 745, 440],
+        "sentence": "Small green clearing grass tufts dot the rocky ground around the trail.",
+        "sentenceBn": "ট্রেইলের চারপাশের পাথুরে মাটিতে ছোট ছোট সবুজ মাঠের ঘাসের গুচ্ছ ছড়িয়ে আছে।",
+        "audio": "audio/items/s51_tufts.mp3",
+        "grammar": {
+          "presentContinuous": "Bright green clearing grass tufts are catching the afternoon glow.",
+          "simplePast": "Scattered clearing grass tufts grew between flat camp stones.",
+          "simplePresent": "Clearing grass tufts sprout wherever rain gathers in rocky soil.",
+          "question": "What grows around the flat stones beside the path?"
+        }
+      },
+      {
+        "id": "s51_trunk",
+        "name": "Tree trunk",
+        "bn": "গাছের গুঁড়ি",
+        "box": [125, 675, 870, 1000],
+        "sentence": "A dark foreground tree trunk hides the bear as he watches from the ridge.",
+        "sentenceBn": "ভালুকটি টিলার ওপর থেকে দেখার সময় একটি অন্ধকার সামনের গাছের গুঁড়ি তাকে আড়াল করে রেখেছে।",
+        "audio": "audio/items/s51_trunk.mp3",
+        "grammar": {
+          "presentContinuous": "The bear is peeking past the blurred foreground tree trunk.",
+          "simplePast": "A massive foreground tree trunk shadowed the entire right side.",
+          "simplePresent": "A foreground tree trunk creates depth when looking down into a valley.",
+          "question": "Who is hiding behind the dark foreground tree trunk?"
+        }
+      },
+      {
+        "id": "s51_branch",
+        "name": "Pine branch",
+        "bn": "পাইন ডাল",
+        "box": [455, 455, 755, 720],
+        "sentence": "A blurred pine branch stretches out close to the viewer from the foreground trunk.",
+        "sentenceBn": "সামনের গুঁড়ি থেকে দর্শকের কাছাকাছি একটি ঝাপসা পাইন ডাল বেরিয়ে আছে।",
+        "audio": "audio/items/s51_branch.mp3",
+        "grammar": {
+          "presentContinuous": "The blurred pine branch is framing the sunny clearing below.",
+          "simplePast": "A blurred pine branch hung right in front of the lookout spot.",
+          "simplePresent": "A blurred pine branch reminds us we are peering from high up.",
+          "question": "Why does the foreground blurred pine branch look out of focus?"
+        }
+      },
+      {
+        "id": "s51_ridge",
+        "name": "Ridge",
+        "bn": "টিলা",
+        "box": [235, 275, 530, 700],
+        "sentence": "Beyond the pines, a pale sunlit rocky ridge slopes upward behind the camp.",
+        "sentenceBn": "পাইন গাছগুলোর ওপারে একটি ফ্যাকাশে রোদেলা পাথুরে টিলা ক্যাম্পের পেছনে উঁচু হয়ে উঠেছে।",
+        "audio": "audio/items/s51_ridge.mp3",
+        "grammar": {
+          "presentContinuous": "Evening sun is washing over the long sunlit rocky ridge.",
+          "simplePast": "The sunlit rocky ridge rose like a ramp behind the campsite.",
+          "simplePresent": "A sunlit rocky ridge shelters campsites from strong mountain winds.",
+          "question": "What sits directly in front of the pale sunlit rocky ridge?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s52",
+    "act": 3,
+    "start": 377.3,
+    "end": 387.6,
+    "frameSec": 382.5,
+    "title": "Stalking Across the Campsite Slope",
+    "items": [
+      {
+        "id": "s52_bear",
+        "name": "Bear",
+        "bn": "ভালুক",
+        "box": [470, 495, 830, 695],
+        "sentence": "Low to the ground, the crouching brown bear creeps toward the campsite scraps.",
+        "sentenceBn": "মাটির সাথে মিশে গুড়ি মেরে থাকা বাদামি ভালুকটি ক্যাম্পসাইটের খাবারের দিকে এগিয়ে যাচ্ছে।",
+        "audio": "audio/items/s52_bear.mp3",
+        "grammar": {
+          "presentContinuous": "The crouching brown bear is creeping closer with his paws flat.",
+          "simplePast": "A crouching brown bear stalked across the slope to scare the birds.",
+          "simplePresent": "A crouching brown bear hides his bulk while sneaking up on food.",
+          "question": "Why is the crouching brown bear lowering his chest to the dirt?"
+        }
+      },
+      {
+        "id": "s52_stump",
+        "name": "Stump",
+        "bn": "গাছের গোড়া",
+        "box": [400, 0, 870, 465],
+        "sentence": "A thick dark wooden stump stands in the foreground shadow beside the camp.",
+        "sentenceBn": "ক্যাম্পের পাশে সামনের ছায়ায় একটি মোটা অন্ধকার কাঠের গুঁড়ি দাঁড়িয়ে আছে।",
+        "audio": "audio/items/s52_stump.mp3",
+        "grammar": {
+          "presentContinuous": "The bear is sneaking past the wide dark wooden stump.",
+          "simplePast": "Campers once sat around that heavy dark wooden stump.",
+          "simplePresent": "A dark wooden stump makes a sturdy seat near a forest clearing.",
+          "question": "What marks show that people cut down the tree leaving this dark wooden stump?"
+        }
+      },
+      {
+        "id": "s52_left_trunk",
+        "name": "Tree trunk",
+        "bn": "গাছের গুঁড়ি",
+        "box": [125, 0, 450, 310],
+        "sentence": "Rough bark grooves line the thick tree trunk towering on the left.",
+        "sentenceBn": "বাঁ দিকে দাঁড়িয়ে থাকা মোটা গাছের গুঁড়িতে অমসৃণ বাকলের খাঁজ দেখা যাচ্ছে।",
+        "audio": "audio/items/s52_left_trunk.mp3",
+        "grammar": {
+          "presentContinuous": "Evening sun is grazing the bark of the thick tree trunk.",
+          "simplePast": "A thick tree trunk anchored the shaded edge of the clearing.",
+          "simplePresent": "A thick tree trunk protects older pines from forest winds.",
+          "question": "How old might this thick tree trunk be?"
+        }
+      },
+      {
+        "id": "s52_center_trunk",
+        "name": "Pine trunk",
+        "bn": "পাইনের গুঁড়ি",
+        "box": [125, 495, 555, 705],
+        "sentence": "Behind the bear, a straight sunlit pine trunk glows warm amber along one edge.",
+        "sentenceBn": "ভালুকটির পেছনে একটি সোজা রোদেলা পাইন গুঁড়ির এক পাশ সোনালি আলোয় উজ্জ্বল হয়ে আছে।",
+        "audio": "audio/items/s52_center_trunk.mp3",
+        "grammar": {
+          "presentContinuous": "Warm orange sunset light is shining on the sunlit pine trunk.",
+          "simplePast": "The sunlit pine trunk rose right behind the crouching bear.",
+          "simplePresent": "A sunlit pine trunk turns coppery orange just before dusk.",
+          "question": "Which side of the sunlit pine trunk catches the evening light?"
+        }
+      },
+      {
+        "id": "s52_slope",
+        "name": "Slope",
+        "bn": "ঢাল",
+        "box": [345, 675, 820, 1000],
+        "sentence": "Golden rays spill down the mossy sunlit slope behind the hungry visitor.",
+        "sentenceBn": "ক্ষুধার্ত অতিথিটির পেছনে শ্যাওলা ঢাকা রোদেলা ঢাল বেয়ে সোনালি আলো গড়িয়ে নামছে।",
+        "audio": "audio/items/s52_slope.mp3",
+        "grammar": {
+          "presentContinuous": "Low sunbeams are lighting up the green mossy sunlit slope.",
+          "simplePast": "The bear crept swiftly down the mossy sunlit slope into camp.",
+          "simplePresent": "A mossy sunlit slope feels soft beneath heavy paws.",
+          "question": "What color shines across the mossy sunlit slope on the right?"
+        }
+      },
+      {
+        "id": "s52_rocks",
+        "name": "Rocks",
+        "bn": "পাথর",
+        "box": [710, 610, 850, 785],
+        "sentence": "Smooth dark campsite rocks sit beside the bear's outstretched front paws.",
+        "sentenceBn": "ভালুকের সামনে বাড়ানো থাবার পাশেই মসৃণ কালচে ক্যাম্পসাইটের পাথরগুলো পড়ে আছে।",
+        "audio": "audio/items/s52_rocks.mp3",
+        "grammar": {
+          "presentContinuous": "Faint light is glinting off the wet dark campsite rocks.",
+          "simplePast": "The bear crouched right next to the dark campsite rocks.",
+          "simplePresent": "Dark campsite rocks often line trails and fire clearings.",
+          "question": "How close is the bear's nose to those dark campsite rocks?"
+        }
+      },
+      {
+        "id": "s52_twigs",
+        "name": "Twigs",
+        "bn": "ডালপালা",
+        "box": [125, 315, 220, 560],
+        "sentence": "Crooked hanging bare twigs dip down along the top edge of the clearing.",
+        "sentenceBn": "ফাঁকা জায়গার ওপরের প্রান্ত বরাবর আঁকাবাঁকা ঝুলন্ত শুকনো ডালপালা নিচে নেমে এসেছে।",
+        "audio": "audio/items/s52_twigs.mp3",
+        "grammar": {
+          "presentContinuous": "The thin hanging bare twigs are silhouetted against the bright haze.",
+          "simplePast": "Crooked hanging bare twigs dangled high above the bear's back.",
+          "simplePresent": "Hanging bare twigs snap easily when dry wind blows.",
+          "question": "Where do the hanging bare twigs appear in the frame?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s53",
+    "act": 3,
+    "start": 387.6,
+    "end": 397.9,
+    "frameSec": 392.8,
+    "title": "Stuffed Cheeks Full of Chips",
+    "items": [
+      {
+        "id": "s53_cheeks",
+        "name": "Cheeks",
+        "bn": "গাল",
+        "box": [375, 450, 665, 795],
+        "sentence": "Swollen like two round cushions, his puffed stuffed cheeks bulge with salty snacks.",
+        "sentenceBn": "দুটো গোল বালিশের মতো ফুলে ওঠা খাবার-ভর্তি গাল নোনতা স্ন্যাক্সে টইটম্বুর হয়ে আছে।",
+        "audio": "audio/items/s53_cheeks.mp3",
+        "grammar": {
+          "presentContinuous": "The bear is holding a huge mouthful inside his puffed stuffed cheeks.",
+          "simplePast": "He packed crunchy chips into both puffed stuffed cheeks at once.",
+          "simplePresent": "Puffed stuffed cheeks show a bear who could not stop eating.",
+          "question": "What has filled the bear's puffed stuffed cheeks so wide?"
+        }
+      },
+      {
+        "id": "s53_snout",
+        "name": "Snout",
+        "bn": "নাক-মুখ",
+        "box": [435, 515, 605, 605],
+        "sentence": "Pinched tightly between his cheeks, his yellowish bear snout looks tiny and comical.",
+        "sentenceBn": "গালের মাঝখানে চেপে থাকা তার হলদেটে ভালুকের নাক-মুখটি বেশ ছোট আর মজার দেখাচ্ছে।",
+        "audio": "audio/items/s53_snout.mp3",
+        "grammar": {
+          "presentContinuous": "His yellowish bear snout is staying shut tight to keep crumbs inside.",
+          "simplePast": "His yellowish bear snout twitched after he swallowed the salty bite.",
+          "simplePresent": "A yellowish bear snout stands out sharply against dark brown fur.",
+          "question": "Why does his yellowish bear snout look squeezed in the middle?"
+        }
+      },
+      {
+        "id": "s53_eyes",
+        "name": "Bear eyes",
+        "bn": "ভালুকের চোখ",
+        "box": [355, 525, 445, 645],
+        "sentence": "Full and drowsy, his half-closed bear eyes blink slowly in the golden light.",
+        "sentenceBn": "পেট ভরে ঝিমিয়ে আসা আধবোজা ভালুকের চোখগুলো সোনালি আলোয় ধীরে ধীরে পাতা ফেলছে।",
+        "audio": "audio/items/s53_eyes.mp3",
+        "grammar": {
+          "presentContinuous": "His half-closed bear eyes are staring ahead with sleepy satisfaction.",
+          "simplePast": "His half-closed bear eyes softened once he chased away the crows.",
+          "simplePresent": "Half-closed bear eyes often show a creature slowing down after feasting.",
+          "question": "How does the bear seem to feel based on his half-closed bear eyes?"
+        }
+      },
+      {
+        "id": "s53_ears",
+        "name": "Bear ears",
+        "bn": "ভালুকের কান",
+        "box": [195, 485, 345, 745],
+        "sentence": "Two fuzzy round bear ears sit high atop his plump head in the warm light.",
+        "sentenceBn": "উষ্ণ আলোয় তার গোল মাথার ওপরে দুটো লোমশ গোল ভালুকের কান উঁচু হয়ে আছে।",
+        "audio": "audio/items/s53_ears.mp3",
+        "grammar": {
+          "presentContinuous": "The bear's round bear ears are catching warm amber rim light.",
+          "simplePast": "His round bear ears twitched slightly while he chewed.",
+          "simplePresent": "Round bear ears help bears hear every rustle in the campsite.",
+          "question": "How is the evening light shining on his round bear ears?"
+        }
+      },
+      {
+        "id": "s53_shoulders",
+        "name": "Shoulders",
+        "bn": "কাঁধ",
+        "box": [590, 495, 870, 850],
+        "sentence": "Bathed in sunset glow, the bear's furry shoulders fill the lower center of the view.",
+        "sentenceBn": "সন্ধ্যার আলোয় রাঙা ভালুকের লোমশ কাঁধ ছবির নিচের মাঝখানের অংশ জুড়ে রয়েছে।",
+        "audio": "audio/items/s53_shoulders.mp3",
+        "grammar": {
+          "presentContinuous": "Warm orange rays are outlining the bear's furry shoulders.",
+          "simplePast": "The bear's furry shoulders hunched slightly as he chewed his feast.",
+          "simplePresent": "A bear's furry shoulders carry great strength through wild forests.",
+          "question": "What color lights up the edge of the bear's furry shoulders?"
+        }
+      },
+      {
+        "id": "s53_trunk",
+        "name": "Tree trunk",
+        "bn": "গাছের গুঁড়ি",
+        "box": [125, 0, 870, 295],
+        "sentence": "A vertical dark tree trunk rises straight up along the left edge of camp.",
+        "sentenceBn": "ক্যাম্পের বাঁ প্রান্ত ঘেঁষে একটি খাড়া গাঢ় গাছের গুঁড়ি সোজা ওপরের দিকে উঠে গেছে।",
+        "audio": "audio/items/s53_trunk.mp3",
+        "grammar": {
+          "presentContinuous": "Cool shadows are resting along the rough dark tree trunk.",
+          "simplePast": "The dark tree trunk stood silent beside the feasting bear.",
+          "simplePresent": "A dark tree trunk frames warm glowing sunlight in forest scenes.",
+          "question": "How does the dark tree trunk contrast with the right side of the frame?"
+        }
+      },
+      {
+        "id": "s53_sunlight",
+        "name": "Sunlight",
+        "bn": "রোদ",
+        "box": [125, 700, 870, 1000],
+        "sentence": "Radiant golden forest sunbeams pour diagonally behind the bear as evening nears.",
+        "sentenceBn": "সন্ধ্যা ঘনিয়ে আসার সাথে সাথে ভালুকটির পেছন দিয়ে উজ্জ্বল সোনালি বনের রোদ তির্যকভাবে নেমে আসছে।",
+        "audio": "audio/items/s53_sunlight.mp3",
+        "grammar": {
+          "presentContinuous": "Warm golden forest sunbeams are streaming through the tall pines.",
+          "simplePast": "Golden forest sunbeams warmed the campsite while the bear ate.",
+          "simplePresent": "Golden forest sunbeams grow softer and redder as sunset approaches.",
+          "question": "What time of day do these golden forest sunbeams suggest?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s54",
+    "act": 3,
+    "start": 397.9,
+    "end": 404.7,
+    "frameSec": 401.3,
+    "title": "Gulping Down Human Snacks",
+    "items": [
+      {
+        "id": "s54_bottle",
+        "name": "Ketchup bottle",
+        "bn": "কেচাপের বোতল",
+        "box": [150, 425, 295, 605],
+        "sentence": "A bright red ketchup bottle hovers right above the bear's upturned snout.",
+        "sentenceBn": "একটি উজ্জ্বল লাল কেচাপের বোতল ভালুকটির ওপরের দিকে তোলা নাকের ঠিক ওপরে ভাসছে।",
+        "audio": "audio/items/s54_bottle.mp3",
+        "grammar": {
+          "presentContinuous": "The red ketchup bottle is dropping straight toward his open mouth.",
+          "simplePast": "He tossed a red ketchup bottle into the air to gulp down every drop.",
+          "simplePresent": "A red ketchup bottle is one of many messy items left by campers.",
+          "question": "What is the bear trying to catch from that red ketchup bottle?"
+        }
+      },
+      {
+        "id": "s54_mouth",
+        "name": "Mouth",
+        "bn": "মুখ",
+        "box": [165, 515, 485, 645],
+        "sentence": "Tipping his head back, he aims his wide open mouth beneath the falling bottle.",
+        "sentenceBn": "মাথা পেছনে হেলিয়ে সে পড়ন্ত বোতলটির নিচে তার হাঁ করা বড় মুখ পেতে ধরেছে।",
+        "audio": "audio/items/s54_mouth.mp3",
+        "grammar": {
+          "presentContinuous": "His wide open mouth is waiting eagerly for the next salty treat.",
+          "simplePast": "His wide open mouth caught whatever spilled out of the bottle.",
+          "simplePresent": "A wide open mouth makes it easy for a greedy bear to spill snacks.",
+          "question": "Why has the bear tilted his wide open mouth straight toward the sky?"
+        }
+      },
+      {
+        "id": "s54_paws",
+        "name": "Paws",
+        "bn": "থাবা",
+        "box": [355, 295, 870, 565],
+        "sentence": "Both raised front paws lift upward as if celebrating the human feast.",
+        "sentenceBn": "মানুষের ফেলে যাওয়া ভোজের আনন্দে যেন তার দুটো ওপরে তোলা সামনের থাবাই আকাশে উঠে আছে।",
+        "audio": "audio/items/s54_paws.mp3",
+        "grammar": {
+          "presentContinuous": "His raised front paws are reaching up in joyful excitement.",
+          "simplePast": "He threw his raised front paws high after tossing the bottle.",
+          "simplePresent": "Raised front paws show how excited the bear feels about camp food.",
+          "question": "What are the bear's raised front paws ready to catch?"
+        }
+      },
+      {
+        "id": "s54_ear",
+        "name": "Bear ear",
+        "bn": "ভালুকের কান",
+        "box": [450, 745, 545, 820],
+        "sentence": "Lit from behind, his round right bear ear pokes outward as his head tips back.",
+        "sentenceBn": "পেছন থেকে আলোয় আলোকিত হয়ে মাথা হেলানোর সময় তার ডান ভালুকের কানটি বাইরে বেরিয়ে আছে।",
+        "audio": "audio/items/s54_ear.mp3",
+        "grammar": {
+          "presentContinuous": "Sunset light is shining along the rim of his right bear ear.",
+          "simplePast": "His right bear ear dipped low when he leaned all the way back.",
+          "simplePresent": "A round right bear ear stays easy to spot even in silhouette.",
+          "question": "Why does his right bear ear appear so far down in this pose?"
+        }
+      },
+      {
+        "id": "s54_head",
+        "name": "Bear head",
+        "bn": "ভালুকের মাথা",
+        "box": [165, 500, 740, 820],
+        "sentence": "Carved in warm sunset glow, the upturned bear head tilts straight toward the sky.",
+        "sentenceBn": "সন্ধ্যার উষ্ণ আলোয় গড়া ওপরমুখী ভালুকের মাথাটি সোজা আকাশের দিকে হেলানো।",
+        "audio": "audio/items/s54_head.mp3",
+        "grammar": {
+          "presentContinuous": "The upturned bear head is leaning back in pure delight.",
+          "simplePast": "His upturned bear head followed the bottle as it spun overhead.",
+          "simplePresent": "An upturned bear head shows complete focus on food.",
+          "question": "Where is the upturned bear head aimed right now?"
+        }
+      },
+      {
+        "id": "s54_rays",
+        "name": "Sunbeams",
+        "bn": "রোদের রশ্মি",
+        "box": [125, 690, 655, 1000],
+        "sentence": "Bright warm sunset rays slant across the evening air behind the campsite.",
+        "sentenceBn": "উজ্জ্বল উষ্ণ সূর্যাস্তের রশ্মি ক্যাম্পসাইটের পেছনে সন্ধ্যার বাতাসে তির্যকভাবে ছড়িয়ে পড়েছে।",
+        "audio": "audio/items/s54_rays.mp3",
+        "grammar": {
+          "presentContinuous": "Warm sunset rays are glowing bright orange through the trees.",
+          "simplePast": "Warm sunset rays faded slowly as the bear kept feasting.",
+          "simplePresent": "Warm sunset rays signal that night will soon cover the woods.",
+          "question": "What happens to the campsite once those warm sunset rays fade?"
+        }
+      },
+      {
+        "id": "s54_bushes",
+        "name": "Bushes",
+        "bn": "ঝোপঝাড়",
+        "box": [550, 0, 870, 315],
+        "sentence": "Cool shadows gather inside the dark campsite bushes behind the bear's arms.",
+        "sentenceBn": "ভালুকের হাতের পেছনে ক্যাম্পসাইটের অন্ধকার ঝোপঝাড়ে শীতল ছায়া জমে উঠছে।",
+        "audio": "audio/items/s54_bushes.mp3",
+        "grammar": {
+          "presentContinuous": "Evening shadows are deepening among the dark campsite bushes.",
+          "simplePast": "The dark campsite bushes grew dim as the sun sank lower.",
+          "simplePresent": "Dark campsite bushes surround clearings tucked deep in the forest.",
+          "question": "Why are the dark campsite bushes blue while the sky is orange?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s55",
+    "act": 3,
+    "start": 404.7,
+    "end": 411.0,
+    "frameSec": 407.9,
+    "title": "Wearing the Wooden Picnic Table",
+    "items": [
+      {
+        "id": "s55_table",
+        "name": "Picnic table",
+        "bn": "পিকনিক টেবিল",
+        "box": [420, 300, 735, 750],
+        "sentence": "Stuck neatly around his shoulders, a heavy wooden picnic table rides on the bear's back.",
+        "sentenceBn": "তার কাঁধে বেশ আঁটসাঁটভাবে আটকে থাকা একটি ভারী কাঠের পিকনিক টেবিল ভালুকটির পিঠে চড়ে বসেছে।",
+        "audio": "audio/items/s55_table.mp3",
+        "grammar": {
+          "presentContinuous": "The bear is carrying a whole wooden picnic table across the camp.",
+          "simplePast": "A wooden picnic table slid right over the clumsy bear's head.",
+          "simplePresent": "A wooden picnic table usually stays anchored in one spot for hikers.",
+          "question": "How did the bear end up wearing that wooden picnic table?"
+        }
+      },
+      {
+        "id": "s55_bear_head",
+        "name": "Bear head",
+        "bn": "ভালুকের মাথা",
+        "box": [405, 705, 635, 800],
+        "sentence": "Poking past the front planks, the bear's surprised head eyes the dangling fish lure.",
+        "sentenceBn": "সামনের তক্তার ফাঁক গলে বেরিয়ে আসা ভালুকের অবাক মুখটি ঝুলন্ত মাছের টোপের দিকে তাকিয়ে আছে।",
+        "audio": "audio/items/s55_bear_head.mp3",
+        "grammar": {
+          "presentContinuous": "The bear's surprised head is staring straight at the spinning lure.",
+          "simplePast": "The bear's surprised head popped out between the table planks.",
+          "simplePresent": "A bear's surprised head turns funny when food swings right past his nose.",
+          "question": "What caught the attention of the bear's surprised head?"
+        }
+      },
+      {
+        "id": "s55_fishing_rod",
+        "name": "Fishing rod",
+        "bn": "ছিপ",
+        "box": [145, 550, 445, 910],
+        "sentence": "A slender long fishing rod bounces from the tabletop like an antenna.",
+        "sentenceBn": "টেবিলের ওপর থেকে একটি সরু লম্বা ছিপ অ্যান্টেনার মতো দুলছে।",
+        "audio": "audio/items/s55_fishing_rod.mp3",
+        "grammar": {
+          "presentContinuous": "The long fishing rod is bending forward as the bear walks.",
+          "simplePast": "Someone had left a long fishing rod resting atop the camp gear.",
+          "simplePresent": "A long fishing rod flexes easily whenever weight hangs from its tip.",
+          "question": "What hangs from the curved tip of the long fishing rod?"
+        }
+      },
+      {
+        "id": "s55_fish_lure",
+        "name": "Fish lure",
+        "bn": "মাছের টোপ",
+        "box": [410, 835, 535, 910],
+        "sentence": "Swinging just beyond his nose, a painted dangling fish lure tempts him forward.",
+        "sentenceBn": "নাকের ঠিক সামনে দুলতে থাকা একটি রঙ করা ঝুলন্ত মাছের টোপ তাকে সামনের দিকে টানছে।",
+        "audio": "audio/items/s55_fish_lure.mp3",
+        "grammar": {
+          "presentContinuous": "The dangling fish lure is swaying right in front of the bear's snout.",
+          "simplePast": "A dangling fish lure bobbed tantalizingly at the end of the line.",
+          "simplePresent": "A dangling fish lure imitates a real fish to attract hungry bites.",
+          "question": "Why does the bear keep walking toward the dangling fish lure?"
+        }
+      },
+      {
+        "id": "s55_garbage_bag",
+        "name": "Garbage bag",
+        "bn": "আবর্জনার ব্যাগ",
+        "box": [225, 575, 445, 715],
+        "sentence": "A bulky black garbage bag balances right on top of the moving picnic table.",
+        "sentenceBn": "চলন্ত পিকনিক টেবিলের ঠিক ওপরে একটি ভারী কালো আবর্জনার ব্যাগ টাল সামলে বসে আছে।",
+        "audio": "audio/items/s55_garbage_bag.mp3",
+        "grammar": {
+          "presentContinuous": "The black garbage bag is riding high atop the wooden planks.",
+          "simplePast": "Campers tied up a black garbage bag and left it behind.",
+          "simplePresent": "A black garbage bag smells strongly of leftover food to wild bears.",
+          "question": "What might still be stuffed inside that black garbage bag?"
+        }
+      },
+      {
+        "id": "s55_snacks",
+        "name": "Snacks",
+        "bn": "খাবারদাবার",
+        "box": [355, 375, 465, 575],
+        "sentence": "Cans, jars, and blocks of tabletop food clutter rattle across the wooden boards.",
+        "sentenceBn": "কাঠের তক্তার ওপর টিন, বয়াম আর টেবিলের ওপরের খাবারদাবার ঝনঝন করে নড়ছে।",
+        "audio": "audio/items/s55_snacks.mp3",
+        "grammar": {
+          "presentContinuous": "The tabletop food clutter is sliding slightly with every step he takes.",
+          "simplePast": "Careless visitors abandoned tabletop food clutter across the whole bench.",
+          "simplePresent": "Tabletop food clutter attracts scavengers before sunset.",
+          "question": "How does all that tabletop food clutter stay balanced while he walks?"
+        }
+      },
+      {
+        "id": "s55_cans",
+        "name": "Tin cans",
+        "bn": "টিনের কৌটা",
+        "box": [650, 195, 865, 475],
+        "sentence": "Empty scattered tin cans litter the dirt floor behind the marching bear.",
+        "sentenceBn": "এগিয়ে যাওয়া ভালুকের পেছনে মাটির ওপর খালি ছড়িয়ে থাকা টিনের কৌটা গড়াগড়ি খাচ্ছে।",
+        "audio": "audio/items/s55_cans.mp3",
+        "grammar": {
+          "presentContinuous": "Dull metal scattered tin cans are lying across the dusty campsite.",
+          "simplePast": "More scattered tin cans rolled across the dirt when he bumped the table.",
+          "simplePresent": "Scattered tin cans turn a peaceful forest clearing into a messy dump.",
+          "question": "Who left all these scattered tin cans across the ground?"
+        }
+      },
+      {
+        "id": "s55_legs",
+        "name": "Bear legs",
+        "bn": "ভালুকের পা",
+        "box": [600, 375, 805, 705],
+        "sentence": "Sturdy bear's walking legs carry the heavy load steadily across the campsite dirt.",
+        "sentenceBn": "মজবুত ভালুকের হাঁটার পা ভারী বোঝা নিয়ে ক্যাম্পসাইটের মাটির ওপর দিয়ে দৃঢ়ভাবে এগিয়ে চলছে।",
+        "audio": "audio/items/s55_legs.mp3",
+        "grammar": {
+          "presentContinuous": "The bear's walking legs are pacing steadily beneath the wooden bench.",
+          "simplePast": "His strong bear's walking legs carried the table with surprising ease.",
+          "simplePresent": "A bear's walking legs can haul heavy weight without slowing down.",
+          "question": "How is he able to move his bear's walking legs inside the table frame?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s56",
+    "act": 3,
+    "start": 411.0,
+    "end": 414.8,
+    "frameSec": 412.9,
+    "title": "Diving Into the Trash Bin",
+    "items": [
+      {
+        "id": "s56_bear",
+        "name": "Bear",
+        "bn": "ভালুক",
+        "box": [225, 455, 780, 705],
+        "sentence": "With his whole upper body bent forward, the rummaging brown bear dives into a bin.",
+        "sentenceBn": "শরীরের ওপরের অংশ সামনের দিকে ঝুঁকিয়ে খুঁজে বেড়ানো বাদামি ভালুকটি ডাস্টবিনের ভেতর ঢুকে পড়েছে।",
+        "audio": "audio/items/s56_bear.mp3",
+        "grammar": {
+          "presentContinuous": "The rummaging brown bear is digging deep inside the metal container.",
+          "simplePast": "A rummaging brown bear shoved both arms and head down into the trash.",
+          "simplePresent": "A rummaging brown bear forgets all caution when hunting sweet leftovers.",
+          "question": "What is the rummaging brown bear hoping to find at the bottom?"
+        }
+      },
+      {
+        "id": "s56_trash_bin",
+        "name": "Trash bin",
+        "bn": "ডাস্টবিন",
+        "box": [385, 430, 770, 595],
+        "sentence": "A tall ribbed metal trash bin wobbles slightly as the bear searches inside.",
+        "sentenceBn": "ভালুক ভেতরে খোঁজাখুঁজি করায় একটি লম্বা খাঁজকাটা ধাতব ডাস্টবিন একটু নড়ে উঠছে।",
+        "audio": "audio/items/s56_trash_bin.mp3",
+        "grammar": {
+          "presentContinuous": "The ribbed metal trash bin is swallowing the bear's head and shoulders.",
+          "simplePast": "He knocked the lid off the ribbed metal trash bin in seconds.",
+          "simplePresent": "A ribbed metal trash bin rings loudly whenever bears tip it over.",
+          "question": "Can the bear see anything around him inside that ribbed metal trash bin?"
+        }
+      },
+      {
+        "id": "s56_tail",
+        "name": "Tail",
+        "bn": "লেজ",
+        "box": [500, 675, 555, 705],
+        "sentence": "Caught in sunset light, the bear's stubby tail sticks out neatly from his round back.",
+        "sentenceBn": "সন্ধ্যার আলোয় ভালুকের ছোট্ট লেজটি তার গোল পিঠের পেছন থেকে উঁকি দিয়ে আছে।",
+        "audio": "audio/items/s56_tail.mp3",
+        "grammar": {
+          "presentContinuous": "His tiny bear's stubby tail is sticking straight out behind the bin.",
+          "simplePast": "The bear's stubby tail bobbed as he reached deeper for scraps.",
+          "simplePresent": "A bear's stubby tail is small compared with his broad furry shoulders.",
+          "question": "Where can you spot the bear's stubby tail in this silhouette?"
+        }
+      },
+      {
+        "id": "s56_trunk",
+        "name": "Tree trunk",
+        "bn": "গাছের গুঁড়ি",
+        "box": [125, 0, 745, 300],
+        "sentence": "Glowing warm orange on one side, a massive tree trunk anchors the left edge of camp.",
+        "sentenceBn": "এক পাশে উষ্ণ কমলা আলোয় রাঙা একটি বিশাল গাছের গুঁড়ি ক্যাম্পের বাঁ প্রান্তে দাঁড়িয়ে আছে।",
+        "audio": "audio/items/s56_trunk.mp3",
+        "grammar": {
+          "presentContinuous": "Dying sunset light is painting the bark of the massive tree trunk.",
+          "simplePast": "A massive tree trunk shaded the garbage bags piled near its roots.",
+          "simplePresent": "A massive tree trunk stands steady while noisy campers come and go.",
+          "question": "What kind of clutter rests right beside the massive tree trunk?"
+        }
+      },
+      {
+        "id": "s56_garbage_bag",
+        "name": "Garbage bag",
+        "bn": "আবর্জনার ব্যাগ",
+        "box": [565, 255, 710, 365],
+        "sentence": "A plump tied garbage bag rests slumped at the base of the tree trunk.",
+        "sentenceBn": "গাছের গুঁড়ির গোড়ায় একটি ফোলা বাঁধা আবর্জনার ব্যাগ পড়ে আছে।",
+        "audio": "audio/items/s56_garbage_bag.mp3",
+        "grammar": {
+          "presentContinuous": "The dark tied garbage bag is waiting beside the spilled cans.",
+          "simplePast": "Campers dropped a tied garbage bag right on the forest floor.",
+          "simplePresent": "A tied garbage bag rarely stays closed once a hungry bear arrives.",
+          "question": "How long do you think that tied garbage bag will stay unopened?"
+        }
+      },
+      {
+        "id": "s56_cans",
+        "name": "Metal cans",
+        "bn": "ধাতব কৌটা",
+        "box": [660, 220, 765, 445],
+        "sentence": "Several dropped metal cans lie scattered in front of the trash bin.",
+        "sentenceBn": "ডাস্টবিনের সামনে বেশ কয়েকটি পড়ে থাকা ধাতব কৌটা ছড়িয়ে ছিটিয়ে রয়েছে।",
+        "audio": "audio/items/s56_cans.mp3",
+        "grammar": {
+          "presentContinuous": "Empty dropped metal cans are resting in the cool evening grass.",
+          "simplePast": "Dropped metal cans clattered onto the ground around his feet.",
+          "simplePresent": "Dropped metal cans glint faintly under pink twilight skies.",
+          "question": "Where did all those dropped metal cans roll from?"
+        }
+      },
+      {
+        "id": "s56_branches",
+        "name": "Branches",
+        "bn": "ডালপালা",
+        "box": [125, 805, 405, 1000],
+        "sentence": "Crisscrossing bare sunset branches reach down across the upper-right corner.",
+        "sentenceBn": "আড়াআড়ি ছড়ানো সন্ধ্যার পাতাহীন ডালগুলো ছবির ওপরের ডান কোণে নিচে নেমে এসেছে।",
+        "audio": "audio/items/s56_branches.mp3",
+        "grammar": {
+          "presentContinuous": "Sharp bare sunset branches are cutting across the glowing evening sky.",
+          "simplePast": "Dry bare sunset branches stood silhouetted against the bright dusk.",
+          "simplePresent": "Bare sunset branches stand out dark and crisp at twilight.",
+          "question": "Why do the bare sunset branches look completely black against the sky?"
+        }
+      },
+      {
+        "id": "s56_sky",
+        "name": "Sky",
+        "bn": "আকাশ",
+        "box": [125, 595, 625, 1000],
+        "sentence": "A fiery pink and orange glowing dusk sky deepens behind the greedy bear.",
+        "sentenceBn": "লোভী ভালুকটির পেছনে গোলাপি ও কমলা রঙের উজ্জ্বল গোধূলির আকাশ গাঢ় হয়ে উঠেছে।",
+        "audio": "audio/items/s56_sky.mp3",
+        "grammar": {
+          "presentContinuous": "The glowing dusk sky is shifting slowly from orange toward night blue.",
+          "simplePast": "A glowing dusk sky lit the bear's back while he dug for snacks.",
+          "simplePresent": "A glowing dusk sky lasts only minutes before forest darkness falls.",
+          "question": "How much daylight remains beneath that glowing dusk sky?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s57",
+    "act": 3,
+    "start": 414.8,
+    "end": 424.9,
+    "frameSec": 419.9,
+    "title": "Feasting Amid Trash Bins at Night",
+    "items": [
+      {
+        "id": "s57_bear",
+        "name": "Bear",
+        "bn": "ভালুক",
+        "box": [335, 500, 735, 705],
+        "sentence": "Surrounded by heaps of litter, the sitting brown bear grins nervously into the night.",
+        "sentenceBn": "আবর্জনার স্তূপের মাঝে বসে থাকা বাদামি ভালুকটি রাতের আঁধারে অপ্রস্তুতভাবে হাসছে।",
+        "audio": "audio/items/s57_bear.mp3",
+        "grammar": {
+          "presentContinuous": "The sitting brown bear is glancing left with a guilty smile.",
+          "simplePast": "A sitting brown bear rested among overturned cans after his feast.",
+          "simplePresent": "A sitting brown bear looks stuffed after eating nonstop until nightfall.",
+          "question": "Why is the sitting brown bear looking sideways with that guilty grin?"
+        }
+      },
+      {
+        "id": "s57_hammock",
+        "name": "Hammock",
+        "bn": "দোলনা-বিছানা",
+        "box": [125, 345, 375, 760],
+        "sentence": "A curved hanging green hammock sways empty overhead between the campsite pines.",
+        "sentenceBn": "ক্যাম্পসাইটের পাইন গাছগুলোর মাঝে ওপরে একটি বাঁকা ঝুলন্ত সবুজ দোলনা-বিছানা খালি দুলছে।",
+        "audio": "audio/items/s57_hammock.mp3",
+        "grammar": {
+          "presentContinuous": "Moonlight is touching the underside of the hanging green hammock.",
+          "simplePast": "The campers left blankets inside the hanging green hammock.",
+          "simplePresent": "A hanging green hammock gives campers a place to nap above the ground.",
+          "question": "Is anyone sleeping inside the hanging green hammock tonight?"
+        }
+      },
+      {
+        "id": "s57_overturned_bin",
+        "name": "Fallen bin",
+        "bn": "উল্টে পড়া ডাস্টবিন",
+        "box": [605, 290, 825, 495],
+        "sentence": "An overturned trash bin lies flat on its side after spilling its contents.",
+        "sentenceBn": "ভেতরের সব কিছু ছড়িয়ে দিয়ে একটি উল্টে পড়া ডাস্টবিন কাত হয়ে মাটিতে পড়ে আছে।",
+        "audio": "audio/items/s57_overturned_bin.mp3",
+        "grammar": {
+          "presentContinuous": "The overturned trash bin is resting sideways across the messy ground.",
+          "simplePast": "The bear knocked down the overturned trash bin to reach every crumb.",
+          "simplePresent": "An overturned trash bin spills wrappers and cans in every direction.",
+          "question": "Who tipped over that heavy overturned trash bin?"
+        }
+      },
+      {
+        "id": "s57_upright_bin",
+        "name": "Trash bin",
+        "bn": "ডাস্টবিন",
+        "box": [410, 730, 815, 855],
+        "sentence": "To the bear's left, an upright trash bin still stands with its lid askew.",
+        "sentenceBn": "ভালুকটির পাশে একটি দাঁড়িয়ে থাকা ডাস্টবিন বাঁকা ঢাকনা নিয়ে এখনো সোজা হয়ে আছে।",
+        "audio": "audio/items/s57_upright_bin.mp3",
+        "grammar": {
+          "presentContinuous": "Trash is overflowing beneath the tilted top of the upright trash bin.",
+          "simplePast": "Only one upright trash bin remained standing beside the heap.",
+          "simplePresent": "An upright trash bin keeps odors inside only when its lid is latched.",
+          "question": "What sits crookedly on top of the upright trash bin?"
+        }
+      },
+      {
+        "id": "s57_bin_lid",
+        "name": "Bin lid",
+        "bn": "ডাস্টবিনের ঢাকনা",
+        "box": [745, 415, 845, 565],
+        "sentence": "A round metal bin lid lies upside down like a giant dish in the dirt.",
+        "sentenceBn": "একটি গোল ধাতব ঢাকনা মাটির ওপর বড় থালার মতো উল্টো হয়ে পড়ে আছে।",
+        "audio": "audio/items/s57_bin_lid.mp3",
+        "grammar": {
+          "presentContinuous": "Blue night light is glinting on the rim of the round metal bin lid.",
+          "simplePast": "The round metal bin lid rolled away when the can tipped over.",
+          "simplePresent": "A round metal bin lid clangs noisily whenever it hits rocky dirt.",
+          "question": "Which container does this round metal bin lid belong to?"
+        }
+      },
+      {
+        "id": "s57_trash_pile",
+        "name": "Trash pile",
+        "bn": "আবর্জনার স্তূপ",
+        "box": [570, 490, 845, 825],
+        "sentence": "Jumbled cups, bottles, and cans form a pile of heaped campsite trash before him.",
+        "sentenceBn": "এলোমেলো কাপ, বোতল আর কৌটা মিলে তার সামনে স্তূপ করা ক্যাম্পসাইটের আবর্জনা তৈরি করেছে।",
+        "audio": "audio/items/s57_trash_pile.mp3",
+        "grammar": {
+          "presentContinuous": "Cans and wrappers are tumbling together in the heaped campsite trash.",
+          "simplePast": "He gorged himself right in the middle of the heaped campsite trash.",
+          "simplePresent": "Heaped campsite trash creates dangerous clutter around dark fire pits.",
+          "question": "What kinds of bottles and cans can you spot in the heaped campsite trash?"
+        }
+      },
+      {
+        "id": "s57_trunk",
+        "name": "Tree trunk",
+        "bn": "গাছের গুঁড়ি",
+        "box": [125, 215, 825, 345],
+        "sentence": "A thick left tree trunk supports one end of the hammock above the cluttered camp.",
+        "sentenceBn": "এলোমেলো ক্যাম্পের ওপরে একটি মোটা বাঁ দিকের গাছের গুঁড়ি দোলনা-বিছানার এক প্রান্ত ধরে রেখেছে।",
+        "audio": "audio/items/s57_trunk.mp3",
+        "grammar": {
+          "presentContinuous": "Purple shadows are wrapping around the straight left tree trunk.",
+          "simplePast": "Campers tied hammock ropes firmly around the left tree trunk.",
+          "simplePresent": "A sturdy left tree trunk holds a hammock steady through the night.",
+          "question": "What is tied high up on the left tree trunk?"
+        }
+      },
+      {
+        "id": "s57_left_bag",
+        "name": "Garbage bag",
+        "bn": "আবর্জনার ব্যাগ",
+        "box": [615, 95, 835, 290],
+        "sentence": "A torn dark left garbage bag slumps quietly near the base of the tree.",
+        "sentenceBn": "একটি ছেঁড়া কালো বাঁ পাশের আবর্জনার ব্যাগ গাছের গোড়ার কাছে পড়ে আছে।",
+        "audio": "audio/items/s57_left_bag.mp3",
+        "grammar": {
+          "presentContinuous": "The shiny left garbage bag is sitting untouched in the cool shadow.",
+          "simplePast": "Trash spilled right beside the lumpy left garbage bag.",
+          "simplePresent": "A left garbage bag blends easily into dark forest undergrowth at night.",
+          "question": "How many garbage bags can you count across the dark campsite?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s58",
+    "act": 3,
+    "start": 424.9,
+    "end": 435.0,
+    "frameSec": 429.9,
+    "title": "Ember Bucket and Campfire Stones",
+    "items": [
+      {
+        "id": "s58_bucket",
+        "name": "Ember bucket",
+        "bn": "অঙ্গারের বালতি",
+        "box": [535, 40, 850, 330],
+        "sentence": "Knocked carelessly on its side, the tipped ember bucket rests beside the dark pit.",
+        "sentenceBn": "অসাবধানতায় ধাক্কা লেগে কাত হয়ে পড়া অঙ্গারের বালতিটি অন্ধকার গর্তের পাশে পড়ে আছে।",
+        "audio": "audio/items/s58_bucket.mp3",
+        "grammar": {
+          "presentContinuous": "Red firelight is glowing faintly along the side of the tipped ember bucket.",
+          "simplePast": "The bear accidentally swung a pinecone and hit the tipped ember bucket.",
+          "simplePresent": "A tipped ember bucket can scatter dangerous sparks across dry camp trash.",
+          "question": "How did the tipped ember bucket end up lying on the ground?"
+        }
+      },
+      {
+        "id": "s58_embers",
+        "name": "Embers",
+        "bn": "অঙ্গার",
+        "box": [525, 555, 680, 705],
+        "sentence": "Inside the stone circle, bright glowing red embers pulse warmly in the cold dark.",
+        "sentenceBn": "পাথরের বৃত্তের ভেতর শীতল অন্ধকারে উজ্জ্বল জ্বলন্ত লাল অঙ্গারগুলো মৃদু জ্বলছে।",
+        "audio": "audio/items/s58_embers.mp3",
+        "grammar": {
+          "presentContinuous": "Hot glowing red embers are smoldering softly in the middle of the pit.",
+          "simplePast": "Though the flames died down, glowing red embers stayed fiercely hot.",
+          "simplePresent": "Glowing red embers stay dangerous long after campers go to sleep.",
+          "question": "Why are glowing red embers still hot even without tall flames?"
+        }
+      },
+      {
+        "id": "s58_stones",
+        "name": "Stone ring",
+        "bn": "পাথরের বৃত্ত",
+        "box": [425, 385, 825, 905],
+        "sentence": "Heavy boulders form a campfire stone ring meant to keep live coals safely contained.",
+        "sentenceBn": "জ্বলন্ত কয়লা নিরাপদে আটকে রাখার জন্য ভারী পাথর দিয়ে ক্যাম্পফায়ারের পাথরের বৃত্ত তৈরি করা হয়েছে।",
+        "audio": "audio/items/s58_stones.mp3",
+        "grammar": {
+          "presentContinuous": "The rough boulders of the campfire stone ring are catching red heat.",
+          "simplePast": "Campers built a campfire stone ring before leaving the site behind.",
+          "simplePresent": "A campfire stone ring holds heat inside only if nothing knocks sparks out.",
+          "question": "What sits right in the center of the campfire stone ring?"
+        }
+      },
+      {
+        "id": "s58_stick",
+        "name": "Stick",
+        "bn": "লাঠি",
+        "box": [455, 355, 790, 605],
+        "sentence": "A charred long wooden stick leans slantwise across the edge of the stones.",
+        "sentenceBn": "একটি পোড়া লম্বা কাঠের লাঠি পাথরের কিনারা ঘেঁষে তির্যকভাবে হেলান দিয়ে আছে।",
+        "audio": "audio/items/s58_stick.mp3",
+        "grammar": {
+          "presentContinuous": "One end of the long wooden stick is resting near the hot coals.",
+          "simplePast": "Someone used that long wooden stick to poke the campfire earlier.",
+          "simplePresent": "A long wooden stick dries quickly when left beside smoldering coals.",
+          "question": "Why is it risky to leave a dry long wooden stick next to live coals?"
+        }
+      },
+      {
+        "id": "s58_sparks",
+        "name": "Sparks",
+        "bn": "স্ফুলিঙ্গ",
+        "box": [125, 175, 275, 330],
+        "sentence": "Tiny hot ember sparks drift upward through the blue night air above the bucket.",
+        "sentenceBn": "বালতির ওপরে নীল রাতের বাতাসে ছোট ছোট গরম অঙ্গারের স্ফুলিঙ্গ ভেসে উঠছে।",
+        "audio": "audio/items/s58_sparks.mp3",
+        "grammar": {
+          "presentContinuous": "Bright hot ember sparks are floating away into the dark clearing.",
+          "simplePast": "A sudden bump sent hot ember sparks flying toward the spilled trash.",
+          "simplePresent": "Hot ember sparks can ignite dry wrappers in just moments.",
+          "question": "Where are those drifting hot ember sparks heading in the dark?"
+        }
+      },
+      {
+        "id": "s58_bench",
+        "name": "Bench",
+        "bn": "বেঞ্চ",
+        "box": [300, 110, 505, 580],
+        "sentence": "A low dark campsite bench stretches through the blue mist behind the fire pit.",
+        "sentenceBn": "আগুনের গর্তের পেছনে নীল কুয়াশার ভেতর একটি নিচু অন্ধকার ক্যাম্পসাইটের বেঞ্চ বিস্তৃত রয়েছে।",
+        "audio": "audio/items/s58_bench.mp3",
+        "grammar": {
+          "presentContinuous": "Night mist is drifting quietly over the empty dark campsite bench.",
+          "simplePast": "Nobody sat on the dark campsite bench once darkness fell.",
+          "simplePresent": "A dark campsite bench sits empty after careless hikers leave.",
+          "question": "What sits quietly in the fog behind the fire stones?"
+        }
+      },
+      {
+        "id": "s58_boulder",
+        "name": "Boulder",
+        "bn": "বড় পাথর",
+        "box": [430, 385, 675, 510],
+        "sentence": "Lit blue on one side and warm inside, a large campfire stone guards the pit's edge.",
+        "sentenceBn": "এক পাশে নীল আলো আর ভেতরের দিকে উষ্ণ আভায় একটি বড় ক্যাম্পফায়ারের পাথর গর্তের কিনারা ঘিরে আছে।",
+        "audio": "audio/items/s58_boulder.mp3",
+        "grammar": {
+          "presentContinuous": "Moonlight and ember glow are meeting on the large campfire stone.",
+          "simplePast": "The large campfire stone stayed warm hours after sunset.",
+          "simplePresent": "A large campfire stone shields grass from low fire heat.",
+          "question": "Why does the large campfire stone show both blue and pink light?"
+        }
+      }
+    ]
+  }
+]

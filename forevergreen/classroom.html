@@ -8,7 +8,8 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=03b">
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png?v=03b">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=03b">
-  <link rel="stylesheet" href="classroom.css?v=20261122-v3">
+  <link rel="stylesheet" href="classroom.css?v=20261123-v19">
+  <link rel="stylesheet" href="frame-inspector.css?v=20261123-v19">
 </head>
 <body>
   <header class="toolbar">
@@ -20,9 +21,9 @@
       <span>Tell it live · GPA Phase 3 Shared-Story Session</span>
     </div>
     <div class="toolbar-actions">
-      <span class="source-badge" id="source-badge">Source: YouTube</span>
-      <button class="tool-btn" id="load-local-btn" type="button">Load local MP4</button>
-      <button class="tool-btn" id="use-youtube-btn" type="button" hidden>Switch to YouTube</button>
+      <span class="source-badge" id="source-badge">Source: Local HD Film</span>
+      <button class="tool-btn" id="load-local-btn" type="button">Load custom MP4</button>
+      <button class="tool-btn" id="use-default-btn" type="button" hidden>Use default MP4</button>
       <input id="local-file-input" type="file" accept="video/*" hidden>
       <a class="student-link" href="./">Student practice →</a>
     </div>
@@ -31,19 +32,13 @@
   <main class="projector-shell" id="projector-shell">
     <div class="stage-wrap">
       <div class="cinema-stage" id="cinema-stage" tabindex="0" aria-label="Forevergreen projector stage">
-        <div class="yt-mount" id="yt-mount"></div>
-        <div class="embed-fallback" id="embed-fallback" hidden>
-          <p class="fallback-title">Video embed unavailable</p>
-          <p id="embed-fallback-reason"></p>
-          <div class="fallback-actions">
-            <button class="accent-btn" id="fallback-local-btn" type="button">Load local MP4 file</button>
-            <a class="ghost-link" id="embed-fallback-link" href="https://www.youtube.com/watch?v=B4EPW7JUMTM" target="_blank" rel="noopener">Open on YouTube ↗</a>
-          </div>
-        </div>
+        <div class="video-mount" id="video-mount"></div>
         <button class="audio-unlock-pill" id="audio-unlock-pill" type="button" hidden>
           🔊 Tap to turn on storyteller voice
         </button>
       </div>
+
+      <div id="inspect-card-mount"></div>
 
       <div class="caption-strip" id="caption-strip" hidden>
         <span class="caption-act" id="caption-act">Act 1</span>
@@ -99,17 +94,20 @@
     <button class="ctrl-btn" id="voice-toggle" type="button" aria-pressed="false">Storyteller Voice: Off</button>
     <button class="ctrl-btn" id="captions-toggle" type="button" aria-pressed="false">Captions: Off</button>
     <button class="ctrl-btn" id="guide-toggle" type="button" aria-pressed="false" aria-controls="nurturer-drawer">Nurturer Guide</button>
+    <button class="ctrl-btn" id="inspect-toggle" type="button" aria-pressed="false">🔍 Tap Items: Off</button>
     <button class="ctrl-btn" id="fullscreen-btn" type="button">Fullscreen</button>
   </nav>
 
   <footer class="classroom-credit">
-    <small>Forevergreen · Classroom Projector Mode (Shortcuts: Space play/pause · 1–5 Acts · J −10s · V voice · C captions · G guide · F fullscreen)</small>
+    <small>Forevergreen · Classroom Projector Mode (Shortcuts: Space play/pause · 1–5 Acts · J −10s · V voice · C captions · G guide · I tap items · F fullscreen)</small>
   </footer>
 
   <audio id="voice-audio" preload="auto"></audio>
-  <script src="story.js?v=20261122-v3"></script>
-  <script src="beat-timings.js?v=20261122-v3"></script>
-  <script src="player-core.js?v=20261122-v3"></script>
-  <script src="classroom.js?v=20261122-v3"></script>
+  <script src="story.js?v=20261123-v19"></script>
+  <script src="scene-items.js?v=20261123-v19"></script>
+  <script src="beat-timings.js?v=20261123-v19"></script>
+  <script src="player-core.js?v=20261123-v19"></script>
+  <script src="frame-inspector.js?v=20261123-v19"></script>
+  <script src="classroom.js?v=20261123-v19"></script>
 </body>
 </html>

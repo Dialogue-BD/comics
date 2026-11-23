@@ -1,39 +1,17 @@
 (() => {
   "use strict";
 
-  let ytApiPromise = null;
-
-  function loadYouTubeApi() {
-    if (window.YT && typeof window.YT.Player === "function") {
-      return Promise.resolve(window.YT);
-    }
-    if (ytApiPromise) return ytApiPromise;
-    ytApiPromise = new Promise((resolve) => {
-      const prevReady = window.onYouTubeIframeAPIReady;
-      window.onYouTubeIframeAPIReady = () => {
-        if (typeof prevReady === "function") {
-          try { prevReady(); } catch (_) {}
-        }
-        resolve(window.YT);
-      };
-      const tag = document.createElement("script");
-      tag.src = "https://www.youtube.com/iframe_api";
-      tag.async = true;
-      tag.onerror = () => resolve(null);
-      document.head.appendChild(tag);
-    });
-    return ytApiPromise;
-  }
-
   function createPlayer(options) {
     const story = options.story;
     const timings = options.timings || { durations: {} };
     const mount = options.mount;
-    const audio = options.audio || document.createElement("audio");
+    const fallbackAudio = options.audio || document.createElement("audio");
     const callbacks = options.callbacks || {};
 
+    const AudioCtx = window.AudioContext || window.webkitAudioContext || null;
+
     const state = {
-      sourceMode: "youtube",
+      sourceMode: "video",
       localFileName: "",
       pacingMode: options.pacingMode === "acts" ? "acts" : "full",
       voiceoverEnabled: !!options.voiceoverEnabled,
@@ -43,10 +21,9 @@
       voiceRate: Number.isFinite(options.voiceRate) ? options.voiceRate : 1.0,
       activeActId: 1,
       currentBeatId: null,
-      ytReady: false,
-      ytPlaying: false,
-      ytTime: 0,
-      embedFailed: false,
+      ready: false,
+      playing: false,
+      currentTime: 0,
       audioUnlocked: false,
       audioBlocked: false,
       storyEndFired: false,
@@ -54,18 +31,33 @@
     };
 
     const spokenIds = new Set();
-    let ytPlayer = null;
-    let localVideo = null;
+    const bufferCache = new Map();
+    const pendingDecode = new Map();
+    const phraseBufferCache = new Map();
+    const pendingPhraseDecode = new Map();
+    const phraseFallbackAudio = document.createElement("audio");
+
+    let video = null;
     let localObjectUrl = "";
+    let audioCtx = null;
+    let voiceGain = null;
+    let activeSource = null;
+    let activePhraseSource = null;
+    let activeBeat = null;
+    let activeStartCtxTime = 0;
+    let activeOffsetSec = 0;
+    let activeDurationSec = 0;
+    let pausedBeat = null;
+    let pausedOffsetSec = 0;
+    let standalonePlaying = false;
+    let isBeatPlaying = false;
+    let playToken = 0;
+    let phrasePlayToken = 0;
+
     let tickTimer = 0;
     let wordRaf = 0;
     let volumeTimer = 0;
     let currentFilmVol = state.filmVolume;
-    let lastFilmTime = 0;
-    let activeBeat = null;
-    let speechUtterance = null;
-    let standalonePlaying = false;
-    let phraseAudio = null;
 
     function emit(name, ...args) {
       if (typeof callbacks[name] === "function") callbacks[name](...args);
@@ -88,33 +80,29 @@
 
     function getBeatDuration(beat) {
       if (!beat) return 4;
-      if (Number.isFinite(audio.duration) && activeBeat && activeBeat.id === beat.id && audio.duration > 0) {
-        return audio.duration;
+      const buf = bufferCache.get(beat.id);
+      if (buf && buf.duration > 0) return buf.duration;
+      if (Number.isFinite(fallbackAudio.duration) && activeBeat && activeBeat.id === beat.id && fallbackAudio.duration > 0) {
+        return fallbackAudio.duration;
       }
-      return timings.durations[beat.id] || 4.5;
+      return timings.durations[beat.id] || 4.0;
     }
 
-    function isMediaReady() {
-      return state.sourceMode === "local" ? !!localVideo : (!!ytPlayer && state.ytReady);
+    function effectiveFilmVolume() {
+      return state.voiceoverEnabled ? state.filmVolume : 100;
     }
 
     function safeSetFilmVolume(targetVol) {
       const clamped = Math.max(0, Math.min(100, Math.round(targetVol)));
-      if (state.sourceMode === "local" && localVideo) {
-        try {
-          localVideo.volume = clamped / 100;
-        } catch (_) {}
-        return;
-      }
-      if (!ytPlayer || !state.ytReady || typeof ytPlayer.setVolume !== "function") return;
+      if (!video) return;
       try {
-        ytPlayer.setVolume(clamped);
+        video.volume = clamped / 100;
       } catch (_) {}
     }
 
-    function rampFilmVolume(targetVol, durationMs = 280) {
+    function rampFilmVolume(targetVol, durationMs = 240) {
       clearInterval(volumeTimer);
-      if (!isMediaReady()) {
+      if (!video) {
         currentFilmVol = targetVol;
         return;
       }
@@ -124,7 +112,7 @@
         safeSetFilmVolume(targetVol);
         return;
       }
-      const steps = Math.max(1, Math.round(durationMs / 40));
+      const steps = Math.max(1, Math.round(durationMs / 35));
       let step = 0;
       volumeTimer = setInterval(() => {
         step++;
@@ -132,30 +120,106 @@
         currentFilmVol = startVol + (targetVol - startVol) * ratio;
         safeSetFilmVolume(currentFilmVol);
         if (ratio >= 1) clearInterval(volumeTimer);
-      }, 40);
+      }, 35);
     }
 
-    function effectiveFilmVolume() {
-      return state.voiceoverEnabled ? state.filmVolume : 100;
-    }
-
-    function stopSpeechFallback() {
-      if ("speechSynthesis" in window) {
-        try { window.speechSynthesis.cancel(); } catch (_) {}
+    function ensureAudioContext() {
+      if (!AudioCtx) return null;
+      if (!audioCtx) {
+        audioCtx = new AudioCtx();
+        voiceGain = audioCtx.createGain();
+        voiceGain.gain.value = state.voiceVolume / 100;
+        voiceGain.connect(audioCtx.destination);
       }
-      speechUtterance = null;
+      return audioCtx;
+    }
+
+    function unlockAudio() {
+      const ctx = ensureAudioContext();
+      if (ctx && ctx.state === "suspended") {
+        ctx.resume().then(() => {
+          state.audioUnlocked = true;
+          if (state.audioBlocked) {
+            state.audioBlocked = false;
+            emit("onAudioBlocked", false);
+          }
+        }).catch(() => {});
+      } else if (ctx) {
+        state.audioUnlocked = true;
+      }
+    }
+
+    function fetchAndDecodeBeat(beat) {
+      if (!beat) return Promise.resolve(null);
+      if (bufferCache.has(beat.id)) return Promise.resolve(bufferCache.get(beat.id));
+      if (pendingDecode.has(beat.id)) return pendingDecode.get(beat.id);
+
+      const url = beat.audio + "?v=" + encodeURIComponent(story.version || "1");
+      const job = fetch(url)
+        .then((res) => {
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return res.arrayBuffer();
+        })
+        .then((arr) => {
+          const ctx = ensureAudioContext();
+          if (!ctx) return null;
+          return ctx.decodeAudioData(arr);
+        })
+        .then((decoded) => {
+          if (decoded) bufferCache.set(beat.id, decoded);
+          pendingDecode.delete(beat.id);
+          return decoded;
+        })
+        .catch(() => {
+          pendingDecode.delete(beat.id);
+          return null;
+        });
+
+      pendingDecode.set(beat.id, job);
+      return job;
+    }
+
+    function preloadActBeats(actId) {
+      const targetActId = actId || state.activeActId;
+      story.beats.forEach((b) => {
+        if (b.act === targetActId || b.act === targetActId + 1) {
+          fetchAndDecodeBeat(b);
+        }
+      });
+    }
+
+    function preloadAllBeats() {
+      story.beats.forEach((b) => fetchAndDecodeBeat(b));
+    }
+
+    function stopActiveSource(clearPaused = true) {
+      playToken++;
+      cancelAnimationFrame(wordRaf);
+      wordRaf = 0;
+      isBeatPlaying = false;
+      standalonePlaying = false;
+
+      if (activeSource) {
+        try {
+          activeSource.onended = null;
+          activeSource.stop();
+        } catch (_) {}
+        activeSource = null;
+      }
+      try {
+        fallbackAudio.pause();
+      } catch (_) {}
+
+      if (clearPaused) {
+        pausedBeat = null;
+        pausedOffsetSec = 0;
+      }
     }
 
     function stopBeatAudio(restoreVolume = true) {
-      cancelAnimationFrame(wordRaf);
-      wordRaf = 0;
-      standalonePlaying = false;
-      try {
-        audio.pause();
-      } catch (_) {}
-      stopSpeechFallback();
+      stopActiveSource(true);
       if (restoreVolume) {
-        rampFilmVolume(effectiveFilmVolume(), 320);
+        rampFilmVolume(effectiveFilmVolume(), 260);
       }
     }
 
@@ -165,120 +229,166 @@
       });
     }
 
-    function updateBeatProgressLoop() {
+    function startWordProgressLoop(beat, durationSec, initialOffsetSec = 0) {
       cancelAnimationFrame(wordRaf);
-      if (!activeBeat) return;
+      const startCtx = audioCtx ? audioCtx.currentTime : performance.now() / 1000;
       const run = () => {
-        if (!activeBeat) return;
-        const dur = getBeatDuration(activeBeat);
-        const elapsed = Number.isFinite(audio.currentTime) ? audio.currentTime : 0;
-        const progress = dur > 0 ? Math.max(0, Math.min(1, elapsed / dur)) : 0;
-        emit("onBeatProgress", activeBeat, progress, !audio.paused);
-        if (!audio.paused && !audio.ended) {
+        if (!isBeatPlaying || !activeBeat || activeBeat.id !== beat.id) return;
+        const now = audioCtx ? audioCtx.currentTime : performance.now() / 1000;
+        const elapsed = initialOffsetSec + Math.max(0, (now - startCtx) * state.voiceRate);
+        const progress = durationSec > 0 ? Math.max(0, Math.min(1, elapsed / durationSec)) : 0;
+        emit("onBeatProgress", beat, progress, true);
+        if (progress < 1) {
           wordRaf = requestAnimationFrame(run);
         }
       };
       wordRaf = requestAnimationFrame(run);
     }
 
-    function fallbackSpeakBeat(beat) {
-      if (!("speechSynthesis" in window)) return;
-      stopSpeechFallback();
-      const u = new SpeechSynthesisUtterance(beat.text);
-      u.lang = "en-GB";
-      u.rate = state.voiceRate;
-      u.volume = Math.max(0, Math.min(1, state.voiceVolume / 100));
-      u.onend = () => {
-        speechUtterance = null;
-        if (state.voiceoverEnabled) rampFilmVolume(effectiveFilmVolume(), 340);
-        emit("onBeatProgress", beat, 1, false);
-      };
-      speechUtterance = u;
-      rampFilmVolume(state.duckVolume, 220);
-      window.speechSynthesis.speak(u);
-      emit("onBeatChange", beat);
-      emit("onBeatProgress", beat, 0.25, true);
-    }
-
-    function playBeatClip(beat, { standalone = false } = {}) {
-      if (!beat) return;
+    function playFallbackAudioElement(beat, { standalone = false } = {}) {
+      const token = ++playToken;
       activeBeat = beat;
       state.currentBeatId = beat.id;
       standalonePlaying = standalone;
-      stopSpeechFallback();
+      isBeatPlaying = true;
       emit("onBeatChange", beat);
 
       if (!standalone && state.voiceoverEnabled) {
-        rampFilmVolume(state.duckVolume, 220);
+        rampFilmVolume(state.duckVolume, 180);
       }
 
-      audio.src = beat.audio + "?v=" + encodeURIComponent(story.version || "1");
-      audio.volume = Math.max(0, Math.min(1, state.voiceVolume / 100));
-      audio.playbackRate = state.voiceRate;
-      audio.currentTime = 0;
+      fallbackAudio.src = beat.audio + "?v=" + encodeURIComponent(story.version || "1");
+      fallbackAudio.volume = Math.max(0, Math.min(1, state.voiceVolume / 100));
+      fallbackAudio.playbackRate = state.voiceRate;
 
-      const p = audio.play();
+      const p = fallbackAudio.play();
       if (p && typeof p.then === "function") {
         p.then(() => {
+          if (token !== playToken) return;
           state.audioUnlocked = true;
           if (state.audioBlocked) {
             state.audioBlocked = false;
             emit("onAudioBlocked", false);
           }
-          updateBeatProgressLoop();
+          startWordProgressLoop(beat, getBeatDuration(beat), 0);
         }).catch((err) => {
+          if (token !== playToken) return;
+          isBeatPlaying = false;
           if (err && err.name === "NotAllowedError") {
             state.audioBlocked = true;
             emit("onAudioBlocked", true, beat);
-            rampFilmVolume(effectiveFilmVolume(), 240);
-          } else {
-            fallbackSpeakBeat(beat);
+            rampFilmVolume(effectiveFilmVolume(), 220);
           }
         });
-      } else {
-        updateBeatProgressLoop();
       }
     }
 
-    audio.addEventListener("ended", () => {
+    fallbackAudio.addEventListener("ended", () => {
       cancelAnimationFrame(wordRaf);
-      if (activeBeat) emit("onBeatProgress", activeBeat, 1, false);
+      isBeatPlaying = false;
       standalonePlaying = false;
-      rampFilmVolume(effectiveFilmVolume(), 360);
+      if (activeBeat) emit("onBeatProgress", activeBeat, 1, false);
+      rampFilmVolume(effectiveFilmVolume(), 320);
     });
 
-    audio.addEventListener("error", () => {
-      if (activeBeat && (state.voiceoverEnabled || standalonePlaying)) {
-        fallbackSpeakBeat(activeBeat);
+    async function playBeatClip(beat, { standalone = false, offsetSec = 0 } = {}) {
+      if (!beat) return;
+      stopActiveSource(true);
+
+      const token = ++playToken;
+      activeBeat = beat;
+      state.currentBeatId = beat.id;
+      standalonePlaying = standalone;
+      emit("onBeatChange", beat);
+
+      const ctx = ensureAudioContext();
+      if (!ctx) {
+        playFallbackAudioElement(beat, { standalone });
+        return;
       }
-    });
 
-    function unlockAudio() {
-      if (state.audioUnlocked) return;
-      state.audioUnlocked = true;
-      try {
-        audio.muted = true;
-        const p = audio.play();
-        if (p && typeof p.then === "function") {
-          p.then(() => {
-            audio.pause();
-            audio.muted = false;
-          }).catch(() => {
-            audio.muted = false;
-          });
-        } else {
-          audio.muted = false;
+      if (!standalone && state.voiceoverEnabled) {
+        rampFilmVolume(state.duckVolume, 180);
+      }
+
+      if (ctx.state === "suspended") {
+        try {
+          await ctx.resume();
+          state.audioUnlocked = true;
+          if (state.audioBlocked) {
+            state.audioBlocked = false;
+            emit("onAudioBlocked", false);
+          }
+        } catch (_) {
+          if (token !== playToken) return;
+          state.audioBlocked = true;
+          emit("onAudioBlocked", true, beat);
+          rampFilmVolume(effectiveFilmVolume(), 220);
+          return;
         }
-      } catch (_) {
-        audio.muted = false;
+      }
+
+      const buffer = await fetchAndDecodeBeat(beat);
+      if (token !== playToken) return;
+      if (!buffer) {
+        playFallbackAudioElement(beat, { standalone });
+        return;
+      }
+      if (!standalone && (!state.playing || !state.voiceoverEnabled)) {
+        rampFilmVolume(effectiveFilmVolume(), 200);
+        return;
+      }
+
+      const safeOffset = Math.max(0, Math.min(buffer.duration - 0.05, offsetSec));
+      const src = ctx.createBufferSource();
+      src.buffer = buffer;
+      src.playbackRate.value = state.voiceRate;
+      voiceGain.gain.value = Math.max(0, Math.min(1, state.voiceVolume / 100));
+      src.connect(voiceGain);
+
+      activeSource = src;
+      activeStartCtxTime = ctx.currentTime;
+      activeOffsetSec = safeOffset;
+      activeDurationSec = buffer.duration;
+      isBeatPlaying = true;
+
+      src.onended = () => {
+        if (activeSource !== src) return;
+        activeSource = null;
+        isBeatPlaying = false;
+        standalonePlaying = false;
+        cancelAnimationFrame(wordRaf);
+        emit("onBeatProgress", beat, 1, false);
+        rampFilmVolume(effectiveFilmVolume(), 320);
+      };
+
+      src.start(0, safeOffset);
+      startWordProgressLoop(beat, buffer.duration, safeOffset);
+    }
+
+    function pauseActiveBeat() {
+      if (!isBeatPlaying || !activeBeat) return;
+      const beat = activeBeat;
+      const elapsed = audioCtx
+        ? activeOffsetSec + Math.max(0, (audioCtx.currentTime - activeStartCtxTime) * state.voiceRate)
+        : 0;
+      const dur = activeDurationSec || getBeatDuration(beat);
+      stopActiveSource(false);
+      if (elapsed > 0.05 && elapsed < dur - 0.15) {
+        pausedBeat = beat;
+        pausedOffsetSec = elapsed;
+      } else {
+        pausedBeat = null;
+        pausedOffsetSec = 0;
       }
     }
 
     function retryBlockedAudio() {
       state.audioBlocked = false;
       emit("onAudioBlocked", false);
+      unlockAudio();
       if (activeBeat) {
-        playBeatClip(activeBeat, { standalone: !state.ytPlaying });
+        playBeatClip(activeBeat, { standalone: !state.playing });
       }
     }
 
@@ -295,67 +405,16 @@
       }
     }
 
-    function getCurrentFilmTime() {
-      if (state.sourceMode === "local") {
-        return localVideo ? localVideo.currentTime : 0;
-      }
-      if (ytPlayer && state.ytReady && typeof ytPlayer.getCurrentTime === "function") {
-        return ytPlayer.getCurrentTime();
-      }
-      return 0;
-    }
-
-    function pauseFilm() {
-      if (state.sourceMode === "local") {
-        if (localVideo) {
-          try { localVideo.pause(); } catch (_) {}
-        }
-        return;
-      }
-      if (ytPlayer && state.ytReady && typeof ytPlayer.pauseVideo === "function") {
-        try { ytPlayer.pauseVideo(); } catch (_) {}
-      }
-    }
-
-    function playFilm() {
-      if (state.sourceMode === "local") {
-        if (localVideo) {
-          const p = localVideo.play();
-          if (p && typeof p.catch === "function") p.catch(() => {});
-        }
-        return;
-      }
-      if (ytPlayer && state.ytReady && typeof ytPlayer.playVideo === "function") {
-        try { ytPlayer.playVideo(); } catch (_) {}
-      }
-    }
-
     function tick() {
-      if (!isMediaReady()) return;
-      let sec = 0;
-      try {
-        sec = getCurrentFilmTime();
-      } catch (_) {
-        return;
-      }
-      if (!Number.isFinite(sec)) return;
-      state.ytTime = sec;
-
-      const jumped = Math.abs(sec - lastFilmTime) > 2.2;
-      if (jumped) {
-        stopBeatAudio(true);
-        resetSpokenFrom(sec);
-        state.actBoundaryFiredId = null;
-        if (sec < story.storyEndSec - 3) state.storyEndFired = false;
-        syncCaptionToTime(sec);
-      }
-      lastFilmTime = sec;
-
+      if (!video || !state.ready) return;
+      const sec = Number.isFinite(video.currentTime) ? video.currentTime : 0;
+      state.currentTime = sec;
       emit("onTimeUpdate", sec);
 
       const actNow = getActAtTime(sec);
       if (state.pacingMode === "full" && actNow.id !== state.activeActId) {
         state.activeActId = actNow.id;
+        preloadActBeats(actNow.id);
         emit("onActChange", actNow);
       }
 
@@ -363,7 +422,7 @@
         const currentAct = getAct(state.activeActId);
         if (sec >= currentAct.end && state.actBoundaryFiredId !== currentAct.id) {
           state.actBoundaryFiredId = currentAct.id;
-          pauseFilm();
+          try { video.pause(); } catch (_) {}
           stopBeatAudio(true);
           emit("onActBoundary", currentAct);
           return;
@@ -373,10 +432,10 @@
         emit("onStoryEnd");
       }
 
-      if (state.voiceoverEnabled && state.ytPlaying) {
+      if (state.voiceoverEnabled && state.playing && !isBeatPlaying && !pausedBeat) {
         for (let i = 0; i < story.beats.length; i++) {
           const beat = story.beats[i];
-          if (sec >= beat.start && sec <= beat.start + 2.5 && !spokenIds.has(beat.id)) {
+          if (sec >= beat.start && sec < beat.start + 3.0 && !spokenIds.has(beat.id)) {
             spokenIds.add(beat.id);
             playBeatClip(beat, { standalone: false });
             break;
@@ -389,7 +448,7 @@
 
     function startTick() {
       if (tickTimer) return;
-      tickTimer = setInterval(tick, 120);
+      tickTimer = setInterval(tick, 100);
     }
 
     function stopTick() {
@@ -397,189 +456,93 @@
       tickTimer = 0;
     }
 
-    function cleanupLocalVideo() {
-      if (localVideo) {
-        try { localVideo.pause(); } catch (_) {}
-        localVideo.removeAttribute("src");
-        localVideo = null;
-      }
+    function cleanupObjectUrl() {
       if (localObjectUrl) {
         URL.revokeObjectURL(localObjectUrl);
         localObjectUrl = "";
       }
     }
 
-    function buildEmbed() {
-      if (!mount) return;
-      cleanupLocalVideo();
-      stopTick();
-      stopBeatAudio(false);
-      state.sourceMode = "youtube";
-      state.localFileName = "";
-      state.ytReady = false;
-      state.ytPlaying = false;
-      state.embedFailed = false;
-      emit("onSourceChange", { mode: "youtube", name: "YouTube" });
-
-      if (window.location.protocol === "file:") {
-        state.embedFailed = true;
-        emit("onEmbedFallback", {
-          reason: "Open this activity from http://localhost:5000 or dialogue-bd.com so YouTube can verify the page origin, or load your downloaded MP4 file.",
-          youtubeUrl: story.credits.youtubeUrl
-        });
-        return;
-      }
-
-      const params = new URLSearchParams({
-        enablejsapi: "1",
-        rel: "0",
-        modestbranding: "1",
-        playsinline: "1",
-        iv_load_policy: "3"
-      });
-      if (/^https?:$/.test(window.location.protocol) && window.location.origin) {
-        params.set("origin", window.location.origin);
-      }
-
-      mount.innerHTML = "";
-      const iframe = document.createElement("iframe");
-      iframe.id = options.iframeId || "yt-player";
-      iframe.title = story.title + " — YouTube film player";
-      iframe.src = `https://www.youtube.com/embed/${encodeURIComponent(story.youtubeId)}?${params.toString()}`;
-      iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
-      iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
-      iframe.allowFullscreen = true;
-      mount.appendChild(iframe);
-
-      loadYouTubeApi().then((YT) => {
-        if (state.sourceMode !== "youtube") return;
-        if (!YT || typeof YT.Player !== "function") {
-          state.embedFailed = true;
-          emit("onEmbedFallback", {
-            reason: "YouTube player API did not load. You can still watch on YouTube, load a local MP4, or explore all audio beats below.",
-            youtubeUrl: story.credits.youtubeUrl
-          });
-          return;
-        }
-        ytPlayer = new YT.Player(iframe.id, {
-          events: {
-            onReady: () => {
-              if (state.sourceMode !== "youtube") return;
-              state.ytReady = true;
-              safeSetFilmVolume(effectiveFilmVolume());
-              currentFilmVol = effectiveFilmVolume();
-              emit("onReady");
-            },
-            onStateChange: (ev) => {
-              if (state.sourceMode !== "youtube") return;
-              const YTS = YT.PlayerState || { PLAYING: 1, PAUSED: 2, ENDED: 0, BUFFERING: 3 };
-              if (ev.data === YTS.PLAYING) {
-                state.ytPlaying = true;
-                startTick();
-                if (!activeBeat || audio.paused) {
-                  rampFilmVolume(effectiveFilmVolume(), 240);
-                }
-                emit("onPlayState", true);
-              } else if (ev.data === YTS.PAUSED) {
-                state.ytPlaying = false;
-                stopTick();
-                if (!standalonePlaying) {
-                  try { audio.pause(); } catch (_) {}
-                  stopSpeechFallback();
-                }
-                emit("onPlayState", false);
-              } else if (ev.data === YTS.ENDED) {
-                state.ytPlaying = false;
-                stopTick();
-                stopBeatAudio(true);
-                emit("onPlayState", false);
-                if (!state.storyEndFired) {
-                  state.storyEndFired = true;
-                  emit("onStoryEnd");
-                }
-              }
-            },
-            onError: (ev) => {
-              if (state.sourceMode !== "youtube") return;
-              state.embedFailed = true;
-              emit("onEmbedFallback", {
-                reason: `YouTube could not play the embedded video here (code ${ev && ev.data ? ev.data : "unknown"}).`,
-                youtubeUrl: story.credits.youtubeUrl
-              });
-            }
-          }
-        });
-      });
-    }
-
-    function loadLocalFile(file) {
-      if (!file || !mount) return;
-      unlockAudio();
-      loadLocalSource(null, file);
-    }
-
-    // url: a film file served next to the page (forevergreen.mp4, gitignored, for the
-    // classroom laptop). file: one the teacher picked with "Load local MP4".
-    function loadLocalSource(url, file) {
+    function mountVideo(src, { mode = "video", name = "Local HD Film" } = {}) {
       if (!mount) return;
       stopTick();
       stopBeatAudio(false);
-      if (ytPlayer && typeof ytPlayer.destroy === "function") {
-        try { ytPlayer.destroy(); } catch (_) {}
+      if (video) {
+        try { video.pause(); } catch (_) {}
+        video.removeAttribute("src");
+        video = null;
       }
-      ytPlayer = null;
-      cleanupLocalVideo();
 
-      state.sourceMode = "local";
-      state.localFileName = file ? (file.name || "Local MP4") : "Downloaded film";
-      state.embedFailed = false;
-      state.ytReady = false;
-      state.ytPlaying = false;
-      lastFilmTime = 0;
-      state.ytTime = 0;
+      state.sourceMode = mode;
+      state.localFileName = name;
+      state.ready = false;
+      state.playing = false;
+      state.currentTime = 0;
       state.storyEndFired = false;
       state.actBoundaryFiredId = null;
 
-      if (file) localObjectUrl = URL.createObjectURL(file);
       mount.innerHTML = "";
-      const video = document.createElement("video");
-      video.className = "local-video";
-      video.controls = true;
-      video.playsInline = true;
-      video.preload = "metadata";
-      video.src = file ? localObjectUrl : url;
-      video.volume = effectiveFilmVolume() / 100;
+      const el = document.createElement("video");
+      el.id = options.videoId || "film-video";
+      el.className = "film-video";
+      el.src = src;
+      el.controls = true;
+      el.playsInline = true;
+      el.preload = "metadata";
+      el.volume = effectiveFilmVolume() / 100;
       currentFilmVol = effectiveFilmVolume();
-      localVideo = video;
-      mount.appendChild(video);
-      if (!file) {
-        video.addEventListener("error", () => { if (localVideo === video) buildEmbed(); }, { once: true });
-      }
+      video = el;
+      mount.appendChild(el);
 
-      video.addEventListener("loadedmetadata", () => {
-        state.ytReady = true;
+      el.addEventListener("loadedmetadata", () => {
+        state.ready = true;
         safeSetFilmVolume(effectiveFilmVolume());
+        preloadActBeats(state.activeActId);
         emit("onReady");
       });
-      video.addEventListener("play", () => {
-        state.ytPlaying = true;
+
+      el.addEventListener("play", () => {
+        unlockAudio();
+        state.playing = true;
         startTick();
-        if (!activeBeat || audio.paused) {
-          rampFilmVolume(effectiveFilmVolume(), 240);
+        if (state.voiceoverEnabled && pausedBeat) {
+          const resumeBeat = pausedBeat;
+          const resumeOffset = pausedOffsetSec;
+          pausedBeat = null;
+          pausedOffsetSec = 0;
+          playBeatClip(resumeBeat, { standalone: false, offsetSec: resumeOffset });
+        } else if (!isBeatPlaying) {
+          rampFilmVolume(effectiveFilmVolume(), 200);
         }
         emit("onPlayState", true);
       });
-      video.addEventListener("pause", () => {
-        state.ytPlaying = false;
+
+      el.addEventListener("pause", () => {
+        state.playing = false;
         stopTick();
         if (!standalonePlaying) {
-          try { audio.pause(); } catch (_) {}
-          stopSpeechFallback();
+          pauseActiveBeat();
+          rampFilmVolume(effectiveFilmVolume(), 200);
         }
         emit("onPlayState", false);
       });
-      video.addEventListener("ended", () => {
-        state.ytPlaying = false;
+
+      el.addEventListener("seeking", () => {
+        if (!standalonePlaying) stopBeatAudio(true);
+      });
+
+      el.addEventListener("seeked", () => {
+        const sec = el.currentTime || 0;
+        state.currentTime = sec;
+        resetSpokenFrom(sec);
+        state.actBoundaryFiredId = null;
+        if (sec < story.storyEndSec - 3) state.storyEndFired = false;
+        syncCaptionToTime(sec);
+        emit("onTimeUpdate", sec);
+      });
+
+      el.addEventListener("ended", () => {
+        state.playing = false;
         stopTick();
         stopBeatAudio(true);
         emit("onPlayState", false);
@@ -588,35 +551,42 @@
           emit("onStoryEnd");
         }
       });
-      video.addEventListener("seeked", () => {
-        const sec = video.currentTime || 0;
-        state.ytTime = sec;
-        lastFilmTime = sec;
-        stopBeatAudio(true);
-        resetSpokenFrom(sec);
-        state.actBoundaryFiredId = null;
-        if (sec < story.storyEndSec - 3) state.storyEndFired = false;
-        syncCaptionToTime(sec);
-        emit("onTimeUpdate", sec);
-      });
 
-      emit("onEmbedCleared");
-      emit("onSourceChange", { mode: "local", name: state.localFileName });
+      emit("onSourceChange", { mode, name });
+    }
+
+    function useDefaultVideo() {
+      cleanupObjectUrl();
+      const src = `${story.videoSrc}?v=${encodeURIComponent(story.version || "1")}`;
+      mountVideo(src, { mode: "video", name: "Forevergreen MP4" });
+    }
+
+    function loadLocalFile(file) {
+      if (!file) return;
+      unlockAudio();
+      cleanupObjectUrl();
+      localObjectUrl = URL.createObjectURL(file);
+      mountVideo(localObjectUrl, { mode: "local", name: file.name || "Custom MP4" });
     }
 
     function play() {
       unlockAudio();
-      playFilm();
+      if (video) {
+        const p = video.play();
+        if (p && typeof p.catch === "function") p.catch(() => {});
+      }
     }
 
     function pause() {
-      pauseFilm();
+      if (video) {
+        try { video.pause(); } catch (_) {}
+      }
       stopBeatAudio(true);
     }
 
     function togglePlay() {
       unlockAudio();
-      if (state.ytPlaying) pause();
+      if (state.playing) pause();
       else play();
     }
 
@@ -625,18 +595,14 @@
       const clamped = Math.max(0, Math.min(story.duration, sec));
       stopBeatAudio(true);
       resetSpokenFrom(clamped);
-      lastFilmTime = clamped;
-      state.ytTime = clamped;
+      state.currentTime = clamped;
       state.actBoundaryFiredId = null;
       if (clamped < story.storyEndSec - 3) state.storyEndFired = false;
       syncCaptionToTime(clamped);
 
-      if (state.sourceMode === "local" && localVideo) {
-        localVideo.currentTime = clamped;
-        if (autoPlay) playFilm();
-      } else if (ytPlayer && state.ytReady && typeof ytPlayer.seekTo === "function") {
-        ytPlayer.seekTo(clamped, true);
-        if (autoPlay) playFilm();
+      if (video) {
+        video.currentTime = clamped;
+        if (autoPlay) play();
       }
       emit("onTimeUpdate", clamped);
     }
@@ -644,19 +610,21 @@
     function playAct(actId, autoPlay = true) {
       const act = getAct(actId);
       state.activeActId = act.id;
+      preloadActBeats(act.id);
       emit("onActChange", act);
       seekTo(act.start, autoPlay);
     }
 
-    function jumpToBeat(beatId, { standaloneIfNoVideo = true } = {}) {
+    function jumpToBeat(beatId, { standaloneIfPaused = true } = {}) {
       const beat = getBeat(beatId);
       if (!beat) return;
       unlockAudio();
       state.activeActId = beat.act;
+      preloadActBeats(beat.act);
       emit("onActChange", getAct(beat.act));
-      if (isMediaReady() && !state.embedFailed) {
+      if (video && state.ready) {
         seekTo(beat.start, true);
-      } else if (standaloneIfNoVideo) {
+      } else if (standaloneIfPaused) {
         playBeatClip(beat, { standalone: true });
       }
     }
@@ -665,7 +633,7 @@
       unlockAudio();
       const beat = activeBeat || getBeat(state.currentBeatId) || story.beats[0];
       if (!beat) return;
-      if (isMediaReady() && !state.embedFailed && state.ytPlaying) {
+      if (video && state.ready && state.playing) {
         seekTo(beat.start, true);
       } else {
         playBeatClip(beat, { standalone: true });
@@ -673,7 +641,7 @@
     }
 
     function seekRelative(deltaSec) {
-      const base = Number.isFinite(state.ytTime) ? state.ytTime : 0;
+      const base = video && Number.isFinite(video.currentTime) ? video.currentTime : state.currentTime;
       seekTo(base + deltaSec, true);
     }
 
@@ -685,10 +653,15 @@
 
     function setVoiceover(enabled) {
       state.voiceoverEnabled = !!enabled;
-      if (!state.voiceoverEnabled) {
+      if (state.voiceoverEnabled) {
+        unlockAudio();
+        preloadAllBeats();
+        const cur = video && Number.isFinite(video.currentTime) ? video.currentTime : state.currentTime;
+        resetSpokenFrom(cur);
+      } else {
         stopBeatAudio(false);
       }
-      rampFilmVolume(effectiveFilmVolume(), 240);
+      rampFilmVolume(effectiveFilmVolume(), 220);
       emit("onVoiceoverChange", state.voiceoverEnabled);
     }
 
@@ -697,65 +670,186 @@
       if (Number.isFinite(next.duckVolume)) state.duckVolume = Math.max(0, Math.min(100, next.duckVolume));
       if (Number.isFinite(next.voiceVolume)) {
         state.voiceVolume = Math.max(0, Math.min(100, next.voiceVolume));
-        audio.volume = state.voiceVolume / 100;
+        if (voiceGain) voiceGain.gain.value = state.voiceVolume / 100;
+        fallbackAudio.volume = state.voiceVolume / 100;
       }
       if (Number.isFinite(next.voiceRate)) {
         state.voiceRate = Math.max(0.7, Math.min(1.25, next.voiceRate));
-        audio.playbackRate = state.voiceRate;
+        if (activeSource) {
+          try { activeSource.playbackRate.value = state.voiceRate; } catch (_) {}
+        }
+        fallbackAudio.playbackRate = state.voiceRate;
       }
-      if (audio.paused) {
-        rampFilmVolume(effectiveFilmVolume(), 180);
+      if (!isBeatPlaying) {
+        rampFilmVolume(effectiveFilmVolume(), 160);
       } else if (state.voiceoverEnabled) {
-        rampFilmVolume(state.duckVolume, 180);
+        rampFilmVolume(state.duckVolume, 160);
       }
     }
 
-    function speakPhrase(phraseText) {
-      unlockAudio();
-      const needle = String(phraseText || "").trim().toLowerCase();
-      if (!needle) return;
-
-      // Recorded clip first (phrase · example · phrase, Phonon V1).
-      const clips = timings.phrases || {};
-      const clipKey = Object.keys(clips).find((k) => k.toLowerCase() === needle);
-      if (clipKey) {
-        stopSpeechFallback();
-        if (!phraseAudio) phraseAudio = new Audio();
-        phraseAudio.src = clips[clipKey] + "?v=" + encodeURIComponent(timings.version || story.version || "1");
-        phraseAudio.volume = Math.max(0, Math.min(1, state.voiceVolume / 100));
-        phraseAudio.play().catch(() => {});
-        return;
+    function stopPhraseAudio() {
+      phrasePlayToken++;
+      if (activePhraseSource) {
+        try {
+          activePhraseSource.onended = null;
+          activePhraseSource.stop();
+        } catch (_) {}
+        activePhraseSource = null;
       }
-
+      try {
+        phraseFallbackAudio.pause();
+        phraseFallbackAudio.currentTime = 0;
+      } catch (_) {}
       if ("speechSynthesis" in window) {
-        stopSpeechFallback();
-        const u = new SpeechSynthesisUtterance(phraseText);
-        u.lang = "en-GB";
-        u.rate = 0.92;
-        u.volume = Math.max(0, Math.min(1, state.voiceVolume / 100));
-        window.speechSynthesis.speak(u);
+        try { window.speechSynthesis.cancel(); } catch (_) {}
+      }
+    }
+
+    function resolvePhraseAudioUrl(phrase) {
+      const clean = String(phrase || "").trim();
+      const map = timings.phraseAudio || {};
+      let rel = map[clean];
+      if (!rel && clean) {
+        const lower = clean.toLowerCase();
+        const foundKey = Object.keys(map).find((k) => k.toLowerCase() === lower);
+        if (foundKey) rel = map[foundKey];
+      }
+      return rel ? rel + "?v=" + encodeURIComponent(story.version || "1") : "";
+    }
+
+    function fetchAndDecodeUrl(url, cache, pending) {
+      if (!url) return Promise.resolve(null);
+      if (cache.has(url)) return Promise.resolve(cache.get(url));
+      if (pending.has(url)) return pending.get(url);
+
+      const job = fetch(url)
+        .then((res) => {
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return res.arrayBuffer();
+        })
+        .then((arr) => {
+          const ctx = ensureAudioContext();
+          if (!ctx) return null;
+          return ctx.decodeAudioData(arr);
+        })
+        .then((decoded) => {
+          if (decoded) cache.set(url, decoded);
+          pending.delete(url);
+          return decoded;
+        })
+        .catch(() => {
+          pending.delete(url);
+          return null;
+        });
+
+      pending.set(url, job);
+      return job;
+    }
+
+    function playPhraseFallback(url, phrase, token) {
+      if (token !== phrasePlayToken) return;
+      phraseFallbackAudio.src = url;
+      phraseFallbackAudio.volume = Math.max(0, Math.min(1, state.voiceVolume / 100));
+      phraseFallbackAudio.playbackRate = state.voiceRate;
+      const p = phraseFallbackAudio.play();
+      if (p && typeof p.catch === "function") {
+        p.catch(() => {
+          if (token === phrasePlayToken) speakText(phrase);
+        });
+      }
+    }
+
+    async function playAudioUrl(relPath, fallbackText) {
+      const cleanRel = String(relPath || "").trim();
+      const fallback = String(fallbackText || "").trim();
+      if (!cleanRel) {
+        if (fallback) speakText(fallback);
         return;
       }
 
-      const matchBeat = story.beats.find((b) => b.text.toLowerCase().includes(needle));
-      if (matchBeat) {
-        if (!phraseAudio) phraseAudio = new Audio();
-        phraseAudio.src = matchBeat.audio + "?v=" + encodeURIComponent(story.version || "1");
-        phraseAudio.volume = Math.max(0, Math.min(1, state.voiceVolume / 100));
-        phraseAudio.play().catch(() => {});
+      const url = cleanRel + "?v=" + encodeURIComponent(story.version || "1");
+      stopPhraseAudio();
+      const token = phrasePlayToken;
+      unlockAudio();
+
+      const ctx = ensureAudioContext();
+      if (!ctx) {
+        playPhraseFallback(url, fallback, token);
+        return;
+      }
+
+      if (ctx.state === "suspended") {
+        try {
+          await ctx.resume();
+        } catch (_) {
+          if (token === phrasePlayToken) playPhraseFallback(url, fallback, token);
+          return;
+        }
+      }
+
+      const buffer = await fetchAndDecodeUrl(url, phraseBufferCache, pendingPhraseDecode);
+      if (token !== phrasePlayToken) return;
+      if (!buffer) {
+        playPhraseFallback(url, fallback, token);
+        return;
+      }
+
+      const src = ctx.createBufferSource();
+      src.buffer = buffer;
+      src.playbackRate.value = state.voiceRate;
+      voiceGain.gain.value = Math.max(0, Math.min(1, state.voiceVolume / 100));
+      src.connect(voiceGain);
+      activePhraseSource = src;
+      src.onended = () => {
+        if (activePhraseSource === src) activePhraseSource = null;
+      };
+      try {
+        src.start(0);
+      } catch (_) {
+        if (activePhraseSource === src) activePhraseSource = null;
+        playPhraseFallback(url, fallback, token);
       }
     }
 
-    // Prefer a copy of the film sitting next to the page; the live site has none,
-    // so it falls through to YouTube. HEAD keeps the check to a few bytes.
-    const localFilm = options.localFilm || story.localFilm;
-    if (localFilm && mount && /^https?:$/.test(window.location.protocol)) {
-      fetch(localFilm, { method: "HEAD", cache: "no-store" })
-        .then((r) => (r.ok ? loadLocalSource(localFilm, null) : buildEmbed()))
-        .catch(() => buildEmbed());
-    } else {
-      buildEmbed();
+    async function speakPhrase(phrase) {
+      const clean = String(phrase || "").trim();
+      if (!clean) return;
+      const map = timings.phraseAudio || {};
+      let rel = map[clean];
+      if (!rel) {
+        const lower = clean.toLowerCase();
+        const foundKey = Object.keys(map).find((k) => k.toLowerCase() === lower);
+        if (foundKey) rel = map[foundKey];
+      }
+      await playAudioUrl(rel, clean);
     }
+
+    async function speakWord(word) {
+      const clean = String(word || "").trim();
+      if (!clean) return;
+      const map = timings.wordAudio || {};
+      const lower = clean.toLowerCase();
+      const norm = lower.replace(/’/g, "'");
+      const rel = map[lower] || map[norm] || map[lower.replace(/'/g, "’")] || "";
+      await playAudioUrl(rel, clean);
+    }
+
+    function speakText(text) {
+      const clean = String(text || "").trim();
+      if (!clean) return;
+      if ("speechSynthesis" in window) {
+        try {
+          window.speechSynthesis.cancel();
+          const u = new SpeechSynthesisUtterance(clean);
+          u.lang = "en-GB";
+          u.rate = 0.92;
+          u.volume = Math.max(0, Math.min(1, state.voiceVolume / 100));
+          window.speechSynthesis.speak(u);
+        } catch (_) {}
+      }
+    }
+
+    useDefaultVideo();
 
     return {
       play,
@@ -771,16 +865,26 @@
       setVoiceover,
       setMix,
       speakPhrase,
+      speakWord,
+      speakText,
+      playAudioUrl,
+      stopAudioOverlays: stopPhraseAudio,
+      getVideoElement: () => video,
       unlockAudio,
       retryBlockedAudio,
       loadLocalFile,
-      useYouTube: buildEmbed,
-      getState: () => ({ ...state }),
+      useDefaultVideo,
+      getState: () => ({
+        ...state,
+        ytPlaying: state.playing,
+        ytTime: state.currentTime
+      }),
       destroy: () => {
         stopTick();
         stopBeatAudio(false);
+        stopPhraseAudio();
         clearInterval(volumeTimer);
-        cleanupLocalVideo();
+        cleanupObjectUrl();
       }
     };
   }

@@ -1,14 +1,13 @@
 const FOREVERGREEN_STORY = {
   id: "forevergreen",
-  youtubeId: "B4EPW7JUMTM",
-  localFilm: "forevergreen.mp4",   // played instead of YouTube when present (never committed)
+  videoSrc: "video/forevergreen.mp4",
   title: "Forevergreen",
   titleBn: "চিরসবুজ",
   kicker: "GPA Phase 3 · Shared-story film activity",
   subtitle: "A wordless short film about belonging, temptation, and sacrificial love",
   duration: 785,
-  storyEndSec: 719,
-  version: "20261122-v3",
+  storyEndSec: 721,
+  version: "20261123-v19",
   credits: {
     directors: "Nathan Engelhardt and Jeremy Spears",
     music: "Josh Garrels (Small Voice Music)",
@@ -21,33 +20,33 @@ const FOREVERGREEN_STORY = {
       title: "Winter & Shelter",
       titleBn: "শীত ও আশ্রয়",
       start: 14,
-      end: 138,
-      summary: "Alone in the freezing woods, a tiny bear cub is welcomed by a living evergreen tree who gives him berries, a golden pinecone, and warm shelter.",
-      discussionPrompt: "Why did the giant tree notice and shelter such a small, frightened cub?",
+      end: 125,
+      summary: "Alone in the freezing woods, a tiny bear cub slips off a snowy ledge—and is caught by a living evergreen tree who shakes down golden pinecone seeds and tucks him into warm shelter.",
+      discussionPrompt: "Why did the giant tree wake up to catch and shelter such a small, frightened cub?",
       sentenceFrames: [
-        "At first, the little cub felt… because…",
-        "I think the evergreen tree took care of him since…",
-        "When spring came, home meant…"
+        "When the snowy ledge gave way, the evergreen…",
+        "I think the tree shook down pine seeds and sheltered him since…",
+        "Sleeping high in the branches must have felt…"
       ],
       memoryPhrases: [
         "left to fend for himself",
-        "creaked awake",
+        "gave way",
         "golden pinecone",
-        "tucked into the boughs"
+        "tucked into the branches"
       ],
       teacherNotes: {
         storyCues: [
-          "Pause on the silence and twilight cold before the tree's face appears (0:20–1:10).",
-          "Point out the sunlit pinecone gift (1:30) and the spring hedgehog (2:10)—both return later in Act 5."
+          "Pause on the twilight cold after the adult bear walks past (0:22–0:48) and the snowy ledge collapse (0:56–1:04).",
+          "Point out the evergreen catching him (1:08–1:12) and shaking sweet pine seeds out of the golden pinecone (1:34–1:42)."
         ],
         nurturerQuestions: [
-          "What did the cub lose before the story began, and how did he feel in the snow?",
-          "Why did the tree offer him berries and a bright pinecone instead of chasing him away?",
-          "How did the cub change once spring arrived in the grass?"
+          "What happened to the cub when he crawled out onto the snowy ledge for berries?",
+          "Why did the tree wake up to catch him and shake down pine seeds instead of staying asleep?",
+          "What changed in the cub's face once he climbed into the warm branches?"
         ],
         recastExample: {
-          learner: "Bear baby cold, tree give house and food.",
-          recast: "Yes, the little cub was freezing, so the tree gave him warm shelter and berries to eat."
+          learner: "Bear baby fall snow edge, tree catch and give food.",
+          recast: "Yes, when the snowy ledge gave way, the tree woke up, caught the little cub, and fed him seeds."
         }
       }
     },
@@ -56,70 +55,70 @@ const FOREVERGREEN_STORY = {
       slug: "growing-temptation",
       title: "Growing Up & Temptation",
       titleBn: "বড় হওয়া ও প্রলোভন",
-      start: 139,
-      end: 299,
-      summary: "The cub plants his pinecone and watches a tiny sapling sprout—until years later, a colorful bag of potato chips tempts him to defy the tree.",
-      discussionPrompt: "Why was the young bear so angry when the tree warned him about the chip bag?",
+      start: 126,
+      end: 319,
+      summary: "The cub treasures a pinecone play doll and plants a pine seed into a tiny green sapling—until years later, a crow's potato chip bag tempts him to reject even his old play doll and walk away.",
+      discussionPrompt: "Why did the young bear refuse even his childhood pinecone play doll when the tree warned him?",
       sentenceFrames: [
-        "Even though the tree cared for him, the young bear wanted…",
-        "Planting the pinecone together showed that…",
-        "The chip bag tempted him in the same way that…"
+        "Giving him the pinecone play doll and planting the seed showed that…",
+        "Years later, a crow brought a potato chip bag and the bear grew…",
+        "When the tree held out his old play doll, he refused because…"
       ],
       memoryPhrases: [
-        "planted the pinecone",
+        "play doll",
         "tiny green sapling",
-        "gave in to temptation",
-        "turned his back on"
+        "stern warning",
+        "defiance"
       ],
       teacherNotes: {
         storyCues: [
-          "Highlight how planting the pinecone in soil (2:40–3:00) creates the little sapling they both love.",
-          "Notice the adolescent bear sneaking chips (3:50–4:20) and walking away past the sapling in anger (4:40–4:55)."
+          "Highlight the spring hedgehog (2:12), the pinecone play doll gift (2:30–2:34), planting the pine seed (2:46–2:52), and the sapling sprouting (3:04).",
+          "Point out him tossing a pine seed in boredom (3:41–3:45), the crow dropping the potato chip bag (3:46–3:52), and rejecting his old play doll (4:52–4:56) before trampling the sapling (5:12)."
         ],
         nurturerQuestions: [
-          "Why did planting that pinecone and caring for the sapling matter so much to the old tree?",
-          "What made the salty potato chips more exciting than the forest's simple gifts?",
-          "When he walked past the sapling with the chip bag, what do you think he was hoping to find?"
+          "Why did the evergreen carve or give him that little pinecone play doll and help him plant a pine seed?",
+          "How did the potato chip bag reach him—and why had plain pine seeds started feeling boring?",
+          "Why did seeing his old play doll make him pull back instead of staying home?"
         ],
         recastExample: {
-          learner: "He don't listen tree, he go for chips.",
-          recast: "Right—he refused to listen to the tree's warning and ran off after the potato chips."
+          learner: "Bird bring chip bag, he don't want toy pinecone no more.",
+          recast: "Right—after the crow dropped the potato chip bag, he refused even his old pinecone play doll and pushed past the tree."
         }
       }
     },
     {
       id: 3,
       slug: "canyon-campsite",
-      title: "The Canyon & Campsite 316",
-      titleBn: "গিরিখাত ও ক্যাম্পসাইট ৩১৬",
-      start: 300,
-      end: 444,
-      summary: "Ignoring the tree's heartbroken gaze, the bear crosses the rushing rapids, spots crows at Campsite 316, and gorges himself beside a blazing campfire.",
-      discussionPrompt: "At Campsite 316, did the bear look truly free—or trapped by his own appetite?",
+      title: "The Canyon & The Campsite",
+      titleBn: "গিরিখাত ও ক্যাম্পসাইট",
+      start: 320,
+      end: 435,
+      summary: "Ignoring the tree's heavy heart, the bear crosses rushing rapids, gorges himself at a littered human campsite, and accidentally knocks a glowing ember into the trash while tossing a pinecone.",
+      discussionPrompt: "At the campsite, what small careless action turned his feast into sudden danger?",
       sentenceFrames: [
         "Crossing the canyon looked thrilling, yet…",
-        "At first the campsite felt like a feast, but…",
-        "The bear did not realize that his carelessness would…"
+        "At first the campsite felt like a feast, until he tossed…",
+        "The bear did not realize that knocking an ember into the trash would…"
       ],
       memoryPhrases: [
         "watched with heavy heart",
-        "scrambled across",
-        "gorged himself",
-        "left behind a mess"
+        "fallen log",
+        "left behind a mess",
+        "gorged himself"
       ],
       teacherNotes: {
         storyCues: [
-          "Contrast the risky fallen log over the misty waterfall (5:30–5:50) with the noisy crows at the trash (6:00).",
-          "Point out trail post '316' (6:20) and the blazing campfire beside overturned cans (7:10–7:20)."
+          "Contrast the risky waterfall rapids and fallen log (5:34–5:56) with the comic chip-bag scene at the campsite (6:24–6:32).",
+          "Pause right at 7:05–7:12: notice him spitting out a pinecone in disgust, tossing it away, swinging the campfire ember pot into the garbage pile, and falling asleep."
         ],
         nurturerQuestions: [
-          "What was the tree feeling as he watched the bear climb down the cliff?",
-          "Why do short-term thrills often look harmless at the beginning?",
-          "What warning signs did the bear ignore beside the campfire?"
+          "What was the tree feeling as he watched the bear walk off toward the cliff?",
+          "What happened when the bear bit into a pinecone by mistake and threw it away?",
+          "Why didn't he notice the ember catching on the spilled trash beside him?"
         ],
         recastExample: {
-          learner: "He eat too much garbage and forget fire.",
-          recast: "Exactly—he gorged himself on garbage and never noticed the fire spreading behind him."
+          learner: "He throw pinecone, hit fire stick, trash burn.",
+          recast: "Exactly—he tossed away a pinecone and accidentally knocked a glowing ember right into the pile of trash."
         }
       }
     },
@@ -128,34 +127,34 @@ const FOREVERGREEN_STORY = {
       slug: "wildfire-bridge",
       title: "Wildfire & The Bridge",
       titleBn: "দাবানল ও ত্যাগের সেতু",
-      start: 445,
-      end: 562,
-      summary: "A roaring wildfire traps the bear before a wall of flames—until the fatherly evergreen uproots itself and falls across the chasm to save him.",
-      discussionPrompt: "The bear caused the danger through his own rebellion. Why did the tree still save him?",
+      start: 436,
+      end: 566,
+      summary: "A roaring wildfire traps the bear with his arms full of stolen trash. The evergreen uproots itself across the chasm—forcing the bear to let go of his trash to grab the saving branch before the dying tree pushes him to safety.",
+      discussionPrompt: "Why could the bear not grab the saving branch until he finally let go of his trash?",
       sentenceFrames: [
-        "When the flames closed in, the bear realized…",
-        "The tree chose to uproot itself because…",
-        "Crossing that fallen trunk must have felt…"
+        "Even when the evergreen fell to rescue him, the bear kept holding…",
+        "He could only grab the saving branch after he…",
+        "When he stopped to cling to the burning trunk, the tree gently…"
       ],
       memoryPhrases: [
-        "broke out in the night",
         "clung stubbornly",
         "uprooted itself",
+        "let go of",
         "paid the ultimate price"
       ],
       teacherNotes: {
         storyCues: [
-          "Notice the bear still hugging stolen trash as he flees down the blazing trail (7:30–7:40).",
-          "Let the music carry the visual weight from 8:10 to the quiet fade to black at 9:20."
+          "Pause on 8:14–8:36: the bear holds out one paw while hugging wrappers and tin cans with the other, unable to reach the evergreen's branch until he drops all the trash (8:30–8:35).",
+          "Point out the tender moment on the bridge (8:46–9:04): the bear hugs his dying friend instead of running, so the tree gently nudges him across toward the far cliff."
         ],
         nurturerQuestions: [
-          "Why did the bear still hold onto stolen trash even while running for his life?",
-          "What went through the bear's mind when the tree fell across the chasm for him?",
-          "Does this rescue remind you of any other story you know?"
+          "Why couldn't the bear reach the saving branch at first, even with the tree stretching toward him?",
+          "Why did the bear stop in the middle of the burning bridge and hug the trunk instead of escaping?",
+          "What did it cost the evergreen to push him safely across?"
         ],
         recastExample: {
-          learner: "Tree fall down make road so bear don't die.",
-          recast: "Yes, the tree gave up its own life to become a bridge so the bear could escape."
+          learner: "He hold too many garbage, cannot catch tree hand until drop.",
+          recast: "Yes! Because he clutched that armful of trash, he couldn't reach safety until he finally let go of it and grabbed the branch."
         }
       }
     },
@@ -164,34 +163,34 @@ const FOREVERGREEN_STORY = {
       slug: "grief-legacy",
       title: "Grief, New Sapling & Legacy",
       titleBn: "শোক, নতুন চারা ও উত্তরাধিকার",
-      start: 563,
-      end: 718,
-      summary: "Mourning in the misty ashes beside the charred trunk, the bear finds a living green sprout, nurtures it to maturity, and shares a pinecone with a new cub.",
-      discussionPrompt: "How did the adult bear honor the evergreen tree's memory years later?",
+      start: 567,
+      end: 721,
+      summary: "Mourning beside the charred trunk, the bear finds a green shoot sprouting out of his childhood pinecone play doll, plants it in the center of the old stump, and grows it into a smiling evergreen for a new cub.",
+      discussionPrompt: "Why was it so meaningful that the new shoot sprouted out of his childhood pinecone play doll?",
       sentenceFrames: [
-        "In the quiet ashes, the tiny green sprout gave him…",
-        "Years later, the bear became like the tree by…",
-        "For me, the ending says that love…"
+        "Out of the quiet ashes, the tiny green shoot grew straight from…",
+        "Planting it in the center of the old stump showed that…",
+        "Years later, the grown bear passed on the gift when…"
       ],
       memoryPhrases: [
         "mourned in silence",
-        "sprouted from the ashes",
+        "sprouting",
         "came full circle",
         "passed on the gift"
       ],
       teacherNotes: {
         storyCues: [
-          "Point out the callbacks: sunrise tending the sapling (10:30 ↔ 3:00), three hedgehogs (10:40 ↔ 2:10), and the sunlit pinecone (11:00 ↔ 1:30).",
-          "Pause on the John 15:13 quote card (11:50–11:58) before credits roll at 12:00."
+          "Zoom in mentally at 10:15–10:33: the green shoot is sprouting right out of his childhood pinecone play doll, and the bear carefully replants it into the very center of the old tree's stump.",
+          "Point out the visual callbacks: sunrise watch (10:34 ↔ 3:04), three hedgehogs (10:42 ↔ 2:12), golden pinecone (11:04 ↔ 1:34), and the new evergreen smiling (11:24)."
         ],
         nurturerQuestions: [
-          "How was the bear's care for the new sapling different from how he treated the first one?",
-          "Why do you think the filmmakers brought back the hedgehogs and the sunlit pinecone at the end?",
+          "Where did that tiny green shoot come from when the sunbeam lit the ashes?",
+          "Why did he carry his old pinecone play doll to the center of the old tree's stump?",
           "If you told this whole story to a friend in two minutes, what is its heart?"
         ],
         recastExample: {
-          learner: "Bear grow big and take care new small bear in tree.",
-          recast: "Yes! Everything came full circle—the grown bear protected a new cub in the branches of that grown tree."
+          learner: "Small green tree grow inside toy pinecone, bear put in big dead stump.",
+          recast: "Yes! A new shoot was sprouting right out of his old pinecone play doll, so he tenderly planted it in the center of the old stump."
         }
       }
     }
@@ -200,81 +199,81 @@ const FOREVERGREEN_STORY = {
     {
       id: "b01",
       act: 1,
-      start: 19,
+      start: 24,
       audio: "audio/beats/b01.mp3",
-      text: "Deep in a freezing twilight forest, a tiny cub lay exhausted in the snow.",
+      text: "In the twilight forest, a tiny cub walked alone in the snow.",
       phrases: ["twilight forest"]
     },
     {
       id: "b02",
       act: 1,
-      start: 34,
+      start: 35,
       audio: "audio/beats/b02.mp3",
-      text: "Orphaned and alone, he was left to fend for himself in the cold.",
+      text: "Exhausted and cold, he was left to fend for himself.",
       phrases: ["left to fend for himself"]
     },
     {
       id: "b03",
       act: 1,
-      start: 49,
+      start: 52,
       audio: "audio/beats/b03.mp3",
-      text: "Searching for food, he reached toward a few red berries beside a giant trunk.",
-      phrases: ["giant trunk"]
+      text: "Hungry, he crawled onto a snowy ledge for red berries.",
+      phrases: ["snowy ledge"]
     },
     {
       id: "b04",
       act: 1,
-      start: 64,
+      start: 69,
       audio: "audio/beats/b04.mp3",
-      text: "Suddenly the ancient evergreen creaked awake, startling the frightened cub.",
-      phrases: ["creaked awake"]
+      text: "When the ledge gave way, the evergreen woke up and caught him.",
+      phrases: ["gave way"]
     },
     {
       id: "b05",
       act: 1,
-      start: 85,
+      start: 101,
       audio: "audio/beats/b05.mp3",
-      text: "Instead of harming him, the gentle tree offered a golden pinecone.",
+      text: "Smiling warmly, the tree shook sweet seeds from a golden pinecone.",
       phrases: ["golden pinecone"]
     },
     {
       id: "b06",
       act: 1,
-      start: 102,
+      start: 115,
       audio: "audio/beats/b06.mp3",
-      text: "Delighted and warm, the cub was tucked into the boughs high above the snow.",
-      phrases: ["tucked into the boughs"]
+      text: "Safe and warm, the cub slept tucked into the branches.",
+      phrases: ["tucked into the branches"]
     },
     {
       id: "b07",
-      act: 1,
-      start: 122,
+      act: 2,
+      start: 133,
       audio: "audio/beats/b07.mp3",
-      text: "When spring arrived, he rolled in the grass beside a friendly little hedgehog.",
+      text: "Spring arrived, and the cub tumbled beside a little hedgehog.",
       phrases: []
     },
     {
       id: "b08",
       act: 2,
-      start: 141,
+      start: 154,
       audio: "audio/beats/b08.mp3",
-      text: "Under the tree's watchful smile, the cub carried his treasured pinecone everywhere.",
-      phrases: ["watchful smile"]
+      text: "To cheer him up, the tree gave him a pinecone play doll.",
+      phrases: ["play doll"]
     },
     {
       id: "b09",
       act: 2,
-      start: 159,
+      start: 170,
       audio: "audio/beats/b09.mp3",
-      text: "Soon he planted the pinecone in a sunny mound of dark soil.",
-      phrases: ["planted the pinecone"]
+      text: "Together they planted a pine seed in the dark soil.",
+      phrases: ["pine seed"]
     },
     {
       id: "b10",
       act: 2,
-      start: 178,
+      start: 185,
       audio: "audio/beats/b10.mp3",
-      text: "Out of the earth grew a tiny green sapling they could care for together.",
+      text: "Soon a tiny green sapling sprang up from the earth.",
       phrases: ["tiny green sapling"]
     },
     {
@@ -282,208 +281,296 @@ const FOREVERGREEN_STORY = {
       act: 2,
       start: 196,
       audio: "audio/beats/b11.mp3",
-      text: "Seasons turned, and the young bear grew taller beside his leafy guardian.",
+      text: "Through rain and changing seasons, his leafy guardian sheltered him.",
       phrases: ["guardian"]
     },
     {
       id: "b12",
       act: 2,
-      start: 226,
+      start: 221,
       audio: "audio/beats/b12.mp3",
-      text: "One afternoon, a bright bag of potato chips caught his curious eye.",
-      phrases: ["caught his curious eye"]
+      text: "Years passed, and the restless bear grew bored of plain pine seeds.",
+      phrases: ["restless"]
     },
     {
       id: "b13",
       act: 2,
-      start: 247,
+      start: 232,
       audio: "audio/beats/b13.mp3",
-      text: "He gave in to temptation, sneaking the salty crumbs even after a firm warning.",
-      phrases: ["gave in to temptation"]
+      text: "Then a crow left a bright potato chip bag right beside him.",
+      phrases: ["potato chip bag"]
     },
     {
       id: "b14",
       act: 2,
-      start: 274,
+      start: 252,
       audio: "audio/beats/b14.mp3",
-      text: "Stubborn and angry, he turned his back on home and marched past the sapling.",
-      phrases: ["turned his back on"]
+      text: "Tempted by the salty crumbs, he tried sneaking away.",
+      phrases: ["tempted"]
     },
     {
       id: "b15",
-      act: 3,
-      start: 303,
+      act: 2,
+      start: 268,
       audio: "audio/beats/b15.mp3",
-      text: "The evergreen watched with heavy heart as the young bear walked away.",
-      phrases: ["watched with heavy heart"]
+      text: "Firmly, the evergreen blocked his path with a stern warning.",
+      phrases: ["stern warning"]
     },
     {
       id: "b16",
-      act: 3,
-      start: 328,
+      act: 2,
+      start: 295,
       audio: "audio/beats/b16.mp3",
-      text: "Beside a misty waterfall, the bear scrambled across a fallen log over roaring rapids.",
-      phrases: ["scrambled across"]
+      text: "Even when the tree offered his old play doll, he refused.",
+      phrases: ["play doll"]
     },
     {
       id: "b17",
-      act: 3,
-      start: 355,
+      act: 2,
+      start: 304,
       audio: "audio/beats/b17.mp3",
-      text: "Following noisy crows through the trees, he spotted human trash ahead.",
-      phrases: []
+      text: "Angry and stubborn, he pushed past the tree and walked away.",
+      phrases: ["pushed past"]
     },
     {
       id: "b18",
-      act: 3,
-      start: 378,
+      act: 2,
+      start: 313,
       audio: "audio/beats/b18.mp3",
-      text: "Past sign 316, careless campers had left behind a mess of food and cans.",
-      phrases: ["left behind a mess"]
+      text: "In defiance, he trampled the small sapling as he left.",
+      phrases: ["defiance"]
     },
     {
       id: "b19",
       act: 3,
-      start: 404,
+      start: 323,
       audio: "audio/beats/b19.mp3",
-      text: "Through dusk and darkness, he gorged himself on leftovers among overturned bins.",
-      phrases: ["gorged himself", "leftovers"]
+      text: "The evergreen watched with heavy heart from above.",
+      phrases: ["watched with heavy heart"]
     },
     {
       id: "b20",
       act: 3,
-      start: 428,
+      start: 339,
       audio: "audio/beats/b20.mp3",
-      text: "Lounging beside a blazing campfire, he never noticed danger closing in behind him.",
-      phrases: ["blazing campfire"]
+      text: "Beside a misty waterfall, the bear scrambled toward roaring rapids.",
+      phrases: ["scrambled"]
     },
     {
       id: "b21",
-      act: 4,
-      start: 447,
+      act: 3,
+      start: 354,
       audio: "audio/beats/b21.mp3",
-      text: "A fierce wildfire broke out in the night, turning the forest orange with flames.",
-      phrases: ["broke out in the night"]
+      text: "Swept through the water, he climbed onto a fallen log.",
+      phrases: ["fallen log"]
     },
     {
       id: "b22",
-      act: 4,
-      start: 462,
+      act: 3,
+      start: 365,
       audio: "audio/beats/b22.mp3",
-      text: "Even while running for his life, he clung stubbornly to his stolen trash.",
-      phrases: ["clung stubbornly"]
+      text: "Across the clearing, noisy crows circled a human campsite.",
+      phrases: []
     },
     {
       id: "b23",
-      act: 4,
-      start: 477,
+      act: 3,
+      start: 385,
       audio: "audio/beats/b23.mp3",
-      text: "Across the canyon, the evergreen saw the glow and strained its deep roots.",
-      phrases: ["strained its deep roots"]
+      text: "At the campsite, he chased the crows and stuffed his cheeks.",
+      phrases: []
     },
     {
       id: "b24",
-      act: 4,
-      start: 493,
+      act: 3,
+      start: 398,
       audio: "audio/beats/b24.mp3",
-      text: "To bridge the burning chasm, the fatherly tree uprooted itself.",
-      phrases: ["chasm", "uprooted itself"]
+      text: "Careless campers had left behind a mess of snacks and cans.",
+      phrases: ["left behind a mess"]
     },
     {
       id: "b25",
-      act: 4,
-      start: 511,
+      act: 3,
+      start: 416,
       audio: "audio/beats/b25.mp3",
-      text: "Trapped before a wall of fire, the terrified bear climbed onto the fallen trunk.",
-      phrases: ["wall of fire"]
+      text: "As night fell, he gorged himself among overturned trash bins.",
+      phrases: ["gorged himself"]
     },
     {
       id: "b26",
-      act: 4,
-      start: 534,
+      act: 3,
+      start: 429,
       audio: "audio/beats/b26.mp3",
-      text: "As embers drifted down, the dying tree closed its eyes in tender love.",
-      phrases: ["tender love"]
+      text: "He tossed away a pinecone and knocked an ember into the trash.",
+      phrases: ["ember"]
     },
     {
       id: "b27",
       act: 4,
-      start: 549,
+      start: 438,
       audio: "audio/beats/b27.mp3",
-      text: "To save his reckless child, the evergreen paid the ultimate price.",
-      phrases: ["paid the ultimate price"]
+      text: "Suddenly fierce flames flared up, turning the night orange.",
+      phrases: ["flared up"]
     },
     {
       id: "b28",
-      act: 5,
-      start: 568,
+      act: 4,
+      start: 448,
       audio: "audio/beats/b28.mp3",
-      text: "Morning fog drifted over a silent, grey canyon.",
-      phrases: []
+      text: "Even while fleeing the fire, he clung stubbornly to stolen trash.",
+      phrases: ["clung stubbornly"]
     },
     {
       id: "b29",
-      act: 5,
-      start: 587,
+      act: 4,
+      start: 468,
       audio: "audio/beats/b29.mp3",
-      text: "Heartbroken, the bear mourned in silence beside the charred wooden trunk.",
-      phrases: ["mourned in silence", "charred"]
+      text: "Across the chasm, the evergreen spotted the flames in horror.",
+      phrases: ["chasm"]
     },
     {
       id: "b30",
-      act: 5,
-      start: 608,
+      act: 4,
+      start: 481,
       audio: "audio/beats/b30.mp3",
-      text: "Then, shining out of the dark ruins, a bright green shoot sprouted from the ashes.",
-      phrases: ["sprouted from the ashes"]
+      text: "Choked by smoke, the bear cried out as the tree uprooted itself.",
+      phrases: ["uprooted itself"]
     },
     {
       id: "b31",
-      act: 5,
-      start: 628,
+      act: 4,
+      start: 493,
       audio: "audio/beats/b31.mp3",
-      text: "At sunrise, the humbled bear stood watch over that fragile new life.",
-      phrases: ["humbled"]
+      text: "Falling across the chasm, the tree stretched out a saving branch.",
+      phrases: ["chasm"]
     },
     {
       id: "b32",
-      act: 5,
-      start: 643,
+      act: 4,
+      start: 501,
       audio: "audio/beats/b32.mp3",
-      text: "Spring returned with wildflowers, and three little hedgehogs played at his paws.",
-      phrases: []
+      text: "Clutching his armful of trash, the bear could not reach safety.",
+      phrases: ["armful of trash"]
     },
     {
       id: "b33",
-      act: 5,
-      start: 662,
+      act: 4,
+      start: 512,
       audio: "audio/beats/b33.mp3",
-      text: "Years later, the sapling towered into a magnificent new evergreen holding a golden pinecone.",
-      phrases: ["golden pinecone"]
+      text: "At last, he let go of his trash and grabbed the branch.",
+      phrases: ["let go of"]
     },
     {
       id: "b34",
-      act: 5,
-      start: 678,
+      act: 4,
+      start: 529,
       audio: "audio/beats/b34.mp3",
-      text: "The story came full circle as the grown bear shared that gift with a new cub.",
-      phrases: ["came full circle"]
+      text: "Safe on the fallen trunk, he stopped and clung to his dying friend.",
+      phrases: ["fallen trunk"]
     },
     {
       id: "b35",
-      act: 5,
-      start: 696,
+      act: 4,
+      start: 541,
       audio: "audio/beats/b35.mp3",
-      text: "Having known grace himself, he passed on the gift to the next generation.",
+      text: "With flames rising, the tree gently pushed him toward the far cliff.",
+      phrases: []
+    },
+    {
+      id: "b36",
+      act: 4,
+      start: 552,
+      audio: "audio/beats/b36.mp3",
+      text: "The bear escaped, while the fatherly tree paid the ultimate price.",
+      phrases: ["paid the ultimate price"]
+    },
+    {
+      id: "b37",
+      act: 5,
+      start: 572,
+      audio: "audio/beats/b37.mp3",
+      text: "Morning fog drifted quietly through the silent grey canyon.",
+      phrases: []
+    },
+    {
+      id: "b38",
+      act: 5,
+      start: 596,
+      audio: "audio/beats/b38.mp3",
+      text: "Heartbroken, the bear mourned in silence beside the charred wood.",
+      phrases: ["mourned in silence", "charred"]
+    },
+    {
+      id: "b39",
+      act: 5,
+      start: 613,
+      audio: "audio/beats/b39.mp3",
+      text: "Then a beam of light shone on a tiny green shoot.",
+      phrases: []
+    },
+    {
+      id: "b40",
+      act: 5,
+      start: 620,
+      audio: "audio/beats/b40.mp3",
+      text: "It was sprouting right out of his old pinecone play doll.",
+      phrases: ["sprouting", "play doll"]
+    },
+    {
+      id: "b41",
+      act: 5,
+      start: 631,
+      audio: "audio/beats/b41.mp3",
+      text: "Tenderly, he planted it in the center of the old stump.",
+      phrases: ["old stump"]
+    },
+    {
+      id: "b42",
+      act: 5,
+      start: 638,
+      audio: "audio/beats/b42.mp3",
+      text: "At sunrise, the humbled bear guarded that fragile new life.",
+      phrases: ["humbled"]
+    },
+    {
+      id: "b43",
+      act: 5,
+      start: 646,
+      audio: "audio/beats/b43.mp3",
+      text: "Spring returned with wildflowers and three little hedgehogs at his paws.",
+      phrases: []
+    },
+    {
+      id: "b44",
+      act: 5,
+      start: 664,
+      audio: "audio/beats/b44.mp3",
+      text: "Seasons turned, and a golden pinecone gleamed in the sun again.",
+      phrases: ["golden pinecone"]
+    },
+    {
+      id: "b45",
+      act: 5,
+      start: 674,
+      audio: "audio/beats/b45.mp3",
+      text: "The story came full circle as he shared it with a new cub.",
+      phrases: ["came full circle"]
+    },
+    {
+      id: "b46",
+      act: 5,
+      start: 687,
+      audio: "audio/beats/b46.mp3",
+      text: "In the smiling branches of the new evergreen, he passed on the gift.",
       phrases: ["passed on the gift"]
     }
   ],
   glossary: {
     "twilight forest": {
       kind: "Setting",
-      meaning: "A forest lit only by dim blue evening light just after sunset or before dawn.",
+      meaning: "A forest lit only by dim blue light just after sunset or before dawn.",
       bn: "গোধূলির আবছা আলোয় ঢাকা শীতল জঙ্গল।",
-      example: "The small cub shivered alone in the twilight forest."
+      example: "In the twilight forest, the small cub shivered alone."
     },
     "left to fend for himself": {
       kind: "Idiom",
@@ -491,195 +578,219 @@ const FOREVERGREEN_STORY = {
       bn: "কারও সাহায্য ছাড়া একা একাই বেঁচে থাকার সংগ্রাম করা।",
       example: "Without a mother, the cub was left to fend for himself."
     },
-    "giant trunk": {
-      kind: "Imagery",
-      meaning: "The massive, thick wooden main stem of a very old tree.",
-      bn: "বিশাল ও পুরোনো গাছের গুঁড়ি।",
-      example: "He spotted bright berries right beside the giant trunk."
+    "snowy ledge": {
+      kind: "Noun phrase",
+      meaning: "A narrow, snow-covered rocky edge overhanging a steep drop.",
+      bn: "খাঁদের কিনারায় বরফে ঢাকা সরু পাথরের ধার।",
+      example: "Hungry, he crawled onto a snowy ledge for red berries."
     },
-    "creaked awake": {
-      kind: "Verb phrase",
-      meaning: "Woke up slowly while making a soft, wooden creaking sound.",
-      bn: "কাঠের মচমচ শব্দ করে ধীরে ধীরে জেগে ওঠা।",
-      example: "The old tree creaked awake and looked down at the cub."
+    "gave way": {
+      kind: "Phrasal verb",
+      meaning: "Suddenly collapsed or broke under weight.",
+      bn: "ভার সইতে না পেরে হঠাৎ ভেঙে পড়ে যাওয়া।",
+      example: "When the snowy ledge gave way, the evergreen caught him."
     },
     "golden pinecone": {
       kind: "Symbol",
-      meaning: "A seed-bearing pine cone glowing in sunlight—representing hope, warmth, and future life.",
+      meaning: "A seed-bearing pine cone glowing in sunlight—representing warmth, nourishment, and future life.",
       bn: "রোদে ঝলমলে সোনালি পাইন ফল—যা ভালোবাসা ও নতুন জীবনের প্রতীক।",
-      example: "The evergreen gifted a golden pinecone to the lonely cub."
+      example: "Smiling warmly, the tree shook sweet seeds from a golden pinecone."
     },
-    "tucked into the boughs": {
+    "tucked into the branches": {
       kind: "Literary phrase",
       meaning: "Placed safely and cozily inside the strong main branches of a tree.",
       bn: "গাছের বড় ডালপালার ভেতর নিরাপদ ও আরামদায়কভাবে গুঁজে রাখা।",
-      example: "High above the snow, he was tucked into the boughs to sleep."
+      example: "High above the snow, he slept tucked into the branches."
     },
-    "watchful smile": {
+    "play doll": {
       kind: "Noun phrase",
-      meaning: "A warm, attentive expression showing care and protection.",
-      bn: "স্নেহময় ও সতর্ক নজরদারির হাসি।",
-      example: "Under the tree's watchful smile, the cub played safely."
+      meaning: "A little toy figure—here, a carved pinecone made like a tiny friend for the cub to hug.",
+      bn: "খেলার পুতুল—এখানে ভালুক ছানার জন্য দেওয়া ছোট্ট পাইনকনের তৈরি খেলার সঙ্গী।",
+      example: "To cheer him up, the tree gave him a pinecone play doll."
     },
-    "planted the pinecone": {
-      kind: "Action phrase",
-      meaning: "Pressed the seed cone into soil so a new tree could grow.",
-      bn: "নতুন গাছ জন্মাবার জন্য মাটিতে পাইন বীজ পুঁতে দেওয়া।",
-      example: "The cub planted the pinecone and waited eagerly."
+    "pine seed": {
+      kind: "Noun phrase",
+      meaning: "A tiny winged seed from a pine cone that can grow into a whole new evergreen tree.",
+      bn: "পাইন গাছের ছোট্ট বীজ, যা থেকে নতুন চিরসবুজ গাছ জন্মায়।",
+      example: "Together they planted a pine seed in the dark soil."
     },
     "tiny green sapling": {
       kind: "Noun phrase",
       meaning: "A very young, delicate tree just beginning to grow out of the ground.",
       bn: "মাটি ফুঁড়ে সবে গজিয়ে ওঠা কচি সবুজ চারা গাছ।",
-      example: "They protected the tiny green sapling as it grew."
+      example: "Soon a tiny green sapling sprang up from the earth."
     },
     "guardian": {
       kind: "Noun",
       meaning: "Someone who watches over, protects, and cares for another.",
       bn: "যিনি ভালোবাসা দিয়ে অন্যকে আগলে রাখেন বা অভিভাবক।",
-      example: "The tall evergreen had become the orphan's faithful guardian."
+      example: "His leafy guardian sheltered him through every season."
     },
-    "caught his curious eye": {
-      kind: "Idiom",
-      meaning: "Immediately drew his attention because it looked bright, strange, and exciting.",
-      bn: "নতুন ও রঙিন কিছু দেখে কৌতূহলী দৃষ্টি আকর্ষণ করা।",
-      example: "The bright chip bag caught his curious eye on the branch."
+    "restless": {
+      kind: "Adjective",
+      meaning: "Unable to stay still or satisfied; eager for new excitement.",
+      bn: "অস্থির; নতুন কিছুর খোঁজে ছটফট করা।",
+      example: "Years passed, and the restless bear grew bored of plain pine seeds."
     },
-    "gave in to temptation": {
-      kind: "Idiom",
-      meaning: "Stopped resisting something tempting even when warned it could hurt him.",
-      bn: "সতর্ক করার পরও প্রলোভনের কাছে হার মানা।",
-      example: "He gave in to temptation and chased after more junk food."
+    "potato chip bag": {
+      kind: "Noun phrase",
+      meaning: "A noisy, colorful junk-food packet dropped by humans—tempting the bear away from natural food.",
+      bn: "মানুষের ফেলে যাওয়া রঙিন চিপসের প্যাকেট—যা প্রলোভনের প্রতীক।",
+      example: "A crow left a bright potato chip bag right beside him."
     },
-    "turned his back on": {
-      kind: "Idiom",
-      meaning: "Walked away from and rejected someone who loved and protected him.",
-      bn: "যে ভালোবাসা ও আশ্রয় দিয়েছিল, তার দিক থেকে মুখ ফিরিয়ে চলে যাওয়া।",
-      example: "In his anger, he turned his back on his only home."
+    "tempted": {
+      kind: "Adjective / Past participle",
+      meaning: "Drawn strongly toward doing something exciting even when you know you shouldn't.",
+      bn: "প্রলুব্ধ; নিষিদ্ধ বা ক্ষতিকর কিছুর প্রতি আকৃষ্ট।",
+      example: "Tempted by the salty crumbs, he tried sneaking away."
+    },
+    "stern warning": {
+      kind: "Noun phrase",
+      meaning: "A serious, firm message telling someone to stop before getting hurt.",
+      bn: "বিপদ থেকে বাঁচাতে দেওয়া কঠোর ও স্পষ্ট সতর্কবার্তা।",
+      example: "The tree gave him a stern warning not to leave."
+    },
+    "pushed past": {
+      kind: "Phrasal verb",
+      meaning: "Shoved forcefully by someone blocking the way in order to force one's exit.",
+      bn: "বাধা উপেক্ষা করে ধাক্কা দিয়ে পাশ কাটিয়ে চলে যাওয়া।",
+      example: "Angry and stubborn, he pushed past the tree and walked away."
+    },
+    "defiance": {
+      kind: "Noun",
+      meaning: "Boldly refusing to obey or respect a caring warning.",
+      bn: "অবাধ্যতা বা বিদ্রোহী মনোভাব।",
+      example: "In defiance, he trampled the small sapling as he left."
     },
     "watched with heavy heart": {
       kind: "Idiom",
       meaning: "Looked on while feeling deep sadness, worry, and helplessness.",
       bn: "বুকভরা কষ্ট ও দুশ্চিন্তা নিয়ে তাকিয়ে দেখা।",
-      example: "The tree watched with heavy heart as the bear climbed away."
+      example: "The evergreen watched with heavy heart from above."
     },
-    "scrambled across": {
-      kind: "Phrasal verb",
-      meaning: "Climbed or crawled quickly and clumsily over a rough or dangerous surface.",
-      bn: "হাত-পা চালিয়ে ঝুঁকিপূর্ণ পথ দ্রুত পার হওয়া।",
-      example: "He scrambled across a wet log above the rushing waterfall."
+    "scrambled": {
+      kind: "Verb",
+      meaning: "Climbed or moved quickly and clumsily using hands and feet.",
+      bn: "হাত-পা চালিয়ে তাড়াহুড়ো করে ঝুঁকিপূর্ণ পথ পার হওয়া।",
+      example: "He scrambled down the wet rocks toward the rapids."
+    },
+    "fallen log": {
+      kind: "Noun phrase",
+      meaning: "A dead tree trunk lying across water or ground like a narrow natural bridge.",
+      bn: "পানিতে বা মাটিতে পড়ে থাকা গাছের গুঁড়ি।",
+      example: "He climbed onto a fallen log above the roaring rapids."
     },
     "left behind a mess": {
       kind: "Phrasal verb",
       meaning: "Walked away without cleaning up scattered garbage and waste.",
       bn: "ময়লা-আবর্জনা ছড়িয়ে-ছিটিয়ে রেখে চলে যাওয়া।",
-      example: "Careless visitors left behind a mess at Campsite 316."
+      example: "Careless campers had left behind a mess of snacks and cans."
     },
     "gorged himself": {
       kind: "Reflexive verb",
       meaning: "Ate greedily and far too much without stopping.",
       bn: "লোভীর মতো পেট পুরে একটানা খেতে থাকা।",
-      example: "He gorged himself on trash until late into the night."
+      example: "He gorged himself among overturned trash bins."
     },
-    "leftovers": {
+    "ember": {
       kind: "Noun",
-      meaning: "Uneaten food remaining after someone else's meal.",
-      bn: "খাওয়ার পর বেঁচে যাওয়া উচ্ছিষ্ট খাবার।",
-      example: "The bear dug through bins looking for spicy leftovers."
+      meaning: "A small glowing piece of burning wood or coal that can easily spark a huge wildfire.",
+      bn: "আগুনের ছোট্ট জ্বলন্ত অঙ্গার—যা মুহূর্তেই দাবানল ঘটাতে পারে।",
+      example: "He tossed away a pinecone and knocked an ember into the trash."
     },
-    "blazing campfire": {
-      kind: "Noun phrase",
-      meaning: "An outdoor fire burning brightly with tall, hot flames.",
-      bn: "দাউদাউ করে জ্বলতে থাকা ক্যাম্পফায়ার।",
-      example: "He rested beside a blazing campfire surrounded by trash."
-    },
-    "broke out in the night": {
+    "flared up": {
       kind: "Phrasal verb",
-      meaning: "Started suddenly and spread out of control during the dark hours.",
-      bn: "রাতের অন্ধকারে হঠাৎ করে দাউদাউ করে ছড়িয়ে পড়া।",
-      example: "A terrible wildfire broke out in the night across the woods."
+      meaning: "Suddenly burst into bright, dangerous flames.",
+      bn: "হঠাৎ দাউদাউ করে জ্বলে ওঠা।",
+      example: "Fierce flames flared up, turning the night orange."
     },
     "clung stubbornly": {
       kind: "Verb + adverb",
       meaning: "Held on tightly and refused to let go, even when in grave danger.",
       bn: "ভয়াবহ বিপদের মধ্যেও একগুঁয়েভাবে আঁকড়ে ধরে রাখা।",
-      example: "Even while fleeing the fire, he clung stubbornly to a tin can."
-    },
-    "strained its deep roots": {
-      kind: "Action phrase",
-      meaning: "Pulled with all its strength until roots buried deep in rock began to tear free.",
-      bn: "সমস্ত শক্তি দিয়ে মাটির গভীর থেকে শিকড় টেনে তোলার চেষ্টা করা।",
-      example: "Hearing the danger, the old tree strained its deep roots."
+      example: "Even while fleeing the fire, he clung stubbornly to stolen trash."
     },
     "chasm": {
       kind: "Noun",
       meaning: "A deep, steep gap between cliffs that cannot be crossed without a bridge.",
       bn: "দুই পাহাড়ের মাঝে ভীষণ গভীর গিরিখাত বা ফাঁক।",
-      example: "The fallen trunk stretched across the burning chasm."
+      example: "Across the chasm, the evergreen spotted the flames."
     },
     "uprooted itself": {
       kind: "Verb phrase",
       meaning: "Tore its own roots out of the earth where it had stood for lifetimes.",
       bn: "মাটি থেকে নিজের সমস্ত শিকড় উপড়ে ফেলা।",
-      example: "Out of love, the evergreen uprooted itself to save the bear."
+      example: "Out of love, the evergreen uprooted itself to save him."
     },
-    "wall of fire": {
-      kind: "Metaphor",
-      meaning: "Flames rising so tall and wide behind someone that there seems no escape.",
-      bn: "চারদিক ঘিরে থাকা আগুনের বিশাল দেয়াল।",
-      example: "He stood frozen on the ledge before a roaring wall of fire."
-    },
-    "tender love": {
+    "armful of trash": {
       kind: "Noun phrase",
-      meaning: "Gentle, forgiving, self-giving affection.",
-      bn: "কোমল, ক্ষমাশীল ও নিঃস্বার্থ ভালোবাসা।",
-      example: "Even in its final moment, the tree looked at him with tender love."
+      meaning: "As much garbage, cans, and wrappers as two arms can possibly carry—weighing him down.",
+      bn: "দুই হাত ভরে আঁকড়ে ধরা একগাদা আবর্জনা—যা তাকে বিপদ থেকে বাঁচতে বাধা দিচ্ছিল।",
+      example: "Clutching his armful of trash, the bear could not reach safety."
+    },
+    "let go of": {
+      kind: "Phrasal verb",
+      meaning: "Finally release what you are clinging to so your hands are free to accept help.",
+      bn: "আঁকড়ে ধরে থাকা জিনিস ছেড়ে দেওয়া, যাতে সাহায্য ধরা যায়।",
+      example: "At last, he let go of his trash and grabbed the branch."
+    },
+    "fallen trunk": {
+      kind: "Noun phrase",
+      meaning: "The massive body of the tree lying across the chasm as a rescue bridge.",
+      bn: "গিরিখাতের ওপর সেতু হয়ে পড়ে থাকা গাছের বিশাল গুঁড়ি।",
+      example: "Safe on the fallen trunk, he stopped and clung to his dying friend."
     },
     "paid the ultimate price": {
       kind: "Idiom",
       meaning: "Gave up one's own life so that someone else could live.",
       bn: "অন্যকে বাঁচাতে নিজের জীবন উৎসর্গ করা।",
-      example: "Becoming a bridge meant the evergreen paid the ultimate price."
+      example: "The bear escaped, while the fatherly tree paid the ultimate price."
     },
     "mourned in silence": {
       kind: "Verb phrase",
       meaning: "Grieved quietly with deep regret and sorrow after a loss.",
       bn: "নিঃশব্দে গভীর শোক ও অনুতাপ প্রকাশ করা।",
-      example: "He bowed his head and mourned in silence beside the burnt wood."
+      example: "Heartbroken, the bear mourned in silence beside the charred wood."
     },
     "charred": {
       kind: "Adjective",
       meaning: "Burned black on the outside by intense fire.",
       bn: "আগুনে পুড়ে কালো হয়ে যাওয়া।",
-      example: "The bear rested sadly against the charred trunk."
+      example: "He rested his head sadly beside the charred wood."
     },
-    "sprouted from the ashes": {
-      kind: "Metaphor",
-      meaning: "Grew with fresh green life right out of ruin and grief.",
-      bn: "ধ্বংস ও ছাইয়ের ভেতর থেকেই নতুন প্রাণের অঙ্কুর গজানো।",
-      example: "One bright green shoot sprouted from the ashes."
+    "sprouting": {
+      kind: "Verb (-ing)",
+      meaning: "Growing fresh new green shoots straight out of a seed or container.",
+      bn: "বীজ বা পুরোনো খোলস ভেদ করে নতুন সবুজ অঙ্কুর গজিয়ে ওঠা।",
+      example: "It was sprouting right out of his old pinecone play doll."
+    },
+    "old stump": {
+      kind: "Noun phrase",
+      meaning: "The remaining base of the ancient evergreen after it sacrificed its trunk.",
+      bn: "নিজের জীবন উৎসর্গ করার পর প্রাচীন গাছটির পড়ে থাকা মূল গোড়া বা গুঁড়ি।",
+      example: "Tenderly, he planted it in the center of the old stump."
     },
     "humbled": {
       kind: "Adjective / Past participle",
       meaning: "Made gentle, grateful, and no longer proud after a painful lesson.",
       bn: "কঠিন শিক্ষা পেয়ে অহংকার ভেঙে নম্র ও কৃতজ্ঞ হয়ে ওঠা।",
-      example: "The humbled bear guarded the fragile sprout every day."
+      example: "At sunrise, the humbled bear guarded that fragile new life."
     },
     "came full circle": {
       kind: "Idiom",
       meaning: "Returned to where it started, repeating an act of love in a new generation.",
       bn: "দীর্ঘ পথ ঘুরে ভালোবাসার সেই শুরুতে নতুনভাবে ফিরে আসা।",
-      example: "When a cub sat in the branches, the story came full circle."
+      example: "The story came full circle as he shared it with a new cub."
     },
     "passed on the gift": {
       kind: "Phrasal verb",
       meaning: "Shared the same unearned kindness and shelter with someone younger.",
       bn: "নিজে যে ভালোবাসা ও দয়া পেয়েছে, তা পরের প্রজন্মকে দিয়ে যাওয়া।",
-      example: "Remembering the fatherly tree, he passed on the gift."
+      example: "In the smiling branches of the new evergreen, he passed on the gift."
     }
   },
   aiNurturerPrompt: `Act as my GPA (Growing Participator Approach) Phase 3 Language Nurturer for English.
-We have both just watched the wordless animated short film "Forevergreen" (about an orphaned bear cub adopted by a living evergreen tree, planting a pinecone sapling, being tempted by junk food at Campsite 316, caught in a wildfire, and saved when the tree uproots itself to form a bridge).
+We have both just watched the wordless animated short film "Forevergreen" (about an orphaned bear cub caught off a crumbling snowy ledge by a living evergreen tree, given a pinecone play doll, tempted by a crow's potato chip bag to leave, accidentally knocking a campfire ember into trash, having to let go of his stolen trash to reach the uprooted tree's saving branch, and later finding a new green shoot sprouting out of his childhood pinecone play doll).
 
 Rules for our Phase 3 Shared-Story conversation:
 1. Speak to me in natural, warm English at an i+1 level (1–2 short sentences per turn).
