@@ -47,6 +47,7 @@ TTS_CLIPS = TtsClips()
 # ?v=<hash> by busy-pictures/tools/bp_data.py, so a versioned request can be
 # cached for a year and compressed once.
 BUSY_DATA_PATH_RE = re.compile(r"^/busy-pictures/data/wimmelbook_[0-9]{1,2}\.js$")
+BYTE_RANGE_RE = re.compile(r"^bytes=(\d*)-(\d*)$")
 _GZIP_CACHE = {}
 _GZIP_LOCK = threading.Lock()
 
@@ -365,6 +366,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Cache-Control", "no-store, no-cache, must-revalidate")
             self.send_header("Pragma", "no-cache")
             self.send_header("Expires", "0")
+        if getattr(self, "_accept_ranges", False):
+            self.send_header("Accept-Ranges", "bytes")
+            self._accept_ranges = False
         super().end_headers()
 
     def _accepts_gzip(self) -> bool:
@@ -505,6 +509,83 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
 
     # ── GET classroom APIs ────────────────────────────────────────────────────
+    def _serve_range_file(self, head: bool = False) -> bool:
+        """Serve HTTP Range requests (206 Partial Content) for static files such as MP4/MP3."""
+        range_header = (self.headers.get("Range") or "").strip()
+        if not range_header:
+            return False
+
+        file_path = self.translate_path(self.path)
+        real_root = os.path.realpath(DIRECTORY)
+        real_target = os.path.realpath(file_path)
+        try:
+            inside = os.path.commonpath([real_root, real_target]) == real_root
+        except ValueError:
+            inside = False
+        if not inside or not os.path.isfile(real_target):
+            return False
+
+        match = BYTE_RANGE_RE.match(range_header)
+        if not match:
+            return False
+
+        try:
+            stat = os.stat(real_target)
+        except OSError:
+            return False
+        total = stat.st_size
+        start_s, end_s = match.groups()
+        if not start_s and not end_s:
+            return False
+
+        if not start_s:
+            suffix = int(end_s)
+            if suffix <= 0 or total == 0:
+                self.send_response(416)
+                self.send_header("Content-Range", f"bytes */{total}")
+                self.end_headers()
+                return True
+            start = max(0, total - suffix)
+            end = total - 1
+        else:
+            start = int(start_s)
+            end = int(end_s) if end_s else total - 1
+            if end >= total:
+                end = total - 1
+
+        if total == 0 or start >= total or start > end:
+            self.send_response(416)
+            self.send_header("Content-Range", f"bytes */{total}")
+            self.end_headers()
+            return True
+
+        length = end - start + 1
+        ctype = self.guess_type(real_target)
+        self.send_response(206)
+        self.send_header("Content-Type", ctype)
+        self.send_header("Accept-Ranges", "bytes")
+        self.send_header("Content-Range", f"bytes {start}-{end}/{total}")
+        self.send_header("Content-Length", str(length))
+        self.send_header("Last-Modified", self.date_time_string(stat.st_mtime))
+        self.end_headers()
+
+        if head:
+            return True
+
+        try:
+            with open(real_target, "rb") as source:
+                source.seek(start)
+                remaining = length
+                while remaining > 0:
+                    chunk = source.read(min(65536, remaining))
+                    if not chunk:
+                        break
+                    self.wfile.write(chunk)
+                    remaining -= len(chunk)
+        except (BrokenPipeError, ConnectionResetError, OSError):
+            pass
+        return True
+
     def do_HEAD(self):
         parsed = urlparse(self.path)
         if TTS_CLIPS.serve(self, parsed.path, head=True):
@@ -519,6 +600,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             return
         if self._serve_html_with_analytics(head=True):
             return
+        if self._serve_range_file(head=True):
+            return
+        self._accept_ranges = True
         super().do_HEAD()
 
     def do_GET(self):
@@ -613,6 +697,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             return
         if self._serve_html_with_analytics(head=False):
             return
+        if self._serve_range_file(head=False):
+            return
+        self._accept_ranges = True
         super().do_GET()
 
     # ── POST classroom APIs ───────────────────────────────────────────────────

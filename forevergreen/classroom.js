@@ -9,13 +9,9 @@
   const els = {
     projectorShell: $("#projector-shell"),
     cinemaStage: $("#cinema-stage"),
-    ytMount: $("#yt-mount"),
-    embedFallback: $("#embed-fallback"),
-    embedFallbackReason: $("#embed-fallback-reason"),
-    embedFallbackLink: $("#embed-fallback-link"),
-    fallbackLocalBtn: $("#fallback-local-btn"),
+    videoMount: $("#video-mount"),
     loadLocalBtn: $("#load-local-btn"),
-    useYoutubeBtn: $("#use-youtube-btn"),
+    useDefaultBtn: $("#use-default-btn"),
     localFileInput: $("#local-file-input"),
     sourceBadge: $("#source-badge"),
     audioUnlockPill: $("#audio-unlock-pill"),
@@ -55,7 +51,7 @@
   const player = window.ForevergreenPlayer.create({
     story: S,
     timings: T,
-    mount: els.ytMount,
+    mount: els.videoMount,
     audio: els.voiceAudio,
     pacingMode: "full",
     voiceoverEnabled: false,
@@ -77,7 +73,7 @@
         const nextAct = S.acts.find((a) => a.id === act.id + 1);
         els.boundaryMsg.textContent = nextAct
           ? `Paused at end of Act ${act.id}: ${act.title}`
-          : "Story complete (credits at 12:00)";
+          : "Story complete (credits at 12:02)";
         els.boundaryContinue.textContent = nextAct ? `Continue to Act ${nextAct.id} →` : "Restart Act 1";
         els.boundaryContinue.dataset.nextAct = String(nextAct ? nextAct.id : 1);
         els.boundaryToast.hidden = false;
@@ -86,16 +82,8 @@
         els.audioUnlockPill.hidden = !blocked;
       },
       onSourceChange: ({ mode, name }) => {
-        els.sourceBadge.textContent = mode === "local" ? `Source: Local MP4 (${name})` : "Source: YouTube";
-        els.useYoutubeBtn.hidden = mode !== "local";
-      },
-      onEmbedFallback: ({ reason, youtubeUrl }) => {
-        els.embedFallbackReason.textContent = reason;
-        els.embedFallbackLink.href = youtubeUrl || S.credits.youtubeUrl;
-        els.embedFallback.hidden = false;
-      },
-      onEmbedCleared: () => {
-        els.embedFallback.hidden = true;
+        els.sourceBadge.textContent = mode === "local" ? `Source: ${name}` : "Source: Local HD Film";
+        els.useDefaultBtn.hidden = mode !== "local";
       }
     }
   });
@@ -147,10 +135,13 @@
 
     els.drawerPhrases.innerHTML = "";
     act.memoryPhrases.forEach((phrase) => {
-      const span = document.createElement("span");
-      span.className = "drawer-phrase-chip";
-      span.textContent = phrase;
-      els.drawerPhrases.appendChild(span);
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "drawer-phrase-chip";
+      btn.textContent = `🔊 ${phrase}`;
+      btn.setAttribute("aria-label", `Hear ${phrase}`);
+      btn.addEventListener("click", () => player.speakPhrase(phrase));
+      els.drawerPhrases.appendChild(btn);
     });
 
     els.recastLearner.textContent = `Learner: “${act.teacherNotes.recastExample.learner}”`;
@@ -217,14 +208,12 @@
     player.retryBlockedAudio();
   });
 
-  [els.loadLocalBtn, els.fallbackLocalBtn].forEach((btn) => {
-    btn.addEventListener("click", () => els.localFileInput.click());
-  });
+  els.loadLocalBtn.addEventListener("click", () => els.localFileInput.click());
   els.localFileInput.addEventListener("change", () => {
     const file = els.localFileInput.files && els.localFileInput.files[0];
     if (file) player.loadLocalFile(file);
   });
-  els.useYoutubeBtn.addEventListener("click", () => player.useYouTube());
+  els.useDefaultBtn.addEventListener("click", () => player.useDefaultVideo());
 
   document.addEventListener("fullscreenchange", () => {
     els.fullscreenBtn.textContent = document.fullscreenElement ? "Exit fullscreen" : "Fullscreen";
@@ -255,11 +244,30 @@
     } else if (key === "g") {
       ev.preventDefault();
       setGuide(!guideOpen);
+    } else if (key === "i" && inspector) {
+      ev.preventDefault();
+      inspector.setActive(!inspector.isActive());
     } else if (key === "f") {
       ev.preventDefault();
       toggleFullscreen();
     }
   });
+
+  const inspector = window.ForevergreenInspector && els.cinemaStage && $("#inspect-card-mount")
+    ? window.ForevergreenInspector.create({
+        story: S,
+        entities: typeof FOREVERGREEN_ENTITIES !== "undefined" ? FOREVERGREEN_ENTITIES : [],
+        scenes: typeof FOREVERGREEN_SCENES !== "undefined" ? FOREVERGREEN_SCENES : [],
+        player,
+        stageEl: els.cinemaStage,
+        cardMountEl: $("#inspect-card-mount"),
+        toggleBtnEl: $("#inspect-toggle"),
+        defaultActive: false,
+        theme: "dark",
+        idleToggleLabel: "🔍 Tap Items: Off",
+        activeToggleLabel: "✓ Tap Items: On"
+      })
+    : null;
 
   renderActPills();
   renderDrawer(S.acts[0]);

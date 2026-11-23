@@ -32,6 +32,7 @@ button { color: inherit; }
 svg { width: 1.2em; height: 1.2em; fill: currentColor; }
 
 .app {
+  position: relative;
   width: min(1240px, 100%);
   margin: 0 auto;
   padding: 20px clamp(14px, 3vw, 40px) 44px;
@@ -150,6 +151,7 @@ h1 {
 
 .classroom-option {
   display: inline-flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 8px;
 }
@@ -255,11 +257,11 @@ h1 {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  background: #070a08;
+  background: #000;
   color: #fff;
 }
 
-.yt-mount, .yt-mount iframe, .yt-mount video.local-video {
+.video-mount, .video-mount video.film-video {
   width: 100%;
   height: 100%;
   border: 0;
@@ -267,42 +269,10 @@ h1 {
   background: #000;
 }
 
-.embed-fallback {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-content: center;
-  text-align: center;
-  padding: 24px;
-  gap: 10px;
-  background: radial-gradient(circle at center, #183027, #090d0b);
-  color: #f3efe7;
-}
-.fallback-title { font: 700 1.25rem Georgia, serif; margin: 0; }
-.fallback-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 6px; }
-.fallback-link {
-  display: inline-block;
-  padding: 10px 18px;
-  border-radius: 999px;
-  background: var(--gold);
-  color: #201a0e;
-  font-weight: 800;
-  text-decoration: none;
-}
-.fallback-local-btn {
-  padding: 10px 16px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-  font-weight: 700;
-  cursor: pointer;
-}
-
 .audio-unlock-pill {
   position: absolute;
   left: 50%;
-  bottom: 16px;
+  bottom: 58px;
   transform: translateX(-50%);
   z-index: 8;
   border: 0;
@@ -427,26 +397,111 @@ h1 {
   font: 600 clamp(1.06rem, 2vw, 1.38rem)/1.55 Georgia, serif;
   color: var(--forest);
 }
-.beat-line .word { border-radius: 4px; padding: 1px 0; transition: background 0.12s ease, color 0.12s ease; }
-.beat-line .word.said { color: #5b665f; }
-.beat-line .word.now { background: var(--gold); color: #1b160a; padding: 1px 3px; }
 .beat-hint { margin: 6px 0 0; font-size: 0.78rem; color: var(--muted); }
 
-.phrase {
+.word-btn {
   display: inline;
   border: 0;
-  padding: 0 2px;
+  padding: 1px 2px;
   margin: 0;
   background: transparent;
   color: inherit;
   font: inherit;
   line-height: inherit;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.word-btn:hover, .word-btn:focus-visible {
+  background: rgba(239, 188, 66, 0.28);
+}
+.word-btn.tooltip-active {
+  background: #e6f0ea;
+  box-shadow: inset 0 -2px 0 var(--forest);
+}
+.word-btn.said { color: #5b665f; }
+.word-btn.now { background: var(--gold); color: #1b160a; }
+.word-btn.phrase-word {
   text-decoration: underline dashed #9d792a 2px;
   text-underline-offset: 4px;
-  cursor: pointer;
-  border-radius: 4px;
 }
-.phrase:hover, .phrase:focus-visible { background: var(--gold-soft); outline: none; }
+
+/* Floating word gloss tooltip (works inside <dialog> top layer and main stage) */
+.word-tooltip {
+  position: fixed;
+  z-index: 90;
+  width: min(300px, calc(100vw - 24px));
+  padding: 11px 13px;
+  border-radius: 14px;
+  background: #13251e;
+  color: #f7f4ec;
+  border: 1px solid rgba(239, 188, 66, 0.55);
+  box-shadow: 0 14px 36px rgba(10, 18, 14, 0.36);
+  text-align: left;
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+.tooltip-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+.tooltip-word {
+  font: 700 1.04rem/1.2 Georgia, serif;
+  color: var(--gold);
+}
+.tooltip-pos {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #d7e3da;
+}
+.tooltip-actions-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+.tooltip-speak, .tooltip-close {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border-radius: 999px;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+.tooltip-speak:hover, .tooltip-close:hover { background: rgba(255, 255, 255, 0.2); }
+.tooltip-def { margin: 0 0 5px; color: #f7f4ec; }
+.tooltip-bn {
+  margin: 0;
+  padding-top: 5px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  font-family: "Noto Sans Bengali", "Hind Siliguri", sans-serif;
+  font-size: 0.86rem;
+  color: #f6dc8d;
+}
+.tooltip-phrase-btn {
+  margin-top: 8px;
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  padding: 6px 10px;
+  background: var(--gold);
+  color: #201a0e;
+  font-size: 0.76rem;
+  font-weight: 800;
+  cursor: pointer;
+}
 
 .act-reflection, .story-reaction, .blind-workspace {
   max-width: 960px;
@@ -562,17 +617,35 @@ h1 {
 .memory-bn { font-family: "Noto Sans Bengali", "Hind Siliguri", sans-serif; font-size: 0.8rem; color: #7a5f26; }
 .memory-card p { margin: 0; font-size: 0.84rem; line-height: 1.45; color: var(--muted); }
 .memory-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 4px; }
-.memory-chip {
+.memory-chip-group {
+  display: inline-flex;
+  align-items: stretch;
   border: 1px solid #cfc6b4;
   background: var(--card);
-  color: var(--forest);
   border-radius: 999px;
+  overflow: hidden;
+}
+.memory-chip-group:hover { border-color: #bfa15a; }
+.memory-chip {
+  border: 0;
+  background: transparent;
+  color: var(--forest);
   padding: 5px 10px;
   font-size: 0.78rem;
   font-weight: 700;
   cursor: pointer;
 }
-.memory-chip:hover { background: var(--gold-soft); border-color: #bfa15a; }
+.memory-chip:hover { background: var(--gold-soft); }
+.memory-chip-speak {
+  border: 0;
+  border-left: 1px solid #e1d9c8;
+  background: transparent;
+  padding: 5px 8px;
+  font-size: 0.76rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.memory-chip-speak:hover { background: var(--gold-soft); }
 
 .solo-cards {
   display: grid;
@@ -628,7 +701,7 @@ h1 {
   color: var(--ink);
   box-shadow: 0 26px 80px rgba(0, 0, 0, 0.35);
 }
-.transcript-dialog { width: min(820px, 94vw); max-height: 90vh; padding: 22px; }
+.transcript-dialog { position: relative; width: min(820px, 94vw); max-height: 90vh; padding: 22px; }
 .transcript-dialog::backdrop, .gloss-dialog::backdrop {
   background: rgba(8, 19, 15, 0.76);
   backdrop-filter: blur(4px);

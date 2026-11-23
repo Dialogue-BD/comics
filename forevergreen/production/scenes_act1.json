@@ -1,0 +1,2212 @@
+[
+  {
+    "id": "s01",
+    "act": 1,
+    "start": 0.0,
+    "end": 15.0,
+    "frameSec": 11.5,
+    "title": "The Forevergreen Title Card",
+    "items": [
+      {
+        "id": "s01_title",
+        "name": "Title",
+        "bn": "শিরোনাম",
+        "box": [395, 235, 565, 765],
+        "sentence": "The carved white Forevergreen title glows across the quiet opening screen.",
+        "sentenceBn": "খোদাই করা সাদা ফরেভারগ্রিন শিরোনামটি শান্ত শুরুর পর্দায় জ্বলজ্বল করছে।",
+        "audio": "audio/items/s01_title.mp3",
+        "grammar": {
+          "presentContinuous": "The Forevergreen title is glowing softly against the winter dark.",
+          "simplePast": "The Forevergreen title appeared in bold white letters before the forest opened.",
+          "simplePresent": "A clear Forevergreen title introduces a quiet winter tale in the woods.",
+          "question": "What story mood does the Forevergreen title create at the very start?"
+        }
+      },
+      {
+        "id": "s01_letter_f",
+        "name": "Letter F",
+        "bn": "F অক্ষর",
+        "box": [395, 235, 565, 318],
+        "sentence": "A sweeping letter F curves like a crooked winter branch at the start of the word.",
+        "sentenceBn": "শব্দের শুরুতে বাঁকানো F অক্ষরটি শীতের বাঁকা ডালের মতো বেঁকে আছে।",
+        "audio": "audio/items/s01_letter_f.mp3",
+        "grammar": {
+          "presentContinuous": "The sweeping letter F is arching over the opening letters.",
+          "simplePast": "A sweeping letter F stood taller than every other letter in the title.",
+          "simplePresent": "The sweeping letter F gives the hand-carved title a forest feel.",
+          "question": "Why does the sweeping letter F look almost like a crooked tree branch?"
+        }
+      },
+      {
+        "id": "s01_word_green",
+        "name": "Word GREEN",
+        "bn": "GREEN শব্দ",
+        "box": [425, 520, 565, 765],
+        "sentence": "The bold word GREEN finishes the title with a hint of living pine.",
+        "sentenceBn": "গাঢ় GREEN শব্দটি জীবন্ত পাইন গাছের ইঙ্গিত দিয়ে শিরোনামটি শেষ করেছে।",
+        "audio": "audio/items/s01_word_green.mp3",
+        "grammar": {
+          "presentContinuous": "The crisp word GREEN is shining brightly on the right side.",
+          "simplePast": "The word GREEN glowed beside the pale carving on the dark backdrop.",
+          "simplePresent": "The word GREEN hints at an evergreen standing tall in winter.",
+          "question": "What kind of forest life does the word GREEN bring to mind?"
+        }
+      },
+      {
+        "id": "s01_dark_screen",
+        "name": "Opening screen",
+        "bn": "শুরুর পর্দা",
+        "box": [115, 0, 885, 1000],
+        "sentence": "A silent dark opening screen holds the cold stillness before the snowfall begins.",
+        "sentenceBn": "তুষারপাত শুরু হওয়ার আগে নীরব অন্ধকার শুরুর পর্দা শীতল স্থিরতা ধরে রেখেছে।",
+        "audio": "audio/items/s01_dark_screen.mp3",
+        "grammar": {
+          "presentContinuous": "The dark opening screen is waiting quietly for the first forest scene.",
+          "simplePast": "A dark opening screen framed the white letters in deep silence.",
+          "simplePresent": "A dark opening screen draws every viewer's eyes straight to the title.",
+          "question": "What kind of winter world waits beyond this dark opening screen?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s02",
+    "act": 1,
+    "start": 15.0,
+    "end": 23.2,
+    "frameSec": 19.1,
+    "title": "Lone Pine in the Twilight Snow",
+    "items": [
+      {
+        "id": "s02_sapling",
+        "name": "Young pine",
+        "bn": "ছোট পাইন",
+        "box": [265, 325, 715, 580],
+        "sentence": "A lone young pine stands upright on a chilly hill in the blue evening light.",
+        "sentenceBn": "নীল সন্ধ্যার আলোয় একটি একা ছোট পাইন গাছ শীতল পাহাড়ের ওপর সোজা দাঁড়িয়ে আছে।",
+        "audio": "audio/items/s02_sapling.mp3",
+        "grammar": {
+          "presentContinuous": "The lone young pine is standing bravely in the freezing twilight air.",
+          "simplePast": "A lone young pine rose from the snowy knoll in blue dusk.",
+          "simplePresent": "A lone young pine keeps its green needles even in deep winter.",
+          "question": "Who else might wander past this lone young pine in the cold snow?"
+        }
+      },
+      {
+        "id": "s02_crown",
+        "name": "Needle crown",
+        "bn": "পাতার মুকুট",
+        "box": [265, 375, 425, 495],
+        "sentence": "Its fan-shaped top needle crown reaches gently toward the misty blue sky.",
+        "sentenceBn": "এর পাখার মতো ওপরের পাতার মুকুটটি কুয়াশাচ্ছন্ন নীল আকাশের দিকে আলতোভাবে প্রসারিত।",
+        "audio": "audio/items/s02_crown.mp3",
+        "grammar": {
+          "presentContinuous": "The top needle crown is catching faint light from the twilight sky.",
+          "simplePast": "The top needle crown fanned out cleanly above the slender stem.",
+          "simplePresent": "A top needle crown grows straight upward to reach the winter sun.",
+          "question": "How many stiff green needles form this top needle crown?"
+        }
+      },
+      {
+        "id": "s02_left_branch",
+        "name": "Left branch",
+        "bn": "বাম ডাল",
+        "box": [445, 325, 625, 430],
+        "sentence": "A spiky lower left branch spreads wide across the blue-lit mist.",
+        "sentenceBn": "কাঁটাযুক্ত নিচের বাম ডালটি নীল আলোর কুয়াশার মধ্যে প্রশস্তভাবে ছড়িয়ে আছে।",
+        "audio": "audio/items/s02_left_branch.mp3",
+        "grammar": {
+          "presentContinuous": "The lower left branch is holding its green needles steady in the breeze.",
+          "simplePast": "The lower left branch stretched outward over the snowy mound.",
+          "simplePresent": "Each lower left branch helps balance the slender little pine.",
+          "question": "Does the lower left branch look strong enough to hold winter snow?"
+        }
+      },
+      {
+        "id": "s02_right_branch",
+        "name": "Right branch",
+        "bn": "ডান ডাল",
+        "box": [450, 442, 625, 580],
+        "sentence": "Pale twilight frost dusts the needles along the frosted right branch.",
+        "sentenceBn": "ফ্যাকাশে গোধূলির তুষার তুষারমাখা ডান ডালটির পাতার ওপর জমে আছে।",
+        "audio": "audio/items/s02_right_branch.mp3",
+        "grammar": {
+          "presentContinuous": "The frosted right branch is shimmering slightly in the icy dusk.",
+          "simplePast": "A frosted right branch caught a pale blue gleam on its tips.",
+          "simplePresent": "A frosted right branch shines silver whenever winter wind blows across it.",
+          "question": "Why does the frosted right branch glow bluer than the other side?"
+        }
+      },
+      {
+        "id": "s02_trunk",
+        "name": "Tree trunk",
+        "bn": "গাছের কাণ্ড",
+        "box": [350, 422, 715, 448],
+        "sentence": "A slender brown trunk anchors the little evergreen firmly in the frozen earth.",
+        "sentenceBn": "একটি সরু বাদামী কাণ্ড ছোট চিরসবুজ গাছটিকে হিমায়িত মাটিতে শক্ত করে ধরে রেখেছে।",
+        "audio": "audio/items/s02_trunk.mp3",
+        "grammar": {
+          "presentContinuous": "The slender brown trunk is rising straight out of the snowy mound.",
+          "simplePast": "A slender brown trunk held the young tree steady in the cold wind.",
+          "simplePresent": "A slender brown trunk supports young pine branches until they thicken.",
+          "question": "How tall will this slender brown trunk grow over many snowy winters?"
+        }
+      },
+      {
+        "id": "s02_snow_mound",
+        "name": "Snow mound",
+        "bn": "তুষারের ঢিবি",
+        "box": [690, 270, 860, 660],
+        "sentence": "Tiny dark specks scatter across the dotted snow mound beneath the pine.",
+        "sentenceBn": "পাইন গাছের নিচে দাগযুক্ত তুষারের ঢিবির ওপর ছোট ছোট কালো দাগ ছড়িয়ে আছে।",
+        "audio": "audio/items/s02_snow_mound.mp3",
+        "grammar": {
+          "presentContinuous": "The dotted snow mound is glowing pale blue beneath the lonely tree.",
+          "simplePast": "A dotted snow mound gathered softly around the thin wooden base.",
+          "simplePresent": "A dotted snow mound shows tiny twigs and pebbles peeking through frost.",
+          "question": "What left those faint marks across the dotted snow mound?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s03",
+    "act": 1,
+    "start": 23.2,
+    "end": 31.3,
+    "frameSec": 27.2,
+    "title": "Tiny Cub Alone in the Woods",
+    "items": [
+      {
+        "id": "s03_cub",
+        "name": "Bear cub",
+        "bn": "ভালুক ছানা",
+        "box": [430, 355, 855, 515],
+        "sentence": "Left to fend for himself, the lonely bear cub wanders through the dark woods.",
+        "sentenceBn": "নিজের দায়িত্ব নিজে নেওয়ার মতো অবস্থায়, একা ভালুক ছানাটি অন্ধকার বনের মধ্য দিয়ে ঘুরে বেড়াচ্ছে।",
+        "audio": "audio/items/s03_cub.mp3",
+        "grammar": {
+          "presentContinuous": "The lonely bear cub is trudging slowly across the freezing snow.",
+          "simplePast": "The lonely bear cub walked beneath towering trees without a mother.",
+          "simplePresent": "A lonely bear cub looks tiny beside massive winter trunks.",
+          "question": "Where can the lonely bear cub find warmth on a night like this?"
+        }
+      },
+      {
+        "id": "s03_cub_face",
+        "name": "Cub face",
+        "bn": "ছানার মুখ",
+        "box": [430, 395, 555, 475],
+        "sentence": "With parted jaws, his upturned cub face searches the gloomy shadows ahead.",
+        "sentenceBn": "হালকা খোলা মুখে, তার ওপরের দিকে তাকানো মুখটি সামনের অন্ধকার ছায়ার মাঝে কিছু খুঁজছে।",
+        "audio": "audio/items/s03_cub_face.mp3",
+        "grammar": {
+          "presentContinuous": "The upturned cub face is glancing anxiously into the cold mist.",
+          "simplePast": "His upturned cub face showed both hunger and cold exhaustion.",
+          "simplePresent": "An upturned cub face reveals how young and helpless the little bear is.",
+          "question": "What is his upturned cub face searching for in the dark trees?"
+        }
+      },
+      {
+        "id": "s03_cub_legs",
+        "name": "Cub legs",
+        "bn": "ছানার পা",
+        "box": [725, 355, 855, 515],
+        "sentence": "Weary walking cub legs push forward step by step through thick winter drifts.",
+        "sentenceBn": "ক্লান্ত হাঁটতে থাকা ছানার পা পুরু শীতের তুষার স্তূপের মধ্য দিয়ে ধাপে ধাপে এগিয়ে চলেছে।",
+        "audio": "audio/items/s03_cub_legs.mp3",
+        "grammar": {
+          "presentContinuous": "His walking cub legs are sinking lightly into the cold white powder.",
+          "simplePast": "Tired walking cub legs carried him deeper into the quiet valley.",
+          "simplePresent": "Short walking cub legs tire quickly in deep frozen snow.",
+          "question": "How long can his walking cub legs keep moving without food or rest?"
+        }
+      },
+      {
+        "id": "s03_bare_twigs",
+        "name": "Twigs",
+        "bn": "চিকন ডাল",
+        "box": [120, 200, 345, 350],
+        "sentence": "Crooked bare hanging twigs reach down across the pale twilight opening.",
+        "sentenceBn": "বাঁকা পাতা-হীন ঝুলন্ত ডালগুলো ফ্যাকাশে গোধূলির খোলা আকাশের সামনে নিচে নেমে এসেছে।",
+        "audio": "audio/items/s03_bare_twigs.mp3",
+        "grammar": {
+          "presentContinuous": "The bare hanging twigs are framing the purple glow above the forest.",
+          "simplePast": "Black bare hanging twigs stood sharply against the violet sky.",
+          "simplePresent": "Bare hanging twigs look stark and brittle in freezing weather.",
+          "question": "Why do those bare hanging twigs cast such sharp shapes in the dusk?"
+        }
+      },
+      {
+        "id": "s03_purple_sky",
+        "name": "Sky",
+        "bn": "আকাশ",
+        "box": [115, 340, 330, 515],
+        "sentence": "A cold purple twilight sky glows faintly between the tall forest trunks.",
+        "sentenceBn": "উঁচু বনের কাণ্ডগুলোর মাঝখান দিয়ে শীতল বেগুনি গোধূলির আকাশ আবছা আলো ছড়াচ্ছে।",
+        "audio": "audio/items/s03_purple_sky.mp3",
+        "grammar": {
+          "presentContinuous": "The purple twilight sky is fading quickly as evening deepens.",
+          "simplePast": "A purple twilight sky shed dim light across the snowy trail.",
+          "simplePresent": "A purple twilight sky warns forest animals that night is nearly here.",
+          "question": "How soon will darkness replace this pale purple twilight sky?"
+        }
+      },
+      {
+        "id": "s03_dark_trunks",
+        "name": "Tree trunks",
+        "bn": "গাছের কাণ্ড",
+        "box": [120, 505, 630, 915],
+        "sentence": "Silent towering dark trunks loom like giant walls behind the lost cub.",
+        "sentenceBn": "নীরব উঁচু অন্ধকার গাছের কাণ্ডগুলো দলছুট ছানাটির পেছনে বিশাল দেয়ালের মতো দাঁড়িয়ে আছে।",
+        "audio": "audio/items/s03_dark_trunks.mp3",
+        "grammar": {
+          "presentContinuous": "The towering dark trunks are blocking most of the evening light.",
+          "simplePast": "Towering dark trunks rose high above the wandering cub.",
+          "simplePresent": "Towering dark trunks make a small bear feel completely alone.",
+          "question": "Are these towering dark trunks all asleep in the freezing cold?"
+        }
+      },
+      {
+        "id": "s03_snow_shrub",
+        "name": "Shrub",
+        "bn": "ঝোপ",
+        "box": [625, 105, 800, 210],
+        "sentence": "A brittle frosted winter shrub clings to the steep snowbank on the left.",
+        "sentenceBn": "একটি ভঙ্গুর তুষারে ঢাকা শীতের ঝোপ বাম দিকের খাড়া তুষার পাড়ে আটকে আছে।",
+        "audio": "audio/items/s03_snow_shrub.mp3",
+        "grammar": {
+          "presentContinuous": "The frosted winter shrub is standing leafless beside the snow drift.",
+          "simplePast": "A frosted winter shrub offered neither berries nor warm shelter.",
+          "simplePresent": "A frosted winter shrub loses its leaves long before midwinter.",
+          "question": "Can the hungry cub find anything to eat on that frosted winter shrub?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s04",
+    "act": 1,
+    "start": 31.3,
+    "end": 39.5,
+    "frameSec": 35.4,
+    "title": "Exhausted in the Freezing Drift",
+    "items": [
+      {
+        "id": "s04_cub",
+        "name": "Bear cub",
+        "bn": "ভালুক ছানা",
+        "box": [415, 515, 635, 710],
+        "sentence": "Shivering and weak, the exhausted bear cub sinks low onto the frozen drift.",
+        "sentenceBn": "কাঁপতে কাঁপতে ও দুর্বল হয়ে, ক্লান্ত ভালুক ছানাটি বরফের স্তূপের ওপর নিচু হয়ে বসে পড়ছে।",
+        "audio": "audio/items/s04_cub.mp3",
+        "grammar": {
+          "presentContinuous": "The exhausted bear cub is crouching low to escape the biting wind.",
+          "simplePast": "The exhausted bear cub collapsed onto the snow with heavy eyes.",
+          "simplePresent": "An exhausted bear cub loses warmth quickly when forced to stop.",
+          "question": "What will happen to the exhausted bear cub if nobody helps him?"
+        }
+      },
+      {
+        "id": "s04_cub_head",
+        "name": "Cub head",
+        "bn": "ছানার মাথা",
+        "box": [510, 515, 630, 608],
+        "sentence": "His heavy drooping cub head rests near the icy ground as cold creeps in.",
+        "sentenceBn": "ঠান্ডা বেড়ে যাওয়ায় তার ভারী নুইয়ে পড়া মাথাটি বরফময় মাটির কাছে এলিয়ে পড়েছে।",
+        "audio": "audio/items/s04_cub_head.mp3",
+        "grammar": {
+          "presentContinuous": "His drooping cub head is sagging closer to the cold snow.",
+          "simplePast": "The drooping cub head stayed low while his eyes looked tired.",
+          "simplePresent": "A drooping cub head shows how deeply hunger drains young strength.",
+          "question": "Why can the little bear barely lift his drooping cub head?"
+        }
+      },
+      {
+        "id": "s04_cub_back",
+        "name": "Cub back",
+        "bn": "ছানার পিঠ",
+        "box": [415, 565, 615, 710],
+        "sentence": "Curled against the chill, his hunched furry back traps a thin pocket of warmth.",
+        "sentenceBn": "শীতের বিরুদ্ধে কুঁকড়ে থাকা তার কুঁজো লোমশ পিঠ সামান্য উষ্ণতা ধরে রাখার চেষ্টা করছে।",
+        "audio": "audio/items/s04_cub_back.mp3",
+        "grammar": {
+          "presentContinuous": "His hunched furry back is curving tightly against the twilight chill.",
+          "simplePast": "A hunched furry back rose like a small brown mound in the snow.",
+          "simplePresent": "A hunched furry back helps a freezing cub keep body heat inside.",
+          "question": "Is his hunched furry back thick enough to keep out this bitter frost?"
+        }
+      },
+      {
+        "id": "s04_snow_bank",
+        "name": "Snowbank",
+        "bn": "তুষারের পাড়",
+        "box": [585, 160, 780, 950],
+        "sentence": "A broad cold snowy bank stretches quietly beneath the tired cub's paws.",
+        "sentenceBn": "ক্লান্ত ছানাটির থাবার নিচে একটি প্রশস্ত শীতল তুষারের পাড় নীরবে বিছিয়ে আছে।",
+        "audio": "audio/items/s04_snow_bank.mp3",
+        "grammar": {
+          "presentContinuous": "The cold snowy bank is holding the small bear above the dark valley.",
+          "simplePast": "A cold snowy bank turned deep blue in the fading evening glow.",
+          "simplePresent": "A cold snowy bank offers a freezing bed with no soft moss beneath.",
+          "question": "How long can the cub lie on this cold snowy bank without freezing?"
+        }
+      },
+      {
+        "id": "s04_dark_ridge",
+        "name": "Rocky ridge",
+        "bn": "পাথুরে ঢাল",
+        "box": [300, 540, 615, 865],
+        "sentence": "A shadowed dark rocky ridge rises directly behind the resting bear cub.",
+        "sentenceBn": "বিশ্রাম নেওয়া ভালুক ছানাটির ঠিক পেছনে একটি ছায়াঘেরা অন্ধকার পাথুরে ঢাল উঠে গেছে।",
+        "audio": "audio/items/s04_dark_ridge.mp3",
+        "grammar": {
+          "presentContinuous": "The dark rocky ridge is looming behind the small brown figure.",
+          "simplePast": "A dark rocky ridge blocked any shelter behind the snowbank.",
+          "simplePresent": "A dark rocky ridge blends into the gloomy twilight forest.",
+          "question": "Does that dark rocky ridge hide any warm cave for the cub?"
+        }
+      },
+      {
+        "id": "s04_right_boulder",
+        "name": "Boulder",
+        "bn": "বড় পাথর",
+        "box": [280, 845, 650, 1000],
+        "sentence": "A steep snowy right boulder guards the edge of the narrow forest path.",
+        "sentenceBn": "একটি খাড়া ডান দিকের তুষার পাথর সরু বনের পথের কিনারা ঘিরে দাঁড়িয়ে আছে।",
+        "audio": "audio/items/s04_right_boulder.mp3",
+        "grammar": {
+          "presentContinuous": "The snowy right boulder is catching faint moonlight along its top.",
+          "simplePast": "A snowy right boulder stood silent beside the freezing trail.",
+          "simplePresent": "A snowy right boulder makes the forest path feel narrow and cold.",
+          "question": "Could a small bear climb past that snowy right boulder to look for food?"
+        }
+      },
+      {
+        "id": "s04_twilight_mist",
+        "name": "Mist",
+        "bn": "কুয়াশা",
+        "box": [115, 0, 495, 455],
+        "sentence": "Swirling blue twilight mist drifts lazily through the quiet winter trees.",
+        "sentenceBn": "ঘূর্ণায়মান নীল গোধূলির কুয়াশা শান্ত শীতের গাছগুলোর মধ্য দিয়ে অলসভাবে ভেসে বেড়াচ্ছে।",
+        "audio": "audio/items/s04_twilight_mist.mp3",
+        "grammar": {
+          "presentContinuous": "The blue twilight mist is floating silently across the snowy clearing.",
+          "simplePast": "Cold blue twilight mist thickened as night settled over the ridge.",
+          "simplePresent": "Blue twilight mist chills the air before the stars appear.",
+          "question": "What smells might drift through the blue twilight mist toward the cub?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s05",
+    "act": 1,
+    "start": 39.5,
+    "end": 44.8,
+    "frameSec": 42.1,
+    "title": "Shivering in the Icy Frost",
+    "items": [
+      {
+        "id": "s05_cub",
+        "name": "Bear cub",
+        "bn": "ভালুক ছানা",
+        "box": [130, 355, 880, 795],
+        "sentence": "This shivering cub close-up captures the little bear trembling fiercely in the freeze.",
+        "sentenceBn": "এই কাঁপতে থাকা ছানার কাছের দৃশ্যটি হিমশীতল ঠান্ডায় ছোট ভালুকটির তীব্র কাঁপুনি তুলে ধরেছে।",
+        "audio": "audio/items/s05_cub.mp3",
+        "grammar": {
+          "presentContinuous": "The shivering cub close-up is showing every motion of his chilly shake.",
+          "simplePast": "This shivering cub close-up blurred as he trembled against the cold.",
+          "simplePresent": "A shivering cub close-up helps viewers feel the sting of winter frost.",
+          "question": "Why does the shivering cub close-up look blurred with motion?"
+        }
+      },
+      {
+        "id": "s05_frosted_cheek",
+        "name": "Cheek fur",
+        "bn": "গালের লোম",
+        "box": [365, 355, 655, 520],
+        "sentence": "Icy white flakes cling tightly to his frosted cheek fur in the dim blue light.",
+        "sentenceBn": "আবছা নীল আলোয় বরফের সাদা কণাগুলো তার তুষারমাখা গালের লোমের সাথে লেগে আছে।",
+        "audio": "audio/items/s05_frosted_cheek.mp3",
+        "grammar": {
+          "presentContinuous": "The frosted cheek fur is shaking rapidly as snow dust flies off.",
+          "simplePast": "His frosted cheek fur turned pale blue in the bitter night air.",
+          "simplePresent": "Frosted cheek fur shows how cold the wind has grown.",
+          "question": "How did so much ice gather on his frosted cheek fur?"
+        }
+      },
+      {
+        "id": "s05_dark_snout",
+        "name": "Snout",
+        "bn": "নাক-মুখ",
+        "box": [435, 425, 610, 540],
+        "sentence": "His blurred dark snout quivers as he shakes biting frost from his face.",
+        "sentenceBn": "মুখ থেকে কনকনে তুষার ঝেড়ে ফেলার সময় তার ঝাপসা কালো নাক-মুখ কেঁপে উঠছে।",
+        "audio": "audio/items/s05_dark_snout.mp3",
+        "grammar": {
+          "presentContinuous": "His blurred dark snout is twitching from the freezing chill.",
+          "simplePast": "The blurred dark snout moved quickly through the dim twilight.",
+          "simplePresent": "A blurred dark snout signals sudden shivering movement.",
+          "question": "What scent is the cub hoping to catch with that blurred dark snout?"
+        }
+      },
+      {
+        "id": "s05_head_tuft",
+        "name": "Head tuft",
+        "bn": "মাথার ঝুটি",
+        "box": [130, 425, 305, 540],
+        "sentence": "Even the tiny snow-dusted head tuft trembles atop his furry brow.",
+        "sentenceBn": "এমনকি তার লোমশ কপালের ওপরের ছোট্ট তুষার-মাখা মাথার ঝুটিটিও কাঁপছে।",
+        "audio": "audio/items/s05_head_tuft.mp3",
+        "grammar": {
+          "presentContinuous": "The snow-dusted head tuft is bobbing wildly as the cub shivers.",
+          "simplePast": "His snow-dusted head tuft caught pale light at the top of the frame.",
+          "simplePresent": "A snow-dusted head tuft gives the young bear a scruffy, tender look.",
+          "question": "Why does his little snow-dusted head tuft shake so fast?"
+        }
+      },
+      {
+        "id": "s05_right_ruff",
+        "name": "Fur ruff",
+        "bn": "পাশের লোম",
+        "box": [465, 600, 690, 800],
+        "sentence": "Tufts of his icy right ruff flare outward against the dark forest shadow.",
+        "sentenceBn": "অন্ধকার বনের ছায়ার বিপরীতে তার বরফজমা ডান লোমের গোছাগুলো বাইরের দিকে ছড়িয়ে আছে।",
+        "audio": "audio/items/s05_right_ruff.mp3",
+        "grammar": {
+          "presentContinuous": "The icy right ruff is bristling outward in the freezing wind.",
+          "simplePast": "His icy right ruff shone bright against the dark background.",
+          "simplePresent": "An icy right ruff puffs up when a bear shakes off winter snow.",
+          "question": "Does fluffing his icy right ruff help keep the cold away?"
+        }
+      },
+      {
+        "id": "s05_chest_fur",
+        "name": "Chest fur",
+        "bn": "বুকের লোম",
+        "box": [620, 460, 885, 760],
+        "sentence": "Thick frosty chest fur catches pale snowflakes along his shivering shoulders.",
+        "sentenceBn": "তার কাঁপতে থাকা কাঁধের নিচে ঘন শীতল বুকের লোমে ফ্যাকাশে তুষারকণা জমে আছে।",
+        "audio": "audio/items/s05_chest_fur.mp3",
+        "grammar": {
+          "presentContinuous": "His frosty chest fur is bristling under a thin coat of rime.",
+          "simplePast": "Thick frosty chest fur rippled as the young bear shook.",
+          "simplePresent": "Frosty chest fur protects a cub's heart from bitter forest drafts.",
+          "question": "How thick is his frosty chest fur beneath the white ice?"
+        }
+      },
+      {
+        "id": "s05_dark_woods",
+        "name": "Forest",
+        "bn": "বন",
+        "box": [120, 0, 885, 360],
+        "sentence": "Shadowy dark winter woods surround the trembling cub with icy silence.",
+        "sentenceBn": "ছায়াঘেরা অন্ধকার শীতের বন কাঁপতে থাকা ছানাটিকে বরফশীতল নীরবতায় ঘিরে রেখেছে।",
+        "audio": "audio/items/s05_dark_woods.mp3",
+        "grammar": {
+          "presentContinuous": "The dark winter woods are closing around the small cold bear.",
+          "simplePast": "Dark winter woods offered no glowing fire or warm den.",
+          "simplePresent": "Dark winter woods feel vast and lonely to a wandering cub.",
+          "question": "Is anything warm hidden inside these dark winter woods?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s06",
+    "act": 1,
+    "start": 44.8,
+    "end": 50.7,
+    "frameSec": 47.8,
+    "title": "Looking Up in the Pink Dusk",
+    "items": [
+      {
+        "id": "s06_cub",
+        "name": "Bear cub",
+        "bn": "ভালুক ছানা",
+        "box": [220, 365, 885, 985],
+        "sentence": "Pausing on the ridge, the curious bear cub gazes upward into the towering trees.",
+        "sentenceBn": "পাহাড়ের ঢালে থেমে, কৌতূহলী ভালুক ছানাটি উঁচু গাছগুলোর দিকে ওপরের দিকে তাকিয়ে আছে।",
+        "audio": "audio/items/s06_cub.mp3",
+        "grammar": {
+          "presentContinuous": "The curious bear cub is staring up with wide, searching eyes.",
+          "simplePast": "The curious bear cub stopped still and lifted his gaze skyward.",
+          "simplePresent": "A curious bear cub watches every tall shadow in unfamiliar woods.",
+          "question": "What caught the curious bear cub's attention high above him?"
+        }
+      },
+      {
+        "id": "s06_cub_eyes",
+        "name": "Eyes",
+        "bn": "চোখ",
+        "box": [315, 385, 440, 505],
+        "sentence": "His round wide upward eyes reflect a soft gleam of rose and twilight blue.",
+        "sentenceBn": "তার গোল ওপরের দিকে তাকানো বড় চোখে গোলাপি আর গোধূলি নীলের নরম আলো ঝলকাচ্ছে।",
+        "audio": "audio/items/s06_cub_eyes.mp3",
+        "grammar": {
+          "presentContinuous": "His wide upward eyes are studying something tall beyond the frame.",
+          "simplePast": "Two wide upward eyes shone brightly in his worried young face.",
+          "simplePresent": "Wide upward eyes show a blend of wonder and fear.",
+          "question": "What do his wide upward eyes see towering above the snow?"
+        }
+      },
+      {
+        "id": "s06_cub_snout",
+        "name": "Snout",
+        "bn": "নাক-মুখ",
+        "box": [425, 365, 585, 505],
+        "sentence": "A small black nose tips his pale tan snout as he sniffs the chilly air.",
+        "sentenceBn": "শীতল বাতাসে গন্ধ নেওয়ার সময় একটি ছোট কালো নাক তার ফ্যাকাশে বাদামী নাক-মুখের অগ্রভাগ সাজিয়েছে।",
+        "audio": "audio/items/s06_cub_snout.mp3",
+        "grammar": {
+          "presentContinuous": "His pale tan snout is quivering slightly in the cold dusk.",
+          "simplePast": "The pale tan snout turned gently toward the violet sky.",
+          "simplePresent": "A pale tan snout stands out clearly against dark brown cheek fur.",
+          "question": "Can the cub smell berries or shelter with that pale tan snout?"
+        }
+      },
+      {
+        "id": "s06_cub_ear",
+        "name": "Ear",
+        "bn": "কান",
+        "box": [220, 565, 345, 665],
+        "sentence": "One rounded furry ear perks upward to listen for any sound in the quiet forest.",
+        "sentenceBn": "নীরব বনের যেকোনো শব্দ শোনার জন্য তার একটি গোল লোমশ কান খাড়া হয়ে আছে।",
+        "audio": "audio/items/s06_cub_ear.mp3",
+        "grammar": {
+          "presentContinuous": "His rounded furry ear is listening closely to the evening breeze.",
+          "simplePast": "A rounded furry ear caught every creak of frozen wood.",
+          "simplePresent": "A rounded furry ear helps a bear cub detect danger early.",
+          "question": "What faint forest sound might reach his rounded furry ear?"
+        }
+      },
+      {
+        "id": "s06_head_tuft",
+        "name": "Head tuft",
+        "bn": "মাথার ঝুটি",
+        "box": [225, 405, 290, 515],
+        "sentence": "A scruffy dark head tuft crowns his forehead beneath the rose twilight.",
+        "sentenceBn": "গোলাপি গোধূলির নিচে একটি এলোমেলো কালচে মাথার ঝুটি তার কপালের ওপর শোভা পাচ্ছে।",
+        "audio": "audio/items/s06_head_tuft.mp3",
+        "grammar": {
+          "presentContinuous": "His dark head tuft is sitting neatly between his small ears.",
+          "simplePast": "The dark head tuft stood out sharply against the misty backdrop.",
+          "simplePresent": "A dark head tuft gives the little cub an endearing, scruffy silhouette.",
+          "question": "Does that dark head tuft flutter when the cold wind blows?"
+        }
+      },
+      {
+        "id": "s06_brown_fur",
+        "name": "Fur",
+        "bn": "লোম",
+        "box": [560, 615, 885, 985],
+        "sentence": "Carved ridges of textured brown fur glow warmly along his small shoulder.",
+        "sentenceBn": "খোদাই করা ভাঁজের মতো খসখসে বাদামী লোম তার ছোট্ট কাঁধ জুড়ে উষ্ণ আভা ছড়াচ্ছে।",
+        "audio": "audio/items/s06_brown_fur.mp3",
+        "grammar": {
+          "presentContinuous": "His textured brown fur is catching soft pink reflections from behind.",
+          "simplePast": "Rich textured brown fur covered the little bear from neck to flank.",
+          "simplePresent": "Textured brown fur looks almost hand-carved in gentle twilight.",
+          "question": "Why does his textured brown fur shimmer at the edges?"
+        }
+      },
+      {
+        "id": "s06_snow_glow",
+        "name": "Snow",
+        "bn": "তুষার",
+        "box": [600, 0, 885, 390],
+        "sentence": "Soft blurred background snow glows icy white behind the young bear's face.",
+        "sentenceBn": "ছোট ভালুকটির মুখের পেছনে নরম ঝাপসা পেছনের তুষার বরফের মতো সাদা হয়ে জ্বলছে।",
+        "audio": "audio/items/s06_snow_glow.mp3",
+        "grammar": {
+          "presentContinuous": "The blurred background snow is gleaming softly beyond the ridge.",
+          "simplePast": "Blurred background snow stretched quietly across the distant slope.",
+          "simplePresent": "Blurred background snow keeps focus right on the cub's expression.",
+          "question": "What tiny red spots might lie near that blurred background snow?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s07",
+    "act": 1,
+    "start": 50.7,
+    "end": 55.2,
+    "frameSec": 53.0,
+    "title": "Spotting Red Berries on the Twig",
+    "items": [
+      {
+        "id": "s07_red_berries",
+        "name": "Berries",
+        "bn": "বেরি",
+        "box": [430, 220, 560, 382],
+        "sentence": "Three bright red berries shine like little jewels in the cold purple dusk.",
+        "sentenceBn": "তিনটি উজ্জ্বল লাল বেরি শীতল বেগুনি গোধূলিতে ছোট রত্নের মতো জ্বলজ্বল করছে।",
+        "audio": "audio/items/s07_red_berries.mp3",
+        "grammar": {
+          "presentContinuous": "Three bright red berries are tempting the starving little bear.",
+          "simplePast": "Bright red berries hung delicately near the edge of the cliff.",
+          "simplePresent": "Bright red berries draw hungry animals out onto dangerous ground.",
+          "question": "How many bright red berries can you count on the thin twig?"
+        }
+      },
+      {
+        "id": "s07_berry_twig",
+        "name": "Twig",
+        "bn": "সরু ডাল",
+        "box": [420, 185, 760, 385],
+        "sentence": "A forked thin berry twig sprouts straight out of the snowy cliff edge.",
+        "sentenceBn": "একটি দ্বিখণ্ডিত সরু বেরির ডাল তুষারময় খাদের কিনারা থেকে সোজা বেরিয়ে আছে।",
+        "audio": "audio/items/s07_berry_twig.mp3",
+        "grammar": {
+          "presentContinuous": "The thin berry twig is swaying lightly in the mountain draft.",
+          "simplePast": "A thin berry twig held the only fruit in sight.",
+          "simplePresent": "A thin berry twig bends easily under heavy weight.",
+          "question": "Will that thin berry twig bend if the cub pulls on it?"
+        }
+      },
+      {
+        "id": "s07_cub",
+        "name": "Bear cub",
+        "bn": "ভালুক ছানা",
+        "box": [245, 520, 745, 805],
+        "sentence": "Eyes fixed on the fruit, the hungry bear cub leans carefully toward the twig.",
+        "sentenceBn": "ফলের দিকে স্থির দৃষ্টি রেখে, ক্ষুধার্ত ভালুক ছানাটি সতর্কভাবে ডালটির দিকে ঝুঁকছে।",
+        "audio": "audio/items/s07_cub.mp3",
+        "grammar": {
+          "presentContinuous": "The hungry bear cub is creeping forward across the snow.",
+          "simplePast": "The hungry bear cub spotted red fruit right beside the giant trunk.",
+          "simplePresent": "A hungry bear cub thinks only about food when his belly aches.",
+          "question": "Why does the hungry bear cub not notice the steep drop nearby?"
+        }
+      },
+      {
+        "id": "s07_cub_face",
+        "name": "Cub face",
+        "bn": "ছানার মুখ",
+        "box": [320, 540, 495, 670],
+        "sentence": "His eager focused cub face stares straight down at the tempting red fruit.",
+        "sentenceBn": "তার আগ্রহী মনোযোগী ছানার মুখটি লোভনীয় লাল ফলের দিকে সোজা তাকিয়ে আছে।",
+        "audio": "audio/items/s07_cub_face.mp3",
+        "grammar": {
+          "presentContinuous": "His focused cub face is locking onto the berries below.",
+          "simplePast": "A focused cub face showed sudden hope at seeing winter food.",
+          "simplePresent": "A focused cub face ignores everything else once hunger takes over.",
+          "question": "What emotion can you read on his focused cub face?"
+        }
+      },
+      {
+        "id": "s07_reaching_paw",
+        "name": "Paw",
+        "bn": "থাবা",
+        "box": [565, 555, 685, 625],
+        "sentence": "His lifted front paw pauses mid-step above the soft snow crust.",
+        "sentenceBn": "তার তোলা সামনের থাবাটি নরম তুষারের স্তরের ওপর পদক্ষেপের মাঝপথে থেমে আছে।",
+        "audio": "audio/items/s07_reaching_paw.mp3",
+        "grammar": {
+          "presentContinuous": "His lifted front paw is hovering gently over the snowy ground.",
+          "simplePast": "One lifted front paw tested the edge before stepping closer.",
+          "simplePresent": "A lifted front paw shows a cub moving cautiously toward food.",
+          "question": "Should he put that lifted front paw closer to the cliff edge?"
+        }
+      },
+      {
+        "id": "s07_giant_trunk",
+        "name": "Tree trunk",
+        "bn": "গাছের কাণ্ড",
+        "box": [120, 700, 685, 1000],
+        "sentence": "A silent giant dark trunk towers beside the snowy path like an ancient wall.",
+        "sentenceBn": "একটি নীরব বিশাল অন্ধকার কাণ্ড প্রাচীন দেয়ালের মতো তুষারময় পথের পাশে উঁচু হয়ে দাঁড়িয়ে আছে।",
+        "audio": "audio/items/s07_giant_trunk.mp3",
+        "grammar": {
+          "presentContinuous": "The giant dark trunk is rising silently behind the hungry little bear.",
+          "simplePast": "A giant dark trunk stood still and bark-lined in the purple glow.",
+          "simplePresent": "A giant dark trunk looks ordinary until you look far up into its branches.",
+          "question": "Could this giant dark trunk be watching the cub right now?"
+        }
+      },
+      {
+        "id": "s07_snowy_ledge",
+        "name": "Snow ledge",
+        "bn": "তুষারের ধাপ",
+        "box": [680, 80, 880, 940],
+        "sentence": "A smooth curved snowy ledge bridges the ground between the huge tree and the twig.",
+        "sentenceBn": "একটি মসৃণ বাঁকানো তুষারময় শৈলতট বিশাল গাছ ও ডালটির মাঝের পথ তৈরি করেছে।",
+        "audio": "audio/items/s07_snowy_ledge.mp3",
+        "grammar": {
+          "presentContinuous": "The curved snowy ledge is supporting the cub near the chasm.",
+          "simplePast": "A curved snowy ledge looked solid on top despite the drop below.",
+          "simplePresent": "A curved snowy ledge can hide thin, brittle ice underneath.",
+          "question": "How safe is this curved snowy ledge for a heavy step?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s08",
+    "act": 1,
+    "start": 55.2,
+    "end": 59.3,
+    "frameSec": 57.2,
+    "title": "Crawling Onto the Overhanging Ledge",
+    "items": [
+      {
+        "id": "s08_cub",
+        "name": "Bear cub",
+        "bn": "ভালুক ছানা",
+        "box": [420, 505, 505, 575],
+        "sentence": "Seen from afar, the tiny crawling bear cub inches onto the jutting snow shelf.",
+        "sentenceBn": "দূর থেকে দেখা যাচ্ছে, ছোট্ট হামাগুড়ি দেওয়া ভালুক ছানাটি বেরিয়ে থাকা তুষার স্তূপের ওপর একটু একটু করে এগিয়ে যাচ্ছে।",
+        "audio": "audio/items/s08_cub.mp3",
+        "grammar": {
+          "presentContinuous": "The crawling bear cub is inching closer to the very tip of the cliff.",
+          "simplePast": "The crawling bear cub crept out over an empty canyon drop.",
+          "simplePresent": "A crawling bear cub looks tiny on top of a massive mountain overhang.",
+          "question": "Does the crawling bear cub realize how high above the valley he is?"
+        }
+      },
+      {
+        "id": "s08_berry_twig",
+        "name": "Berry twig",
+        "bn": "বেরির ডাল",
+        "box": [450, 465, 510, 505],
+        "sentence": "The frail edge berry twig pokes out over open air at the nose of the snow cap.",
+        "sentenceBn": "ভঙ্গুর কিনারার বেরির ডালটি তুষার চূড়ার অগ্রভাগে খোলা বাতাসের ওপর বেরিয়ে আছে।",
+        "audio": "audio/items/s08_berry_twig.mp3",
+        "grammar": {
+          "presentContinuous": "The edge berry twig is hanging right over the dark canyon.",
+          "simplePast": "An edge berry twig grew at the riskiest point of the shelf.",
+          "simplePresent": "An edge berry twig tempts hungry creatures toward a dangerous drop.",
+          "question": "Can the cub reach the edge berry twig without slipping off?"
+        }
+      },
+      {
+        "id": "s08_snow_overhang",
+        "name": "Snow ledge",
+        "bn": "তুষারের ধাপ",
+        "box": [470, 455, 615, 975],
+        "sentence": "A thick jutting snow overhang stretches dangerously far past the rocky cliff face.",
+        "sentenceBn": "একটি পুরু ঝুলে থাকা তুষার স্তর পাথুরে খাদের দেয়াল ছাড়িয়ে বিপজ্জনকভাবে অনেক দূর এগিয়ে আছে।",
+        "audio": "audio/items/s08_snow_overhang.mp3",
+        "grammar": {
+          "presentContinuous": "The jutting snow overhang is holding only empty air underneath its tip.",
+          "simplePast": "A jutting snow overhang extended far out above the dark chasm.",
+          "simplePresent": "A jutting snow overhang cracks easily when weight presses its outer edge.",
+          "question": "How long can that jutting snow overhang hold the cub's weight?"
+        }
+      },
+      {
+        "id": "s08_tangled_roots",
+        "name": "Roots",
+        "bn": "শিকড়",
+        "box": [575, 480, 690, 650],
+        "sentence": "Thin exposed gnarled roots dangle darkly beneath the underside of the snow shelf.",
+        "sentenceBn": "তুষার স্তরের নিচের অংশে সরু বেরিয়ে থাকা শিকড়গুলো অন্ধকারে ঝুলছে।",
+        "audio": "audio/items/s08_tangled_roots.mp3",
+        "grammar": {
+          "presentContinuous": "The exposed gnarled roots are clinging loosely to the cliff edge.",
+          "simplePast": "Exposed gnarled roots hung in silence beneath the overhanging frost.",
+          "simplePresent": "Exposed gnarled roots prove there is no solid rock under the tip.",
+          "question": "What do those exposed gnarled roots tell us about the snow above them?"
+        }
+      },
+      {
+        "id": "s08_steep_cliff",
+        "name": "Cliff",
+        "bn": "খাড়া পাহাড়",
+        "box": [545, 600, 885, 995],
+        "sentence": "A sheer steep rock cliff plunges straight down into the shadowed canyon below.",
+        "sentenceBn": "একটি খাড়া পাথরের খাদ সোজা নিচের ছায়াময় গিরিখাতে নেমে গেছে।",
+        "audio": "audio/items/s08_steep_cliff.mp3",
+        "grammar": {
+          "presentContinuous": "The steep rock cliff is dropping away into deep winter shadow.",
+          "simplePast": "A steep rock cliff rose tall under the snowy forest floor.",
+          "simplePresent": "A steep rock cliff leaves no easy footing if someone slips.",
+          "question": "How far down does this steep rock cliff drop into the mist?"
+        }
+      },
+      {
+        "id": "s08_dark_trunk",
+        "name": "Tree trunk",
+        "bn": "গাছের কাণ্ড",
+        "box": [120, 830, 525, 1000],
+        "sentence": "On the right, a towering evergreen trunk stands directly above the cliff ledge.",
+        "sentenceBn": "ডান দিকে, একটি উঁচু চিরসবুজ কাণ্ড খাদের শৈলতটের ঠিক ওপরে দাঁড়িয়ে আছে।",
+        "audio": "audio/items/s08_dark_trunk.mp3",
+        "grammar": {
+          "presentContinuous": "The towering evergreen trunk is standing high above the overhanging snow.",
+          "simplePast": "A towering evergreen trunk anchored the upper ridge of the cliff.",
+          "simplePresent": "A towering evergreen trunk watches silently over the steep canyon edge.",
+          "question": "How close is that towering evergreen trunk to the precarious ledge?"
+        }
+      },
+      {
+        "id": "s08_misty_chasm",
+        "name": "Chasm",
+        "bn": "গভীর খাদ",
+        "box": [120, 0, 885, 520],
+        "sentence": "A vast deep misty chasm yawns wide in cold blue shadows on the left.",
+        "sentenceBn": "বাম দিকে শীতল নীল ছায়ায় একটি বিশাল গভীর কুয়াশাচ্ছন্ন খাদ হাঁ করে আছে।",
+        "audio": "audio/items/s08_misty_chasm.mp3",
+        "grammar": {
+          "presentContinuous": "The deep misty chasm is filling slowly with cold twilight haze.",
+          "simplePast": "A deep misty chasm opened wide beneath the tiny crawling bear.",
+          "simplePresent": "A deep misty chasm makes every step on the ledge feel perilous.",
+          "question": "What lies hidden at the bottom of that deep misty chasm?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s09",
+    "act": 1,
+    "start": 59.3,
+    "end": 64.2,
+    "frameSec": 61.8,
+    "title": "Startled with a Berry in Hand",
+    "items": [
+      {
+        "id": "s09_cub",
+        "name": "Bear cub",
+        "bn": "ভালুক ছানা",
+        "box": [270, 425, 765, 635],
+        "sentence": "Sitting upright, the startled sitting cub freezes as the snow beneath him groans.",
+        "sentenceBn": "সোজা হয়ে বসে থাকা চমকে যাওয়া বসা ছানাটি নিচের তুষারে শব্দ হতেই স্থির হয়ে গেল।",
+        "audio": "audio/items/s09_cub.mp3",
+        "grammar": {
+          "presentContinuous": "The startled sitting cub is holding still as the ledge begins to crack.",
+          "simplePast": "The startled sitting cub froze in shock right after picking a berry.",
+          "simplePresent": "A startled sitting cub senses danger the instant the ground shifts.",
+          "question": "Why did the startled sitting cub stop eating his berry so suddenly?"
+        }
+      },
+      {
+        "id": "s09_wide_eyes",
+        "name": "Eyes",
+        "bn": "চোখ",
+        "box": [340, 480, 415, 555],
+        "sentence": "His round wide startled eyes stare straight ahead in sudden alarm.",
+        "sentenceBn": "তার গোল বিস্ফারিত চমকানো চোখ হঠাৎ আতঙ্কে সোজা সামনের দিকে তাকিয়ে আছে।",
+        "audio": "audio/items/s09_wide_eyes.mp3",
+        "grammar": {
+          "presentContinuous": "His wide startled eyes are widening with sudden fear.",
+          "simplePast": "Wide startled eyes showed the moment he felt the snow shift.",
+          "simplePresent": "Wide startled eyes show shock before a cub can even move.",
+          "question": "What sudden sound made his wide startled eyes open so round?"
+        }
+      },
+      {
+        "id": "s09_raised_paw",
+        "name": "Paw",
+        "bn": "থাবা",
+        "box": [425, 442, 545, 505],
+        "sentence": "A single red berry rests pinched inside his raised berry-holding paw.",
+        "sentenceBn": "তার উঁচু করা বেরি ধরা থাবার ভেতর একটি লাল বেরি ধরা আছে।",
+        "audio": "audio/items/s09_raised_paw.mp3",
+        "grammar": {
+          "presentContinuous": "His berry-holding paw is pausing halfway to his open mouth.",
+          "simplePast": "His berry-holding paw plucked one red fruit just before the crack.",
+          "simplePresent": "A berry-holding paw stops midair when danger strikes.",
+          "question": "Will he manage to eat the fruit in his berry-holding paw?"
+        }
+      },
+      {
+        "id": "s09_berry_twig",
+        "name": "Twig",
+        "bn": "বেরির ডাল",
+        "box": [590, 290, 725, 415],
+        "sentence": "Beside him, the slender bare berry twig pokes upward with one last tiny bud.",
+        "sentenceBn": "তার পাশে সরু খালি বেরির ডালটি একটি শেষ ছোট কুঁড়ি নিয়ে ওপরের দিকে বেরিয়ে আছে।",
+        "audio": "audio/items/s09_berry_twig.mp3",
+        "grammar": {
+          "presentContinuous": "The bare berry twig is trembling along the edge of the snow.",
+          "simplePast": "The bare berry twig stood almost stripped beside the startled cub.",
+          "simplePresent": "A bare berry twig marks the very brink of the snowy overhang.",
+          "question": "How many red berries are still left on that bare berry twig?"
+        }
+      },
+      {
+        "id": "s09_cracked_ledge",
+        "name": "Snow ledge",
+        "bn": "তুষারের ধাপ",
+        "box": [685, 250, 885, 990],
+        "sentence": "Deep grooves split across the cracked snowy ledge right beneath the cub's paws.",
+        "sentenceBn": "ছানাটির থাবার ঠিক নিচে ফাটা তুষারের শৈলতট জুড়ে গভীর ফাটল তৈরি হয়েছে।",
+        "audio": "audio/items/s09_cracked_ledge.mp3",
+        "grammar": {
+          "presentContinuous": "The cracked snowy ledge is straining under the sitting cub's weight.",
+          "simplePast": "A cracked snowy ledge began to break apart at the canyon brink.",
+          "simplePresent": "A cracked snowy ledge gives way quickly once frost splits inside.",
+          "question": "Can the cub scramble back before the cracked snowy ledge breaks off?"
+        }
+      },
+      {
+        "id": "s09_giant_trunk",
+        "name": "Tree trunk",
+        "bn": "গাছের কাণ্ড",
+        "box": [120, 495, 625, 955],
+        "sentence": "Dark ridged bark covers the massive tree trunk rising just behind the ledge.",
+        "sentenceBn": "শৈলতটের ঠিক পেছনে দাঁড়িয়ে থাকা বিশাল গাছের কাণ্ডটি কালচে খাঁজকাটা বাকলে ঢাকা।",
+        "audio": "audio/items/s09_giant_trunk.mp3",
+        "grammar": {
+          "presentContinuous": "The massive tree trunk is looming quietly above the trembling snow.",
+          "simplePast": "A massive tree trunk stood steady while the cliff edge began to slip.",
+          "simplePresent": "A massive tree trunk holds deep roots high above the drop.",
+          "question": "Is the massive tree trunk close enough to help if the snow falls?"
+        }
+      },
+      {
+        "id": "s09_cliff_drop",
+        "name": "Cliff",
+        "bn": "খাদ",
+        "box": [435, 0, 885, 315],
+        "sentence": "A dark, dizzying deep cliff drop opens right beside the little cub's left elbow.",
+        "sentenceBn": "ছোট ছানাটির বাম কনুইয়ের ঠিক পাশেই একটি অন্ধকার, মাথা-ঘোরানো গভীর খাদের ঢাল উন্মুক্ত হয়ে আছে।",
+        "audio": "audio/items/s09_cliff_drop.mp3",
+        "grammar": {
+          "presentContinuous": "The deep cliff drop is yawning silently behind the outer tip of snow.",
+          "simplePast": "A deep cliff drop waited below the cracking ledge.",
+          "simplePresent": "A deep cliff drop makes every slip on the ice dangerous.",
+          "question": "How far would the cub fall down that deep cliff drop?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s10",
+    "act": 1,
+    "start": 64.2,
+    "end": 69.2,
+    "frameSec": 66.7,
+    "title": "Ledge Giving Way in Panic",
+    "items": [
+      {
+        "id": "s10_cub",
+        "name": "Bear cub",
+        "bn": "ভালুক ছানা",
+        "box": [295, 22, 830, 480],
+        "sentence": "When the snow gives way, the clinging bear cub hugs the tilting shelf in fright.",
+        "sentenceBn": "তুষার ভেঙে পড়তেই, আঁকড়ে ধরা ভালুক ছানাটি ভয়ে হেলে পড়া স্তরটি জড়িয়ে ধরল।",
+        "audio": "audio/items/s10_cub.mp3",
+        "grammar": {
+          "presentContinuous": "The clinging bear cub is scrambling desperately to stay on the snow.",
+          "simplePast": "The clinging bear cub twisted backward as the ground dropped beneath him.",
+          "simplePresent": "A clinging bear cub holds tight with every claw when snow slips.",
+          "question": "How long can the clinging bear cub hold onto a falling slab?"
+        }
+      },
+      {
+        "id": "s10_panicked_face",
+        "name": "Cub face",
+        "bn": "ছানার মুখ",
+        "box": [335, 330, 530, 470],
+        "sentence": "Twisted over his shoulder, his panicked cub face watches the snow crack apart.",
+        "sentenceBn": "কাঁধের ওপর দিয়ে ঘুরে তার আতঙ্কিত ছানার মুখটি তুষার ভেঙে পড়া দেখছে।",
+        "audio": "audio/items/s10_panicked_face.mp3",
+        "grammar": {
+          "presentContinuous": "His panicked cub face is staring down in wide-eyed terror.",
+          "simplePast": "His panicked cub face turned back as the shelf began to tilt.",
+          "simplePresent": "A panicked cub face shows pure alarm at a sudden fall.",
+          "question": "What is his panicked cub face looking at behind him?"
+        }
+      },
+      {
+        "id": "s10_gripping_paw",
+        "name": "Paw",
+        "bn": "থাবা",
+        "box": [595, 375, 675, 480],
+        "sentence": "His gripping front paw digs hard into the sliding edge of snow.",
+        "sentenceBn": "তার শক্ত করে ধরা সামনের থাবা পিছলে যাওয়া তুষারের কিনারায় শক্তভাবে গেঁথে আছে।",
+        "audio": "audio/items/s10_gripping_paw.mp3",
+        "grammar": {
+          "presentContinuous": "His gripping front paw is pressing firmly against the tilting ridge.",
+          "simplePast": "One gripping front paw held onto the crumbling snow for dear life.",
+          "simplePresent": "A gripping front paw gives a cub brief hold on icy slopes.",
+          "question": "Will that gripping front paw slip off the frozen crust?"
+        }
+      },
+      {
+        "id": "s10_back_fur",
+        "name": "Back fur",
+        "bn": "পিঠের লোম",
+        "box": [500, 22, 830, 395],
+        "sentence": "His broad curled back fur braces hard against the sudden drop in the snow.",
+        "sentenceBn": "তুষারের হঠাৎ পতনের বিপরীতে তার চওড়া কুঁকড়ে থাকা পিঠের লোম শক্ত হয়ে আছে।",
+        "audio": "audio/items/s10_back_fur.mp3",
+        "grammar": {
+          "presentContinuous": "His curled back fur is arching tightly as he slides downward.",
+          "simplePast": "Thick curled back fur filled the corner as the cub braced himself.",
+          "simplePresent": "Curled back fur cushions a little bear during a tumble.",
+          "question": "Why is his curled back fur arched so high right now?"
+        }
+      },
+      {
+        "id": "s10_tilting_ledge",
+        "name": "Snow ledge",
+        "bn": "তুষারের ধাপ",
+        "box": [650, 10, 885, 970],
+        "sentence": "The heavy tilting snow ledge slants sharply as frost breaks loose from the cliff.",
+        "sentenceBn": "খাদ থেকে তুষার আলগা হয়ে যাওয়ায় ভারী হেলে পড়া তুষার শৈলতটটি তীব্রভাবে কাত হয়ে যাচ্ছে।",
+        "audio": "audio/items/s10_tilting_ledge.mp3",
+        "grammar": {
+          "presentContinuous": "The tilting snow ledge is breaking free from the frozen cliffside.",
+          "simplePast": "A tilting snow ledge gave way beneath the frightened bear cub.",
+          "simplePresent": "A tilting snow ledge slides quickly once its cracks widen.",
+          "question": "Who might catch the cub once this tilting snow ledge breaks off completely?"
+        }
+      },
+      {
+        "id": "s10_dark_branch",
+        "name": "Branch",
+        "bn": "ডাল",
+        "box": [120, 355, 620, 995],
+        "sentence": "A thick sweeping dark branch looms close behind the slipping bear cub.",
+        "sentenceBn": "পিছলে যাওয়া ভালুক ছানাটির ঠিক পেছনেই একটি পুরু বাঁকানো অন্ধকার ডাল এগিয়ে আছে।",
+        "audio": "audio/items/s10_dark_branch.mp3",
+        "grammar": {
+          "presentContinuous": "The sweeping dark branch is stretching right behind the falling ledge.",
+          "simplePast": "A sweeping dark branch curved silently overhead in the pale glow.",
+          "simplePresent": "A sweeping dark branch reaches out like a strong wooden arm.",
+          "question": "Wait—is that sweeping dark branch moving toward the cub?"
+        }
+      },
+      {
+        "id": "s10_bright_sky",
+        "name": "Sky",
+        "bn": "আকাশ",
+        "box": [115, 0, 545, 385],
+        "sentence": "A pale bright frosty sky shines behind the trembling cub as the snow gives way.",
+        "sentenceBn": "তুষার ভেঙে পড়ার সময় কাঁপতে থাকা ছানাটির পেছনে ফ্যাকাশে উজ্জ্বল হিমেল আকাশ জ্বলছে।",
+        "audio": "audio/items/s10_bright_sky.mp3",
+        "grammar": {
+          "presentContinuous": "The bright frosty sky is glowing softly behind his dark ears.",
+          "simplePast": "A bright frosty sky lit the outline of the panicked bear.",
+          "simplePresent": "A bright frosty sky casts sharp light over cold winter slopes.",
+          "question": "Why does the bright frosty sky glow so sharply behind him?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s11",
+    "act": 1,
+    "start": 69.2,
+    "end": 74.9,
+    "frameSec": 72.1,
+    "title": "Peeking Above the Snowdrift",
+    "items": [
+      {
+        "id": "s11_cub_head",
+        "name": "Cub head",
+        "bn": "ছানার মাথা",
+        "box": [575, 385, 705, 510],
+        "sentence": "Just his small peeking cub head rises above the soft ridge of snow.",
+        "sentenceBn": "নরম তুষারের স্তূপের ওপর দিয়ে শুধু তার ছোট উঁকি দেওয়া ছানার মাথাটি দেখা যাচ্ছে।",
+        "audio": "audio/items/s11_cub_head.mp3",
+        "grammar": {
+          "presentContinuous": "The peeking cub head is looking cautiously over the white snowbank.",
+          "simplePast": "A small peeking cub head popped up gently from the snowdrift.",
+          "simplePresent": "A peeking cub head stays low when checking if danger has passed.",
+          "question": "Where is the rest of the cub hiding beneath that peeking cub head?"
+        }
+      },
+      {
+        "id": "s11_cub_snout",
+        "name": "Snout",
+        "bn": "নাক-মুখ",
+        "box": [605, 435, 700, 485],
+        "sentence": "His tiny sniffing pale snout peeks leftward into the quiet snowy dusk.",
+        "sentenceBn": "তার ছোট্ট গন্ধ নেওয়া ফ্যাকাশে মুখটি বাম দিকের শান্ত তুষারময় গোধূলির দিকে উঁকি দিচ্ছে।",
+        "audio": "audio/items/s11_cub_snout.mp3",
+        "grammar": {
+          "presentContinuous": "His sniffing pale snout is resting lightly on the soft snow crest.",
+          "simplePast": "The sniffing pale snout turned toward the misty distant trees.",
+          "simplePresent": "A sniffing pale snout helps a startled bear check his surroundings.",
+          "question": "What does his sniffing pale snout sense in the evening air?"
+        }
+      },
+      {
+        "id": "s11_cub_ears",
+        "name": "Ears",
+        "bn": "কান",
+        "box": [575, 388, 685, 475],
+        "sentence": "Two tiny round ears perk upright just above the edge of the drift.",
+        "sentenceBn": "তুষার স্তূপের কিনারার ঠিক ওপরে দুটি ছোট গোল কান খাড়া হয়ে আছে।",
+        "audio": "audio/items/s11_cub_ears.mp3",
+        "grammar": {
+          "presentContinuous": "His tiny round ears are listening closely to the quiet woods.",
+          "simplePast": "Two tiny round ears rose cleanly above the pale snowbank.",
+          "simplePresent": "Tiny round ears catch soft rustles even in deep winter.",
+          "question": "What gentle sound might reach those tiny round ears?"
+        }
+      },
+      {
+        "id": "s11_snowdrift",
+        "name": "Snowdrift",
+        "bn": "তুষার স্তূপ",
+        "box": [675, 0, 885, 680],
+        "sentence": "A wide thick foreground snowdrift blankets the hillside up to the cub's chin.",
+        "sentenceBn": "একটি প্রশস্ত সামনের ঘন তুষার স্তূপ ছানাটির চিবুক পর্যন্ত পাহাড়ের ঢাল ঢেকে রেখেছে।",
+        "audio": "audio/items/s11_snowdrift.mp3",
+        "grammar": {
+          "presentContinuous": "The thick foreground snowdrift is cradling the lower half of the cub.",
+          "simplePast": "A thick foreground snowdrift muffled the sound of his fall.",
+          "simplePresent": "A thick foreground snowdrift stays soft and deep after winter storms.",
+          "question": "How deep is the cub tucked behind that thick foreground snowdrift?"
+        }
+      },
+      {
+        "id": "s11_snow_ridges",
+        "name": "Snow ridges",
+        "bn": "তুষারের ভাঁজ",
+        "box": [680, 560, 885, 995],
+        "sentence": "Wind-shaped carved snow ridges sweep smoothly across the lower right slope.",
+        "sentenceBn": "বাতাসে তৈরি খোদাই করা তুষারের ভাঁজগুলো ডান দিকের নিচের ঢাল জুড়ে মসৃণভাবে বয়ে গেছে।",
+        "audio": "audio/items/s11_snow_ridges.mp3",
+        "grammar": {
+          "presentContinuous": "The carved snow ridges are catching faint blue shadows in the dusk.",
+          "simplePast": "Carved snow ridges curved smoothly beside the peeking bear cub.",
+          "simplePresent": "Carved snow ridges form whenever cold wind sweeps across fresh snow.",
+          "question": "Why do these carved snow ridges look like wooden waves?"
+        }
+      },
+      {
+        "id": "s11_misty_pines",
+        "name": "Pine trees",
+        "bn": "পাইন গাছ",
+        "box": [120, 0, 660, 520],
+        "sentence": "Rows of tall misty background pines fade softly into the violet winter fog.",
+        "sentenceBn": "সারি সারি উঁচু কুয়াশাচ্ছন্ন দূরের পাইন গাছ বেগুনি শীতের কুয়াশায় নরমভাবে মিলিয়ে গেছে।",
+        "audio": "audio/items/s11_misty_pines.mp3",
+        "grammar": {
+          "presentContinuous": "The misty background pines are standing faint and still across the valley.",
+          "simplePast": "Misty background pines stretched across the far horizon in blue haze.",
+          "simplePresent": "Misty background pines show how vast the frozen forest truly is.",
+          "question": "How far do those misty background pines stretch beyond the ridge?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s12",
+    "act": 1,
+    "start": 74.9,
+    "end": 84.6,
+    "frameSec": 79.8,
+    "title": "Caught Gently by the Living Evergreen",
+    "items": [
+      {
+        "id": "s12_tree_face",
+        "name": "Tree face",
+        "bn": "গাছের মুখ",
+        "box": [230, 640, 550, 830],
+        "sentence": "Awake at last, the living evergreen's gentle tree face gazes tenderly down at the cub.",
+        "sentenceBn": "অবশেষে জেগে উঠে, জীবন্ত চিরসবুজ গাছটির স্নেহময় গাছের মুখ ছানাটির দিকে মমতায় তাকিয়ে আছে।",
+        "audio": "audio/items/s12_tree_face.mp3",
+        "grammar": {
+          "presentContinuous": "The gentle tree face is smiling warmly at the rescued little bear.",
+          "simplePast": "A gentle tree face woke from winter sleep just in time to catch him.",
+          "simplePresent": "A gentle tree face turns a towering pine into a loving guardian.",
+          "question": "Why did the giant tree show such a gentle tree face to a stranger?"
+        }
+      },
+      {
+        "id": "s12_tree_eyes",
+        "name": "Tree eyes",
+        "bn": "গাছের চোখ",
+        "box": [295, 685, 380, 765],
+        "sentence": "Soft kind watchful eyes look downward with quiet concern and warmth.",
+        "sentenceBn": "নরম দয়ালু সজাগ চোখ নিচের দিকে শান্ত উদ্বেগ ও উষ্ণতা নিয়ে তাকিয়ে আছে।",
+        "audio": "audio/items/s12_tree_eyes.mp3",
+        "grammar": {
+          "presentContinuous": "His kind watchful eyes are checking to see if the cub is hurt.",
+          "simplePast": "Kind watchful eyes followed the tiny bear cradled in his needles.",
+          "simplePresent": "Kind watchful eyes calm a frightened creature right away.",
+          "question": "What comfort does the cub see in those kind watchful eyes?"
+        }
+      },
+      {
+        "id": "s12_wooden_nose",
+        "name": "Tree nose",
+        "bn": "গাছের নাক",
+        "box": [350, 620, 455, 745],
+        "sentence": "A long pointed wooden nose extends like a sturdy branch from the center of his face.",
+        "sentenceBn": "একটি লম্বা কাঠের নাক তার মুখের মাঝখান থেকে শক্ত ডালের মতো সামনের দিকে বেরিয়ে আছে।",
+        "audio": "audio/items/s12_wooden_nose.mp3",
+        "grammar": {
+          "presentContinuous": "The pointed wooden nose is tilting softly toward the little cub.",
+          "simplePast": "A pointed wooden nose poked neatly over the tree's warm smile.",
+          "simplePresent": "A pointed wooden nose gives the evergreen a friendly, carved look.",
+          "question": "Does that pointed wooden nose look like an ordinary pine branch?"
+        }
+      },
+      {
+        "id": "s12_cradled_cub",
+        "name": "Bear cub",
+        "bn": "ভালুক ছানা",
+        "box": [565, 305, 745, 445],
+        "sentence": "Safe from the snowy drop, the tiny cradled bear cub sits amazed in the warm light.",
+        "sentenceBn": "বরফের ঢাল থেকে পড়ে যাওয়া এড়িয়ে ছোট্ট কোলে আশ্রিত ভালুক ছানাটি উষ্ণ আলোয় বিস্মিত হয়ে বসে আছে।",
+        "audio": "audio/items/s12_cradled_cub.mp3",
+        "grammar": {
+          "presentContinuous": "The cradled bear cub is blinking in wonder at the glowing pine sprig.",
+          "simplePast": "The cradled bear cub landed safely inside the tree's curved needles.",
+          "simplePresent": "A cradled bear cub feels safe once gentle arms hold him high.",
+          "question": "What is the cradled bear cub staring at right in front of his nose?"
+        }
+      },
+      {
+        "id": "s12_branch_cradle",
+        "name": "Branch",
+        "bn": "ডাল",
+        "box": [120, 15, 885, 585],
+        "sentence": "Woven needles form a sturdy curled branch cradle that caught the cub mid-fall.",
+        "sentenceBn": "বোনা পাতাগুলো মিলে একটি শক্ত বাঁকানো ডালের দোলনা তৈরি করেছে যা ছানাটিকে পড়ার মাঝেই ধরে ফেলেছে।",
+        "audio": "audio/items/s12_branch_cradle.mp3",
+        "grammar": {
+          "presentContinuous": "The curled branch cradle is cupping the little bear high above the ground.",
+          "simplePast": "A curled branch cradle scooped the cub up before he hit the valley.",
+          "simplePresent": "A curled branch cradle holds the cub like a warm wooden palm.",
+          "question": "How did this curled branch cradle catch the cub so gently?"
+        }
+      },
+      {
+        "id": "s12_pine_sprig",
+        "name": "Pine sprig",
+        "bn": "পাইন পাতা",
+        "box": [415, 445, 665, 615],
+        "sentence": "A delicate green pine sprig hangs gently near the cub in soft purple light.",
+        "sentenceBn": "নরম বেগুনি আলোয় একটি সূক্ষ্ম সবুজ পাইন কচি ডাল ছানাটির কাছে আলতোভাবে ঝুলছে।",
+        "audio": "audio/items/s12_pine_sprig.mp3",
+        "grammar": {
+          "presentContinuous": "The green pine sprig is swaying lightly beside the tree's nose.",
+          "simplePast": "A green pine sprig brushed near the amazed bear cub's face.",
+          "simplePresent": "A green pine sprig carries tiny cones and fresh pine scent.",
+          "question": "What hangs from the tip of that green pine sprig?"
+        }
+      },
+      {
+        "id": "s12_hanging_cones",
+        "name": "Pinecones",
+        "bn": "পাইনফল",
+        "box": [120, 470, 265, 565],
+        "sentence": "Two small hanging brown pinecones dangle overhead from the evergreen canopy.",
+        "sentenceBn": "ওপরের চিরসবুজ ডালপালা থেকে দুটি ছোট ঝুলন্ত বাদামী পাইনকন ঝুলছে।",
+        "audio": "audio/items/s12_hanging_cones.mp3",
+        "grammar": {
+          "presentContinuous": "The hanging brown pinecones are dangling peacefully above the cub.",
+          "simplePast": "Two hanging brown pinecones swayed gently when the tree woke up.",
+          "simplePresent": "Hanging brown pinecones hold sweet seeds hidden inside their scales.",
+          "question": "Could those hanging brown pinecones hold food for the hungry cub?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s13",
+    "act": 1,
+    "start": 84.6,
+    "end": 89.3,
+    "frameSec": 86.9,
+    "title": "Looking Up from the Sunlit Snow",
+    "items": [
+      {
+        "id": "s13_cub",
+        "name": "Bear cub",
+        "bn": "ভালুক ছানা",
+        "box": [220, 545, 705, 730],
+        "sentence": "Set gently back down, the sitting bear cub looks high up into the branches.",
+        "sentenceBn": "আবার মাটিতে আলতোভাবে নামিয়ে দেওয়ার পর, বসা ভালুক ছানাটি ওপরের ডালগুলোর দিকে তাকিয়ে আছে।",
+        "audio": "audio/items/s13_cub.mp3",
+        "grammar": {
+          "presentContinuous": "The sitting bear cub is gazing upward from the snowy clearing.",
+          "simplePast": "The sitting bear cub rested in the snow and stared at the giant tree.",
+          "simplePresent": "A sitting bear cub still looks small beside the wide tree trunk.",
+          "question": "What is the sitting bear cub waiting for the evergreen to do?"
+        }
+      },
+      {
+        "id": "s13_cub_head",
+        "name": "Cub head",
+        "bn": "ছানার মাথা",
+        "box": [220, 560, 415, 730],
+        "sentence": "His round upturned cub head tilts backward toward the rustling canopy above.",
+        "sentenceBn": "তার গোল ওপরমুখী ছানার মাথাটি ওপরের পাতার মর্মর ধ্বনির দিকে পেছনে হেলে আছে।",
+        "audio": "audio/items/s13_cub_head.mp3",
+        "grammar": {
+          "presentContinuous": "His upturned cub head is following movement high in the branches.",
+          "simplePast": "His upturned cub head stayed tilted toward the towering evergreen.",
+          "simplePresent": "An upturned cub head shows quiet trust and curiosity.",
+          "question": "What catches the light on his upturned cub head right now?"
+        }
+      },
+      {
+        "id": "s13_folded_paws",
+        "name": "Paws",
+        "bn": "থাবা",
+        "box": [475, 565, 615, 675],
+        "sentence": "His small folded front paws rest politely in his lap against his brown tummy.",
+        "sentenceBn": "তার ছোট্ট ভাঁজ করা সামনের থাবাগুলো বাদামী পেটের ওপর ভদ্রভাবে রাখা আছে।",
+        "audio": "audio/items/s13_folded_paws.mp3",
+        "grammar": {
+          "presentContinuous": "His folded front paws are resting calmly against his fuzzy chest.",
+          "simplePast": "Two folded front paws stayed tucked neatly together as he looked up.",
+          "simplePresent": "Folded front paws make a sitting cub look gentle and patient.",
+          "question": "Are his folded front paws getting warmer now in the sunlight?"
+        }
+      },
+      {
+        "id": "s13_hind_feet",
+        "name": "Hind feet",
+        "bn": "পেছনের পা",
+        "box": [615, 545, 705, 730],
+        "sentence": "Two little resting hind feet press small prints into the crisp white snow.",
+        "sentenceBn": "দুটি ছোট বিশ্রামরত পেছনের পা ঝকঝকে সাদা তুষারে ছোট ছাপ ফেলে রেখেছে।",
+        "audio": "audio/items/s13_hind_feet.mp3",
+        "grammar": {
+          "presentContinuous": "His resting hind feet are sitting flat upon the sunlit snow crust.",
+          "simplePast": "His resting hind feet left shallow hollows in the fresh snow.",
+          "simplePresent": "Resting hind feet steady a young bear while he sits upright.",
+          "question": "How tiny are his resting hind feet compared to the tree beside him?"
+        }
+      },
+      {
+        "id": "s13_giant_trunk",
+        "name": "Tree trunk",
+        "bn": "গাছের কাণ্ড",
+        "box": [120, 0, 825, 355],
+        "sentence": "Grooved bark lines the broad striated tree trunk rising along the left edge.",
+        "sentenceBn": "বাম কিনারা জুড়ে উঠে যাওয়া প্রশস্ত রেখাযুক্ত গাছের কাণ্ডটি খাঁজকাটা বাকলে ঢাকা।",
+        "audio": "audio/items/s13_giant_trunk.mp3",
+        "grammar": {
+          "presentContinuous": "The striated tree trunk is towering quietly beside the snow clearing.",
+          "simplePast": "A striated tree trunk glowed warm brown along its carved ridges.",
+          "simplePresent": "A striated tree trunk shows decades of strong winter growth.",
+          "question": "How many bears could fit side by side behind that striated tree trunk?"
+        }
+      },
+      {
+        "id": "s13_snow_floor",
+        "name": "Snow",
+        "bn": "তুষার",
+        "box": [555, 220, 885, 995],
+        "sentence": "Soft morning rays brighten the sunlit snow floor around the waiting cub.",
+        "sentenceBn": "ভোরের নরম আলো অপেক্ষমাণ ছানাটির চারপাশের রোদেলা তুষারের মেঝে উজ্জ্বল করে তুলেছে।",
+        "audio": "audio/items/s13_snow_floor.mp3",
+        "grammar": {
+          "presentContinuous": "The sunlit snow floor is gleaming with gentle lavender and white hues.",
+          "simplePast": "A sunlit snow floor sparkled peacefully beneath the giant evergreen.",
+          "simplePresent": "A sunlit snow floor feels far gentler than the dark twilight ridge.",
+          "question": "What tiny tracks ripple across this sunlit snow floor?"
+        }
+      },
+      {
+        "id": "s13_blue_shadow",
+        "name": "Shadow",
+        "bn": "ছায়া",
+        "box": [575, 705, 685, 905],
+        "sentence": "A crisp long blue shadow stretches behind the cub across the pale snow.",
+        "sentenceBn": "ফ্যাকাশে তুষারের ওপর দিয়ে ছানাটির পেছনে একটি স্পষ্ট লম্বা নীল ছায়া ছড়িয়ে পড়েছে।",
+        "audio": "audio/items/s13_blue_shadow.mp3",
+        "grammar": {
+          "presentContinuous": "The long blue shadow is stretching softly to the right of the cub.",
+          "simplePast": "A long blue shadow traced the bear's sitting shape on the snow.",
+          "simplePresent": "A long blue shadow forms whenever low sunlight crosses open snow.",
+          "question": "Which direction does the sun shine from to cast that long blue shadow?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s14",
+    "act": 1,
+    "start": 89.3,
+    "end": 93.1,
+    "frameSec": 91.2,
+    "title": "The Smiling Evergreen Overhead",
+    "items": [
+      {
+        "id": "s14_tree_face",
+        "name": "Tree face",
+        "bn": "গাছের মুখ",
+        "box": [225, 420, 520, 560],
+        "sentence": "High beneath the needles, a warm tree face beams kindly down at the little cub.",
+        "sentenceBn": "পাতার নিচে উঁচুতে, একটি উষ্ণ গাছের মুখ ছোট্ট ছানাটির দিকে মমতার হাসি ছড়াচ্ছে।",
+        "audio": "audio/items/s14_tree_face.mp3",
+        "grammar": {
+          "presentContinuous": "The warm tree face is beaming happily from the middle of the trunk.",
+          "simplePast": "A warm tree face shone with gentle affection under the canopy.",
+          "simplePresent": "A warm tree face welcomes the lost bear like a loving parent.",
+          "question": "Why does the warm tree face look so joyful right now?"
+        }
+      },
+      {
+        "id": "s14_bright_eyes",
+        "name": "Tree eyes",
+        "bn": "গাছের চোখ",
+        "box": [270, 445, 345, 515],
+        "sentence": "His expressive bright rounded eyes glance down toward the waiting cub below.",
+        "sentenceBn": "তার ভাবপূর্ণ উজ্জ্বল গোল চোখ নিচে অপেক্ষমাণ ছানাটির দিকে তাকিয়ে আছে।",
+        "audio": "audio/items/s14_bright_eyes.mp3",
+        "grammar": {
+          "presentContinuous": "His bright rounded eyes are sparkling under the green pine canopy.",
+          "simplePast": "Two bright rounded eyes looked cheerfully down at the hungry cub.",
+          "simplePresent": "Bright rounded eyes make the ancient tree feel full of life.",
+          "question": "What kind plan is forming behind those bright rounded eyes?"
+        }
+      },
+      {
+        "id": "s14_wooden_nose",
+        "name": "Tree nose",
+        "bn": "গাছের নাক",
+        "box": [325, 480, 405, 565],
+        "sentence": "A sturdy carved wooden nose juts gently rightward above his happy smile.",
+        "sentenceBn": "তার সুখী হাসির ওপরে একটি শক্ত খোদাই করা কাঠের নাক ডান দিকে আলতোভাবে বেরিয়ে আছে।",
+        "audio": "audio/items/s14_wooden_nose.mp3",
+        "grammar": {
+          "presentContinuous": "The carved wooden nose is catching warm pink sunlight on its tip.",
+          "simplePast": "A carved wooden nose stood neatly between his bright eyes and grin.",
+          "simplePresent": "A carved wooden nose looks shaped like a smooth forest knot.",
+          "question": "How cleanly does that carved wooden nose match the tree's bark?"
+        }
+      },
+      {
+        "id": "s14_warm_smile",
+        "name": "Tree smile",
+        "bn": "গাছের হাসি",
+        "box": [415, 445, 480, 535],
+        "sentence": "A wide curved warm smile curves gently across the smooth wooden bark.",
+        "sentenceBn": "মসৃণ কাঠের বাকলের ওপর দিয়ে একটি প্রশস্ত বাঁকানো উষ্ণ হাসি ফুটে উঠেছে।",
+        "audio": "audio/items/s14_warm_smile.mp3",
+        "grammar": {
+          "presentContinuous": "His curved warm smile is glowing softly in the rosy forest light.",
+          "simplePast": "A curved warm smile reassured the small bear waiting below.",
+          "simplePresent": "A curved warm smile shows kindness even without a single spoken word.",
+          "question": "What gift is the evergreen about to shake down with that curved warm smile?"
+        }
+      },
+      {
+        "id": "s14_green_canopy",
+        "name": "Canopy",
+        "bn": "গাছের ছাউনি",
+        "box": [120, 550, 595, 995],
+        "sentence": "Thick clusters of blocky green canopy shelter the trunk like a roof of pine.",
+        "sentenceBn": "ঘন সবুজ চাঁদোয়ার স্তূপ পাইন পাতার ছাদের মতো কাণ্ডটিকে ঘিরে রেখেছে।",
+        "audio": "audio/items/s14_green_canopy.mp3",
+        "grammar": {
+          "presentContinuous": "The blocky green canopy is spreading wide above the forest floor.",
+          "simplePast": "A blocky green canopy held sweet pinecones hidden among its needles.",
+          "simplePresent": "A blocky green canopy blocks harsh snow from reaching the inner trunk.",
+          "question": "What treasures are tucked high inside that blocky green canopy?"
+        }
+      },
+      {
+        "id": "s14_left_branches",
+        "name": "Branches",
+        "bn": "ডালপালা",
+        "box": [120, 20, 540, 430],
+        "sentence": "Cool blue-green shaded left branches frame the smiling evergreen from the side.",
+        "sentenceBn": "শীতল নীল-সবুজ ছায়াঘেরা বাম ডালগুলো পাশ থেকে হাসিমুখো চিরসবুজ গাছটিকে ঘিরে রেখেছে।",
+        "audio": "audio/items/s14_left_branches.mp3",
+        "grammar": {
+          "presentContinuous": "The shaded left branches are rustling softly in the pale violet air.",
+          "simplePast": "Shaded left branches sheltered a dark pinecone beneath their needles.",
+          "simplePresent": "Shaded left branches keep their color deep even in cold weather.",
+          "question": "Can you spot a hidden pinecone tucked under those shaded left branches?"
+        }
+      },
+      {
+        "id": "s14_twig_arm",
+        "name": "Lower branch",
+        "bn": "নিচের ডাল",
+        "box": [615, 540, 800, 805],
+        "sentence": "A thin slender lower branch reaches outward like a long wooden arm.",
+        "sentenceBn": "একটি নিচের সরু ডাল লম্বা কাঠের হাতের মতো বাইরের দিকে প্রসারিত হয়েছে।",
+        "audio": "audio/items/s14_twig_arm.mp3",
+        "grammar": {
+          "presentContinuous": "The slender lower branch is stretching toward the sunlit mist.",
+          "simplePast": "A slender lower branch angled down across the pink background glow.",
+          "simplePresent": "A slender lower branch moves gracefully when the living tree bends.",
+          "question": "How gracefully can the tree reach down with that slender lower branch?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s15",
+    "act": 1,
+    "start": 93.1,
+    "end": 98.6,
+    "frameSec": 95.8,
+    "title": "The Golden Pinecone in the Sun",
+    "items": [
+      {
+        "id": "s15_golden_pinecone",
+        "name": "Pinecone",
+        "bn": "পাইনফল",
+        "box": [290, 370, 665, 570],
+        "sentence": "Glowing in front of the sun, a ripe golden pinecone gleams with sweet pine seeds.",
+        "sentenceBn": "সূর্যের সামনে জ্বলজ্বল করতে থাকা একটি পাকা সোনালী পাইনকন মিষ্টি পাইন বীজে ঝকমক করছে।",
+        "audio": "audio/items/s15_golden_pinecone.mp3",
+        "grammar": {
+          "presentContinuous": "The golden pinecone is shining brilliantly against the morning sun.",
+          "simplePast": "A golden pinecone held crisp, nourishing seeds for the hungry cub.",
+          "simplePresent": "A golden pinecone opens its scales to share sweet winter food.",
+          "question": "What sweet surprise hides inside this radiant golden pinecone?"
+        }
+      },
+      {
+        "id": "s15_cone_scales",
+        "name": "Cone scales",
+        "bn": "পাইনফলের আঁশ",
+        "box": [345, 385, 620, 555],
+        "sentence": "Neatly stacked layered pinecone scales overlap like warm wooden armor.",
+        "sentenceBn": "সুন্দরভাবে সাজানো স্তরে স্তরে সাজানো পাইনকনের আঁশগুলো উষ্ণ কাঠের বর্মের মতো একে অপরের ওপর চেপে আছে।",
+        "audio": "audio/items/s15_cone_scales.mp3",
+        "grammar": {
+          "presentContinuous": "The layered pinecone scales are catching bright edges of golden light.",
+          "simplePast": "Layered pinecone scales loosened slightly to release seeds downward.",
+          "simplePresent": "Layered pinecone scales protect tender seeds through freezing nights.",
+          "question": "How do those layered pinecone scales release their sweet seeds?"
+        }
+      },
+      {
+        "id": "s15_cone_tip",
+        "name": "Cone tip",
+        "bn": "পাইনফলের ডগা",
+        "box": [290, 435, 365, 510],
+        "sentence": "Its neat pointed cone tip crowns the pinecone against the glowing white sun.",
+        "sentenceBn": "উজ্জ্বল সাদা সূর্যের সামনে এর সূচালো পাইনকনের ডগাটি পাইনকনটির শীর্ষ সাজিয়েছে।",
+        "audio": "audio/items/s15_cone_tip.mp3",
+        "grammar": {
+          "presentContinuous": "The pointed cone tip is glowing softly inside the bright solar halo.",
+          "simplePast": "A pointed cone tip stood centered right in front of the shining disk.",
+          "simplePresent": "A pointed cone tip tapers cleanly from the top scales.",
+          "question": "Why does the pointed cone tip shine pale gold around its edges?"
+        }
+      },
+      {
+        "id": "s15_wooden_cradle",
+        "name": "Pine needles",
+        "bn": "পাইন পাতা",
+        "box": [505, 295, 885, 665],
+        "sentence": "Chunky green pine tips form a spiky wooden cradle holding the pinecone upright.",
+        "sentenceBn": "মোটা সবুজ পাইনের ডগাগুলো মিলে একটি কাঁটাযুক্ত কাঠের আধার তৈরি করে পাইনকনটিকে সোজা ধরে রেখেছে।",
+        "audio": "audio/items/s15_wooden_cradle.mp3",
+        "grammar": {
+          "presentContinuous": "The spiky wooden cradle is lifting the golden cone toward the light.",
+          "simplePast": "A spiky wooden cradle held the ripe pinecone steady before shaking it.",
+          "simplePresent": "A spiky wooden cradle keeps cones safe high on the branch tip.",
+          "question": "How will the tree shake seeds out of this spiky wooden cradle?"
+        }
+      },
+      {
+        "id": "s15_sun_glow",
+        "name": "Sunlight",
+        "bn": "সূর্যালোক",
+        "box": [115, 210, 550, 710],
+        "sentence": "A blinding radiant sun glow fills the sky behind the offered pinecone.",
+        "sentenceBn": "উপহার দেওয়া পাইনকনটির পেছনের আকাশ জুড়ে একটি ঝলমলে উজ্জ্বল সূর্যের আভা ছড়িয়ে আছে।",
+        "audio": "audio/items/s15_sun_glow.mp3",
+        "grammar": {
+          "presentContinuous": "The radiant sun glow is bathing the winter sky in warm gold.",
+          "simplePast": "A radiant sun glow turned the frosty air bright rose and gold.",
+          "simplePresent": "A radiant sun glow brings warmth and hope after a dark night.",
+          "question": "How does this radiant sun glow change the mood of the frozen forest?"
+        }
+      },
+      {
+        "id": "s15_twilight_horizon",
+        "name": "Horizon",
+        "bn": "দিগন্ত",
+        "box": [640, 0, 885, 1000],
+        "sentence": "Soft misty slopes melt into the quiet rose forest horizon below the branch.",
+        "sentenceBn": "ডালের নিচে নরম কুয়াশাচ্ছন্ন ঢালগুলো শান্ত গোলাপি বনের দিগন্তে মিশে গেছে।",
+        "audio": "audio/items/s15_twilight_horizon.mp3",
+        "grammar": {
+          "presentContinuous": "The rose forest horizon is glowing gently behind the silhouette.",
+          "simplePast": "A rose forest horizon stretched calmly far beneath the high canopy.",
+          "simplePresent": "A rose forest horizon marks dawn breaking over cold mountain ridges.",
+          "question": "What lies quietly beneath that hazy rose forest horizon?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s16",
+    "act": 1,
+    "start": 98.6,
+    "end": 108.1,
+    "frameSec": 103.3,
+    "title": "Feasting on Sweet Pine Seeds",
+    "items": [
+      {
+        "id": "s16_cub",
+        "name": "Bear cub",
+        "bn": "ভালুক ছানা",
+        "box": [220, 415, 765, 755],
+        "sentence": "Content at last, the sniffing bear cub bends his head over the fallen seeds.",
+        "sentenceBn": "অবশেষে তৃপ্ত হয়ে, গন্ধ নেওয়া ভালুক ছানাটি ঝরে পড়া বীজগুলোর ওপর মাথা ঝুঁকিয়েছে।",
+        "audio": "audio/items/s16_cub.mp3",
+        "grammar": {
+          "presentContinuous": "The sniffing bear cub is bending down to enjoy his sweet meal.",
+          "simplePast": "The sniffing bear cub stepped over and smelled the fresh pine seeds.",
+          "simplePresent": "A sniffing bear cub relaxes the moment warm food fills his belly.",
+          "question": "How happy does the sniffing bear cub look now compared to earlier?"
+        }
+      },
+      {
+        "id": "s16_cub_snout",
+        "name": "Snout",
+        "bn": "নাক-মুখ",
+        "box": [420, 415, 540, 535],
+        "sentence": "His pale sniffing tan snout dips eagerly toward the treats resting on the snow.",
+        "sentenceBn": "তুষারের ওপর পড়ে থাকা খাবারের দিকে তার ফ্যাকাশে ঘ্রাণ নেওয়া বাদামী মুখটি আগ্রহের সাথে নেমে আসছে।",
+        "audio": "audio/items/s16_cub_snout.mp3",
+        "grammar": {
+          "presentContinuous": "His sniffing tan snout is hovering right above the tasty seeds.",
+          "simplePast": "A sniffing tan snout caught the nutty aroma rising off the snow.",
+          "simplePresent": "A sniffing tan snout guides a cub straight to fallen pine nuts.",
+          "question": "What sweet flavor greets his sniffing tan snout right now?"
+        }
+      },
+      {
+        "id": "s16_closed_eyes",
+        "name": "Eyes",
+        "bn": "চোখ",
+        "box": [345, 435, 415, 515],
+        "sentence": "Squinted happy closed eyes show pure delight as the little bear smells the gift.",
+        "sentenceBn": "ছোট ভালুকটি উপহারের ঘ্রাণ নেওয়ার সাথে সাথে তার কুঁচকানো আনন্দিত বন্ধ চোখে গভীর তৃপ্তি ফুটে উঠেছে।",
+        "audio": "audio/items/s16_closed_eyes.mp3",
+        "grammar": {
+          "presentContinuous": "His happy closed eyes are savoring the sweet scent of pine seeds.",
+          "simplePast": "Happy closed eyes replaced the fear that filled his face before.",
+          "simplePresent": "Happy closed eyes express peace and gratitude after hunger passes.",
+          "question": "Why are his happy closed eyes squeezed gently shut?"
+        }
+      },
+      {
+        "id": "s16_pine_seeds",
+        "name": "Pine seeds",
+        "bn": "পাইন বীজ",
+        "box": [735, 370, 785, 495],
+        "sentence": "A small cluster of fallen pine seeds sits waiting right in front of his paws.",
+        "sentenceBn": "ঝরে পড়া পাইন বীজের একটি ছোট স্তূপ তার থাবার ঠিক সামনে অপেক্ষা করছে।",
+        "audio": "audio/items/s16_pine_seeds.mp3",
+        "grammar": {
+          "presentContinuous": "The fallen pine seeds are resting cleanly on the bright snow crust.",
+          "simplePast": "Sweet fallen pine seeds tumbled down from the golden pinecone above.",
+          "simplePresent": "Fallen pine seeds give hungry forest animals rich winter energy.",
+          "question": "Who shook those delicious fallen pine seeds down onto the snow?"
+        }
+      },
+      {
+        "id": "s16_giant_trunk",
+        "name": "Tree trunk",
+        "bn": "গাছের কাণ্ড",
+        "box": [120, 0, 885, 395],
+        "sentence": "Standing close beside him, the bark-lined giant trunk shelters him from the cold wind.",
+        "sentenceBn": "তার ঠিক পাশেই দাঁড়িয়ে থাকা বাকল-ঘেরা বিশাল কাণ্ডটি তাকে শীতল বাতাস থেকে আড়াল করছে।",
+        "audio": "audio/items/s16_giant_trunk.mp3",
+        "grammar": {
+          "presentContinuous": "The bark-lined giant trunk is standing like a warm wall beside the cub.",
+          "simplePast": "A bark-lined giant trunk shaded the little bear while he ate.",
+          "simplePresent": "A bark-lined giant trunk blocks freezing gusts across open snow.",
+          "question": "How safe does it feel to eat beside that bark-lined giant trunk?"
+        }
+      },
+      {
+        "id": "s16_snow_chunks",
+        "name": "Snow chunks",
+        "bn": "তুষারের টুকরো",
+        "box": [650, 120, 765, 265],
+        "sentence": "Two blocky small snow chunks lie near the roots of the huge evergreen tree.",
+        "sentenceBn": "বিশাল চিরসবুজ গাছের গোড়ার কাছে দুটি চৌকো ছোট তুষারের টুকরো পড়ে আছে।",
+        "audio": "audio/items/s16_snow_chunks.mp3",
+        "grammar": {
+          "presentContinuous": "The small snow chunks are catching pale violet light beside the trunk.",
+          "simplePast": "Small snow chunks fell softly when the tree shook its upper branches.",
+          "simplePresent": "Small snow chunks break off high branches whenever trees stir in winter.",
+          "question": "Did those small snow chunks drop down along with the pine seeds?"
+        }
+      },
+      {
+        "id": "s16_snow_slope",
+        "name": "Snow slope",
+        "bn": "তুষারের ঢাল",
+        "box": [660, 290, 885, 1000],
+        "sentence": "A gentle sunlit snow slope sparkles brightly beneath the cub's four sturdy paws.",
+        "sentenceBn": "ছানাটির চারটি শক্ত থাবার নিচে একটি মৃদু রোদেলা তুষারের ঢাল উজ্জ্বলভাবে ঝকমক করছে।",
+        "audio": "audio/items/s16_snow_slope.mp3",
+        "grammar": {
+          "presentContinuous": "The sunlit snow slope is glowing white and blue across the clearing.",
+          "simplePast": "A sunlit snow slope felt warm under the morning sky.",
+          "simplePresent": "A sunlit snow slope brightens the whole forest clearing at dawn.",
+          "question": "Where will the cub go next after finishing his meal on this sunlit snow slope?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s17",
+    "act": 1,
+    "start": 108.1,
+    "end": 112.2,
+    "frameSec": 110.2,
+    "title": "Reaching Joyfully Up the Trunk",
+    "items": [
+      {
+        "id": "s17_cub",
+        "name": "Bear cub",
+        "bn": "ভালুক ছানা",
+        "box": [465, 470, 765, 650],
+        "sentence": "Full and happy, the joyful climbing cub presses eagerly against the great trunk.",
+        "sentenceBn": "পেট ভরে খুশি হয়ে, আনন্দিত আরোহী ছানাটি আগ্রহের সাথে বিশাল কাণ্ডটির গায়ে চেপে ধরেছে।",
+        "audio": "audio/items/s17_cub.mp3",
+        "grammar": {
+          "presentContinuous": "The joyful climbing cub is reaching up to climb into the tree's shelter.",
+          "simplePast": "The joyful climbing cub hurried right up to the rough wooden bark.",
+          "simplePresent": "A joyful climbing cub climbs eagerly toward a friend who feeds him.",
+          "question": "Where is the joyful climbing cub hoping to sleep tonight?"
+        }
+      },
+      {
+        "id": "s17_happy_smile",
+        "name": "Smile",
+        "bn": "হাসি",
+        "box": [495, 470, 570, 520],
+        "sentence": "A wide open cub smile beams upward toward the giant evergreen's branches.",
+        "sentenceBn": "বিশাল চিরসবুজ গাছের ডালগুলোর দিকে তাকিয়ে একটি চওড়া খোলা মুখের ছানার হাসি ফুটে উঠেছে।",
+        "audio": "audio/items/s17_happy_smile.mp3",
+        "grammar": {
+          "presentContinuous": "His open cub smile is shining with pure delight and affection.",
+          "simplePast": "An open cub smile lit up his face as he looked up the trunk.",
+          "simplePresent": "An open cub smile shows how fast kindness melts away loneliness.",
+          "question": "Why does his open cub smile look so joyful right now?"
+        }
+      },
+      {
+        "id": "s17_gripping_paw",
+        "name": "Paw",
+        "bn": "থাবা",
+        "box": [625, 490, 685, 545],
+        "sentence": "His small climbing front paw clings cheerfully to the textured wooden bark.",
+        "sentenceBn": "তার ছোট্ট আঁকড়ে ধরা সামনের থাবাটি খসখসে কাঠের বাকল আনন্দ নিয়ে ধরে আছে।",
+        "audio": "audio/items/s17_gripping_paw.mp3",
+        "grammar": {
+          "presentContinuous": "His climbing front paw is gripping the deep grooves of the tree.",
+          "simplePast": "One climbing front paw reached up onto the warm brown bark.",
+          "simplePresent": "A climbing front paw helps young bears scale tall trunks with ease.",
+          "question": "Can his small climbing front paw carry him all the way to the branches?"
+        }
+      },
+      {
+        "id": "s17_tree_trunk",
+        "name": "Tree trunk",
+        "bn": "গাছের কাণ্ড",
+        "box": [120, 10, 885, 535],
+        "sentence": "Deep vertical bark grooves mark the warm ridged trunk beside the eager cub.",
+        "sentenceBn": "উৎসুক ছানাটির পাশের উষ্ণ খাঁজকাটা কাণ্ডটিতে গভীর লম্বালম্বি বাকলের ভাঁজ রয়েছে।",
+        "audio": "audio/items/s17_tree_trunk.mp3",
+        "grammar": {
+          "presentContinuous": "The warm ridged trunk is glowing soft brown in the golden light.",
+          "simplePast": "A warm ridged trunk gave the little cub sturdy footholds to climb.",
+          "simplePresent": "A warm ridged trunk rises strong and steady above winter snow.",
+          "question": "How high up this warm ridged trunk will the little bear climb?"
+        }
+      },
+      {
+        "id": "s17_green_branch",
+        "name": "Branch",
+        "bn": "ডাল",
+        "box": [255, 545, 715, 995],
+        "sentence": "A thick sunlit low green branch rests gently beside the trunk like a soft stairway.",
+        "sentenceBn": "একটি পুরু রোদেলা নিচু সবুজ ডাল নরম সিঁড়ির মতো কাণ্ডের পাশে আলতোভাবে নেমে আছে।",
+        "audio": "audio/items/s17_green_branch.mp3",
+        "grammar": {
+          "presentContinuous": "The low green branch is glowing bright green beside the happy cub.",
+          "simplePast": "A low green branch bent downward to meet the small bear.",
+          "simplePresent": "A low green branch offers a soft cushion of dense pine needles.",
+          "question": "Will the tree lift him up on that low green branch?"
+        }
+      },
+      {
+        "id": "s17_frosted_roots",
+        "name": "Roots",
+        "bn": "শিকড়",
+        "box": [710, 265, 860, 480],
+        "sentence": "A pale violet frosted root glow shimmers where the great trunk meets the snow.",
+        "sentenceBn": "বিশাল কাণ্ডটি যেখানে তুষারের সাথে মিশেছে সেখানে একটি ফ্যাকাশে বেগুনি তুষারমাখা শিকড়ের আভা ঝলকাচ্ছে।",
+        "audio": "audio/items/s17_frosted_roots.mp3",
+        "grammar": {
+          "presentContinuous": "The frosted root glow is lighting the icy bark right above the drift.",
+          "simplePast": "A frosted root glow shimmered softly around the base of the trunk.",
+          "simplePresent": "A frosted root glow traces where cold snow meets ancient wood.",
+          "question": "Why does that frosted root glow shine purple against the brown bark?"
+        }
+      },
+      {
+        "id": "s17_snow_bank",
+        "name": "Snowbank",
+        "bn": "তুষার পাড়",
+        "box": [680, 455, 885, 1000],
+        "sentence": "Smooth ripples mark the soft white snowbank beneath the cub's hind feet.",
+        "sentenceBn": "ছানাটির পেছনের পায়ের নিচের নরম সাদা তুষার পাড়ে মসৃণ ঢেউয়ের দাগ রয়েছে।",
+        "audio": "audio/items/s17_snow_bank.mp3",
+        "grammar": {
+          "presentContinuous": "The soft white snowbank is sparkling beneath the evergreen's low needles.",
+          "simplePast": "A soft white snowbank cushioned the cub as he leaped toward the trunk.",
+          "simplePresent": "A soft white snowbank looks peaceful once the sun rises over the woods.",
+          "question": "Is the cub about to leave this soft white snowbank for a bed in the sky?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s18",
+    "act": 1,
+    "start": 112.2,
+    "end": 115.7,
+    "frameSec": 114.0,
+    "title": "Standing Tall in the Sunset Glow",
+    "items": [
+      {
+        "id": "s18_evergreen_tree",
+        "name": "Evergreen",
+        "bn": "চিরসবুজ গাছ",
+        "box": [120, 295, 845, 565],
+        "sentence": "Standing proudly above the valley, the tall evergreen tree shines in warm sunset hues.",
+        "sentenceBn": "উপত্যকার ওপর গর্বের সাথে দাঁড়িয়ে থাকা লম্বা চিরসবুজ গাছটি উষ্ণ সূর্যাস্তের রঙে ঝলমল করছে।",
+        "audio": "audio/items/s18_evergreen_tree.mp3",
+        "grammar": {
+          "presentContinuous": "The tall evergreen tree is cradling its young guest high in the light.",
+          "simplePast": "The tall evergreen tree stood like a peaceful guardian over the snowy cliffs.",
+          "simplePresent": "A tall evergreen tree stands firm against winter cold and mountain winds.",
+          "question": "How high above the valley does this tall evergreen tree stand?"
+        }
+      },
+      {
+        "id": "s18_snowy_canopy",
+        "name": "Canopy",
+        "bn": "গাছের ছাউনি",
+        "box": [120, 295, 280, 565],
+        "sentence": "Thick white frost crowns the snow-capped tree canopy like a cozy winter hat.",
+        "sentenceBn": "পুরু সাদা তুষার আরামদায়ক শীতের টুপির মতো তুষার-ঢাকা গাছের চূড়াকে সাজিয়েছে।",
+        "audio": "audio/items/s18_snowy_canopy.mp3",
+        "grammar": {
+          "presentContinuous": "The snow-capped tree canopy is glowing softly in the golden evening sky.",
+          "simplePast": "A snow-capped tree canopy sheltered the tree's smiling wooden face below.",
+          "simplePresent": "A snow-capped tree canopy holds thick drifts high above the forest floor.",
+          "question": "What keeps that snow-capped tree canopy resting cleanly above his face?"
+        }
+      },
+      {
+        "id": "s18_tree_face",
+        "name": "Tree face",
+        "bn": "গাছের মুখ",
+        "box": [205, 425, 310, 495],
+        "sentence": "Peeked beneath its cap of needles, the smiling tree face glows peacefully in the sun.",
+        "sentenceBn": "পাতার টুপির নিচ থেকে উঁকি দেওয়া হাসিমুখো গাছের মুখটি রোদে শান্তভাবে জ্বলছে।",
+        "audio": "audio/items/s18_tree_face.mp3",
+        "grammar": {
+          "presentContinuous": "His smiling tree face is beaming gently over the canyon cliffs.",
+          "simplePast": "The smiling tree face looked content after rescuing the lost cub.",
+          "simplePresent": "A smiling tree face radiates warmth across the whole winter scene.",
+          "question": "Why does his smiling tree face look so peaceful at the end of the day?"
+        }
+      },
+      {
+        "id": "s18_bent_arms",
+        "name": "Tree arms",
+        "bn": "গাছের হাত",
+        "box": [345, 295, 675, 545],
+        "sentence": "Two slender bent wooden arms fold gently around small tufts of green needles.",
+        "sentenceBn": "দুটি সরু বাঁকানো কাঠের হাত সবুজ পাতার ছোট গোছাগুলোর চারপাশে আলতোভাবে ভাঁজ হয়ে আছে।",
+        "audio": "audio/items/s18_bent_arms.mp3",
+        "grammar": {
+          "presentContinuous": "His bent wooden arms are resting comfortably along his tall trunk.",
+          "simplePast": "Two bent wooden arms held dark green pine sprays near his chest.",
+          "simplePresent": "Bent wooden arms move naturally like sturdy limbs in a calm breeze.",
+          "question": "What comforting shape do his bent wooden arms make against the light?"
+        }
+      },
+      {
+        "id": "s18_sunset_glow",
+        "name": "Sunset",
+        "bn": "সূর্যাস্ত",
+        "box": [115, 0, 540, 375],
+        "sentence": "A radiant peach and rose warm sunset glow pours across the distant mountain air.",
+        "sentenceBn": "দূরের পাহাড়ি বাতাস জুড়ে এক ঝলমলে পীচ ও গোলাপি রঙের উষ্ণ সূর্যাস্তের আভা ছড়িয়ে পড়েছে।",
+        "audio": "audio/items/s18_sunset_glow.mp3",
+        "grammar": {
+          "presentContinuous": "The warm sunset glow is turning the purple mist to soft gold.",
+          "simplePast": "A warm sunset glow lit the left side of the tall evergreen.",
+          "simplePresent": "A warm sunset glow brings gentle color to a cold winter sky.",
+          "question": "How does that warm sunset glow transform the chilly mountain valley?"
+        }
+      },
+      {
+        "id": "s18_canyon_cliffs",
+        "name": "Cliffs",
+        "bn": "খাড়া পাহাড়",
+        "box": [435, 575, 885, 1000],
+        "sentence": "Steep snowy canyon cliffs sweep upward along the shadowed right ridge.",
+        "sentenceBn": "খাড়া তুষারময় গিরিখাতের খাদগুলো ছায়াঘেরা ডান দিকের পাহাড় জুড়ে ওপরের দিকে উঠে গেছে।",
+        "audio": "audio/items/s18_canyon_cliffs.mp3",
+        "grammar": {
+          "presentContinuous": "The snowy canyon cliffs are gleaming pale blue across the gap.",
+          "simplePast": "Snowy canyon cliffs rose silently beyond the evergreen's perch.",
+          "simplePresent": "Snowy canyon cliffs mark the wild mountain border of the woods.",
+          "question": "How far across the valley do those snowy canyon cliffs stretch?"
+        }
+      },
+      {
+        "id": "s18_trunk_base",
+        "name": "Tree trunk",
+        "bn": "গাছের কাণ্ড",
+        "box": [745, 250, 885, 585],
+        "sentence": "A wide snowy trunk base anchors the giant tree firmly on its rocky shelf.",
+        "sentenceBn": "একটি প্রশস্ত তুষারময় কাণ্ডের গোড়া বিশাল গাছটিকে পাথুরে শৈলতটের ওপর শক্তভাবে আটকে রেখেছে।",
+        "audio": "audio/items/s18_trunk_base.mp3",
+        "grammar": {
+          "presentContinuous": "The snowy trunk base is holding fast to the frosted rock ledge.",
+          "simplePast": "A snowy trunk base gripped the frozen hillside without wavering.",
+          "simplePresent": "A snowy trunk base keeps a tall pine steady above deep canyons.",
+          "question": "How deep must roots reach beneath that snowy trunk base?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s19",
+    "act": 1,
+    "start": 115.7,
+    "end": 123.0,
+    "frameSec": 119.3,
+    "title": "Sleeping Tucked in Warm Branches",
+    "items": [
+      {
+        "id": "s19_sleepy_cub",
+        "name": "Bear cub",
+        "bn": "ভালুক ছানা",
+        "box": [230, 435, 765, 825],
+        "sentence": "Safe and warm at last, the sleepy bear cub drifts off tucked into the branches.",
+        "sentenceBn": "অবশেষে নিরাপদ ও উষ্ণ আশ্রয়ে, ঘুমন্ত ভালুক ছানাটি ডালপালার ভেতর গুঁজে ঘুমিয়ে পড়ছে।",
+        "audio": "audio/items/s19_sleepy_cub.mp3",
+        "grammar": {
+          "presentContinuous": "The sleepy bear cub is dozing off inside his cozy pine nest.",
+          "simplePast": "The sleepy bear cub settled peacefully into the shelter of the evergreen.",
+          "simplePresent": "A sleepy bear cub rests deeply once belly and heart feel warm.",
+          "question": "What sweet dreams might visit the sleepy bear cub tonight?"
+        }
+      },
+      {
+        "id": "s19_drowsy_eyes",
+        "name": "Eyes",
+        "bn": "চোখ",
+        "box": [385, 515, 445, 675],
+        "sentence": "His heavy drowsy half-closed eyes blink slowly as gentle sleep arrives.",
+        "sentenceBn": "নরম ঘুম নেমে আসায় তার ভারী তন্দ্রাচ্ছন্ন আধবোজা চোখ দুটি ধীরে ধীরে বুজে আসছে।",
+        "audio": "audio/items/s19_drowsy_eyes.mp3",
+        "grammar": {
+          "presentContinuous": "His drowsy half-closed eyes are fluttering softly toward sleep.",
+          "simplePast": "Drowsy half-closed eyes showed complete calm after a frightening day.",
+          "simplePresent": "Drowsy half-closed eyes signal that a tired cub finally feels safe.",
+          "question": "How fast will those drowsy half-closed eyes shut completely?"
+        }
+      },
+      {
+        "id": "s19_dark_nose",
+        "name": "Nose",
+        "bn": "নাক",
+        "box": [450, 575, 505, 635],
+        "sentence": "His little square cub's dark nose rests snugly above his tucked brown chin.",
+        "sentenceBn": "তার ছোট চৌকো ছানার কালো নাকটি গুঁজে রাখা বাদামী চিবুকের ওপর আরামে স্থির হয়ে আছে।",
+        "audio": "audio/items/s19_dark_nose.mp3",
+        "grammar": {
+          "presentContinuous": "The cub's dark nose is breathing slowly in the warm pine air.",
+          "simplePast": "The cub's dark nose stayed still as he drifted off to sleep.",
+          "simplePresent": "A cub's dark nose smells fresh evergreen needles all around his bed.",
+          "question": "Does the cub's dark nose catch the warm scent of pine all night?"
+        }
+      },
+      {
+        "id": "s19_brow_tuft",
+        "name": "Head tuft",
+        "bn": "মাথার ঝুটি",
+        "box": [235, 545, 315, 645],
+        "sentence": "A small scruffy fuzzy brow tuft rises softly between his rounded little ears.",
+        "sentenceBn": "তার গোল ছোট কানের মাঝখানে একটি ছোট্ট এলোমেলো নরম কপালের ঝুটি নরমভাবে উঠে আছে।",
+        "audio": "audio/items/s19_brow_tuft.mp3",
+        "grammar": {
+          "presentContinuous": "His fuzzy brow tuft is glowing pink along its edges in the dusk.",
+          "simplePast": "A fuzzy brow tuft nodded softly as the cub's head grew heavy.",
+          "simplePresent": "A fuzzy brow tuft gives the resting cub a gentle, childlike charm.",
+          "question": "How soft does that little fuzzy brow tuft look in the twilight?"
+        }
+      },
+      {
+        "id": "s19_warm_cradle",
+        "name": "Branch",
+        "bn": "ডাল",
+        "box": [565, 145, 885, 975],
+        "sentence": "Sturdy pine sprays weave a cozy warm branch cradle around the resting bear.",
+        "sentenceBn": "শক্ত পাইন পাতার গুচ্ছ বিশ্রামরত ভালুকটির চারপাশে একটি আরামদায়ক উষ্ণ ডালের দোলনা বুনে রেখেছে।",
+        "audio": "audio/items/s19_warm_cradle.mp3",
+        "grammar": {
+          "presentContinuous": "The warm branch cradle is wrapping the cub safely above the frost.",
+          "simplePast": "A warm branch cradle kept the cold mountain wind away all night.",
+          "simplePresent": "A warm branch cradle makes a snug bed high among evergreen needles.",
+          "question": "Why does this warm branch cradle feel safer than the snowy ground?"
+        }
+      },
+      {
+        "id": "s19_evening_glow",
+        "name": "Evening sky",
+        "bn": "সন্ধ্যার আকাশ",
+        "box": [115, 195, 520, 470],
+        "sentence": "A dreamy rose pink evening glow shines softly behind the nestled cub.",
+        "sentenceBn": "আশ্রিত ছানাটির পেছনে একটি স্বপ্নিল গোলাপি সন্ধ্যার আভা নরমভাবে জ্বলছে।",
+        "audio": "audio/items/s19_evening_glow.mp3",
+        "grammar": {
+          "presentContinuous": "The pink evening glow is fading gently into peaceful twilight.",
+          "simplePast": "A pink evening glow warmed the silhouettes of the tree's branches.",
+          "simplePresent": "A pink evening glow wraps the end of winter's first day in peace.",
+          "question": "What peaceful feeling does this pink evening glow bring to the scene?"
+        }
+      },
+      {
+        "id": "s19_pine_needles",
+        "name": "Pine needles",
+        "bn": "পাইন পাতা",
+        "box": [120, 0, 885, 310],
+        "sentence": "Silhouetted dark pine needles frame the left side of the cozy tree shelter.",
+        "sentenceBn": "ছায়াঘেরা গাঢ় পাইন পাতাগুলো আরামদায়ক গাছের আশ্রয়ের বাম দিকটি ঘিরে রেখেছে।",
+        "audio": "audio/items/s19_pine_needles.mp3",
+        "grammar": {
+          "presentContinuous": "The dark pine needles are sheltering the sleeping cub from cold gusts.",
+          "simplePast": "Thick dark pine needles formed a quiet curtain around the nest.",
+          "simplePresent": "Dark pine needles stay thick and sturdy through every winter storm.",
+          "question": "How well do those dark pine needles block out the chilly mountain air?"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s20",
+    "act": 1,
+    "start": 123.0,
+    "end": 128.2,
+    "frameSec": 125.6,
+    "title": "Blue Songbird as Winter Melts",
+    "items": [
+      {
+        "id": "s20_blue_bird",
+        "name": "Songbird",
+        "bn": "পাখি",
+        "box": [400, 355, 545, 465],
+        "sentence": "Perched calmly on the evergreen limb, a little blue bird heralds warmer days ahead.",
+        "sentenceBn": "চিরসবুজ ডালের ওপর শান্তভাবে বসে থাকা একটি ছোট নীল পাখি সামনের উষ্ণ দিনের বার্তা দিচ্ছে।",
+        "audio": "audio/items/s20_blue_bird.mp3",
+        "grammar": {
+          "presentContinuous": "The little blue bird is perching happily in the bright spring sunlight.",
+          "simplePast": "A bright little blue bird landed softly on the crooked pine branch.",
+          "simplePresent": "A little blue bird brings cheerful song back to the forest.",
+          "question": "Why does the little blue bird look so at home on this branch?"
+        }
+      },
+      {
+        "id": "s20_tiny_bee",
+        "name": "Bee",
+        "bn": "মৌমাছি",
+        "box": [160, 200, 235, 245],
+        "sentence": "A buzzing tiny striped bee hovers near the fresh needles in golden light.",
+        "sentenceBn": "সোনালী আলোয় সতেজ পাইন পাতার কাছে একটি গুঞ্জনরত ছোট্ট ডোরাকাটা মৌমাছি উড়ছে।",
+        "audio": "audio/items/s20_tiny_bee.mp3",
+        "grammar": {
+          "presentContinuous": "The tiny striped bee is darting cheerfully beside the green tuft.",
+          "simplePast": "A tiny striped bee buzzed upward past the sunlit evergreen limb.",
+          "simplePresent": "A tiny striped bee wakes up once winter frost starts melting away.",
+          "question": "Where is that tiny striped bee flying in the warm morning air?"
+        }
+      },
+      {
+        "id": "s20_melting_icicles",
+        "name": "Icicles",
+        "bn": "বরফ দণ্ড",
+        "box": [615, 200, 775, 250],
+        "sentence": "Glistening melting clear icicles drip gently from the underside of the branch.",
+        "sentenceBn": "ডালের নিচের অংশ থেকে ঝিকিমিকি করা গলে যাওয়া স্বচ্ছ বরফ ফোঁটা ফোঁটা করে গলে পড়ছে।",
+        "audio": "audio/items/s20_melting_icicles.mp3",
+        "grammar": {
+          "presentContinuous": "The melting clear icicles are dripping slowly in the warming sun.",
+          "simplePast": "Melting clear icicles shrank drop by drop as winter loosened its grip.",
+          "simplePresent": "Melting clear icicles prove that freezing weather is finally ending.",
+          "question": "What season begins as these melting clear icicles drip away?"
+        }
+      },
+      {
+        "id": "s20_pine_branch",
+        "name": "Branch",
+        "bn": "ডাল",
+        "box": [120, 0, 825, 605],
+        "sentence": "An angular sunlit brown branch stretches across the frame beneath the cheerful bird.",
+        "sentenceBn": "আনন্দিত পাখিটির নিচে একটি কৌণিক রোদেলা বাদামী ডাল ফ্রেম জুড়ে প্রসারিত হয়ে আছে।",
+        "audio": "audio/items/s20_pine_branch.mp3",
+        "grammar": {
+          "presentContinuous": "The sunlit brown branch is holding both melting ice and bright songbirds.",
+          "simplePast": "A sunlit brown branch bent gently in warm golden rays.",
+          "simplePresent": "A sunlit brown branch turns fresh and lively when frost melts.",
+          "question": "How many signs of warmer weather sit along this sunlit brown branch?"
+        }
+      },
+      {
+        "id": "s20_needle_clusters",
+        "name": "Pine needles",
+        "bn": "পাইন পাতা",
+        "box": [625, 435, 815, 615],
+        "sentence": "Crisp fan-shaped green needle clusters sprout proudly at the tip of the limb.",
+        "sentenceBn": "ডালের অগ্রভাগে সতেজ পাখার মতো সবুজ পাতার গুচ্ছ গর্বের সাথে ফুটে আছে।",
+        "audio": "audio/items/s20_needle_clusters.mp3",
+        "grammar": {
+          "presentContinuous": "The green needle clusters are soaking up golden morning sunshine.",
+          "simplePast": "Bright green needle clusters stayed fresh through the whole cold winter.",
+          "simplePresent": "Green needle clusters stay vibrant through every changing season.",
+          "question": "Why do these green needle clusters look so fresh after snow and ice?"
+        }
+      },
+      {
+        "id": "s20_smiling_tree",
+        "name": "Evergreen",
+        "bn": "চিরসবুজ গাছ",
+        "box": [120, 355, 600, 640],
+        "sentence": "Through golden mist, the soft smiling tree watches warmly behind the perched bird.",
+        "sentenceBn": "সোনালী কুয়াশার ভেতর দিয়ে আবছা হাসিমুখো গাছটি বসে থাকা পাখিটির পেছনে উষ্ণ দৃষ্টিতে তাকিয়ে আছে।",
+        "audio": "audio/items/s20_smiling_tree.mp3",
+        "grammar": {
+          "presentContinuous": "The soft smiling tree is gazing fondly across the sunlit woods.",
+          "simplePast": "A soft smiling tree glowed gently behind the foreground branch.",
+          "simplePresent": "A soft smiling tree watches with quiet joy as forest life awakens.",
+          "question": "Who is the soft smiling tree watching so fondly in the golden light?"
+        }
+      },
+      {
+        "id": "s20_spring_blossoms",
+        "name": "Blossoms",
+        "bn": "ফুল",
+        "box": [420, 760, 885, 1000],
+        "sentence": "Pastel pink and yellow blurred spring blossoms bloom softly on the right side.",
+        "sentenceBn": "ডান দিকে প্যাস্টেল গোলাপি ও হলুদ রঙের ঝাপসা বসন্তের ফুলগুলো নরমভাবে ফুটে উঠেছে।",
+        "audio": "audio/items/s20_spring_blossoms.mp3",
+        "grammar": {
+          "presentContinuous": "The blurred spring blossoms are brightening the sunlit meadow below.",
+          "simplePast": "Colorful blurred spring blossoms opened as the snowdrifts vanished.",
+          "simplePresent": "Blurred spring blossoms bring fresh color after long white winters.",
+          "question": "What colors shimmer among those blurred spring blossoms in the sun?"
+        }
+      }
+    ]
+  }
+]

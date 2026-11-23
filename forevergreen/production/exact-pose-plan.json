@@ -1,0 +1,1950 @@
+{
+  "baseScenes": 150,
+  "poseCount": 113,
+  "totalScenes": 263,
+  "clampedAll": {
+    "s01": {
+      "start": 0.0,
+      "end": 16.12,
+      "frameSec": 11.5
+    },
+    "s02": {
+      "start": 16.12,
+      "end": 21.35,
+      "frameSec": 19.1
+    },
+    "s03": {
+      "start": 24.3,
+      "end": 29.5,
+      "frameSec": 27.2
+    },
+    "x01": {
+      "start": 29.5,
+      "end": 33.75,
+      "frameSec": 31.62
+    },
+    "s04": {
+      "start": 33.75,
+      "end": 38.15,
+      "frameSec": 35.4
+    },
+    "s05": {
+      "start": 39.5,
+      "end": 43.85,
+      "frameSec": 42.1
+    },
+    "x02": {
+      "start": 44.83,
+      "end": 46.42,
+      "frameSec": 45.62
+    },
+    "s06": {
+      "start": 46.42,
+      "end": 50.05,
+      "frameSec": 47.8
+    },
+    "s07": {
+      "start": 50.75,
+      "end": 55.25,
+      "frameSec": 53.0
+    },
+    "s08": {
+      "start": 55.25,
+      "end": 59.29,
+      "frameSec": 57.2
+    },
+    "s09": {
+      "start": 59.29,
+      "end": 62.62,
+      "frameSec": 61.8
+    },
+    "x03": {
+      "start": 62.62,
+      "end": 64.17,
+      "frameSec": 63.39
+    },
+    "x04": {
+      "start": 64.17,
+      "end": 66.5,
+      "frameSec": 65.34
+    },
+    "s10": {
+      "start": 66.5,
+      "end": 69.25,
+      "frameSec": 66.7
+    },
+    "x05": {
+      "start": 69.25,
+      "end": 71.29,
+      "frameSec": 70.27
+    },
+    "s11": {
+      "start": 71.29,
+      "end": 74.92,
+      "frameSec": 72.1
+    },
+    "s12": {
+      "start": 78.57,
+      "end": 81.05,
+      "frameSec": 79.8
+    },
+    "s13": {
+      "start": 85.73,
+      "end": 89.29,
+      "frameSec": 86.9
+    },
+    "s14": {
+      "start": 89.29,
+      "end": 93.12,
+      "frameSec": 91.2
+    },
+    "x06": {
+      "start": 93.12,
+      "end": 94.04,
+      "frameSec": 93.58
+    },
+    "s15": {
+      "start": 94.04,
+      "end": 97.55,
+      "frameSec": 95.8
+    },
+    "s16": {
+      "start": 98.58,
+      "end": 105.55,
+      "frameSec": 103.3
+    },
+    "x07": {
+      "start": 108.08,
+      "end": 109.62,
+      "frameSec": 108.85
+    },
+    "s17": {
+      "start": 109.62,
+      "end": 112.25,
+      "frameSec": 110.2
+    },
+    "s18": {
+      "start": 112.25,
+      "end": 115.71,
+      "frameSec": 114.0
+    },
+    "s19": {
+      "start": 115.71,
+      "end": 123.0,
+      "frameSec": 119.3
+    },
+    "s20": {
+      "start": 125.15,
+      "end": 128.17,
+      "frameSec": 125.6
+    },
+    "s21": {
+      "start": 128.17,
+      "end": 132.04,
+      "frameSec": 130.1
+    },
+    "s22": {
+      "start": 132.04,
+      "end": 139.45,
+      "frameSec": 136.2
+    },
+    "x08": {
+      "start": 140.46,
+      "end": 143.5,
+      "frameSec": 141.98
+    },
+    "s23": {
+      "start": 143.5,
+      "end": 145.95,
+      "frameSec": 145.2
+    },
+    "s24": {
+      "start": 151.02,
+      "end": 155.12,
+      "frameSec": 152.5
+    },
+    "x09": {
+      "start": 155.12,
+      "end": 157.42,
+      "frameSec": 156.27
+    },
+    "s25": {
+      "start": 157.42,
+      "end": 158.55,
+      "frameSec": 157.8
+    },
+    "s26": {
+      "start": 160.46,
+      "end": 165.54,
+      "frameSec": 163.0
+    },
+    "s27": {
+      "start": 165.54,
+      "end": 172.05,
+      "frameSec": 169.8
+    },
+    "x10": {
+      "start": 174.04,
+      "end": 176.96,
+      "frameSec": 175.5
+    },
+    "s28": {
+      "start": 176.96,
+      "end": 177.79,
+      "frameSec": 177.1
+    },
+    "x11": {
+      "start": 177.79,
+      "end": 180.21,
+      "frameSec": 179.0
+    },
+    "s29": {
+      "start": 180.21,
+      "end": 183.96,
+      "frameSec": 182.1
+    },
+    "x12": {
+      "start": 183.96,
+      "end": 187.17,
+      "frameSec": 185.56
+    },
+    "s30": {
+      "start": 189.32,
+      "end": 192.45,
+      "frameSec": 189.7
+    },
+    "s31": {
+      "start": 200.6,
+      "end": 201.45,
+      "frameSec": 201.2
+    },
+    "s32": {
+      "start": 211.55,
+      "end": 212.85,
+      "frameSec": 212.6
+    },
+    "x13": {
+      "start": 218.29,
+      "end": 221.54,
+      "frameSec": 219.91
+    },
+    "s33": {
+      "start": 221.54,
+      "end": 226.35,
+      "frameSec": 223.6
+    },
+    "s34": {
+      "start": 230.94,
+      "end": 235.92,
+      "frameSec": 232.4
+    },
+    "x14": {
+      "start": 235.92,
+      "end": 238.0,
+      "frameSec": 236.96
+    },
+    "s35": {
+      "start": 241.15,
+      "end": 246.08,
+      "frameSec": 241.7
+    },
+    "s36": {
+      "start": 252.73,
+      "end": 255.95,
+      "frameSec": 253.2
+    },
+    "x15": {
+      "start": 258.08,
+      "end": 259.04,
+      "frameSec": 258.56
+    },
+    "s37": {
+      "start": 263.19,
+      "end": 264.45,
+      "frameSec": 264.2
+    },
+    "s38": {
+      "start": 273.5,
+      "end": 275.75,
+      "frameSec": 274.5
+    },
+    "s39": {
+      "start": 279.75,
+      "end": 283.25,
+      "frameSec": 281.4
+    },
+    "s40": {
+      "start": 284.9,
+      "end": 289.65,
+      "frameSec": 286.9
+    },
+    "s41": {
+      "start": 294.77,
+      "end": 298.25,
+      "frameSec": 295.5
+    },
+    "s42": {
+      "start": 303.02,
+      "end": 306.15,
+      "frameSec": 304.4
+    },
+    "s43": {
+      "start": 309.61,
+      "end": 314.17,
+      "frameSec": 311.4
+    },
+    "x16": {
+      "start": 314.17,
+      "end": 315.46,
+      "frameSec": 314.81
+    },
+    "s44": {
+      "start": 315.46,
+      "end": 320.54,
+      "frameSec": 317.4
+    },
+    "s45": {
+      "start": 322.19,
+      "end": 325.21,
+      "frameSec": 322.9
+    },
+    "s46": {
+      "start": 325.21,
+      "end": 328.67,
+      "frameSec": 326.9
+    },
+    "x17": {
+      "start": 328.67,
+      "end": 333.36,
+      "frameSec": 331.01
+    },
+    "s47": {
+      "start": 333.36,
+      "end": 338.65,
+      "frameSec": 335.4
+    },
+    "x18": {
+      "start": 345.23,
+      "end": 348.5,
+      "frameSec": 345.75
+    },
+    "s48": {
+      "start": 349.42,
+      "end": 349.85,
+      "frameSec": 349.6
+    },
+    "x19": {
+      "start": 354.17,
+      "end": 355.37,
+      "frameSec": 354.77
+    },
+    "x20": {
+      "start": 355.37,
+      "end": 357.0,
+      "frameSec": 356.19
+    },
+    "x21": {
+      "start": 357.0,
+      "end": 359.62,
+      "frameSec": 358.31
+    },
+    "s49": {
+      "start": 359.62,
+      "end": 362.85,
+      "frameSec": 361.6
+    },
+    "s50": {
+      "start": 366.21,
+      "end": 370.87,
+      "frameSec": 369.1
+    },
+    "x22": {
+      "start": 370.87,
+      "end": 372.04,
+      "frameSec": 371.46
+    },
+    "x23": {
+      "start": 372.04,
+      "end": 374.46,
+      "frameSec": 373.25
+    },
+    "s51": {
+      "start": 374.46,
+      "end": 377.29,
+      "frameSec": 374.61
+    },
+    "s52": {
+      "start": 381.94,
+      "end": 383.75,
+      "frameSec": 382.5
+    },
+    "s53": {
+      "start": 391.3,
+      "end": 394.55,
+      "frameSec": 392.8
+    },
+    "x24": {
+      "start": 397.92,
+      "end": 398.87,
+      "frameSec": 398.39
+    },
+    "x25": {
+      "start": 398.87,
+      "end": 401.0,
+      "frameSec": 399.94
+    },
+    "s54": {
+      "start": 401.0,
+      "end": 404.33,
+      "frameSec": 401.3
+    },
+    "x26": {
+      "start": 404.33,
+      "end": 406.25,
+      "frameSec": 405.29
+    },
+    "s55": {
+      "start": 406.25,
+      "end": 411.0,
+      "frameSec": 407.9
+    },
+    "x27": {
+      "start": 411.0,
+      "end": 412.62,
+      "frameSec": 411.81
+    },
+    "s56": {
+      "start": 412.62,
+      "end": 414.79,
+      "frameSec": 412.9
+    },
+    "s57": {
+      "start": 418.44,
+      "end": 421.65,
+      "frameSec": 419.9
+    },
+    "x28": {
+      "start": 426.04,
+      "end": 428.0,
+      "frameSec": 427.02
+    },
+    "s58": {
+      "start": 428.0,
+      "end": 433.21,
+      "frameSec": 429.9
+    },
+    "x29": {
+      "start": 433.21,
+      "end": 435.0,
+      "frameSec": 434.11
+    },
+    "x30": {
+      "start": 435.0,
+      "end": 437.25,
+      "frameSec": 436.12
+    },
+    "s59": {
+      "start": 437.25,
+      "end": 439.0,
+      "frameSec": 438.4
+    },
+    "x31": {
+      "start": 439.0,
+      "end": 441.79,
+      "frameSec": 440.39
+    },
+    "x32": {
+      "start": 441.79,
+      "end": 444.54,
+      "frameSec": 443.17
+    },
+    "s60": {
+      "start": 444.54,
+      "end": 446.35,
+      "frameSec": 445.1
+    },
+    "x33": {
+      "start": 448.46,
+      "end": 452.21,
+      "frameSec": 450.33
+    },
+    "s61": {
+      "start": 452.21,
+      "end": 453.79,
+      "frameSec": 452.36
+    },
+    "x34": {
+      "start": 453.79,
+      "end": 456.12,
+      "frameSec": 454.96
+    },
+    "s62": {
+      "start": 462.27,
+      "end": 465.15,
+      "frameSec": 462.9
+    },
+    "x35": {
+      "start": 467.21,
+      "end": 469.62,
+      "frameSec": 468.41
+    },
+    "x36": {
+      "start": 469.62,
+      "end": 470.62,
+      "frameSec": 470.12
+    },
+    "x37": {
+      "start": 470.62,
+      "end": 471.62,
+      "frameSec": 471.12
+    },
+    "x38": {
+      "start": 472.77,
+      "end": 476.04,
+      "frameSec": 473.83
+    },
+    "x39": {
+      "start": 476.04,
+      "end": 477.0,
+      "frameSec": 476.52
+    },
+    "s63": {
+      "start": 477.0,
+      "end": 479.25,
+      "frameSec": 478.0
+    },
+    "s64": {
+      "start": 488.57,
+      "end": 491.65,
+      "frameSec": 489.9
+    },
+    "x40": {
+      "start": 493.29,
+      "end": 494.42,
+      "frameSec": 493.86
+    },
+    "s65": {
+      "start": 494.42,
+      "end": 495.83,
+      "frameSec": 495.68
+    },
+    "x41": {
+      "start": 495.83,
+      "end": 498.12,
+      "frameSec": 496.98
+    },
+    "s66": {
+      "start": 498.12,
+      "end": 500.67,
+      "frameSec": 500.2
+    },
+    "x42": {
+      "start": 500.67,
+      "end": 502.29,
+      "frameSec": 501.48
+    },
+    "x43": {
+      "start": 502.29,
+      "end": 503.92,
+      "frameSec": 503.11
+    },
+    "s67": {
+      "start": 503.92,
+      "end": 504.96,
+      "frameSec": 504.6
+    },
+    "x44": {
+      "start": 504.96,
+      "end": 506.92,
+      "frameSec": 505.94
+    },
+    "s68": {
+      "start": 506.92,
+      "end": 512.42,
+      "frameSec": 509.6
+    },
+    "x45": {
+      "start": 512.42,
+      "end": 514.0,
+      "frameSec": 513.21
+    },
+    "s69": {
+      "start": 514.0,
+      "end": 515.58,
+      "frameSec": 514.15
+    },
+    "x46": {
+      "start": 515.58,
+      "end": 517.58,
+      "frameSec": 516.29
+    },
+    "x47": {
+      "start": 517.58,
+      "end": 519.46,
+      "frameSec": 518.52
+    },
+    "s70": {
+      "start": 519.46,
+      "end": 525.79,
+      "frameSec": 519.9
+    },
+    "x48": {
+      "start": 525.79,
+      "end": 527.83,
+      "frameSec": 526.81
+    },
+    "s71": {
+      "start": 527.83,
+      "end": 529.83,
+      "frameSec": 528.5
+    },
+    "s72": {
+      "start": 529.83,
+      "end": 537.33,
+      "frameSec": 537.0
+    },
+    "x49": {
+      "start": 537.33,
+      "end": 541.33,
+      "frameSec": 539.33
+    },
+    "x50": {
+      "start": 541.33,
+      "end": 544.79,
+      "frameSec": 543.06
+    },
+    "s73": {
+      "start": 544.79,
+      "end": 546.33,
+      "frameSec": 546.0
+    },
+    "x51": {
+      "start": 546.33,
+      "end": 550.71,
+      "frameSec": 548.52
+    },
+    "x52": {
+      "start": 550.71,
+      "end": 552.54,
+      "frameSec": 551.62
+    },
+    "x53": {
+      "start": 552.54,
+      "end": 554.12,
+      "frameSec": 553.33
+    },
+    "s74": {
+      "start": 554.12,
+      "end": 556.55,
+      "frameSec": 555.8
+    },
+    "s75": {
+      "start": 563.55,
+      "end": 567.75,
+      "frameSec": 566.0
+    },
+    "x54": {
+      "start": 571.0,
+      "end": 575.87,
+      "frameSec": 573.43
+    },
+    "s76": {
+      "start": 575.87,
+      "end": 579.75,
+      "frameSec": 578.0
+    },
+    "s77": {
+      "start": 584.92,
+      "end": 588.54,
+      "frameSec": 586.7
+    },
+    "s78": {
+      "start": 588.54,
+      "end": 591.87,
+      "frameSec": 590.2
+    },
+    "s79": {
+      "start": 596.02,
+      "end": 599.95,
+      "frameSec": 597.2
+    },
+    "x55": {
+      "start": 603.29,
+      "end": 607.25,
+      "frameSec": 605.27
+    },
+    "s80": {
+      "start": 607.25,
+      "end": 613.0,
+      "frameSec": 607.8
+    },
+    "s81": {
+      "start": 615.65,
+      "end": 619.83,
+      "frameSec": 616.4
+    },
+    "s82": {
+      "start": 619.83,
+      "end": 626.17,
+      "frameSec": 623.0
+    },
+    "s83": {
+      "start": 629.82,
+      "end": 632.65,
+      "frameSec": 630.4
+    },
+    "s84": {
+      "start": 634.54,
+      "end": 637.04,
+      "frameSec": 636.5
+    },
+    "x56": {
+      "start": 637.04,
+      "end": 638.37,
+      "frameSec": 637.7
+    },
+    "x57": {
+      "start": 638.37,
+      "end": 639.58,
+      "frameSec": 638.98
+    },
+    "x58": {
+      "start": 639.58,
+      "end": 641.0,
+      "frameSec": 640.29
+    },
+    "s85": {
+      "start": 642.65,
+      "end": 647.05,
+      "frameSec": 644.8
+    },
+    "x59": {
+      "start": 651.29,
+      "end": 652.54,
+      "frameSec": 651.91
+    },
+    "s86": {
+      "start": 655.19,
+      "end": 657.85,
+      "frameSec": 657.1
+    },
+    "s87": {
+      "start": 667.55,
+      "end": 670.95,
+      "frameSec": 668.7
+    },
+    "s88": {
+      "start": 679.65,
+      "end": 681.55,
+      "frameSec": 680.3
+    },
+    "s89": {
+      "start": 690.8,
+      "end": 692.75,
+      "frameSec": 692.0
+    },
+    "s90": {
+      "start": 701.95,
+      "end": 704.35,
+      "frameSec": 703.6
+    },
+    "s91": {
+      "start": 715.45,
+      "end": 721.0,
+      "frameSec": 716.0
+    }
+  },
+  "poseShots": [
+    {
+      "id": "p001",
+      "index": 1,
+      "parentSceneId": "s02",
+      "act": 1,
+      "start": 21.35,
+      "end": 23.15,
+      "frameSec": 22.02
+    },
+    {
+      "id": "p002",
+      "index": 2,
+      "parentSceneId": "s03",
+      "act": 1,
+      "start": 23.15,
+      "end": 24.3,
+      "frameSec": 23.55
+    },
+    {
+      "id": "p003",
+      "index": 3,
+      "parentSceneId": "s04",
+      "act": 1,
+      "start": 38.15,
+      "end": 39.5,
+      "frameSec": 38.65
+    },
+    {
+      "id": "p004",
+      "index": 4,
+      "parentSceneId": "s05",
+      "act": 1,
+      "start": 43.85,
+      "end": 44.83,
+      "frameSec": 44.4
+    },
+    {
+      "id": "p005",
+      "index": 5,
+      "parentSceneId": "s06",
+      "act": 1,
+      "start": 50.05,
+      "end": 50.75,
+      "frameSec": 50.32
+    },
+    {
+      "id": "p006",
+      "index": 6,
+      "parentSceneId": "s12",
+      "act": 1,
+      "start": 74.92,
+      "end": 78.57,
+      "frameSec": 76.32
+    },
+    {
+      "id": "p007",
+      "index": 7,
+      "parentSceneId": "s12",
+      "act": 1,
+      "start": 81.05,
+      "end": 83.57,
+      "frameSec": 81.82
+    },
+    {
+      "id": "p008",
+      "index": 8,
+      "parentSceneId": "s12",
+      "act": 1,
+      "start": 83.57,
+      "end": 84.58,
+      "frameSec": 83.82
+    },
+    {
+      "id": "p009",
+      "index": 9,
+      "parentSceneId": "s13",
+      "act": 1,
+      "start": 84.58,
+      "end": 85.73,
+      "frameSec": 84.98
+    },
+    {
+      "id": "p010",
+      "index": 10,
+      "parentSceneId": "s15",
+      "act": 1,
+      "start": 97.55,
+      "end": 98.58,
+      "frameSec": 97.94
+    },
+    {
+      "id": "p011",
+      "index": 11,
+      "parentSceneId": "s16",
+      "act": 1,
+      "start": 105.55,
+      "end": 108.08,
+      "frameSec": 106.48
+    },
+    {
+      "id": "p012",
+      "index": 12,
+      "parentSceneId": "s20",
+      "act": 1,
+      "start": 123.0,
+      "end": 125.15,
+      "frameSec": 123.4
+    },
+    {
+      "id": "p013",
+      "index": 13,
+      "parentSceneId": "s22",
+      "act": 2,
+      "start": 139.45,
+      "end": 140.46,
+      "frameSec": 139.94
+    },
+    {
+      "id": "p014",
+      "index": 14,
+      "parentSceneId": "s23",
+      "act": 2,
+      "start": 145.95,
+      "end": 149.87,
+      "frameSec": 147.4
+    },
+    {
+      "id": "p015",
+      "index": 15,
+      "parentSceneId": "s24",
+      "act": 2,
+      "start": 149.87,
+      "end": 151.02,
+      "frameSec": 150.27
+    },
+    {
+      "id": "p016",
+      "index": 16,
+      "parentSceneId": "s25",
+      "act": 2,
+      "start": 158.55,
+      "end": 160.46,
+      "frameSec": 159.82
+    },
+    {
+      "id": "p017",
+      "index": 17,
+      "parentSceneId": "s27",
+      "act": 2,
+      "start": 172.05,
+      "end": 174.04,
+      "frameSec": 172.94
+    },
+    {
+      "id": "p018",
+      "index": 18,
+      "parentSceneId": "s30",
+      "act": 2,
+      "start": 187.17,
+      "end": 189.32,
+      "frameSec": 187.57
+    },
+    {
+      "id": "p019",
+      "index": 19,
+      "parentSceneId": "s30",
+      "act": 2,
+      "start": 192.45,
+      "end": 195.45,
+      "frameSec": 194.57
+    },
+    {
+      "id": "p020",
+      "index": 20,
+      "parentSceneId": "s31",
+      "act": 2,
+      "start": 195.45,
+      "end": 198.1,
+      "frameSec": 196.35
+    },
+    {
+      "id": "p021",
+      "index": 21,
+      "parentSceneId": "s31",
+      "act": 2,
+      "start": 198.1,
+      "end": 200.6,
+      "frameSec": 198.35
+    },
+    {
+      "id": "p022",
+      "index": 22,
+      "parentSceneId": "s31",
+      "act": 2,
+      "start": 201.45,
+      "end": 205.1,
+      "frameSec": 203.35
+    },
+    {
+      "id": "p023",
+      "index": 23,
+      "parentSceneId": "s31",
+      "act": 2,
+      "start": 205.1,
+      "end": 206.9,
+      "frameSec": 205.85
+    },
+    {
+      "id": "p024",
+      "index": 24,
+      "parentSceneId": "s32",
+      "act": 2,
+      "start": 206.9,
+      "end": 211.55,
+      "frameSec": 209.3
+    },
+    {
+      "id": "p025",
+      "index": 25,
+      "parentSceneId": "s32",
+      "act": 2,
+      "start": 212.85,
+      "end": 215.55,
+      "frameSec": 214.8
+    },
+    {
+      "id": "p026",
+      "index": 26,
+      "parentSceneId": "s32",
+      "act": 2,
+      "start": 215.55,
+      "end": 218.29,
+      "frameSec": 217.3
+    },
+    {
+      "id": "p027",
+      "index": 27,
+      "parentSceneId": "s33",
+      "act": 2,
+      "start": 226.35,
+      "end": 228.79,
+      "frameSec": 227.44
+    },
+    {
+      "id": "p028",
+      "index": 28,
+      "parentSceneId": "s34",
+      "act": 2,
+      "start": 228.79,
+      "end": 230.94,
+      "frameSec": 229.69
+    },
+    {
+      "id": "p029",
+      "index": 29,
+      "parentSceneId": "s35",
+      "act": 2,
+      "start": 238.0,
+      "end": 241.15,
+      "frameSec": 238.9
+    },
+    {
+      "id": "p030",
+      "index": 30,
+      "parentSceneId": "s36",
+      "act": 2,
+      "start": 246.08,
+      "end": 247.73,
+      "frameSec": 246.98
+    },
+    {
+      "id": "p031",
+      "index": 31,
+      "parentSceneId": "s36",
+      "act": 2,
+      "start": 247.73,
+      "end": 250.23,
+      "frameSec": 248.98
+    },
+    {
+      "id": "p032",
+      "index": 32,
+      "parentSceneId": "s36",
+      "act": 2,
+      "start": 250.23,
+      "end": 252.73,
+      "frameSec": 250.98
+    },
+    {
+      "id": "p033",
+      "index": 33,
+      "parentSceneId": "s36",
+      "act": 2,
+      "start": 255.95,
+      "end": 258.08,
+      "frameSec": 256.98
+    },
+    {
+      "id": "p034",
+      "index": 34,
+      "parentSceneId": "s37",
+      "act": 2,
+      "start": 259.04,
+      "end": 261.69,
+      "frameSec": 259.44
+    },
+    {
+      "id": "p035",
+      "index": 35,
+      "parentSceneId": "s37",
+      "act": 2,
+      "start": 261.69,
+      "end": 263.19,
+      "frameSec": 261.94
+    },
+    {
+      "id": "p036",
+      "index": 36,
+      "parentSceneId": "s37",
+      "act": 2,
+      "start": 264.45,
+      "end": 268.19,
+      "frameSec": 266.44
+    },
+    {
+      "id": "p037",
+      "index": 37,
+      "parentSceneId": "s37",
+      "act": 2,
+      "start": 268.19,
+      "end": 269.35,
+      "frameSec": 268.94
+    },
+    {
+      "id": "p038",
+      "index": 38,
+      "parentSceneId": "s38",
+      "act": 2,
+      "start": 269.35,
+      "end": 271.5,
+      "frameSec": 269.75
+    },
+    {
+      "id": "p039",
+      "index": 39,
+      "parentSceneId": "s38",
+      "act": 2,
+      "start": 271.5,
+      "end": 273.5,
+      "frameSec": 271.75
+    },
+    {
+      "id": "p040",
+      "index": 40,
+      "parentSceneId": "s38",
+      "act": 2,
+      "start": 275.75,
+      "end": 279.75,
+      "frameSec": 278.75
+    },
+    {
+      "id": "p041",
+      "index": 41,
+      "parentSceneId": "s40",
+      "act": 2,
+      "start": 283.25,
+      "end": 284.9,
+      "frameSec": 284.15
+    },
+    {
+      "id": "p042",
+      "index": 42,
+      "parentSceneId": "s40",
+      "act": 2,
+      "start": 289.65,
+      "end": 290.62,
+      "frameSec": 290.15
+    },
+    {
+      "id": "p043",
+      "index": 43,
+      "parentSceneId": "s41",
+      "act": 2,
+      "start": 290.62,
+      "end": 292.77,
+      "frameSec": 291.02
+    },
+    {
+      "id": "p044",
+      "index": 44,
+      "parentSceneId": "s41",
+      "act": 2,
+      "start": 292.77,
+      "end": 294.77,
+      "frameSec": 293.52
+    },
+    {
+      "id": "p045",
+      "index": 45,
+      "parentSceneId": "s41",
+      "act": 2,
+      "start": 298.25,
+      "end": 300.37,
+      "frameSec": 298.52
+    },
+    {
+      "id": "p046",
+      "index": 46,
+      "parentSceneId": "s42",
+      "act": 2,
+      "start": 300.37,
+      "end": 303.02,
+      "frameSec": 302.27
+    },
+    {
+      "id": "p047",
+      "index": 47,
+      "parentSceneId": "s42",
+      "act": 2,
+      "start": 306.15,
+      "end": 308.46,
+      "frameSec": 307.27
+    },
+    {
+      "id": "p048",
+      "index": 48,
+      "parentSceneId": "s43",
+      "act": 2,
+      "start": 308.46,
+      "end": 309.61,
+      "frameSec": 308.86
+    },
+    {
+      "id": "p049",
+      "index": 49,
+      "parentSceneId": "s45",
+      "act": 3,
+      "start": 320.54,
+      "end": 322.19,
+      "frameSec": 320.94
+    },
+    {
+      "id": "p050",
+      "index": 50,
+      "parentSceneId": "s47",
+      "act": 3,
+      "start": 338.65,
+      "end": 342.08,
+      "frameSec": 339.26
+    },
+    {
+      "id": "p051",
+      "index": 51,
+      "parentSceneId": "x18",
+      "act": 3,
+      "start": 342.08,
+      "end": 345.23,
+      "frameSec": 342.48
+    },
+    {
+      "id": "p052",
+      "index": 52,
+      "parentSceneId": "x18",
+      "act": 3,
+      "start": 348.5,
+      "end": 349.42,
+      "frameSec": 348.98
+    },
+    {
+      "id": "p053",
+      "index": 53,
+      "parentSceneId": "s48",
+      "act": 3,
+      "start": 349.85,
+      "end": 354.17,
+      "frameSec": 353.32
+    },
+    {
+      "id": "p054",
+      "index": 54,
+      "parentSceneId": "s49",
+      "act": 3,
+      "start": 362.85,
+      "end": 366.21,
+      "frameSec": 365.02
+    },
+    {
+      "id": "p055",
+      "index": 55,
+      "parentSceneId": "s52",
+      "act": 3,
+      "start": 377.29,
+      "end": 379.44,
+      "frameSec": 377.69
+    },
+    {
+      "id": "p056",
+      "index": 56,
+      "parentSceneId": "s52",
+      "act": 3,
+      "start": 379.44,
+      "end": 381.94,
+      "frameSec": 380.19
+    },
+    {
+      "id": "p057",
+      "index": 57,
+      "parentSceneId": "s52",
+      "act": 3,
+      "start": 383.75,
+      "end": 385.94,
+      "frameSec": 385.19
+    },
+    {
+      "id": "p058",
+      "index": 58,
+      "parentSceneId": "s52",
+      "act": 3,
+      "start": 385.94,
+      "end": 387.65,
+      "frameSec": 387.19
+    },
+    {
+      "id": "p059",
+      "index": 59,
+      "parentSceneId": "s53",
+      "act": 3,
+      "start": 387.65,
+      "end": 389.8,
+      "frameSec": 388.05
+    },
+    {
+      "id": "p060",
+      "index": 60,
+      "parentSceneId": "s53",
+      "act": 3,
+      "start": 389.8,
+      "end": 391.3,
+      "frameSec": 390.55
+    },
+    {
+      "id": "p061",
+      "index": 61,
+      "parentSceneId": "s53",
+      "act": 3,
+      "start": 394.55,
+      "end": 397.92,
+      "frameSec": 395.55
+    },
+    {
+      "id": "p062",
+      "index": 62,
+      "parentSceneId": "s57",
+      "act": 3,
+      "start": 414.79,
+      "end": 416.44,
+      "frameSec": 415.19
+    },
+    {
+      "id": "p063",
+      "index": 63,
+      "parentSceneId": "s57",
+      "act": 3,
+      "start": 416.44,
+      "end": 418.44,
+      "frameSec": 417.19
+    },
+    {
+      "id": "p064",
+      "index": 64,
+      "parentSceneId": "s57",
+      "act": 3,
+      "start": 421.65,
+      "end": 422.94,
+      "frameSec": 422.19
+    },
+    {
+      "id": "p065",
+      "index": 65,
+      "parentSceneId": "s57",
+      "act": 3,
+      "start": 422.94,
+      "end": 426.04,
+      "frameSec": 425.19
+    },
+    {
+      "id": "p066",
+      "index": 66,
+      "parentSceneId": "s60",
+      "act": 4,
+      "start": 446.35,
+      "end": 448.46,
+      "frameSec": 447.44
+    },
+    {
+      "id": "p067",
+      "index": 67,
+      "parentSceneId": "s62",
+      "act": 4,
+      "start": 456.12,
+      "end": 457.27,
+      "frameSec": 456.52
+    },
+    {
+      "id": "p068",
+      "index": 68,
+      "parentSceneId": "s62",
+      "act": 4,
+      "start": 457.27,
+      "end": 458.77,
+      "frameSec": 458.52
+    },
+    {
+      "id": "p069",
+      "index": 69,
+      "parentSceneId": "s62",
+      "act": 4,
+      "start": 458.77,
+      "end": 462.27,
+      "frameSec": 460.52
+    },
+    {
+      "id": "p070",
+      "index": 70,
+      "parentSceneId": "s62",
+      "act": 4,
+      "start": 465.15,
+      "end": 467.21,
+      "frameSec": 466.52
+    },
+    {
+      "id": "p071",
+      "index": 71,
+      "parentSceneId": "x38",
+      "act": 4,
+      "start": 471.62,
+      "end": 472.77,
+      "frameSec": 472.02
+    },
+    {
+      "id": "p072",
+      "index": 72,
+      "parentSceneId": "s63",
+      "act": 4,
+      "start": 479.25,
+      "end": 481.65,
+      "frameSec": 479.9
+    },
+    {
+      "id": "p073",
+      "index": 73,
+      "parentSceneId": "s63",
+      "act": 4,
+      "start": 481.65,
+      "end": 484.65,
+      "frameSec": 481.9
+    },
+    {
+      "id": "p074",
+      "index": 74,
+      "parentSceneId": "s63",
+      "act": 4,
+      "start": 484.65,
+      "end": 486.42,
+      "frameSec": 485.9
+    },
+    {
+      "id": "p075",
+      "index": 75,
+      "parentSceneId": "s64",
+      "act": 4,
+      "start": 486.42,
+      "end": 488.57,
+      "frameSec": 487.82
+    },
+    {
+      "id": "p076",
+      "index": 76,
+      "parentSceneId": "s64",
+      "act": 4,
+      "start": 491.65,
+      "end": 493.29,
+      "frameSec": 492.82
+    },
+    {
+      "id": "p077",
+      "index": 77,
+      "parentSceneId": "s74",
+      "act": 4,
+      "start": 556.55,
+      "end": 559.77,
+      "frameSec": 558.02
+    },
+    {
+      "id": "p078",
+      "index": 78,
+      "parentSceneId": "s74",
+      "act": 4,
+      "start": 559.77,
+      "end": 560.9,
+      "frameSec": 560.02
+    },
+    {
+      "id": "p079",
+      "index": 79,
+      "parentSceneId": "s75",
+      "act": 4,
+      "start": 560.9,
+      "end": 562.55,
+      "frameSec": 561.3
+    },
+    {
+      "id": "p080",
+      "index": 80,
+      "parentSceneId": "s75",
+      "act": 4,
+      "start": 562.55,
+      "end": 563.55,
+      "frameSec": 563.3
+    },
+    {
+      "id": "p081",
+      "index": 81,
+      "parentSceneId": "s75",
+      "act": 5,
+      "start": 567.75,
+      "end": 571.0,
+      "frameSec": 570.3
+    },
+    {
+      "id": "p082",
+      "index": 82,
+      "parentSceneId": "s76",
+      "act": 5,
+      "start": 579.75,
+      "end": 582.02,
+      "frameSec": 580.77
+    },
+    {
+      "id": "p083",
+      "index": 83,
+      "parentSceneId": "s76",
+      "act": 5,
+      "start": 582.02,
+      "end": 584.92,
+      "frameSec": 584.27
+    },
+    {
+      "id": "p084",
+      "index": 84,
+      "parentSceneId": "s79",
+      "act": 5,
+      "start": 591.87,
+      "end": 593.52,
+      "frameSec": 592.27
+    },
+    {
+      "id": "p085",
+      "index": 85,
+      "parentSceneId": "s79",
+      "act": 5,
+      "start": 593.52,
+      "end": 596.02,
+      "frameSec": 594.27
+    },
+    {
+      "id": "p086",
+      "index": 86,
+      "parentSceneId": "s79",
+      "act": 5,
+      "start": 599.95,
+      "end": 603.29,
+      "frameSec": 600.27
+    },
+    {
+      "id": "p087",
+      "index": 87,
+      "parentSceneId": "s81",
+      "act": 5,
+      "start": 613.0,
+      "end": 615.65,
+      "frameSec": 614.4
+    },
+    {
+      "id": "p088",
+      "index": 88,
+      "parentSceneId": "s83",
+      "act": 5,
+      "start": 626.17,
+      "end": 628.32,
+      "frameSec": 626.57
+    },
+    {
+      "id": "p089",
+      "index": 89,
+      "parentSceneId": "s83",
+      "act": 5,
+      "start": 628.32,
+      "end": 629.82,
+      "frameSec": 628.57
+    },
+    {
+      "id": "p090",
+      "index": 90,
+      "parentSceneId": "s83",
+      "act": 5,
+      "start": 632.65,
+      "end": 634.54,
+      "frameSec": 633.57
+    },
+    {
+      "id": "p091",
+      "index": 91,
+      "parentSceneId": "s85",
+      "act": 5,
+      "start": 641.0,
+      "end": 642.65,
+      "frameSec": 641.4
+    },
+    {
+      "id": "p092",
+      "index": 92,
+      "parentSceneId": "s85",
+      "act": 5,
+      "start": 647.05,
+      "end": 649.65,
+      "frameSec": 647.4
+    },
+    {
+      "id": "p093",
+      "index": 93,
+      "parentSceneId": "s85",
+      "act": 5,
+      "start": 649.65,
+      "end": 651.29,
+      "frameSec": 649.9
+    },
+    {
+      "id": "p094",
+      "index": 94,
+      "parentSceneId": "s86",
+      "act": 5,
+      "start": 652.54,
+      "end": 655.19,
+      "frameSec": 653.94
+    },
+    {
+      "id": "p095",
+      "index": 95,
+      "parentSceneId": "s86",
+      "act": 5,
+      "start": 657.85,
+      "end": 659.69,
+      "frameSec": 658.94
+    },
+    {
+      "id": "p096",
+      "index": 96,
+      "parentSceneId": "s86",
+      "act": 5,
+      "start": 659.69,
+      "end": 662.9,
+      "frameSec": 661.44
+    },
+    {
+      "id": "p097",
+      "index": 97,
+      "parentSceneId": "s87",
+      "act": 5,
+      "start": 662.9,
+      "end": 664.55,
+      "frameSec": 663.8
+    },
+    {
+      "id": "p098",
+      "index": 98,
+      "parentSceneId": "s87",
+      "act": 5,
+      "start": 664.55,
+      "end": 667.55,
+      "frameSec": 666.3
+    },
+    {
+      "id": "p099",
+      "index": 99,
+      "parentSceneId": "s87",
+      "act": 5,
+      "start": 670.95,
+      "end": 674.5,
+      "frameSec": 672.3
+    },
+    {
+      "id": "p100",
+      "index": 100,
+      "parentSceneId": "s88",
+      "act": 5,
+      "start": 674.5,
+      "end": 676.65,
+      "frameSec": 674.9
+    },
+    {
+      "id": "p101",
+      "index": 101,
+      "parentSceneId": "s88",
+      "act": 5,
+      "start": 676.65,
+      "end": 679.65,
+      "frameSec": 678.4
+    },
+    {
+      "id": "p102",
+      "index": 102,
+      "parentSceneId": "s88",
+      "act": 5,
+      "start": 681.55,
+      "end": 684.15,
+      "frameSec": 682.4
+    },
+    {
+      "id": "p103",
+      "index": 103,
+      "parentSceneId": "s88",
+      "act": 5,
+      "start": 684.15,
+      "end": 686.15,
+      "frameSec": 685.4
+    },
+    {
+      "id": "p104",
+      "index": 104,
+      "parentSceneId": "s89",
+      "act": 5,
+      "start": 686.15,
+      "end": 688.3,
+      "frameSec": 686.55
+    },
+    {
+      "id": "p105",
+      "index": 105,
+      "parentSceneId": "s89",
+      "act": 5,
+      "start": 688.3,
+      "end": 690.8,
+      "frameSec": 689.55
+    },
+    {
+      "id": "p106",
+      "index": 106,
+      "parentSceneId": "s89",
+      "act": 5,
+      "start": 692.75,
+      "end": 695.3,
+      "frameSec": 694.05
+    },
+    {
+      "id": "p107",
+      "index": 107,
+      "parentSceneId": "s89",
+      "act": 5,
+      "start": 695.3,
+      "end": 697.8,
+      "frameSec": 697.05
+    },
+    {
+      "id": "p108",
+      "index": 108,
+      "parentSceneId": "s90",
+      "act": 5,
+      "start": 697.8,
+      "end": 700.45,
+      "frameSec": 698.2
+    },
+    {
+      "id": "p109",
+      "index": 109,
+      "parentSceneId": "s90",
+      "act": 5,
+      "start": 700.45,
+      "end": 701.95,
+      "frameSec": 701.2
+    },
+    {
+      "id": "p110",
+      "index": 110,
+      "parentSceneId": "s90",
+      "act": 5,
+      "start": 704.35,
+      "end": 707.45,
+      "frameSec": 705.7
+    },
+    {
+      "id": "p111",
+      "index": 111,
+      "parentSceneId": "s90",
+      "act": 5,
+      "start": 707.45,
+      "end": 709.8,
+      "frameSec": 709.2
+    },
+    {
+      "id": "p112",
+      "index": 112,
+      "parentSceneId": "s91",
+      "act": 5,
+      "start": 709.8,
+      "end": 711.45,
+      "frameSec": 710.2
+    },
+    {
+      "id": "p113",
+      "index": 113,
+      "parentSceneId": "s91",
+      "act": 5,
+      "start": 711.45,
+      "end": 715.45,
+      "frameSec": 712.7
+    }
+  ],
+  "batches": {
+    "pb1": {
+      "shotIds": [
+        "p001",
+        "p002",
+        "p003",
+        "p004",
+        "p005",
+        "p006",
+        "p007",
+        "p008",
+        "p009",
+        "p010",
+        "p011",
+        "p012",
+        "p013",
+        "p014",
+        "p015",
+        "p016",
+        "p017",
+        "p018",
+        "p019"
+      ],
+      "sheets": [
+        "pose_pb1_1.jpg",
+        "pose_pb1_2.jpg",
+        "pose_pb1_3.jpg",
+        "pose_pb1_4.jpg"
+      ]
+    },
+    "pb2": {
+      "shotIds": [
+        "p020",
+        "p021",
+        "p022",
+        "p023",
+        "p024",
+        "p025",
+        "p026",
+        "p027",
+        "p028",
+        "p029",
+        "p030",
+        "p031",
+        "p032",
+        "p033",
+        "p034",
+        "p035",
+        "p036",
+        "p037",
+        "p038"
+      ],
+      "sheets": [
+        "pose_pb2_1.jpg",
+        "pose_pb2_2.jpg",
+        "pose_pb2_3.jpg",
+        "pose_pb2_4.jpg"
+      ]
+    },
+    "pb3": {
+      "shotIds": [
+        "p039",
+        "p040",
+        "p041",
+        "p042",
+        "p043",
+        "p044",
+        "p045",
+        "p046",
+        "p047",
+        "p048",
+        "p049",
+        "p050",
+        "p051",
+        "p052",
+        "p053",
+        "p054",
+        "p055",
+        "p056",
+        "p057"
+      ],
+      "sheets": [
+        "pose_pb3_1.jpg",
+        "pose_pb3_2.jpg",
+        "pose_pb3_3.jpg",
+        "pose_pb3_4.jpg"
+      ]
+    },
+    "pb4": {
+      "shotIds": [
+        "p058",
+        "p059",
+        "p060",
+        "p061",
+        "p062",
+        "p063",
+        "p064",
+        "p065",
+        "p066",
+        "p067",
+        "p068",
+        "p069",
+        "p070",
+        "p071",
+        "p072",
+        "p073",
+        "p074",
+        "p075",
+        "p076"
+      ],
+      "sheets": [
+        "pose_pb4_1.jpg",
+        "pose_pb4_2.jpg",
+        "pose_pb4_3.jpg",
+        "pose_pb4_4.jpg"
+      ]
+    },
+    "pb5": {
+      "shotIds": [
+        "p077",
+        "p078",
+        "p079",
+        "p080",
+        "p081",
+        "p082",
+        "p083",
+        "p084",
+        "p085",
+        "p086",
+        "p087",
+        "p088",
+        "p089",
+        "p090",
+        "p091",
+        "p092",
+        "p093",
+        "p094",
+        "p095"
+      ],
+      "sheets": [
+        "pose_pb5_1.jpg",
+        "pose_pb5_2.jpg",
+        "pose_pb5_3.jpg",
+        "pose_pb5_4.jpg"
+      ]
+    },
+    "pb6": {
+      "shotIds": [
+        "p096",
+        "p097",
+        "p098",
+        "p099",
+        "p100",
+        "p101",
+        "p102",
+        "p103",
+        "p104",
+        "p105",
+        "p106",
+        "p107",
+        "p108",
+        "p109",
+        "p110",
+        "p111",
+        "p112",
+        "p113"
+      ],
+      "sheets": [
+        "pose_pb6_1.jpg",
+        "pose_pb6_2.jpg",
+        "pose_pb6_3.jpg"
+      ]
+    }
+  }
+}
