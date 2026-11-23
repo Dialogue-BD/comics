@@ -1,0 +1,225 @@
+.storyboard {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: clamp(15px, 3vw, 26px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: 0 10px 30px rgba(24, 34, 30, 0.08);
+}
+
+.storyboard-header,
+.storyboard-navigation,
+.storyboard-actions,
+.storyboard-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+
+.storyboard-header {
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.storyboard-header h2 {
+  margin: 0 0 6px;
+  color: var(--forest);
+  font: 700 1.65rem/1.15 Georgia, serif;
+}
+
+.storyboard-header p {
+  max-width: 50ch;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.storyboard-navigation {
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+}
+
+.storyboard-navigation label {
+  font-weight: 750;
+}
+
+.storyboard-navigation select {
+  min-height: 44px;
+  max-width: 100%;
+  padding: 7px 26px 7px 10px;
+  border: 1px solid #9daaa1;
+  border-radius: 9px;
+  background: #fff;
+  color: var(--forest);
+}
+
+#storyboard-progress {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.storyboard-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 5fr);
+  align-items: start;
+  gap: clamp(14px, 2.5vw, 26px);
+}
+
+.storyboard-frame {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: #f5f2eb;
+}
+
+.storyboard-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--forest);
+}
+
+.storyboard-frame figcaption {
+  padding: 9px 12px;
+  color: var(--forest);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.storyboard-help {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.storyboard-sentence,
+.storyboard-bank {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.storyboard-sentence {
+  min-width: 0;
+  margin: 0 0 10px;
+  padding: 0;
+  border: 0;
+}
+
+.storyboard-sentence legend {
+  margin-bottom: 4px;
+  padding: 0;
+  color: var(--forest);
+  font-size: 0.8rem;
+  font-weight: 750;
+}
+
+.storyboard-bank {
+  min-height: 46px;
+  margin: 14px 0;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: #f5f2eb;
+  color: var(--muted);
+}
+
+.storyboard-card,
+.storyboard-slot {
+  min-width: 0;
+  min-height: 48px;
+  padding: 8px 10px;
+  border: 1px solid #8fa399;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--forest);
+  font-size: 0.9rem;
+  line-height: 1.35;
+  text-align: start;
+  overflow-wrap: anywhere;
+}
+
+.storyboard-slot {
+  border-style: dashed;
+  background: #faf8f3;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.storyboard [draggable="true"] {
+  border-style: solid;
+  background: #eaf3ed;
+  color: var(--forest);
+  cursor: grab;
+}
+
+.storyboard [aria-pressed="true"] {
+  border-color: #79591c;
+  background: var(--gold-soft);
+  box-shadow: inset 0 0 0 1px #79591c;
+}
+
+.storyboard-slot[data-result="correct"] { border-color: #39754a; }
+.storyboard-slot[data-result="retry"] { border-color: #a24b2d; }
+.storyboard-slot[data-result="correct"]::before { content: "✓ "; }
+.storyboard-slot[data-result="retry"]::before { content: "↻ "; }
+
+.storyboard :is(button, select, a):focus-visible {
+  outline: 2px solid var(--forest-2);
+  outline-offset: 3px;
+}
+
+.storyboard-answer {
+  padding: 16px;
+  margin-bottom: 12px;
+  border-left: 4px solid var(--forest-2);
+  border-radius: 6px;
+  background: #eaf3ed;
+  color: var(--forest);
+}
+
+.storyboard-answer h3 {
+  margin: 0 0 8px;
+  font: 700 1.3rem/1.2 Georgia, serif;
+}
+
+.storyboard-answer p {
+  margin: 0 0 12px;
+  line-height: 1.55;
+}
+
+.storyboard-answer .storyboard-extension {
+  margin: 0;
+  font-size: 0.88rem;
+}
+
+.storyboard-status {
+  min-height: 1.4em;
+  margin: 8px 0 0;
+  color: var(--forest);
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.storyboard-footer {
+  justify-content: space-between;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.storyboard-footer button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+@media (max-width: 700px) {
+  .storyboard-layout { grid-template-columns: minmax(0, 1fr); }
+  #storyboard-progress { margin-left: 0; }
+}

@@ -1,0 +1,102 @@
+[
+  {
+    "act": 1,
+    "time": 64,
+    "title": "On the ledge",
+    "imageAlt": "The cub hangs from the edge of a snowy ledge.",
+    "sentences": [
+      ["I reached for berries", "and the snow broke under me."],
+      ["A tree caught me", "before I hit the ground."]
+    ]
+  },
+  {
+    "act": 1,
+    "time": 116,
+    "title": "In the branches",
+    "imageAlt": "The cub sits among the evergreen's branches.",
+    "sentences": [
+      ["The tree gave me seeds", "when my belly was empty."],
+      ["That night I found a warm bed", "up in its branches."]
+    ]
+  },
+  {
+    "act": 2,
+    "time": 170,
+    "title": "A spring morning",
+    "imageAlt": "The evergreen and the cub sit beside a patch of soil.",
+    "sentences": [
+      ["That spring, my friend gave me", "a little toy made from a pinecone."],
+      ["We put a seed in the ground", "and watched a baby tree grow."]
+    ]
+  },
+  {
+    "act": 2,
+    "time": 235,
+    "title": "The chip bag",
+    "imageAlt": "The older cub peers into a bright bag of potato chips.",
+    "sentences": [
+      ["A crow dropped a bag of chips,", "and I wanted to find more."],
+      ["My friend tried to stop me,", "but I went off on my own."]
+    ]
+  },
+  {
+    "act": 3,
+    "time": 406,
+    "title": "At the campsite",
+    "imageAlt": "The bear searches a pile of food and rubbish at a campsite.",
+    "sentences": [
+      ["I made it across the river", "and found a camp full of food."],
+      ["I kept eating", "even after the sun went down."]
+    ]
+  },
+  {
+    "act": 3,
+    "time": 432,
+    "title": "After dark",
+    "imageAlt": "The bear sleeps beside the rubbish as an orange ember glows.",
+    "sentences": [
+      ["A pinecone I tossed", "knocked a hot coal into the rubbish."],
+      ["I was already asleep", "when the fire began to spread."]
+    ]
+  },
+  {
+    "act": 4,
+    "time": 490,
+    "title": "Across the gap",
+    "imageAlt": "The fallen tree reaches towards the bear, who is still holding an armful of rubbish.",
+    "sentences": [
+      ["The tree made a bridge for me", "by falling across the gap."],
+      ["I had to drop what I was carrying", "before I could grab its branch."]
+    ]
+  },
+  {
+    "act": 4,
+    "time": 554,
+    "title": "On the far side",
+    "imageAlt": "The bear watches the burning tree fall into the canyon.",
+    "sentences": [
+      ["I hugged my friend", "in the middle of the bridge."],
+      ["The tree got me to safety", "and fell into the canyon."]
+    ]
+  },
+  {
+    "act": 5,
+    "time": 622,
+    "title": "Among the ashes",
+    "imageAlt": "The bear holds the pinecone toy with a green shoot growing out of it.",
+    "sentences": [
+      ["I thought I had lost everything", "until I saw a green shoot on my old toy."],
+      ["I planted it", "right in the middle of the old stump."]
+    ]
+  },
+  {
+    "act": 5,
+    "time": 673,
+    "title": "Years later",
+    "imageAlt": "The grown bear holds up a pinecone for a little cub in the branches of the new tree.",
+    "sentences": [
+      ["Years later, I met a cub", "as small as I'd once been."],
+      ["I held out a pinecone for him", "in the branches of the tree I'd grown."]
+    ]
+  }
+]

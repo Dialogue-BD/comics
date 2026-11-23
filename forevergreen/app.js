@@ -47,6 +47,7 @@
     sentenceFrames: $("#sentence-frames"),
     storyReaction: $("#story-reaction"),
     goPass2: $("#go-pass-2"),
+    storyboard: $("#storyboard"),
     blindWorkspace: $("#blind-workspace"),
     memoryGrid: $("#memory-grid"),
     showVideoAgain: $("#show-video-again"),
@@ -531,32 +532,20 @@
       btn.setAttribute("aria-pressed", active ? "true" : "false");
     });
 
-    const isPass1 = passNum === 1;
     const isPass3 = passNum === 3;
 
     els.pass3Subbar.hidden = !isPass3;
     els.storyReaction.hidden = true;
     els.actBoundaryBanner.hidden = true;
 
-    if (isPass1) {
-      player.setVoiceover(false);
-      els.captionDrawer.hidden = true;
-      setBlindMode(false);
-    } else if (passNum === 2) {
-      player.setVoiceover(true);
-      els.captionDrawer.hidden = false;
-      setBlindMode(false);
-      renderBeatLine(currentBeat, 0);
-    } else {
-      player.setVoiceover(true);
-      els.captionDrawer.hidden = false;
-      setBlindMode(pass3Submode === "blind");
-      renderBeatLine(currentBeat, 0);
-    }
+    setPass3Submode(isPass3 ? pass3Submode : "film");
+    els.captionDrawer.hidden = passNum === 1;
+    if (passNum !== 1) renderBeatLine(currentBeat, 0);
   }
 
-  function setBlindMode(blind) {
-    pass3Submode = blind ? "blind" : "film";
+  function setPass3Submode(mode) {
+    pass3Submode = mode;
+    const showFilm = currentPass !== 3 || mode === "film";
     hideTooltip();
     els.submodeBtns.forEach((btn) => {
       const active = btn.dataset.submode === pass3Submode;
@@ -564,16 +553,16 @@
       btn.setAttribute("aria-pressed", active ? "true" : "false");
     });
 
-    if (blind && currentPass === 3) {
-      if (player.getState().playing) player.pause();
-      els.cinemaCard.hidden = true;
-      els.actReflection.hidden = true;
-      els.blindWorkspace.hidden = false;
-    } else {
-      els.cinemaCard.hidden = false;
-      els.actReflection.hidden = false;
-      els.blindWorkspace.hidden = true;
+    if (!showFilm) {
+      player.pause();
+      player.stopAudioOverlays();
     }
+    const voiceover = showFilm && currentPass !== 1;
+    if (player.getState().voiceoverEnabled !== voiceover) player.setVoiceover(voiceover);
+    els.cinemaCard.hidden = !showFilm;
+    els.actReflection.hidden = !showFilm;
+    els.blindWorkspace.hidden = currentPass !== 3 || mode !== "blind";
+    els.storyboard.hidden = currentPass !== 3 || mode !== "storyboard";
   }
 
   // Event wiring
@@ -586,12 +575,10 @@
   });
 
   els.submodeBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      setBlindMode(btn.dataset.submode === "blind");
-    });
+    btn.addEventListener("click", () => setPass3Submode(btn.dataset.submode));
   });
 
-  els.showVideoAgain.addEventListener("click", () => setBlindMode(false));
+  els.showVideoAgain.addEventListener("click", () => setPass3Submode("film"));
 
   els.goPass2.addEventListener("click", () => {
     applyPass(2);
@@ -605,7 +592,7 @@
       player.playAct(nextId, true);
     } else {
       applyPass(currentPass === 1 ? 2 : 3);
-      if (currentPass === 3) setBlindMode(true);
+      if (currentPass === 3) setPass3Submode("blind");
     }
   });
 
@@ -750,5 +737,10 @@
   renderMemoryCards();
   renderTranscript();
   applyPacingMode(savedPacing);
-  applyPass(1);
+  if (window.location.hash === "#storyboard") {
+    pass3Submode = "storyboard";
+    applyPass(3);
+  } else {
+    applyPass(1);
+  }
 })();
