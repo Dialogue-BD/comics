@@ -49,6 +49,7 @@
     storyReaction: $("#story-reaction"),
     goPass2: $("#go-pass-2"),
     storyboard: $("#storyboard"),
+    criticalThinking: $("#critical-thinking"),
     blindWorkspace: $("#blind-workspace"),
     memoryGrid: $("#memory-grid"),
     showVideoAgain: $("#show-video-again"),
@@ -570,6 +571,10 @@
     els.actReflection.hidden = !showFilm;
     els.blindWorkspace.hidden = currentPass !== 3 || mode !== "blind";
     els.storyboard.hidden = currentPass !== 3 || mode !== "storyboard";
+    els.criticalThinking.hidden = currentPass !== 3 || mode !== "critical-thinking";
+    if (els.criticalThinking.hidden) {
+      $$("audio, video", els.criticalThinking).forEach((media) => media.pause());
+    }
   }
 
   // Event wiring
@@ -754,8 +759,9 @@
   renderMemoryCards();
   renderTranscript();
   applyPacingMode(savedPacing);
-  if (window.location.hash === "#storyboard") {
-    pass3Submode = "storyboard";
+  const linkedMode = window.location.hash.slice(1);
+  if (linkedMode === "storyboard" || linkedMode === "critical-thinking") {
+    pass3Submode = linkedMode;
     applyPass(3);
   } else {
     applyPass(1);

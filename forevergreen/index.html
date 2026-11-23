@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="styles.css?v=20261123-streaming">
   <link rel="stylesheet" href="frame-inspector.css?v=20261123-v20">
   <link rel="stylesheet" href="storyboard.css?v=1">
+  <link rel="stylesheet" href="critical-thinking.css?v=1">
 </head>
 <body>
   <a class="screen-brand" href="/" aria-label="Dialogue home">
@@ -81,6 +82,9 @@
         </button>
         <button class="submode-btn" type="button" data-submode="blind" aria-pressed="false">
           Tell It Without Looking
+        </button>
+        <button class="submode-btn" type="button" data-submode="critical-thinking" aria-pressed="false" aria-controls="critical-thinking">
+          Critical thinking
         </button>
       </div>
 
@@ -256,6 +260,15 @@
           </article>
         </div>
       </section>
+      <section class="thinking" id="critical-thinking" aria-labelledby="thinking-heading" hidden>
+        <header class="thinking-header">
+          <h2 id="thinking-heading">Critical thinking</h2>
+          <p>Choose a question. Compare the evidence and share your reading before opening the sample answer.</p>
+        </header>
+        <nav class="thinking-topics" aria-label="Discussion topics" hidden></nav>
+        <article class="thinking-topic" id="thinking-topic" hidden></article>
+        <p class="thinking-loading" role="status">Loading discussion topics…</p>
+      </section>
     </section>
 
     <footer class="source-credit" aria-label="Source credit">
@@ -300,7 +313,8 @@
   <script src="beat-timings.js?v=20261123-v20"></script>
   <script src="player-core.js?v=20261123-streaming"></script>
   <script src="frame-inspector.js?v=20261123-v20"></script>
-  <script src="app.js?v=20261123-streaming"></script>
+  <script src="app.js?v=20261123-thinking"></script>
   <script src="storyboard.js?v=1"></script>
+  <script src="critical-thinking.js?v=1"></script>
 </body>
 </html>

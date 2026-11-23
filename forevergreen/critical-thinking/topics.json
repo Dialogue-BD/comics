@@ -1,0 +1,131 @@
+[
+  {
+    "id": "title",
+    "label": "The title",
+    "question": "What does Forevergreen mean?",
+    "prompt": "Compare the little shoot in the old stump with the tree at the end. What changes? What carries on?",
+    "frames": [
+      {"time": 634, "label": "A shoot in the old stump", "alt": "The bear cups a mound of soil with a tiny green shoot in the hollow of the old stump."},
+      {"time": 688, "label": "A new evergreen at sunrise", "alt": "The new tree stands above the canyon, green against a golden sky."}
+    ],
+    "media": [
+      {"kind": "video", "start": 669, "end": 689, "label": "Rewatch the last gift", "poster": "storyboard/scene-10.jpg"}
+    ],
+    "readings": [
+      {"name": "Evergreen", "text": "The title names the kind of tree that shelters the cub. Its green branches in winter give us a picture of steady care."},
+      {"name": "Forever green", "text": "The first tree dies. The bear keeps its care alive when he tends the shoot and later offers a pinecone to another cub. What lasts is something he can pass on."},
+      {"name": "For Evergreen", "text": "Read aloud as a dedication, it could sound like the bear saying, ‘This is for you.’ Planting the shoot in the old stump and caring for a new cub become ways to honor his friend. This is one possible reading of the title."}
+    ],
+    "followup": "If you could keep just one of these readings, which scene would you use to defend it?"
+  },
+  {
+    "id": "pinecones",
+    "label": "Pinecones",
+    "question": "How does a pinecone change meaning as the story goes on?",
+    "prompt": "Compare what the bear receives in each picture. How do his needs and his choices change?",
+    "frames": [
+      {"time": 98, "label": "Seeds for the hungry cub", "alt": "The evergreen holds a large cone up to the light."},
+      {"time": 153, "label": "A toy for the young cub", "alt": "The tree holds a small figure made from a pinecone out towards the cub."},
+      {"time": 622, "file": "storyboard/scene-09.jpg", "label": "A shoot on the old toy", "alt": "The bear looks at a green shoot growing from his old pinecone toy."}
+    ],
+    "answer": "At first, the cone means food and safety. The toy makes a cone a sign of friendship. When a shoot grows from that same toy, the gift becomes a way for the bear to care for new life. The object is familiar, but what the bear can do with it has changed.",
+    "followup": "How would the ending feel if the bear found the shoot growing somewhere else?"
+  },
+  {
+    "id": "rescue",
+    "label": "The rescue",
+    "question": "Does the bear earn his rescue by letting go?",
+    "prompt": "Watch the order of events. Who acts first, and what does the bear do in response?",
+    "frames": [
+      {"time": 490, "file": "storyboard/scene-07.jpg", "label": "The tree reaches across", "alt": "The tree extends a branch toward the bear while the bear is still carrying rubbish."},
+      {"time": 517, "label": "The bear reaches back", "alt": "With his paws free, the bear reaches the edge of the tree’s branch."}
+    ],
+    "media": [
+      {"kind": "video", "start": 487, "end": 523, "label": "Rewatch the rescue", "poster": "storyboard/scene-07.jpg"}
+    ],
+    "answer": "The tree has already begun risking its life while the bear is still holding the rubbish. By dropping it, the bear can take hold of the branch. That order makes the rescue feel like grace, help freely offered even after he has hurt his friend. His choice still matters because he has to accept the help.",
+    "followup": "How would the story change if the tree waited for the bear to apologize first?"
+  },
+  {
+    "id": "materials",
+    "label": "Wood and plastic",
+    "question": "Why does a shiny chip bag stand out in a forest that looks carved?",
+    "prompt": "Look at the surfaces of the bear, the tree, and the bag. Which details make them feel like they belong in different worlds?",
+    "frames": [
+      {"time": 170, "file": "storyboard/scene-03.jpg", "label": "Wood grain on both characters", "alt": "The bear and tree share a rough, carved texture and sit beside a patch of earth."},
+      {"time": 235, "file": "storyboard/scene-04.jpg", "label": "The glossy chip bag", "alt": "The bear peers into a bright green plastic bag with a glossy red label."}
+    ],
+    "answer": "The directors wanted the bear and tree to look as if they could have been carved from the same wood. That makes their closeness visible before anyone has to explain it. The bag’s bright, glossy surface draws our eye as it draws the bear’s. Its difference can feel exciting at first and out of place by the time the bear makes a bed in the rubbish.",
+    "followup": "If the bag looked like wood too, what might we feel differently about the bear’s choice?",
+    "sources": [
+      {"label": "Directors on wood and plastic", "url": "https://mbird.com/film/the-good-news-according-toforevergreen/"}
+    ]
+  },
+  {
+    "id": "crows",
+    "label": "The crows",
+    "question": "How can the crows prepare us for a fire we haven’t seen yet?",
+    "prompt": "Compare the crow’s surface with the burnt remains. When does the resemblance become meaningful to you?",
+    "frames": [
+      {"time": 386, "label": "A crow at the campsite", "alt": "A dark crow with a rough, charcoal-like surface stands beside a bright chip bag."},
+      {"time": 584, "label": "The forest after the fire", "alt": "Dark, charred wood frames the bear in the mist after the fire."}
+    ],
+    "answer": "The filmmakers based the crows’ look on burnt wood. When a crow brings the bag, that dark sheen gives the exciting discovery an uneasy edge. Once we see the forest burn, the resemblance becomes easier to spot. The design lets the film hint at danger before the bear recognizes it.",
+    "followup": "Does the crow seem like a villain, an ordinary scavenger, or a little of both? What in the film supports your view?",
+    "sources": [
+      {"label": "Directors on the crows", "url": "https://mbird.com/film/the-good-news-according-toforevergreen/"}
+    ]
+  },
+  {
+    "id": "sound",
+    "label": "The music",
+    "question": "What does the music tell us about the little tree?",
+    "prompt": "Listen to the two excerpts. Notice how the music helps the same little tree feel different when it grows and when the bear leaves.",
+    "frames": [
+      {"time": 184, "label": "The first shoot", "alt": "A bright green shoot rises from a mound of earth."},
+      {"time": 313, "label": "The bear walks past the sapling", "alt": "The older bear faces the little tree as he walks away."}
+    ],
+    "media": [
+      {"kind": "audio", "start": 177, "end": 190, "label": "When it grows"},
+      {"kind": "audio", "start": 306, "end": 320, "label": "When he leaves"}
+    ],
+    "answer": "The music leaves room to marvel when the first shoot appears. Later, Josh Garrels’s voice enters as the bear steps on what they grew together. The change makes the moment feel like a loss between friends. After hearing both clips, the little tree can feel like a record of their relationship.",
+    "followup": "What might a spoken line have explained here? What do we gain by hearing the music instead?",
+    "sources": [
+      {"label": "Josh Garrels on scoring the departure", "url": "https://mbird.com/film/the-good-news-according-toforevergreen/"}
+    ]
+  },
+  {
+    "id": "parable",
+    "label": "The parable",
+    "question": "What does the film add to the story of the Prodigal Son?",
+    "prompt": "In the parable, a father runs out to welcome his returning son. What does the tree do when the bear is stranded on the other side?",
+    "frames": [
+      {"time": 554, "file": "storyboard/scene-08.jpg", "label": "The tree falls into the canyon", "alt": "From safety, the bear watches his burning friend fall."},
+      {"time": 718, "label": "The closing card cites John 15:13", "alt": "John 15:13 is shown above a picture of a sleeping cub, connecting love with laying down one’s life for a friend.", "fullSize": true}
+    ],
+    "answer": "Both stories show someone meeting a person who has walked away with more kindness than they might expect. The film gives that welcome a physical shape. The tree becomes the bridge and gives its life. The directors describe the story as an allegory of grace. In their Christian reading, the tree’s costly rescue points to Christ’s love.",
+    "followup": "How does seeing the verse after the rescue shape the way you remember the scene?",
+    "sources": [
+      {"label": "Filmmakers on the parable and the verse", "url": "https://mbird.com/film/the-good-news-according-toforevergreen/"},
+      {"label": "Read The Lost Son activity", "url": "/lost-son/"}
+    ]
+  },
+  {
+    "id": "making",
+    "label": "Making the film",
+    "question": "How was making Forevergreen an act of gratitude?",
+    "prompt": "Look at the care in the carved details, then read the verse that appears before the crew credits. What might these choices tell us about whom the directors wanted to honor?",
+    "frames": [
+      {"time": 146, "label": "Tool marks on the tree", "alt": "An early view of the tree shows facets and marks that look cut into wood."},
+      {"time": 718, "label": "John 15:13 before the crew credits", "alt": "A verse about laying down one’s life for a friend appears above an illustration of a sleeping cub.", "fullSize": true}
+    ],
+    "watch": {"label": "Watch the Annecy making-of", "url": "https://www.youtube.com/watch?v=WyQZYr_aDwo"},
+    "answer": "Nathan Engelhardt and Jeremy Spears put something of their own story into the bear’s rescue. They believe Jesus Christ saved them by grace, and they wanted to share that gift through the film. That gratitude helps explain why they gave years of their time and craft to an unpaid project, joined by about 200 volunteers. The care they put into the hand-carved look is one way to see that dedication. Nathan even called John 15:13 the film’s first credit, a way to honor God before their own names appeared.",
+    "followup": "If ‘For Evergreen’ is the bear’s dedication, what dedication do you hear in the directors’ choice to give John 15:13 the first credit?",
+    "sources": [
+      {"label": "The directors on Christ’s rescue and the first credit", "url": "https://mbird.com/film/the-good-news-according-toforevergreen/"},
+      {"label": "Directors on the volunteers and the carved look", "url": "https://blog.siggraph.org/2026/03/carved-with-heart-the-craft-and-storytelling-behind-forevergreen.html/"}
+    ]
+  }
+]
