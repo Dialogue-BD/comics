@@ -3054,7 +3054,7 @@
           listenBtn.type = "button";
           listenBtn.className = "nurturer-tts-btn";
           listenBtn.textContent = "🔊 Listen";
-          listenBtn.setAttribute("aria-label", `Listen to Nurturer feedback: ${ttsText}`);
+          listenBtn.setAttribute("aria-label", `Listen to Nurturer feedback: ${speechPlainText(ttsText)}`);
           listenBtn.addEventListener("click", event => {
             event.stopPropagation();
             speakText(ttsText, listenBtn, "Nurturer feedback played.");
@@ -3250,33 +3250,186 @@
       audioMatchPairs.textContent = `${audioMatchPairsFound}/6`;
     }
 
+    // ---- natural voice (pre-recorded Phonon clips) ------------------------
+    // Shared with Busy Pictures: every spoken line has an MP3 named by a hash of
+    // its exact text (made by tools/make_phonon_clips.py, served by /api/tts/).
+    // Long feedback is spoken as a list of short pieces so each piece can be
+    // recorded once and reused. A piece with no clip, a slow network, or a
+    // refused play falls back to the device's own voice for that piece.
+    const NATURAL_VOICE_ID = "v1";
+    const CLIP_BASE_URL = "../api/tts/";
+    const CLIP_START_TIMEOUT_MS = 3500;
+    const CLIP_MISSING_RETRY_MS = 120000;
+    const SILENT_MP3 = "data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjYwLjE2LjEwMAAAAAAAAAAAAAAA//NwwAAAAAAAAAAAAEluZm8AAAAPAAAABAAAAlgAenp6enp6enp6enp6enp6enp6enp6enp6pqampqampqampqampqampqampqampqamptPT09PT09PT09PT09PT09PT09PT09PT09P/////////////////////////////////AAAAAExhdmM2MC4zMQAAAAAAAAAAAAAAACQCcQAAAAAAAAJY+/rsqgAAAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NCxKMAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";
+    const clipMissingSince = {};
+    const clipPrefetched = {};
+    let clipAudio = null;
+    let speechToken = 0;
+    let activeUtterance = null;
+
+    // cyrb53 over UTF-16 code units, base 36. Must match clip_key() in
+    // busy-pictures/tools/make_phonon_clips.py exactly.
+    function clipKey(text) {
+      let h1 = 0xdeadbeef, h2 = 0x41c6ce57;
+      for (let i = 0; i < text.length; i++) {
+        const ch = text.charCodeAt(i);
+        h1 = Math.imul(h1 ^ ch, 2654435761);
+        h2 = Math.imul(h2 ^ ch, 1597334677);
+      }
+      h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507);
+      h1 ^= Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+      h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507);
+      h2 ^= Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+      return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(36);
+    }
+
+    function clipUrlFor(text) {
+      return `${CLIP_BASE_URL}${NATURAL_VOICE_ID}/${clipKey(text)}.mp3`;
+    }
+
+    function speechSegments(text) {
+      return (Array.isArray(text) ? text : [text]).map(part => String(part ?? "").trim()).filter(Boolean);
+    }
+
+    function speechPlainText(text) {
+      return speechSegments(text).join(" ");
+    }
+
+    function getClipAudio() {
+      if (!clipAudio) {
+        clipAudio = new Audio();
+        clipAudio.preload = "auto";
+      }
+      return clipAudio;
+    }
+
+    function stopClip() {
+      if (!clipAudio) return;
+      clipAudio.onended = null;
+      clipAudio.onerror = null;
+      clipAudio.onplaying = null;
+      try { clipAudio.pause(); } catch (_) {}
+    }
+
+    // Phones only allow sound after a tap; play a moment of silence on the
+    // first touch so later clips may start without another tap.
+    function unlockClipAudio() {
+      const audio = getClipAudio();
+      if (audio.src) return;
+      audio.src = SILENT_MP3;
+      audio.play()?.then(() => { if (audio.src === SILENT_MP3) audio.pause(); }).catch(() => {});
+    }
+    ["touchstart", "pointerdown", "keydown"].forEach(type => {
+      document.addEventListener(type, function unlockOnce() {
+        document.removeEventListener(type, unlockOnce, true);
+        unlockClipAudio();
+      }, true);
+    });
+
+    function prefetchClip(text) {
+      speechSegments(text).forEach(part => {
+        const url = clipUrlFor(part);
+        if (clipPrefetched[url] || !window.fetch) return;
+        clipPrefetched[url] = true;
+        fetch(url).then(response => {
+          if (!response.ok) clipMissingSince[url] = Date.now();
+        }).catch(() => { delete clipPrefetched[url]; });
+      });
+    }
+
+    function playClipPiece(text, slow, token, onEnd, onFail) {
+      const url = clipUrlFor(text);
+      const missingAt = clipMissingSince[url];
+      if (missingAt && Date.now() - missingAt < CLIP_MISSING_RETRY_MS) {
+        onFail();
+        return;
+      }
+      const audio = getClipAudio();
+      let settled = false;
+      let startTimer = null;
+      const settle = () => {
+        settled = true;
+        window.clearTimeout(startTimer);
+        audio.onended = null;
+        audio.onerror = null;
+        audio.onplaying = null;
+      };
+      const fail = missing => {
+        if (settled) return;
+        settle();
+        try { audio.pause(); } catch (_) {}
+        if (missing) clipMissingSince[url] = Date.now();
+        if (token === speechToken) onFail();
+      };
+      audio.onended = () => {
+        if (settled) return;
+        settle();
+        if (token === speechToken) onEnd();
+      };
+      audio.onerror = () => fail(true);            // 404 (not recorded yet) or undecodable
+      audio.onplaying = () => window.clearTimeout(startTimer);
+      audio.src = url;
+      audio.playbackRate = slow ? 0.8 : 1;
+      audio.preservesPitch = true;
+      startTimer = window.setTimeout(() => fail(false), CLIP_START_TIMEOUT_MS);
+      audio.play()?.catch(err => {
+        if (err?.name === "AbortError") return;   // a newer clip replaced this one
+        fail(false);
+      });
+    }
+
+    function speakPieceWithDeviceVoice(text, rate, token, onDone) {
+      if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+        status.textContent = "Speech playback is unavailable in this browser. Try Chrome, Safari, Edge, or Firefox.";
+        onDone();
+        return;
+      }
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "en-US";
+      utterance.rate = rate;
+      utterance.pitch = 1;
+      activeUtterance = utterance;                 // keep a reference until it ends
+      const done = () => {
+        if (activeUtterance === utterance) activeUtterance = null;
+        if (token === speechToken) onDone();
+      };
+      utterance.onend = done;
+      utterance.onerror = done;
+      window.speechSynthesis.speak(utterance);
+    }
+
     function stopSpeech() {
+      speechToken += 1;
+      stopClip();
       window.speechSynthesis?.cancel();
+      activeUtterance = null;
       speakingControl?.classList.remove("is-speaking");
       speakingControl = null;
     }
 
     function speakText(text, control = null, announcement = "Audio played.", customRate = null) {
-      if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
-        status.textContent = "Speech playback is unavailable in this browser. Try Chrome, Safari, Edge, or Firefox.";
-        return false;
-      }
+      const pieces = speechSegments(text);
+      if (!pieces.length) return false;
       stopSpeech();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = "en-US";
-      utterance.rate = customRate ?? (nurturerSlowMode ? .68 : .86);
-      utterance.pitch = 1;
+      const token = speechToken;
+      const rate = customRate ?? (nurturerSlowMode ? .68 : .86);
+      const slow = nurturerSlowMode || rate < .8;
       if (control) {
         speakingControl = control;
         control.classList.add("is-speaking");
       }
-      const clearSpeakingControl = () => {
-        control?.classList.remove("is-speaking");
-        if (speakingControl === control) speakingControl = null;
+      let index = 0;
+      const next = () => {
+        if (token !== speechToken) return;
+        if (index >= pieces.length) {
+          control?.classList.remove("is-speaking");
+          if (speakingControl === control) speakingControl = null;
+          return;
+        }
+        const piece = pieces[index++];
+        playClipPiece(piece, slow, token, next, () => speakPieceWithDeviceVoice(piece, rate, token, next));
       };
-      utterance.onend = clearSpeakingControl;
-      utterance.onerror = clearSpeakingControl;
-      window.speechSynthesis.speak(utterance);
+      next();
       status.textContent = announcement;
       return true;
     }
@@ -3336,7 +3489,7 @@
 
     function startAudioMatchRound() {
       if (gameMode !== "audio-match") return;
-      window.speechSynthesis?.cancel();
+      stopSpeech();
       const { selected, used, total } = takeAudioMatchRound();
       audioMatchRound = selected;
       selectedAudioTile = null;
@@ -3412,7 +3565,7 @@
             mainText: `${entry.yes} (+1 point)`,
             collocations: entry.collocations,
             followUp: `Round complete! You matched all six pairs with ${gamePoints} total point${gamePoints === 1 ? "" : "s"}.`,
-            ttsText: `${entry.yes} We often say: ${entry.collocations.join(", ")}. Round complete!`
+            ttsText: [entry.yes, `We often say: ${entry.collocations.join(", ")}.`, "Round complete!"]
           });
         } else {
           renderNurturerAudioFeedback({
@@ -3421,7 +3574,7 @@
             mainText: `${entry.yes} (+1 point)`,
             collocations: entry.collocations,
             followUp: `Choose another audio tile and picture (${6 - audioMatchPairsFound} pair${6 - audioMatchPairsFound === 1 ? "" : "s"} left).`,
-            ttsText: `${entry.yes} We often say: ${entry.collocations.join(", ")}.`
+            ttsText: [entry.yes, `We often say: ${entry.collocations.join(", ")}.`]
           });
         }
         return;
@@ -3442,7 +3595,7 @@
         mainText: picEntry.recast,
         collocations: picEntry.collocations,
         followUp: `Take your time — listen again for “${audioLabel}” and find its picture.`,
-        ttsText: `${picEntry.recast} We often say: ${picEntry.collocations.join(", ")}. Take your time and listen again for ${audioLabel}.`
+        ttsText: [picEntry.recast, `We often say: ${picEntry.collocations.join(", ")}.`, `Take your time and listen again for ${audioLabel}.`]
       });
       window.setTimeout(() => {
         if (gameMode !== "audio-match") return;
@@ -3581,6 +3734,8 @@
       hintButton.classList.toggle("active", listeningHintsActive);
       hintButton.setAttribute("aria-pressed", String(listeningHintsActive));
       hintButton.setAttribute("aria-label", listeningHintsActive ? "Turn off listening hints" : "Turn on listening hints");
+      if (!itemListenGrid.hidden || !dualItemListenGrid.hidden) prefetchClip(gameData[cards[cardIndex]?.id] || []);
+      if (!questionListenLayer.hidden || !dualQuestionListenLayer.hidden) prefetchClip(currentQuestionRecord()?.questions || []);
     }
 
     function setListeningHintsActive(active) {
@@ -4753,7 +4908,7 @@
           mainText: `${entry.yes}`,
           collocations: entry.collocations,
           followUp: "Tap any picture on the card to hear its Nurturer affirmation and collocations.",
-          ttsText: `${entry.yes} We often say: ${entry.collocations.join(", ")}.`
+          ttsText: [entry.yes, `We often say: ${entry.collocations.join(", ")}.`]
         });
       } else if (linkPuzzle) {
         itemGrid.classList.add("is-locked");
@@ -4793,7 +4948,7 @@
           followUp: nextEntry
             ? `Now let’s find the next one: “${nextEntry.ask}”`
             : "All six pictures found! Tap any picture to review or draw a new card.",
-          ttsText: `${tappedEntry.yes} We often say: ${tappedEntry.collocations.join(", ")}.`
+          ttsText: [tappedEntry.yes, `We often say: ${tappedEntry.collocations.join(", ")}.`]
         });
         return;
       }
@@ -4817,7 +4972,7 @@
             mainText: `${tappedEntry.yes} (+1 point)`,
             collocations: tappedEntry.collocations,
             followUp: "Round complete! Tap any picture to revisit its collocations, or click “New card →”.",
-            ttsText: `${tappedEntry.yes} We often say: ${tappedEntry.collocations.join(", ")}. Wonderful! You found all six pictures.`
+            ttsText: [tappedEntry.yes, `We often say: ${tappedEntry.collocations.join(", ")}.`, "Wonderful! You found all six pictures."]
           });
         } else {
           const nextEntry = nurturerEntryFor(current.id, nurturerTargetIndex, items[nurturerTargetIndex]);
@@ -4828,7 +4983,7 @@
             mainText: `${tappedEntry.yes} (+1 point)`,
             collocations: tappedEntry.collocations,
             followUp: `Next Nurturer prompt: “${nextEntry.ask}”`,
-            ttsText: `${tappedEntry.yes} We often say: ${tappedEntry.collocations.join(", ")}. Next: ${nextEntry.ask}`
+            ttsText: [tappedEntry.yes, `We often say: ${tappedEntry.collocations.join(", ")}.`, "Next:", nextEntry.ask]
           });
         }
         return;
@@ -4848,7 +5003,7 @@
         mainText: tappedEntry.recast,
         collocations: tappedEntry.collocations,
         followUp: `Take your time — ${targetEntry.ask}`,
-        ttsText: `${tappedEntry.recast} We often say: ${tappedEntry.collocations.join(", ")}. Take your time: ${targetEntry.ask}`
+        ttsText: [tappedEntry.recast, `We often say: ${tappedEntry.collocations.join(", ")}.`, "Take your time.", targetEntry.ask]
       });
     }
 
