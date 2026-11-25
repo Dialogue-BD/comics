@@ -38,7 +38,7 @@
  "bald-head": "edge:bn-BD-NabanitaNeural",
  "balti": "gemini:gemini-3.8-flash-tts/Sulafat",
  "bamboo": "edge:bn-BD-NabanitaNeural",
- "bamboo-grove": "gemini:gemini-3.8-flash-tts/Kore",
+ "bamboo-grove": "edge:bn-BD-NabanitaNeural+single-char-rr",
  "bamboo-home": "gemini:gemini-3.8-flash-tts/Kore",
  "banana": "gemini:gemini-3.8-flash-tts/Sulafat",
  "banana-blossom-local": "edge:bn-BD-NabanitaNeural",
