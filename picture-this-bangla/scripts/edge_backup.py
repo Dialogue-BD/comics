@@ -1,23 +1,26 @@
 #!/usr/bin/env python3
-"""Fill every unrecorded word with a free Microsoft Edge voice as a stand-in.
+"""Fill unrecorded words and card-back questions with Edge stand-ins.
 
     python3 -m pip install --user edge-tts      # once
     python3 scripts/edge_backup.py              # from the picture-this-bangla folder
 
 Each clip is trimmed and levelled to match the Gemini recordings (needs ffmpeg).
-Only words with no recording in audio/ are generated, so the Gemini recordings
-are never touched and the script can be re-run safely. Each Edge clip is marked
-"edge" in audio/sources.json; when a Gemini recording replaces it, its entry is
-updated, so it is always clear which words still need a better take.
+An ordinary run fills missing files in audio/ and question-audio/. Each
+directory keeps its own sources.json so Edge clips can be upgraded to Gemini
+one at a time. Refresh the audio index after recording.
 Runs on Python 3.8+.
 
 Options
+    --questions  record only missing back-of-card questions
     --test       record 4 words with ড়/ঢ় both ways (as spelled on the card, and
                  with the single-character ড়/ঢ়) into ~/Desktop/edge-rr-test/
     --redo-rr    re-record every Edge word containing ড়/ঢ় using the
                  single-character form (never touches Gemini recordings)
 """
-import asyncio, json, os, shutil, subprocess, sys, tempfile
+import argparse, asyncio, json, os, shutil, subprocess, sys, tempfile
+from pathlib import Path
+
+from build_web import load_questions
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VOICE = os.environ.get("EDGE_VOICE", "bn-BD-NabanitaNeural")
@@ -60,7 +63,8 @@ def finish_clip(path):
         cur = _lufs(wav)
         gain = (TARGET_LUFS - cur) if cur is not None and cur > -70 else 0.0
         subprocess.run([FFMPEG, "-v", "error", "-y", "-i", wav, "-af", "volume=%.2fdB,alimiter=limit=0.89:level=false" % gain,
-                        "-ac", "1", "-ar", "24000", "-codec:a", "libmp3lame", "-b:a", "64k", path], check=True)
+                        "-ac", "1", "-ar", "24000", "-codec:a", "libmp3lame", "-b:a", "64k", "-f", "mp3", path],
+                       check=True)
 
 
 def load_deck():
@@ -68,17 +72,87 @@ def load_deck():
     return json.loads(txt.split("window.PTB_DECK = ", 1)[1].split(";\nwindow.PICTURE_THIS_GAME_DATA", 1)[0])
 
 
+def read_sources(path):
+    return json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
+
+
+async def record_missing(edge_tts, items, directory, kind, workers, redo_rr=False):
+    directory.mkdir(parents=True, exist_ok=True)
+    source_path = directory / "sources.json"
+    if redo_rr:
+        sources = read_sources(source_path)
+        todo = [item for item in items if has_rr(item["label"])
+                and sources.get(item["id"], "edge").startswith("edge")]
+    else:
+        todo = [item for item in items if not (directory / (item["id"] + ".mp3")).is_file()]
+    print(f"{len(todo)} {kind} need a stand-in recording ({VOICE}, rate {RATE}).", flush=True)
+    if not todo:
+        return 0
+    sem = asyncio.Semaphore(workers)
+    done, failed = [], []
+
+    async def one(item, staging):
+        key, label = item["id"], item["label"]
+        out = directory / (key + ".mp3")
+        tmp = staging / (key + ".mp3")
+        async with sem:
+            for attempt in range(3):
+                try:
+                    await edge_tts.Communicate(tts_text(label), VOICE, rate=RATE).save(str(tmp))
+                    if tmp.stat().st_size < 1500:
+                        raise RuntimeError("empty audio")
+                    if FFMPEG:
+                        await asyncio.get_running_loop().run_in_executor(None, finish_clip, str(tmp))
+                except Exception as exc:
+                    error = exc
+                    await asyncio.sleep(2 + attempt * 3)
+                else:
+                    break
+            else:
+                failed.append(f"{key} ({label}): {error}")
+                return
+
+            sources = read_sources(source_path)
+            if redo_rr:
+                if sources.get(key, "edge").startswith("edge"):
+                    tmp.replace(out)
+                else:
+                    return
+            else:
+                try:
+                    os.link(tmp, out)  # Publish this clip only if no recording has appeared meanwhile.
+                except FileExistsError:
+                    return
+            sources[key] = "edge:" + VOICE + ("+single-char-rr" if has_rr(label) else "")
+            pending_sources = staging / "sources.json"
+            pending_sources.write_text(json.dumps(dict(sorted(sources.items())), indent=1, ensure_ascii=False),
+                                       encoding="utf-8")
+            pending_sources.replace(source_path)
+            done.append(key)
+            if len(done) % 25 == 0:
+                print(f"  {len(done)}/{len(todo)} {kind}", flush=True)
+
+    with tempfile.TemporaryDirectory(dir=directory, prefix=".edge-") as staging:
+        await asyncio.gather(*(one(item, Path(staging)) for item in todo))
+    print(f"Done: {len(done)} {kind} saved, {len(failed)} failed.", flush=True)
+    for failure in failed:
+        print("  FAILED", failure)
+    return len(failed)
+
+
 async def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--questions", action="store_true", help="Fill only missing question recordings.")
+    mode.add_argument("--test", action="store_true", help="Record example word spellings for comparison.")
+    mode.add_argument("--redo-rr", action="store_true", help="Refresh existing Edge words containing ড়/ঢ়.")
+    args = parser.parse_args()
     try:
         import edge_tts
     except ImportError:
         sys.exit("edge-tts is not installed. Run:  python3 -m pip install --user edge-tts")
-    audio_dir = os.path.join(HERE, "audio")
-    os.makedirs(audio_dir, exist_ok=True)
-    src_path = os.path.join(audio_dir, "sources.json")
-    sources = json.load(open(src_path, encoding="utf-8")) if os.path.exists(src_path) else {}
-    items = [it for c in load_deck()["cards"] for it in c["items"]]
-    if "--test" in sys.argv:
+    items = [] if args.questions else [it for card in load_deck()["cards"] for it in card["items"]]
+    if args.test:
         out = os.path.expanduser("~/Desktop/edge-rr-test")
         os.makedirs(out, exist_ok=True)
         picks = [it for it in items if has_rr(it["label"])][:4]
@@ -89,46 +163,19 @@ async def main():
         print("Saved to", out, "- compare each a (as spelled) with b (single-character ড়/ঢ়).")
         os.system('open "%s"' % out)
         return
-    if "--redo-rr" in sys.argv:
-        todo = [it for it in items if has_rr(it["label"]) and sources.get(it["id"], "edge").startswith("edge")]
-        print(f"Re-recording {len(todo)} Edge words with ড়/ঢ় as single characters.")
-    else:
-        todo = [it for it in items if not os.path.exists(os.path.join(audio_dir, it["id"] + ".mp3"))]
-        print(f"{len(todo)} words need a stand-in recording ({VOICE}, rate {RATE}).")
-    if not FFMPEG:
-        print("Note: ffmpeg not found, so clips are saved untrimmed and unlevelled (brew install ffmpeg).")
-    sem = asyncio.Semaphore(4)
-    done, failed = [], []
-
-    async def one(it):
-        out = os.path.join(audio_dir, it["id"] + ".mp3")
-        async with sem:
-            for attempt in range(3):
-                try:
-                    tmp = out + ".part"
-                    await edge_tts.Communicate(tts_text(it["label"]), VOICE, rate=RATE).save(tmp)
-                    if os.path.getsize(tmp) < 1500:
-                        raise RuntimeError("empty audio")
-                    if FFMPEG:
-                        await asyncio.get_running_loop().run_in_executor(None, finish_clip, tmp)
-                    os.replace(tmp, out)
-                    sources[it["id"]] = "edge:" + VOICE + ("+single-char-rr" if has_rr(it["label"]) else "")
-                    done.append(it["id"])
-                    if len(done) % 25 == 0:
-                        print(f"  {len(done)}/{len(todo)}")
-                    return
-                except Exception as e:
-                    err = e
-                    await asyncio.sleep(2 + attempt * 3)
-            failed.append(f"{it['id']} ({it['label']}): {err}")
-
-    await asyncio.gather(*(one(it) for it in todo))
-    json.dump(dict(sorted(sources.items())), open(src_path, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
-    print(f"Done: {len(done)} saved, {len(failed)} failed.")
-    for f in failed:
-        print("  FAILED", f)
+    failed = 0
+    if not args.questions:
+        failed = await record_missing(edge_tts, items, Path(HERE) / "audio", "words", 4, args.redo_rr)
+    if not args.redo_rr:
+        questions = load_questions()
+        if args.questions and not questions:
+            parser.error("Build question-data.js with build_web.py --source before recording.")
+        question_items = [{"id": key, "label": text} for record in questions.values()
+                          for key, text in zip(record["ids"], record["questions"])]
+        if question_items:
+            failed += await record_missing(edge_tts, question_items, Path(HERE) / "question-audio", "questions", 16)
     if failed:
-        print("Run the same command again to retry the failed words.")
+        sys.exit("Run the same command again to retry missing recordings.")
 
 
 if __name__ == "__main__":

@@ -627,7 +627,7 @@
       top: var(--question-y);
       display: grid;
       place-items: center;
-      width: 30px;
+      width: min(30px, calc(100% - var(--question-x)));
       height: 28px;
       padding: 0;
       border: 0;
@@ -638,20 +638,27 @@
       pointer-events: auto;
       touch-action: manipulation;
       transform: translateY(-50%);
-      transition: color .14s ease, background .14s ease, transform .14s ease;
+      transition: color .14s ease;
     }
 
     .question-listen-button:hover,
     .question-listen-button:focus-visible,
     .question-listen-button.is-speaking {
       color: #8a5600;
-      outline: 2px solid rgba(138, 86, 0, .62);
-      outline-offset: 1px;
-      background: rgba(251, 191, 36, .22);
-      transform: translateY(-50%) scale(1.04);
+      outline: none;
     }
 
-    .question-listen-button .speaker-glyph { width: 18px; height: 18px; }
+    .question-listen-button .speaker-glyph {
+      width: 18px;
+      height: 18px;
+      max-width: 100%;
+      border-radius: 4px;
+    }
+
+    .question-listen-button:is(:hover, :focus-visible, .is-speaking) .speaker-glyph {
+      background: rgba(251, 191, 36, .22);
+      box-shadow: inset 0 0 0 1px rgba(138, 86, 0, .62);
+    }
 
     .game-picker {
       position: fixed;
@@ -1761,6 +1768,7 @@
     // from pairing the newest card list with an older, cached answer key.
     const pictureThisDataRevision = Date.now();
     document.write(`<script src="deck-data.js?v=${pictureThisDataRevision}"><\/script>`);
+    document.write(`<script src="question-data.js?v=${pictureThisDataRevision}"><\/script>`);
     document.write(`<script src="audio-index.js?v=${pictureThisDataRevision}"><\/script>`);
   </script>
   <script>
@@ -1803,6 +1811,7 @@
     const ptbItemsByCard = Object.fromEntries((window.PTB_DECK?.cards || []).map(entry => [entry.id, entry.items || []]));
     const ptbAudio = window.PTB_AUDIO || { ids: [] };
     const ptbAudioIds = new Set(Array.isArray(ptbAudio.ids) ? ptbAudio.ids : []);
+    const ptbQuestionAudioIds = new Set(ptbAudio.questions?.ids || []);
     let ptbClip = null;
 
     function ptbItem(cardId, index) {
@@ -1832,6 +1841,10 @@
         status.textContent = "There is no recording for this picture yet.";
         return false;
       }
+      return playRecordedAudio(src, control, `${item?.label || "Word"} played.`);
+    }
+
+    function playRecordedAudio(src, control, announcement) {
       stopSpeech();
       const clip = new Audio(src);
       ptbClip = clip;
@@ -1839,18 +1852,19 @@
         speakingControl = control;
         control.classList.add("is-speaking");
       }
-      const clear = () => {
+      const clear = (failed = false) => {
+        if (ptbClip !== clip) return;
         control?.classList.remove("is-speaking");
         if (speakingControl === control) speakingControl = null;
-        if (ptbClip === clip) ptbClip = null;
+        ptbClip = null;
+        if (failed) status.textContent = "This recording could not be played.";
       };
-      clip.addEventListener("ended", clear);
-      clip.addEventListener("error", () => {
-        clear();
-        status.textContent = "This recording could not be played.";
-      });
-      clip.play().catch(clear);
-      status.textContent = `${item?.label || "Word"} played.`;
+      clip.addEventListener("playing", () => {
+        if (ptbClip === clip) status.textContent = announcement;
+      }, { once: true });
+      clip.addEventListener("ended", () => clear(), { once: true });
+      clip.addEventListener("error", () => clear(true), { once: true });
+      clip.play().catch(() => clear(true));
       return true;
     }
     const gameMenuButton = document.querySelector("#game-menu-button");
@@ -2528,7 +2542,7 @@
       hintButton.disabled = !ready;
     }
 
-    function makeQuestionListenButton(question, index, endpoint) {
+    function makeQuestionListenButton(question, index, endpoint, src) {
       const button = document.createElement("button");
       button.type = "button";
       button.className = "question-listen-button";
@@ -2544,7 +2558,7 @@
       button.addEventListener("pointerup", event => event.stopPropagation());
       button.addEventListener("click", event => {
         event.stopPropagation();
-        speakText(question, button, `Question ${index + 1} played.`);
+        playRecordedAudio(src, button, `Question ${index + 1} played.`);
       });
       return button;
     }
@@ -2555,6 +2569,8 @@
       dualQuestionListenLayer.replaceChildren();
       if (!record) return;
       record.questions.forEach((question, index) => {
+        const id = record.ids?.[index];
+        if (!ptbQuestionAudioIds.has(id)) return;
         const endpoint = record.endpoints?.[index];
         const position = Array.isArray(record.positions) && Number.isFinite(record.positions[index])
           ? record.positions[index]
@@ -2562,15 +2578,16 @@
         const placement = Number.isFinite(endpoint?.x) && Number.isFinite(endpoint?.y)
           ? endpoint
           : { x: 89, y: position };
-        questionListenLayer.append(makeQuestionListenButton(question, index, placement));
-        dualQuestionListenLayer.append(makeQuestionListenButton(question, index, placement));
+        const src = `question-audio/${encodeURIComponent(id)}.mp3?v=${ptbAudio.version || ""}`;
+        questionListenLayer.append(makeQuestionListenButton(question, index, placement, src));
+        dualQuestionListenLayer.append(makeQuestionListenButton(question, index, placement, src));
       });
     }
 
     function syncListeningSurfaces() {
       const browsing = gameMode === "browse";
       const questionSide = browsing && !isDualView && isQuestionSide();
-      const hasQuestions = Boolean(currentQuestionRecord());
+      const hasQuestions = questionListenLayer.childElementCount > 0;
       const cardRecorded = ptbCardHasAudio(cards[cardIndex]?.id);
       itemListenGrid.hidden = !(browsing && listeningHintsActive && cardRecorded && !isDualView && !questionSide);
       dualItemListenGrid.hidden = !(browsing && listeningHintsActive && cardRecorded && isDualView);
