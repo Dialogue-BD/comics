@@ -118,7 +118,9 @@ async def record_missing(edge_tts, items, directory, kind, workers, redo_rr=Fals
         sources = read_sources(source_path)
         wanted = has_rr if redo_rr else is_respelled
         todo = [item for item in items if wanted(item["label"])
-                and sources.get(item["id"], "edge").startswith("edge")]
+                and sources.get(item["id"], "edge").startswith("edge")
+                # a rerun of --redo-respell only retries the clips that failed
+                and not (redo_respell and "+respell" in sources.get(item["id"], ""))]
     else:
         todo = [item for item in items if not (directory / (item["id"] + ".mp3")).is_file()]
     print(f"{len(todo)} {kind} need a stand-in recording ({VOICE}, rate {RATE}).", flush=True)
