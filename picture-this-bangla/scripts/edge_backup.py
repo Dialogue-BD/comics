@@ -16,11 +16,22 @@ Options
                  with the single-character ড়/ঢ়) into ~/Desktop/edge-rr-test/
     --redo-rr    re-record every Edge word containing ড়/ঢ় using the
                  single-character form (never touches Gemini recordings)
+    --test-respell  for each word in scripts/edge_respell.json, record an example
+                 as spelled and with each spelling in its "try" list into
+                 ~/Desktop/edge-respell-test/
+    --redo-respell  re-record every Edge word and question whose Edge text changes
+                 under scripts/edge_respell.json (never touches Gemini recordings)
+
+Respellings: scripts/edge_respell.json lists everyday words Edge says wrongly
+(কোন, কেন, যেন ...) and the spelling Edge is given instead. Only the text sent to
+Edge changes. Add a word there when a nurturer reports one, check it with
+--test-respell, then run --redo-respell.
 """
 import argparse, asyncio, json, os, shutil, subprocess, sys, tempfile
 from pathlib import Path
 
 from build_web import load_questions
+from edge_respell import respell, load_list, hits
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VOICE = os.environ.get("EDGE_VOICE", "bn-BD-NabanitaNeural")
@@ -30,10 +41,19 @@ RATE = os.environ.get("EDGE_RATE", "-10%")
 RR_DECOMPOSED = ("\u09a1\u09bc", "\u09a2\u09bc")          # ড + ় , ঢ + ়
 
 
-def tts_text(label):
-    """What Edge is given: the card spelling with ড়/ঢ় as single characters.
+def rr_text(label):
+    """The card spelling with ড়/ঢ় as single characters.
     The cards write them as letter + nukta, and Edge drops the nukta."""
     return label.replace("\u09a1\u09bc", "\u09dc").replace("\u09a2\u09bc", "\u09dd")
+
+
+def tts_text(label):
+    """What Edge is given: single-character ড়/ঢ়, then the edge_respell.json respellings."""
+    return respell(rr_text(label))
+
+
+def is_respelled(label):
+    return respell(label) != label
 
 
 def has_rr(label):
@@ -76,12 +96,14 @@ def read_sources(path):
     return json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
 
 
-async def record_missing(edge_tts, items, directory, kind, workers, redo_rr=False):
+async def record_missing(edge_tts, items, directory, kind, workers, redo_rr=False, redo_respell=False):
     directory.mkdir(parents=True, exist_ok=True)
     source_path = directory / "sources.json"
-    if redo_rr:
+    redo = redo_rr or redo_respell
+    if redo:
         sources = read_sources(source_path)
-        todo = [item for item in items if has_rr(item["label"])
+        wanted = has_rr if redo_rr else is_respelled
+        todo = [item for item in items if wanted(item["label"])
                 and sources.get(item["id"], "edge").startswith("edge")]
     else:
         todo = [item for item in items if not (directory / (item["id"] + ".mp3")).is_file()]
@@ -113,7 +135,7 @@ async def record_missing(edge_tts, items, directory, kind, workers, redo_rr=Fals
                 return
 
             sources = read_sources(source_path)
-            if redo_rr:
+            if redo:
                 if sources.get(key, "edge").startswith("edge"):
                     tmp.replace(out)
                 else:
@@ -123,7 +145,8 @@ async def record_missing(edge_tts, items, directory, kind, workers, redo_rr=Fals
                     os.link(tmp, out)  # Publish this clip only if no recording has appeared meanwhile.
                 except FileExistsError:
                     return
-            sources[key] = "edge:" + VOICE + ("+single-char-rr" if has_rr(label) else "")
+            sources[key] = ("edge:" + VOICE + ("+single-char-rr" if has_rr(label) else "")
+                            + ("+respell" if is_respelled(label) else ""))
             pending_sources = staging / "sources.json"
             pending_sources.write_text(json.dumps(dict(sorted(sources.items())), indent=1, ensure_ascii=False),
                                        encoding="utf-8")
@@ -146,12 +169,33 @@ async def main():
     mode.add_argument("--questions", action="store_true", help="Fill only missing question recordings.")
     mode.add_argument("--test", action="store_true", help="Record example word spellings for comparison.")
     mode.add_argument("--redo-rr", action="store_true", help="Refresh existing Edge words containing ড়/ঢ়.")
+    mode.add_argument("--test-respell", action="store_true", help="Record edge_respell.json words as spelled and respelled.")
+    mode.add_argument("--redo-respell", action="store_true", help="Refresh Edge words/questions changed by edge_respell.json.")
     args = parser.parse_args()
     try:
         import edge_tts
     except ImportError:
         sys.exit("edge-tts is not installed. Run:  python3 -m pip install --user edge-tts")
     items = [] if args.questions else [it for card in load_deck()["cards"] for it in card["items"]]
+    question_items = [{"id": key, "label": text} for record in load_questions().values()
+                      for key, text in zip(record["ids"], record["questions"])]
+    if args.test_respell:
+        out = os.path.expanduser("~/Desktop/edge-respell-test")
+        os.makedirs(out, exist_ok=True)
+        for n, (word, entry) in enumerate(load_list().items(), 1):
+            # Prefer a short question that uses the word, else the bare word.
+            uses = sorted((q["label"] for q in question_items + items if word in hits(q["label"])), key=len)
+            text = rr_text(uses[0]) if uses else word
+            await edge_tts.Communicate(text, VOICE, rate=RATE).save(os.path.join(out, f"{n}a-as-spelled.mp3"))
+            print(f"{n}. {word} ({entry.get('gloss', '')}): {text}")
+            for k, alt in enumerate(entry.get("try") or [entry["say"]]):
+                alt_text = text.replace(word, alt) if uses else alt
+                name = f"{n}{chr(ord('b') + k)}-{'say' if alt == entry['say'] else 'try'}.mp3"
+                await edge_tts.Communicate(alt_text, VOICE, rate=RATE).save(os.path.join(out, name))
+                print(f"   {chr(ord('b') + k)}: {alt_text}" + ("   <- current 'say'" if alt == entry["say"] else ""))
+        print("Saved to", out, "- compare each a (as spelled) with b, c ... (respelled).")
+        os.system('open "%s"' % out)
+        return
     if args.test:
         out = os.path.expanduser("~/Desktop/edge-rr-test")
         os.makedirs(out, exist_ok=True)
@@ -165,15 +209,13 @@ async def main():
         return
     failed = 0
     if not args.questions:
-        failed = await record_missing(edge_tts, items, Path(HERE) / "audio", "words", 4, args.redo_rr)
+        failed = await record_missing(edge_tts, items, Path(HERE) / "audio", "words", 4, args.redo_rr, args.redo_respell)
     if not args.redo_rr:
-        questions = load_questions()
-        if args.questions and not questions:
+        if args.questions and not question_items:
             parser.error("Build question-data.js with build_web.py --source before recording.")
-        question_items = [{"id": key, "label": text} for record in questions.values()
-                          for key, text in zip(record["ids"], record["questions"])]
         if question_items:
-            failed += await record_missing(edge_tts, question_items, Path(HERE) / "question-audio", "questions", 16)
+            failed += await record_missing(edge_tts, question_items, Path(HERE) / "question-audio", "questions", 16,
+                                           redo_respell=args.redo_respell)
     if failed:
         sys.exit("Run the same command again to retry missing recordings.")
 

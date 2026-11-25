@@ -1,0 +1,26 @@
+{
+ "_about": "Words Edge TTS (bn-BD-NabanitaNeural) says wrongly, and the spelling Edge is given instead. Only the text sent to Edge changes; the cards, questions and site keep the normal spelling. Whole words only: কোন changes, কোনটা and কোনো do not (add them as their own entries if Edge gets them wrong). 'say' is what Edge gets. 'try' lists spellings to compare with: python3 scripts/edge_backup.py --test-respell. After changing 'say', re-record with --redo-respell (never touches Gemini recordings).",
+ "words": {
+  "কোন": {
+   "say": "কোন্",
+   "gloss": "which",
+   "problem": "Edge often adds a trailing o (kono); it should be kon",
+   "try": ["কোন্", "কোন্‌"],
+   "reported": "2026-11-25"
+  },
+  "যেন": {
+   "say": "যেনো",
+   "gloss": "as if / so that",
+   "problem": "needs a trailing o (jeno); Edge says jen",
+   "try": ["যেনো"],
+   "reported": "2026-11-25"
+  },
+  "কেন": {
+   "say": "কেনো",
+   "gloss": "why",
+   "problem": "often needs a trailing o (keno); Edge says ken",
+   "try": ["কেনো"],
+   "reported": "2026-11-25"
+  }
+ }
+}
