@@ -1,0 +1,17 @@
+# The web deck commits only: index.html, deck-data.js, audio-index.js,
+# pages/*.jpg, audio/*.mp3, audio/sources.json and scripts/.
+# Codex's card sources and the audio working files stay out of git.
+cards/*/assets/
+cards/*/qa/
+cards/*/*.png
+cards/*/*.pdf
+output/
+audio/_takes/
+audio/_test/
+audio/mp3/
+audio/wav/
+audio/manifest.json
+audio/review-*.html
+*.part
+.DS_Store
+__pycache__/
