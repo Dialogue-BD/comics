@@ -87,6 +87,20 @@ def finish_clip(path):
                        check=True)
 
 
+async def say_to_file(edge_tts, text, path, attempts=4):
+    """One Edge request with retries: Edge sometimes answers with no audio."""
+    for attempt in range(attempts):
+        try:
+            await edge_tts.Communicate(text, VOICE, rate=RATE).save(path)
+            if os.path.getsize(path) >= 1500:
+                return True
+        except Exception as exc:
+            error = exc
+        await asyncio.sleep(2 + attempt * 3)
+    print(f"   (no audio from Edge after {attempts} tries, skipped)")
+    return False
+
+
 def load_deck():
     txt = open(os.path.join(HERE, "deck-data.js"), encoding="utf-8").read()
     return json.loads(txt.split("window.PTB_DECK = ", 1)[1].split(";\nwindow.PICTURE_THIS_GAME_DATA", 1)[0])
@@ -186,13 +200,13 @@ async def main():
             # Prefer a short question that uses the word, else the bare word.
             uses = sorted((q["label"] for q in question_items + items if word in hits(q["label"])), key=len)
             text = rr_text(uses[0]) if uses else word
-            await edge_tts.Communicate(text, VOICE, rate=RATE).save(os.path.join(out, f"{n}a-as-spelled.mp3"))
             print(f"{n}. {word} ({entry.get('gloss', '')}): {text}")
+            await say_to_file(edge_tts, text, os.path.join(out, f"{n}a-as-spelled.mp3"))
             for k, alt in enumerate(entry.get("try") or [entry["say"]]):
                 alt_text = text.replace(word, alt) if uses else alt
                 name = f"{n}{chr(ord('b') + k)}-{'say' if alt == entry['say'] else 'try'}.mp3"
-                await edge_tts.Communicate(alt_text, VOICE, rate=RATE).save(os.path.join(out, name))
                 print(f"   {chr(ord('b') + k)}: {alt_text}" + ("   <- current 'say'" if alt == entry["say"] else ""))
+                await say_to_file(edge_tts, alt_text, os.path.join(out, name))
         print("Saved to", out, "- compare each a (as spelled) with b, c ... (respelled).")
         os.system('open "%s"' % out)
         return
