@@ -42,8 +42,10 @@ def build_deck(source):
                  for it in c["items"]]
         if len(items) != 6:
             sys.exit(f"{p}: expected 6 items, found {len(items)}")
+        questions = [str(q) for q in (c.get("questions") or [])][:6]
         cards.append({"id": slug, "number": num, "title": c["title"],
-                      "front": pages["front"], "back": pages["back"], "items": items})
+                      "front": pages["front"], "back": pages["back"], "items": items,
+                      "questions": questions})
         names[slug] = [it["label"] for it in items]
     ids = [it["id"] for c in cards for it in c["items"]]
     if len(ids) != len(set(ids)):

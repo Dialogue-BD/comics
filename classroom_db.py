@@ -72,6 +72,25 @@ CREATE TABLE IF NOT EXISTS fgd_learning (
     targets_data      TEXT    NOT NULL DEFAULT '{}',
     evidence_data     TEXT    NOT NULL DEFAULT '{}'
 );
+CREATE TABLE IF NOT EXISTS ptb_reports (
+    id             __POLL_ID__,
+    created_at     BIGINT  NOT NULL,
+    updated_at     BIGINT  NOT NULL,
+    status         TEXT    NOT NULL DEFAULT 'open',
+    card_number    INTEGER,
+    card_slug      TEXT,
+    target_kind    TEXT,
+    target_id      TEXT,
+    category       TEXT    NOT NULL,
+    report_json    TEXT    NOT NULL,
+    audio_b64      TEXT,
+    audio_mime     TEXT,
+    resolution     TEXT,
+    resolved_by    TEXT,
+    resolved_at    BIGINT,
+    client_hash    TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_ptb_reports_status ON ptb_reports(status);
 CREATE TABLE IF NOT EXISTS fgd_report_approvals (
     session_code      TEXT    NOT NULL,
     room_number       INTEGER NOT NULL,

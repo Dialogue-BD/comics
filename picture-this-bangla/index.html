@@ -2271,6 +2271,10 @@
       return true;
     }
 
+    // Used by report-wizard.js
+    window.ptbCurrentCardIndex = () => cardIndex;
+    window.ptbPlayItem = (cardId, index) => playItemAudio(cardId, index);
+
     function speakAudioMatchWord(label) {
       const played = speakText(label, null, "Audio vocabulary label played.");
       if (!played) setAudioMatchFeedback("Speech playback is unavailable in this browser. Try Chrome, Safari, Edge, or Firefox.", "wrong");
@@ -4120,6 +4124,7 @@
 
     showCard(initialCardIndex(), false);
   </script>
+  <script src="report-wizard.js?v=20261125"></script>
   <script src="../dialogue-brand.js"></script>
 </body>
 </html>

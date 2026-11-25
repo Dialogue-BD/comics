@@ -8,6 +8,9 @@ GET  /api/health              – report backend and durable-storage readiness
 GET  /api/tts/<voice>/<key>.mp3 – a pre-recorded speech clip (see tts_clips.py)
 GET  /api/tts/status          – which clip storage is in use
 POST /api/tts/upload          – upload a zip of clips (needs TTS_UPLOAD_TOKEN)
+POST /api/ptb/report          – a Picture This Bangla problem report (see ptb_reports.py)
+GET  /api/ptb/reports         – list reports (needs PTB_REPORTS_TOKEN or TTS_UPLOAD_TOKEN)
+POST /api/ptb/reports/status  – mark reports resolved / won't fix (same token)
 POST /api/poll                – submit / update a vote (upserts by responseToken)
 GET  /api/fgd/session         – fetch a public, participant, or teacher session view
 POST /api/fgd/sessions        – create a focus-group discussion session
@@ -34,6 +37,7 @@ from urllib.parse import parse_qs, urlparse
 from classroom_db import ClassroomDatabase
 from brand_assets import BrandAssets
 from tts_clips import TtsClips
+from ptb_reports import PtbReports
 from analytics import analytics_status, get_measurement_id, inject_ga_html
 
 PORT = int(os.environ.get("PORT", "5000"))
@@ -337,6 +341,8 @@ def _fgd_snapshot(code: str, participant_token: str = "", teacher_token: str = "
     return payload
 
 
+PTB_REPORTS = PtbReports(_get_db, lambda handler, status, payload: _json_response(handler, status, payload))
+
 # ---------------------------------------------------------------------------
 # Request handler
 # ---------------------------------------------------------------------------
@@ -616,6 +622,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         parsed = urlparse(self.path)
+        if parsed.path.startswith("/api/ptb/") and PTB_REPORTS.handle_get(self, parsed.path, parse_qs(parsed.query)):
+            return
         if parsed.path == "/api/brand-status":
             _json_response(self, 200, BRAND_ASSETS.status())
             return
@@ -714,6 +722,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     # ── POST classroom APIs ───────────────────────────────────────────────────
     def do_POST(self):
         parsed = urlparse(self.path)
+        if parsed.path.startswith("/api/ptb/") and PTB_REPORTS.handle_post(self, parsed.path):
+            return
         if parsed.path == "/api/tts/upload":
             status, payload = TTS_CLIPS.upload(self)
             _json_response(self, status, payload)
