@@ -74,8 +74,14 @@ def build_deck(source):
             if not os.path.exists(out) or os.path.getmtime(out) < os.path.getmtime(src):
                 Image.open(src).convert("RGB").save(out, "JPEG", quality=84, optimize=True, progressive=True)
             pages[side] = rel
-        items = [{"id": it["id"], "label": it["label"], "gloss": it.get("english_gloss", "")}
-                 for it in c["items"]]
+        items = []
+        for it in c["items"]:
+            entry = {"id": it["id"], "label": it["label"], "gloss": it.get("english_gloss", "")}
+            # Optional Bangla collocations for the GPA Nurturer ("We often say: …").
+            colloc = [x.strip() for x in it.get("collocations", []) if isinstance(x, str) and x.strip()]
+            if colloc:
+                entry["collocations"] = colloc
+            items.append(entry)
         if len(items) != 6:
             sys.exit(f"{p}: expected 6 items, found {len(items)}")
         cards.append({"id": slug, "number": num, "title": c["title"],

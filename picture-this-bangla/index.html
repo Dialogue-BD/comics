@@ -688,13 +688,25 @@
     .game-picker-card h2 { margin: 0; color: var(--ink); font-size: clamp(2rem, 7vw, 4.4rem); line-height: .95; letter-spacing: -.055em; }
     .game-picker-close { position: absolute; top: 16px; right: 16px; width: 42px; height: 42px; border: 1px solid rgba(210, 185, 120, .55); border-radius: 13px; color: var(--ink); background: rgba(244, 241, 230, .14); font-size: 1.3rem; font-weight: 700; cursor: pointer; transition: background .16s ease, color .16s ease, border-color .16s ease; }
     .game-picker-close:hover, .game-picker-close:focus-visible { color: #101812; background: #dbb96e; border-color: #dbb96e; }
+    /* dialogue-brand.css paints every activity's .game-picker-card as cream paper
+       and only restores the dark card for body[data-dialogue-page="picture-this"].
+       This page's route is "picture-this-bangla", so restore the dark card here. */
+    body.dialogue-activity-shell .game-picker { background: rgba(6, 28, 12, .88); }
+    body.dialogue-activity-shell .game-picker-card { color: #f7f5ec; background: #143f24; border-color: rgba(210, 185, 120, .62); box-shadow: 0 35px 110px rgba(0,0,0,.62); }
+    body.dialogue-activity-shell .game-picker-card h2 { color: #f7f5ec; }
+    body.dialogue-activity-shell .game-picker-card > p { color: #e4ece0; }
+    body.dialogue-activity-shell .game-picker-close { color: #f7f5ec; background: rgba(244, 241, 230, .14); border-color: rgba(210, 185, 120, .55); }
+    body.dialogue-activity-shell .game-picker-close:hover,
+    body.dialogue-activity-shell .game-picker-close:focus-visible { color: #101812; background: #dbb96e; border-color: #dbb96e; }
+    body.dialogue-activity-shell .game-option { color: #f7f5ec; }
     .game-options { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
     .game-option { min-height: 154px; padding: 20px; border: 1px solid rgba(210, 185, 120, .52); border-radius: 19px; color: var(--ink); background: #1c5030; text-align: left; cursor: pointer; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
     .game-option:hover, .game-option:focus-visible { transform: translateY(-2px); border-color: #e2c57c; background: #24613b; }
     .game-option-icon { display: grid; place-items: center; width: 43px; height: 43px; margin-bottom: 15px; border-radius: 13px 13px 13px 4px; color: #101812; background: #dbb96e; font-size: 1.2rem; font-weight: 950; line-height: 1; }
     .game-option strong { display: block; margin-bottom: 7px; color: #ffffff; font-size: 1.13rem; font-weight: 800; }
     .game-option > span:not(.game-option-icon) { display: block; color: #e6efe2; font-size: .85rem; font-weight: 500; line-height: 1.48; }
-    .game-option[data-start-game="audio-match"] { grid-column: 1 / -1; min-height: 132px; }
+    .game-option[data-start-game="audio-match"],
+    .game-option[data-start-game="items"] { grid-column: 1 / -1; min-height: 132px; }
 
     .game-panel {
       position: fixed;
@@ -866,6 +878,15 @@
       transform: translateY(-1px);
       outline: none;
     }
+    .nurturer-gloss {
+      margin: 2px 0 0;
+      font-size: .7rem;
+      font-weight: 700;
+      opacity: .78;
+    }
+    .nurturer-prompt-gloss { display: block; margin-top: 2px; font-size: .74em; font-weight: 700; opacity: .78; }
+    span.collocation-chip { cursor: default; }
+    span.collocation-chip:hover { color: #ffffff; background: rgba(8, 30, 15, .72); border-color: rgba(255, 255, 255, .4); transform: none; }
     .nurturer-followup {
       margin: 7px 0 0;
       padding-top: 6px;
@@ -1440,7 +1461,8 @@
     }
 
     @media (max-width: 600px) {
-      .game-option[data-start-game="audio-match"] { grid-column: auto; }
+      .game-option[data-start-game="audio-match"],
+      .game-option[data-start-game="items"] { grid-column: auto; }
       .audio-match-board { gap: 10px; }
       .audio-match-header { align-items: flex-start; }
       .audio-match-title-wrap h2 { font-size: 1.45rem; }
@@ -1668,7 +1690,7 @@
       </div>
       <p class="game-prompt" id="game-prompt">What category connects these six items?</p>
       <div class="nurturer-tts-bar" id="nurturer-tts-bar" hidden aria-label="Nurturer voice controls">
-        <button class="nurturer-tts-pill" id="nurturer-speak-prompt" type="button">🔊 Speak prompt</button>
+        <button class="nurturer-tts-pill" id="nurturer-speak-prompt" type="button">🔊 Hear the word</button>
         <button class="nurturer-tts-pill" id="nurturer-slow-toggle" type="button" aria-pressed="false">🐢 Slower</button>
         <button class="nurturer-tts-pill" id="nurturer-auto-toggle" type="button" aria-pressed="false">Auto voice: Off</button>
       </div>
@@ -1704,7 +1726,7 @@
       </div>
       <p class="game-strip-prompt" id="game-strip-prompt"></p>
       <div class="nurturer-tts-bar" id="strip-nurturer-tts-bar" hidden aria-label="Nurturer voice controls">
-        <button class="nurturer-tts-pill" id="strip-nurturer-speak-prompt" type="button">🔊 Prompt</button>
+        <button class="nurturer-tts-pill" id="strip-nurturer-speak-prompt" type="button">🔊 Word</button>
         <button class="nurturer-tts-pill" id="strip-nurturer-slow-toggle" type="button" aria-pressed="false">🐢 Slower</button>
         <button class="nurturer-tts-pill" id="strip-nurturer-auto-toggle" type="button" aria-pressed="false">Auto: Off</button>
       </div>
@@ -1727,7 +1749,7 @@
       <div class="audio-match-top-row">
         <p class="audio-match-instructions">Tap a speaker tile to hear a Bangla word, then tap its picture. A wrong match just shows what that picture is — no penalty.</p>
         <div class="nurturer-tts-bar audio-match-tts-bar" id="audio-match-tts-bar" aria-label="Nurturer voice controls" hidden>
-          <button class="nurturer-tts-pill" id="audio-nurturer-speak-last" type="button">🔊 Read feedback</button>
+          <button class="nurturer-tts-pill" id="audio-nurturer-speak-last" type="button">🔊 Last word again</button>
           <button class="nurturer-tts-pill" id="audio-nurturer-slow-toggle" type="button" aria-pressed="false">🐢 Slower</button>
           <button class="nurturer-tts-pill" id="audio-nurturer-auto-toggle" type="button" aria-pressed="false">Auto voice: Off</button>
         </div>
@@ -1751,9 +1773,14 @@
         <h2 id="game-picker-title">Choose a game</h2>
         <p>Practise listening to the Bangla words on these cards. More games will be added as the deck grows.</p>
         <div class="game-options">
+          <button class="game-option" type="button" data-start-game="items">
+            <span class="game-option-icon" aria-hidden="true">6</span>
+            <strong>Guess the Items · GPA Nurturer</strong>
+            <span>Listen &amp; Point: the Nurturer names a picture on this card in Bangla, you point to it, and a wrong tap gets a gentle recast with no penalty.</span>
+          </button>
           <button class="game-option" type="button" data-start-game="audio-match">
             <span class="game-option-icon" aria-hidden="true">অ</span>
-            <strong>Audio Match</strong>
+            <strong>Audio Match · GPA Nurturer</strong>
             <span>Hear six Bangla words from across the deck and match each one to its picture. Only words that already have a recording are used.</span>
           </button>
         </div>
@@ -1942,8 +1969,8 @@
     let nurturerRecastTimer = 0;
     let nurturerSlowMode = false;
     let nurturerAutoVoice = false;
-    let lastNurturerPromptSpeech = "";
-    let lastNurturerFeedbackSpeech = "";
+    let lastNurturerPromptSpeech = [];
+    let lastNurturerFeedbackSpeech = [];
     let linkPuzzle = null;
     let linkSessionExhausted = false;
     let linkRoundTransitionPending = false;
@@ -1994,16 +2021,57 @@
       }[gameMode] || "Picture This!";
     }
 
+    // GPA Nurturer lines for the Bangla deck. The Nurturer speaks Bangla; the
+    // English line under it is for teachers still learning. Each item gets a
+    // stable variant (picked from its id) so the same picture always sounds the
+    // same. Spoken audio is the item's own recording, so these templates keep
+    // the word itself unchanged and never add a classifier (টা/টি) to it.
+    // Optional per-item extras come from card.json → deck-data.js:
+    //   "collocations": ["তাজা শাক", "শাক রান্না"]   (Bangla phrases)
+    const PTB_NURTURER_LINES = {
+      ask: [
+        ["{w} কোন ছবিতে? দেখান।", "Which picture shows “{g}”? Show me."],
+        ["কোন ছবিটা {w}?", "Which picture is “{g}”?"],
+        ["{w} খুঁজে বের করুন।", "Find “{g}”."]
+      ],
+      yes: [
+        ["হ্যাঁ! এটা {w}।", "Yes! This is “{g}”."],
+        ["ঠিক! এটা {w}।", "Right! This is “{g}”."],
+        ["খুব ভালো! এটাই {w}।", "Very good! This one is “{g}”."]
+      ],
+      recast: [["এটা {w}।", "This one is “{g}”."]],
+      done: ["দারুণ! ছয়টা ছবিই পেয়েছেন।", "Wonderful! You found all six pictures."]
+    };
+
+    function ptbLineVariant(seed, list) {
+      let hash = 0;
+      for (const ch of String(seed)) hash = (hash * 31 + ch.codePointAt(0)) >>> 0;
+      return list[hash % list.length];
+    }
+
     function nurturerEntryFor(cardId, itemIndex, fallbackLabel = "") {
       const item = ptbItem(cardId, itemIndex);
-      const label = item?.label || fallbackLabel || (gameData[cardId] || [])[itemIndex] || "this picture";
-      const gloss = item?.gloss ? ` (${item.gloss})` : "";
+      const label = item?.label || fallbackLabel || (gameData[cardId] || [])[itemIndex] || "এই ছবি";
+      const gloss = item?.gloss || label;
+      const seed = item?.id || `${cardId}-${itemIndex}`;
+      const fill = ([bn, en]) => ({
+        bn: bn.replaceAll("{w}", label),
+        en: en.replaceAll("{g}", gloss)
+      });
+      const ask = fill(ptbLineVariant(seed, PTB_NURTURER_LINES.ask));
+      const yes = fill(ptbLineVariant(seed, PTB_NURTURER_LINES.yes));
+      const recast = fill(ptbLineVariant(seed, PTB_NURTURER_LINES.recast));
       return {
         label,
-        ask: `${label}?`,
-        yes: `হ্যাঁ! ${label}${gloss}.`,
-        recast: `That picture is ${label}${gloss}.`,
-        collocations: []
+        gloss,
+        ask: ask.bn,
+        askEn: ask.en,
+        yes: yes.bn,
+        yesEn: yes.en,
+        recast: recast.bn,
+        recastEn: recast.en,
+        collocations: Array.isArray(item?.collocations) ? item.collocations : [],
+        clip: [cardId, itemIndex]
       };
     }
 
@@ -2037,13 +2105,13 @@
         const toSpeak = gameMode === "items"
           ? (lastNurturerPromptSpeech || lastNurturerFeedbackSpeech)
           : lastNurturerFeedbackSpeech;
-        if (toSpeak) speakText(toSpeak, null, "Auto voice enabled.");
+        if (toSpeak?.length) speakText(toSpeak, null, "Auto voice enabled.");
       } else {
         stopSpeech();
       }
     }
 
-    function buildNurturerFeedbackFragment({ badge, mainText, collocations = [], followUp = "", ttsText = "" }) {
+    function buildNurturerFeedbackFragment({ badge, mainText, mainGloss = "", collocations = [], followUp = "", ttsText = "" }) {
       const fragment = document.createDocumentFragment();
       if (badge || ttsText) {
         const head = document.createElement("div");
@@ -2052,12 +2120,12 @@
         kicker.className = "nurturer-kicker";
         kicker.textContent = badge || "GPA Nurturer";
         head.append(kicker);
-        if (ttsText) {
+        if (Array.isArray(ttsText) && ttsText.length) {
           const listenBtn = document.createElement("button");
           listenBtn.type = "button";
           listenBtn.className = "nurturer-tts-btn";
           listenBtn.textContent = "🔊 Listen";
-          listenBtn.setAttribute("aria-label", `Listen to Nurturer feedback: ${ttsText}`);
+          listenBtn.setAttribute("aria-label", "Listen to the word again");
           listenBtn.addEventListener("click", event => {
             event.stopPropagation();
             speakText(ttsText, listenBtn, "Nurturer feedback played.");
@@ -2071,24 +2139,24 @@
       main.className = "nurturer-main";
       main.textContent = mainText;
       fragment.append(main);
+      if (mainGloss) {
+        const glossLine = document.createElement("p");
+        glossLine.className = "nurturer-gloss";
+        glossLine.textContent = mainGloss;
+        fragment.append(glossLine);
+      }
 
       if (Array.isArray(collocations) && collocations.length) {
         const wrap = document.createElement("div");
         wrap.className = "nurturer-collocations";
         const label = document.createElement("span");
         label.className = "nurturer-collocations-label";
-        label.textContent = "Collocations:";
+        label.textContent = "We often say:";
         wrap.append(label);
         collocations.forEach(phrase => {
-          const chip = document.createElement("button");
-          chip.type = "button";
+          const chip = document.createElement("span");
           chip.className = "collocation-chip";
-          chip.textContent = `🔊 “${phrase}”`;
-          chip.setAttribute("aria-label", `Hear collocation: ${phrase}`);
-          chip.addEventListener("click", event => {
-            event.stopPropagation();
-            speakText(phrase, chip, `Collocation played: ${phrase}.`);
-          });
+          chip.textContent = `“${phrase}”`;
           wrap.append(chip);
         });
         fragment.append(wrap);
@@ -2232,7 +2300,7 @@
       audioMatchFeedback.classList.toggle("correct", tone === "correct");
       audioMatchFeedback.classList.toggle("wrong", tone === "wrong");
       audioMatchFeedback.classList.toggle("recast", tone === "recast");
-      lastNurturerFeedbackSpeech = message;
+      lastNurturerFeedbackSpeech = [];
     }
 
     function renderNurturerAudioFeedback(payload) {
@@ -2241,8 +2309,8 @@
       audioMatchFeedback.classList.toggle("correct", tone === "correct");
       audioMatchFeedback.classList.toggle("wrong", tone === "wrong");
       audioMatchFeedback.classList.toggle("recast", tone === "recast");
-      lastNurturerFeedbackSpeech = ttsText || mainText;
-      if (nurturerAutoVoice && autoSpeak && lastNurturerFeedbackSpeech) {
+      lastNurturerFeedbackSpeech = Array.isArray(ttsText) ? ttsText : [];
+      if (nurturerAutoVoice && autoSpeak && lastNurturerFeedbackSpeech.length) {
         speakText(lastNurturerFeedbackSpeech, null, "Nurturer feedback played.");
       }
     }
@@ -2254,33 +2322,51 @@
     }
 
     function stopSpeech() {
+      ptbClipQueueToken += 1;
       ptbStopClip();
       window.speechSynthesis?.cancel();
       speakingControl?.classList.remove("is-speaking");
       speakingControl = null;
     }
 
-    function speakText(text, control = null, announcement = "Audio played.", customRate = null) {
-      if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
-        status.textContent = "Speech playback is unavailable in this browser. Try Chrome, Safari, Edge, or Firefox.";
+    // The Bangla deck has no reliable device voice for Bangla, so the Nurturer
+    // "speaks" by playing the items' own recordings. `clips` is a list of
+    // [cardId, itemIndex] pairs, played one after another. Anything else
+    // (plain text) is not spoken.
+    let ptbClipQueueToken = 0;
+    function speakText(clips, control = null, announcement = "Audio played.") {
+      const queue = (Array.isArray(clips) ? clips : [])
+        .filter(ref => Array.isArray(ref) && ptbAudioSrc(ref[0], ref[1]));
+      if (!queue.length) {
+        status.textContent = "There is no recording for this line yet.";
         return false;
       }
       stopSpeech();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = "en-US";
-      utterance.rate = customRate ?? (nurturerSlowMode ? .68 : .86);
-      utterance.pitch = 1;
+      const token = ++ptbClipQueueToken;
       if (control) {
         speakingControl = control;
         control.classList.add("is-speaking");
       }
-      const clearSpeakingControl = () => {
+      const finish = () => {
         control?.classList.remove("is-speaking");
         if (speakingControl === control) speakingControl = null;
       };
-      utterance.onend = clearSpeakingControl;
-      utterance.onerror = clearSpeakingControl;
-      window.speechSynthesis.speak(utterance);
+      const playAt = position => {
+        if (token !== ptbClipQueueToken) return;
+        if (position >= queue.length) { finish(); return; }
+        const [cardId, itemIndex] = queue[position];
+        const clip = new Audio(ptbAudioSrc(cardId, itemIndex));
+        clip.playbackRate = nurturerSlowMode ? .8 : 1;
+        ptbClip = clip;
+        const next = () => {
+          if (ptbClip === clip) ptbClip = null;
+          window.setTimeout(() => playAt(position + 1), 450);
+        };
+        clip.addEventListener("ended", next, { once: true });
+        clip.addEventListener("error", next, { once: true });
+        clip.play().catch(next);
+      };
+      playAt(0);
       status.textContent = announcement;
       return true;
     }
@@ -2289,8 +2375,8 @@
     window.ptbCurrentCardIndex = () => cardIndex;
     window.ptbPlayItem = (cardId, index) => playItemAudio(cardId, index);
 
-    function speakAudioMatchWord(label) {
-      const played = speakText(label, null, "Audio vocabulary label played.");
+    function speakAudioMatchWord(cardId, itemIndex) {
+      const played = speakText([[cardId, itemIndex]], null, "Audio vocabulary label played.");
       if (!played) setAudioMatchFeedback("Speech playback is unavailable in this browser. Try Chrome, Safari, Edge, or Firefox.", "wrong");
       return played;
     }
@@ -2373,7 +2459,7 @@
         mainText: "Tap a speaker tile to hear a Bangla word, then tap its picture. A wrong match shows what that picture is, with no penalty.",
         collocations: [],
         followUp: "",
-        ttsText: "Tap an audio tile to hear a word, then point to its matching picture.",
+        ttsText: [],
         autoSpeak: false
       });
       audioMatchGrid.querySelector("button")?.focus();
@@ -2421,19 +2507,21 @@
           renderNurturerAudioFeedback({
             tone: "correct",
             badge: "✓ All 6 matched",
-            mainText: `${entry.yes} (+1 point)`,
+            mainText: `${entry.yes} (+1)`,
+            mainGloss: entry.yesEn,
             collocations: entry.collocations,
             followUp: `Round complete! You matched all six pairs with ${gamePoints} total point${gamePoints === 1 ? "" : "s"}.`,
-            ttsText: `${entry.yes} We often say: ${entry.collocations.join(", ")}. Round complete!`
+            ttsText: [entry.clip]
           });
         } else {
           renderNurturerAudioFeedback({
             tone: "correct",
             badge: "✓ Match · +1",
-            mainText: `${entry.yes} (+1 point)`,
+            mainText: `${entry.yes} (+1)`,
+            mainGloss: entry.yesEn,
             collocations: entry.collocations,
             followUp: `Choose another audio tile and picture (${6 - audioMatchPairsFound} pair${6 - audioMatchPairsFound === 1 ? "" : "s"} left).`,
-            ttsText: `${entry.yes} We often say: ${entry.collocations.join(", ")}.`
+            ttsText: [entry.clip]
           });
         }
         return;
@@ -2452,9 +2540,10 @@
         tone: "recast",
         badge: "💬 Not quite · no penalty",
         mainText: picEntry.recast,
+        mainGloss: picEntry.recastEn,
         collocations: picEntry.collocations,
         followUp: "Take your time — listen again and find its picture.",
-        ttsText: `${picEntry.recast} We often say: ${picEntry.collocations.join(", ")}. Take your time and listen again for ${audioLabel}.`
+        ttsText: [picEntry.clip]
       });
       window.setTimeout(() => {
         if (gameMode !== "audio-match") return;
@@ -3287,7 +3376,7 @@
       gameStripFeedback.classList.toggle("correct", tone === "correct");
       gameStripFeedback.classList.toggle("wrong", tone === "wrong");
       gameStripFeedback.classList.toggle("recast", tone === "recast");
-      lastNurturerFeedbackSpeech = message;
+      lastNurturerFeedbackSpeech = [];
       // Feedback text appearing/disappearing (or wrapping to another line)
       // changes the strip's real height mid-round, not just at round start.
       requestAnimationFrame(updateGameHeaderReserve);
@@ -3303,8 +3392,8 @@
       gameStripFeedback.classList.toggle("correct", tone === "correct");
       gameStripFeedback.classList.toggle("wrong", tone === "wrong");
       gameStripFeedback.classList.toggle("recast", tone === "recast");
-      lastNurturerFeedbackSpeech = ttsText || mainText;
-      if (nurturerAutoVoice && autoSpeak && lastNurturerFeedbackSpeech) {
+      lastNurturerFeedbackSpeech = Array.isArray(ttsText) ? ttsText : [];
+      if (nurturerAutoVoice && autoSpeak && lastNurturerFeedbackSpeech.length) {
         speakText(lastNurturerFeedbackSpeech, null, "Nurturer feedback played.");
       }
       requestAnimationFrame(updateGameHeaderReserve);
@@ -3315,15 +3404,15 @@
       const current = cards[cardIndex];
       const items = gameData[current.id] || [];
       if (nurturerTargetIndex < 0 || foundItems.size >= 6) {
-        gamePrompt.textContent = `🎉 Wonderful! You found all six pictures in ${current.title}.`;
-        lastNurturerPromptSpeech = `Wonderful! You found all six pictures in ${current.title}.`;
+        gamePrompt.replaceChildren(`🎉 ${PTB_NURTURER_LINES.done[0]}`, Object.assign(document.createElement("span"), { className: "nurturer-prompt-gloss", textContent: PTB_NURTURER_LINES.done[1] }));
+        lastNurturerPromptSpeech = [];
       } else {
         const entry = nurturerEntryFor(current.id, nurturerTargetIndex, items[nurturerTargetIndex]);
-        gamePrompt.textContent = `👂 Nurturer: “${entry.ask}”`;
-        lastNurturerPromptSpeech = entry.ask;
+        gamePrompt.replaceChildren(`👂 “${entry.ask}”`, Object.assign(document.createElement("span"), { className: "nurturer-prompt-gloss", textContent: entry.askEn }));
+        lastNurturerPromptSpeech = [entry.clip];
       }
       syncGameStripMeta();
-      if (speakIfAuto && nurturerAutoVoice && lastNurturerPromptSpeech) {
+      if (speakIfAuto && nurturerAutoVoice && lastNurturerPromptSpeech.length) {
         speakText(lastNurturerPromptSpeech, null, "Nurturer prompt played.");
       }
     }
@@ -3437,10 +3526,10 @@
           renderNurturerGameFeedback({
             tone: "",
             badge: "🌱 GPA Listen & Point · No Penalty",
-            mainText: "Tap the picture on the card that matches the Nurturer’s prompt. Correct taps share natural collocations; wrong taps get a gentle recast with no penalty.",
+            mainText: "Press 🔊 to hear the Bangla word, then tap its picture on the card. A wrong tap shows what that picture is, with no penalty.",
             collocations: [],
-            followUp: "",
-            ttsText: firstEntry.ask,
+            followUp: "Turn on Auto voice to hear each word as soon as it is asked.",
+            ttsText: [firstEntry.clip],
             autoSpeak: false
           });
         }
@@ -3621,7 +3710,8 @@
       // the clue, and the card itself is the only control surface (tap two
       // pictures). Keeping the strip down to just that one line is the whole
       // point of this mode's "zero input footprint" design.
-      gameStripPrompt.textContent = gameMode === "find-pair" ? "" : gamePrompt.textContent;
+      if (gameMode === "find-pair") gameStripPrompt.textContent = "";
+      else gameStripPrompt.replaceChildren(...[...gamePrompt.childNodes].map(node => node.cloneNode(true)));
       gameStripLinkwordValue.textContent = linkWordValue.textContent;
       gameStripLinkword.hidden = linkWord.hidden;
       updateScoreChip();
@@ -3770,10 +3860,11 @@
         renderNurturerGameFeedback({
           tone: "correct",
           badge: "🌱 All 6 Pictures Revealed",
-          mainText: `${entry.yes}`,
-          collocations: entry.collocations,
-          followUp: "Tap any picture on the card to hear its Nurturer affirmation and collocations.",
-          ttsText: `${entry.yes} We often say: ${entry.collocations.join(", ")}.`
+          mainText: "সবগুলো ছবি দেখানো হলো।",
+          mainGloss: "All six pictures are shown.",
+          collocations: [],
+          followUp: "Tap any picture on the card to hear its word.",
+          ttsText: []
         });
       } else if (linkPuzzle) {
         itemGrid.classList.add("is-locked");
@@ -3807,13 +3898,14 @@
           : null;
         renderNurturerGameFeedback({
           tone: "correct",
-          badge: "✓ Already Found · Collocations",
+          badge: "✓ Already found",
           mainText: tappedEntry.yes,
+          mainGloss: tappedEntry.yesEn,
           collocations: tappedEntry.collocations,
           followUp: nextEntry
-            ? `Now let’s find the next one: “${nextEntry.ask}”`
+            ? `এবার: “${nextEntry.ask}” — ${nextEntry.askEn}`
             : "All six pictures found! Tap any picture to review or draw a new card.",
-          ttsText: `${tappedEntry.yes} We often say: ${tappedEntry.collocations.join(", ")}.`
+          ttsText: nextEntry ? [tappedEntry.clip, nextEntry.clip] : [tappedEntry.clip]
         });
         return;
       }
@@ -3833,11 +3925,12 @@
           updateNurturerPrompt(false);
           renderNurturerGameFeedback({
             tone: "correct",
-            badge: "✓ All 6 Found · Affirmation + Collocations",
-            mainText: `${tappedEntry.yes} (+1 point)`,
+            badge: "✓ All 6 found",
+            mainText: `${tappedEntry.yes} (+1)`,
+            mainGloss: tappedEntry.yesEn,
             collocations: tappedEntry.collocations,
-            followUp: "Round complete! Tap any picture to revisit its collocations, or click “New card →”.",
-            ttsText: `${tappedEntry.yes} We often say: ${tappedEntry.collocations.join(", ")}. Wonderful! You found all six pictures.`
+            followUp: `${PTB_NURTURER_LINES.done[0]} Tap any picture to hear it again, or click “New card →”.`,
+            ttsText: [tappedEntry.clip]
           });
         } else {
           const nextEntry = nurturerEntryFor(current.id, nurturerTargetIndex, items[nurturerTargetIndex]);
@@ -3845,10 +3938,11 @@
           renderNurturerGameFeedback({
             tone: "correct",
             badge: "✓ Match · +1",
-            mainText: `${tappedEntry.yes} (+1 point)`,
+            mainText: `${tappedEntry.yes} (+1)`,
+            mainGloss: tappedEntry.yesEn,
             collocations: tappedEntry.collocations,
-            followUp: `Next Nurturer prompt: “${nextEntry.ask}”`,
-            ttsText: `${tappedEntry.yes} We often say: ${tappedEntry.collocations.join(", ")}. Next: ${nextEntry.ask}`
+            followUp: `এবার: “${nextEntry.ask}” — ${nextEntry.askEn}`,
+            ttsText: [tappedEntry.clip, nextEntry.clip]
           });
         }
         return;
@@ -3866,9 +3960,10 @@
         tone: "recast",
         badge: "💬 Not quite · no penalty",
         mainText: tappedEntry.recast,
+        mainGloss: tappedEntry.recastEn,
         collocations: tappedEntry.collocations,
-        followUp: `Take your time — ${targetEntry.ask}`,
-        ttsText: `${tappedEntry.recast} We often say: ${tappedEntry.collocations.join(", ")}. Take your time: ${targetEntry.ask}`
+        followUp: `আবার দেখুন: “${targetEntry.ask}” — ${targetEntry.askEn}`,
+        ttsText: [tappedEntry.clip, targetEntry.clip]
       });
     }
 
@@ -4043,11 +4138,11 @@
     endAudioMatchButton.addEventListener("click", endGame);
     [nurturerSpeakPromptButton, stripNurturerSpeakPromptButton].forEach(button => {
       button?.addEventListener("click", () => {
-        if (lastNurturerPromptSpeech) speakText(lastNurturerPromptSpeech, button, "Nurturer prompt played.");
+        if (lastNurturerPromptSpeech.length) speakText(lastNurturerPromptSpeech, button, "Nurturer prompt played.");
       });
     });
     audioNurturerSpeakLastButton?.addEventListener("click", () => {
-      if (lastNurturerFeedbackSpeech) speakText(lastNurturerFeedbackSpeech, audioNurturerSpeakLastButton, "Nurturer feedback played.");
+      if (lastNurturerFeedbackSpeech.length) speakText(lastNurturerFeedbackSpeech, audioNurturerSpeakLastButton, "Nurturer feedback played.");
     });
     [nurturerSlowToggleButton, stripNurturerSlowToggleButton, audioNurturerSlowToggleButton].forEach(button => {
       button?.addEventListener("click", toggleNurturerSlowMode);
