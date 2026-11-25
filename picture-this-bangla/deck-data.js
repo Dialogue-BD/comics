@@ -5850,7 +5850,982 @@ window.PTB_DECK = {
      "gloss": "earthworm"
     }
    ]
+  },
+  {
+   "id": "vegetables-for-curry-and-bhaji",
+   "number": 151,
+   "title": "ঝোল আর ভাজির সবজি",
+   "front": "pages/151-front.jpg",
+   "back": "pages/151-back.jpg",
+   "items": [
+    {
+     "id": "bitter-gourd",
+     "label": "করলা",
+     "gloss": "bitter gourd"
+    },
+    {
+     "id": "snake-gourd",
+     "label": "চিচিঙ্গা",
+     "gloss": "snake gourd"
+    },
+    {
+     "id": "green-papaya",
+     "label": "কাঁচা পেঁপে",
+     "gloss": "unripe papaya for cooking"
+    },
+    {
+     "id": "ash-gourd",
+     "label": "চালকুমড়া",
+     "gloss": "ash gourd"
+    },
+    {
+     "id": "green-cooking-banana",
+     "label": "কাঁচকলা",
+     "gloss": "green cooking banana"
+    },
+    {
+     "id": "moringa-pods",
+     "label": "সজনে ডাঁটা",
+     "gloss": "moringa pods eaten as a vegetable"
+    }
+   ]
+  },
+  {
+   "id": "leafy-greens-at-market",
+   "number": 152,
+   "title": "হাটে যে শাক পাই",
+   "front": "pages/152-front.jpg",
+   "back": "pages/152-back.jpg",
+   "items": [
+    {
+     "id": "spinach-greens",
+     "label": "পালংশাক",
+     "gloss": "spinach leaves sold in bundles"
+    },
+    {
+     "id": "red-amaranth-greens",
+     "label": "লালশাক",
+     "gloss": "red amaranth greens"
+    },
+    {
+     "id": "malabar-spinach-greens",
+     "label": "পুঁইশাক",
+     "gloss": "Malabar spinach vine greens"
+    },
+    {
+     "id": "water-spinach-greens",
+     "label": "কলমিশাক",
+     "gloss": "water spinach greens"
+    },
+    {
+     "id": "amaranth-stem-greens",
+     "label": "ডাঁটাশাক",
+     "gloss": "amaranth grown for edible thick stalks"
+    },
+    {
+     "id": "bottle-gourd-leaves",
+     "label": "লাউশাক",
+     "gloss": "bottle gourd vine tips and leaves eaten as greens"
+    }
+   ]
+  },
+  {
+   "id": "more-fish-from-the-market",
+   "number": 153,
+   "title": "মাছের বাজারে আরও মাছ",
+   "front": "pages/153-front.jpg",
+   "back": "pages/153-back.jpg",
+   "items": [
+    {
+     "id": "silver-pomfret-local",
+     "label": "রূপচাঁদা",
+     "gloss": "silver pomfret"
+    },
+    {
+     "id": "catla-carp-local",
+     "label": "কাতলা",
+     "gloss": "catla carp"
+    },
+    {
+     "id": "boal-catfish-local",
+     "label": "বোয়াল",
+     "gloss": "Wallago attu freshwater catfish"
+    },
+    {
+     "id": "pabda-catfish-local",
+     "label": "পাবদা",
+     "gloss": "pabda butter catfish"
+    },
+    {
+     "id": "mola-fish-local",
+     "label": "মলা",
+     "gloss": "mola carplet"
+    },
+    {
+     "id": "tengra-fish-local",
+     "label": "টেংরা",
+     "gloss": "tengra striped freshwater catfish"
+    }
+   ]
+  },
+  {
+   "id": "market-stall-snacks",
+   "number": 154,
+   "title": "হাটে গরম গরম নাশতা",
+   "front": "pages/154-front.jpg",
+   "back": "pages/154-back.jpg",
+   "items": [
+    {
+     "id": "fuchka-snack",
+     "label": "ফুচকা",
+     "gloss": "fuchka stuffed crisp shells"
+    },
+    {
+     "id": "chotpoti-snack",
+     "label": "চটপটি",
+     "gloss": "chotpoti pea and tamarind snack"
+    },
+    {
+     "id": "jhalmuri-snack",
+     "label": "ঝালমুড়ি",
+     "gloss": "spiced puffed-rice snack"
+    },
+    {
+     "id": "onion-fritters",
+     "label": "পেঁয়াজু",
+     "gloss": "Bangladeshi onion lentil fritter"
+    },
+    {
+     "id": "eggplant-fritters",
+     "label": "বেগুনি",
+     "gloss": "battered Bangladeshi eggplant fritter"
+    },
+    {
+     "id": "lentil-puri-snack",
+     "label": "ডালপুরি",
+     "gloss": "lentil-filled fried flatbread"
+    }
+   ]
+  },
+  {
+   "id": "bangladesh-flour-snacks",
+   "number": 155,
+   "title": "ময়দা দিয়ে বানানো খাবার",
+   "front": "pages/155-front.jpg",
+   "back": "pages/155-back.jpg",
+   "items": [
+    {
+     "id": "plain-paratha",
+     "label": "পরোটা",
+     "gloss": "layered plain Bangladeshi paratha"
+    },
+    {
+     "id": "luchi-fried-bread",
+     "label": "লুচি",
+     "gloss": "puffed white flour luchi"
+    },
+    {
+     "id": "bakarkhani-bread",
+     "label": "বাখরখানি",
+     "gloss": "Dhaka flaky baked bakarkhani"
+    },
+    {
+     "id": "nimki-savory-cracker",
+     "label": "নিমকি",
+     "gloss": "small diamond Bengali nimki cracker"
+    },
+    {
+     "id": "stuffed-mughlai-paratha",
+     "label": "মোগলাই পরোটা",
+     "gloss": "egg-stuffed Mughlai paratha"
+    },
+    {
+     "id": "sliced-bread-loaf",
+     "label": "পাউরুটি",
+     "gloss": "loaf of sliced sandwich bread"
+    }
+   ]
+  },
+  {
+   "id": "working-ingredients-while-cooking",
+   "number": 156,
+   "title": "রান্নার আগে আর রান্নার মাঝে",
+   "front": "pages/156-front.jpg",
+   "back": "pages/156-back.jpg",
+   "items": [
+    {
+     "id": "grind-to-paste",
+     "label": "বাটা",
+     "gloss": "to grind ingredients into a paste"
+    },
+    {
+     "id": "grate-coconut",
+     "label": "নারকেল কোরা",
+     "gloss": "to grate a coconut"
+    },
+    {
+     "id": "whisk-eggs",
+     "label": "ডিম ফেটানো",
+     "gloss": "to whisk eggs"
+    },
+    {
+     "id": "mash-potato",
+     "label": "আলু চটকানো",
+     "gloss": "to mash a potato"
+    },
+    {
+     "id": "drain-rice-water",
+     "label": "মাড় ঝরানো",
+     "gloss": "to drain starchy cooking water from cooked rice"
+    },
+    {
+     "id": "reduce-syrup",
+     "label": "রস জ্বাল দেওয়া",
+     "gloss": "to reduce sugar syrup by simmering"
+    }
+   ]
+  },
+  {
+   "id": "texture-of-food",
+   "number": 157,
+   "title": "খাবারের ছোঁয়া আর কামড়",
+   "front": "pages/157-front.jpg",
+   "back": "pages/157-back.jpg",
+   "items": [
+    {
+     "id": "crispy-texture",
+     "label": "মচমচে",
+     "gloss": "crispy food texture"
+    },
+    {
+     "id": "sticky-food-texture",
+     "label": "আঠালো",
+     "gloss": "sticky food texture"
+    },
+    {
+     "id": "juicy-fruit-texture",
+     "label": "রসালো",
+     "gloss": "juicy food texture"
+    },
+    {
+     "id": "fluffy-separate-grains",
+     "label": "ঝুরঝুরে",
+     "gloss": "fluffy loose rice grains"
+    },
+    {
+     "id": "thick-gloopy-food",
+     "label": "থকথকে",
+     "gloss": "thick gloopy food texture"
+    },
+    {
+     "id": "hollow-puffed-food",
+     "label": "ফাঁপা",
+     "gloss": "hollow interior of puffed food"
+    }
+   ]
+  },
+  {
+   "id": "flatbread-and-serving-tools",
+   "number": 158,
+   "title": "রুটি বেলা আর খাবার তোলা",
+   "front": "pages/158-front.jpg",
+   "back": "pages/158-back.jpg",
+   "items": [
+    {
+     "id": "flatbread-griddle",
+     "label": "তাওয়া",
+     "gloss": "tawa griddle for flatbread"
+    },
+    {
+     "id": "wooden-rolling-pin-local",
+     "label": "বেলন",
+     "gloss": "South Asian wooden rolling pin"
+    },
+    {
+     "id": "rolling-board-round",
+     "label": "রুটি বেলার পিঁড়ি",
+     "gloss": "low round board for rolling flatbread"
+    },
+    {
+     "id": "coconut-scraper-tool",
+     "label": "নারকেল কোরানি",
+     "gloss": "fixed Bengali coconut grater"
+    },
+    {
+     "id": "deep-serving-ladle",
+     "label": "রান্নার হাতা",
+     "gloss": "deep metal cooking ladle"
+    },
+    {
+     "id": "flat-skimmer",
+     "label": "ঝাঁঝরি",
+     "gloss": "flat perforated frying skimmer"
+    }
+   ]
+  },
+  {
+   "id": "door-and-window-fittings",
+   "number": 159,
+   "title": "দরজা জানালার ছোট অংশ",
+   "front": "pages/159-front.jpg",
+   "back": "pages/159-back.jpg",
+   "items": [
+    {
+     "id": "window-fixed-bars",
+     "label": "জানালার শিক",
+     "gloss": "fixed metal window bars"
+    },
+    {
+     "id": "door-pull-handle",
+     "label": "দরজার হাতল",
+     "gloss": "door pull handle"
+    },
+    {
+     "id": "door-butt-hinge",
+     "label": "কবজা",
+     "gloss": "door butt hinge"
+    },
+    {
+     "id": "door-ring-knocker",
+     "label": "দোরের কড়া",
+     "gloss": "door ring knocker"
+    },
+    {
+     "id": "door-entire-frame",
+     "label": "চৌকাঠ",
+     "gloss": "complete wooden door frame"
+    },
+    {
+     "id": "door-lock-keyhole",
+     "label": "তালার ছিদ্র",
+     "gloss": "door lock keyhole"
+    }
+   ]
+  },
+  {
+   "id": "hands-on-small-repairs",
+   "number": 160,
+   "title": "মেরামতের সময় যা করি",
+   "front": "pages/160-front.jpg",
+   "back": "pages/160-back.jpg",
+   "items": [
+    {
+     "id": "hammer-a-nail",
+     "label": "পেরেক ঠোকা",
+     "gloss": "to hammer a nail into wood"
+    },
+    {
+     "id": "saw-along-wood",
+     "label": "করাত দিয়ে চেরা",
+     "gloss": "to saw along wood"
+    },
+    {
+     "id": "tighten-a-screw",
+     "label": "প্যাঁচ কষা",
+     "gloss": "to tighten a screw"
+    },
+    {
+     "id": "bore-a-hole",
+     "label": "ফুটো করা",
+     "gloss": "to drill a neat hole"
+    },
+    {
+     "id": "whitewash-a-wall",
+     "label": "চুনকাম করা",
+     "gloss": "to apply lime whitewash"
+    },
+    {
+     "id": "glue-two-pieces",
+     "label": "জোড়া লাগানো",
+     "gloss": "to join broken pieces back together"
+    }
+   ]
+  },
+  {
+   "id": "more-clothes-to-wear",
+   "number": 161,
+   "title": "বের হওয়ার সময় যে জামাকাপড় পরি",
+   "front": "pages/161-front.jpg",
+   "back": "pages/161-back.jpg",
+   "items": [
+    {
+     "id": "casual-fatua-top",
+     "label": "ফতুয়া",
+     "gloss": "short cotton Bangladeshi fatua tunic"
+    },
+    {
+     "id": "pajama-trousers",
+     "label": "পায়জামা",
+     "gloss": "men's narrow drawstring pajama trousers"
+    },
+    {
+     "id": "sleeveless-shirt",
+     "label": "হাতা কাটা জামা",
+     "gloss": "sleeveless shirt"
+    },
+    {
+     "id": "winter-shawl",
+     "label": "শাল",
+     "gloss": "woven shoulder shawl"
+    },
+    {
+     "id": "head-turban",
+     "label": "পাগড়ি",
+     "gloss": "wrapped head turban"
+    },
+    {
+     "id": "long-borka",
+     "label": "বোরকা",
+     "gloss": "long Bangladeshi outer borka garment"
+    }
+   ]
+  },
+  {
+   "id": "footwear-and-its-parts",
+   "number": 162,
+   "title": "পায়ে পরি আর জুতায় লাগাই",
+   "front": "pages/162-front.jpg",
+   "back": "pages/162-back.jpg",
+   "items": [
+    {
+     "id": "everyday-open-sandal",
+     "label": "চটি",
+     "gloss": "simple open-backed everyday sandal"
+    },
+    {
+     "id": "wooden-kharam-sandal",
+     "label": "খড়ম",
+     "gloss": "traditional wooden kharam toe-knob sandals"
+    },
+    {
+     "id": "embroidered-nagra-shoe",
+     "label": "নাগরা",
+     "gloss": "traditional embroidered nagra shoes"
+    },
+    {
+     "id": "shoelace",
+     "label": "জুতার ফিতা",
+     "gloss": "shoelace"
+    },
+    {
+     "id": "shoe-outsole",
+     "label": "জুতার তলা",
+     "gloss": "outer bottom sole of a shoe"
+    },
+    {
+     "id": "foot-anklet-bells",
+     "label": "নূপুর",
+     "gloss": "decorative anklet with tiny bells"
+    }
+   ]
+  },
+  {
+   "id": "hair-on-head-and-face",
+   "number": 163,
+   "title": "মাথায় আর মুখে চুল",
+   "front": "pages/163-front.jpg",
+   "back": "pages/163-back.jpg",
+   "items": [
+    {
+     "id": "head-hair",
+     "label": "চুল",
+     "gloss": "hair on the head"
+    },
+    {
+     "id": "beard-hair",
+     "label": "দাড়ি",
+     "gloss": "beard on chin and cheeks"
+    },
+    {
+     "id": "moustache-hair",
+     "label": "গোঁফ",
+     "gloss": "moustache on upper lip"
+    },
+    {
+     "id": "sideburn-hair",
+     "label": "জুলফি",
+     "gloss": "sideburns of hair in front of ear"
+    },
+    {
+     "id": "bald-head",
+     "label": "টাক",
+     "gloss": "bald area on crown of head"
+    },
+    {
+     "id": "part-in-hair",
+     "label": "সিঁথি",
+     "gloss": "line parting hair on the scalp"
+    }
+   ]
+  },
+  {
+   "id": "small-skin-marks",
+   "number": 164,
+   "title": "গায়ে ছোট দাগ আর গুটি",
+   "front": "pages/164-front.jpg",
+   "back": "pages/164-back.jpg",
+   "items": [
+    {
+     "id": "small-flat-mole",
+     "label": "তিল",
+     "gloss": "small flat dark skin mole"
+    },
+    {
+     "id": "raised-wart",
+     "label": "আঁচিল",
+     "gloss": "small rough raised wart"
+    },
+    {
+     "id": "old-cut-scar",
+     "label": "পুরোনো কাটা দাগ",
+     "gloss": "fully healed linear cut scar"
+    },
+    {
+     "id": "face-wrinkles",
+     "label": "বলিরেখা",
+     "gloss": "multiple facial wrinkles"
+    },
+    {
+     "id": "cheek-melasma",
+     "label": "মেছতা",
+     "gloss": "brown melasma patches on cheeks"
+    },
+    {
+     "id": "tiny-skin-rash",
+     "label": "ফুসকুড়ি",
+     "gloss": "group of small rash bumps"
+    }
+   ]
+  },
+  {
+   "id": "food-laundry-and-garden-workers",
+   "number": 165,
+   "title": "খাবার কাপড় আর গাছের কাজ",
+   "front": "pages/165-front.jpg",
+   "back": "pages/165-back.jpg",
+   "items": [
+    {
+     "id": "professional-cook-local",
+     "label": "রাঁধুনি",
+     "gloss": "cook preparing meals for a group"
+    },
+    {
+     "id": "laundry-worker-local",
+     "label": "ধোপা",
+     "gloss": "washerperson who washes clothes for a living"
+    },
+    {
+     "id": "garden-worker-local",
+     "label": "মালি",
+     "gloss": "gardener who tends plants"
+    },
+    {
+     "id": "butcher-local",
+     "label": "কসাই",
+     "gloss": "market butcher selling cuts of meat"
+    },
+    {
+     "id": "fish-seller-local",
+     "label": "মাছওয়ালা",
+     "gloss": "fishmonger at a local market"
+    },
+    {
+     "id": "milk-seller-local",
+     "label": "দুধওয়ালা",
+     "gloss": "street milk seller carrying fresh milk"
+    }
+   ]
+  },
+  {
+   "id": "things-that-move-or-change",
+   "number": 166,
+   "title": "জিনিস নিজের মতো নড়ে বদলায়",
+   "front": "pages/166-front.jpg",
+   "back": "pages/166-back.jpg",
+   "items": [
+    {
+     "id": "swaying-object",
+     "label": "দুলতে থাকা",
+     "gloss": "object swaying from side to side"
+    },
+    {
+     "id": "spinning-object",
+     "label": "ঘুরতে থাকা",
+     "gloss": "an object spinning around its axis"
+    },
+    {
+     "id": "floating-object",
+     "label": "ভেসে থাকা",
+     "gloss": "an object floating at water surface"
+    },
+    {
+     "id": "sinking-object",
+     "label": "ডুবে যাওয়া",
+     "gloss": "an object sinking below water surface"
+    },
+    {
+     "id": "bursting-object",
+     "label": "ফেটে যাওয়া",
+     "gloss": "an object bursting from internal pressure"
+    },
+    {
+     "id": "flame-going-out",
+     "label": "নিভে যাওয়া",
+     "gloss": "a flame going out"
+    }
+   ]
+  },
+  {
+   "id": "full-empty-fit-and-thickness",
+   "number": 167,
+   "title": "ভরা ফাঁকা আর আঁট ঢিল",
+   "front": "pages/167-front.jpg",
+   "back": "pages/167-back.jpg",
+   "items": [
+    {
+     "id": "container-full",
+     "label": "ভরতি",
+     "gloss": "completely full container"
+    },
+    {
+     "id": "container-empty",
+     "label": "ফাঁকা",
+     "gloss": "completely empty container"
+    },
+    {
+     "id": "tight-fitting-sleeve",
+     "label": "আঁটসাঁট",
+     "gloss": "tight fitting garment"
+    },
+    {
+     "id": "loose-fitting-sleeve",
+     "label": "ঢিলেঢালা",
+     "gloss": "loose fitting garment"
+    },
+    {
+     "id": "thick-fabric",
+     "label": "পুরু",
+     "gloss": "thick material in cross section"
+    },
+    {
+     "id": "thin-fabric",
+     "label": "পাতলা",
+     "gloss": "thin material in cross section"
+    }
+   ]
+  },
+  {
+   "id": "small-everyday-measures",
+   "number": 168,
+   "title": "অল্প জিনিস কীভাবে বলি",
+   "front": "pages/168-front.jpg",
+   "back": "pages/168-back.jpg",
+   "items": [
+    {
+     "id": "single-tied-bundle",
+     "label": "এক আঁটি",
+     "gloss": "one tied bunch of greens"
+    },
+    {
+     "id": "one-handful",
+     "label": "এক মুঠো",
+     "gloss": "one handful of dry food"
+    },
+    {
+     "id": "one-pinch",
+     "label": "এক চিমটি",
+     "gloss": "one pinch of a powder"
+    },
+    {
+     "id": "one-sip",
+     "label": "এক চুমুক",
+     "gloss": "one sip of a drink"
+    },
+    {
+     "id": "one-mouthful",
+     "label": "এক লোকমা",
+     "gloss": "one small mouthful of food"
+    },
+    {
+     "id": "one-liquid-drop",
+     "label": "এক ফোঁটা",
+     "gloss": "one single liquid drop"
+    }
+   ]
+  },
+  {
+   "id": "roadside-and-homestead-trees",
+   "number": 169,
+   "title": "পথে আর বাড়ির কাছে চেনা গাছ",
+   "front": "pages/169-front.jpg",
+   "back": "pages/169-back.jpg",
+   "items": [
+    {
+     "id": "mango-tree-local",
+     "label": "আমগাছ",
+     "gloss": "mango tree as landmark"
+    },
+    {
+     "id": "jackfruit-tree-local",
+     "label": "কাঁঠালগাছ",
+     "gloss": "jackfruit tree as landmark"
+    },
+    {
+     "id": "neem-tree-local",
+     "label": "নিমগাছ",
+     "gloss": "neem tree as landmark"
+    },
+    {
+     "id": "tamarind-tree-local",
+     "label": "তেঁতুলগাছ",
+     "gloss": "tamarind tree as landmark"
+    },
+    {
+     "id": "red-silk-cotton-tree",
+     "label": "শিমুলগাছ",
+     "gloss": "red silk cotton Bombax tree"
+    },
+    {
+     "id": "kadam-tree-local",
+     "label": "কদমগাছ",
+     "gloss": "kadam burflower tree"
+    }
+   ]
+  },
+  {
+   "id": "tart-and-fragrant-local-fruits",
+   "number": 170,
+   "title": "টক আর ঘ্রাণওয়ালা দেশি ফল",
+   "front": "pages/170-front.jpg",
+   "back": "pages/170-back.jpg",
+   "items": [
+    {
+     "id": "wood-apple-bael",
+     "label": "বেল",
+     "gloss": "hard-shelled bael fruit"
+    },
+    {
+     "id": "tamarind-pods",
+     "label": "তেঁতুল",
+     "gloss": "tamarind pods as fruit"
+    },
+    {
+     "id": "starfruit",
+     "label": "কামরাঙা",
+     "gloss": "five-ridged star fruit"
+    },
+    {
+     "id": "latkan-fruit",
+     "label": "লটকন",
+     "gloss": "Burmese grape fruit cluster sold in Bangladesh"
+    },
+    {
+     "id": "deua-fruit",
+     "label": "ডেউয়া",
+     "gloss": "monkey jack deua fruit"
+    },
+    {
+     "id": "amla-fruit",
+     "label": "আমলকী",
+     "gloss": "Indian gooseberry amla fruit"
+    }
+   ]
+  },
+  {
+   "id": "more-familiar-local-birds",
+   "number": 171,
+   "title": "ভোরে আর পানির ধারে যে পাখি দেখি",
+   "front": "pages/171-front.jpg",
+   "back": "pages/171-back.jpg",
+   "items": [
+    {
+     "id": "oriental-magpie-robin",
+     "label": "দোয়েল",
+     "gloss": "Oriental magpie robin"
+    },
+    {
+     "id": "white-throated-kingfisher",
+     "label": "মাছরাঙা",
+     "gloss": "white-throated kingfisher"
+    },
+    {
+     "id": "black-drongo",
+     "label": "ফিঙে",
+     "gloss": "black drongo"
+    },
+    {
+     "id": "asian-koel",
+     "label": "কোকিল",
+     "gloss": "Asian koel"
+    },
+    {
+     "id": "baya-weaver",
+     "label": "বাবুই",
+     "gloss": "Baya weaver bird"
+    },
+    {
+     "id": "rose-ringed-parakeet",
+     "label": "টিয়া",
+     "gloss": "rose-ringed parakeet"
+    }
+   ]
+  },
+  {
+   "id": "small-pests-and-pollinators",
+   "number": 172,
+   "title": "ঘরে আর ফুলের কাছে ছোট পোকা",
+   "front": "pages/172-front.jpg",
+   "back": "pages/172-back.jpg",
+   "items": [
+    {
+     "id": "termite-local",
+     "label": "উইপোকা",
+     "gloss": "wood-eating termite"
+    },
+    {
+     "id": "bedbug-local",
+     "label": "ছারপোকা",
+     "gloss": "bed bug"
+    },
+    {
+     "id": "head-louse-local",
+     "label": "উকুন",
+     "gloss": "head louse"
+    },
+    {
+     "id": "house-spider-local",
+     "label": "মাকড়সা",
+     "gloss": "house spider"
+    },
+    {
+     "id": "asian-honey-bee",
+     "label": "মৌমাছি",
+     "gloss": "Asian honey bee"
+    },
+    {
+     "id": "paper-wasp-local",
+     "label": "বোলতা",
+     "gloss": "paper wasp"
+    }
+   ]
+  },
+  {
+   "id": "caring-for-babies-and-elders",
+   "number": 173,
+   "title": "ছোট বড়দের যত্ন নিতে যা করি",
+   "front": "pages/173-front.jpg",
+   "back": "pages/173-back.jpg",
+   "items": [
+    {
+     "id": "stroke-hair-caring",
+     "label": "মাথায় হাত বুলানো",
+     "gloss": "to gently stroke someone's hair"
+    },
+    {
+     "id": "lift-into-lap",
+     "label": "কোলে নেওয়া",
+     "gloss": "to take a child onto one's lap"
+    },
+    {
+     "id": "feed-someone-mouthful",
+     "label": "খাইয়ে দেওয়া",
+     "gloss": "to give someone a bite of food"
+    },
+    {
+     "id": "lay-someone-down",
+     "label": "শুইয়ে দেওয়া",
+     "gloss": "to help someone lie down"
+    },
+    {
+     "id": "wrap-shawl-around-someone",
+     "label": "গায়ে চাদর দেওয়া",
+     "gloss": "to put a blanket or shawl over someone"
+    },
+    {
+     "id": "walk-with-hand-support",
+     "label": "হাত ধরে হাঁটানো",
+     "gloss": "to help someone walk by the hand"
+    }
+   ]
+  },
+  {
+   "id": "places-for-work-learning-and-trade",
+   "number": 174,
+   "title": "পাড়ায় আর হাটে কাজের জায়গা",
+   "front": "pages/174-front.jpg",
+   "back": "pages/174-back.jpg",
+   "items": [
+    {
+     "id": "cattle-market",
+     "label": "গরুর হাট",
+     "gloss": "open-air cattle market"
+    },
+    {
+     "id": "fish-wholesale-market",
+     "label": "মাছের আড়ত",
+     "gloss": "wholesale fish market auction shed"
+    },
+    {
+     "id": "rice-mill-site",
+     "label": "ধানকল",
+     "gloss": "local rice hulling mill"
+    },
+    {
+     "id": "local-madrasa-site",
+     "label": "মাদরাসা",
+     "gloss": "Bangladeshi madrasa school"
+    },
+    {
+     "id": "sewing-workshop",
+     "label": "সেলাইঘর",
+     "gloss": "neighborhood sewing workshop"
+    },
+    {
+     "id": "dairy-farm-site",
+     "label": "দুধের খামার",
+     "gloss": "local dairy farm"
+    }
+   ]
+  },
+  {
+   "id": "common-wordless-notices",
+   "number": 175,
+   "title": "ছবি দেখে নিয়ম বুঝি",
+   "front": "pages/175-front.jpg",
+   "back": "pages/175-back.jpg",
+   "items": [
+    {
+     "id": "no-entry-notice",
+     "label": "ঢোকা মানা",
+     "gloss": "no entry for pedestrians notice"
+    },
+    {
+     "id": "shoes-off-entry",
+     "label": "জুতা খুলে ঢোকা",
+     "gloss": "removing footwear before entering"
+    },
+    {
+     "id": "handwash-station",
+     "label": "হাত ধোয়ার জায়গা",
+     "gloss": "handwashing station"
+    },
+    {
+     "id": "waiting-seat-area",
+     "label": "বসার জায়গা",
+     "gloss": "public seating space"
+    },
+    {
+     "id": "road-closed-barrier",
+     "label": "পথ বন্ধ",
+     "gloss": "path closed by barrier"
+    },
+    {
+     "id": "no-litter-notice",
+     "label": "ময়লা ফেলা মানা",
+     "gloss": "no littering notice"
+    }
+   ]
   }
  ]
 };
-window.PICTURE_THIS_GAME_DATA = {"home-things": ["খাট", "বালিশ", "মোড়া", "আলমারি", "পাখা", "বাতি"], "study-things": ["বই", "খাতা", "কলম", "কাঁচি", "আঠা", "খাম"], "tableware": ["থালা", "বাটি", "চামচ", "কাঁটাচামচ", "পিরিচ", "পেয়ালা"], "market-vegetables": ["আলু", "পেঁয়াজ", "বেগুন", "ফুলকপি", "শসা", "শাক"], "market-fruit": ["আম", "কলা", "পেঁপে", "আনারস", "কাঁঠাল", "আঙুর"], "lunch": ["ভাত", "রুটি", "ডাল", "ডিম", "মাছ", "মাংস"], "tea-things": ["পানি", "চা", "দুধ", "লেবু", "মধু", "গুড়"], "cooking-things": ["হাঁড়ি", "ঢাকনা", "ছুরি", "কাটার তক্তা", "কড়াই", "খুন্তি"], "pantry": ["লবণ", "চিনি", "সরিষা", "জিরা", "তেল", "ঘি"], "clothing": ["ওড়না", "শাড়ি", "লুঙ্গি", "পাঞ্জাবি", "সালোয়ার", "কামিজ"], "washing-things": ["বালতি", "বদনা", "গামছা", "সাবান", "চিরুনি", "আয়না"], "home-parts": ["দরজা", "জানালা", "সিঁড়ি", "ছাদ", "বারান্দা", "দেয়াল"], "where-things-are": ["ওপরে", "নিচে", "ভেতরে", "বাইরে", "মাঝে", "পেছনে"], "colours": ["লাল", "নীল", "সবুজ", "হলুদ", "কালো", "সাদা"], "weather": ["রোদ", "ছায়া", "বৃষ্টি", "ঝড়", "মেঘ", "কুয়াশা"], "daily-actions": ["খাওয়া", "পানি খাওয়া", "বসা", "দাঁড়ানো", "ঘুমানো", "ঘুম থেকে ওঠা"], "with-your-hands": ["খোলা", "বন্ধ করা", "ধোয়া", "মোছা", "পড়া", "লেখা"], "family": ["আব্বা", "আম্মা", "ভাইয়া", "আপু", "নানা", "নানি"], "getting-around": ["রাস্তা", "গলি", "মোড়", "পুল", "ঘাট", "নৌকা"], "feeling-unwell": ["জ্বর", "কাশি", "হাঁচি", "দাঁতে ব্যথা", "পেটে ব্যথা", "চুলকানি"], "body": ["চোখ", "কান", "নাক", "মুখ", "হাত", "পা"], "care-things": ["ওষুধ", "মলম", "তুলা", "পট্টি", "বরফ", "গরম পানির থলি"], "shopping-things": ["টাকা", "খুচরা", "দাঁড়িপাল্লা", "রসিদ", "থলে", "ঝুড়ি"], "familiar-animals": ["গরু", "ছাগল", "মুরগি", "হাঁস", "বিড়াল", "কুকুর"], "small-repairs": ["হাতুড়ি", "পেরেক", "করাত", "কাঠ", "তালা", "চাবি"], "body-movement": ["হাঁটা", "দৌড়ানো", "লাফানো", "বেয়ে ওঠা", "ঝোঁকা", "হামাগুড়ি দেওয়া"], "objects-in-motion": ["দেওয়া", "নেওয়া", "ধরা", "ছোড়া", "ঠেলা", "টানা"], "putting-things-away": ["ভাঁজ করা", "ঝোলানো", "বাঁধা", "মোড়ানো", "রাখা", "তোলা"], "cooking-actions": ["কাটা", "খোসা ছাড়ানো", "নাড়া", "ঢালা", "মাখা", "বেলা"], "snack-foods": ["মুড়ি", "চিড়া", "সিঙ্গারা", "সমুচা", "ভাপা পিঠা", "জিলাপি"], "prayer-time": ["মসজিদ", "জায়নামাজ", "নামাজ পড়া", "অজু করা", "টুপি", "তসবিহ"], "size-and-width": ["বড়", "ছোট", "লম্বা", "খাটো", "চওড়া", "সরু"], "basic-shapes": ["সমান চারকোনা", "লম্বা চারকোনা", "গোল", "ডিমের মতো", "তারার মতো", "পাঁচকোনা"], "everyday-qualities": ["পরিষ্কার", "নোংরা", "গরম", "ঠান্ডা", "ভারী", "হালকা"], "familiar-bugs": ["মশা", "পিঁপড়া", "মাছি", "তেলাপোকা", "শুঁয়োপোকা", "প্রজাপতি"], "land-and-water": ["নদী", "খাল", "পুকুর", "বিল", "পাহাড়", "বন"], "play-things": ["ঘুড়ি", "লাটিম", "তাস", "দাবার গুটি", "দোলনা", "লাফের দড়ি"], "going-out-gear": ["জুতা", "মোজা", "চশমা", "চশমার খাপ", "ছাতা", "বর্ষাতি"], "everyday-materials": ["কাগজ", "কাপড়", "কাচ", "লোহা", "মাটি", "পাথর"], "neighborhood-places": ["দোকান", "বাজার", "থানা", "স্বাস্থ্যকেন্দ্র", "ডাকঘর", "পাঠাগার"], "people-at-work": ["দোকানি", "খদ্দের", "দর্জি", "তাঁতি", "রাজমিস্ত্রি", "কাঠমিস্ত্রি"], "times-of-day": ["ভোর", "সকাল", "দুপুর", "বিকেল", "সন্ধ্যা", "রাত"], "dry-groceries": ["চাল", "আটা", "ছোলা", "শুকনা মটর", "চিনাবাদাম", "ভুট্টা"], "fire-and-fuel": ["চুলা", "কয়লা", "দিয়াশলাই", "আগুন", "ধোঁয়া", "ছাই"], "sewing-repairs": ["সুঁই", "সুতা", "বোতাম", "মাপের ফিতা", "সেলাই", "ছেঁড়া"], "jewelry-and-adornment": ["কানের দুল", "নাকফুল", "চুড়ি", "আংটি", "হার", "চুলের কাঁটা"], "household-trouble": ["চুইয়ে পড়া", "আটকে যাওয়া", "দাগ", "ছাতা পড়া", "ফাটল", "দেবে যাওয়া"], "orientation": ["উত্তর", "দক্ষিণ", "পূর্ব", "পশ্চিম", "ডানে", "বামে"], "talk-and-gesture": ["বলা", "শোনা", "হাসা", "কাঁদা", "ডাকা", "ইশারা করা"], "counting-one-to-six": ["এক", "দুই", "তিন", "চার", "পাঁচ", "ছয়"], "coming-and-going": ["আসা", "যাওয়া", "ঢোকা", "বের হওয়া", "পার হওয়া", "থামা"], "buying-and-selling": ["কেনা", "বেচা", "দাম মেটানো", "বদলে নেওয়া", "ওজন করা", "বেছে নেওয়া"], "finding-and-showing": ["খোঁজা", "খুঁজে পাওয়া", "লুকানো", "বের করা", "দেখা", "দেখানো"], "feelings-and-reactions": ["খুশি", "মন খারাপ", "ভয় পাওয়া", "অবাক হওয়া", "রাগ", "ক্লান্ত"], "amounts-and-parts": ["বেশি", "কম", "অর্ধেক", "দুই গুণ", "সব", "একটাও নেই"], "surface-and-feel": ["মসৃণ", "খসখসে", "নরম", "শক্ত", "ধারালো", "ভোঁতা"], "cleaning-tools": ["ঝাড়ু", "ময়লার বেলচা", "ময়লার পাত্র", "ছোবড়া", "ন্যাকড়া", "পাপোশ"], "building-materials": ["ইট", "বালু", "কাঁকর", "বাঁশ", "মই", "খুঁটি"], "parts-of-plants": ["ফুল", "কুঁড়ি", "বীজ", "শিকড়", "পাতা", "ডালপালা"], "roots-and-vines": ["গাজর", "মুলা", "কুমড়া", "লাউ", "বরবটি", "শিম"], "vehicles": ["গাড়ি", "বিমান", "জাহাজ", "ভেলা", "ঠেলাগাড়ি", "গরুর গাড়ি"], "rooms-and-courtyard": ["রান্নাঘর", "শোবার ঘর", "বসার ঘর", "খাবার ঘর", "গোসলখানা", "উঠান"], "useful-papers": ["চিঠি", "চিরকুট", "পরিচয়পত্র", "ছবি", "সই", "ছাপ"], "getting-water": ["কল", "নল", "নলকূপ", "কুয়া", "কলসি", "ছাঁকনি"], "winter-warmth": ["চাদর", "কাঁথা", "কম্বল", "গরম জামা", "হাতমোজা", "পশমি টুপি"], "features-of-paths": ["কাছে", "দূরে", "সোজা", "বাঁকা", "খাড়া", "ঢালু"], "dairy-foods": ["দই", "পায়েস", "মাখন", "দুধের সর", "পনির", "ছানা"], "personal-care-objects": ["রুমাল", "মিসওয়াক", "সুরমা", "মেহেদি", "নখ কাটার যন্ত্র", "ক্ষুর"], "wedding-and-invitation": ["বর", "কনে", "অতিথি", "দাওয়াত", "ফুলের তোড়া", "ফুলের মালা"], "common-birds": ["কাক", "কবুতর", "চড়ুই", "শালিক", "বক", "পেঁচা"], "laying-out-the-home": ["মশারি", "পর্দা", "চাটাই", "তোশক", "তাক", "আলনা"], "music-and-rhythm": ["বাঁশি", "একতারা", "ঢোল", "তবলা", "ঘণ্টা", "করতাল"], "seasons-in-bangladesh": ["গরমকাল", "বর্ষাকাল", "শরৎকাল", "হেমন্তকাল", "শীতকাল", "বসন্তকাল"], "drawing-materials": ["তুলি", "কালি", "খড়ি", "মোমরং", "রং মেশানোর থালা", "রঙের বাক্স"], "farm-and-field": ["ধান", "খেত", "খড়", "গোবর", "কাস্তে", "লাঙল"], "arranging-objects": ["সামনে", "পাশে", "চারপাশে", "সারিতে", "আড়াআড়ি", "লম্বালম্বি"], "doing-housework": ["ঝাড়ু দেওয়া", "ময়লা ফেলা", "বাসন মাজা", "কাপড় কাচা", "কাপড় শুকানো", "বিছানা পাতা"], "food-tastes": ["মিষ্টি", "টক", "ঝাল", "তেতো", "নোনতা", "পানসে"], "more-local-fruit": ["পেয়ারা", "জাম", "লিচু", "আমড়া", "বরই", "তরমুজ"], "aromatic-spices": ["দারুচিনি", "লবঙ্গ", "এলাচ", "গোলমরিচ", "তেজপাতা", "কাঁচা হলুদ"], "ways-of-heating-food": ["ভাজা", "সেদ্ধ করা", "ভাপ দেওয়া", "পানি ফুটানো", "সেঁকা", "দম দেওয়া"], "local-market-fish": ["ইলিশ", "রুই", "শিং মাছ", "কই", "চিংড়ি", "পুঁটি"], "grooming-actions": ["দাঁত মাজা", "দাড়ি কামানো", "চুল আঁচড়ানো", "চুল কাটা", "গোসল করা", "নখ কাটা"], "joints-and-neck": ["ঘাড়", "কাঁধ", "কনুই", "কবজি", "হাঁটু", "গোড়ালি"], "face-details": ["ঠোঁট", "দাঁত", "জিব", "গাল", "থুতনি", "কপাল"], "minor-injuries": ["কেটে যাওয়া", "পুড়ে যাওয়া", "মচকে যাওয়া", "ফুলে যাওয়া", "কালশিটে", "মাথা ঘোরা"], "storage-containers": ["বয়াম", "কৌটা", "মটকা", "পানির পিপা", "ফুলদানি", "শিশি"], "object-states": ["ভেজা", "শুকনা", "ভাঙা", "ফুটো", "উল্টানো", "চ্যাপ্টা"], "parts-and-cuts-of-food": ["টুকরা", "ফালি", "কোয়া", "আঁটি", "খোসা", "ডাঁটা"], "local-open-and-work-sites": ["খেলার মাঠ", "ফলের বাগান", "কবরস্থান", "ঈদগাহ", "ইটভাটা", "কারখানা"], "ages-of-people": ["নতুন বাচ্চা", "ছোট বাচ্চা", "কিশোর", "তরুণী", "মাঝবয়সি", "বয়স্ক"], "ramadan-and-eid": ["ইফতার", "সেহরি", "খেজুর", "ঈদের চাঁদ", "ঈদের জামা", "ঈদি"], "food-for-guests": ["বিরিয়ানি", "ভুনা খিচুড়ি", "কোরমা", "কাবাব", "জর্দা", "ফিরনি"], "features-of-streets": ["যাত্রীছাউনি", "রাস্তার বাতি", "রাস্তা পারাপারের দাগ", "পায়ে চলার পথ", "গাড়ি রাখার জায়গা", "রাস্তার নালা"], "packing-and-carrying": ["গুছানো", "ভরা", "খালি করা", "বোঝাই করা", "কাঁধে নেওয়া", "নামানো"], "mouth-and-nose-actions": ["শোঁকা", "চেখে দেখা", "কামড়ানো", "চিবানো", "গেলা", "ফুঁ দেওয়া"], "making-sounds": ["হাততালি দেওয়া", "টোকা দেওয়া", "গুনগুন করা", "বাঁশি বাজানো", "চেঁচানো", "ফিসফিস করা"], "familiar-bangladesh-trees": ["নারকেলগাছ", "সুপারিগাছ", "কলাগাছ", "তালগাছ", "বটগাছ", "বাঁশঝাড়"], "small-local-animals": ["টিকটিকি", "ব্যাঙ", "সাপ", "কচ্ছপ", "ইঁদুর", "বাদুড়"], "appearance-contrasts": ["চকচকে", "মলিন", "গাঢ়", "ফিকে", "স্বচ্ছ", "ঘোলা"], "hands-on-learning-actions": ["আঁকা", "মুছে ফেলা", "গোনা", "মাপা", "মেলানো", "আলাদা করা"], "torso-and-nails": ["বুক", "পিঠ", "কোমর", "পেট", "নাভি", "নখ"], "traditional-yard-games": ["এক্কাদোক্কা", "কানামাছি", "লুকোচুরি", "কাবাডি", "দড়ি টানাটানি", "পাঞ্জা লড়া"], "posture-and-turning": ["হেলান দেওয়া", "শোয়া", "গড়ানো", "ঘুরে দাঁড়ানো", "হাঁটু গেড়ে বসা", "উবু হয়ে বসা"], "local-trades": ["চাষি", "জেলে", "মাঝি", "মুচি", "কামার", "কুমার"], "telling-time-and-dates": ["দেয়ালঘড়ি", "হাতঘড়ি", "বালুঘড়ি", "তারিখ", "সপ্তাহ", "মাস"], "electricity-and-light": ["বিদ্যুতের তার", "বিদ্যুতের খুঁটি", "কুপি", "মোমবাতি", "বাতির বোতাম", "হাতবাতি"], "house-edges-and-fittings": ["মেঝে", "কোণা", "দোরগোড়া", "ছিটকিনি", "ফটক", "বেড়া"], "metals-and-natural-materials": ["সোনা", "রুপা", "তামা", "পিতল", "পাট", "চামড়া"], "familiar-bangladesh-flowers": ["শাপলা", "পদ্ম", "জবা", "গাঁদা", "শিউলি", "গন্ধরাজ"], "more-cooking-vegetables": ["ঢেঁড়স", "পটল", "কচু", "মিষ্টি আলু", "বাঁধাকপি", "ঝিঙে"], "people-out-on-the-street": ["যাত্রী", "চালক", "পথচারী", "পাহারাদার", "ফেরিওয়ালা", "মুটে"], "wild-bangladesh-animals": ["হাতি", "বানর", "ভালুক", "হরিণ", "বাঘ", "শিয়াল"], "preparing-food-to-serve": ["খাবার বেড়ে দেওয়া", "ভাগ করা", "ছিটানো", "চিপে রস বের করা", "ছেঁকে নেওয়া", "গুঁড়া করা"], "types-of-homes": ["কুঁড়েঘর", "মাটির ঘর", "বাঁশের ঘর", "একতলা বাড়ি", "দোতলা বাড়ি", "উঁচু দালান"], "on-the-way-actions": ["অপেক্ষা করা", "রওনা হওয়া", "পিছু নেওয়া", "পথ ছেড়ে দেওয়া", "পথ বদলানো", "পথ হারানো"], "actions-for-care": ["জ্বর মাপা", "নাড়ি দেখা", "শ্বাস নেওয়া", "ক্ষত ধোয়া", "পট্টি বাঁধা", "মলম লাগানো"], "local-cold-drinks": ["ডাবের পানি", "আখের রস", "বেলের শরবত", "লেবুপানি", "ঘোল", "বোরহানি"], "food-ripeness-and-condition": ["কাঁচা", "পাকা", "টাটকা", "বাসি", "জমাট বাঁধা", "গলে যাওয়া"], "river-work-gear": ["জাল", "পলো", "বড়শি", "ছিপ", "খালুই", "বৈঠা"], "clothing-patterns": ["ডোরাকাটা", "ঘরকাটা", "ফোঁটাওয়ালা", "ফুলের ছাপ", "সুতার নকশা", "একরঙা"], "small-facial-actions": ["চোখ টেপা", "পলক ফেলা", "হাই তোলা", "মুখ বাঁকানো", "ভুরু কুঁচকানো", "মাথা ঝাঁকানো"], "counting-seven-to-twelve": ["সাত", "আট", "নয়", "দশ", "এগারো", "বারো"], "pace-and-turn-taking": ["তাড়াতাড়ি", "ধীরে", "একসঙ্গে", "পালা করে", "একবার", "বারবার"], "river-and-coast-landforms": ["চর", "দ্বীপ", "বাঁধ", "ঝরনা", "মোহনা", "সমুদ্র"], "talking-prices-and-money": ["দরদাম করা", "টাকা গোনা", "টাকা জমানো", "দাম কমানো", "বাকি লেখা", "ভাঙতি করা"], "greeting-and-helping": ["সালাম দেওয়া", "হাত মেলানো", "জড়িয়ে ধরা", "বিদায় নেওয়া", "স্বাগত জানানো", "সাহায্য করা"], "ties-and-fasteners": ["দড়ি", "শিকল", "চুলের ফিতা", "আংটা", "চুম্বক", "কাপড়ের চিমটি"], "finger-and-palm-actions": ["খোঁচানো", "বোতাম টেপা", "চিমটি কাটা", "খামচানো", "ঘষা", "চাপ দেওয়া"], "garden-planting-actions": ["মাটি খোঁড়া", "বীজ বোনা", "পানি দেওয়া", "চারা লাগানো", "আগাছা তোলা", "সবজি পাড়া"], "repair-and-garden-tools": ["পেঁচকস", "সাঁড়াশি", "ছেনি", "শিরীষ কাগজ", "কোদাল", "খুরপি"], "traditional-household-objects": ["পিঁড়ি", "হাতপাখা", "কুলা", "চালুনি", "ডালা", "পানের বাটা"], "fabric-care-actions": ["ইস্ত্রি করা", "কুঁচি দেওয়া", "ভিজিয়ে রাখা", "নিংড়ানো", "দাগ তোলা", "রং করা"], "describing-common-symptoms": ["মাথা ব্যথা", "পিঠে ব্যথা", "গিলতে কষ্ট", "বমি", "নাক বন্ধ", "শ্বাসকষ্ট"], "local-kitchen-implements": ["চিমটা", "বঁটি", "শিলপাটা", "হামানদিস্তা", "ডেকচি", "চুলার জালি"], "more-domestic-animals": ["মহিষ", "ভেড়া", "ঘোড়া", "গাধা", "খরগোশ", "রাজহাঁস"], "more-market-fruit": ["কমলা", "জাম্বুরা", "ডালিম", "আতা", "সফেদা", "জলপাই"], "fresh-kitchen-aromatics": ["আদা", "রসুন", "কাঁচামরিচ", "পেঁয়াজপাতা", "ধনেপাতা", "পুদিনা"], "bangladesh-sweets": ["রসমালাই", "সন্দেশ", "চমচম", "লাড্ডু", "বরফি", "বাতাসা"], "people-we-know-daily": ["প্রতিবেশী", "খেলার সাথি", "সহপাঠী", "সহকর্মী", "বাড়িওয়ালা", "ভাড়াটে"], "price-age-and-depth": ["নতুন", "পুরোনো", "দামি", "সস্তা", "গভীর", "অগভীর"], "rice-from-field-to-pot": ["চারা", "ধান কাটা", "মাড়াই করা", "ধান শুকানো", "চাল ঝাড়া", "ভাত রান্না করা"], "parts-of-clothing": ["হাতা", "জামার গলা", "ঝালর", "আস্তর", "পাড়", "আঁচল"], "everyday-bodily-needs": ["খিদে লাগা", "পেট ভরা", "তেষ্টা পাওয়া", "ঘুম পাওয়া", "গরম লাগা", "শীত করা"], "things-in-the-sky": ["সূর্য", "পূর্ণিমার চাঁদ", "তারা", "রংধনু", "শিলাবৃষ্টি", "বিদ্যুৎ চমক"], "small-everyday-mishaps": ["হোঁচট খাওয়া", "পিছলে যাওয়া", "ধাক্কা খাওয়া", "ছিটকে পড়া", "বেঁকে যাওয়া", "লেগে থাকা"], "renting-and-moving-home": ["বাসা দেখতে আসা", "খালি বাসা", "ভাড়ার টাকা দেওয়া", "জামানত", "ভাড়ার চুক্তি", "বাসা বদলানো"], "extended-family-on-both-sides": ["দাদা", "দাদি", "চাচা", "চাচি", "মামা", "মামি"], "neighborhood-shop-types": ["চায়ের দোকান", "ভাতের দোকান", "ওষুধের দোকান", "নাপিতের দোকান", "মুদিদোকান", "মিষ্টির দোকান"], "marks-and-things-on-the-ground": ["কাদা", "ধুলো", "পায়ের ছাপ", "চাকার দাগ", "গর্ত", "কেঁচো"]};
+window.PICTURE_THIS_GAME_DATA = {"home-things": ["খাট", "বালিশ", "মোড়া", "আলমারি", "পাখা", "বাতি"], "study-things": ["বই", "খাতা", "কলম", "কাঁচি", "আঠা", "খাম"], "tableware": ["থালা", "বাটি", "চামচ", "কাঁটাচামচ", "পিরিচ", "পেয়ালা"], "market-vegetables": ["আলু", "পেঁয়াজ", "বেগুন", "ফুলকপি", "শসা", "শাক"], "market-fruit": ["আম", "কলা", "পেঁপে", "আনারস", "কাঁঠাল", "আঙুর"], "lunch": ["ভাত", "রুটি", "ডাল", "ডিম", "মাছ", "মাংস"], "tea-things": ["পানি", "চা", "দুধ", "লেবু", "মধু", "গুড়"], "cooking-things": ["হাঁড়ি", "ঢাকনা", "ছুরি", "কাটার তক্তা", "কড়াই", "খুন্তি"], "pantry": ["লবণ", "চিনি", "সরিষা", "জিরা", "তেল", "ঘি"], "clothing": ["ওড়না", "শাড়ি", "লুঙ্গি", "পাঞ্জাবি", "সালোয়ার", "কামিজ"], "washing-things": ["বালতি", "বদনা", "গামছা", "সাবান", "চিরুনি", "আয়না"], "home-parts": ["দরজা", "জানালা", "সিঁড়ি", "ছাদ", "বারান্দা", "দেয়াল"], "where-things-are": ["ওপরে", "নিচে", "ভেতরে", "বাইরে", "মাঝে", "পেছনে"], "colours": ["লাল", "নীল", "সবুজ", "হলুদ", "কালো", "সাদা"], "weather": ["রোদ", "ছায়া", "বৃষ্টি", "ঝড়", "মেঘ", "কুয়াশা"], "daily-actions": ["খাওয়া", "পানি খাওয়া", "বসা", "দাঁড়ানো", "ঘুমানো", "ঘুম থেকে ওঠা"], "with-your-hands": ["খোলা", "বন্ধ করা", "ধোয়া", "মোছা", "পড়া", "লেখা"], "family": ["আব্বা", "আম্মা", "ভাইয়া", "আপু", "নানা", "নানি"], "getting-around": ["রাস্তা", "গলি", "মোড়", "পুল", "ঘাট", "নৌকা"], "feeling-unwell": ["জ্বর", "কাশি", "হাঁচি", "দাঁতে ব্যথা", "পেটে ব্যথা", "চুলকানি"], "body": ["চোখ", "কান", "নাক", "মুখ", "হাত", "পা"], "care-things": ["ওষুধ", "মলম", "তুলা", "পট্টি", "বরফ", "গরম পানির থলি"], "shopping-things": ["টাকা", "খুচরা", "দাঁড়িপাল্লা", "রসিদ", "থলে", "ঝুড়ি"], "familiar-animals": ["গরু", "ছাগল", "মুরগি", "হাঁস", "বিড়াল", "কুকুর"], "small-repairs": ["হাতুড়ি", "পেরেক", "করাত", "কাঠ", "তালা", "চাবি"], "body-movement": ["হাঁটা", "দৌড়ানো", "লাফানো", "বেয়ে ওঠা", "ঝোঁকা", "হামাগুড়ি দেওয়া"], "objects-in-motion": ["দেওয়া", "নেওয়া", "ধরা", "ছোড়া", "ঠেলা", "টানা"], "putting-things-away": ["ভাঁজ করা", "ঝোলানো", "বাঁধা", "মোড়ানো", "রাখা", "তোলা"], "cooking-actions": ["কাটা", "খোসা ছাড়ানো", "নাড়া", "ঢালা", "মাখা", "বেলা"], "snack-foods": ["মুড়ি", "চিড়া", "সিঙ্গারা", "সমুচা", "ভাপা পিঠা", "জিলাপি"], "prayer-time": ["মসজিদ", "জায়নামাজ", "নামাজ পড়া", "অজু করা", "টুপি", "তসবিহ"], "size-and-width": ["বড়", "ছোট", "লম্বা", "খাটো", "চওড়া", "সরু"], "basic-shapes": ["সমান চারকোনা", "লম্বা চারকোনা", "গোল", "ডিমের মতো", "তারার মতো", "পাঁচকোনা"], "everyday-qualities": ["পরিষ্কার", "নোংরা", "গরম", "ঠান্ডা", "ভারী", "হালকা"], "familiar-bugs": ["মশা", "পিঁপড়া", "মাছি", "তেলাপোকা", "শুঁয়োপোকা", "প্রজাপতি"], "land-and-water": ["নদী", "খাল", "পুকুর", "বিল", "পাহাড়", "বন"], "play-things": ["ঘুড়ি", "লাটিম", "তাস", "দাবার গুটি", "দোলনা", "লাফের দড়ি"], "going-out-gear": ["জুতা", "মোজা", "চশমা", "চশমার খাপ", "ছাতা", "বর্ষাতি"], "everyday-materials": ["কাগজ", "কাপড়", "কাচ", "লোহা", "মাটি", "পাথর"], "neighborhood-places": ["দোকান", "বাজার", "থানা", "স্বাস্থ্যকেন্দ্র", "ডাকঘর", "পাঠাগার"], "people-at-work": ["দোকানি", "খদ্দের", "দর্জি", "তাঁতি", "রাজমিস্ত্রি", "কাঠমিস্ত্রি"], "times-of-day": ["ভোর", "সকাল", "দুপুর", "বিকেল", "সন্ধ্যা", "রাত"], "dry-groceries": ["চাল", "আটা", "ছোলা", "শুকনা মটর", "চিনাবাদাম", "ভুট্টা"], "fire-and-fuel": ["চুলা", "কয়লা", "দিয়াশলাই", "আগুন", "ধোঁয়া", "ছাই"], "sewing-repairs": ["সুঁই", "সুতা", "বোতাম", "মাপের ফিতা", "সেলাই", "ছেঁড়া"], "jewelry-and-adornment": ["কানের দুল", "নাকফুল", "চুড়ি", "আংটি", "হার", "চুলের কাঁটা"], "household-trouble": ["চুইয়ে পড়া", "আটকে যাওয়া", "দাগ", "ছাতা পড়া", "ফাটল", "দেবে যাওয়া"], "orientation": ["উত্তর", "দক্ষিণ", "পূর্ব", "পশ্চিম", "ডানে", "বামে"], "talk-and-gesture": ["বলা", "শোনা", "হাসা", "কাঁদা", "ডাকা", "ইশারা করা"], "counting-one-to-six": ["এক", "দুই", "তিন", "চার", "পাঁচ", "ছয়"], "coming-and-going": ["আসা", "যাওয়া", "ঢোকা", "বের হওয়া", "পার হওয়া", "থামা"], "buying-and-selling": ["কেনা", "বেচা", "দাম মেটানো", "বদলে নেওয়া", "ওজন করা", "বেছে নেওয়া"], "finding-and-showing": ["খোঁজা", "খুঁজে পাওয়া", "লুকানো", "বের করা", "দেখা", "দেখানো"], "feelings-and-reactions": ["খুশি", "মন খারাপ", "ভয় পাওয়া", "অবাক হওয়া", "রাগ", "ক্লান্ত"], "amounts-and-parts": ["বেশি", "কম", "অর্ধেক", "দুই গুণ", "সব", "একটাও নেই"], "surface-and-feel": ["মসৃণ", "খসখসে", "নরম", "শক্ত", "ধারালো", "ভোঁতা"], "cleaning-tools": ["ঝাড়ু", "ময়লার বেলচা", "ময়লার পাত্র", "ছোবড়া", "ন্যাকড়া", "পাপোশ"], "building-materials": ["ইট", "বালু", "কাঁকর", "বাঁশ", "মই", "খুঁটি"], "parts-of-plants": ["ফুল", "কুঁড়ি", "বীজ", "শিকড়", "পাতা", "ডালপালা"], "roots-and-vines": ["গাজর", "মুলা", "কুমড়া", "লাউ", "বরবটি", "শিম"], "vehicles": ["গাড়ি", "বিমান", "জাহাজ", "ভেলা", "ঠেলাগাড়ি", "গরুর গাড়ি"], "rooms-and-courtyard": ["রান্নাঘর", "শোবার ঘর", "বসার ঘর", "খাবার ঘর", "গোসলখানা", "উঠান"], "useful-papers": ["চিঠি", "চিরকুট", "পরিচয়পত্র", "ছবি", "সই", "ছাপ"], "getting-water": ["কল", "নল", "নলকূপ", "কুয়া", "কলসি", "ছাঁকনি"], "winter-warmth": ["চাদর", "কাঁথা", "কম্বল", "গরম জামা", "হাতমোজা", "পশমি টুপি"], "features-of-paths": ["কাছে", "দূরে", "সোজা", "বাঁকা", "খাড়া", "ঢালু"], "dairy-foods": ["দই", "পায়েস", "মাখন", "দুধের সর", "পনির", "ছানা"], "personal-care-objects": ["রুমাল", "মিসওয়াক", "সুরমা", "মেহেদি", "নখ কাটার যন্ত্র", "ক্ষুর"], "wedding-and-invitation": ["বর", "কনে", "অতিথি", "দাওয়াত", "ফুলের তোড়া", "ফুলের মালা"], "common-birds": ["কাক", "কবুতর", "চড়ুই", "শালিক", "বক", "পেঁচা"], "laying-out-the-home": ["মশারি", "পর্দা", "চাটাই", "তোশক", "তাক", "আলনা"], "music-and-rhythm": ["বাঁশি", "একতারা", "ঢোল", "তবলা", "ঘণ্টা", "করতাল"], "seasons-in-bangladesh": ["গরমকাল", "বর্ষাকাল", "শরৎকাল", "হেমন্তকাল", "শীতকাল", "বসন্তকাল"], "drawing-materials": ["তুলি", "কালি", "খড়ি", "মোমরং", "রং মেশানোর থালা", "রঙের বাক্স"], "farm-and-field": ["ধান", "খেত", "খড়", "গোবর", "কাস্তে", "লাঙল"], "arranging-objects": ["সামনে", "পাশে", "চারপাশে", "সারিতে", "আড়াআড়ি", "লম্বালম্বি"], "doing-housework": ["ঝাড়ু দেওয়া", "ময়লা ফেলা", "বাসন মাজা", "কাপড় কাচা", "কাপড় শুকানো", "বিছানা পাতা"], "food-tastes": ["মিষ্টি", "টক", "ঝাল", "তেতো", "নোনতা", "পানসে"], "more-local-fruit": ["পেয়ারা", "জাম", "লিচু", "আমড়া", "বরই", "তরমুজ"], "aromatic-spices": ["দারুচিনি", "লবঙ্গ", "এলাচ", "গোলমরিচ", "তেজপাতা", "কাঁচা হলুদ"], "ways-of-heating-food": ["ভাজা", "সেদ্ধ করা", "ভাপ দেওয়া", "পানি ফুটানো", "সেঁকা", "দম দেওয়া"], "local-market-fish": ["ইলিশ", "রুই", "শিং মাছ", "কই", "চিংড়ি", "পুঁটি"], "grooming-actions": ["দাঁত মাজা", "দাড়ি কামানো", "চুল আঁচড়ানো", "চুল কাটা", "গোসল করা", "নখ কাটা"], "joints-and-neck": ["ঘাড়", "কাঁধ", "কনুই", "কবজি", "হাঁটু", "গোড়ালি"], "face-details": ["ঠোঁট", "দাঁত", "জিব", "গাল", "থুতনি", "কপাল"], "minor-injuries": ["কেটে যাওয়া", "পুড়ে যাওয়া", "মচকে যাওয়া", "ফুলে যাওয়া", "কালশিটে", "মাথা ঘোরা"], "storage-containers": ["বয়াম", "কৌটা", "মটকা", "পানির পিপা", "ফুলদানি", "শিশি"], "object-states": ["ভেজা", "শুকনা", "ভাঙা", "ফুটো", "উল্টানো", "চ্যাপ্টা"], "parts-and-cuts-of-food": ["টুকরা", "ফালি", "কোয়া", "আঁটি", "খোসা", "ডাঁটা"], "local-open-and-work-sites": ["খেলার মাঠ", "ফলের বাগান", "কবরস্থান", "ঈদগাহ", "ইটভাটা", "কারখানা"], "ages-of-people": ["নতুন বাচ্চা", "ছোট বাচ্চা", "কিশোর", "তরুণী", "মাঝবয়সি", "বয়স্ক"], "ramadan-and-eid": ["ইফতার", "সেহরি", "খেজুর", "ঈদের চাঁদ", "ঈদের জামা", "ঈদি"], "food-for-guests": ["বিরিয়ানি", "ভুনা খিচুড়ি", "কোরমা", "কাবাব", "জর্দা", "ফিরনি"], "features-of-streets": ["যাত্রীছাউনি", "রাস্তার বাতি", "রাস্তা পারাপারের দাগ", "পায়ে চলার পথ", "গাড়ি রাখার জায়গা", "রাস্তার নালা"], "packing-and-carrying": ["গুছানো", "ভরা", "খালি করা", "বোঝাই করা", "কাঁধে নেওয়া", "নামানো"], "mouth-and-nose-actions": ["শোঁকা", "চেখে দেখা", "কামড়ানো", "চিবানো", "গেলা", "ফুঁ দেওয়া"], "making-sounds": ["হাততালি দেওয়া", "টোকা দেওয়া", "গুনগুন করা", "বাঁশি বাজানো", "চেঁচানো", "ফিসফিস করা"], "familiar-bangladesh-trees": ["নারকেলগাছ", "সুপারিগাছ", "কলাগাছ", "তালগাছ", "বটগাছ", "বাঁশঝাড়"], "small-local-animals": ["টিকটিকি", "ব্যাঙ", "সাপ", "কচ্ছপ", "ইঁদুর", "বাদুড়"], "appearance-contrasts": ["চকচকে", "মলিন", "গাঢ়", "ফিকে", "স্বচ্ছ", "ঘোলা"], "hands-on-learning-actions": ["আঁকা", "মুছে ফেলা", "গোনা", "মাপা", "মেলানো", "আলাদা করা"], "torso-and-nails": ["বুক", "পিঠ", "কোমর", "পেট", "নাভি", "নখ"], "traditional-yard-games": ["এক্কাদোক্কা", "কানামাছি", "লুকোচুরি", "কাবাডি", "দড়ি টানাটানি", "পাঞ্জা লড়া"], "posture-and-turning": ["হেলান দেওয়া", "শোয়া", "গড়ানো", "ঘুরে দাঁড়ানো", "হাঁটু গেড়ে বসা", "উবু হয়ে বসা"], "local-trades": ["চাষি", "জেলে", "মাঝি", "মুচি", "কামার", "কুমার"], "telling-time-and-dates": ["দেয়ালঘড়ি", "হাতঘড়ি", "বালুঘড়ি", "তারিখ", "সপ্তাহ", "মাস"], "electricity-and-light": ["বিদ্যুতের তার", "বিদ্যুতের খুঁটি", "কুপি", "মোমবাতি", "বাতির বোতাম", "হাতবাতি"], "house-edges-and-fittings": ["মেঝে", "কোণা", "দোরগোড়া", "ছিটকিনি", "ফটক", "বেড়া"], "metals-and-natural-materials": ["সোনা", "রুপা", "তামা", "পিতল", "পাট", "চামড়া"], "familiar-bangladesh-flowers": ["শাপলা", "পদ্ম", "জবা", "গাঁদা", "শিউলি", "গন্ধরাজ"], "more-cooking-vegetables": ["ঢেঁড়স", "পটল", "কচু", "মিষ্টি আলু", "বাঁধাকপি", "ঝিঙে"], "people-out-on-the-street": ["যাত্রী", "চালক", "পথচারী", "পাহারাদার", "ফেরিওয়ালা", "মুটে"], "wild-bangladesh-animals": ["হাতি", "বানর", "ভালুক", "হরিণ", "বাঘ", "শিয়াল"], "preparing-food-to-serve": ["খাবার বেড়ে দেওয়া", "ভাগ করা", "ছিটানো", "চিপে রস বের করা", "ছেঁকে নেওয়া", "গুঁড়া করা"], "types-of-homes": ["কুঁড়েঘর", "মাটির ঘর", "বাঁশের ঘর", "একতলা বাড়ি", "দোতলা বাড়ি", "উঁচু দালান"], "on-the-way-actions": ["অপেক্ষা করা", "রওনা হওয়া", "পিছু নেওয়া", "পথ ছেড়ে দেওয়া", "পথ বদলানো", "পথ হারানো"], "actions-for-care": ["জ্বর মাপা", "নাড়ি দেখা", "শ্বাস নেওয়া", "ক্ষত ধোয়া", "পট্টি বাঁধা", "মলম লাগানো"], "local-cold-drinks": ["ডাবের পানি", "আখের রস", "বেলের শরবত", "লেবুপানি", "ঘোল", "বোরহানি"], "food-ripeness-and-condition": ["কাঁচা", "পাকা", "টাটকা", "বাসি", "জমাট বাঁধা", "গলে যাওয়া"], "river-work-gear": ["জাল", "পলো", "বড়শি", "ছিপ", "খালুই", "বৈঠা"], "clothing-patterns": ["ডোরাকাটা", "ঘরকাটা", "ফোঁটাওয়ালা", "ফুলের ছাপ", "সুতার নকশা", "একরঙা"], "small-facial-actions": ["চোখ টেপা", "পলক ফেলা", "হাই তোলা", "মুখ বাঁকানো", "ভুরু কুঁচকানো", "মাথা ঝাঁকানো"], "counting-seven-to-twelve": ["সাত", "আট", "নয়", "দশ", "এগারো", "বারো"], "pace-and-turn-taking": ["তাড়াতাড়ি", "ধীরে", "একসঙ্গে", "পালা করে", "একবার", "বারবার"], "river-and-coast-landforms": ["চর", "দ্বীপ", "বাঁধ", "ঝরনা", "মোহনা", "সমুদ্র"], "talking-prices-and-money": ["দরদাম করা", "টাকা গোনা", "টাকা জমানো", "দাম কমানো", "বাকি লেখা", "ভাঙতি করা"], "greeting-and-helping": ["সালাম দেওয়া", "হাত মেলানো", "জড়িয়ে ধরা", "বিদায় নেওয়া", "স্বাগত জানানো", "সাহায্য করা"], "ties-and-fasteners": ["দড়ি", "শিকল", "চুলের ফিতা", "আংটা", "চুম্বক", "কাপড়ের চিমটি"], "finger-and-palm-actions": ["খোঁচানো", "বোতাম টেপা", "চিমটি কাটা", "খামচানো", "ঘষা", "চাপ দেওয়া"], "garden-planting-actions": ["মাটি খোঁড়া", "বীজ বোনা", "পানি দেওয়া", "চারা লাগানো", "আগাছা তোলা", "সবজি পাড়া"], "repair-and-garden-tools": ["পেঁচকস", "সাঁড়াশি", "ছেনি", "শিরীষ কাগজ", "কোদাল", "খুরপি"], "traditional-household-objects": ["পিঁড়ি", "হাতপাখা", "কুলা", "চালুনি", "ডালা", "পানের বাটা"], "fabric-care-actions": ["ইস্ত্রি করা", "কুঁচি দেওয়া", "ভিজিয়ে রাখা", "নিংড়ানো", "দাগ তোলা", "রং করা"], "describing-common-symptoms": ["মাথা ব্যথা", "পিঠে ব্যথা", "গিলতে কষ্ট", "বমি", "নাক বন্ধ", "শ্বাসকষ্ট"], "local-kitchen-implements": ["চিমটা", "বঁটি", "শিলপাটা", "হামানদিস্তা", "ডেকচি", "চুলার জালি"], "more-domestic-animals": ["মহিষ", "ভেড়া", "ঘোড়া", "গাধা", "খরগোশ", "রাজহাঁস"], "more-market-fruit": ["কমলা", "জাম্বুরা", "ডালিম", "আতা", "সফেদা", "জলপাই"], "fresh-kitchen-aromatics": ["আদা", "রসুন", "কাঁচামরিচ", "পেঁয়াজপাতা", "ধনেপাতা", "পুদিনা"], "bangladesh-sweets": ["রসমালাই", "সন্দেশ", "চমচম", "লাড্ডু", "বরফি", "বাতাসা"], "people-we-know-daily": ["প্রতিবেশী", "খেলার সাথি", "সহপাঠী", "সহকর্মী", "বাড়িওয়ালা", "ভাড়াটে"], "price-age-and-depth": ["নতুন", "পুরোনো", "দামি", "সস্তা", "গভীর", "অগভীর"], "rice-from-field-to-pot": ["চারা", "ধান কাটা", "মাড়াই করা", "ধান শুকানো", "চাল ঝাড়া", "ভাত রান্না করা"], "parts-of-clothing": ["হাতা", "জামার গলা", "ঝালর", "আস্তর", "পাড়", "আঁচল"], "everyday-bodily-needs": ["খিদে লাগা", "পেট ভরা", "তেষ্টা পাওয়া", "ঘুম পাওয়া", "গরম লাগা", "শীত করা"], "things-in-the-sky": ["সূর্য", "পূর্ণিমার চাঁদ", "তারা", "রংধনু", "শিলাবৃষ্টি", "বিদ্যুৎ চমক"], "small-everyday-mishaps": ["হোঁচট খাওয়া", "পিছলে যাওয়া", "ধাক্কা খাওয়া", "ছিটকে পড়া", "বেঁকে যাওয়া", "লেগে থাকা"], "renting-and-moving-home": ["বাসা দেখতে আসা", "খালি বাসা", "ভাড়ার টাকা দেওয়া", "জামানত", "ভাড়ার চুক্তি", "বাসা বদলানো"], "extended-family-on-both-sides": ["দাদা", "দাদি", "চাচা", "চাচি", "মামা", "মামি"], "neighborhood-shop-types": ["চায়ের দোকান", "ভাতের দোকান", "ওষুধের দোকান", "নাপিতের দোকান", "মুদিদোকান", "মিষ্টির দোকান"], "marks-and-things-on-the-ground": ["কাদা", "ধুলো", "পায়ের ছাপ", "চাকার দাগ", "গর্ত", "কেঁচো"], "vegetables-for-curry-and-bhaji": ["করলা", "চিচিঙ্গা", "কাঁচা পেঁপে", "চালকুমড়া", "কাঁচকলা", "সজনে ডাঁটা"], "leafy-greens-at-market": ["পালংশাক", "লালশাক", "পুঁইশাক", "কলমিশাক", "ডাঁটাশাক", "লাউশাক"], "more-fish-from-the-market": ["রূপচাঁদা", "কাতলা", "বোয়াল", "পাবদা", "মলা", "টেংরা"], "market-stall-snacks": ["ফুচকা", "চটপটি", "ঝালমুড়ি", "পেঁয়াজু", "বেগুনি", "ডালপুরি"], "bangladesh-flour-snacks": ["পরোটা", "লুচি", "বাখরখানি", "নিমকি", "মোগলাই পরোটা", "পাউরুটি"], "working-ingredients-while-cooking": ["বাটা", "নারকেল কোরা", "ডিম ফেটানো", "আলু চটকানো", "মাড় ঝরানো", "রস জ্বাল দেওয়া"], "texture-of-food": ["মচমচে", "আঠালো", "রসালো", "ঝুরঝুরে", "থকথকে", "ফাঁপা"], "flatbread-and-serving-tools": ["তাওয়া", "বেলন", "রুটি বেলার পিঁড়ি", "নারকেল কোরানি", "রান্নার হাতা", "ঝাঁঝরি"], "door-and-window-fittings": ["জানালার শিক", "দরজার হাতল", "কবজা", "দোরের কড়া", "চৌকাঠ", "তালার ছিদ্র"], "hands-on-small-repairs": ["পেরেক ঠোকা", "করাত দিয়ে চেরা", "প্যাঁচ কষা", "ফুটো করা", "চুনকাম করা", "জোড়া লাগানো"], "more-clothes-to-wear": ["ফতুয়া", "পায়জামা", "হাতা কাটা জামা", "শাল", "পাগড়ি", "বোরকা"], "footwear-and-its-parts": ["চটি", "খড়ম", "নাগরা", "জুতার ফিতা", "জুতার তলা", "নূপুর"], "hair-on-head-and-face": ["চুল", "দাড়ি", "গোঁফ", "জুলফি", "টাক", "সিঁথি"], "small-skin-marks": ["তিল", "আঁচিল", "পুরোনো কাটা দাগ", "বলিরেখা", "মেছতা", "ফুসকুড়ি"], "food-laundry-and-garden-workers": ["রাঁধুনি", "ধোপা", "মালি", "কসাই", "মাছওয়ালা", "দুধওয়ালা"], "things-that-move-or-change": ["দুলতে থাকা", "ঘুরতে থাকা", "ভেসে থাকা", "ডুবে যাওয়া", "ফেটে যাওয়া", "নিভে যাওয়া"], "full-empty-fit-and-thickness": ["ভরতি", "ফাঁকা", "আঁটসাঁট", "ঢিলেঢালা", "পুরু", "পাতলা"], "small-everyday-measures": ["এক আঁটি", "এক মুঠো", "এক চিমটি", "এক চুমুক", "এক লোকমা", "এক ফোঁটা"], "roadside-and-homestead-trees": ["আমগাছ", "কাঁঠালগাছ", "নিমগাছ", "তেঁতুলগাছ", "শিমুলগাছ", "কদমগাছ"], "tart-and-fragrant-local-fruits": ["বেল", "তেঁতুল", "কামরাঙা", "লটকন", "ডেউয়া", "আমলকী"], "more-familiar-local-birds": ["দোয়েল", "মাছরাঙা", "ফিঙে", "কোকিল", "বাবুই", "টিয়া"], "small-pests-and-pollinators": ["উইপোকা", "ছারপোকা", "উকুন", "মাকড়সা", "মৌমাছি", "বোলতা"], "caring-for-babies-and-elders": ["মাথায় হাত বুলানো", "কোলে নেওয়া", "খাইয়ে দেওয়া", "শুইয়ে দেওয়া", "গায়ে চাদর দেওয়া", "হাত ধরে হাঁটানো"], "places-for-work-learning-and-trade": ["গরুর হাট", "মাছের আড়ত", "ধানকল", "মাদরাসা", "সেলাইঘর", "দুধের খামার"], "common-wordless-notices": ["ঢোকা মানা", "জুতা খুলে ঢোকা", "হাত ধোয়ার জায়গা", "বসার জায়গা", "পথ বন্ধ", "ময়লা ফেলা মানা"]};
