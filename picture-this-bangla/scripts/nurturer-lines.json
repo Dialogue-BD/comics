@@ -1,0 +1,23 @@
+{
+  "ask": [
+    {"bangla": ["মন দিয়ে শুনুন।", "{w}।", "ছবিটা দেখান।"], "english": "Listen carefully. Show me the picture for “{g}”."},
+    {"bangla": ["{w}।", "কোন ছবিতে আছে? দেখান।"], "english": "Which picture shows “{g}”? Show me."},
+    {"bangla": ["খুঁজে দেখুন।", "{w}।"], "english": "Find “{g}”."}
+  ],
+  "yes": [
+    {"bangla": ["হ্যাঁ, ঠিক হয়েছে।", "{w}।"], "english": "Yes! This is “{g}”."},
+    {"bangla": ["খুব ভালো।", "{w}।"], "english": "Very good! This is “{g}”."},
+    {"bangla": ["দারুণ।", "{w}।"], "english": "Great! This is “{g}”."},
+    {"bangla": ["বাহ্।", "{w}।"], "english": "Wow! This is “{g}”."},
+    {"bangla": ["চমৎকার।", "{w}।"], "english": "Excellent! This is “{g}”."},
+    {"bangla": ["একদম ঠিক।", "{w}।"], "english": "Exactly right! This is “{g}”."},
+    {"bangla": ["শাবাশ।", "{w}।"], "english": "Well done! This is “{g}”."}
+  ],
+  "recast": [
+    {"bangla": ["এই ছবিটা দেখুন।", "{w}।"], "english": "Look at this picture. This is “{g}”."}
+  ],
+  "example": "যেমন।",
+  "next": "এবার শুনুন।",
+  "retry": "সময় নিয়ে আবার শুনুন।",
+  "done": {"bangla": ["দারুণ! ছয়টা ছবিই পেয়েছেন।"], "english": "Wonderful! You found all six pictures."}
+}

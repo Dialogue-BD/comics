@@ -11,32 +11,68 @@ window.PTB_DECK = {
     {
      "id": "bed",
      "label": "খাট",
-     "gloss": "bed"
+     "gloss": "bed",
+     "collocations": [
+      {
+       "text": "কাঠের খাট",
+       "id": "884f1f0d8f4640fcddbf"
+      }
+     ]
     },
     {
      "id": "pillow",
      "label": "বালিশ",
-     "gloss": "pillow"
+     "gloss": "pillow",
+     "collocations": [
+      {
+       "text": "নরম বালিশ",
+       "id": "5d4da9b86a364d514def"
+      }
+     ]
     },
     {
      "id": "stool",
      "label": "মোড়া",
-     "gloss": "low woven stool"
+     "gloss": "low woven stool",
+     "collocations": [
+      {
+       "text": "মোড়ায় বসুন",
+       "id": "4d1b514c423b23db42f4"
+      }
+     ]
     },
     {
      "id": "cupboard",
      "label": "আলমারি",
-     "gloss": "cupboard"
+     "gloss": "cupboard",
+     "collocations": [
+      {
+       "text": "আলমারিতে কাপড়",
+       "id": "79d986ba8fcc8a9c3832"
+      }
+     ]
     },
     {
      "id": "fan",
      "label": "পাখা",
-     "gloss": "ceiling fan"
+     "gloss": "ceiling fan",
+     "collocations": [
+      {
+       "text": "পাখা চালান",
+       "id": "f3c6d3f3a3efcfec49cc"
+      }
+     ]
     },
     {
      "id": "bulb",
      "label": "বাতি",
-     "gloss": "light bulb"
+     "gloss": "light bulb",
+     "collocations": [
+      {
+       "text": "ঘরের বাতি",
+       "id": "853cfc2948622e288e81"
+      }
+     ]
     }
    ],
    "questions": [
@@ -58,32 +94,68 @@ window.PTB_DECK = {
     {
      "id": "book",
      "label": "বই",
-     "gloss": "book"
+     "gloss": "book",
+     "collocations": [
+      {
+       "text": "গল্পের বই",
+       "id": "52fbb2c3c99451043a69"
+      }
+     ]
     },
     {
      "id": "notebook",
      "label": "খাতা",
-     "gloss": "notebook"
+     "gloss": "notebook",
+     "collocations": [
+      {
+       "text": "খাতায় লিখুন",
+       "id": "ce7cf4aaade1fb43361f"
+      }
+     ]
     },
     {
      "id": "pen",
      "label": "কলম",
-     "gloss": "pen"
+     "gloss": "pen",
+     "collocations": [
+      {
+       "text": "কালো কালির কলম",
+       "id": "6a27311c728bf598fc5a"
+      }
+     ]
     },
     {
      "id": "scissors",
      "label": "কাঁচি",
-     "gloss": "scissors"
+     "gloss": "scissors",
+     "collocations": [
+      {
+       "text": "কাঁচি দিয়ে কাটুন",
+       "id": "184d0bcdcd500900c720"
+      }
+     ]
     },
     {
      "id": "glue",
      "label": "আঠা",
-     "gloss": "glue"
+     "gloss": "glue",
+     "collocations": [
+      {
+       "text": "কাগজে আঠা লাগান",
+       "id": "7c6e8df11973471689d2"
+      }
+     ]
     },
     {
      "id": "envelope",
      "label": "খাম",
-     "gloss": "envelope"
+     "gloss": "envelope",
+     "collocations": [
+      {
+       "text": "চিঠির খাম",
+       "id": "d5784f7966c42ea6c8fc"
+      }
+     ]
     }
    ],
    "questions": [
@@ -105,32 +177,68 @@ window.PTB_DECK = {
     {
      "id": "plate",
      "label": "থালা",
-     "gloss": "dinner plate"
+     "gloss": "dinner plate",
+     "collocations": [
+      {
+       "text": "ভাতের থালা",
+       "id": "e3a25d3cb6fd406598ce"
+      }
+     ]
     },
     {
      "id": "bowl",
      "label": "বাটি",
-     "gloss": "bowl"
+     "gloss": "bowl",
+     "collocations": [
+      {
+       "text": "এক বাটি ডাল",
+       "id": "e943141f5eb448aed39d"
+      }
+     ]
     },
     {
      "id": "spoon",
      "label": "চামচ",
-     "gloss": "spoon"
+     "gloss": "spoon",
+     "collocations": [
+      {
+       "text": "চামচ দিয়ে নাড়ুন",
+       "id": "fbe70f5d5a6e629972b7"
+      }
+     ]
     },
     {
      "id": "fork",
      "label": "কাঁটাচামচ",
-     "gloss": "fork"
+     "gloss": "fork",
+     "collocations": [
+      {
+       "text": "কাঁটাচামচ দিয়ে খান",
+       "id": "1fc5ac6db584304759ec"
+      }
+     ]
     },
     {
      "id": "saucer",
      "label": "পিরিচ",
-     "gloss": "saucer"
+     "gloss": "saucer",
+     "collocations": [
+      {
+       "text": "পেয়ালার নিচে পিরিচ",
+       "id": "5233c969bf7799f19b17"
+      }
+     ]
     },
     {
      "id": "cup",
      "label": "পেয়ালা",
-     "gloss": "small tea cup"
+     "gloss": "small tea cup",
+     "collocations": [
+      {
+       "text": "এক পেয়ালা চা",
+       "id": "d7827a4c090d26384069"
+      }
+     ]
     }
    ],
    "questions": [
@@ -152,32 +260,68 @@ window.PTB_DECK = {
     {
      "id": "potato",
      "label": "আলু",
-     "gloss": "potato"
+     "gloss": "potato",
+     "collocations": [
+      {
+       "text": "আলু ভাজি",
+       "id": "943c16d4a08a336ba8df"
+      }
+     ]
     },
     {
      "id": "onion",
      "label": "পেঁয়াজ",
-     "gloss": "red onion"
+     "gloss": "red onion",
+     "collocations": [
+      {
+       "text": "পেঁয়াজ কুচি",
+       "id": "9e1fa518e907849dc098"
+      }
+     ]
     },
     {
      "id": "eggplant",
      "label": "বেগুন",
-     "gloss": "eggplant"
+     "gloss": "eggplant",
+     "collocations": [
+      {
+       "text": "বেগুন ভাজা",
+       "id": "2e5c7793abcf8c62f3a5"
+      }
+     ]
     },
     {
      "id": "cauliflower",
      "label": "ফুলকপি",
-     "gloss": "cauliflower"
+     "gloss": "cauliflower",
+     "collocations": [
+      {
+       "text": "ফুলকপির তরকারি",
+       "id": "c91918bfb11830bfa6b9"
+      }
+     ]
     },
     {
      "id": "cucumber",
      "label": "শসা",
-     "gloss": "cucumber"
+     "gloss": "cucumber",
+     "collocations": [
+      {
+       "text": "শসা কেটে দিন",
+       "id": "28b44a3d7bdde2bff36b"
+      }
+     ]
     },
     {
      "id": "greens",
      "label": "শাক",
-     "gloss": "leafy greens"
+     "gloss": "leafy greens",
+     "collocations": [
+      {
+       "text": "শাক বেছে নিন",
+       "id": "c13ad0354fa919aa55d7"
+      }
+     ]
     }
    ],
    "questions": [
@@ -199,32 +343,68 @@ window.PTB_DECK = {
     {
      "id": "mango",
      "label": "আম",
-     "gloss": "mango"
+     "gloss": "mango",
+     "collocations": [
+      {
+       "text": "পাকা আম",
+       "id": "93114859cfa5efb5ada2"
+      }
+     ]
     },
     {
      "id": "banana",
      "label": "কলা",
-     "gloss": "banana"
+     "gloss": "banana",
+     "collocations": [
+      {
+       "text": "এক ছড়া কলা",
+       "id": "9cb9601135b5444db702"
+      }
+     ]
     },
     {
      "id": "papaya",
      "label": "পেঁপে",
-     "gloss": "papaya"
+     "gloss": "papaya",
+     "collocations": [
+      {
+       "text": "পাকা পেঁপে",
+       "id": "b6efa50c02294cbc98d7"
+      }
+     ]
     },
     {
      "id": "pineapple",
      "label": "আনারস",
-     "gloss": "pineapple"
+     "gloss": "pineapple",
+     "collocations": [
+      {
+       "text": "আনারসের রস",
+       "id": "5bf4d4f7810e71cb85f8"
+      }
+     ]
     },
     {
      "id": "jackfruit",
      "label": "কাঁঠাল",
-     "gloss": "jackfruit"
+     "gloss": "jackfruit",
+     "collocations": [
+      {
+       "text": "কাঁঠালের কোয়া",
+       "id": "a6357ab570ef3832fc29"
+      }
+     ]
     },
     {
      "id": "grapes",
      "label": "আঙুর",
-     "gloss": "grapes"
+     "gloss": "grapes",
+     "collocations": [
+      {
+       "text": "এক থোকা আঙুর",
+       "id": "3fb3808d78ba453ae38a"
+      }
+     ]
     }
    ],
    "questions": [
@@ -246,32 +426,68 @@ window.PTB_DECK = {
     {
      "id": "cooked-rice",
      "label": "ভাত",
-     "gloss": "cooked rice"
+     "gloss": "cooked rice",
+     "collocations": [
+      {
+       "text": "গরম ভাত",
+       "id": "870f642230f6c65b35e8"
+      }
+     ]
     },
     {
      "id": "roti",
      "label": "রুটি",
-     "gloss": "roti"
+     "gloss": "roti",
+     "collocations": [
+      {
+       "text": "নরম রুটি",
+       "id": "43c2988b799f323832f5"
+      }
+     ]
     },
     {
      "id": "cooked-dal",
      "label": "ডাল",
-     "gloss": "cooked lentils"
+     "gloss": "cooked lentils",
+     "collocations": [
+      {
+       "text": "পাতলা ডাল",
+       "id": "a83dde51aec7a3c28db6"
+      }
+     ]
     },
     {
      "id": "fried-egg",
      "label": "ডিম",
-     "gloss": "fried egg"
+     "gloss": "fried egg",
+     "collocations": [
+      {
+       "text": "ডিম সেদ্ধ",
+       "id": "d29dcd23ee63398d393d"
+      }
+     ]
     },
     {
      "id": "fried-fish",
      "label": "মাছ",
-     "gloss": "whole fried fish"
+     "gloss": "whole fried fish",
+     "collocations": [
+      {
+       "text": "মাছ ভাজা",
+       "id": "421f870625e40ad60ccf"
+      }
+     ]
     },
     {
      "id": "chicken-curry",
      "label": "মাংস",
-     "gloss": "chicken meat"
+     "gloss": "chicken meat",
+     "collocations": [
+      {
+       "text": "মাংসের ঝোল",
+       "id": "7c741353d32e1bfd8512"
+      }
+     ]
     }
    ],
    "questions": [
@@ -293,32 +509,68 @@ window.PTB_DECK = {
     {
      "id": "water",
      "label": "পানি",
-     "gloss": "water"
+     "gloss": "water",
+     "collocations": [
+      {
+       "text": "একটু পানি দিন",
+       "id": "9dd851796397d74715b7"
+      }
+     ]
     },
     {
      "id": "tea",
      "label": "চা",
-     "gloss": "tea"
+     "gloss": "tea",
+     "collocations": [
+      {
+       "text": "দুধ চা",
+       "id": "39efd4953ab295b4441c"
+      }
+     ]
     },
     {
      "id": "milk",
      "label": "দুধ",
-     "gloss": "milk"
+     "gloss": "milk",
+     "collocations": [
+      {
+       "text": "গরম দুধ",
+       "id": "d280578bdf48a2fc9e4e"
+      }
+     ]
     },
     {
      "id": "lemon",
      "label": "লেবু",
-     "gloss": "lime"
+     "gloss": "lime",
+     "collocations": [
+      {
+       "text": "লেবু চিপে দিন",
+       "id": "f767819b5926029cdcd7"
+      }
+     ]
     },
     {
      "id": "honey",
      "label": "মধু",
-     "gloss": "honey"
+     "gloss": "honey",
+     "collocations": [
+      {
+       "text": "খাঁটি মধু",
+       "id": "98f04b425ac3e783db81"
+      }
+     ]
     },
     {
      "id": "jaggery",
      "label": "গুড়",
-     "gloss": "jaggery"
+     "gloss": "jaggery",
+     "collocations": [
+      {
+       "text": "খেজুরের গুড়",
+       "id": "03daaa3df1505de9c849"
+      }
+     ]
     }
    ],
    "questions": [
@@ -340,32 +592,68 @@ window.PTB_DECK = {
     {
      "id": "pot",
      "label": "হাঁড়ি",
-     "gloss": "cooking pot"
+     "gloss": "cooking pot",
+     "collocations": [
+      {
+       "text": "ভাতের হাঁড়ি",
+       "id": "c119eadcf7e3f8d84820"
+      }
+     ]
     },
     {
      "id": "lid",
      "label": "ঢাকনা",
-     "gloss": "pot lid"
+     "gloss": "pot lid",
+     "collocations": [
+      {
+       "text": "ঢাকনা দিয়ে রাখুন",
+       "id": "3c0520cb6f1176fbc314"
+      }
+     ]
     },
     {
      "id": "knife",
      "label": "ছুরি",
-     "gloss": "kitchen knife"
+     "gloss": "kitchen knife",
+     "collocations": [
+      {
+       "text": "ধারালো ছুরি",
+       "id": "1d50df3a3e7c1628411f"
+      }
+     ]
     },
     {
      "id": "board",
      "label": "কাটার তক্তা",
-     "gloss": "cutting board"
+     "gloss": "cutting board",
+     "collocations": [
+      {
+       "text": "কাটার তক্তায় রাখুন",
+       "id": "d7e7319b59893caa80fe"
+      }
+     ]
     },
     {
      "id": "pan",
      "label": "কড়াই",
-     "gloss": "wok-like frying pan"
+     "gloss": "wok-like frying pan",
+     "collocations": [
+      {
+       "text": "কড়াইয়ে তেল দিন",
+       "id": "8ab9de8cc40dfcc3c673"
+      }
+     ]
     },
     {
      "id": "turner",
      "label": "খুন্তি",
-     "gloss": "cooking turner"
+     "gloss": "cooking turner",
+     "collocations": [
+      {
+       "text": "খুন্তি দিয়ে উল্টান",
+       "id": "91f56145e086f311519e"
+      }
+     ]
     }
    ],
    "questions": [
@@ -387,32 +675,68 @@ window.PTB_DECK = {
     {
      "id": "salt",
      "label": "লবণ",
-     "gloss": "salt"
+     "gloss": "salt",
+     "collocations": [
+      {
+       "text": "এক চিমটি লবণ",
+       "id": "8be9d067c03393984680"
+      }
+     ]
     },
     {
      "id": "sugar",
      "label": "চিনি",
-     "gloss": "sugar"
+     "gloss": "sugar",
+     "collocations": [
+      {
+       "text": "চিনি কম দিন",
+       "id": "7af3d1b0ec0cd2ecdd6f"
+      }
+     ]
     },
     {
      "id": "mustard",
      "label": "সরিষা",
-     "gloss": "mustard seed"
+     "gloss": "mustard seed",
+     "collocations": [
+      {
+       "text": "সরিষা বাটা",
+       "id": "046de94f96d6460cb1b8"
+      }
+     ]
     },
     {
      "id": "cumin",
      "label": "জিরা",
-     "gloss": "cumin seed"
+     "gloss": "cumin seed",
+     "collocations": [
+      {
+       "text": "জিরা গুঁড়া",
+       "id": "cf9d8cc5f926bf37596a"
+      }
+     ]
     },
     {
      "id": "oil",
      "label": "তেল",
-     "gloss": "cooking oil"
+     "gloss": "cooking oil",
+     "collocations": [
+      {
+       "text": "সরিষার তেল",
+       "id": "bd0846014058584a4c1d"
+      }
+     ]
     },
     {
      "id": "ghee",
      "label": "ঘি",
-     "gloss": "ghee"
+     "gloss": "ghee",
+     "collocations": [
+      {
+       "text": "এক চামচ ঘি",
+       "id": "174411751672467a4369"
+      }
+     ]
     }
    ],
    "questions": [
@@ -434,32 +758,68 @@ window.PTB_DECK = {
     {
      "id": "orna",
      "label": "ওড়না",
-     "gloss": "orna scarf"
+     "gloss": "orna scarf",
+     "collocations": [
+      {
+       "text": "মাথায় ওড়না",
+       "id": "d2302e8913e9a6ba4dff"
+      }
+     ]
     },
     {
      "id": "sari",
      "label": "শাড়ি",
-     "gloss": "sari"
+     "gloss": "sari",
+     "collocations": [
+      {
+       "text": "শাড়ি পরেছেন",
+       "id": "736b771ab93024f3d77d"
+      }
+     ]
     },
     {
      "id": "lungi",
      "label": "লুঙ্গি",
-     "gloss": "lungi"
+     "gloss": "lungi",
+     "collocations": [
+      {
+       "text": "লুঙ্গি পরে আছেন",
+       "id": "ffb95b630bd10d0fce5a"
+      }
+     ]
     },
     {
      "id": "panjabi",
      "label": "পাঞ্জাবি",
-     "gloss": "panjabi kurta"
+     "gloss": "panjabi kurta",
+     "collocations": [
+      {
+       "text": "ঈদের পাঞ্জাবি",
+       "id": "4eeec60ef7b75ed0dd84"
+      }
+     ]
     },
     {
      "id": "salwar",
      "label": "সালোয়ার",
-     "gloss": "salwar trousers"
+     "gloss": "salwar trousers",
+     "collocations": [
+      {
+       "text": "সাদা সালোয়ার",
+       "id": "19ede2d7d199e0cf17e2"
+      }
+     ]
     },
     {
      "id": "kameez",
      "label": "কামিজ",
-     "gloss": "kameez tunic"
+     "gloss": "kameez tunic",
+     "collocations": [
+      {
+       "text": "ছাপা কাপড়ের কামিজ",
+       "id": "6871b65229b6a5cd2f23"
+      }
+     ]
     }
    ],
    "questions": [
@@ -481,32 +841,68 @@ window.PTB_DECK = {
     {
      "id": "balti",
      "label": "বালতি",
-     "gloss": "bucket"
+     "gloss": "bucket",
+     "collocations": [
+      {
+       "text": "বালতি ভরে পানি",
+       "id": "7c568339dead42baf8c1"
+      }
+     ]
     },
     {
      "id": "bodna",
      "label": "বদনা",
-     "gloss": "water vessel with spout"
+     "gloss": "water vessel with spout",
+     "collocations": [
+      {
+       "text": "বদনায় পানি",
+       "id": "8c4419d0152ff20b8877"
+      }
+     ]
     },
     {
      "id": "gamcha",
      "label": "গামছা",
-     "gloss": "gamcha towel"
+     "gloss": "gamcha towel",
+     "collocations": [
+      {
+       "text": "গামছা দিয়ে মুছুন",
+       "id": "4d9bb76b18831ed12d7e"
+      }
+     ]
     },
     {
      "id": "soap",
      "label": "সাবান",
-     "gloss": "bar of soap"
+     "gloss": "bar of soap",
+     "collocations": [
+      {
+       "text": "গোসলের সাবান",
+       "id": "10a7657ee391fba54cab"
+      }
+     ]
     },
     {
      "id": "comb",
      "label": "চিরুনি",
-     "gloss": "comb"
+     "gloss": "comb",
+     "collocations": [
+      {
+       "text": "চিরুনি দিয়ে আঁচড়ান",
+       "id": "b462601193f5f2065e99"
+      }
+     ]
     },
     {
      "id": "mirror",
      "label": "আয়না",
-     "gloss": "mirror"
+     "gloss": "mirror",
+     "collocations": [
+      {
+       "text": "আয়নায় মুখ দেখুন",
+       "id": "9406ef9bfa40554b4c66"
+      }
+     ]
     }
    ],
    "questions": [
@@ -528,32 +924,68 @@ window.PTB_DECK = {
     {
      "id": "door",
      "label": "দরজা",
-     "gloss": "door"
+     "gloss": "door",
+     "collocations": [
+      {
+       "text": "সামনের দরজা",
+       "id": "9e116842663a7f4ae4db"
+      }
+     ]
     },
     {
      "id": "window",
      "label": "জানালা",
-     "gloss": "window"
+     "gloss": "window",
+     "collocations": [
+      {
+       "text": "জানালা দিয়ে আলো আসে",
+       "id": "0d3ac8c5c6b63a3f53e5"
+      }
+     ]
     },
     {
      "id": "stairs",
      "label": "সিঁড়ি",
-     "gloss": "stairs"
+     "gloss": "stairs",
+     "collocations": [
+      {
+       "text": "সিঁড়ি দিয়ে উঠুন",
+       "id": "bf0702deebdf54607419"
+      }
+     ]
     },
     {
      "id": "roof",
      "label": "ছাদ",
-     "gloss": "flat roof"
+     "gloss": "flat roof",
+     "collocations": [
+      {
+       "text": "ছাদে কাপড় শুকায়",
+       "id": "583539a4d043c7d5d525"
+      }
+     ]
     },
     {
      "id": "balcony",
      "label": "বারান্দা",
-     "gloss": "balcony"
+     "gloss": "balcony",
+     "collocations": [
+      {
+       "text": "বারান্দায় বসুন",
+       "id": "375a8010b56dab927c69"
+      }
+     ]
     },
     {
      "id": "wall",
      "label": "দেয়াল",
-     "gloss": "wall"
+     "gloss": "wall",
+     "collocations": [
+      {
+       "text": "ইটের দেয়াল",
+       "id": "b0349d005d6777cbdb96"
+      }
+     ]
     }
    ],
    "questions": [
@@ -575,32 +1007,68 @@ window.PTB_DECK = {
     {
      "id": "above",
      "label": "ওপরে",
-     "gloss": "above"
+     "gloss": "above",
+     "collocations": [
+      {
+       "text": "ওপরে তুলে ধরুন",
+       "id": "69cd3d02b46a322b8a06"
+      }
+     ]
     },
     {
      "id": "below",
      "label": "নিচে",
-     "gloss": "below"
+     "gloss": "below",
+     "collocations": [
+      {
+       "text": "নিচে নামিয়ে রাখুন",
+       "id": "516481f3cfed4a35a656"
+      }
+     ]
     },
     {
      "id": "inside",
      "label": "ভেতরে",
-     "gloss": "inside"
+     "gloss": "inside",
+     "collocations": [
+      {
+       "text": "ভেতরে ঢুকিয়ে দিন",
+       "id": "dbb5c84dbc29e325e9fc"
+      }
+     ]
     },
     {
      "id": "outside",
      "label": "বাইরে",
-     "gloss": "outside"
+     "gloss": "outside",
+     "collocations": [
+      {
+       "text": "বাইরে নিয়ে যান",
+       "id": "6ad5cf6da9e800661922"
+      }
+     ]
     },
     {
      "id": "between",
      "label": "মাঝে",
-     "gloss": "between"
+     "gloss": "between",
+     "collocations": [
+      {
+       "text": "দুটোর মাঝে রাখুন",
+       "id": "528360d39dc6d82d82a6"
+      }
+     ]
     },
     {
      "id": "behind",
      "label": "পেছনে",
-     "gloss": "behind"
+     "gloss": "behind",
+     "collocations": [
+      {
+       "text": "পেছনে লুকিয়ে রাখুন",
+       "id": "8c63e6975e6156e97fea"
+      }
+     ]
     }
    ],
    "questions": [
@@ -622,32 +1090,68 @@ window.PTB_DECK = {
     {
      "id": "red",
      "label": "লাল",
-     "gloss": "red"
+     "gloss": "red",
+     "collocations": [
+      {
+       "text": "টকটকে লাল",
+       "id": "0e908c2f8a8f3cb0e39a"
+      }
+     ]
     },
     {
      "id": "blue",
      "label": "নীল",
-     "gloss": "blue"
+     "gloss": "blue",
+     "collocations": [
+      {
+       "text": "আকাশি নীল",
+       "id": "01c176c1267d2e6418ae"
+      }
+     ]
     },
     {
      "id": "green",
      "label": "সবুজ",
-     "gloss": "green"
+     "gloss": "green",
+     "collocations": [
+      {
+       "text": "কচি সবুজ",
+       "id": "b43878fc9f95651075a7"
+      }
+     ]
     },
     {
      "id": "yellow",
      "label": "হলুদ",
-     "gloss": "yellow"
+     "gloss": "yellow",
+     "collocations": [
+      {
+       "text": "হলুদ কাপড়",
+       "id": "e793a4d5cde51f426d34"
+      }
+     ]
     },
     {
      "id": "black",
      "label": "কালো",
-     "gloss": "black"
+     "gloss": "black",
+     "collocations": [
+      {
+       "text": "কুচকুচে কালো",
+       "id": "6758af1ec647afece27e"
+      }
+     ]
     },
     {
      "id": "white",
      "label": "সাদা",
-     "gloss": "white"
+     "gloss": "white",
+     "collocations": [
+      {
+       "text": "দুধের মতো সাদা",
+       "id": "a5c887915ec0ee2eb1fa"
+      }
+     ]
     }
    ],
    "questions": [
@@ -669,32 +1173,68 @@ window.PTB_DECK = {
     {
      "id": "sunshine",
      "label": "রোদ",
-     "gloss": "sunshine"
+     "gloss": "sunshine",
+     "collocations": [
+      {
+       "text": "কড়া রোদ",
+       "id": "8e3c57480552492ad86f"
+      }
+     ]
     },
     {
      "id": "shade",
      "label": "ছায়া",
-     "gloss": "shade"
+     "gloss": "shade",
+     "collocations": [
+      {
+       "text": "গাছের ছায়া",
+       "id": "5b8961e4d615357b9f9a"
+      }
+     ]
     },
     {
      "id": "rain",
      "label": "বৃষ্টি",
-     "gloss": "rain"
+     "gloss": "rain",
+     "collocations": [
+      {
+       "text": "বৃষ্টি পড়ছে",
+       "id": "732bfcdc9677d9f238b6"
+      }
+     ]
     },
     {
      "id": "storm",
      "label": "ঝড়",
-     "gloss": "storm"
+     "gloss": "storm",
+     "collocations": [
+      {
+       "text": "ঝড় উঠেছে",
+       "id": "6cac7127f3e650537ff6"
+      }
+     ]
     },
     {
      "id": "cloud",
      "label": "মেঘ",
-     "gloss": "cloud"
+     "gloss": "cloud",
+     "collocations": [
+      {
+       "text": "কালো মেঘ",
+       "id": "49eb5deff3fe7773cae5"
+      }
+     ]
     },
     {
      "id": "fog",
      "label": "কুয়াশা",
-     "gloss": "fog"
+     "gloss": "fog",
+     "collocations": [
+      {
+       "text": "ঘন কুয়াশা",
+       "id": "33cd1a578516e16e7974"
+      }
+     ]
     }
    ],
    "questions": [
@@ -716,32 +1256,68 @@ window.PTB_DECK = {
     {
      "id": "eat",
      "label": "খাওয়া",
-     "gloss": "to eat"
+     "gloss": "to eat",
+     "collocations": [
+      {
+       "text": "ভাত খাচ্ছেন",
+       "id": "84c990a255edf318bd53"
+      }
+     ]
     },
     {
      "id": "drink",
      "label": "পানি খাওয়া",
-     "gloss": "to drink water"
+     "gloss": "to drink water",
+     "collocations": [
+      {
+       "text": "পানি খাচ্ছেন",
+       "id": "cd2a45af80e086cbe255"
+      }
+     ]
     },
     {
      "id": "sit",
      "label": "বসা",
-     "gloss": "to sit"
+     "gloss": "to sit",
+     "collocations": [
+      {
+       "text": "মাটিতে বসুন",
+       "id": "d5c30cae27989c6f898c"
+      }
+     ]
     },
     {
      "id": "stand",
      "label": "দাঁড়ানো",
-     "gloss": "to stand"
+     "gloss": "to stand",
+     "collocations": [
+      {
+       "text": "সোজা হয়ে দাঁড়ান",
+       "id": "e58fa81cce31e6493341"
+      }
+     ]
     },
     {
      "id": "sleep",
      "label": "ঘুমানো",
-     "gloss": "to sleep"
+     "gloss": "to sleep",
+     "collocations": [
+      {
+       "text": "গভীর ঘুমে ঘুমাচ্ছেন",
+       "id": "2f14ffb9732d1c17e699"
+      }
+     ]
     },
     {
      "id": "wake",
      "label": "ঘুম থেকে ওঠা",
-     "gloss": "to wake up"
+     "gloss": "to wake up",
+     "collocations": [
+      {
+       "text": "ভোরে ঘুম থেকে ওঠেন",
+       "id": "57c2543b0dd2444e3fcc"
+      }
+     ]
     }
    ],
    "questions": [
@@ -763,32 +1339,68 @@ window.PTB_DECK = {
     {
      "id": "open",
      "label": "খোলা",
-     "gloss": "to open"
+     "gloss": "to open",
+     "collocations": [
+      {
+       "text": "কৌটাটা খুলুন",
+       "id": "cc490248334d85b87aba"
+      }
+     ]
     },
     {
      "id": "close",
      "label": "বন্ধ করা",
-     "gloss": "to close"
+     "gloss": "to close",
+     "collocations": [
+      {
+       "text": "কৌটাটা বন্ধ করুন",
+       "id": "4cc2ce631f11885e6331"
+      }
+     ]
     },
     {
      "id": "wash",
      "label": "ধোয়া",
-     "gloss": "to wash"
+     "gloss": "to wash",
+     "collocations": [
+      {
+       "text": "হাত ধুয়ে নিন",
+       "id": "5bf6c2eb862eb3c14c04"
+      }
+     ]
     },
     {
      "id": "wipe",
      "label": "মোছা",
-     "gloss": "to wipe"
+     "gloss": "to wipe",
+     "collocations": [
+      {
+       "text": "কাপড় দিয়ে মুছুন",
+       "id": "0284ca9b96e351346a69"
+      }
+     ]
     },
     {
      "id": "read",
      "label": "পড়া",
-     "gloss": "to read"
+     "gloss": "to read",
+     "collocations": [
+      {
+       "text": "বই পড়ছেন",
+       "id": "86d534ade10d7fb24871"
+      }
+     ]
     },
     {
      "id": "write",
      "label": "লেখা",
-     "gloss": "to write"
+     "gloss": "to write",
+     "collocations": [
+      {
+       "text": "নাম লিখুন",
+       "id": "ee8830c810411f893b62"
+      }
+     ]
     }
    ],
    "questions": [
@@ -810,32 +1422,68 @@ window.PTB_DECK = {
     {
      "id": "abba",
      "label": "আব্বা",
-     "gloss": "father"
+     "gloss": "father",
+     "collocations": [
+      {
+       "text": "আমার আব্বা",
+       "id": "e14e9a76eb71dfe592ed"
+      }
+     ]
     },
     {
      "id": "amma",
      "label": "আম্মা",
-     "gloss": "mother"
+     "gloss": "mother",
+     "collocations": [
+      {
+       "text": "আমার আম্মা",
+       "id": "26ee21d489cd3626feac"
+      }
+     ]
     },
     {
      "id": "bhai",
      "label": "ভাইয়া",
-     "gloss": "older brother"
+     "gloss": "older brother",
+     "collocations": [
+      {
+       "text": "বড় ভাইয়া",
+       "id": "03cbac9dfac9cfdfb787"
+      }
+     ]
     },
     {
      "id": "apu",
      "label": "আপু",
-     "gloss": "older sister"
+     "gloss": "older sister",
+     "collocations": [
+      {
+       "text": "আপু এসেছেন",
+       "id": "880fe317933a4c8aeb74"
+      }
+     ]
     },
     {
      "id": "nana",
      "label": "নানা",
-     "gloss": "maternal grandfather"
+     "gloss": "maternal grandfather",
+     "collocations": [
+      {
+       "text": "নানার বাড়ি",
+       "id": "f334200ea74fd458b0a7"
+      }
+     ]
     },
     {
      "id": "nani",
      "label": "নানি",
-     "gloss": "maternal grandmother"
+     "gloss": "maternal grandmother",
+     "collocations": [
+      {
+       "text": "নানির কাছে যাই",
+       "id": "05290f738ad5ade9869d"
+      }
+     ]
     }
    ],
    "questions": [
@@ -857,32 +1505,68 @@ window.PTB_DECK = {
     {
      "id": "road",
      "label": "রাস্তা",
-     "gloss": "road"
+     "gloss": "road",
+     "collocations": [
+      {
+       "text": "পাকা রাস্তা",
+       "id": "0e28139c202926df860c"
+      }
+     ]
     },
     {
      "id": "alley",
      "label": "গলি",
-     "gloss": "narrow lane"
+     "gloss": "narrow lane",
+     "collocations": [
+      {
+       "text": "সরু গলি",
+       "id": "9888face8720396c1d60"
+      }
+     ]
     },
     {
      "id": "turn",
      "label": "মোড়",
-     "gloss": "street corner"
+     "gloss": "street corner",
+     "collocations": [
+      {
+       "text": "মোড়ে দাঁড়ান",
+       "id": "f6411fe5d92d7cf8c426"
+      }
+     ]
     },
     {
      "id": "bridge",
      "label": "পুল",
-     "gloss": "bridge"
+     "gloss": "bridge",
+     "collocations": [
+      {
+       "text": "পুল পার হন",
+       "id": "6717301a3ca2deb82f8d"
+      }
+     ]
     },
     {
      "id": "wharf",
      "label": "ঘাট",
-     "gloss": "river landing"
+     "gloss": "river landing",
+     "collocations": [
+      {
+       "text": "নৌকার ঘাট",
+       "id": "6dcc6b0f2cd0135e991f"
+      }
+     ]
     },
     {
      "id": "boat",
      "label": "নৌকা",
-     "gloss": "wooden boat"
+     "gloss": "wooden boat",
+     "collocations": [
+      {
+       "text": "নৌকায় উঠুন",
+       "id": "4521466665d538537dc1"
+      }
+     ]
     }
    ],
    "questions": [
@@ -904,32 +1588,68 @@ window.PTB_DECK = {
     {
      "id": "fever",
      "label": "জ্বর",
-     "gloss": "fever"
+     "gloss": "fever",
+     "collocations": [
+      {
+       "text": "জ্বর এসেছে",
+       "id": "91f837148bc84ab0f4f9"
+      }
+     ]
     },
     {
      "id": "cough",
      "label": "কাশি",
-     "gloss": "cough"
+     "gloss": "cough",
+     "collocations": [
+      {
+       "text": "শুকনা কাশি",
+       "id": "7a18c785c8a8351e4eed"
+      }
+     ]
     },
     {
      "id": "sneeze",
      "label": "হাঁচি",
-     "gloss": "sneeze"
+     "gloss": "sneeze",
+     "collocations": [
+      {
+       "text": "হাঁচি আসছে",
+       "id": "90dcca9e4db77bf940e9"
+      }
+     ]
     },
     {
      "id": "toothache",
      "label": "দাঁতে ব্যথা",
-     "gloss": "toothache"
+     "gloss": "toothache",
+     "collocations": [
+      {
+       "text": "দাঁতে খুব ব্যথা",
+       "id": "44f74ab9321b2b2d3e98"
+      }
+     ]
     },
     {
      "id": "stomachache",
      "label": "পেটে ব্যথা",
-     "gloss": "stomachache"
+     "gloss": "stomachache",
+     "collocations": [
+      {
+       "text": "পেটে ব্যথা করছে",
+       "id": "38162ebcb597aef71567"
+      }
+     ]
     },
     {
      "id": "itch",
      "label": "চুলকানি",
-     "gloss": "itch"
+     "gloss": "itch",
+     "collocations": [
+      {
+       "text": "গায়ে চুলকানি",
+       "id": "a3afeeb0bf81d0afa2a8"
+      }
+     ]
     }
    ],
    "questions": [
@@ -951,32 +1671,68 @@ window.PTB_DECK = {
     {
      "id": "eye",
      "label": "চোখ",
-     "gloss": "eye"
+     "gloss": "eye",
+     "collocations": [
+      {
+       "text": "চোখ বুজুন",
+       "id": "652ae31ce68093aef285"
+      }
+     ]
     },
     {
      "id": "ear",
      "label": "কান",
-     "gloss": "ear"
+     "gloss": "ear",
+     "collocations": [
+      {
+       "text": "কানে শুনি",
+       "id": "9c1241d6925513a8716e"
+      }
+     ]
     },
     {
      "id": "nose",
      "label": "নাক",
-     "gloss": "nose"
+     "gloss": "nose",
+     "collocations": [
+      {
+       "text": "নাক দিয়ে শ্বাস নিন",
+       "id": "bcfb1dc0572c6b43493f"
+      }
+     ]
     },
     {
      "id": "mouth",
      "label": "মুখ",
-     "gloss": "mouth"
+     "gloss": "mouth",
+     "collocations": [
+      {
+       "text": "মুখ খুলুন",
+       "id": "ba78000fb411225768b3"
+      }
+     ]
     },
     {
      "id": "hand",
      "label": "হাত",
-     "gloss": "hand"
+     "gloss": "hand",
+     "collocations": [
+      {
+       "text": "ডান হাত",
+       "id": "fb48fdf3ec3b651aee48"
+      }
+     ]
     },
     {
      "id": "foot",
      "label": "পা",
-     "gloss": "foot"
+     "gloss": "foot",
+     "collocations": [
+      {
+       "text": "বাঁ পা",
+       "id": "fb95ea0dc02f461cf9c6"
+      }
+     ]
     }
    ],
    "questions": [
@@ -998,32 +1754,68 @@ window.PTB_DECK = {
     {
      "id": "medicine",
      "label": "ওষুধ",
-     "gloss": "medicine"
+     "gloss": "medicine",
+     "collocations": [
+      {
+       "text": "জ্বরের ওষুধ",
+       "id": "35e8ac04858ff659a6a2"
+      }
+     ]
     },
     {
      "id": "ointment",
      "label": "মলম",
-     "gloss": "ointment"
+     "gloss": "ointment",
+     "collocations": [
+      {
+       "text": "মলম লাগান",
+       "id": "018df416e8d2285f2c81"
+      }
+     ]
     },
     {
      "id": "cotton",
      "label": "তুলা",
-     "gloss": "cotton wool"
+     "gloss": "cotton wool",
+     "collocations": [
+      {
+       "text": "একটু তুলা দিন",
+       "id": "1e09f96cec15e7ea8321"
+      }
+     ]
     },
     {
      "id": "bandage",
      "label": "পট্টি",
-     "gloss": "bandage strip"
+     "gloss": "bandage strip",
+     "collocations": [
+      {
+       "text": "পট্টি বেঁধে দিন",
+       "id": "d0d13e0ebc11fcf2d153"
+      }
+     ]
     },
     {
      "id": "ice",
      "label": "বরফ",
-     "gloss": "ice"
+     "gloss": "ice",
+     "collocations": [
+      {
+       "text": "বরফের টুকরা",
+       "id": "07774d512b52fcc23f55"
+      }
+     ]
     },
     {
      "id": "hot-water-bag",
      "label": "গরম পানির থলি",
-     "gloss": "hot-water bag"
+     "gloss": "hot-water bag",
+     "collocations": [
+      {
+       "text": "গরম পানির থলি পেটে রাখুন",
+       "id": "5fabd9f182cd2b1098d0"
+      }
+     ]
     }
    ],
    "questions": [
@@ -1045,32 +1837,68 @@ window.PTB_DECK = {
     {
      "id": "taka",
      "label": "টাকা",
-     "gloss": "paper taka"
+     "gloss": "paper taka",
+     "collocations": [
+      {
+       "text": "টাকা গুনুন",
+       "id": "d254539db83b024bd1b4"
+      }
+     ]
     },
     {
      "id": "change",
      "label": "খুচরা",
-     "gloss": "loose change"
+     "gloss": "loose change",
+     "collocations": [
+      {
+       "text": "খুচরা টাকা",
+       "id": "f18a61ae0ec23753f509"
+      }
+     ]
     },
     {
      "id": "scale",
      "label": "দাঁড়িপাল্লা",
-     "gloss": "balance scale"
+     "gloss": "balance scale",
+     "collocations": [
+      {
+       "text": "দাঁড়িপাল্লায় ওজন করুন",
+       "id": "77247aca2e1bc6a85bc1"
+      }
+     ]
     },
     {
      "id": "receipt",
      "label": "রসিদ",
-     "gloss": "receipt"
+     "gloss": "receipt",
+     "collocations": [
+      {
+       "text": "রসিদ নিয়ে যান",
+       "id": "17943e3fd1538fc4c0e9"
+      }
+     ]
     },
     {
      "id": "market-bag",
      "label": "থলে",
-     "gloss": "shopping bag"
+     "gloss": "shopping bag",
+     "collocations": [
+      {
+       "text": "কাপড়ের থলে",
+       "id": "996ef86287dbd9b353a4"
+      }
+     ]
     },
     {
      "id": "basket",
      "label": "ঝুড়ি",
-     "gloss": "basket"
+     "gloss": "basket",
+     "collocations": [
+      {
+       "text": "বাঁশের ঝুড়ি",
+       "id": "64acb7368cceefdbef23"
+      }
+     ]
     }
    ],
    "questions": [
@@ -1092,32 +1920,68 @@ window.PTB_DECK = {
     {
      "id": "cow",
      "label": "গরু",
-     "gloss": "cow"
+     "gloss": "cow",
+     "collocations": [
+      {
+       "text": "গরুর দুধ",
+       "id": "0c0b34c433f8bf007562"
+      }
+     ]
     },
     {
      "id": "goat",
      "label": "ছাগল",
-     "gloss": "goat"
+     "gloss": "goat",
+     "collocations": [
+      {
+       "text": "ছাগলের বাচ্চা",
+       "id": "1395798dbd4ad919e268"
+      }
+     ]
     },
     {
      "id": "hen",
      "label": "মুরগি",
-     "gloss": "hen"
+     "gloss": "hen",
+     "collocations": [
+      {
+       "text": "মুরগির ডিম",
+       "id": "e853926fd9658df371cb"
+      }
+     ]
     },
     {
      "id": "duck",
      "label": "হাঁস",
-     "gloss": "duck"
+     "gloss": "duck",
+     "collocations": [
+      {
+       "text": "হাঁস পানিতে নামে",
+       "id": "4a3ef7d3202ea0f9450a"
+      }
+     ]
     },
     {
      "id": "cat",
      "label": "বিড়াল",
-     "gloss": "cat"
+     "gloss": "cat",
+     "collocations": [
+      {
+       "text": "বিড়ালটা ঘুমাচ্ছে",
+       "id": "cd0154723487bdda8f68"
+      }
+     ]
     },
     {
      "id": "dog",
      "label": "কুকুর",
-     "gloss": "dog"
+     "gloss": "dog",
+     "collocations": [
+      {
+       "text": "কুকুর ডাকছে",
+       "id": "af504e32d92d21fa2009"
+      }
+     ]
     }
    ],
    "questions": [
@@ -1139,32 +2003,68 @@ window.PTB_DECK = {
     {
      "id": "hammer",
      "label": "হাতুড়ি",
-     "gloss": "hammer"
+     "gloss": "hammer",
+     "collocations": [
+      {
+       "text": "হাতুড়ি দিয়ে ঠুকুন",
+       "id": "aa2029fea6d2cab38ea4"
+      }
+     ]
     },
     {
      "id": "nail",
      "label": "পেরেক",
-     "gloss": "nail"
+     "gloss": "nail",
+     "collocations": [
+      {
+       "text": "পেরেক ঠুকুন",
+       "id": "d73711677b5a4ae652e9"
+      }
+     ]
     },
     {
      "id": "saw",
      "label": "করাত",
-     "gloss": "handsaw"
+     "gloss": "handsaw",
+     "collocations": [
+      {
+       "text": "করাত দিয়ে কাঠ কাটুন",
+       "id": "5fb62c86cf91cab5da79"
+      }
+     ]
     },
     {
      "id": "wood",
      "label": "কাঠ",
-     "gloss": "wood"
+     "gloss": "wood",
+     "collocations": [
+      {
+       "text": "কাঠের টুকরা",
+       "id": "468f1acd8af36aeb2d69"
+      }
+     ]
     },
     {
      "id": "lock",
      "label": "তালা",
-     "gloss": "padlock"
+     "gloss": "padlock",
+     "collocations": [
+      {
+       "text": "তালা লাগান",
+       "id": "1cf94bb11c8f696c86c5"
+      }
+     ]
     },
     {
      "id": "key",
      "label": "চাবি",
-     "gloss": "key"
+     "gloss": "key",
+     "collocations": [
+      {
+       "text": "চাবি দিয়ে খুলুন",
+       "id": "5c9fa04d1e4391891943"
+      }
+     ]
     }
    ],
    "questions": [
@@ -1186,32 +2086,68 @@ window.PTB_DECK = {
     {
      "id": "walk",
      "label": "হাঁটা",
-     "gloss": "to walk"
+     "gloss": "to walk",
+     "collocations": [
+      {
+       "text": "ধীরে হাঁটুন",
+       "id": "85118cb94185bc70253c"
+      }
+     ]
     },
     {
      "id": "run",
      "label": "দৌড়ানো",
-     "gloss": "to run"
+     "gloss": "to run",
+     "collocations": [
+      {
+       "text": "জোরে দৌড়ান",
+       "id": "7ee791135e43bca2ff47"
+      }
+     ]
     },
     {
      "id": "jump",
      "label": "লাফানো",
-     "gloss": "to jump"
+     "gloss": "to jump",
+     "collocations": [
+      {
+       "text": "এক পায়ে লাফান",
+       "id": "684e0207147eee0510f7"
+      }
+     ]
     },
     {
      "id": "climb",
      "label": "বেয়ে ওঠা",
-     "gloss": "to climb up"
+     "gloss": "to climb up",
+     "collocations": [
+      {
+       "text": "মই বেয়ে উঠুন",
+       "id": "647e4bd6e7ec3a9f0d83"
+      }
+     ]
     },
     {
      "id": "bend",
      "label": "ঝোঁকা",
-     "gloss": "to bend forward"
+     "gloss": "to bend forward",
+     "collocations": [
+      {
+       "text": "সামনে ঝুঁকুন",
+       "id": "8b0fd7cd74b6168abee3"
+      }
+     ]
     },
     {
      "id": "crawl",
      "label": "হামাগুড়ি দেওয়া",
-     "gloss": "to crawl"
+     "gloss": "to crawl",
+     "collocations": [
+      {
+       "text": "বাচ্চা হামাগুড়ি দিচ্ছে",
+       "id": "d4248f429fc0dac4de48"
+      }
+     ]
     }
    ],
    "questions": [
@@ -1233,32 +2169,68 @@ window.PTB_DECK = {
     {
      "id": "give",
      "label": "দেওয়া",
-     "gloss": "to give"
+     "gloss": "to give",
+     "collocations": [
+      {
+       "text": "ওকে দিয়ে দিন",
+       "id": "6f7385f8687225237a8b"
+      }
+     ]
     },
     {
      "id": "take",
      "label": "নেওয়া",
-     "gloss": "to take"
+     "gloss": "to take",
+     "collocations": [
+      {
+       "text": "এটা নিয়ে যান",
+       "id": "37f61008e1a009e5ee7e"
+      }
+     ]
     },
     {
      "id": "catch",
      "label": "ধরা",
-     "gloss": "to catch"
+     "gloss": "to catch",
+     "collocations": [
+      {
+       "text": "হাত দিয়ে ধরুন",
+       "id": "94c2bcc71ddddefef854"
+      }
+     ]
     },
     {
      "id": "throw",
      "label": "ছোড়া",
-     "gloss": "to throw"
+     "gloss": "to throw",
+     "collocations": [
+      {
+       "text": "বলটা ছুড়ে দিন",
+       "id": "481ee3bac9f9a7e9a289"
+      }
+     ]
     },
     {
      "id": "push",
      "label": "ঠেলা",
-     "gloss": "to push"
+     "gloss": "to push",
+     "collocations": [
+      {
+       "text": "সামনে ঠেলুন",
+       "id": "1eb466e8f6c7b68e7961"
+      }
+     ]
     },
     {
      "id": "pull",
      "label": "টানা",
-     "gloss": "to pull"
+     "gloss": "to pull",
+     "collocations": [
+      {
+       "text": "নিজের দিকে টানুন",
+       "id": "376c5cb435585222ae4c"
+      }
+     ]
     }
    ],
    "questions": [
@@ -1280,32 +2252,68 @@ window.PTB_DECK = {
     {
      "id": "fold",
      "label": "ভাঁজ করা",
-     "gloss": "to fold"
+     "gloss": "to fold",
+     "collocations": [
+      {
+       "text": "কাপড় ভাঁজ করুন",
+       "id": "5e2b4c4a2e9e5e78b1ce"
+      }
+     ]
     },
     {
      "id": "hang",
      "label": "ঝোলানো",
-     "gloss": "to hang"
+     "gloss": "to hang",
+     "collocations": [
+      {
+       "text": "কাপড় ঝুলিয়ে দিন",
+       "id": "7015650c9b5e74bcc7d9"
+      }
+     ]
     },
     {
      "id": "tie",
      "label": "বাঁধা",
-     "gloss": "to tie"
+     "gloss": "to tie",
+     "collocations": [
+      {
+       "text": "দড়ি দিয়ে বাঁধুন",
+       "id": "736fa33245ee3e67c035"
+      }
+     ]
     },
     {
      "id": "wrap",
      "label": "মোড়ানো",
-     "gloss": "to wrap"
+     "gloss": "to wrap",
+     "collocations": [
+      {
+       "text": "কাগজে মুড়ে দিন",
+       "id": "b65561e7aa669af0e2a7"
+      }
+     ]
     },
     {
      "id": "put-down",
      "label": "রাখা",
-     "gloss": "to put down"
+     "gloss": "to put down",
+     "collocations": [
+      {
+       "text": "তাকে রাখুন",
+       "id": "1cea4a9e84ddc668a2cc"
+      }
+     ]
     },
     {
      "id": "lift",
      "label": "তোলা",
-     "gloss": "to lift"
+     "gloss": "to lift",
+     "collocations": [
+      {
+       "text": "হাত দিয়ে তুলে নিন",
+       "id": "c75003708b42db399092"
+      }
+     ]
     }
    ],
    "questions": [
@@ -1327,32 +2335,68 @@ window.PTB_DECK = {
     {
      "id": "slice",
      "label": "কাটা",
-     "gloss": "to cut into slices"
+     "gloss": "to cut into slices",
+     "collocations": [
+      {
+       "text": "সবজি কাটুন",
+       "id": "789efc66b0e65df091b6"
+      }
+     ]
     },
     {
      "id": "peel",
      "label": "খোসা ছাড়ানো",
-     "gloss": "to peel"
+     "gloss": "to peel",
+     "collocations": [
+      {
+       "text": "খোসা ছাড়িয়ে নিন",
+       "id": "1fac2c8def8137b9b6b9"
+      }
+     ]
     },
     {
      "id": "stir",
      "label": "নাড়া",
-     "gloss": "to stir"
+     "gloss": "to stir",
+     "collocations": [
+      {
+       "text": "ভালো করে নাড়ুন",
+       "id": "1509d843d2deeb3e7674"
+      }
+     ]
     },
     {
      "id": "pour",
      "label": "ঢালা",
-     "gloss": "to pour"
+     "gloss": "to pour",
+     "collocations": [
+      {
+       "text": "পানি ঢালুন",
+       "id": "9bb60f2073b0b71a0f79"
+      }
+     ]
     },
     {
      "id": "knead",
      "label": "মাখা",
-     "gloss": "to knead dough"
+     "gloss": "to knead dough",
+     "collocations": [
+      {
+       "text": "মসলা মাখান",
+       "id": "ae9951123bf68d2cc0a4"
+      }
+     ]
     },
     {
      "id": "roll-dough",
      "label": "বেলা",
-     "gloss": "to roll out dough"
+     "gloss": "to roll out dough",
+     "collocations": [
+      {
+       "text": "রুটি বেলুন",
+       "id": "c855415e4a5b4834fc6f"
+      }
+     ]
     }
    ],
    "questions": [
@@ -1374,32 +2418,68 @@ window.PTB_DECK = {
     {
      "id": "muri",
      "label": "মুড়ি",
-     "gloss": "puffed rice"
+     "gloss": "puffed rice",
+     "collocations": [
+      {
+       "text": "এক বাটি মুড়ি",
+       "id": "f0ef96f78abaecfc73b4"
+      }
+     ]
     },
     {
      "id": "chira",
      "label": "চিড়া",
-     "gloss": "flattened rice"
+     "gloss": "flattened rice",
+     "collocations": [
+      {
+       "text": "দুধে ভেজানো চিড়া",
+       "id": "63de06251addbf569e11"
+      }
+     ]
     },
     {
      "id": "singara",
      "label": "সিঙ্গারা",
-     "gloss": "puffy fried pastry"
+     "gloss": "puffy fried pastry",
+     "collocations": [
+      {
+       "text": "গরম সিঙ্গারা",
+       "id": "24dbb10e4a901592d45a"
+      }
+     ]
     },
     {
      "id": "samucha",
      "label": "সমুচা",
-     "gloss": "flat fried pastry"
+     "gloss": "flat fried pastry",
+     "collocations": [
+      {
+       "text": "মাংসের সমুচা",
+       "id": "9705f6d6679239451fa5"
+      }
+     ]
     },
     {
      "id": "bhapa-pitha",
      "label": "ভাপা পিঠা",
-     "gloss": "steamed rice cake"
+     "gloss": "steamed rice cake",
+     "collocations": [
+      {
+       "text": "গুড়ের ভাপা পিঠা",
+       "id": "d44523f5930f291cd55f"
+      }
+     ]
     },
     {
      "id": "jilapi",
      "label": "জিলাপি",
-     "gloss": "jalebi"
+     "gloss": "jalebi",
+     "collocations": [
+      {
+       "text": "গরম জিলাপি",
+       "id": "82ad91f6c9f753b2af33"
+      }
+     ]
     }
    ],
    "questions": [
@@ -1421,32 +2501,68 @@ window.PTB_DECK = {
     {
      "id": "mosque",
      "label": "মসজিদ",
-     "gloss": "mosque"
+     "gloss": "mosque",
+     "collocations": [
+      {
+       "text": "পাড়ার মসজিদ",
+       "id": "5c93b12ffd2551e1ef27"
+      }
+     ]
     },
     {
      "id": "prayer-mat",
      "label": "জায়নামাজ",
-     "gloss": "prayer mat"
+     "gloss": "prayer mat",
+     "collocations": [
+      {
+       "text": "জায়নামাজ বিছান",
+       "id": "a264fb8b8c62444b8fa8"
+      }
+     ]
     },
     {
      "id": "pray",
      "label": "নামাজ পড়া",
-     "gloss": "to pray salah"
+     "gloss": "to pray salah",
+     "collocations": [
+      {
+       "text": "নামাজ পড়তে যান",
+       "id": "6d1877e359c052537ac6"
+      }
+     ]
     },
     {
      "id": "ablution",
      "label": "অজু করা",
-     "gloss": "to perform wudu"
+     "gloss": "to perform wudu",
+     "collocations": [
+      {
+       "text": "অজু করে নিন",
+       "id": "c63847a2c93c22889beb"
+      }
+     ]
     },
     {
      "id": "prayer-cap",
      "label": "টুপি",
-     "gloss": "prayer cap"
+     "gloss": "prayer cap",
+     "collocations": [
+      {
+       "text": "মাথায় টুপি",
+       "id": "85e001c2a2f133ca9c95"
+      }
+     ]
     },
     {
      "id": "prayer-beads",
      "label": "তসবিহ",
-     "gloss": "prayer beads"
+     "gloss": "prayer beads",
+     "collocations": [
+      {
+       "text": "তসবিহ হাতে নিন",
+       "id": "3f32a4b6f2d9d5f8f2ec"
+      }
+     ]
     }
    ],
    "questions": [
@@ -1468,32 +2584,68 @@ window.PTB_DECK = {
     {
      "id": "big",
      "label": "বড়",
-     "gloss": "big"
+     "gloss": "big",
+     "collocations": [
+      {
+       "text": "বড় ঘর",
+       "id": "11586516deb0e563f65b"
+      }
+     ]
     },
     {
      "id": "small",
      "label": "ছোট",
-     "gloss": "small"
+     "gloss": "small",
+     "collocations": [
+      {
+       "text": "ছোট বাটি",
+       "id": "45fbba314af7e3147673"
+      }
+     ]
     },
     {
      "id": "tall",
      "label": "লম্বা",
-     "gloss": "tall or long"
+     "gloss": "tall or long",
+     "collocations": [
+      {
+       "text": "লম্বা দড়ি",
+       "id": "3854c7f9f289722c4db1"
+      }
+     ]
     },
     {
      "id": "short",
      "label": "খাটো",
-     "gloss": "short in height"
+     "gloss": "short in height",
+     "collocations": [
+      {
+       "text": "খাটো মানুষ",
+       "id": "3b11b655c18700759922"
+      }
+     ]
     },
     {
      "id": "wide",
      "label": "চওড়া",
-     "gloss": "wide"
+     "gloss": "wide",
+     "collocations": [
+      {
+       "text": "চওড়া রাস্তা",
+       "id": "88d88f1ccec716ea24a0"
+      }
+     ]
     },
     {
      "id": "narrow",
      "label": "সরু",
-     "gloss": "narrow"
+     "gloss": "narrow",
+     "collocations": [
+      {
+       "text": "সরু নল",
+       "id": "608447dcb4427f4990fc"
+      }
+     ]
     }
    ],
    "questions": [
@@ -1515,32 +2667,68 @@ window.PTB_DECK = {
     {
      "id": "square",
      "label": "সমান চারকোনা",
-     "gloss": "square"
+     "gloss": "square",
+     "collocations": [
+      {
+       "text": "সমান চারকোনা ছবি",
+       "id": "a2b757f6edd5c983434b"
+      }
+     ]
     },
     {
      "id": "rectangle",
      "label": "লম্বা চারকোনা",
-     "gloss": "rectangle"
+     "gloss": "rectangle",
+     "collocations": [
+      {
+       "text": "লম্বা চারকোনা কাগজ",
+       "id": "0507ec151b7b3d7bbb92"
+      }
+     ]
     },
     {
      "id": "circle",
      "label": "গোল",
-     "gloss": "round or circular"
+     "gloss": "round or circular",
+     "collocations": [
+      {
+       "text": "গোল থালা",
+       "id": "0c3a6e6b99797085581d"
+      }
+     ]
     },
     {
      "id": "oval",
      "label": "ডিমের মতো",
-     "gloss": "oval"
+     "gloss": "oval",
+     "collocations": [
+      {
+       "text": "ডিমের মতো দেখতে",
+       "id": "9d86f76cdc6c19aabd6b"
+      }
+     ]
     },
     {
      "id": "star",
      "label": "তারার মতো",
-     "gloss": "star-shaped"
+     "gloss": "star-shaped",
+     "collocations": [
+      {
+       "text": "তারার মতো আকার",
+       "id": "a36578972b1e187cf3de"
+      }
+     ]
     },
     {
      "id": "pentagon",
      "label": "পাঁচকোনা",
-     "gloss": "five-sided"
+     "gloss": "five-sided",
+     "collocations": [
+      {
+       "text": "পাঁচকোনা আকার",
+       "id": "d713201ee8404d421b79"
+      }
+     ]
     }
    ],
    "questions": [
@@ -1562,32 +2750,68 @@ window.PTB_DECK = {
     {
      "id": "clean",
      "label": "পরিষ্কার",
-     "gloss": "clean"
+     "gloss": "clean",
+     "collocations": [
+      {
+       "text": "পরিষ্কার কাপড়",
+       "id": "415654822ac73fb90db5"
+      }
+     ]
     },
     {
      "id": "dirty",
      "label": "নোংরা",
-     "gloss": "dirty"
+     "gloss": "dirty",
+     "collocations": [
+      {
+       "text": "নোংরা হাত",
+       "id": "368bb9bb5e37e144b1ca"
+      }
+     ]
     },
     {
      "id": "hot",
      "label": "গরম",
-     "gloss": "hot"
+     "gloss": "hot",
+     "collocations": [
+      {
+       "text": "গরম পানি",
+       "id": "6ac841b1d2afcd037916"
+      }
+     ]
     },
     {
      "id": "cold",
      "label": "ঠান্ডা",
-     "gloss": "cold"
+     "gloss": "cold",
+     "collocations": [
+      {
+       "text": "ঠান্ডা পানি",
+       "id": "be0ddc565d8dae54d146"
+      }
+     ]
     },
     {
      "id": "heavy",
      "label": "ভারী",
-     "gloss": "heavy"
+     "gloss": "heavy",
+     "collocations": [
+      {
+       "text": "ভারী বোঝা",
+       "id": "3d80a4edcc541d74ce92"
+      }
+     ]
     },
     {
      "id": "lightweight",
      "label": "হালকা",
-     "gloss": "light in weight"
+     "gloss": "light in weight",
+     "collocations": [
+      {
+       "text": "হালকা থলে",
+       "id": "e6741048010d9ff42a54"
+      }
+     ]
     }
    ],
    "questions": [
@@ -1609,32 +2833,68 @@ window.PTB_DECK = {
     {
      "id": "mosquito",
      "label": "মশা",
-     "gloss": "mosquito"
+     "gloss": "mosquito",
+     "collocations": [
+      {
+       "text": "মশা কামড়ায়",
+       "id": "d1ab61733a129ddca181"
+      }
+     ]
     },
     {
      "id": "ant",
      "label": "পিঁপড়া",
-     "gloss": "ant"
+     "gloss": "ant",
+     "collocations": [
+      {
+       "text": "পিঁপড়ার সারি",
+       "id": "8132194e92880a79944d"
+      }
+     ]
     },
     {
      "id": "housefly",
      "label": "মাছি",
-     "gloss": "housefly"
+     "gloss": "housefly",
+     "collocations": [
+      {
+       "text": "খাবারে মাছি বসেছে",
+       "id": "41080771fe2447bd5d6a"
+      }
+     ]
     },
     {
      "id": "cockroach",
      "label": "তেলাপোকা",
-     "gloss": "cockroach"
+     "gloss": "cockroach",
+     "collocations": [
+      {
+       "text": "রান্নাঘরে তেলাপোকা",
+       "id": "91433c22fdff00940627"
+      }
+     ]
     },
     {
      "id": "caterpillar",
      "label": "শুঁয়োপোকা",
-     "gloss": "caterpillar"
+     "gloss": "caterpillar",
+     "collocations": [
+      {
+       "text": "পাতায় শুঁয়োপোকা",
+       "id": "5605939bb8d900bead39"
+      }
+     ]
     },
     {
      "id": "butterfly",
      "label": "প্রজাপতি",
-     "gloss": "butterfly"
+     "gloss": "butterfly",
+     "collocations": [
+      {
+       "text": "প্রজাপতি উড়ছে",
+       "id": "92d14adc1d28e070b24f"
+      }
+     ]
     }
    ],
    "questions": [
@@ -1656,32 +2916,68 @@ window.PTB_DECK = {
     {
      "id": "river",
      "label": "নদী",
-     "gloss": "river"
+     "gloss": "river",
+     "collocations": [
+      {
+       "text": "নদীর পানি",
+       "id": "2d622967344191d7a5c0"
+      }
+     ]
     },
     {
      "id": "canal",
      "label": "খাল",
-     "gloss": "canal"
+     "gloss": "canal",
+     "collocations": [
+      {
+       "text": "খালের ওপর পুল",
+       "id": "0f2c0ed2885810b24c48"
+      }
+     ]
     },
     {
      "id": "pond",
      "label": "পুকুর",
-     "gloss": "pond"
+     "gloss": "pond",
+     "collocations": [
+      {
+       "text": "পুকুরে গোসল",
+       "id": "6db3c6370609301e4cf9"
+      }
+     ]
     },
     {
      "id": "wetland",
      "label": "বিল",
-     "gloss": "open wetland"
+     "gloss": "open wetland",
+     "collocations": [
+      {
+       "text": "বিলে পানি জমেছে",
+       "id": "0bc4aa9bb45be1a54a42"
+      }
+     ]
     },
     {
      "id": "hill",
      "label": "পাহাড়",
-     "gloss": "hill"
+     "gloss": "hill",
+     "collocations": [
+      {
+       "text": "পাহাড়ের চূড়া",
+       "id": "c3f8b10cfdbd9e631d02"
+      }
+     ]
     },
     {
      "id": "forest",
      "label": "বন",
-     "gloss": "forest"
+     "gloss": "forest",
+     "collocations": [
+      {
+       "text": "ঘন বন",
+       "id": "1946aa0d965a87ce5e06"
+      }
+     ]
     }
    ],
    "questions": [
@@ -1703,32 +2999,68 @@ window.PTB_DECK = {
     {
      "id": "kite",
      "label": "ঘুড়ি",
-     "gloss": "kite"
+     "gloss": "kite",
+     "collocations": [
+      {
+       "text": "ঘুড়ি ওড়ানো",
+       "id": "27949a278c050f3a9aab"
+      }
+     ]
     },
     {
      "id": "spinning-top",
      "label": "লাটিম",
-     "gloss": "spinning top"
+     "gloss": "spinning top",
+     "collocations": [
+      {
+       "text": "লাটিম ঘোরানো",
+       "id": "44e2eb2b39282dd75f5b"
+      }
+     ]
     },
     {
      "id": "cards",
      "label": "তাস",
-     "gloss": "playing cards"
+     "gloss": "playing cards",
+     "collocations": [
+      {
+       "text": "তাস খেলা",
+       "id": "dcf375d7fdf0bd044a29"
+      }
+     ]
     },
     {
      "id": "chess-piece",
      "label": "দাবার গুটি",
-     "gloss": "chess piece"
+     "gloss": "chess piece",
+     "collocations": [
+      {
+       "text": "দাবার গুটি সরান",
+       "id": "508b5302e72caa52f8f3"
+      }
+     ]
     },
     {
      "id": "swing",
      "label": "দোলনা",
-     "gloss": "swing"
+     "gloss": "swing",
+     "collocations": [
+      {
+       "text": "দোলনায় দোল খাওয়া",
+       "id": "a10fabc9a81cd6c9ddee"
+      }
+     ]
     },
     {
      "id": "skipping-rope",
      "label": "লাফের দড়ি",
-     "gloss": "jump rope"
+     "gloss": "jump rope",
+     "collocations": [
+      {
+       "text": "লাফের দড়ি ঘোরান",
+       "id": "aecc048ce64aa82839d0"
+      }
+     ]
     }
    ],
    "questions": [
@@ -1750,32 +3082,68 @@ window.PTB_DECK = {
     {
      "id": "shoe",
      "label": "জুতা",
-     "gloss": "closed shoe"
+     "gloss": "closed shoe",
+     "collocations": [
+      {
+       "text": "জুতা পরে নিন",
+       "id": "08d03e76a91d1689c8fb"
+      }
+     ]
     },
     {
      "id": "sock",
      "label": "মোজা",
-     "gloss": "sock"
+     "gloss": "sock",
+     "collocations": [
+      {
+       "text": "এক জোড়া মোজা",
+       "id": "ec75a8eb09162fbc83b7"
+      }
+     ]
     },
     {
      "id": "eyeglasses",
      "label": "চশমা",
-     "gloss": "eyeglasses"
+     "gloss": "eyeglasses",
+     "collocations": [
+      {
+       "text": "চশমা পরে দেখুন",
+       "id": "989fd50fa053e7c8e4da"
+      }
+     ]
     },
     {
      "id": "glasses-case",
      "label": "চশমার খাপ",
-     "gloss": "eyeglasses case"
+     "gloss": "eyeglasses case",
+     "collocations": [
+      {
+       "text": "চশমার খাপে রাখুন",
+       "id": "0d25114da970e7619cc3"
+      }
+     ]
     },
     {
      "id": "umbrella",
      "label": "ছাতা",
-     "gloss": "umbrella"
+     "gloss": "umbrella",
+     "collocations": [
+      {
+       "text": "ছাতা নিয়ে বের হন",
+       "id": "667ff4f5ba799fbcd743"
+      }
+     ]
     },
     {
      "id": "raincoat",
      "label": "বর্ষাতি",
-     "gloss": "raincoat"
+     "gloss": "raincoat",
+     "collocations": [
+      {
+       "text": "বর্ষাতি পরে বের হন",
+       "id": "5eb21441576dad2c9d13"
+      }
+     ]
     }
    ],
    "questions": [
@@ -1797,32 +3165,68 @@ window.PTB_DECK = {
     {
      "id": "paper",
      "label": "কাগজ",
-     "gloss": "paper"
+     "gloss": "paper",
+     "collocations": [
+      {
+       "text": "কাগজের টুকরা",
+       "id": "a0ce8641ad592d78960b"
+      }
+     ]
     },
     {
      "id": "fabric",
      "label": "কাপড়",
-     "gloss": "fabric"
+     "gloss": "fabric",
+     "collocations": [
+      {
+       "text": "কাপড়ের টুকরা",
+       "id": "3b7d0c5b67fe1267782e"
+      }
+     ]
     },
     {
      "id": "glass-material",
      "label": "কাচ",
-     "gloss": "glass material"
+     "gloss": "glass material",
+     "collocations": [
+      {
+       "text": "কাচের বোতল",
+       "id": "b8a012108931aede3057"
+      }
+     ]
     },
     {
      "id": "iron-metal",
      "label": "লোহা",
-     "gloss": "iron"
+     "gloss": "iron",
+     "collocations": [
+      {
+       "text": "লোহার দরজা",
+       "id": "b74902aa94c4445d194b"
+      }
+     ]
     },
     {
      "id": "soil",
      "label": "মাটি",
-     "gloss": "soil"
+     "gloss": "soil",
+     "collocations": [
+      {
+       "text": "মাটির হাঁড়ি",
+       "id": "b6bb222cd9afc2d561a7"
+      }
+     ]
     },
     {
      "id": "stone",
      "label": "পাথর",
-     "gloss": "stone"
+     "gloss": "stone",
+     "collocations": [
+      {
+       "text": "পাথরের টুকরা",
+       "id": "20dba699f63aae41d319"
+      }
+     ]
     }
    ],
    "questions": [
@@ -1844,32 +3248,68 @@ window.PTB_DECK = {
     {
      "id": "shop",
      "label": "দোকান",
-     "gloss": "neighborhood shop"
+     "gloss": "neighborhood shop",
+     "collocations": [
+      {
+       "text": "পাড়ার দোকান",
+       "id": "7e8943607d871671877c"
+      }
+     ]
     },
     {
      "id": "marketplace",
      "label": "বাজার",
-     "gloss": "market"
+     "gloss": "market",
+     "collocations": [
+      {
+       "text": "কাঁচাবাজারে যাব",
+       "id": "8f64da65b797f98222d3"
+      }
+     ]
     },
     {
      "id": "police-station",
      "label": "থানা",
-     "gloss": "police station"
+     "gloss": "police station",
+     "collocations": [
+      {
+       "text": "থানায় খবর দিন",
+       "id": "882ed7bb593cfd5fffab"
+      }
+     ]
     },
     {
      "id": "hospital",
      "label": "স্বাস্থ্যকেন্দ্র",
-     "gloss": "community health center"
+     "gloss": "community health center",
+     "collocations": [
+      {
+       "text": "স্বাস্থ্যকেন্দ্রে দেখান",
+       "id": "37e48a28f3f6ee843acb"
+      }
+     ]
     },
     {
      "id": "post-office",
      "label": "ডাকঘর",
-     "gloss": "post office"
+     "gloss": "post office",
+     "collocations": [
+      {
+       "text": "ডাকঘরে চিঠি দিন",
+       "id": "656190711032d6b5a510"
+      }
+     ]
     },
     {
      "id": "reading-room",
      "label": "পাঠাগার",
-     "gloss": "library"
+     "gloss": "library",
+     "collocations": [
+      {
+       "text": "পাঠাগারে বই পড়ুন",
+       "id": "82761c6b10d3b28abab8"
+      }
+     ]
     }
    ],
    "questions": [
@@ -1891,32 +3331,68 @@ window.PTB_DECK = {
     {
      "id": "shopkeeper",
      "label": "দোকানি",
-     "gloss": "shopkeeper"
+     "gloss": "shopkeeper",
+     "collocations": [
+      {
+       "text": "দোকানি দাম বলছেন",
+       "id": "401dec7d1b018f300722"
+      }
+     ]
     },
     {
      "id": "customer",
      "label": "খদ্দের",
-     "gloss": "customer"
+     "gloss": "customer",
+     "collocations": [
+      {
+       "text": "খদ্দের দাম জিজ্ঞেস করেন",
+       "id": "83e714a9c72b5d575f3f"
+      }
+     ]
     },
     {
      "id": "tailor",
      "label": "দর্জি",
-     "gloss": "tailor"
+     "gloss": "tailor",
+     "collocations": [
+      {
+       "text": "দর্জি মাপ নেন",
+       "id": "8a245f4e9bd21d481eb6"
+      }
+     ]
     },
     {
      "id": "weaver",
      "label": "তাঁতি",
-     "gloss": "weaver"
+     "gloss": "weaver",
+     "collocations": [
+      {
+       "text": "তাঁতি কাপড় বোনেন",
+       "id": "c3eb9f7ccbbfeffc1d0f"
+      }
+     ]
     },
     {
      "id": "mason",
      "label": "রাজমিস্ত্রি",
-     "gloss": "mason"
+     "gloss": "mason",
+     "collocations": [
+      {
+       "text": "রাজমিস্ত্রি ইট বসান",
+       "id": "f61e55704fa3f84ff5c3"
+      }
+     ]
     },
     {
      "id": "carpenter",
      "label": "কাঠমিস্ত্রি",
-     "gloss": "carpenter"
+     "gloss": "carpenter",
+     "collocations": [
+      {
+       "text": "কাঠমিস্ত্রি খাট বানান",
+       "id": "c7bd02bcc047a85e48ef"
+      }
+     ]
     }
    ],
    "questions": [
@@ -1938,32 +3414,68 @@ window.PTB_DECK = {
     {
      "id": "dawn",
      "label": "ভোর",
-     "gloss": "dawn"
+     "gloss": "dawn",
+     "collocations": [
+      {
+       "text": "ভোরের আলো",
+       "id": "515b6ecd3760e7aaddd6"
+      }
+     ]
     },
     {
      "id": "morning",
      "label": "সকাল",
-     "gloss": "morning"
+     "gloss": "morning",
+     "collocations": [
+      {
+       "text": "সকালবেলা উঠি",
+       "id": "f122a65275c9f6204e33"
+      }
+     ]
     },
     {
      "id": "noon",
      "label": "দুপুর",
-     "gloss": "noon"
+     "gloss": "noon",
+     "collocations": [
+      {
+       "text": "দুপুরে ভাত খাই",
+       "id": "a8695f0fe94e66375d41"
+      }
+     ]
     },
     {
      "id": "afternoon",
      "label": "বিকেল",
-     "gloss": "late afternoon"
+     "gloss": "late afternoon",
+     "collocations": [
+      {
+       "text": "বিকেলে হাঁটতে যাই",
+       "id": "51708649edc017a86118"
+      }
+     ]
     },
     {
      "id": "dusk",
      "label": "সন্ধ্যা",
-     "gloss": "dusk"
+     "gloss": "dusk",
+     "collocations": [
+      {
+       "text": "সন্ধ্যায় বাসায় ফিরি",
+       "id": "7ea708edd21f3551f053"
+      }
+     ]
     },
     {
      "id": "night",
      "label": "রাত",
-     "gloss": "night"
+     "gloss": "night",
+     "collocations": [
+      {
+       "text": "রাতে ঘুমাই",
+       "id": "5ca7597c6fcbe549b546"
+      }
+     ]
     }
    ],
    "questions": [
@@ -1985,32 +3497,68 @@ window.PTB_DECK = {
     {
      "id": "raw-rice",
      "label": "চাল",
-     "gloss": "uncooked rice"
+     "gloss": "uncooked rice",
+     "collocations": [
+      {
+       "text": "চাল কিনে আনুন",
+       "id": "5824c172829f3099bada"
+      }
+     ]
     },
     {
      "id": "flour",
      "label": "আটা",
-     "gloss": "wheat flour"
+     "gloss": "wheat flour",
+     "collocations": [
+      {
+       "text": "আটা মাখুন",
+       "id": "203b45effd3227bafb17"
+      }
+     ]
     },
     {
      "id": "chickpeas",
      "label": "ছোলা",
-     "gloss": "dried chickpeas"
+     "gloss": "dried chickpeas",
+     "collocations": [
+      {
+       "text": "ছোলা ভিজিয়ে রাখুন",
+       "id": "416971d6c9101f8f4eca"
+      }
+     ]
     },
     {
      "id": "dry-peas",
      "label": "শুকনা মটর",
-     "gloss": "dried peas"
+     "gloss": "dried peas",
+     "collocations": [
+      {
+       "text": "শুকনা মটর সেদ্ধ করুন",
+       "id": "5dd17264d3083ade40fa"
+      }
+     ]
     },
     {
      "id": "peanuts",
      "label": "চিনাবাদাম",
-     "gloss": "peanuts"
+     "gloss": "peanuts",
+     "collocations": [
+      {
+       "text": "ভাজা চিনাবাদাম",
+       "id": "be47da64a77c9d7e9d41"
+      }
+     ]
     },
     {
      "id": "maize",
      "label": "ভুট্টা",
-     "gloss": "corn cob"
+     "gloss": "corn cob",
+     "collocations": [
+      {
+       "text": "সেঁকা ভুট্টা",
+       "id": "5eea9cf2592ace299730"
+      }
+     ]
     }
    ],
    "questions": [
@@ -2032,32 +3580,68 @@ window.PTB_DECK = {
     {
      "id": "stove",
      "label": "চুলা",
-     "gloss": "stove"
+     "gloss": "stove",
+     "collocations": [
+      {
+       "text": "চুলায় হাঁড়ি বসান",
+       "id": "65f25207dad481fcb205"
+      }
+     ]
     },
     {
      "id": "charcoal",
      "label": "কয়লা",
-     "gloss": "charcoal"
+     "gloss": "charcoal",
+     "collocations": [
+      {
+       "text": "কয়লার আঁচ",
+       "id": "57e776dd30f98724512d"
+      }
+     ]
     },
     {
      "id": "matches",
      "label": "দিয়াশলাই",
-     "gloss": "matches"
+     "gloss": "matches",
+     "collocations": [
+      {
+       "text": "দিয়াশলাই জ্বালান",
+       "id": "c981bba8ec769c2bfb18"
+      }
+     ]
     },
     {
      "id": "flame",
      "label": "আগুন",
-     "gloss": "fire"
+     "gloss": "fire",
+     "collocations": [
+      {
+       "text": "আগুন ধরেছে",
+       "id": "77f8418597d8999ac2d6"
+      }
+     ]
     },
     {
      "id": "smoke",
      "label": "ধোঁয়া",
-     "gloss": "smoke"
+     "gloss": "smoke",
+     "collocations": [
+      {
+       "text": "ধোঁয়া উঠছে",
+       "id": "a14a74248fe7868c2890"
+      }
+     ]
     },
     {
      "id": "ash",
      "label": "ছাই",
-     "gloss": "ash"
+     "gloss": "ash",
+     "collocations": [
+      {
+       "text": "ভেজা ছাই",
+       "id": "46412d15168bfba4246e"
+      }
+     ]
     }
    ],
    "questions": [
@@ -2079,32 +3663,68 @@ window.PTB_DECK = {
     {
      "id": "needle",
      "label": "সুঁই",
-     "gloss": "sewing needle"
+     "gloss": "sewing needle",
+     "collocations": [
+      {
+       "text": "সুঁইয়ে সুতা ঢোকান",
+       "id": "6a776e44fd6d0a98a045"
+      }
+     ]
     },
     {
      "id": "thread",
      "label": "সুতা",
-     "gloss": "sewing thread"
+     "gloss": "sewing thread",
+     "collocations": [
+      {
+       "text": "সুতা কেটে দিন",
+       "id": "c724b24c6f520413f1cc"
+      }
+     ]
     },
     {
      "id": "button",
      "label": "বোতাম",
-     "gloss": "button"
+     "gloss": "button",
+     "collocations": [
+      {
+       "text": "জামার বোতাম",
+       "id": "24cd53eb667e24d1e83d"
+      }
+     ]
     },
     {
      "id": "cloth-measure",
      "label": "মাপের ফিতা",
-     "gloss": "tailor measure"
+     "gloss": "tailor measure",
+     "collocations": [
+      {
+       "text": "মাপের ফিতা দিয়ে মাপুন",
+       "id": "abe51e2722b0f2c060e3"
+      }
+     ]
     },
     {
      "id": "seam",
      "label": "সেলাই",
-     "gloss": "stitched seam"
+     "gloss": "stitched seam",
+     "collocations": [
+      {
+       "text": "সেলাই খুলে গেছে",
+       "id": "26b6cacb51ac77a6e9bc"
+      }
+     ]
     },
     {
      "id": "torn",
      "label": "ছেঁড়া",
-     "gloss": "torn fabric"
+     "gloss": "torn fabric",
+     "collocations": [
+      {
+       "text": "ছেঁড়া জামা",
+       "id": "f7cb3b9283d72e9bb7d6"
+      }
+     ]
     }
    ],
    "questions": [
@@ -2126,32 +3746,68 @@ window.PTB_DECK = {
     {
      "id": "earring",
      "label": "কানের দুল",
-     "gloss": "earring"
+     "gloss": "earring",
+     "collocations": [
+      {
+       "text": "এক জোড়া কানের দুল",
+       "id": "3d82e7895dd8572549aa"
+      }
+     ]
     },
     {
      "id": "nose-stud",
      "label": "নাকফুল",
-     "gloss": "nose stud"
+     "gloss": "nose stud",
+     "collocations": [
+      {
+       "text": "নাকে নাকফুল",
+       "id": "c9ab56ec50363c4c8d21"
+      }
+     ]
     },
     {
      "id": "bangle",
      "label": "চুড়ি",
-     "gloss": "bangle"
+     "gloss": "bangle",
+     "collocations": [
+      {
+       "text": "কাচের চুড়ি",
+       "id": "4c8df2a0fed61171cb96"
+      }
+     ]
     },
     {
      "id": "finger-ring",
      "label": "আংটি",
-     "gloss": "finger ring"
+     "gloss": "finger ring",
+     "collocations": [
+      {
+       "text": "আঙুলে আংটি",
+       "id": "8d771ca22af231faada9"
+      }
+     ]
     },
     {
      "id": "necklace",
      "label": "হার",
-     "gloss": "necklace"
+     "gloss": "necklace",
+     "collocations": [
+      {
+       "text": "সোনার হার",
+       "id": "1c97ae3356b22f6cad50"
+      }
+     ]
     },
     {
      "id": "hairpin",
      "label": "চুলের কাঁটা",
-     "gloss": "hair pin"
+     "gloss": "hair pin",
+     "collocations": [
+      {
+       "text": "চুলের কাঁটা লাগান",
+       "id": "41614a3df5e9edcd6c98"
+      }
+     ]
     }
    ],
    "questions": [
@@ -2173,32 +3829,68 @@ window.PTB_DECK = {
     {
      "id": "drip",
      "label": "চুইয়ে পড়া",
-     "gloss": "to leak or drip"
+     "gloss": "to leak or drip",
+     "collocations": [
+      {
+       "text": "পানি চুইয়ে পড়ছে",
+       "id": "79aab7302645a9819cbc"
+      }
+     ]
     },
     {
      "id": "clog",
      "label": "আটকে যাওয়া",
-     "gloss": "to get clogged"
+     "gloss": "to get clogged",
+     "collocations": [
+      {
+       "text": "দরজা আটকে গেছে",
+       "id": "e13b2d617f4caf02595a"
+      }
+     ]
     },
     {
      "id": "stain",
      "label": "দাগ",
-     "gloss": "stain"
+     "gloss": "stain",
+     "collocations": [
+      {
+       "text": "জামায় দাগ",
+       "id": "354447e476b1c86e7751"
+      }
+     ]
     },
     {
      "id": "mildew",
      "label": "ছাতা পড়া",
-     "gloss": "to grow mold"
+     "gloss": "to grow mold",
+     "collocations": [
+      {
+       "text": "খাবারে ছাতা পড়েছে",
+       "id": "fd02ad00dff9121fe696"
+      }
+     ]
     },
     {
      "id": "crack",
      "label": "ফাটল",
-     "gloss": "crack"
+     "gloss": "crack",
+     "collocations": [
+      {
+       "text": "দেয়ালে ফাটল",
+       "id": "d163acdc4e5bc78b77c0"
+      }
+     ]
     },
     {
      "id": "dent",
      "label": "দেবে যাওয়া",
-     "gloss": "to get dented"
+     "gloss": "to get dented",
+     "collocations": [
+      {
+       "text": "মেঝে দেবে গেছে",
+       "id": "3120fa3f64b792d20271"
+      }
+     ]
     }
    ],
    "questions": [
@@ -2220,32 +3912,68 @@ window.PTB_DECK = {
     {
      "id": "north",
      "label": "উত্তর",
-     "gloss": "north"
+     "gloss": "north",
+     "collocations": [
+      {
+       "text": "উত্তর দিকে যান",
+       "id": "bfd57bf022b8f5fb0bdd"
+      }
+     ]
     },
     {
      "id": "south",
      "label": "দক্ষিণ",
-     "gloss": "south"
+     "gloss": "south",
+     "collocations": [
+      {
+       "text": "দক্ষিণ দিকে মুখ করুন",
+       "id": "af10084ef060dddba5d9"
+      }
+     ]
     },
     {
      "id": "east",
      "label": "পূর্ব",
-     "gloss": "east"
+     "gloss": "east",
+     "collocations": [
+      {
+       "text": "পূর্ব দিকে সূর্য ওঠে",
+       "id": "6ef22943d8f7a38cc451"
+      }
+     ]
     },
     {
      "id": "west",
      "label": "পশ্চিম",
-     "gloss": "west"
+     "gloss": "west",
+     "collocations": [
+      {
+       "text": "পশ্চিম দিকে সূর্য ডোবে",
+       "id": "b623aef0563d69a1226e"
+      }
+     ]
     },
     {
      "id": "right",
      "label": "ডানে",
-     "gloss": "to the right"
+     "gloss": "to the right",
+     "collocations": [
+      {
+       "text": "ডানে ঘুরুন",
+       "id": "3fe37a4ba197135f0b55"
+      }
+     ]
     },
     {
      "id": "left",
      "label": "বামে",
-     "gloss": "to the left"
+     "gloss": "to the left",
+     "collocations": [
+      {
+       "text": "বামে ঘুরুন",
+       "id": "322204c3fcffc72d8efc"
+      }
+     ]
     }
    ],
    "questions": [
@@ -2267,32 +3995,68 @@ window.PTB_DECK = {
     {
      "id": "speak",
      "label": "বলা",
-     "gloss": "to speak"
+     "gloss": "to speak",
+     "collocations": [
+      {
+       "text": "আস্তে বলুন",
+       "id": "9f60b26c63c2555d102d"
+      }
+     ]
     },
     {
      "id": "listen",
      "label": "শোনা",
-     "gloss": "to listen"
+     "gloss": "to listen",
+     "collocations": [
+      {
+       "text": "মন দিয়ে শুনুন",
+       "id": "f3f3c5e83ef1297201fb"
+      }
+     ]
     },
     {
      "id": "laugh",
      "label": "হাসা",
-     "gloss": "to laugh"
+     "gloss": "to laugh",
+     "collocations": [
+      {
+       "text": "মুখ টিপে হাসছে",
+       "id": "9e03aa6fc62e9d31c8d9"
+      }
+     ]
     },
     {
      "id": "cry",
      "label": "কাঁদা",
-     "gloss": "to cry"
+     "gloss": "to cry",
+     "collocations": [
+      {
+       "text": "বাচ্চা কাঁদছে",
+       "id": "62f9c1e09dde7fee76af"
+      }
+     ]
     },
     {
      "id": "call-out",
      "label": "ডাকা",
-     "gloss": "to call out"
+     "gloss": "to call out",
+     "collocations": [
+      {
+       "text": "নাম ধরে ডাকুন",
+       "id": "b4ff404bf5fe706e0658"
+      }
+     ]
     },
     {
      "id": "gesture",
      "label": "ইশারা করা",
-     "gloss": "to gesture"
+     "gloss": "to gesture",
+     "collocations": [
+      {
+       "text": "হাত দিয়ে ইশারা করুন",
+       "id": "b9e0b319fb7798965539"
+      }
+     ]
     }
    ],
    "questions": [
@@ -2314,32 +4078,68 @@ window.PTB_DECK = {
     {
      "id": "one",
      "label": "এক",
-     "gloss": "one"
+     "gloss": "one",
+     "collocations": [
+      {
+       "text": "একটা দিন",
+       "id": "555274b2393a19539997"
+      }
+     ]
     },
     {
      "id": "two",
      "label": "দুই",
-     "gloss": "two"
+     "gloss": "two",
+     "collocations": [
+      {
+       "text": "দুইটা নিন",
+       "id": "7a2eb2b17621de053445"
+      }
+     ]
     },
     {
      "id": "three",
      "label": "তিন",
-     "gloss": "three"
+     "gloss": "three",
+     "collocations": [
+      {
+       "text": "তিনটা রাখুন",
+       "id": "13588fa9b73ae06534cc"
+      }
+     ]
     },
     {
      "id": "four",
      "label": "চার",
-     "gloss": "four"
+     "gloss": "four",
+     "collocations": [
+      {
+       "text": "চারটা গুনুন",
+       "id": "826f61a24b9c243dca95"
+      }
+     ]
     },
     {
      "id": "five",
      "label": "পাঁচ",
-     "gloss": "five"
+     "gloss": "five",
+     "collocations": [
+      {
+       "text": "পাঁচটা দেখান",
+       "id": "2a13dd9efbca22530f9c"
+      }
+     ]
     },
     {
      "id": "six",
      "label": "ছয়",
-     "gloss": "six"
+     "gloss": "six",
+     "collocations": [
+      {
+       "text": "ছয়টা হয়েছে",
+       "id": "be2db3faaccbd27d0ccd"
+      }
+     ]
     }
    ],
    "questions": [
@@ -2361,32 +4161,68 @@ window.PTB_DECK = {
     {
      "id": "come",
      "label": "আসা",
-     "gloss": "to come toward here"
+     "gloss": "to come toward here",
+     "collocations": [
+      {
+       "text": "এদিকে আসুন",
+       "id": "a0fc2cab025d2102465c"
+      }
+     ]
     },
     {
      "id": "go",
      "label": "যাওয়া",
-     "gloss": "to go away from here"
+     "gloss": "to go away from here",
+     "collocations": [
+      {
+       "text": "সোজা চলে যান",
+       "id": "7f5c329d4c2ebd78e42d"
+      }
+     ]
     },
     {
      "id": "enter",
      "label": "ঢোকা",
-     "gloss": "to enter"
+     "gloss": "to enter",
+     "collocations": [
+      {
+       "text": "ভেতরে ঢুকুন",
+       "id": "8e5d2dedd79ba6081481"
+      }
+     ]
     },
     {
      "id": "exit",
      "label": "বের হওয়া",
-     "gloss": "to exit"
+     "gloss": "to exit",
+     "collocations": [
+      {
+       "text": "বাইরে বের হন",
+       "id": "6edc9c7c25719c776692"
+      }
+     ]
     },
     {
      "id": "cross",
      "label": "পার হওয়া",
-     "gloss": "to cross"
+     "gloss": "to cross",
+     "collocations": [
+      {
+       "text": "রাস্তা পার হন",
+       "id": "3404a55a47ce08bcc94c"
+      }
+     ]
     },
     {
      "id": "stop",
      "label": "থামা",
-     "gloss": "to stop"
+     "gloss": "to stop",
+     "collocations": [
+      {
+       "text": "এখানে থামুন",
+       "id": "a57a33ff482bb80a8919"
+      }
+     ]
     }
    ],
    "questions": [
@@ -2408,32 +4244,68 @@ window.PTB_DECK = {
     {
      "id": "buy",
      "label": "কেনা",
-     "gloss": "to buy"
+     "gloss": "to buy",
+     "collocations": [
+      {
+       "text": "বাজার থেকে কিনুন",
+       "id": "dcddd912964cbb36565e"
+      }
+     ]
     },
     {
      "id": "sell",
      "label": "বেচা",
-     "gloss": "to sell"
+     "gloss": "to sell",
+     "collocations": [
+      {
+       "text": "ফল বেচেন",
+       "id": "dd3508fdc7e13451941a"
+      }
+     ]
     },
     {
      "id": "pay",
      "label": "দাম মেটানো",
-     "gloss": "to pay the price"
+     "gloss": "to pay the price",
+     "collocations": [
+      {
+       "text": "দাম মিটিয়ে দিন",
+       "id": "7bc3e7c82c3b127c7313"
+      }
+     ]
     },
     {
      "id": "exchange-item",
      "label": "বদলে নেওয়া",
-     "gloss": "to exchange a purchase"
+     "gloss": "to exchange a purchase",
+     "collocations": [
+      {
+       "text": "ছোটটা বদলে নিন",
+       "id": "06ff176c0076f816bf37"
+      }
+     ]
     },
     {
      "id": "weigh",
      "label": "ওজন করা",
-     "gloss": "to weigh"
+     "gloss": "to weigh",
+     "collocations": [
+      {
+       "text": "চাল ওজন করুন",
+       "id": "86cbbd20b737f21522e0"
+      }
+     ]
     },
     {
      "id": "select",
      "label": "বেছে নেওয়া",
-     "gloss": "to choose one"
+     "gloss": "to choose one",
+     "collocations": [
+      {
+       "text": "ভালোটা বেছে নিন",
+       "id": "402e6d005a5500925fe7"
+      }
+     ]
     }
    ],
    "questions": [
@@ -2455,32 +4327,68 @@ window.PTB_DECK = {
     {
      "id": "look-for",
      "label": "খোঁজা",
-     "gloss": "to look for"
+     "gloss": "to look for",
+     "collocations": [
+      {
+       "text": "চাবি খুঁজুন",
+       "id": "dca804f9db4531213235"
+      }
+     ]
     },
     {
      "id": "find",
      "label": "খুঁজে পাওয়া",
-     "gloss": "to find by searching"
+     "gloss": "to find by searching",
+     "collocations": [
+      {
+       "text": "চাবিটা খুঁজে পেলেন",
+       "id": "034b8f2d9f14ce077932"
+      }
+     ]
     },
     {
      "id": "hide",
      "label": "লুকানো",
-     "gloss": "to hide"
+     "gloss": "to hide",
+     "collocations": [
+      {
+       "text": "চোখের আড়ালে লুকান",
+       "id": "d147fca60ab03db85d9f"
+      }
+     ]
     },
     {
      "id": "take-out",
      "label": "বের করা",
-     "gloss": "to take something out"
+     "gloss": "to take something out",
+     "collocations": [
+      {
+       "text": "ঝুড়ি থেকে বের করুন",
+       "id": "d7804ea3524e6e8968f7"
+      }
+     ]
     },
     {
      "id": "look-at",
      "label": "দেখা",
-     "gloss": "to look at"
+     "gloss": "to look at",
+     "collocations": [
+      {
+       "text": "ছবিটা ভালো করে দেখুন",
+       "id": "c3313f65aa2b06b492c9"
+      }
+     ]
     },
     {
      "id": "show",
      "label": "দেখানো",
-     "gloss": "to show"
+     "gloss": "to show",
+     "collocations": [
+      {
+       "text": "ওকে ছবিটা দেখান",
+       "id": "5238c3029e8f9eb9d16f"
+      }
+     ]
     }
    ],
    "questions": [
@@ -2502,32 +4410,68 @@ window.PTB_DECK = {
     {
      "id": "happy",
      "label": "খুশি",
-     "gloss": "happy"
+     "gloss": "happy",
+     "collocations": [
+      {
+       "text": "খবর শুনে খুশি",
+       "id": "bf5a7ae300dbec7fd1b8"
+      }
+     ]
     },
     {
      "id": "sad",
      "label": "মন খারাপ",
-     "gloss": "sad"
+     "gloss": "sad",
+     "collocations": [
+      {
+       "text": "আজ মন খারাপ",
+       "id": "caf23f1b91c8ae8bc8e7"
+      }
+     ]
     },
     {
      "id": "afraid",
      "label": "ভয় পাওয়া",
-     "gloss": "to be afraid"
+     "gloss": "to be afraid",
+     "collocations": [
+      {
+       "text": "শব্দ শুনে ভয় পেয়েছে",
+       "id": "13c1ebd93c6f9ea69d9a"
+      }
+     ]
     },
     {
      "id": "surprised",
      "label": "অবাক হওয়া",
-     "gloss": "to be surprised"
+     "gloss": "to be surprised",
+     "collocations": [
+      {
+       "text": "দেখে অবাক হয়ে গেল",
+       "id": "203a0c1ccc61c02e89c8"
+      }
+     ]
     },
     {
      "id": "angry",
      "label": "রাগ",
-     "gloss": "anger"
+     "gloss": "anger",
+     "collocations": [
+      {
+       "text": "রাগ হয়েছে",
+       "id": "63c87eb4e06f3b5373a5"
+      }
+     ]
     },
     {
      "id": "tired",
      "label": "ক্লান্ত",
-     "gloss": "tired"
+     "gloss": "tired",
+     "collocations": [
+      {
+       "text": "কাজ করে ক্লান্ত",
+       "id": "d37358865456828332c2"
+      }
+     ]
     }
    ],
    "questions": [
@@ -2549,32 +4493,68 @@ window.PTB_DECK = {
     {
      "id": "more",
      "label": "বেশি",
-     "gloss": "more"
+     "gloss": "more",
+     "collocations": [
+      {
+       "text": "একটু বেশি দিন",
+       "id": "347107d6c4187beffc80"
+      }
+     ]
     },
     {
      "id": "less",
      "label": "কম",
-     "gloss": "less"
+     "gloss": "less",
+     "collocations": [
+      {
+       "text": "কম করে দিন",
+       "id": "03bf117813d75eb93a0e"
+      }
+     ]
     },
     {
      "id": "half",
      "label": "অর্ধেক",
-     "gloss": "half"
+     "gloss": "half",
+     "collocations": [
+      {
+       "text": "অর্ধেক কেটে নিন",
+       "id": "11fc417506d6b0642e84"
+      }
+     ]
     },
     {
      "id": "double",
      "label": "দুই গুণ",
-     "gloss": "twice as much"
+     "gloss": "twice as much",
+     "collocations": [
+      {
+       "text": "দুই গুণ বেশি",
+       "id": "e6d576c382a5de873ffa"
+      }
+     ]
     },
     {
      "id": "all",
      "label": "সব",
-     "gloss": "all of the group"
+     "gloss": "all of the group",
+     "collocations": [
+      {
+       "text": "সব কটা নিন",
+       "id": "1003f991609bc3274104"
+      }
+     ]
     },
     {
      "id": "none",
      "label": "একটাও নেই",
-     "gloss": "none at all"
+     "gloss": "none at all",
+     "collocations": [
+      {
+       "text": "এখানে একটাও নেই",
+       "id": "f9a9b551ca20c36f373d"
+      }
+     ]
     }
    ],
    "questions": [
@@ -2596,32 +4576,68 @@ window.PTB_DECK = {
     {
      "id": "smooth",
      "label": "মসৃণ",
-     "gloss": "smooth surface"
+     "gloss": "smooth surface",
+     "collocations": [
+      {
+       "text": "মসৃণ পাথর",
+       "id": "d2c90d70efd638283023"
+      }
+     ]
     },
     {
      "id": "rough",
      "label": "খসখসে",
-     "gloss": "rough surface"
+     "gloss": "rough surface",
+     "collocations": [
+      {
+       "text": "খসখসে দেয়াল",
+       "id": "c1c043d8cae28532127d"
+      }
+     ]
     },
     {
      "id": "soft",
      "label": "নরম",
-     "gloss": "soft to the touch"
+     "gloss": "soft to the touch",
+     "collocations": [
+      {
+       "text": "নরম কাপড়",
+       "id": "5a6fb5375a48f3efb185"
+      }
+     ]
     },
     {
      "id": "hard",
      "label": "শক্ত",
-     "gloss": "hard to the touch"
+     "gloss": "hard to the touch",
+     "collocations": [
+      {
+       "text": "শক্ত কাঠ",
+       "id": "ffff7147437731bd6e5f"
+      }
+     ]
     },
     {
      "id": "sharp",
      "label": "ধারালো",
-     "gloss": "sharp edged"
+     "gloss": "sharp edged",
+     "collocations": [
+      {
+       "text": "ধারালো ফলাটা",
+       "id": "ef3ee3a629888ba0daf5"
+      }
+     ]
     },
     {
      "id": "blunt",
      "label": "ভোঁতা",
-     "gloss": "blunt edged"
+     "gloss": "blunt edged",
+     "collocations": [
+      {
+       "text": "ভোঁতা ছুরি",
+       "id": "034e1a75d319c85be105"
+      }
+     ]
     }
    ],
    "questions": [
@@ -2643,32 +4659,68 @@ window.PTB_DECK = {
     {
      "id": "broom",
      "label": "ঝাড়ু",
-     "gloss": "grass broom"
+     "gloss": "grass broom",
+     "collocations": [
+      {
+       "text": "নারকেলের শলার ঝাড়ু",
+       "id": "2133dcf2f37c0437b7fd"
+      }
+     ]
     },
     {
      "id": "dustpan",
      "label": "ময়লার বেলচা",
-     "gloss": "dustpan"
+     "gloss": "dustpan",
+     "collocations": [
+      {
+       "text": "ময়লার বেলচায় তুলুন",
+       "id": "af44c4ebcd0658a1f31b"
+      }
+     ]
     },
     {
      "id": "trash-bin",
      "label": "ময়লার পাত্র",
-     "gloss": "rubbish bin"
+     "gloss": "rubbish bin",
+     "collocations": [
+      {
+       "text": "ময়লার পাত্রে ফেলুন",
+       "id": "f2141601a38b80a55a02"
+      }
+     ]
     },
     {
      "id": "scrubbing-fiber",
      "label": "ছোবড়া",
-     "gloss": "coconut husk scrubber"
+     "gloss": "coconut husk scrubber",
+     "collocations": [
+      {
+       "text": "নারকেলের ছোবড়া",
+       "id": "3aa0c34805a556d0213b"
+      }
+     ]
     },
     {
      "id": "cleaning-rag",
      "label": "ন্যাকড়া",
-     "gloss": "cleaning rag"
+     "gloss": "cleaning rag",
+     "collocations": [
+      {
+       "text": "ন্যাকড়া দিয়ে মুছুন",
+       "id": "1df7821b5651a1d0b40a"
+      }
+     ]
     },
     {
      "id": "doormat",
      "label": "পাপোশ",
-     "gloss": "doormat"
+     "gloss": "doormat",
+     "collocations": [
+      {
+       "text": "পাপোশে পা মুছুন",
+       "id": "6b1ddf6a4889ae98caf6"
+      }
+     ]
     }
    ],
    "questions": [
@@ -2690,32 +4742,68 @@ window.PTB_DECK = {
     {
      "id": "bricks",
      "label": "ইট",
-     "gloss": "brick"
+     "gloss": "brick",
+     "collocations": [
+      {
+       "text": "পোড়া ইট",
+       "id": "a77d15d732ed1e84ab82"
+      }
+     ]
     },
     {
      "id": "sand",
      "label": "বালু",
-     "gloss": "sand"
+     "gloss": "sand",
+     "collocations": [
+      {
+       "text": "এক বস্তা বালু",
+       "id": "599ff88a36d10737404f"
+      }
+     ]
     },
     {
      "id": "gravel",
      "label": "কাঁকর",
-     "gloss": "gravel"
+     "gloss": "gravel",
+     "collocations": [
+      {
+       "text": "কাঁকর বিছানো পথ",
+       "id": "5666e8c99533717522c7"
+      }
+     ]
     },
     {
      "id": "bamboo",
      "label": "বাঁশ",
-     "gloss": "bamboo"
+     "gloss": "bamboo",
+     "collocations": [
+      {
+       "text": "বাঁশের বেড়া",
+       "id": "dacc7d64cfa423b50072"
+      }
+     ]
     },
     {
      "id": "ladder",
      "label": "মই",
-     "gloss": "ladder"
+     "gloss": "ladder",
+     "collocations": [
+      {
+       "text": "দেয়ালে মই ঠেকান",
+       "id": "21c7f4a27699c1300585"
+      }
+     ]
     },
     {
      "id": "post",
      "label": "খুঁটি",
-     "gloss": "upright post"
+     "gloss": "upright post",
+     "collocations": [
+      {
+       "text": "বাঁশের খুঁটি",
+       "id": "30ed2b1c2de8bb5bc595"
+      }
+     ]
     }
    ],
    "questions": [
@@ -2737,32 +4825,68 @@ window.PTB_DECK = {
     {
      "id": "flower",
      "label": "ফুল",
-     "gloss": "flower"
+     "gloss": "flower",
+     "collocations": [
+      {
+       "text": "ফুল ফুটেছে",
+       "id": "a338dbe083d29ceb53e6"
+      }
+     ]
     },
     {
      "id": "bud",
      "label": "কুঁড়ি",
-     "gloss": "flower bud"
+     "gloss": "flower bud",
+     "collocations": [
+      {
+       "text": "ফুলের কুঁড়ি",
+       "id": "eda5cce220433dd524a3"
+      }
+     ]
     },
     {
      "id": "seed",
      "label": "বীজ",
-     "gloss": "seed"
+     "gloss": "seed",
+     "collocations": [
+      {
+       "text": "বীজ থেকে গাছ হয়",
+       "id": "77464d1e829655a53f22"
+      }
+     ]
     },
     {
      "id": "roots",
      "label": "শিকড়",
-     "gloss": "roots"
+     "gloss": "roots",
+     "collocations": [
+      {
+       "text": "মাটির নিচে শিকড়",
+       "id": "014892e1a19d1c1f8b1e"
+      }
+     ]
     },
     {
      "id": "leaf",
      "label": "পাতা",
-     "gloss": "leaf"
+     "gloss": "leaf",
+     "collocations": [
+      {
+       "text": "গাছের কচি পাতা",
+       "id": "3195acb412712d2c1c19"
+      }
+     ]
     },
     {
      "id": "branches",
      "label": "ডালপালা",
-     "gloss": "branches"
+     "gloss": "branches",
+     "collocations": [
+      {
+       "text": "শুকনা ডালপালা",
+       "id": "7b4582f4cab5aa1f1fb1"
+      }
+     ]
     }
    ],
    "questions": [
@@ -2784,32 +4908,68 @@ window.PTB_DECK = {
     {
      "id": "carrot",
      "label": "গাজর",
-     "gloss": "carrot"
+     "gloss": "carrot",
+     "collocations": [
+      {
+       "text": "কাঁচা গাজর",
+       "id": "5ccaa4fdc094f3cc5f4f"
+      }
+     ]
     },
     {
      "id": "radish",
      "label": "মুলা",
-     "gloss": "white radish"
+     "gloss": "white radish",
+     "collocations": [
+      {
+       "text": "মুলার ভর্তা",
+       "id": "71ccab5567c3812caf08"
+      }
+     ]
     },
     {
      "id": "pumpkin",
      "label": "কুমড়া",
-     "gloss": "pumpkin"
+     "gloss": "pumpkin",
+     "collocations": [
+      {
+       "text": "মিষ্টি কুমড়া",
+       "id": "a109585be939957f3c10"
+      }
+     ]
     },
     {
      "id": "bottle-gourd",
      "label": "লাউ",
-     "gloss": "bottle gourd"
+     "gloss": "bottle gourd",
+     "collocations": [
+      {
+       "text": "লাউয়ের তরকারি",
+       "id": "d3db481e703a4d4ef306"
+      }
+     ]
     },
     {
      "id": "yardlong-bean",
      "label": "বরবটি",
-     "gloss": "yardlong bean"
+     "gloss": "yardlong bean",
+     "collocations": [
+      {
+       "text": "বরবটি ভাজি",
+       "id": "4e5ba207926374d16943"
+      }
+     ]
     },
     {
      "id": "hyacinth-bean",
      "label": "শিম",
-     "gloss": "flat hyacinth bean"
+     "gloss": "flat hyacinth bean",
+     "collocations": [
+      {
+       "text": "শিমের বিচি",
+       "id": "68624a02b30d318e483a"
+      }
+     ]
     }
    ],
    "questions": [
@@ -2831,32 +4991,68 @@ window.PTB_DECK = {
     {
      "id": "car",
      "label": "গাড়ি",
-     "gloss": "passenger car"
+     "gloss": "passenger car",
+     "collocations": [
+      {
+       "text": "গাড়িতে উঠুন",
+       "id": "fb523324a7ba3eca4cff"
+      }
+     ]
     },
     {
      "id": "airplane",
      "label": "বিমান",
-     "gloss": "airplane"
+     "gloss": "airplane",
+     "collocations": [
+      {
+       "text": "বিমান উড়ছে",
+       "id": "f2356eb1f372c8cd7e76"
+      }
+     ]
     },
     {
      "id": "ship",
      "label": "জাহাজ",
-     "gloss": "ship"
+     "gloss": "ship",
+     "collocations": [
+      {
+       "text": "নদীতে জাহাজ চলে",
+       "id": "1e5c888f92d7d21b864d"
+      }
+     ]
     },
     {
      "id": "raft",
      "label": "ভেলা",
-     "gloss": "raft"
+     "gloss": "raft",
+     "collocations": [
+      {
+       "text": "বাঁশের ভেলা",
+       "id": "bf0cd73f9990ac38c978"
+      }
+     ]
     },
     {
      "id": "handcart",
      "label": "ঠেলাগাড়ি",
-     "gloss": "handcart"
+     "gloss": "handcart",
+     "collocations": [
+      {
+       "text": "ঠেলাগাড়িতে মাল তোলেন",
+       "id": "c2730d1fabd8ca01b2ce"
+      }
+     ]
     },
     {
      "id": "oxcart",
      "label": "গরুর গাড়ি",
-     "gloss": "oxcart"
+     "gloss": "oxcart",
+     "collocations": [
+      {
+       "text": "গরুর গাড়িতে খড়",
+       "id": "548bea34606bd9b84196"
+      }
+     ]
     }
    ],
    "questions": [
@@ -2878,32 +5074,68 @@ window.PTB_DECK = {
     {
      "id": "kitchen",
      "label": "রান্নাঘর",
-     "gloss": "kitchen room"
+     "gloss": "kitchen room",
+     "collocations": [
+      {
+       "text": "রান্নাঘরে রান্না করি",
+       "id": "3ed1795ca6ad4a72f8fe"
+      }
+     ]
     },
     {
      "id": "bedroom",
      "label": "শোবার ঘর",
-     "gloss": "bedroom"
+     "gloss": "bedroom",
+     "collocations": [
+      {
+       "text": "শোবার ঘরে খাট",
+       "id": "50f91404f5e0877bfe27"
+      }
+     ]
     },
     {
      "id": "living-room",
      "label": "বসার ঘর",
-     "gloss": "sitting room"
+     "gloss": "sitting room",
+     "collocations": [
+      {
+       "text": "বসার ঘরে বসুন",
+       "id": "96f3e328ad3b3c3313d8"
+      }
+     ]
     },
     {
      "id": "dining-room",
      "label": "খাবার ঘর",
-     "gloss": "dining room"
+     "gloss": "dining room",
+     "collocations": [
+      {
+       "text": "খাবার ঘরে আসুন",
+       "id": "c8ca45643f581bd32801"
+      }
+     ]
     },
     {
      "id": "bathing-room",
      "label": "গোসলখানা",
-     "gloss": "bathing room"
+     "gloss": "bathing room",
+     "collocations": [
+      {
+       "text": "গোসলখানায় পানি আছে",
+       "id": "786a84a9822fc741fbcb"
+      }
+     ]
     },
     {
      "id": "courtyard",
      "label": "উঠান",
-     "gloss": "household courtyard"
+     "gloss": "household courtyard",
+     "collocations": [
+      {
+       "text": "উঠান ঝাড়ু দিন",
+       "id": "53f39349377357750ab2"
+      }
+     ]
     }
    ],
    "questions": [
@@ -2925,32 +5157,68 @@ window.PTB_DECK = {
     {
      "id": "letter",
      "label": "চিঠি",
-     "gloss": "written letter"
+     "gloss": "written letter",
+     "collocations": [
+      {
+       "text": "চিঠি লিখুন",
+       "id": "9e04ebc0e1fb974d68f1"
+      }
+     ]
     },
     {
      "id": "small-note",
      "label": "চিরকুট",
-     "gloss": "small written note"
+     "gloss": "small written note",
+     "collocations": [
+      {
+       "text": "চিরকুট রেখে গেলেন",
+       "id": "ea38fe41b152db91873c"
+      }
+     ]
     },
     {
      "id": "identity-card",
      "label": "পরিচয়পত্র",
-     "gloss": "identity document card"
+     "gloss": "identity document card",
+     "collocations": [
+      {
+       "text": "পরিচয়পত্র দেখান",
+       "id": "216493aaeb0e3d8541db"
+      }
+     ]
     },
     {
      "id": "portrait-photo",
      "label": "ছবি",
-     "gloss": "printed photograph"
+     "gloss": "printed photograph",
+     "collocations": [
+      {
+       "text": "একটা ছবি তুলুন",
+       "id": "5a439363fc970d7d1fcf"
+      }
+     ]
     },
     {
      "id": "signature",
      "label": "সই",
-     "gloss": "signature"
+     "gloss": "signature",
+     "collocations": [
+      {
+       "text": "নিচে সই করুন",
+       "id": "e0fc2c72a90b72f09200"
+      }
+     ]
     },
     {
      "id": "impression",
      "label": "ছাপ",
-     "gloss": "fingerprint impression"
+     "gloss": "fingerprint impression",
+     "collocations": [
+      {
+       "text": "আঙুলের ছাপ",
+       "id": "32a3f8b0d883177bf6c0"
+      }
+     ]
     }
    ],
    "questions": [
@@ -2972,32 +5240,68 @@ window.PTB_DECK = {
     {
      "id": "tap",
      "label": "কল",
-     "gloss": "water tap"
+     "gloss": "water tap",
+     "collocations": [
+      {
+       "text": "কল খুলে দিন",
+       "id": "82eca962f1a73e1e04a5"
+      }
+     ]
     },
     {
      "id": "pipe",
      "label": "নল",
-     "gloss": "water pipe"
+     "gloss": "water pipe",
+     "collocations": [
+      {
+       "text": "নল দিয়ে পানি যায়",
+       "id": "5bfb4d4a03af6e4508a6"
+      }
+     ]
     },
     {
      "id": "handpump",
      "label": "নলকূপ",
-     "gloss": "tube well hand pump"
+     "gloss": "tube well hand pump",
+     "collocations": [
+      {
+       "text": "নলকূপ থেকে পানি তোলেন",
+       "id": "c81f3d1ab42e0da51187"
+      }
+     ]
     },
     {
      "id": "well",
      "label": "কুয়া",
-     "gloss": "draw well"
+     "gloss": "draw well",
+     "collocations": [
+      {
+       "text": "কুয়ার পানি",
+       "id": "07b0c36db5413aa7c2db"
+      }
+     ]
     },
     {
      "id": "water-jar",
      "label": "কলসি",
-     "gloss": "earthen water jar"
+     "gloss": "earthen water jar",
+     "collocations": [
+      {
+       "text": "মাটির কলসি",
+       "id": "300c8a0c1e41d07c1f77"
+      }
+     ]
     },
     {
      "id": "strainer",
      "label": "ছাঁকনি",
-     "gloss": "fine strainer"
+     "gloss": "fine strainer",
+     "collocations": [
+      {
+       "text": "ছাঁকনি দিয়ে ছেঁকে নিন",
+       "id": "78fa5b7b74a9507de234"
+      }
+     ]
     }
    ],
    "questions": [
@@ -3019,32 +5323,68 @@ window.PTB_DECK = {
     {
      "id": "shawl",
      "label": "চাদর",
-     "gloss": "warm shawl"
+     "gloss": "warm shawl",
+     "collocations": [
+      {
+       "text": "গায়ে চাদর দিন",
+       "id": "49bc3b06290613e541cd"
+      }
+     ]
     },
     {
      "id": "quilt",
      "label": "কাঁথা",
-     "gloss": "stitched quilt"
+     "gloss": "stitched quilt",
+     "collocations": [
+      {
+       "text": "কাঁথা গায়ে দিন",
+       "id": "ad23156f0aec5bc7d4b7"
+      }
+     ]
     },
     {
      "id": "blanket",
      "label": "কম্বল",
-     "gloss": "thick blanket"
+     "gloss": "thick blanket",
+     "collocations": [
+      {
+       "text": "মোটা কম্বল",
+       "id": "581d91bbfb2d6b8fe167"
+      }
+     ]
     },
     {
      "id": "warm-top",
      "label": "গরম জামা",
-     "gloss": "warm upper garment"
+     "gloss": "warm upper garment",
+     "collocations": [
+      {
+       "text": "গরম জামা পরুন",
+       "id": "02b7b809e16de6145d0f"
+      }
+     ]
     },
     {
      "id": "gloves",
      "label": "হাতমোজা",
-     "gloss": "gloves"
+     "gloss": "gloves",
+     "collocations": [
+      {
+       "text": "হাতে হাতমোজা",
+       "id": "7ab388c4767eda6abe51"
+      }
+     ]
     },
     {
      "id": "winter-cap",
      "label": "পশমি টুপি",
-     "gloss": "knit winter hat"
+     "gloss": "knit winter hat",
+     "collocations": [
+      {
+       "text": "পশমি টুপি পরে নিন",
+       "id": "4421673e2be0628720c0"
+      }
+     ]
     }
    ],
    "questions": [
@@ -3066,32 +5406,68 @@ window.PTB_DECK = {
     {
      "id": "near",
      "label": "কাছে",
-     "gloss": "near"
+     "gloss": "near",
+     "collocations": [
+      {
+       "text": "বাসার কাছেই",
+       "id": "d5c8649de6501d6511c0"
+      }
+     ]
     },
     {
      "id": "far",
      "label": "দূরে",
-     "gloss": "far"
+     "gloss": "far",
+     "collocations": [
+      {
+       "text": "অনেক দূরে",
+       "id": "2e71c03dc86b4767d6a2"
+      }
+     ]
     },
     {
      "id": "straight",
      "label": "সোজা",
-     "gloss": "straight"
+     "gloss": "straight",
+     "collocations": [
+      {
+       "text": "সোজা সামনে যান",
+       "id": "6d65f3f31c9495083e31"
+      }
+     ]
     },
     {
      "id": "curved",
      "label": "বাঁকা",
-     "gloss": "curved"
+     "gloss": "curved",
+     "collocations": [
+      {
+       "text": "বাঁকা রাস্তা",
+       "id": "cb709b48dd18f36d48f4"
+      }
+     ]
     },
     {
      "id": "steep",
      "label": "খাড়া",
-     "gloss": "steep incline"
+     "gloss": "steep incline",
+     "collocations": [
+      {
+       "text": "খাড়া পথ",
+       "id": "f9233a71c37b47fd7537"
+      }
+     ]
     },
     {
      "id": "sloping",
      "label": "ঢালু",
-     "gloss": "gently sloping"
+     "gloss": "gently sloping",
+     "collocations": [
+      {
+       "text": "ঢালু রাস্তায় নামুন",
+       "id": "9898ef7892758ab7dcdd"
+      }
+     ]
     }
    ],
    "questions": [
@@ -3113,32 +5489,68 @@ window.PTB_DECK = {
     {
      "id": "yogurt",
      "label": "দই",
-     "gloss": "yogurt"
+     "gloss": "yogurt",
+     "collocations": [
+      {
+       "text": "টক দই",
+       "id": "cacff59da5f85b83034f"
+      }
+     ]
     },
     {
      "id": "rice-pudding",
      "label": "পায়েস",
-     "gloss": "rice pudding"
+     "gloss": "rice pudding",
+     "collocations": [
+      {
+       "text": "দুধের পায়েস",
+       "id": "3eec1f59941192d3fba5"
+      }
+     ]
     },
     {
      "id": "butter",
      "label": "মাখন",
-     "gloss": "butter"
+     "gloss": "butter",
+     "collocations": [
+      {
+       "text": "রুটিতে মাখন মাখান",
+       "id": "abe1cfaa3fa421a49ed3"
+      }
+     ]
     },
     {
      "id": "milk-skin",
      "label": "দুধের সর",
-     "gloss": "milk skin"
+     "gloss": "milk skin",
+     "collocations": [
+      {
+       "text": "দুধের সর তুলে নিন",
+       "id": "1ff3df9943339c3a6dd7"
+      }
+     ]
     },
     {
      "id": "paneer",
      "label": "পনির",
-     "gloss": "paneer cheese"
+     "gloss": "paneer cheese",
+     "collocations": [
+      {
+       "text": "পনিরের টুকরা",
+       "id": "471e9a839e6507d52710"
+      }
+     ]
     },
     {
      "id": "fresh-curds",
      "label": "ছানা",
-     "gloss": "crumbled fresh milk curds"
+     "gloss": "crumbled fresh milk curds",
+     "collocations": [
+      {
+       "text": "দুধ কেটে ছানা হয়েছে",
+       "id": "1ac7de364f27a88b4f5f"
+      }
+     ]
     }
    ],
    "questions": [
@@ -3160,32 +5572,68 @@ window.PTB_DECK = {
     {
      "id": "handkerchief",
      "label": "রুমাল",
-     "gloss": "handkerchief"
+     "gloss": "handkerchief",
+     "collocations": [
+      {
+       "text": "রুমাল দিয়ে মুখ মুছুন",
+       "id": "2b2733d09413795a8063"
+      }
+     ]
     },
     {
      "id": "miswak",
      "label": "মিসওয়াক",
-     "gloss": "tooth-cleaning twig"
+     "gloss": "tooth-cleaning twig",
+     "collocations": [
+      {
+       "text": "মিসওয়াক দিয়ে দাঁত মাজেন",
+       "id": "e1996e49045a6dac9099"
+      }
+     ]
     },
     {
      "id": "kohl",
      "label": "সুরমা",
-     "gloss": "kohl powder"
+     "gloss": "kohl powder",
+     "collocations": [
+      {
+       "text": "চোখে সুরমা",
+       "id": "a9085252f04844950b9e"
+      }
+     ]
     },
     {
      "id": "henna",
      "label": "মেহেদি",
-     "gloss": "henna dye"
+     "gloss": "henna dye",
+     "collocations": [
+      {
+       "text": "হাতে মেহেদি",
+       "id": "3b5750cffaf648daa03e"
+      }
+     ]
     },
     {
      "id": "nail-clipper",
      "label": "নখ কাটার যন্ত্র",
-     "gloss": "nail clipper"
+     "gloss": "nail clipper",
+     "collocations": [
+      {
+       "text": "নখ কাটার যন্ত্রটা দিন",
+       "id": "d5a8e9bb21d3ef59d855"
+      }
+     ]
     },
     {
      "id": "barber-razor",
      "label": "ক্ষুর",
-     "gloss": "traditional barber razor"
+     "gloss": "traditional barber razor",
+     "collocations": [
+      {
+       "text": "ক্ষুর দিয়ে দাড়ি কামান",
+       "id": "3e2cc2c4c6e41c92d432"
+      }
+     ]
     }
    ],
    "questions": [
@@ -3207,32 +5655,68 @@ window.PTB_DECK = {
     {
      "id": "groom",
      "label": "বর",
-     "gloss": "groom"
+     "gloss": "groom",
+     "collocations": [
+      {
+       "text": "বর এসেছেন",
+       "id": "ad948761f6d2d7529f99"
+      }
+     ]
     },
     {
      "id": "bride",
      "label": "কনে",
-     "gloss": "bride"
+     "gloss": "bride",
+     "collocations": [
+      {
+       "text": "কনের সাজ",
+       "id": "fd45a261d053b567360d"
+      }
+     ]
     },
     {
      "id": "guest",
      "label": "অতিথি",
-     "gloss": "guest"
+     "gloss": "guest",
+     "collocations": [
+      {
+       "text": "অতিথি এসেছেন",
+       "id": "a9fbdd20373669f82a84"
+      }
+     ]
     },
     {
      "id": "invitation",
      "label": "দাওয়াত",
-     "gloss": "written invitation"
+     "gloss": "written invitation",
+     "collocations": [
+      {
+       "text": "বিয়ের দাওয়াত",
+       "id": "5854e64c172ed0dc7f63"
+      }
+     ]
     },
     {
      "id": "bouquet",
      "label": "ফুলের তোড়া",
-     "gloss": "flower bouquet"
+     "gloss": "flower bouquet",
+     "collocations": [
+      {
+       "text": "ফুলের তোড়া দিলেন",
+       "id": "a50b55c89bf2a2d3e00b"
+      }
+     ]
     },
     {
      "id": "flower-garland",
      "label": "ফুলের মালা",
-     "gloss": "flower garland"
+     "gloss": "flower garland",
+     "collocations": [
+      {
+       "text": "গলায় ফুলের মালা",
+       "id": "3de4ed87dd405a934c68"
+      }
+     ]
     }
    ],
    "questions": [
@@ -3254,32 +5738,68 @@ window.PTB_DECK = {
     {
      "id": "crow",
      "label": "কাক",
-     "gloss": "house crow"
+     "gloss": "house crow",
+     "collocations": [
+      {
+       "text": "কাক ডাকছে",
+       "id": "d3f3fe6dbdd1e7a681c1"
+      }
+     ]
     },
     {
      "id": "pigeon",
      "label": "কবুতর",
-     "gloss": "domestic pigeon"
+     "gloss": "domestic pigeon",
+     "collocations": [
+      {
+       "text": "কবুতর উড়ছে",
+       "id": "de742c76b64a4577c1e8"
+      }
+     ]
     },
     {
      "id": "sparrow",
      "label": "চড়ুই",
-     "gloss": "house sparrow"
+     "gloss": "house sparrow",
+     "collocations": [
+      {
+       "text": "চড়ুইয়ের বাসা",
+       "id": "02483bb7a8d9b41b9627"
+      }
+     ]
     },
     {
      "id": "myna",
      "label": "শালিক",
-     "gloss": "common myna"
+     "gloss": "common myna",
+     "collocations": [
+      {
+       "text": "শালিকটা ডালে বসেছে",
+       "id": "3d767b7319778877a14a"
+      }
+     ]
     },
     {
      "id": "egret",
      "label": "বক",
-     "gloss": "egret"
+     "gloss": "egret",
+     "collocations": [
+      {
+       "text": "সাদা বক",
+       "id": "2a417f23b8cf635b38f7"
+      }
+     ]
     },
     {
      "id": "owl",
      "label": "পেঁচা",
-     "gloss": "owl"
+     "gloss": "owl",
+     "collocations": [
+      {
+       "text": "রাতে পেঁচা ডাকে",
+       "id": "aeb6c84b5830226f9318"
+      }
+     ]
     }
    ],
    "questions": [
@@ -3301,32 +5821,68 @@ window.PTB_DECK = {
     {
      "id": "mosquito-net",
      "label": "মশারি",
-     "gloss": "mosquito net"
+     "gloss": "mosquito net",
+     "collocations": [
+      {
+       "text": "মশারি টানান",
+       "id": "ca140f514b69c9e8f102"
+      }
+     ]
     },
     {
      "id": "curtain",
      "label": "পর্দা",
-     "gloss": "curtain"
+     "gloss": "curtain",
+     "collocations": [
+      {
+       "text": "পর্দা সরান",
+       "id": "9ad33f7aa0853b995d61"
+      }
+     ]
     },
     {
      "id": "floor-mat",
      "label": "চাটাই",
-     "gloss": "woven floor mat"
+     "gloss": "woven floor mat",
+     "collocations": [
+      {
+       "text": "মেঝেতে চাটাই",
+       "id": "9b8049432013bf9f28fb"
+      }
+     ]
     },
     {
      "id": "mattress",
      "label": "তোশক",
-     "gloss": "mattress"
+     "gloss": "mattress",
+     "collocations": [
+      {
+       "text": "খাটে তোশক বিছান",
+       "id": "08a03e8fb07540164971"
+      }
+     ]
     },
     {
      "id": "shelf",
      "label": "তাক",
-     "gloss": "shelf unit"
+     "gloss": "shelf unit",
+     "collocations": [
+      {
+       "text": "তাকে বই রাখুন",
+       "id": "0af989770017bb00c290"
+      }
+     ]
     },
     {
      "id": "clothing-rack",
      "label": "আলনা",
-     "gloss": "open clothing rack"
+     "gloss": "open clothing rack",
+     "collocations": [
+      {
+       "text": "আলনায় কাপড় রাখুন",
+       "id": "7c97c6d3db06919c5da3"
+      }
+     ]
     }
    ],
    "questions": [
@@ -3348,32 +5904,68 @@ window.PTB_DECK = {
     {
      "id": "flute",
      "label": "বাঁশি",
-     "gloss": "bamboo flute"
+     "gloss": "bamboo flute",
+     "collocations": [
+      {
+       "text": "বাঁশির সুর",
+       "id": "637938c7947d8cc41002"
+      }
+     ]
     },
     {
      "id": "ektara",
      "label": "একতারা",
-     "gloss": "one-string lute"
+     "gloss": "one-string lute",
+     "collocations": [
+      {
+       "text": "একতারার তার",
+       "id": "d1a9880796b7f12147df"
+      }
+     ]
     },
     {
      "id": "dhol",
      "label": "ঢোল",
-     "gloss": "Bangladeshi barrel drum"
+     "gloss": "Bangladeshi barrel drum",
+     "collocations": [
+      {
+       "text": "ঢোল বাজছে",
+       "id": "fe3d3f7682bb5223f584"
+      }
+     ]
     },
     {
      "id": "tabla",
      "label": "তবলা",
-     "gloss": "tabla pair"
+     "gloss": "tabla pair",
+     "collocations": [
+      {
+       "text": "তবলায় তাল দেন",
+       "id": "4346296fdfb96d02e927"
+      }
+     ]
     },
     {
      "id": "bell",
      "label": "ঘণ্টা",
-     "gloss": "hand bell"
+     "gloss": "hand bell",
+     "collocations": [
+      {
+       "text": "ঘণ্টা বাজল",
+       "id": "1fb426ed47c1b0b0e0f8"
+      }
+     ]
     },
     {
      "id": "cymbals",
      "label": "করতাল",
-     "gloss": "hand cymbal pair"
+     "gloss": "hand cymbal pair",
+     "collocations": [
+      {
+       "text": "করতাল বাজান",
+       "id": "08fb3e11e2bc865abc0d"
+      }
+     ]
     }
    ],
    "questions": [
@@ -3395,32 +5987,68 @@ window.PTB_DECK = {
     {
      "id": "summer",
      "label": "গরমকাল",
-     "gloss": "summer season"
+     "gloss": "summer season",
+     "collocations": [
+      {
+       "text": "গরমকালে ঘাম হয়",
+       "id": "17ad101d0ff837aac71e"
+      }
+     ]
     },
     {
      "id": "monsoon",
      "label": "বর্ষাকাল",
-     "gloss": "monsoon season"
+     "gloss": "monsoon season",
+     "collocations": [
+      {
+       "text": "বর্ষাকালে রোজ বৃষ্টি",
+       "id": "8b4a016d906702331628"
+      }
+     ]
     },
     {
      "id": "autumn",
      "label": "শরৎকাল",
-     "gloss": "autumn season in Bangladesh"
+     "gloss": "autumn season in Bangladesh",
+     "collocations": [
+      {
+       "text": "শরৎকালে কাশফুল ফোটে",
+       "id": "aa7c551f250474c8acb0"
+      }
+     ]
     },
     {
      "id": "late-autumn",
      "label": "হেমন্তকাল",
-     "gloss": "late autumn harvest season"
+     "gloss": "late autumn harvest season",
+     "collocations": [
+      {
+       "text": "হেমন্তকালে ধান পাকে",
+       "id": "19b8445a7f880be1f746"
+      }
+     ]
     },
     {
      "id": "winter",
      "label": "শীতকাল",
-     "gloss": "winter season"
+     "gloss": "winter season",
+     "collocations": [
+      {
+       "text": "শীতকালে কুয়াশা পড়ে",
+       "id": "f3ecc01e304422a3560d"
+      }
+     ]
     },
     {
      "id": "spring",
      "label": "বসন্তকাল",
-     "gloss": "spring season"
+     "gloss": "spring season",
+     "collocations": [
+      {
+       "text": "বসন্তকালে ফুল ফোটে",
+       "id": "e154f6b448316e6598fa"
+      }
+     ]
     }
    ],
    "questions": [
@@ -3442,32 +6070,68 @@ window.PTB_DECK = {
     {
      "id": "paintbrush",
      "label": "তুলি",
-     "gloss": "artist brush"
+     "gloss": "artist brush",
+     "collocations": [
+      {
+       "text": "তুলিতে রং নিন",
+       "id": "c6fb70730174af4d523c"
+      }
+     ]
     },
     {
      "id": "ink",
      "label": "কালি",
-     "gloss": "drawing ink"
+     "gloss": "drawing ink",
+     "collocations": [
+      {
+       "text": "কালির দাগ",
+       "id": "e1e6501682d2bd164e21"
+      }
+     ]
     },
     {
      "id": "chalk",
      "label": "খড়ি",
-     "gloss": "writing chalk"
+     "gloss": "writing chalk",
+     "collocations": [
+      {
+       "text": "খড়ি দিয়ে আঁকুন",
+       "id": "81855c4466b3df47a1f5"
+      }
+     ]
     },
     {
      "id": "wax-crayon",
      "label": "মোমরং",
-     "gloss": "wax drawing crayon"
+     "gloss": "wax drawing crayon",
+     "collocations": [
+      {
+       "text": "মোমরং দিয়ে রং করুন",
+       "id": "4c4e86b40c7505a5e759"
+      }
+     ]
     },
     {
      "id": "palette",
      "label": "রং মেশানোর থালা",
-     "gloss": "paint-mixing palette"
+     "gloss": "paint-mixing palette",
+     "collocations": [
+      {
+       "text": "রং মেশানোর থালায় পানি দিন",
+       "id": "7087d38d1d33ce52d1f2"
+      }
+     ]
     },
     {
      "id": "paint-box",
      "label": "রঙের বাক্স",
-     "gloss": "small paint box"
+     "gloss": "small paint box",
+     "collocations": [
+      {
+       "text": "রঙের বাক্স খুলুন",
+       "id": "0dac6ee6132a2bcc26d9"
+      }
+     ]
     }
    ],
    "questions": [
@@ -3489,32 +6153,68 @@ window.PTB_DECK = {
     {
      "id": "paddy",
      "label": "ধান",
-     "gloss": "paddy stalk"
+     "gloss": "paddy stalk",
+     "collocations": [
+      {
+       "text": "পাকা ধান",
+       "id": "865cb625c4affc6ac183"
+      }
+     ]
     },
     {
      "id": "field",
      "label": "খেত",
-     "gloss": "cultivated field"
+     "gloss": "cultivated field",
+     "collocations": [
+      {
+       "text": "ধানের খেত",
+       "id": "b62eac6a4de1bcaaea50"
+      }
+     ]
     },
     {
      "id": "straw",
      "label": "খড়",
-     "gloss": "rice straw"
+     "gloss": "rice straw",
+     "collocations": [
+      {
+       "text": "খড়ের গাদা",
+       "id": "be494e4e92355a5d45be"
+      }
+     ]
     },
     {
      "id": "cow-dung",
      "label": "গোবর",
-     "gloss": "dried cow dung pat"
+     "gloss": "dried cow dung pat",
+     "collocations": [
+      {
+       "text": "গরুর গোবর",
+       "id": "8b1a939d36dd3156e83a"
+      }
+     ]
     },
     {
      "id": "sickle",
      "label": "কাস্তে",
-     "gloss": "sickle"
+     "gloss": "sickle",
+     "collocations": [
+      {
+       "text": "কাস্তে দিয়ে ধান কাটেন",
+       "id": "8606ac71cee2ede806fb"
+      }
+     ]
     },
     {
      "id": "plow",
      "label": "লাঙল",
-     "gloss": "plough"
+     "gloss": "plough",
+     "collocations": [
+      {
+       "text": "লাঙল দিয়ে জমি চাষ করেন",
+       "id": "699973ae315f0c1a5442"
+      }
+     ]
     }
    ],
    "questions": [
@@ -3536,32 +6236,68 @@ window.PTB_DECK = {
     {
      "id": "in-front",
      "label": "সামনে",
-     "gloss": "in front of"
+     "gloss": "in front of",
+     "collocations": [
+      {
+       "text": "আমার সামনে রাখুন",
+       "id": "11818f0df65465a0ad42"
+      }
+     ]
     },
     {
      "id": "beside",
      "label": "পাশে",
-     "gloss": "beside"
+     "gloss": "beside",
+     "collocations": [
+      {
+       "text": "পাশে এসে বসুন",
+       "id": "b282e95e6e780cab07e2"
+      }
+     ]
     },
     {
      "id": "around",
      "label": "চারপাশে",
-     "gloss": "all around"
+     "gloss": "all around",
+     "collocations": [
+      {
+       "text": "ঘরের চারপাশে",
+       "id": "0aee9276453ce99abe66"
+      }
+     ]
     },
     {
      "id": "in-a-row",
      "label": "সারিতে",
-     "gloss": "in a row"
+     "gloss": "in a row",
+     "collocations": [
+      {
+       "text": "সারিতে দাঁড়ান",
+       "id": "7700a8ec2b209bf77a36"
+      }
+     ]
     },
     {
      "id": "crosswise",
      "label": "আড়াআড়ি",
-     "gloss": "crosswise"
+     "gloss": "crosswise",
+     "collocations": [
+      {
+       "text": "আড়াআড়ি রাখুন",
+       "id": "82973f3adfb427594c02"
+      }
+     ]
     },
     {
      "id": "lengthwise",
      "label": "লম্বালম্বি",
-     "gloss": "lengthwise"
+     "gloss": "lengthwise",
+     "collocations": [
+      {
+       "text": "লম্বালম্বি রাখুন",
+       "id": "2a9c97850bb408dc0e19"
+      }
+     ]
     }
    ],
    "questions": [
@@ -3583,32 +6319,68 @@ window.PTB_DECK = {
     {
      "id": "sweep-floor",
      "label": "ঝাড়ু দেওয়া",
-     "gloss": "to sweep a floor"
+     "gloss": "to sweep a floor",
+     "collocations": [
+      {
+       "text": "ঘরে ঝাড়ু দিন",
+       "id": "5cab5a7ebffdf7feaa86"
+      }
+     ]
     },
     {
      "id": "throw-away-trash",
      "label": "ময়লা ফেলা",
-     "gloss": "to throw rubbish away"
+     "gloss": "to throw rubbish away",
+     "collocations": [
+      {
+       "text": "ময়লা বাইরে ফেলুন",
+       "id": "b898ad6342c0320f5d5e"
+      }
+     ]
     },
     {
      "id": "wash-dishes",
      "label": "বাসন মাজা",
-     "gloss": "to scrub dishes"
+     "gloss": "to scrub dishes",
+     "collocations": [
+      {
+       "text": "বাসন মেজে রাখুন",
+       "id": "2501d169f8d850863e57"
+      }
+     ]
     },
     {
      "id": "wash-clothes",
      "label": "কাপড় কাচা",
-     "gloss": "to wash clothes by hand"
+     "gloss": "to wash clothes by hand",
+     "collocations": [
+      {
+       "text": "সাবান দিয়ে কাপড় কাচুন",
+       "id": "9a7c6a65c63903068aa2"
+      }
+     ]
     },
     {
      "id": "dry-clothes",
      "label": "কাপড় শুকানো",
-     "gloss": "to dry clothes on a line"
+     "gloss": "to dry clothes on a line",
+     "collocations": [
+      {
+       "text": "রোদে কাপড় শুকান",
+       "id": "68b525acb2850032f824"
+      }
+     ]
     },
     {
      "id": "make-bed",
      "label": "বিছানা পাতা",
-     "gloss": "to spread out bedding"
+     "gloss": "to spread out bedding",
+     "collocations": [
+      {
+       "text": "বিছানা পেতে দিন",
+       "id": "9a46576ca60fd5f6310a"
+      }
+     ]
     }
    ],
    "questions": [
@@ -3630,32 +6402,68 @@ window.PTB_DECK = {
     {
      "id": "taste-sweet",
      "label": "মিষ্টি",
-     "gloss": "sweet tasting"
+     "gloss": "sweet tasting",
+     "collocations": [
+      {
+       "text": "মিষ্টি আম",
+       "id": "1d3926c611cf75defed1"
+      }
+     ]
     },
     {
      "id": "taste-sour",
      "label": "টক",
-     "gloss": "sour tasting"
+     "gloss": "sour tasting",
+     "collocations": [
+      {
+       "text": "টক দই খাই",
+       "id": "84b8a054d25d4eb47426"
+      }
+     ]
     },
     {
      "id": "taste-spicy",
      "label": "ঝাল",
-     "gloss": "chili hot"
+     "gloss": "chili hot",
+     "collocations": [
+      {
+       "text": "ঝাল মরিচ",
+       "id": "73160c13043c1bcd4db9"
+      }
+     ]
     },
     {
      "id": "taste-bitter",
      "label": "তেতো",
-     "gloss": "bitter tasting"
+     "gloss": "bitter tasting",
+     "collocations": [
+      {
+       "text": "তেতো স্বাদ",
+       "id": "699b55533669c887bc27"
+      }
+     ]
     },
     {
      "id": "taste-salty",
      "label": "নোনতা",
-     "gloss": "salty tasting"
+     "gloss": "salty tasting",
+     "collocations": [
+      {
+       "text": "নোনতা পানি",
+       "id": "9746f2ae2a79e72d3b6f"
+      }
+     ]
     },
     {
      "id": "taste-bland",
      "label": "পানসে",
-     "gloss": "bland tasting"
+     "gloss": "bland tasting",
+     "collocations": [
+      {
+       "text": "ডালটা পানসে হয়েছে",
+       "id": "c4279181a1a84c797ce0"
+      }
+     ]
     }
    ],
    "questions": [
@@ -3677,32 +6485,68 @@ window.PTB_DECK = {
     {
      "id": "guava",
      "label": "পেয়ারা",
-     "gloss": "guava"
+     "gloss": "guava",
+     "collocations": [
+      {
+       "text": "কাঁচা পেয়ারা",
+       "id": "5680087c499c5b2da2d1"
+      }
+     ]
     },
     {
      "id": "java-plum",
      "label": "জাম",
-     "gloss": "java plum"
+     "gloss": "java plum",
+     "collocations": [
+      {
+       "text": "কালো জাম",
+       "id": "ff734792d11c078f47c6"
+      }
+     ]
     },
     {
      "id": "lychee",
      "label": "লিচু",
-     "gloss": "lychee"
+     "gloss": "lychee",
+     "collocations": [
+      {
+       "text": "রসালো লিচু",
+       "id": "6d27e1e5613f1b4aa478"
+      }
+     ]
     },
     {
      "id": "hog-plum",
      "label": "আমড়া",
-     "gloss": "hog plum"
+     "gloss": "hog plum",
+     "collocations": [
+      {
+       "text": "টক আমড়া",
+       "id": "2278b933109759e7ad1d"
+      }
+     ]
     },
     {
      "id": "jujube",
      "label": "বরই",
-     "gloss": "Indian jujube"
+     "gloss": "Indian jujube",
+     "collocations": [
+      {
+       "text": "পাকা বরই",
+       "id": "0469401921d8fbc53aa6"
+      }
+     ]
     },
     {
      "id": "watermelon",
      "label": "তরমুজ",
-     "gloss": "watermelon"
+     "gloss": "watermelon",
+     "collocations": [
+      {
+       "text": "তরমুজের ফালি",
+       "id": "a205d54dd0b82b90d777"
+      }
+     ]
     }
    ],
    "questions": [
@@ -3724,32 +6568,68 @@ window.PTB_DECK = {
     {
      "id": "cinnamon",
      "label": "দারুচিনি",
-     "gloss": "cinnamon stick"
+     "gloss": "cinnamon stick",
+     "collocations": [
+      {
+       "text": "এক টুকরা দারুচিনি",
+       "id": "fa5eff97b0c75707a5f1"
+      }
+     ]
     },
     {
      "id": "cloves",
      "label": "লবঙ্গ",
-     "gloss": "cloves"
+     "gloss": "cloves",
+     "collocations": [
+      {
+       "text": "দুটো লবঙ্গ",
+       "id": "d60b1dea6add5f211196"
+      }
+     ]
     },
     {
      "id": "cardamom",
      "label": "এলাচ",
-     "gloss": "cardamom"
+     "gloss": "cardamom",
+     "collocations": [
+      {
+       "text": "এলাচের ঘ্রাণ",
+       "id": "6ae46ef74616b063ba6b"
+      }
+     ]
     },
     {
      "id": "peppercorn",
      "label": "গোলমরিচ",
-     "gloss": "black peppercorn"
+     "gloss": "black peppercorn",
+     "collocations": [
+      {
+       "text": "গোলমরিচ গুঁড়া",
+       "id": "b0469662512deaf09bb1"
+      }
+     ]
     },
     {
      "id": "bay-leaf",
      "label": "তেজপাতা",
-     "gloss": "bay leaf"
+     "gloss": "bay leaf",
+     "collocations": [
+      {
+       "text": "গোটা তেজপাতা",
+       "id": "640cdb9c492ec00df1ad"
+      }
+     ]
     },
     {
      "id": "fresh-turmeric",
      "label": "কাঁচা হলুদ",
-     "gloss": "fresh turmeric root"
+     "gloss": "fresh turmeric root",
+     "collocations": [
+      {
+       "text": "কাঁচা হলুদ বাটুন",
+       "id": "bb17bcfa43452d9029f3"
+      }
+     ]
     }
    ],
    "questions": [
@@ -3771,32 +6651,68 @@ window.PTB_DECK = {
     {
      "id": "shallow-fry",
      "label": "ভাজা",
-     "gloss": "to fry in oil"
+     "gloss": "to fry in oil",
+     "collocations": [
+      {
+       "text": "তেলে ভাজুন",
+       "id": "c94b3ffa3d1d3dcdfa7c"
+      }
+     ]
     },
     {
      "id": "boil-food",
      "label": "সেদ্ধ করা",
-     "gloss": "to boil solid food"
+     "gloss": "to boil solid food",
+     "collocations": [
+      {
+       "text": "পানিতে সেদ্ধ করুন",
+       "id": "a467968b45cf6cdd9944"
+      }
+     ]
     },
     {
      "id": "steam-food",
      "label": "ভাপ দেওয়া",
-     "gloss": "to steam food"
+     "gloss": "to steam food",
+     "collocations": [
+      {
+       "text": "ঢেকে ভাপ দিন",
+       "id": "83e5870faa945cfa4241"
+      }
+     ]
     },
     {
      "id": "boil-water",
      "label": "পানি ফুটানো",
-     "gloss": "to bring water to a boil"
+     "gloss": "to bring water to a boil",
+     "collocations": [
+      {
+       "text": "পানি ফুটিয়ে নিন",
+       "id": "9fc30e66349eea3cee71"
+      }
+     ]
     },
     {
      "id": "dry-toast",
      "label": "সেঁকা",
-     "gloss": "to toast on dry heat"
+     "gloss": "to toast on dry heat",
+     "collocations": [
+      {
+       "text": "আগুনে সেঁকে নিন",
+       "id": "8bc3d08eff3ea112c355"
+      }
+     ]
     },
     {
      "id": "slow-steam-pot",
      "label": "দম দেওয়া",
-     "gloss": "to finish cooking on low heat under a sealed lid"
+     "gloss": "to finish cooking on low heat under a sealed lid",
+     "collocations": [
+      {
+       "text": "অল্প আঁচে দম দিন",
+       "id": "1689eba60ebb6493095e"
+      }
+     ]
     }
    ],
    "questions": [
@@ -3818,32 +6734,68 @@ window.PTB_DECK = {
     {
      "id": "ilish",
      "label": "ইলিশ",
-     "gloss": "hilsa"
+     "gloss": "hilsa",
+     "collocations": [
+      {
+       "text": "সরিষা ইলিশ",
+       "id": "e07e10cc2927dedfcee8"
+      }
+     ]
     },
     {
      "id": "ruhu",
      "label": "রুই",
-     "gloss": "rohu carp"
+     "gloss": "rohu carp",
+     "collocations": [
+      {
+       "text": "রুই মাছের টুকরা",
+       "id": "efc63ee45cf7718060e8"
+      }
+     ]
     },
     {
      "id": "stinging-catfish",
      "label": "শিং মাছ",
-     "gloss": "stinging catfish"
+     "gloss": "stinging catfish",
+     "collocations": [
+      {
+       "text": "শিং মাছের ঝোল",
+       "id": "171c06de7f8bae3231fe"
+      }
+     ]
     },
     {
      "id": "climbing-perch",
      "label": "কই",
-     "gloss": "climbing perch"
+     "gloss": "climbing perch",
+     "collocations": [
+      {
+       "text": "কই মাছ ভাজা",
+       "id": "57973872655b59ebafe8"
+      }
+     ]
     },
     {
      "id": "prawn",
      "label": "চিংড়ি",
-     "gloss": "freshwater prawn"
+     "gloss": "freshwater prawn",
+     "collocations": [
+      {
+       "text": "চিংড়ির মালাইকারি",
+       "id": "8d7be9b2e4f3d05af2c0"
+      }
+     ]
     },
     {
      "id": "punti",
      "label": "পুঁটি",
-     "gloss": "small freshwater barb"
+     "gloss": "small freshwater barb",
+     "collocations": [
+      {
+       "text": "পুঁটি মাছ ভাজি",
+       "id": "6b0de3656a6db6d30bd9"
+      }
+     ]
     }
    ],
    "questions": [
@@ -3865,32 +6817,68 @@ window.PTB_DECK = {
     {
      "id": "brush-teeth",
      "label": "দাঁত মাজা",
-     "gloss": "to brush teeth"
+     "gloss": "to brush teeth",
+     "collocations": [
+      {
+       "text": "সকালে দাঁত মাজি",
+       "id": "e958192a6021225a2366"
+      }
+     ]
     },
     {
      "id": "shave-beard",
      "label": "দাড়ি কামানো",
-     "gloss": "to shave a beard"
+     "gloss": "to shave a beard",
+     "collocations": [
+      {
+       "text": "দাড়ি কামিয়ে নিন",
+       "id": "12ca08c7cf8482dd97d6"
+      }
+     ]
     },
     {
      "id": "comb-hair",
      "label": "চুল আঁচড়ানো",
-     "gloss": "to comb hair"
+     "gloss": "to comb hair",
+     "collocations": [
+      {
+       "text": "চিরুনি দিয়ে চুল আঁচড়ান",
+       "id": "9731497b41ec2f2b4dec"
+      }
+     ]
     },
     {
      "id": "cut-hair",
      "label": "চুল কাটা",
-     "gloss": "to cut hair"
+     "gloss": "to cut hair",
+     "collocations": [
+      {
+       "text": "চুল ছোট করে কাটুন",
+       "id": "c8eade9cb67c80edaf47"
+      }
+     ]
     },
     {
      "id": "bathe-body",
      "label": "গোসল করা",
-     "gloss": "to bathe"
+     "gloss": "to bathe",
+     "collocations": [
+      {
+       "text": "গোসল করে আসুন",
+       "id": "2dce4cf366257db9e854"
+      }
+     ]
     },
     {
      "id": "clip-nails",
      "label": "নখ কাটা",
-     "gloss": "to clip nails"
+     "gloss": "to clip nails",
+     "collocations": [
+      {
+       "text": "নখ ছোট করে কাটুন",
+       "id": "b16f5a17b3bca1544a75"
+      }
+     ]
     }
    ],
    "questions": [
@@ -3912,32 +6900,68 @@ window.PTB_DECK = {
     {
      "id": "neck",
      "label": "ঘাড়",
-     "gloss": "back of the neck"
+     "gloss": "back of the neck",
+     "collocations": [
+      {
+       "text": "ঘাড় ঘুরিয়ে দেখুন",
+       "id": "0bfe42705d5f6ed6eb14"
+      }
+     ]
     },
     {
      "id": "shoulder",
      "label": "কাঁধ",
-     "gloss": "shoulder"
+     "gloss": "shoulder",
+     "collocations": [
+      {
+       "text": "কাঁধে থলে",
+       "id": "4b27a6e3235b345bec4d"
+      }
+     ]
     },
     {
      "id": "elbow",
      "label": "কনুই",
-     "gloss": "elbow"
+     "gloss": "elbow",
+     "collocations": [
+      {
+       "text": "কনুই ভাঁজ করুন",
+       "id": "1a1b8bdde9fc36ee746b"
+      }
+     ]
     },
     {
      "id": "wrist",
      "label": "কবজি",
-     "gloss": "wrist"
+     "gloss": "wrist",
+     "collocations": [
+      {
+       "text": "কবজি ঘোরান",
+       "id": "e2c17f118f1edc45abc2"
+      }
+     ]
     },
     {
      "id": "knee",
      "label": "হাঁটু",
-     "gloss": "knee"
+     "gloss": "knee",
+     "collocations": [
+      {
+       "text": "হাঁটুতে ব্যথা",
+       "id": "afc68ff1616be96d46c6"
+      }
+     ]
     },
     {
      "id": "ankle",
      "label": "গোড়ালি",
-     "gloss": "ankle"
+     "gloss": "ankle",
+     "collocations": [
+      {
+       "text": "গোড়ালিতে ব্যথা",
+       "id": "7d60bf9dbe07240056a1"
+      }
+     ]
     }
    ],
    "questions": [
@@ -3959,32 +6983,68 @@ window.PTB_DECK = {
     {
      "id": "lips",
      "label": "ঠোঁট",
-     "gloss": "lips"
+     "gloss": "lips",
+     "collocations": [
+      {
+       "text": "ঠোঁট শুকিয়ে গেছে",
+       "id": "07350b68873bb5295c0d"
+      }
+     ]
     },
     {
      "id": "teeth",
      "label": "দাঁত",
-     "gloss": "teeth"
+     "gloss": "teeth",
+     "collocations": [
+      {
+       "text": "দাঁত বের করে হাসুন",
+       "id": "900e828c456495862092"
+      }
+     ]
     },
     {
      "id": "tongue",
      "label": "জিব",
-     "gloss": "tongue"
+     "gloss": "tongue",
+     "collocations": [
+      {
+       "text": "জিব দেখান",
+       "id": "d904595fcaf40084d166"
+      }
+     ]
     },
     {
      "id": "cheek",
      "label": "গাল",
-     "gloss": "cheek"
+     "gloss": "cheek",
+     "collocations": [
+      {
+       "text": "গালে হাত দিন",
+       "id": "ba01dc899566b2a94a75"
+      }
+     ]
     },
     {
      "id": "chin",
      "label": "থুতনি",
-     "gloss": "chin"
+     "gloss": "chin",
+     "collocations": [
+      {
+       "text": "থুতনিতে হাত রাখুন",
+       "id": "3e9ea2d340412f6c70f5"
+      }
+     ]
     },
     {
      "id": "forehead",
      "label": "কপাল",
-     "gloss": "forehead"
+     "gloss": "forehead",
+     "collocations": [
+      {
+       "text": "কপালে ঘাম",
+       "id": "2edb0af21b7c5c6ce990"
+      }
+     ]
     }
    ],
    "questions": [
@@ -4006,32 +7066,68 @@ window.PTB_DECK = {
     {
      "id": "minor-cut",
      "label": "কেটে যাওয়া",
-     "gloss": "to get a minor cut"
+     "gloss": "to get a minor cut",
+     "collocations": [
+      {
+       "text": "আঙুল কেটে গেছে",
+       "id": "9fd5fc605aeca4db602b"
+      }
+     ]
     },
     {
      "id": "minor-burn",
      "label": "পুড়ে যাওয়া",
-     "gloss": "to get a burn"
+     "gloss": "to get a burn",
+     "collocations": [
+      {
+       "text": "হাত পুড়ে গেছে",
+       "id": "3c833a8c0f1161074604"
+      }
+     ]
     },
     {
      "id": "twisted-ankle",
      "label": "মচকে যাওয়া",
-     "gloss": "to twist a joint"
+     "gloss": "to twist a joint",
+     "collocations": [
+      {
+       "text": "পা মচকে গেছে",
+       "id": "3b355b9bac138d2d1bd0"
+      }
+     ]
     },
     {
      "id": "localized-swelling",
      "label": "ফুলে যাওয়া",
-     "gloss": "to swell up"
+     "gloss": "to swell up",
+     "collocations": [
+      {
+       "text": "গোড়ালি ফুলে গেছে",
+       "id": "6bcd03d375f6fa67bbc9"
+      }
+     ]
     },
     {
      "id": "small-bruise",
      "label": "কালশিটে",
-     "gloss": "bruise"
+     "gloss": "bruise",
+     "collocations": [
+      {
+       "text": "হাতে কালশিটে পড়েছে",
+       "id": "c6070940161014c083ac"
+      }
+     ]
     },
     {
      "id": "dizzy",
      "label": "মাথা ঘোরা",
-     "gloss": "to feel dizzy"
+     "gloss": "to feel dizzy",
+     "collocations": [
+      {
+       "text": "দাঁড়ালে মাথা ঘোরে",
+       "id": "8196f2bef8826d843617"
+      }
+     ]
     }
    ],
    "questions": [
@@ -4053,32 +7149,68 @@ window.PTB_DECK = {
     {
      "id": "jar",
      "label": "বয়াম",
-     "gloss": "wide glass storage jar"
+     "gloss": "wide glass storage jar",
+     "collocations": [
+      {
+       "text": "আচারের বয়াম",
+       "id": "38b6b517b1b3ce8fc910"
+      }
+     ]
     },
     {
      "id": "small-tin",
      "label": "কৌটা",
-     "gloss": "small lidded tin"
+     "gloss": "small lidded tin",
+     "collocations": [
+      {
+       "text": "ঢাকনাওয়ালা কৌটা",
+       "id": "8b9e5c8f4cf67fa061fb"
+      }
+     ]
     },
     {
      "id": "earthen-jar",
      "label": "মটকা",
-     "gloss": "large earthen storage jar"
+     "gloss": "large earthen storage jar",
+     "collocations": [
+      {
+       "text": "মাটির মটকা",
+       "id": "37e7d156a71ebb28a80c"
+      }
+     ]
     },
     {
      "id": "water-barrel",
      "label": "পানির পিপা",
-     "gloss": "water storage barrel"
+     "gloss": "water storage barrel",
+     "collocations": [
+      {
+       "text": "পানির পিপা ভরুন",
+       "id": "e8777de862e310d945de"
+      }
+     ]
     },
     {
      "id": "flower-vase",
      "label": "ফুলদানি",
-     "gloss": "flower vase"
+     "gloss": "flower vase",
+     "collocations": [
+      {
+       "text": "ফুলদানিতে ফুল রাখুন",
+       "id": "986f1dbacf9d83b3ec9b"
+      }
+     ]
     },
     {
      "id": "vial",
      "label": "শিশি",
-     "gloss": "small glass vial"
+     "gloss": "small glass vial",
+     "collocations": [
+      {
+       "text": "ওষুধের শিশি",
+       "id": "ad6d3c089684f25bae98"
+      }
+     ]
     }
    ],
    "questions": [
@@ -4100,32 +7232,68 @@ window.PTB_DECK = {
     {
      "id": "wet-cloth",
      "label": "ভেজা",
-     "gloss": "wet"
+     "gloss": "wet",
+     "collocations": [
+      {
+       "text": "ভেজা জামা",
+       "id": "2e119fbe9a1a988b34b7"
+      }
+     ]
     },
     {
      "id": "dry-cloth",
      "label": "শুকনা",
-     "gloss": "dry"
+     "gloss": "dry",
+     "collocations": [
+      {
+       "text": "শুকনা কাপড়",
+       "id": "2b89580d57ee4cc8619f"
+      }
+     ]
     },
     {
      "id": "broken-vessel",
      "label": "ভাঙা",
-     "gloss": "broken into pieces"
+     "gloss": "broken into pieces",
+     "collocations": [
+      {
+       "text": "ভাঙা পেয়ালা",
+       "id": "05d270c19dc773702618"
+      }
+     ]
     },
     {
      "id": "punctured-vessel",
      "label": "ফুটো",
-     "gloss": "having a hole"
+     "gloss": "having a hole",
+     "collocations": [
+      {
+       "text": "বালতিতে ফুটো",
+       "id": "52495be3886143228d6c"
+      }
+     ]
     },
     {
      "id": "upside-down",
      "label": "উল্টানো",
-     "gloss": "turned upside down"
+     "gloss": "turned upside down",
+     "collocations": [
+      {
+       "text": "বাটি উল্টে রাখুন",
+       "id": "e4b1d8df1699dd1b4041"
+      }
+     ]
     },
     {
      "id": "flattened",
      "label": "চ্যাপ্টা",
-     "gloss": "flattened"
+     "gloss": "flattened",
+     "collocations": [
+      {
+       "text": "চ্যাপ্টা পাথর",
+       "id": "4ee8060ce083973a4067"
+      }
+     ]
     }
    ],
    "questions": [
@@ -4147,32 +7315,68 @@ window.PTB_DECK = {
     {
      "id": "chunks",
      "label": "টুকরা",
-     "gloss": "irregular chunk of food"
+     "gloss": "irregular chunk of food",
+     "collocations": [
+      {
+       "text": "মাছের টুকরা",
+       "id": "91099707e37cdc933570"
+      }
+     ]
     },
     {
      "id": "food-slice",
      "label": "ফালি",
-     "gloss": "long thin slice"
+     "gloss": "long thin slice",
+     "collocations": [
+      {
+       "text": "লেবুর ফালি",
+       "id": "82a5fb44e2fdfd3da536"
+      }
+     ]
     },
     {
      "id": "clove-garlic",
      "label": "কোয়া",
-     "gloss": "separated clove"
+     "gloss": "separated clove",
+     "collocations": [
+      {
+       "text": "রসুনের কোয়া",
+       "id": "ac21f4de300211af4e3a"
+      }
+     ]
     },
     {
      "id": "tied-bunch",
      "label": "আঁটি",
-     "gloss": "bundle tied together"
+     "gloss": "bundle tied together",
+     "collocations": [
+      {
+       "text": "আমের আঁটি",
+       "id": "0a9ea6171ca359a230cf"
+      }
+     ]
     },
     {
      "id": "peel-skin",
      "label": "খোসা",
-     "gloss": "detached fruit peel"
+     "gloss": "detached fruit peel",
+     "collocations": [
+      {
+       "text": "কলার খোসা",
+       "id": "66f9b3180de517398785"
+      }
+     ]
     },
     {
      "id": "stalk",
      "label": "ডাঁটা",
-     "gloss": "detached food stalk"
+     "gloss": "detached food stalk",
+     "collocations": [
+      {
+       "text": "শাকের ডাঁটা",
+       "id": "6b0d7791c9bf33e1466d"
+      }
+     ]
     }
    ],
    "questions": [
@@ -4194,32 +7398,68 @@ window.PTB_DECK = {
     {
      "id": "playfield",
      "label": "খেলার মাঠ",
-     "gloss": "playing field"
+     "gloss": "playing field",
+     "collocations": [
+      {
+       "text": "খেলার মাঠে যাই",
+       "id": "5a394ce20d53648d6b16"
+      }
+     ]
     },
     {
      "id": "fruit-orchard",
      "label": "ফলের বাগান",
-     "gloss": "fruit orchard"
+     "gloss": "fruit orchard",
+     "collocations": [
+      {
+       "text": "ফলের বাগানে গাছ",
+       "id": "07bb7d04d308bb7d9e3d"
+      }
+     ]
     },
     {
      "id": "cemetery",
      "label": "কবরস্থান",
-     "gloss": "cemetery"
+     "gloss": "cemetery",
+     "collocations": [
+      {
+       "text": "কবরস্থানের ফটক",
+       "id": "542457c2da28b5785a64"
+      }
+     ]
     },
     {
      "id": "eid-ground",
      "label": "ঈদগাহ",
-     "gloss": "open Eid prayer ground"
+     "gloss": "open Eid prayer ground",
+     "collocations": [
+      {
+       "text": "ঈদগাহে নামাজ",
+       "id": "784f15e1f3f6daa80cf7"
+      }
+     ]
     },
     {
      "id": "brick-kiln",
      "label": "ইটভাটা",
-     "gloss": "brick kiln"
+     "gloss": "brick kiln",
+     "collocations": [
+      {
+       "text": "ইটভাটায় ইট পোড়ায়",
+       "id": "5449f741ac6811659ed1"
+      }
+     ]
     },
     {
      "id": "factory",
      "label": "কারখানা",
-     "gloss": "factory"
+     "gloss": "factory",
+     "collocations": [
+      {
+       "text": "কাপড়ের কারখানা",
+       "id": "9506ecab22808e1198f2"
+      }
+     ]
     }
    ],
    "questions": [
@@ -4241,32 +7481,68 @@ window.PTB_DECK = {
     {
      "id": "newborn",
      "label": "নতুন বাচ্চা",
-     "gloss": "newborn baby"
+     "gloss": "newborn baby",
+     "collocations": [
+      {
+       "text": "ঘরে নতুন বাচ্চা এসেছে",
+       "id": "a46ed3c86f6dc97090b5"
+      }
+     ]
     },
     {
      "id": "young-child",
      "label": "ছোট বাচ্চা",
-     "gloss": "young child"
+     "gloss": "young child",
+     "collocations": [
+      {
+       "text": "ছোট বাচ্চা হাঁটছে",
+       "id": "01380d993ec7b7cfe382"
+      }
+     ]
     },
     {
      "id": "teenager",
      "label": "কিশোর",
-     "gloss": "teenager"
+     "gloss": "teenager",
+     "collocations": [
+      {
+       "text": "কিশোর ছেলেটা",
+       "id": "151be9243587e76bab22"
+      }
+     ]
     },
     {
      "id": "young-adult",
      "label": "তরুণী",
-     "gloss": "young adult woman"
+     "gloss": "young adult woman",
+     "collocations": [
+      {
+       "text": "তরুণী মেয়েটা",
+       "id": "46d1820d3893d7f2b999"
+      }
+     ]
     },
     {
      "id": "middle-aged-adult",
      "label": "মাঝবয়সি",
-     "gloss": "middle-aged adult"
+     "gloss": "middle-aged adult",
+     "collocations": [
+      {
+       "text": "মাঝবয়সি মানুষ",
+       "id": "d7d8fad14f7aac182882"
+      }
+     ]
     },
     {
      "id": "older-adult",
      "label": "বয়স্ক",
-     "gloss": "older adult"
+     "gloss": "older adult",
+     "collocations": [
+      {
+       "text": "বয়স্ক লোক",
+       "id": "dff4dc77a6a8ede6e44c"
+      }
+     ]
     }
    ],
    "questions": [
@@ -4288,32 +7564,68 @@ window.PTB_DECK = {
     {
      "id": "iftar",
      "label": "ইফতার",
-     "gloss": "meal at sunset to break the fast"
+     "gloss": "meal at sunset to break the fast",
+     "collocations": [
+      {
+       "text": "ইফতারের সময়",
+       "id": "ef5207c2aa49073b3f3c"
+      }
+     ]
     },
     {
      "id": "sehri",
      "label": "সেহরি",
-     "gloss": "early meal before the fast"
+     "gloss": "early meal before the fast",
+     "collocations": [
+      {
+       "text": "সেহরি খেতে উঠি",
+       "id": "0d35b67c3026e90f05cf"
+      }
+     ]
     },
     {
      "id": "dates-fruit",
      "label": "খেজুর",
-     "gloss": "date fruit"
+     "gloss": "date fruit",
+     "collocations": [
+      {
+       "text": "খেজুর দিয়ে ইফতার করি",
+       "id": "8b3e240473abbd63d733"
+      }
+     ]
     },
     {
      "id": "eid-moon",
      "label": "ঈদের চাঁদ",
-     "gloss": "new Eid moon crescent"
+     "gloss": "new Eid moon crescent",
+     "collocations": [
+      {
+       "text": "ঈদের চাঁদ দেখা গেছে",
+       "id": "3544667273d64fbdc520"
+      }
+     ]
     },
     {
      "id": "eid-clothes",
      "label": "ঈদের জামা",
-     "gloss": "new clothes for Eid"
+     "gloss": "new clothes for Eid",
+     "collocations": [
+      {
+       "text": "ঈদের জামা কিনেছি",
+       "id": "29fcb1fcb5ea118304a4"
+      }
+     ]
     },
     {
      "id": "eid-money",
      "label": "ঈদি",
-     "gloss": "Eid gift money"
+     "gloss": "Eid gift money",
+     "collocations": [
+      {
+       "text": "বাচ্চাদের ঈদি দিন",
+       "id": "e73fbc1d3fa68bdaafe6"
+      }
+     ]
     }
    ],
    "questions": [
@@ -4335,32 +7647,68 @@ window.PTB_DECK = {
     {
      "id": "biriyani",
      "label": "বিরিয়ানি",
-     "gloss": "kacchi biriyani"
+     "gloss": "kacchi biriyani",
+     "collocations": [
+      {
+       "text": "মাংসের বিরিয়ানি",
+       "id": "85b67811811425c817ae"
+      }
+     ]
     },
     {
      "id": "bhuna-khichuri",
      "label": "ভুনা খিচুড়ি",
-     "gloss": "bhuna khichuri rice and lentils"
+     "gloss": "bhuna khichuri rice and lentils",
+     "collocations": [
+      {
+       "text": "গরম ভুনা খিচুড়ি",
+       "id": "3571928382b130bb8c94"
+      }
+     ]
     },
     {
      "id": "korma",
      "label": "কোরমা",
-     "gloss": "chicken korma"
+     "gloss": "chicken korma",
+     "collocations": [
+      {
+       "text": "মুরগির কোরমা",
+       "id": "9c52e56690a55c41f2fe"
+      }
+     ]
     },
     {
      "id": "kebab",
      "label": "কাবাব",
-     "gloss": "kebab"
+     "gloss": "kebab",
+     "collocations": [
+      {
+       "text": "শিকের কাবাব",
+       "id": "3793e92a9f05f42e537c"
+      }
+     ]
     },
     {
      "id": "jorda",
      "label": "জর্দা",
-     "gloss": "sweet orange rice"
+     "gloss": "sweet orange rice",
+     "collocations": [
+      {
+       "text": "মিষ্টি জর্দা",
+       "id": "e76d9e0d7b7e30d6320e"
+      }
+     ]
     },
     {
      "id": "firni",
      "label": "ফিরনি",
-     "gloss": "set milk dessert with ground rice"
+     "gloss": "set milk dessert with ground rice",
+     "collocations": [
+      {
+       "text": "দুধের ফিরনি",
+       "id": "a37af80f87262d9ed854"
+      }
+     ]
     }
    ],
    "questions": [
@@ -4382,32 +7730,68 @@ window.PTB_DECK = {
     {
      "id": "road-shelter",
      "label": "যাত্রীছাউনি",
-     "gloss": "roadside passenger shelter"
+     "gloss": "roadside passenger shelter",
+     "collocations": [
+      {
+       "text": "যাত্রীছাউনিতে অপেক্ষা করুন",
+       "id": "6fc64c8282b72bdaa29a"
+      }
+     ]
     },
     {
      "id": "street-light",
      "label": "রাস্তার বাতি",
-     "gloss": "streetlight"
+     "gloss": "streetlight",
+     "collocations": [
+      {
+       "text": "রাস্তার বাতি জ্বলছে",
+       "id": "84b54ba29bf95ab274ba"
+      }
+     ]
     },
     {
      "id": "pedestrian-crossing",
      "label": "রাস্তা পারাপারের দাগ",
-     "gloss": "zebra crossing marks"
+     "gloss": "zebra crossing marks",
+     "collocations": [
+      {
+       "text": "রাস্তা পারাপারের দাগ দিয়ে পার হন",
+       "id": "21d0a4690a45171adb00"
+      }
+     ]
     },
     {
      "id": "sidewalk",
      "label": "পায়ে চলার পথ",
-     "gloss": "raised sidewalk"
+     "gloss": "raised sidewalk",
+     "collocations": [
+      {
+       "text": "পায়ে চলার পথে হাঁটুন",
+       "id": "71858517401a7e26e30e"
+      }
+     ]
     },
     {
      "id": "parking-area",
      "label": "গাড়ি রাখার জায়গা",
-     "gloss": "marked parking area"
+     "gloss": "marked parking area",
+     "collocations": [
+      {
+       "text": "গাড়ি রাখার জায়গা আছে",
+       "id": "7dace2218de715dc52e6"
+      }
+     ]
     },
     {
      "id": "street-drain",
      "label": "রাস্তার নালা",
-     "gloss": "roadside drainage channel"
+     "gloss": "roadside drainage channel",
+     "collocations": [
+      {
+       "text": "রাস্তার নালা আটকে গেছে",
+       "id": "8ac03b993c04bf90bd35"
+      }
+     ]
     }
    ],
    "questions": [
@@ -4429,32 +7813,68 @@ window.PTB_DECK = {
     {
      "id": "pack-organize",
      "label": "গুছানো",
-     "gloss": "to organize belongings"
+     "gloss": "to organize belongings",
+     "collocations": [
+      {
+       "text": "জিনিসপত্র গুছিয়ে নিন",
+       "id": "e3ddb5658c624aa68511"
+      }
+     ]
     },
     {
      "id": "pack-fill",
      "label": "ভরা",
-     "gloss": "to fill a bag"
+     "gloss": "to fill a bag",
+     "collocations": [
+      {
+       "text": "ঝুড়ি ভরে দিন",
+       "id": "4585e68cd009e48ab009"
+      }
+     ]
     },
     {
      "id": "pack-empty",
      "label": "খালি করা",
-     "gloss": "to empty a container"
+     "gloss": "to empty a container",
+     "collocations": [
+      {
+       "text": "থলেটা খালি করুন",
+       "id": "ba4a3884fcbc9d853f46"
+      }
+     ]
     },
     {
      "id": "load-cart",
      "label": "বোঝাই করা",
-     "gloss": "to load goods onto a cart"
+     "gloss": "to load goods onto a cart",
+     "collocations": [
+      {
+       "text": "গাড়িতে মাল বোঝাই করুন",
+       "id": "98b52006336c1c7b7a46"
+      }
+     ]
     },
     {
      "id": "shoulder-bag",
      "label": "কাঁধে নেওয়া",
-     "gloss": "to put a load on the shoulder"
+     "gloss": "to put a load on the shoulder",
+     "collocations": [
+      {
+       "text": "বস্তা কাঁধে নিন",
+       "id": "3259036d3f1ee257c7f2"
+      }
+     ]
     },
     {
      "id": "set-down-bag",
      "label": "নামানো",
-     "gloss": "to set a carried item down"
+     "gloss": "to set a carried item down",
+     "collocations": [
+      {
+       "text": "মাল নিচে নামান",
+       "id": "713b58a77b0263797c7c"
+      }
+     ]
     }
    ],
    "questions": [
@@ -4476,32 +7896,68 @@ window.PTB_DECK = {
     {
      "id": "sniff",
      "label": "শোঁকা",
-     "gloss": "to sniff"
+     "gloss": "to sniff",
+     "collocations": [
+      {
+       "text": "ফুলের গন্ধ শুঁকুন",
+       "id": "0e8878cc2c881bfbd194"
+      }
+     ]
     },
     {
      "id": "taste-a-bite",
      "label": "চেখে দেখা",
-     "gloss": "to taste a little to find out the flavor"
+     "gloss": "to taste a little to find out the flavor",
+     "collocations": [
+      {
+       "text": "একটু চেখে দেখুন",
+       "id": "7a70e263ec8e84d479fd"
+      }
+     ]
     },
     {
      "id": "bite",
      "label": "কামড়ানো",
-     "gloss": "to take a bite"
+     "gloss": "to take a bite",
+     "collocations": [
+      {
+       "text": "আপেলে কামড় দিন",
+       "id": "5a266b2ad21323c4e73d"
+      }
+     ]
     },
     {
      "id": "chew",
      "label": "চিবানো",
-     "gloss": "to chew"
+     "gloss": "to chew",
+     "collocations": [
+      {
+       "text": "ভালো করে চিবান",
+       "id": "c8346eaacedcc0927d65"
+      }
+     ]
     },
     {
      "id": "swallow",
      "label": "গেলা",
-     "gloss": "to swallow"
+     "gloss": "to swallow",
+     "collocations": [
+      {
+       "text": "পানি দিয়ে গিলুন",
+       "id": "d687267b0eba93d08343"
+      }
+     ]
     },
     {
      "id": "blow",
      "label": "ফুঁ দেওয়া",
-     "gloss": "to blow air out"
+     "gloss": "to blow air out",
+     "collocations": [
+      {
+       "text": "ফুঁ দিয়ে নেভান",
+       "id": "40059b185476f2c7dd64"
+      }
+     ]
     }
    ],
    "questions": [
@@ -4523,32 +7979,68 @@ window.PTB_DECK = {
     {
      "id": "clap",
      "label": "হাততালি দেওয়া",
-     "gloss": "to clap hands"
+     "gloss": "to clap hands",
+     "collocations": [
+      {
+       "text": "সবাই হাততালি দিল",
+       "id": "d461210babaae43034e8"
+      }
+     ]
     },
     {
      "id": "knock",
      "label": "টোকা দেওয়া",
-     "gloss": "to knock lightly"
+     "gloss": "to knock lightly",
+     "collocations": [
+      {
+       "text": "দরজায় টোকা দিন",
+       "id": "43ce4427bdb11b27b8c2"
+      }
+     ]
     },
     {
      "id": "hum",
      "label": "গুনগুন করা",
-     "gloss": "to hum"
+     "gloss": "to hum",
+     "collocations": [
+      {
+       "text": "সুর গুনগুন করছেন",
+       "id": "7d3271090f5c9224cdaf"
+      }
+     ]
     },
     {
      "id": "play-flute",
      "label": "বাঁশি বাজানো",
-     "gloss": "to play a flute"
+     "gloss": "to play a flute",
+     "collocations": [
+      {
+       "text": "বাঁশি বাজিয়ে শোনান",
+       "id": "4e13dbb8c8c95cdeb87b"
+      }
+     ]
     },
     {
      "id": "shout",
      "label": "চেঁচানো",
-     "gloss": "to shout"
+     "gloss": "to shout",
+     "collocations": [
+      {
+       "text": "এত চেঁচাবেন না",
+       "id": "ea345df86649b46f17e6"
+      }
+     ]
     },
     {
      "id": "whisper",
      "label": "ফিসফিস করা",
-     "gloss": "to whisper"
+     "gloss": "to whisper",
+     "collocations": [
+      {
+       "text": "ফিসফিস করে বলুন",
+       "id": "7df3a9da6dea9909e947"
+      }
+     ]
     }
    ],
    "questions": [
@@ -4570,32 +8062,68 @@ window.PTB_DECK = {
     {
      "id": "coconut-palm",
      "label": "নারকেলগাছ",
-     "gloss": "coconut palm"
+     "gloss": "coconut palm",
+     "collocations": [
+      {
+       "text": "নারকেলগাছ থেকে ডাব পাড়েন",
+       "id": "cfd8b76939e6c3a9a741"
+      }
+     ]
     },
     {
      "id": "areca-palm",
      "label": "সুপারিগাছ",
-     "gloss": "areca palm"
+     "gloss": "areca palm",
+     "collocations": [
+      {
+       "text": "লম্বা সুপারিগাছ",
+       "id": "a7f820ba362e11440df4"
+      }
+     ]
     },
     {
      "id": "banana-tree",
      "label": "কলাগাছ",
-     "gloss": "banana plant"
+     "gloss": "banana plant",
+     "collocations": [
+      {
+       "text": "কলাগাছে কলা ধরেছে",
+       "id": "fdde973f0d05c8847af1"
+      }
+     ]
     },
     {
      "id": "palmyra-palm",
      "label": "তালগাছ",
-     "gloss": "palmyra palm"
+     "gloss": "palmyra palm",
+     "collocations": [
+      {
+       "text": "তালগাছের ছায়া",
+       "id": "8831db91fe3bd7164d7a"
+      }
+     ]
     },
     {
      "id": "banyan-tree",
      "label": "বটগাছ",
-     "gloss": "banyan tree"
+     "gloss": "banyan tree",
+     "collocations": [
+      {
+       "text": "বটগাছের নিচে",
+       "id": "d739571eef93eb2789e8"
+      }
+     ]
     },
     {
      "id": "bamboo-grove",
      "label": "বাঁশঝাড়",
-     "gloss": "clump of growing bamboo"
+     "gloss": "clump of growing bamboo",
+     "collocations": [
+      {
+       "text": "বাঁশঝাড়ের পাশে",
+       "id": "f28d28002be7f29cbaf6"
+      }
+     ]
     }
    ],
    "questions": [
@@ -4617,32 +8145,68 @@ window.PTB_DECK = {
     {
      "id": "house-gecko",
      "label": "টিকটিকি",
-     "gloss": "house gecko"
+     "gloss": "house gecko",
+     "collocations": [
+      {
+       "text": "দেয়ালে টিকটিকি",
+       "id": "b33076a5c89696c8952b"
+      }
+     ]
     },
     {
      "id": "frog",
      "label": "ব্যাঙ",
-     "gloss": "frog"
+     "gloss": "frog",
+     "collocations": [
+      {
+       "text": "ব্যাঙ লাফাচ্ছে",
+       "id": "875c19090b638d946502"
+      }
+     ]
     },
     {
      "id": "snake",
      "label": "সাপ",
-     "gloss": "snake"
+     "gloss": "snake",
+     "collocations": [
+      {
+       "text": "ঘাসে সাপ",
+       "id": "2ae3641b614bbc5f8f75"
+      }
+     ]
     },
     {
      "id": "turtle",
      "label": "কচ্ছপ",
-     "gloss": "turtle"
+     "gloss": "turtle",
+     "collocations": [
+      {
+       "text": "কচ্ছপ ধীরে চলে",
+       "id": "6f2597e463e95ad34b62"
+      }
+     ]
     },
     {
      "id": "mouse",
      "label": "ইঁদুর",
-     "gloss": "mouse"
+     "gloss": "mouse",
+     "collocations": [
+      {
+       "text": "ইঁদুর গর্তে ঢুকেছে",
+       "id": "a80cc36a9e029399e64f"
+      }
+     ]
     },
     {
      "id": "bat",
      "label": "বাদুড়",
-     "gloss": "bat"
+     "gloss": "bat",
+     "collocations": [
+      {
+       "text": "বাদুড় উড়ছে",
+       "id": "44bb3d4b933fd5f4405c"
+      }
+     ]
     }
    ],
    "questions": [
@@ -4664,32 +8228,68 @@ window.PTB_DECK = {
     {
      "id": "glossy",
      "label": "চকচকে",
-     "gloss": "glossy and reflective"
+     "gloss": "glossy and reflective",
+     "collocations": [
+      {
+       "text": "চকচকে ধাতু",
+       "id": "255975d5891f62657135"
+      }
+     ]
     },
     {
      "id": "dull",
      "label": "মলিন",
-     "gloss": "dull from wear"
+     "gloss": "dull from wear",
+     "collocations": [
+      {
+       "text": "মলিন কাপড়",
+       "id": "366a386e05add22c6b81"
+      }
+     ]
     },
     {
      "id": "dark-shade",
      "label": "গাঢ়",
-     "gloss": "deep shade of a color"
+     "gloss": "deep shade of a color",
+     "collocations": [
+      {
+       "text": "গাঢ় নীল",
+       "id": "cf9d345e8025483fd365"
+      }
+     ]
     },
     {
      "id": "pale-shade",
      "label": "ফিকে",
-     "gloss": "pale shade of a color"
+     "gloss": "pale shade of a color",
+     "collocations": [
+      {
+       "text": "ফিকে গোলাপি",
+       "id": "009695cddf3098868871"
+      }
+     ]
     },
     {
      "id": "transparent-water",
      "label": "স্বচ্ছ",
-     "gloss": "transparent"
+     "gloss": "transparent",
+     "collocations": [
+      {
+       "text": "স্বচ্ছ কাচ",
+       "id": "5aa968afc3a8f4c9eaaa"
+      }
+     ]
     },
     {
      "id": "turbid-water",
      "label": "ঘোলা",
-     "gloss": "murky liquid"
+     "gloss": "murky liquid",
+     "collocations": [
+      {
+       "text": "ঘোলা পানি",
+       "id": "205525b5765a963b3828"
+      }
+     ]
     }
    ],
    "questions": [
@@ -4711,32 +8311,68 @@ window.PTB_DECK = {
     {
      "id": "learn-draw",
      "label": "আঁকা",
-     "gloss": "to draw"
+     "gloss": "to draw",
+     "collocations": [
+      {
+       "text": "ফুল আঁকুন",
+       "id": "c21867ced8ee00d5be48"
+      }
+     ]
     },
     {
      "id": "learn-erase",
      "label": "মুছে ফেলা",
-     "gloss": "to erase a mark"
+     "gloss": "to erase a mark",
+     "collocations": [
+      {
+       "text": "লেখাটা মুছে ফেলুন",
+       "id": "276e0c04589e926b08bd"
+      }
+     ]
     },
     {
      "id": "learn-count",
      "label": "গোনা",
-     "gloss": "to count objects"
+     "gloss": "to count objects",
+     "collocations": [
+      {
+       "text": "এক থেকে ছয় পর্যন্ত গুনুন",
+       "id": "e93c9f97cc577419899a"
+      }
+     ]
     },
     {
      "id": "learn-measure",
      "label": "মাপা",
-     "gloss": "to measure length or size"
+     "gloss": "to measure length or size",
+     "collocations": [
+      {
+       "text": "ফিতা দিয়ে মাপুন",
+       "id": "55cab8563533d274b4ee"
+      }
+     ]
     },
     {
      "id": "learn-match",
      "label": "মেলানো",
-     "gloss": "to match like things"
+     "gloss": "to match like things",
+     "collocations": [
+      {
+       "text": "এক রকম দুটো মিলিয়ে নিন",
+       "id": "33bd19b86d0c4b9865a4"
+      }
+     ]
     },
     {
      "id": "learn-separate",
      "label": "আলাদা করা",
-     "gloss": "to sort things out"
+     "gloss": "to sort things out",
+     "collocations": [
+      {
+       "text": "লালগুলো আলাদা করুন",
+       "id": "b87bce9feb991f23327a"
+      }
+     ]
     }
    ],
    "questions": [
@@ -4758,32 +8394,68 @@ window.PTB_DECK = {
     {
      "id": "chest",
      "label": "বুক",
-     "gloss": "chest"
+     "gloss": "chest",
+     "collocations": [
+      {
+       "text": "বুকে হাত রাখুন",
+       "id": "ff3dac9334890495fe2f"
+      }
+     ]
     },
     {
      "id": "back-torso",
      "label": "পিঠ",
-     "gloss": "back of the torso"
+     "gloss": "back of the torso",
+     "collocations": [
+      {
+       "text": "পিঠ সোজা রাখুন",
+       "id": "10462a0c03acb6e340ae"
+      }
+     ]
     },
     {
      "id": "waist",
      "label": "কোমর",
-     "gloss": "waist"
+     "gloss": "waist",
+     "collocations": [
+      {
+       "text": "কোমরে হাত দিন",
+       "id": "40fbb45e5008be127199"
+      }
+     ]
     },
     {
      "id": "belly",
      "label": "পেট",
-     "gloss": "belly"
+     "gloss": "belly",
+     "collocations": [
+      {
+       "text": "পেটে হাত রাখুন",
+       "id": "3de53635c2f1f0c4d6f9"
+      }
+     ]
     },
     {
      "id": "navel",
      "label": "নাভি",
-     "gloss": "navel"
+     "gloss": "navel",
+     "collocations": [
+      {
+       "text": "নাভির চারপাশে",
+       "id": "11062498bf0a67612fd8"
+      }
+     ]
     },
     {
      "id": "fingernail",
      "label": "নখ",
-     "gloss": "fingernail"
+     "gloss": "fingernail",
+     "collocations": [
+      {
+       "text": "নখে ময়লা",
+       "id": "ed94490e80f8de13f6c9"
+      }
+     ]
     }
    ],
    "questions": [
@@ -4805,32 +8477,68 @@ window.PTB_DECK = {
     {
      "id": "hopscotch",
      "label": "এক্কাদোক্কা",
-     "gloss": "hopscotch"
+     "gloss": "hopscotch",
+     "collocations": [
+      {
+       "text": "এক পায়ে এক্কাদোক্কা খেলি",
+       "id": "0811645ac0b46f9aa7fd"
+      }
+     ]
     },
     {
      "id": "blind-tag",
      "label": "কানামাছি",
-     "gloss": "blind man's buff"
+     "gloss": "blind man's buff",
+     "collocations": [
+      {
+       "text": "চোখ বেঁধে কানামাছি খেলি",
+       "id": "2ea8707c540810b4714d"
+      }
+     ]
     },
     {
      "id": "hide-and-seek",
      "label": "লুকোচুরি",
-     "gloss": "hide-and-seek"
+     "gloss": "hide-and-seek",
+     "collocations": [
+      {
+       "text": "ওরা লুকোচুরি খেলছে",
+       "id": "b4fbbad6b597c3847ed7"
+      }
+     ]
     },
     {
      "id": "kabaddi",
      "label": "কাবাডি",
-     "gloss": "kabaddi"
+     "gloss": "kabaddi",
+     "collocations": [
+      {
+       "text": "মাঠে কাবাডি খেলি",
+       "id": "da955bb45ccb50907a0d"
+      }
+     ]
     },
     {
      "id": "tug-of-war",
      "label": "দড়ি টানাটানি",
-     "gloss": "tug of war"
+     "gloss": "tug of war",
+     "collocations": [
+      {
+       "text": "দুই দল দড়ি টানাটানি করছে",
+       "id": "ae6fca8b3df95ac2df61"
+      }
+     ]
     },
     {
      "id": "arm-wrestle",
      "label": "পাঞ্জা লড়া",
-     "gloss": "arm wrestling"
+     "gloss": "arm wrestling",
+     "collocations": [
+      {
+       "text": "কে পাঞ্জা লড়বে",
+       "id": "6bf6ee972c0ca1379d2d"
+      }
+     ]
     }
    ],
    "questions": [
@@ -4852,32 +8560,68 @@ window.PTB_DECK = {
     {
      "id": "body-lean",
      "label": "হেলান দেওয়া",
-     "gloss": "to lean against support"
+     "gloss": "to lean against support",
+     "collocations": [
+      {
+       "text": "দেয়ালে হেলান দিন",
+       "id": "3dbea9c7b4e5c309b582"
+      }
+     ]
     },
     {
      "id": "body-lie",
      "label": "শোয়া",
-     "gloss": "to lie down"
+     "gloss": "to lie down",
+     "collocations": [
+      {
+       "text": "চিৎ হয়ে শুয়ে পড়ুন",
+       "id": "b890da961627b0d6ae57"
+      }
+     ]
     },
     {
      "id": "body-roll",
      "label": "গড়ানো",
-     "gloss": "to roll one's body over"
+     "gloss": "to roll one's body over",
+     "collocations": [
+      {
+       "text": "মাদুরে গড়িয়ে যান",
+       "id": "f0dc343eacc7cb006edb"
+      }
+     ]
     },
     {
      "id": "body-turn",
      "label": "ঘুরে দাঁড়ানো",
-     "gloss": "to turn around on one's feet"
+     "gloss": "to turn around on one's feet",
+     "collocations": [
+      {
+       "text": "পেছন ফিরে দাঁড়ান",
+       "id": "a327599fef9bd881e244"
+      }
+     ]
     },
     {
      "id": "body-kneel",
      "label": "হাঁটু গেড়ে বসা",
-     "gloss": "to kneel on the ground"
+     "gloss": "to kneel on the ground",
+     "collocations": [
+      {
+       "text": "হাঁটু গেড়ে বসুন",
+       "id": "c06e504e68c6e0270d62"
+      }
+     ]
     },
     {
      "id": "body-squat",
      "label": "উবু হয়ে বসা",
-     "gloss": "to squat low"
+     "gloss": "to squat low",
+     "collocations": [
+      {
+       "text": "মাটিতে উবু হয়ে বসুন",
+       "id": "d5f737b16e11ca012cba"
+      }
+     ]
     }
    ],
    "questions": [
@@ -4899,32 +8643,68 @@ window.PTB_DECK = {
     {
      "id": "rice-farmer",
      "label": "চাষি",
-     "gloss": "crop farmer"
+     "gloss": "crop farmer",
+     "collocations": [
+      {
+       "text": "চাষি খেতে কাজ করেন",
+       "id": "5756c358d4cdc34f1c55"
+      }
+     ]
     },
     {
      "id": "fisherman-role",
      "label": "জেলে",
-     "gloss": "fisherman"
+     "gloss": "fisherman",
+     "collocations": [
+      {
+       "text": "জেলে জাল ফেলেন",
+       "id": "50250f73beb8facf29e6"
+      }
+     ]
     },
     {
      "id": "boatman-role",
      "label": "মাঝি",
-     "gloss": "boatman"
+     "gloss": "boatman",
+     "collocations": [
+      {
+       "text": "মাঝি নৌকা চালান",
+       "id": "3b11a82b32b4ce66c9e4"
+      }
+     ]
     },
     {
      "id": "cobbler-role",
      "label": "মুচি",
-     "gloss": "cobbler"
+     "gloss": "cobbler",
+     "collocations": [
+      {
+       "text": "মুচি জুতা সেলাই করেন",
+       "id": "f0ce93b48772224f0089"
+      }
+     ]
     },
     {
      "id": "smith-role",
      "label": "কামার",
-     "gloss": "blacksmith"
+     "gloss": "blacksmith",
+     "collocations": [
+      {
+       "text": "কামার লোহা পেটান",
+       "id": "248ab58d36ad64edce48"
+      }
+     ]
     },
     {
      "id": "potter-role",
      "label": "কুমার",
-     "gloss": "potter"
+     "gloss": "potter",
+     "collocations": [
+      {
+       "text": "কুমার হাঁড়ি বানান",
+       "id": "e62505bc47d5041f013e"
+      }
+     ]
     }
    ],
    "questions": [
@@ -4946,32 +8726,68 @@ window.PTB_DECK = {
     {
      "id": "wall-clock",
      "label": "দেয়ালঘড়ি",
-     "gloss": "wall-mounted clock"
+     "gloss": "wall-mounted clock",
+     "collocations": [
+      {
+       "text": "দেয়ালঘড়িতে কয়টা বাজে",
+       "id": "9059d035611972a97403"
+      }
+     ]
     },
     {
      "id": "wristwatch",
      "label": "হাতঘড়ি",
-     "gloss": "wristwatch"
+     "gloss": "wristwatch",
+     "collocations": [
+      {
+       "text": "হাতঘড়ি পরে নিন",
+       "id": "f3d4ec6ec22bd0587d6e"
+      }
+     ]
     },
     {
      "id": "hourglass",
      "label": "বালুঘড়ি",
-     "gloss": "sand hourglass"
+     "gloss": "sand hourglass",
+     "collocations": [
+      {
+       "text": "বালুঘড়িতে বালু পড়ছে",
+       "id": "239ba2dd9a54daf984a5"
+      }
+     ]
     },
     {
      "id": "calendar-date",
      "label": "তারিখ",
-     "gloss": "single calendar date"
+     "gloss": "single calendar date",
+     "collocations": [
+      {
+       "text": "আজ কত তারিখ",
+       "id": "8d3aab44f78670ed3119"
+      }
+     ]
     },
     {
      "id": "calendar-week",
      "label": "সপ্তাহ",
-     "gloss": "seven-day week"
+     "gloss": "seven-day week",
+     "collocations": [
+      {
+       "text": "আগামী সপ্তাহে আসব",
+       "id": "f306998be3f7c943f08f"
+      }
+     ]
     },
     {
      "id": "calendar-month",
      "label": "মাস",
-     "gloss": "calendar month"
+     "gloss": "calendar month",
+     "collocations": [
+      {
+       "text": "এই মাসের শেষে",
+       "id": "c9dd48aa4816037a7f1b"
+      }
+     ]
     }
    ],
    "questions": [
@@ -4993,32 +8809,68 @@ window.PTB_DECK = {
     {
      "id": "electric-wire",
      "label": "বিদ্যুতের তার",
-     "gloss": "electric cable"
+     "gloss": "electric cable",
+     "collocations": [
+      {
+       "text": "বিদ্যুতের তার ছিঁড়ে গেছে",
+       "id": "22cd5d6bef535008c909"
+      }
+     ]
     },
     {
      "id": "utility-pole",
      "label": "বিদ্যুতের খুঁটি",
-     "gloss": "utility pole"
+     "gloss": "utility pole",
+     "collocations": [
+      {
+       "text": "রাস্তার পাশে বিদ্যুতের খুঁটি",
+       "id": "a35f9fd09183c6d1dd99"
+      }
+     ]
     },
     {
      "id": "oil-lamp",
      "label": "কুপি",
-     "gloss": "wick oil lamp"
+     "gloss": "wick oil lamp",
+     "collocations": [
+      {
+       "text": "কুপিতে তেল দিন",
+       "id": "80f063274f075a8bfe5c"
+      }
+     ]
     },
     {
      "id": "candle",
      "label": "মোমবাতি",
-     "gloss": "wax candle"
+     "gloss": "wax candle",
+     "collocations": [
+      {
+       "text": "মোমবাতি জ্বালান",
+       "id": "1ef3327d1cb36aac8300"
+      }
+     ]
     },
     {
      "id": "light-switch",
      "label": "বাতির বোতাম",
-     "gloss": "wall light switch"
+     "gloss": "wall light switch",
+     "collocations": [
+      {
+       "text": "বাতির বোতাম টিপুন",
+       "id": "220399c0ea92e1877b5e"
+      }
+     ]
     },
     {
      "id": "flashlight",
      "label": "হাতবাতি",
-     "gloss": "handheld light"
+     "gloss": "handheld light",
+     "collocations": [
+      {
+       "text": "হাতবাতি জ্বালান",
+       "id": "c7e20f7d415b9f660c87"
+      }
+     ]
     }
    ],
    "questions": [
@@ -5040,32 +8892,68 @@ window.PTB_DECK = {
     {
      "id": "flooring",
      "label": "মেঝে",
-     "gloss": "room floor"
+     "gloss": "room floor",
+     "collocations": [
+      {
+       "text": "মেঝেতে বসুন",
+       "id": "706d2100c25c5e9156b2"
+      }
+     ]
     },
     {
      "id": "room-corner",
      "label": "কোণা",
-     "gloss": "inside corner of a room"
+     "gloss": "inside corner of a room",
+     "collocations": [
+      {
+       "text": "ঘরের কোণায় রাখুন",
+       "id": "7be203b0a22b73048439"
+      }
+     ]
     },
     {
      "id": "threshold",
      "label": "দোরগোড়া",
-     "gloss": "raised doorway threshold"
+     "gloss": "raised doorway threshold",
+     "collocations": [
+      {
+       "text": "দোরগোড়ায় দাঁড়ান",
+       "id": "98f0a30ff23811f3b60b"
+      }
+     ]
     },
     {
      "id": "slide-bolt",
      "label": "ছিটকিনি",
-     "gloss": "sliding door bolt"
+     "gloss": "sliding door bolt",
+     "collocations": [
+      {
+       "text": "ছিটকিনি লাগান",
+       "id": "fab9eaa1e963dda0854d"
+      }
+     ]
     },
     {
      "id": "compound-gate",
      "label": "ফটক",
-     "gloss": "compound gate"
+     "gloss": "compound gate",
+     "collocations": [
+      {
+       "text": "বাড়ির ফটক",
+       "id": "e9df1205840192ebd655"
+      }
+     ]
     },
     {
      "id": "fence",
      "label": "বেড়া",
-     "gloss": "fence"
+     "gloss": "fence",
+     "collocations": [
+      {
+       "text": "বাঁশের বেড়া দিয়ে ঘেরা",
+       "id": "d3d69bb4b682ac4379d9"
+      }
+     ]
     }
    ],
    "questions": [
@@ -5087,32 +8975,68 @@ window.PTB_DECK = {
     {
      "id": "gold-material",
      "label": "সোনা",
-     "gloss": "gold metal"
+     "gloss": "gold metal",
+     "collocations": [
+      {
+       "text": "সোনার আংটি",
+       "id": "36441a37a0a9780ba07f"
+      }
+     ]
     },
     {
      "id": "silver-material",
      "label": "রুপা",
-     "gloss": "silver metal"
+     "gloss": "silver metal",
+     "collocations": [
+      {
+       "text": "রুপার চুড়ি",
+       "id": "5dcd3b6e38e97e0beafd"
+      }
+     ]
     },
     {
      "id": "copper-material",
      "label": "তামা",
-     "gloss": "copper metal"
+     "gloss": "copper metal",
+     "collocations": [
+      {
+       "text": "তামার তার",
+       "id": "ebcbbbcf565ded4005ef"
+      }
+     ]
     },
     {
      "id": "brass-material",
      "label": "পিতল",
-     "gloss": "brass metal"
+     "gloss": "brass metal",
+     "collocations": [
+      {
+       "text": "পিতলের থালা",
+       "id": "aa3ff879c4b3a39cfa24"
+      }
+     ]
     },
     {
      "id": "jute-material",
      "label": "পাট",
-     "gloss": "jute fiber"
+     "gloss": "jute fiber",
+     "collocations": [
+      {
+       "text": "পাটের বস্তা",
+       "id": "e2c8cdae057105b9f665"
+      }
+     ]
     },
     {
      "id": "leather-material",
      "label": "চামড়া",
-     "gloss": "leather"
+     "gloss": "leather",
+     "collocations": [
+      {
+       "text": "চামড়ার জুতা",
+       "id": "f9e717f3f6a1a224ba89"
+      }
+     ]
     }
    ],
    "questions": [
@@ -5134,32 +9058,68 @@ window.PTB_DECK = {
     {
      "id": "water-lily",
      "label": "শাপলা",
-     "gloss": "Bangladeshi water lily"
+     "gloss": "Bangladeshi water lily",
+     "collocations": [
+      {
+       "text": "পুকুরে শাপলা ফুটেছে",
+       "id": "598f97dc88089b10f80d"
+      }
+     ]
     },
     {
      "id": "lotus-flower",
      "label": "পদ্ম",
-     "gloss": "lotus flower"
+     "gloss": "lotus flower",
+     "collocations": [
+      {
+       "text": "গোলাপি পদ্ম",
+       "id": "3c8e51f8bb43266666f9"
+      }
+     ]
     },
     {
      "id": "hibiscus",
      "label": "জবা",
-     "gloss": "hibiscus bloom"
+     "gloss": "hibiscus bloom",
+     "collocations": [
+      {
+       "text": "লাল জবা",
+       "id": "b61abad87c95c026fd7e"
+      }
+     ]
     },
     {
      "id": "marigold",
      "label": "গাঁদা",
-     "gloss": "marigold flower"
+     "gloss": "marigold flower",
+     "collocations": [
+      {
+       "text": "গাঁদা ফুলের মালা",
+       "id": "5f94e64dba5010cfdab7"
+      }
+     ]
     },
     {
      "id": "night-jasmine",
      "label": "শিউলি",
-     "gloss": "night-flowering jasmine"
+     "gloss": "night-flowering jasmine",
+     "collocations": [
+      {
+       "text": "মাটিতে শিউলি ঝরে পড়েছে",
+       "id": "5a4094312ca3ec1e6357"
+      }
+     ]
     },
     {
      "id": "gardenia",
      "label": "গন্ধরাজ",
-     "gloss": "gardenia blossom"
+     "gloss": "gardenia blossom",
+     "collocations": [
+      {
+       "text": "গন্ধরাজের ঘ্রাণ",
+       "id": "b56a50152fceb672b977"
+      }
+     ]
     }
    ],
    "questions": [
@@ -5181,32 +9141,68 @@ window.PTB_DECK = {
     {
      "id": "okra",
      "label": "ঢেঁড়স",
-     "gloss": "okra"
+     "gloss": "okra",
+     "collocations": [
+      {
+       "text": "ঢেঁড়স ভাজি",
+       "id": "b0349e701ca77cf19ce8"
+      }
+     ]
     },
     {
      "id": "pointed-gourd",
      "label": "পটল",
-     "gloss": "pointed gourd"
+     "gloss": "pointed gourd",
+     "collocations": [
+      {
+       "text": "পটলের তরকারি",
+       "id": "9c9e45560816ff2ec7b3"
+      }
+     ]
     },
     {
      "id": "taro-root",
      "label": "কচু",
-     "gloss": "taro corm"
+     "gloss": "taro corm",
+     "collocations": [
+      {
+       "text": "কচু সেদ্ধ",
+       "id": "11fba465a0650c30288c"
+      }
+     ]
     },
     {
      "id": "sweet-potato",
      "label": "মিষ্টি আলু",
-     "gloss": "sweet potato"
+     "gloss": "sweet potato",
+     "collocations": [
+      {
+       "text": "মিষ্টি আলু পুড়িয়ে খান",
+       "id": "0dc33f0440b81e01a143"
+      }
+     ]
     },
     {
      "id": "cabbage",
      "label": "বাঁধাকপি",
-     "gloss": "cabbage"
+     "gloss": "cabbage",
+     "collocations": [
+      {
+       "text": "বাঁধাকপি কুচি",
+       "id": "2de33ffc4d338311c205"
+      }
+     ]
     },
     {
      "id": "ridge-gourd",
      "label": "ঝিঙে",
-     "gloss": "ridged luffa gourd"
+     "gloss": "ridged luffa gourd",
+     "collocations": [
+      {
+       "text": "ঝিঙের ঝোল",
+       "id": "e474d5a6e43298ffd8a7"
+      }
+     ]
     }
    ],
    "questions": [
@@ -5228,32 +9224,68 @@ window.PTB_DECK = {
     {
      "id": "passenger-role",
      "label": "যাত্রী",
-     "gloss": "passenger"
+     "gloss": "passenger",
+     "collocations": [
+      {
+       "text": "যাত্রীরা উঠে বসেছেন",
+       "id": "b775c6826fee27c2d872"
+      }
+     ]
     },
     {
      "id": "driver-role",
      "label": "চালক",
-     "gloss": "vehicle driver"
+     "gloss": "vehicle driver",
+     "collocations": [
+      {
+       "text": "গাড়ির চালক",
+       "id": "14294dd68ac51db31c30"
+      }
+     ]
     },
     {
      "id": "pedestrian-role",
      "label": "পথচারী",
-     "gloss": "pedestrian"
+     "gloss": "pedestrian",
+     "collocations": [
+      {
+       "text": "পথচারী রাস্তা পার হচ্ছেন",
+       "id": "9220f6adfd346c17a13a"
+      }
+     ]
     },
     {
      "id": "guard-role",
      "label": "পাহারাদার",
-     "gloss": "guard"
+     "gloss": "guard",
+     "collocations": [
+      {
+       "text": "পাহারাদার রাতে থাকেন",
+       "id": "c0dbd1701ca78248c24e"
+      }
+     ]
     },
     {
      "id": "street-hawker-role",
      "label": "ফেরিওয়ালা",
-     "gloss": "roving street seller"
+     "gloss": "roving street seller",
+     "collocations": [
+      {
+       "text": "ফেরিওয়ালা হাঁক দেন",
+       "id": "7228191c7c9c13bbc23d"
+      }
+     ]
     },
     {
      "id": "porter-role",
      "label": "মুটে",
-     "gloss": "market porter"
+     "gloss": "market porter",
+     "collocations": [
+      {
+       "text": "মুটে বস্তা বইছেন",
+       "id": "7b19ee2c28dd1b37e9d4"
+      }
+     ]
     }
    ],
    "questions": [
@@ -5275,32 +9307,68 @@ window.PTB_DECK = {
     {
      "id": "asian-elephant",
      "label": "হাতি",
-     "gloss": "Asian elephant"
+     "gloss": "Asian elephant",
+     "collocations": [
+      {
+       "text": "হাতির শুঁড়",
+       "id": "163d8d45da3c792b2454"
+      }
+     ]
     },
     {
      "id": "wild-monkey",
      "label": "বানর",
-     "gloss": "monkey"
+     "gloss": "monkey",
+     "collocations": [
+      {
+       "text": "বানর গাছে ওঠে",
+       "id": "dd041ff587cce56cf773"
+      }
+     ]
     },
     {
      "id": "sloth-bear",
      "label": "ভালুক",
-     "gloss": "South Asian sloth bear"
+     "gloss": "South Asian sloth bear",
+     "collocations": [
+      {
+       "text": "ভালুকের লোম",
+       "id": "10aa7b0b24fe987b91ea"
+      }
+     ]
     },
     {
      "id": "spotted-deer",
      "label": "হরিণ",
-     "gloss": "spotted deer"
+     "gloss": "spotted deer",
+     "collocations": [
+      {
+       "text": "হরিণ দৌড়াচ্ছে",
+       "id": "0214f0b9e6ac0c8b9c14"
+      }
+     ]
     },
     {
      "id": "bengal-tiger",
      "label": "বাঘ",
-     "gloss": "Bengal tiger"
+     "gloss": "Bengal tiger",
+     "collocations": [
+      {
+       "text": "বাঘের ডোরা",
+       "id": "59a2d992a6527eb9d1be"
+      }
+     ]
     },
     {
      "id": "golden-jackal",
      "label": "শিয়াল",
-     "gloss": "golden jackal"
+     "gloss": "golden jackal",
+     "collocations": [
+      {
+       "text": "শিয়াল রাতে ডাকে",
+       "id": "4f2c8dd272f1eea48b57"
+      }
+     ]
     }
    ],
    "questions": [
@@ -5322,32 +9390,68 @@ window.PTB_DECK = {
     {
      "id": "serve-food",
      "label": "খাবার বেড়ে দেওয়া",
-     "gloss": "to serve food"
+     "gloss": "to serve food",
+     "collocations": [
+      {
+       "text": "থালায় ভাত বেড়ে দিন",
+       "id": "677ddcbf9055583088bb"
+      }
+     ]
     },
     {
      "id": "divide-food",
      "label": "ভাগ করা",
-     "gloss": "to divide into shares"
+     "gloss": "to divide into shares",
+     "collocations": [
+      {
+       "text": "দুই ভাগে ভাগ করুন",
+       "id": "f2bc5974a8cf2045fa29"
+      }
+     ]
     },
     {
      "id": "sprinkle",
      "label": "ছিটানো",
-     "gloss": "to sprinkle over food"
+     "gloss": "to sprinkle over food",
+     "collocations": [
+      {
+       "text": "ওপরে লবণ ছিটান",
+       "id": "858adda4dcfcbc780408"
+      }
+     ]
     },
     {
      "id": "squeeze-juice",
      "label": "চিপে রস বের করা",
-     "gloss": "to squeeze juice by hand"
+     "gloss": "to squeeze juice by hand",
+     "collocations": [
+      {
+       "text": "লেবু চিপে রস বের করুন",
+       "id": "8420fb6d10530604a3ff"
+      }
+     ]
     },
     {
      "id": "strain-food",
      "label": "ছেঁকে নেওয়া",
-     "gloss": "to strain food"
+     "gloss": "to strain food",
+     "collocations": [
+      {
+       "text": "রসটা ছেঁকে নিন",
+       "id": "4a9689a39fc499c992c9"
+      }
+     ]
     },
     {
      "id": "grind-food",
      "label": "গুঁড়া করা",
-     "gloss": "to grind into powder"
+     "gloss": "to grind into powder",
+     "collocations": [
+      {
+       "text": "মসলা গুঁড়া করুন",
+       "id": "02e195486432b95e7b7c"
+      }
+     ]
     }
    ],
    "questions": [
@@ -5369,32 +9473,68 @@ window.PTB_DECK = {
     {
      "id": "straw-hut",
      "label": "কুঁড়েঘর",
-     "gloss": "small straw hut"
+     "gloss": "small straw hut",
+     "collocations": [
+      {
+       "text": "খড়ের কুঁড়েঘর",
+       "id": "471883ca4b0283d2b8a3"
+      }
+     ]
     },
     {
      "id": "mud-home",
      "label": "মাটির ঘর",
-     "gloss": "earthen-walled home"
+     "gloss": "earthen-walled home",
+     "collocations": [
+      {
+       "text": "মাটির ঘরের দেয়াল",
+       "id": "f0d77970457c813c34ca"
+      }
+     ]
     },
     {
      "id": "bamboo-home",
      "label": "বাঁশের ঘর",
-     "gloss": "bamboo-walled home"
+     "gloss": "bamboo-walled home",
+     "collocations": [
+      {
+       "text": "বাঁশের ঘরে থাকেন",
+       "id": "42202430d926802fd598"
+      }
+     ]
     },
     {
      "id": "single-story-home",
      "label": "একতলা বাড়ি",
-     "gloss": "single-storey home"
+     "gloss": "single-storey home",
+     "collocations": [
+      {
+       "text": "ছোট একতলা বাড়ি",
+       "id": "045e98dd0430851e3028"
+      }
+     ]
     },
     {
      "id": "two-story-home",
      "label": "দোতলা বাড়ি",
-     "gloss": "two-storey home"
+     "gloss": "two-storey home",
+     "collocations": [
+      {
+       "text": "দোতলা বাড়ির ছাদ",
+       "id": "f6b41d3609ae24a13713"
+      }
+     ]
     },
     {
      "id": "tall-building",
      "label": "উঁচু দালান",
-     "gloss": "tall multi-storey building"
+     "gloss": "tall multi-storey building",
+     "collocations": [
+      {
+       "text": "অনেক উঁচু দালান",
+       "id": "948c08b4597ee14e5751"
+      }
+     ]
     }
    ],
    "questions": [
@@ -5416,32 +9556,68 @@ window.PTB_DECK = {
     {
      "id": "waiting-person",
      "label": "অপেক্ষা করা",
-     "gloss": "to wait"
+     "gloss": "to wait",
+     "collocations": [
+      {
+       "text": "এখানে একটু অপেক্ষা করুন",
+       "id": "0515b9ca0ca5e009a574"
+      }
+     ]
     },
     {
      "id": "setting-out",
      "label": "রওনা হওয়া",
-     "gloss": "to set out for a destination"
+     "gloss": "to set out for a destination",
+     "collocations": [
+      {
+       "text": "সকালে রওনা হই",
+       "id": "a7932b638e4c21dce17f"
+      }
+     ]
     },
     {
      "id": "following-person",
      "label": "পিছু নেওয়া",
-     "gloss": "to follow someone"
+     "gloss": "to follow someone",
+     "collocations": [
+      {
+       "text": "ওর পিছু নিন",
+       "id": "9eadebd3ab9a720dec2d"
+      }
+     ]
     },
     {
      "id": "make-way",
      "label": "পথ ছেড়ে দেওয়া",
-     "gloss": "to make way for someone"
+     "gloss": "to make way for someone",
+     "collocations": [
+      {
+       "text": "একটু পথ ছেড়ে দিন",
+       "id": "a46a8dd53f14caff8eda"
+      }
+     ]
     },
     {
      "id": "changing-path",
      "label": "পথ বদলানো",
-     "gloss": "to change routes"
+     "gloss": "to change routes",
+     "collocations": [
+      {
+       "text": "এখান থেকে পথ বদলান",
+       "id": "04044a4ecc7a47d0a706"
+      }
+     ]
     },
     {
      "id": "lost-person",
      "label": "পথ হারানো",
-     "gloss": "to lose one's way"
+     "gloss": "to lose one's way",
+     "collocations": [
+      {
+       "text": "অচেনা পথে পথ হারিয়েছি",
+       "id": "5271c1572d0a113daae2"
+      }
+     ]
     }
    ],
    "questions": [
@@ -5463,32 +9639,68 @@ window.PTB_DECK = {
     {
      "id": "take-temperature",
      "label": "জ্বর মাপা",
-     "gloss": "to take a temperature"
+     "gloss": "to take a temperature",
+     "collocations": [
+      {
+       "text": "জ্বর মেপে দেখুন",
+       "id": "74a2f06306dcd6ff3e37"
+      }
+     ]
     },
     {
      "id": "check-pulse",
      "label": "নাড়ি দেখা",
-     "gloss": "to feel a pulse"
+     "gloss": "to feel a pulse",
+     "collocations": [
+      {
+       "text": "কবজিতে নাড়ি দেখছেন",
+       "id": "e6c3c3be8898ca3d8ff2"
+      }
+     ]
     },
     {
      "id": "deep-breath",
      "label": "শ্বাস নেওয়া",
-     "gloss": "to take a breath"
+     "gloss": "to take a breath",
+     "collocations": [
+      {
+       "text": "গভীর শ্বাস নিন",
+       "id": "3acf2beca8c04101b97c"
+      }
+     ]
     },
     {
      "id": "wash-scrape",
      "label": "ক্ষত ধোয়া",
-     "gloss": "to rinse a small scrape"
+     "gloss": "to rinse a small scrape",
+     "collocations": [
+      {
+       "text": "পানি দিয়ে ক্ষত ধুয়ে নিন",
+       "id": "caa0d93cc0fd275a9829"
+      }
+     ]
     },
     {
      "id": "wrap-bandage",
      "label": "পট্টি বাঁধা",
-     "gloss": "to wrap a bandage"
+     "gloss": "to wrap a bandage",
+     "collocations": [
+      {
+       "text": "হাতে পট্টি বাঁধছেন",
+       "id": "080fab62017a9cdb3b4d"
+      }
+     ]
     },
     {
      "id": "apply-ointment",
      "label": "মলম লাগানো",
-     "gloss": "to apply ointment"
+     "gloss": "to apply ointment",
+     "collocations": [
+      {
+       "text": "জায়গাটায় মলম লাগান",
+       "id": "d4bef3eeebffd72e1b46"
+      }
+     ]
     }
    ],
    "questions": [
@@ -5510,32 +9722,68 @@ window.PTB_DECK = {
     {
      "id": "coconut-water",
      "label": "ডাবের পানি",
-     "gloss": "water from a tender coconut"
+     "gloss": "water from a tender coconut",
+     "collocations": [
+      {
+       "text": "একটু ডাবের পানি দিন",
+       "id": "e42309591599e7ace0fc"
+      }
+     ]
     },
     {
      "id": "sugarcane-juice",
      "label": "আখের রস",
-     "gloss": "pressed sugarcane juice"
+     "gloss": "pressed sugarcane juice",
+     "collocations": [
+      {
+       "text": "তাজা আখের রস",
+       "id": "52b7346918e9e0c430c0"
+      }
+     ]
     },
     {
      "id": "bael-drink",
      "label": "বেলের শরবত",
-     "gloss": "bael sharbat"
+     "gloss": "bael sharbat",
+     "collocations": [
+      {
+       "text": "ঠান্ডা বেলের শরবত",
+       "id": "f7cdaeb9dcbb7920f05f"
+      }
+     ]
     },
     {
      "id": "lemon-water",
      "label": "লেবুপানি",
-     "gloss": "lemon water"
+     "gloss": "lemon water",
+     "collocations": [
+      {
+       "text": "একটু লেবুপানি দিন",
+       "id": "e03c6caff1c71569b67d"
+      }
+     ]
     },
     {
      "id": "ghol-drink",
      "label": "ঘোল",
-     "gloss": "Bengali diluted yogurt drink"
+     "gloss": "Bengali diluted yogurt drink",
+     "collocations": [
+      {
+       "text": "ঠান্ডা ঘোল",
+       "id": "3c6df6dc5d3808412d44"
+      }
+     ]
     },
     {
      "id": "borhani-drink",
      "label": "বোরহানি",
-     "gloss": "spiced Bangladeshi yogurt drink"
+     "gloss": "spiced Bangladeshi yogurt drink",
+     "collocations": [
+      {
+       "text": "দাওয়াতে বোরহানি",
+       "id": "d4d68647c20ca7b9615d"
+      }
+     ]
     }
    ],
    "questions": [
@@ -5557,32 +9805,68 @@ window.PTB_DECK = {
     {
      "id": "unripe-food",
      "label": "কাঁচা",
-     "gloss": "unripe"
+     "gloss": "unripe",
+     "collocations": [
+      {
+       "text": "কাঁচা আম",
+       "id": "9e1e32e1a28b7f7bfe03"
+      }
+     ]
     },
     {
      "id": "ripe-food",
      "label": "পাকা",
-     "gloss": "ripe"
+     "gloss": "ripe",
+     "collocations": [
+      {
+       "text": "পাকা কলা",
+       "id": "ea054b5b4dc360c1fe84"
+      }
+     ]
     },
     {
      "id": "fresh-roti",
      "label": "টাটকা",
-     "gloss": "freshly made"
+     "gloss": "freshly made",
+     "collocations": [
+      {
+       "text": "টাটকা মাছ",
+       "id": "44e0be50ca507bd5afd5"
+      }
+     ]
     },
     {
      "id": "stale-roti",
      "label": "বাসি",
-     "gloss": "stale"
+     "gloss": "stale",
+     "collocations": [
+      {
+       "text": "বাসি ভাত",
+       "id": "c74ec7e48d7774ff6f87"
+      }
+     ]
     },
     {
      "id": "solid-ghee",
      "label": "জমাট বাঁধা",
-     "gloss": "to set solid when cool"
+     "gloss": "to set solid when cool",
+     "collocations": [
+      {
+       "text": "রসটা জমাট বেঁধেছে",
+       "id": "fc57c6a3675b84029790"
+      }
+     ]
     },
     {
      "id": "melting-ghee",
      "label": "গলে যাওয়া",
-     "gloss": "to melt"
+     "gloss": "to melt",
+     "collocations": [
+      {
+       "text": "বরফ গলে গেছে",
+       "id": "4cb3c9177cb71b88ef41"
+      }
+     ]
     }
    ],
    "questions": [
@@ -5604,32 +9888,68 @@ window.PTB_DECK = {
     {
      "id": "cast-net",
      "label": "জাল",
-     "gloss": "throw fishing net"
+     "gloss": "throw fishing net",
+     "collocations": [
+      {
+       "text": "পুকুরে জাল ফেলুন",
+       "id": "70750fb8e1963aef8232"
+      }
+     ]
     },
     {
      "id": "fish-trap",
      "label": "পলো",
-     "gloss": "traditional dome-shaped fishing trap"
+     "gloss": "traditional dome-shaped fishing trap",
+     "collocations": [
+      {
+       "text": "পলো দিয়ে মাছ ধরেন",
+       "id": "8df1a07b8a52d820fd1a"
+      }
+     ]
     },
     {
      "id": "fish-hook",
      "label": "বড়শি",
-     "gloss": "fishing hook"
+     "gloss": "fishing hook",
+     "collocations": [
+      {
+       "text": "বড়শিতে টোপ লাগান",
+       "id": "68c05f8f5d36991f0428"
+      }
+     ]
     },
     {
      "id": "fishing-rod",
      "label": "ছিপ",
-     "gloss": "fishing rod"
+     "gloss": "fishing rod",
+     "collocations": [
+      {
+       "text": "ছিপ ফেলে বসে আছেন",
+       "id": "0408219ad5d4cd19888e"
+      }
+     ]
     },
     {
      "id": "woven-fish-basket",
      "label": "খালুই",
-     "gloss": "small woven basket that holds fish"
+     "gloss": "small woven basket that holds fish",
+     "collocations": [
+      {
+       "text": "খালুইয়ে মাছ রাখেন",
+       "id": "aa9c42f979b3814b07d3"
+      }
+     ]
     },
     {
      "id": "wooden-oar",
      "label": "বৈঠা",
-     "gloss": "boat oar"
+     "gloss": "boat oar",
+     "collocations": [
+      {
+       "text": "বৈঠা দিয়ে নৌকা চালান",
+       "id": "55002ddf92e0d166c8ed"
+      }
+     ]
     }
    ],
    "questions": [
@@ -5651,32 +9971,68 @@ window.PTB_DECK = {
     {
      "id": "cloth-stripes",
      "label": "ডোরাকাটা",
-     "gloss": "striped cloth"
+     "gloss": "striped cloth",
+     "collocations": [
+      {
+       "text": "ডোরাকাটা জামা",
+       "id": "c58174f104c55d853634"
+      }
+     ]
     },
     {
      "id": "cloth-checks",
      "label": "ঘরকাটা",
-     "gloss": "checked cloth"
+     "gloss": "checked cloth",
+     "collocations": [
+      {
+       "text": "ঘরকাটা লুঙ্গি",
+       "id": "e7d23aa7abcf09836136"
+      }
+     ]
     },
     {
      "id": "cloth-dots",
      "label": "ফোঁটাওয়ালা",
-     "gloss": "polka-dotted cloth"
+     "gloss": "polka-dotted cloth",
+     "collocations": [
+      {
+       "text": "ফোঁটাওয়ালা কাপড়",
+       "id": "26c63ef89bc5f7cbdb56"
+      }
+     ]
     },
     {
      "id": "cloth-flowers",
      "label": "ফুলের ছাপ",
-     "gloss": "floral print"
+     "gloss": "floral print",
+     "collocations": [
+      {
+       "text": "জামায় ফুলের ছাপ",
+       "id": "5201717ae855a77c2afc"
+      }
+     ]
     },
     {
      "id": "cloth-embroidered",
      "label": "সুতার নকশা",
-     "gloss": "embroidered design"
+     "gloss": "embroidered design",
+     "collocations": [
+      {
+       "text": "ওড়নায় সুতার নকশা",
+       "id": "2b22daeef2154c06cc3f"
+      }
+     ]
     },
     {
      "id": "cloth-solid",
      "label": "একরঙা",
-     "gloss": "plain solid-colored cloth"
+     "gloss": "plain solid-colored cloth",
+     "collocations": [
+      {
+       "text": "এক রঙের শাড়ি",
+       "id": "1b65bb2f32d2de4c6d62"
+      }
+     ]
     }
    ],
    "questions": [
@@ -5698,32 +10054,68 @@ window.PTB_DECK = {
     {
      "id": "wink",
      "label": "চোখ টেপা",
-     "gloss": "to wink with one eye"
+     "gloss": "to wink with one eye",
+     "collocations": [
+      {
+       "text": "এক চোখ টিপলেন",
+       "id": "339a93ea8c04095686e4"
+      }
+     ]
     },
     {
      "id": "blink",
      "label": "পলক ফেলা",
-     "gloss": "to blink"
+     "gloss": "to blink",
+     "collocations": [
+      {
+       "text": "চোখের পলক ফেলুন",
+       "id": "968d85af4ddd3efb7dfe"
+      }
+     ]
     },
     {
      "id": "yawn",
      "label": "হাই তোলা",
-     "gloss": "to yawn"
+     "gloss": "to yawn",
+     "collocations": [
+      {
+       "text": "ঘুম পেয়ে হাই তুলছেন",
+       "id": "dde46a7d9b74ae93fc18"
+      }
+     ]
     },
     {
      "id": "mouth-grimace",
      "label": "মুখ বাঁকানো",
-     "gloss": "to twist one's lips"
+     "gloss": "to twist one's lips",
+     "collocations": [
+      {
+       "text": "মুখ বাঁকিয়ে আছে",
+       "id": "fd6859fc7914a5b5df9b"
+      }
+     ]
     },
     {
      "id": "furrow-brows",
      "label": "ভুরু কুঁচকানো",
-     "gloss": "to furrow the brows"
+     "gloss": "to furrow the brows",
+     "collocations": [
+      {
+       "text": "ভুরু কুঁচকে তাকালেন",
+       "id": "3c04b0dc3da7cb4deab2"
+      }
+     ]
     },
     {
      "id": "shake-head",
      "label": "মাথা ঝাঁকানো",
-     "gloss": "to shake the head sideways"
+     "gloss": "to shake the head sideways",
+     "collocations": [
+      {
+       "text": "মাথা ঝাঁকিয়ে না বললেন",
+       "id": "3fa67ec6964453dcc142"
+      }
+     ]
     }
    ],
    "questions": [
@@ -5745,32 +10137,68 @@ window.PTB_DECK = {
     {
      "id": "seven",
      "label": "সাত",
-     "gloss": "seven"
+     "gloss": "seven",
+     "collocations": [
+      {
+       "text": "সাতটা গুনুন",
+       "id": "c7efb82c78324c27571a"
+      }
+     ]
     },
     {
      "id": "eight",
      "label": "আট",
-     "gloss": "eight"
+     "gloss": "eight",
+     "collocations": [
+      {
+       "text": "আটটা রাখুন",
+       "id": "2d34f876de7219cf3ee0"
+      }
+     ]
     },
     {
      "id": "nine",
      "label": "নয়",
-     "gloss": "nine"
+     "gloss": "nine",
+     "collocations": [
+      {
+       "text": "নয়টা হয়েছে",
+       "id": "24ad193877ab72aae8e7"
+      }
+     ]
     },
     {
      "id": "ten",
      "label": "দশ",
-     "gloss": "ten"
+     "gloss": "ten",
+     "collocations": [
+      {
+       "text": "দশটা দিন",
+       "id": "6d3bc89ccd5627a769e8"
+      }
+     ]
     },
     {
      "id": "eleven",
      "label": "এগারো",
-     "gloss": "eleven"
+     "gloss": "eleven",
+     "collocations": [
+      {
+       "text": "এগারোটা নিন",
+       "id": "6daf8d41758ee5ddc528"
+      }
+     ]
     },
     {
      "id": "twelve",
      "label": "বারো",
-     "gloss": "twelve"
+     "gloss": "twelve",
+     "collocations": [
+      {
+       "text": "বারোটা আছে",
+       "id": "05749d8149f34b974df7"
+      }
+     ]
     }
    ],
    "questions": [
@@ -5792,32 +10220,68 @@ window.PTB_DECK = {
     {
      "id": "fast-pace",
      "label": "তাড়াতাড়ি",
-     "gloss": "quickly"
+     "gloss": "quickly",
+     "collocations": [
+      {
+       "text": "তাড়াতাড়ি আসুন",
+       "id": "90d894bc3e7fe78b56d0"
+      }
+     ]
     },
     {
      "id": "slow-pace",
      "label": "ধীরে",
-     "gloss": "slowly"
+     "gloss": "slowly",
+     "collocations": [
+      {
+       "text": "ধীরে বলুন",
+       "id": "afde2d101b08e2a3fe13"
+      }
+     ]
     },
     {
      "id": "together-action",
      "label": "একসঙ্গে",
-     "gloss": "together at the same time"
+     "gloss": "together at the same time",
+     "collocations": [
+      {
+       "text": "একসঙ্গে বসুন",
+       "id": "00eb47617f8219744667"
+      }
+     ]
     },
     {
      "id": "take-turns",
      "label": "পালা করে",
-     "gloss": "taking turns"
+     "gloss": "taking turns",
+     "collocations": [
+      {
+       "text": "পালা করে বলুন",
+       "id": "9bd3f6bdf3bb966114a9"
+      }
+     ]
     },
     {
      "id": "once-action",
      "label": "একবার",
-     "gloss": "once"
+     "gloss": "once",
+     "collocations": [
+      {
+       "text": "আর একবার বলুন",
+       "id": "4a15827c673d60ac512c"
+      }
+     ]
     },
     {
      "id": "repeat-action",
      "label": "বারবার",
-     "gloss": "repeatedly"
+     "gloss": "repeatedly",
+     "collocations": [
+      {
+       "text": "বারবার ভুল হয়",
+       "id": "93f7aed47fff4f20e600"
+      }
+     ]
     }
    ],
    "questions": [
@@ -5839,32 +10303,68 @@ window.PTB_DECK = {
     {
      "id": "river-char",
      "label": "চর",
-     "gloss": "river sandbar"
+     "gloss": "river sandbar",
+     "collocations": [
+      {
+       "text": "নদীর চরে",
+       "id": "7fa551d1436bcc965816"
+      }
+     ]
     },
     {
      "id": "island-land",
      "label": "দ্বীপ",
-     "gloss": "island"
+     "gloss": "island",
+     "collocations": [
+      {
+       "text": "দ্বীপে নৌকায় যাই",
+       "id": "67727a6a3b083ef3dbd5"
+      }
+     ]
     },
     {
      "id": "embankment",
      "label": "বাঁধ",
-     "gloss": "raised river embankment"
+     "gloss": "raised river embankment",
+     "collocations": [
+      {
+       "text": "নদীর বাঁধ",
+       "id": "0201050c726382ecf74c"
+      }
+     ]
     },
     {
      "id": "waterfall",
      "label": "ঝরনা",
-     "gloss": "waterfall"
+     "gloss": "waterfall",
+     "collocations": [
+      {
+       "text": "ঝরনার পানি পড়ছে",
+       "id": "4e85108982ec3ae8dea7"
+      }
+     ]
     },
     {
      "id": "estuary",
      "label": "মোহনা",
-     "gloss": "estuary at a river mouth"
+     "gloss": "estuary at a river mouth",
+     "collocations": [
+      {
+       "text": "নদীর মোহনায়",
+       "id": "0d52fd889b9c6b4723fe"
+      }
+     ]
     },
     {
      "id": "sea-water",
      "label": "সমুদ্র",
-     "gloss": "sea"
+     "gloss": "sea",
+     "collocations": [
+      {
+       "text": "সমুদ্রের ঢেউ",
+       "id": "01963931d44ec54256ac"
+      }
+     ]
     }
    ],
    "questions": [
@@ -5886,32 +10386,68 @@ window.PTB_DECK = {
     {
      "id": "bargain",
      "label": "দরদাম করা",
-     "gloss": "to bargain over a price"
+     "gloss": "to bargain over a price",
+     "collocations": [
+      {
+       "text": "দাম নিয়ে দরদাম করুন",
+       "id": "c8c20c782fd819b50c63"
+      }
+     ]
     },
     {
      "id": "cash-count",
      "label": "টাকা গোনা",
-     "gloss": "to count money"
+     "gloss": "to count money",
+     "collocations": [
+      {
+       "text": "টাকা গুনে নিন",
+       "id": "3e2534e7d1ca9e4dfe6c"
+      }
+     ]
     },
     {
      "id": "cash-save",
      "label": "টাকা জমানো",
-     "gloss": "to put money aside"
+     "gloss": "to put money aside",
+     "collocations": [
+      {
+       "text": "অল্প অল্প টাকা জমাই",
+       "id": "76145dd194b14481ff90"
+      }
+     ]
     },
     {
      "id": "discount-price",
      "label": "দাম কমানো",
-     "gloss": "to reduce a price"
+     "gloss": "to reduce a price",
+     "collocations": [
+      {
+       "text": "দাম একটু কমান",
+       "id": "98f780a071835ca13fd4"
+      }
+     ]
     },
     {
      "id": "record-credit",
      "label": "বাকি লেখা",
-     "gloss": "to record a sale to be paid later"
+     "gloss": "to record a sale to be paid later",
+     "collocations": [
+      {
+       "text": "খাতায় বাকি লিখুন",
+       "id": "ffc3a74e2be0fb871f1d"
+      }
+     ]
     },
     {
      "id": "make-change",
      "label": "ভাঙতি করা",
-     "gloss": "to break a note into smaller money"
+     "gloss": "to break a note into smaller money",
+     "collocations": [
+      {
+       "text": "টাকাটা ভাঙতি করে দিন",
+       "id": "5aa04870aadd1f4fd7b7"
+      }
+     ]
     }
    ],
    "questions": [
@@ -5933,32 +10469,68 @@ window.PTB_DECK = {
     {
      "id": "give-salaam",
      "label": "সালাম দেওয়া",
-     "gloss": "to give a salaam greeting"
+     "gloss": "to give a salaam greeting",
+     "collocations": [
+      {
+       "text": "বড়দের সালাম দিন",
+       "id": "9b0fc72b413db4f9549a"
+      }
+     ]
     },
     {
      "id": "shake-hands",
      "label": "হাত মেলানো",
-     "gloss": "to shake hands"
+     "gloss": "to shake hands",
+     "collocations": [
+      {
+       "text": "হাত মেলালেন",
+       "id": "96b332cf90cb4bffe089"
+      }
+     ]
     },
     {
      "id": "hug-person",
      "label": "জড়িয়ে ধরা",
-     "gloss": "to hug someone"
+     "gloss": "to hug someone",
+     "collocations": [
+      {
+       "text": "বাচ্চাকে জড়িয়ে ধরলেন",
+       "id": "2bcea67cab5625926dac"
+      }
+     ]
     },
     {
      "id": "say-goodbye",
      "label": "বিদায় নেওয়া",
-     "gloss": "to take leave"
+     "gloss": "to take leave",
+     "collocations": [
+      {
+       "text": "বিদায় নিয়ে চলে গেলেন",
+       "id": "c560e50b7af50228da68"
+      }
+     ]
     },
     {
      "id": "welcome-guest",
      "label": "স্বাগত জানানো",
-     "gloss": "to welcome someone"
+     "gloss": "to welcome someone",
+     "collocations": [
+      {
+       "text": "অতিথিকে স্বাগত জানালেন",
+       "id": "893124a2db1ba84f944e"
+      }
+     ]
     },
     {
      "id": "help-someone",
      "label": "সাহায্য করা",
-     "gloss": "to help someone"
+     "gloss": "to help someone",
+     "collocations": [
+      {
+       "text": "একটু সাহায্য করুন",
+       "id": "6596a42a7f5211b87d64"
+      }
+     ]
     }
    ],
    "questions": [
@@ -5980,32 +10552,68 @@ window.PTB_DECK = {
     {
      "id": "jute-rope",
      "label": "দড়ি",
-     "gloss": "jute rope"
+     "gloss": "jute rope",
+     "collocations": [
+      {
+       "text": "মোটা দড়ি",
+       "id": "daf9624adc28b5ef299b"
+      }
+     ]
     },
     {
      "id": "metal-chain",
      "label": "শিকল",
-     "gloss": "metal chain"
+     "gloss": "metal chain",
+     "collocations": [
+      {
+       "text": "লোহার শিকল",
+       "id": "89f4eca8c6e2b3243142"
+      }
+     ]
     },
     {
      "id": "hair-ribbon",
      "label": "চুলের ফিতা",
-     "gloss": "hair ribbon"
+     "gloss": "hair ribbon",
+     "collocations": [
+      {
+       "text": "চুলে ফিতা বাঁধুন",
+       "id": "391199c84f1560571b5d"
+      }
+     ]
     },
     {
      "id": "metal-ring",
      "label": "আংটা",
-     "gloss": "plain fastener ring"
+     "gloss": "plain fastener ring",
+     "collocations": [
+      {
+       "text": "আংটায় দড়ি লাগান",
+       "id": "f31bcd4a475e0471498a"
+      }
+     ]
     },
     {
      "id": "magnet",
      "label": "চুম্বক",
-     "gloss": "magnet"
+     "gloss": "magnet",
+     "collocations": [
+      {
+       "text": "চুম্বকে লোহা আটকায়",
+       "id": "fbc053a699592f4c3002"
+      }
+     ]
     },
     {
      "id": "cloth-peg",
      "label": "কাপড়ের চিমটি",
-     "gloss": "clothespin"
+     "gloss": "clothespin",
+     "collocations": [
+      {
+       "text": "কাপড়ের চিমটি লাগান",
+       "id": "63086bcaa255a2eb366c"
+      }
+     ]
     }
    ],
    "questions": [
@@ -6027,32 +10635,68 @@ window.PTB_DECK = {
     {
      "id": "poke-object",
      "label": "খোঁচানো",
-     "gloss": "to poke with the tip"
+     "gloss": "to poke with the tip",
+     "collocations": [
+      {
+       "text": "আঙুল দিয়ে খোঁচাবেন না",
+       "id": "2275a0313364d9661560"
+      }
+     ]
     },
     {
      "id": "press-button",
      "label": "বোতাম টেপা",
-     "gloss": "to press a button"
+     "gloss": "to press a button",
+     "collocations": [
+      {
+       "text": "বোতামটা টিপুন",
+       "id": "54f3fa16ad7a6480e8aa"
+      }
+     ]
     },
     {
      "id": "pinch-skin",
      "label": "চিমটি কাটা",
-     "gloss": "to pinch"
+     "gloss": "to pinch",
+     "collocations": [
+      {
+       "text": "হাতে চিমটি কেটেছে",
+       "id": "a31402b32b0f19d2112b"
+      }
+     ]
     },
     {
      "id": "scratch-surface",
      "label": "খামচানো",
-     "gloss": "to scratch with fingernails"
+     "gloss": "to scratch with fingernails",
+     "collocations": [
+      {
+       "text": "বিড়াল খামচে দিয়েছে",
+       "id": "b41a939c013fd1e78c51"
+      }
+     ]
     },
     {
      "id": "rub-surface",
      "label": "ঘষা",
-     "gloss": "to rub back and forth"
+     "gloss": "to rub back and forth",
+     "collocations": [
+      {
+       "text": "কাপড় দিয়ে ঘষুন",
+       "id": "f7ab024ac28c01666506"
+      }
+     ]
     },
     {
      "id": "press-down",
      "label": "চাপ দেওয়া",
-     "gloss": "to press down with a palm"
+     "gloss": "to press down with a palm",
+     "collocations": [
+      {
+       "text": "আঙুল দিয়ে চাপ দিন",
+       "id": "b0be6a114caec10e9abc"
+      }
+     ]
     }
    ],
    "questions": [
@@ -6074,32 +10718,68 @@ window.PTB_DECK = {
     {
      "id": "dig-soil",
      "label": "মাটি খোঁড়া",
-     "gloss": "to dig soil"
+     "gloss": "to dig soil",
+     "collocations": [
+      {
+       "text": "কোদাল দিয়ে মাটি খুঁড়ুন",
+       "id": "36547345a525d68c9b85"
+      }
+     ]
     },
     {
      "id": "sow-seeds",
      "label": "বীজ বোনা",
-     "gloss": "to sow seeds"
+     "gloss": "to sow seeds",
+     "collocations": [
+      {
+       "text": "মাটিতে বীজ বুনুন",
+       "id": "ec4d52b26b7721ce6c99"
+      }
+     ]
     },
     {
      "id": "water-plant",
      "label": "পানি দেওয়া",
-     "gloss": "to water a plant"
+     "gloss": "to water a plant",
+     "collocations": [
+      {
+       "text": "গাছে পানি দিন",
+       "id": "bf2ee31fb89ad9051d30"
+      }
+     ]
     },
     {
      "id": "transplant-seedling",
      "label": "চারা লাগানো",
-     "gloss": "to plant a seedling"
+     "gloss": "to plant a seedling",
+     "collocations": [
+      {
+       "text": "জমিতে চারা লাগান",
+       "id": "bb669ea324bb15200fb4"
+      }
+     ]
     },
     {
      "id": "pull-weeds",
      "label": "আগাছা তোলা",
-     "gloss": "to pull weeds"
+     "gloss": "to pull weeds",
+     "collocations": [
+      {
+       "text": "আগাছা তুলে ফেলুন",
+       "id": "aa1ddf03414d659d9f49"
+      }
+     ]
     },
     {
      "id": "pick-vegetables",
      "label": "সবজি পাড়া",
-     "gloss": "to pick a vegetable from its plant"
+     "gloss": "to pick a vegetable from its plant",
+     "collocations": [
+      {
+       "text": "গাছ থেকে সবজি পাড়ুন",
+       "id": "55fda3f7131c7d959b69"
+      }
+     ]
     }
    ],
    "questions": [
@@ -6121,32 +10801,68 @@ window.PTB_DECK = {
     {
      "id": "screwdriver-tool",
      "label": "পেঁচকস",
-     "gloss": "screwdriver"
+     "gloss": "screwdriver",
+     "collocations": [
+      {
+       "text": "পেঁচকস দিয়ে প্যাঁচ খুলুন",
+       "id": "f8a813812c07ddf0943e"
+      }
+     ]
     },
     {
      "id": "pliers-tool",
      "label": "সাঁড়াশি",
-     "gloss": "pliers"
+     "gloss": "pliers",
+     "collocations": [
+      {
+       "text": "সাঁড়াশি দিয়ে টেনে ধরুন",
+       "id": "b702889e15c81f37c304"
+      }
+     ]
     },
     {
      "id": "chisel-tool",
      "label": "ছেনি",
-     "gloss": "woodworking chisel"
+     "gloss": "woodworking chisel",
+     "collocations": [
+      {
+       "text": "ছেনি দিয়ে কাঠ কাটেন",
+       "id": "6ae0699c5e4be3e747f3"
+      }
+     ]
     },
     {
      "id": "sandpaper-tool",
      "label": "শিরীষ কাগজ",
-     "gloss": "sandpaper"
+     "gloss": "sandpaper",
+     "collocations": [
+      {
+       "text": "শিরীষ কাগজ দিয়ে ঘষুন",
+       "id": "58d1d9da9d8c805f8742"
+      }
+     ]
     },
     {
      "id": "spade-tool",
      "label": "কোদাল",
-     "gloss": "long-handled spade"
+     "gloss": "long-handled spade",
+     "collocations": [
+      {
+       "text": "কোদাল দিয়ে মাটি কাটুন",
+       "id": "e7168085ef6859e0a712"
+      }
+     ]
     },
     {
      "id": "hand-hoe-tool",
      "label": "খুরপি",
-     "gloss": "short hand hoe"
+     "gloss": "short hand hoe",
+     "collocations": [
+      {
+       "text": "খুরপি দিয়ে আগাছা তুলুন",
+       "id": "e94675415cd67f71f524"
+      }
+     ]
     }
    ],
    "questions": [
@@ -6168,32 +10884,68 @@ window.PTB_DECK = {
     {
      "id": "low-stool",
      "label": "পিঁড়ি",
-     "gloss": "traditional low wooden seat"
+     "gloss": "traditional low wooden seat",
+     "collocations": [
+      {
+       "text": "পিঁড়িতে বসুন",
+       "id": "b67258f5be537bcdb7bc"
+      }
+     ]
     },
     {
      "id": "hand-fan",
      "label": "হাতপাখা",
-     "gloss": "woven manual hand fan"
+     "gloss": "woven manual hand fan",
+     "collocations": [
+      {
+       "text": "হাতপাখা দিয়ে বাতাস করুন",
+       "id": "2fbad801fed6c1c4fccd"
+      }
+     ]
     },
     {
      "id": "winnowing-tray",
      "label": "কুলা",
-     "gloss": "traditional winnowing tray"
+     "gloss": "traditional winnowing tray",
+     "collocations": [
+      {
+       "text": "কুলায় চাল ঝাড়ুন",
+       "id": "5e7dce211a6e62202eef"
+      }
+     ]
     },
     {
      "id": "grain-sieve",
      "label": "চালুনি",
-     "gloss": "wide grain sieve"
+     "gloss": "wide grain sieve",
+     "collocations": [
+      {
+       "text": "চালুনিতে আটা চালুন",
+       "id": "75d91f54ca8f1ba6110e"
+      }
+     ]
     },
     {
      "id": "woven-platter",
      "label": "ডালা",
-     "gloss": "shallow woven platter"
+     "gloss": "shallow woven platter",
+     "collocations": [
+      {
+       "text": "বাঁশের ডালা",
+       "id": "afcf32787881143577d2"
+      }
+     ]
     },
     {
      "id": "betel-box",
      "label": "পানের বাটা",
-     "gloss": "betel serving box"
+     "gloss": "betel serving box",
+     "collocations": [
+      {
+       "text": "পানের বাটায় পান রাখেন",
+       "id": "d82ab993f7421d30b52f"
+      }
+     ]
     }
    ],
    "questions": [
@@ -6215,32 +10967,68 @@ window.PTB_DECK = {
     {
      "id": "iron-cloth",
      "label": "ইস্ত্রি করা",
-     "gloss": "to iron cloth"
+     "gloss": "to iron cloth",
+     "collocations": [
+      {
+       "text": "জামা ইস্ত্রি করুন",
+       "id": "8bb14b6fc09b9890fdec"
+      }
+     ]
     },
     {
      "id": "pleat-cloth",
      "label": "কুঁচি দেওয়া",
-     "gloss": "to make pleats"
+     "gloss": "to make pleats",
+     "collocations": [
+      {
+       "text": "কাপড়ে কুঁচি দিন",
+       "id": "a4e58605dc28896e276e"
+      }
+     ]
     },
     {
      "id": "soak-fabric",
      "label": "ভিজিয়ে রাখা",
-     "gloss": "to leave fabric soaking"
+     "gloss": "to leave fabric soaking",
+     "collocations": [
+      {
+       "text": "পানিতে ভিজিয়ে রাখুন",
+       "id": "fc75864b9ed8dc98972b"
+      }
+     ]
     },
     {
      "id": "wring-cloth",
      "label": "নিংড়ানো",
-     "gloss": "to wring out cloth"
+     "gloss": "to wring out cloth",
+     "collocations": [
+      {
+       "text": "কাপড় নিংড়ে নিন",
+       "id": "13880dd76e76d1c1645a"
+      }
+     ]
     },
     {
      "id": "remove-stain",
      "label": "দাগ তোলা",
-     "gloss": "to remove a stain"
+     "gloss": "to remove a stain",
+     "collocations": [
+      {
+       "text": "কাপড়ের দাগ তুলুন",
+       "id": "4a8371cab63d6871833a"
+      }
+     ]
     },
     {
      "id": "dye-cloth",
      "label": "রং করা",
-     "gloss": "to dye cloth"
+     "gloss": "to dye cloth",
+     "collocations": [
+      {
+       "text": "কাপড়ে রং করুন",
+       "id": "ab52ad6bbf53052e80d4"
+      }
+     ]
     }
    ],
    "questions": [
@@ -6262,32 +11050,68 @@ window.PTB_DECK = {
     {
      "id": "headache",
      "label": "মাথা ব্যথা",
-     "gloss": "headache"
+     "gloss": "headache",
+     "collocations": [
+      {
+       "text": "মাথা ব্যথা করছে",
+       "id": "86e64960cd285dc2e503"
+      }
+     ]
     },
     {
      "id": "backache",
      "label": "পিঠে ব্যথা",
-     "gloss": "backache"
+     "gloss": "backache",
+     "collocations": [
+      {
+       "text": "পিঠে খুব ব্যথা",
+       "id": "ef940a3b10353a0666c8"
+      }
+     ]
     },
     {
      "id": "sore-throat",
      "label": "গিলতে কষ্ট",
-     "gloss": "difficulty swallowing"
+     "gloss": "difficulty swallowing",
+     "collocations": [
+      {
+       "text": "খাবার গিলতে কষ্ট হয়",
+       "id": "8a6bb0efaa3b6de93dad"
+      }
+     ]
     },
     {
      "id": "vomiting",
      "label": "বমি",
-     "gloss": "vomiting"
+     "gloss": "vomiting",
+     "collocations": [
+      {
+       "text": "বমি হয়েছে",
+       "id": "370e814c49bddc029284"
+      }
+     ]
     },
     {
      "id": "stuffy-nose",
      "label": "নাক বন্ধ",
-     "gloss": "blocked nose"
+     "gloss": "blocked nose",
+     "collocations": [
+      {
+       "text": "নাক বন্ধ হয়ে গেছে",
+       "id": "2fb395e44f2ee7933266"
+      }
+     ]
     },
     {
      "id": "breathing-hard",
      "label": "শ্বাসকষ্ট",
-     "gloss": "difficulty breathing"
+     "gloss": "difficulty breathing",
+     "collocations": [
+      {
+       "text": "শ্বাসকষ্ট হচ্ছে",
+       "id": "b385663a6eebe70e02ba"
+      }
+     ]
     }
    ],
    "questions": [
@@ -6309,32 +11133,68 @@ window.PTB_DECK = {
     {
      "id": "kitchen-tongs",
      "label": "চিমটা",
-     "gloss": "kitchen tongs"
+     "gloss": "kitchen tongs",
+     "collocations": [
+      {
+       "text": "চিমটা দিয়ে ধরুন",
+       "id": "3019b9fce591dcd17c09"
+      }
+     ]
     },
     {
      "id": "curved-kitchen-blade",
      "label": "বঁটি",
-     "gloss": "Bengali upright kitchen cutter"
+     "gloss": "Bengali upright kitchen cutter",
+     "collocations": [
+      {
+       "text": "বঁটি দিয়ে সবজি কাটুন",
+       "id": "d3f9ee7efe5e37be9cce"
+      }
+     ]
     },
     {
      "id": "stone-grinder",
      "label": "শিলপাটা",
-     "gloss": "flat stone grinder"
+     "gloss": "flat stone grinder",
+     "collocations": [
+      {
+       "text": "শিলপাটায় মসলা বাটুন",
+       "id": "647b1ff159369148abcf"
+      }
+     ]
     },
     {
      "id": "mortar-pestle",
      "label": "হামানদিস্তা",
-     "gloss": "brass mortar and pestle"
+     "gloss": "brass mortar and pestle",
+     "collocations": [
+      {
+       "text": "হামানদিস্তায় মসলা থেঁতো করুন",
+       "id": "97f4f19e828b66922223"
+      }
+     ]
     },
     {
      "id": "rice-cooking-pot",
      "label": "ডেকচি",
-     "gloss": "broad lidded cooking pot"
+     "gloss": "broad lidded cooking pot",
+     "collocations": [
+      {
+       "text": "ভাতের ডেকচি",
+       "id": "94ba5e4a67863478234d"
+      }
+     ]
     },
     {
      "id": "stove-grate",
      "label": "চুলার জালি",
-     "gloss": "stove pot support grate"
+     "gloss": "stove pot support grate",
+     "collocations": [
+      {
+       "text": "চুলার জালি বসান",
+       "id": "fdfd0d8e37e16f89afd4"
+      }
+     ]
     }
    ],
    "questions": [
@@ -6356,32 +11216,68 @@ window.PTB_DECK = {
     {
      "id": "water-buffalo",
      "label": "মহিষ",
-     "gloss": "domestic water buffalo"
+     "gloss": "domestic water buffalo",
+     "collocations": [
+      {
+       "text": "পানিতে মহিষ নেমেছে",
+       "id": "86031145312ae38851a0"
+      }
+     ]
     },
     {
      "id": "domestic-sheep",
      "label": "ভেড়া",
-     "gloss": "domestic sheep"
+     "gloss": "domestic sheep",
+     "collocations": [
+      {
+       "text": "ভেড়ার পশম",
+       "id": "e474ef65d4452a5c8750"
+      }
+     ]
     },
     {
      "id": "domestic-horse",
      "label": "ঘোড়া",
-     "gloss": "domestic horse"
+     "gloss": "domestic horse",
+     "collocations": [
+      {
+       "text": "ঘোড়ায় চড়ুন",
+       "id": "b129b7c45f7935e16112"
+      }
+     ]
     },
     {
      "id": "domestic-donkey",
      "label": "গাধা",
-     "gloss": "domestic donkey"
+     "gloss": "domestic donkey",
+     "collocations": [
+      {
+       "text": "গাধা বোঝা বইছে",
+       "id": "a602fba0d3fd03f33cec"
+      }
+     ]
     },
     {
      "id": "domestic-rabbit",
      "label": "খরগোশ",
-     "gloss": "domestic rabbit"
+     "gloss": "domestic rabbit",
+     "collocations": [
+      {
+       "text": "সাদা খরগোশ",
+       "id": "f97b67343d4271ee9270"
+      }
+     ]
     },
     {
      "id": "domestic-goose",
      "label": "রাজহাঁস",
-     "gloss": "domestic goose"
+     "gloss": "domestic goose",
+     "collocations": [
+      {
+       "text": "রাজহাঁস জলে ভাসছে",
+       "id": "f9f5eff3c59e586c0f16"
+      }
+     ]
     }
    ],
    "questions": [
@@ -6403,32 +11299,68 @@ window.PTB_DECK = {
     {
      "id": "orange-fruit",
      "label": "কমলা",
-     "gloss": "orange fruit"
+     "gloss": "orange fruit",
+     "collocations": [
+      {
+       "text": "কমলার কোয়া",
+       "id": "669a735c04c548cdfd56"
+      }
+     ]
     },
     {
      "id": "pomelo",
      "label": "জাম্বুরা",
-     "gloss": "pomelo"
+     "gloss": "pomelo",
+     "collocations": [
+      {
+       "text": "মিষ্টি জাম্বুরা",
+       "id": "6f4eff1decd7e8a7f628"
+      }
+     ]
     },
     {
      "id": "pomegranate",
      "label": "ডালিম",
-     "gloss": "pomegranate"
+     "gloss": "pomegranate",
+     "collocations": [
+      {
+       "text": "ডালিমের দানা",
+       "id": "ca60b9b478f7b26be5c6"
+      }
+     ]
     },
     {
      "id": "custard-apple",
      "label": "আতা",
-     "gloss": "custard apple"
+     "gloss": "custard apple",
+     "collocations": [
+      {
+       "text": "পাকা আতা",
+       "id": "88cd79039ac33c8b53f4"
+      }
+     ]
     },
     {
      "id": "sapodilla",
      "label": "সফেদা",
-     "gloss": "sapodilla"
+     "gloss": "sapodilla",
+     "collocations": [
+      {
+       "text": "সফেদার খোসা",
+       "id": "32544d71f6069269cb14"
+      }
+     ]
     },
     {
      "id": "indian-olive",
      "label": "জলপাই",
-     "gloss": "Bangladeshi Indian olive"
+     "gloss": "Bangladeshi Indian olive",
+     "collocations": [
+      {
+       "text": "জলপাইয়ের আচার",
+       "id": "2f54ae54c1d51aa659a5"
+      }
+     ]
     }
    ],
    "questions": [
@@ -6450,32 +11382,68 @@ window.PTB_DECK = {
     {
      "id": "ginger-root",
      "label": "আদা",
-     "gloss": "ginger root"
+     "gloss": "ginger root",
+     "collocations": [
+      {
+       "text": "এক টুকরা আদা",
+       "id": "b743ca56c37572f23f4f"
+      }
+     ]
     },
     {
      "id": "garlic-bulb",
      "label": "রসুন",
-     "gloss": "garlic bulb"
+     "gloss": "garlic bulb",
+     "collocations": [
+      {
+       "text": "রসুন বাটা",
+       "id": "9c7fb3e084c147b8c301"
+      }
+     ]
     },
     {
      "id": "green-chili",
      "label": "কাঁচামরিচ",
-     "gloss": "green chili"
+     "gloss": "green chili",
+     "collocations": [
+      {
+       "text": "কাঁচামরিচ ফালি করুন",
+       "id": "a622de6cec7ac1d98981"
+      }
+     ]
     },
     {
      "id": "scallion-tops",
      "label": "পেঁয়াজপাতা",
-     "gloss": "onion greens"
+     "gloss": "onion greens",
+     "collocations": [
+      {
+       "text": "পেঁয়াজপাতা কুচি",
+       "id": "e46429a26f346c679d9a"
+      }
+     ]
     },
     {
      "id": "coriander-leaves",
      "label": "ধনেপাতা",
-     "gloss": "fresh coriander leaves"
+     "gloss": "fresh coriander leaves",
+     "collocations": [
+      {
+       "text": "ধনেপাতা ছিটিয়ে দিন",
+       "id": "bc7076605d516a1a9b04"
+      }
+     ]
     },
     {
      "id": "fresh-mint",
      "label": "পুদিনা",
-     "gloss": "mint leaves"
+     "gloss": "mint leaves",
+     "collocations": [
+      {
+       "text": "পুদিনা পাতার ঘ্রাণ",
+       "id": "85093d5c405f38338dac"
+      }
+     ]
     }
    ],
    "questions": [
@@ -6497,32 +11465,68 @@ window.PTB_DECK = {
     {
      "id": "rasmalai",
      "label": "রসমালাই",
-     "gloss": "rasmalai sweet in thick milk"
+     "gloss": "rasmalai sweet in thick milk",
+     "collocations": [
+      {
+       "text": "ঠান্ডা রসমালাই",
+       "id": "71f8bb142d6f122c2732"
+      }
+     ]
     },
     {
      "id": "sandesh",
      "label": "সন্দেশ",
-     "gloss": "molded sandesh sweet"
+     "gloss": "molded sandesh sweet",
+     "collocations": [
+      {
+       "text": "ছানার সন্দেশ",
+       "id": "6f9018ad9b11b2694fff"
+      }
+     ]
     },
     {
      "id": "chomchom",
      "label": "চমচম",
-     "gloss": "chomchom sweet"
+     "gloss": "chomchom sweet",
+     "collocations": [
+      {
+       "text": "পোড়াবাড়ির চমচম",
+       "id": "1d6cf16f2867306d07ae"
+      }
+     ]
     },
     {
      "id": "laddu",
      "label": "লাড্ডু",
-     "gloss": "boondi laddu sweet"
+     "gloss": "boondi laddu sweet",
+     "collocations": [
+      {
+       "text": "বুন্দিয়ার লাড্ডু",
+       "id": "2cbd7c92a03a73019858"
+      }
+     ]
     },
     {
      "id": "barfi",
      "label": "বরফি",
-     "gloss": "square barfi sweet"
+     "gloss": "square barfi sweet",
+     "collocations": [
+      {
+       "text": "দুধের বরফি",
+       "id": "629d85b7304037918ad6"
+      }
+     ]
     },
     {
      "id": "batasha",
      "label": "বাতাসা",
-     "gloss": "airy batasha sugar sweet"
+     "gloss": "airy batasha sugar sweet",
+     "collocations": [
+      {
+       "text": "চিনির বাতাসা",
+       "id": "ca6bca4b317f2853b21b"
+      }
+     ]
     }
    ],
    "questions": [
@@ -6544,32 +11548,68 @@ window.PTB_DECK = {
     {
      "id": "neighbor-role",
      "label": "প্রতিবেশী",
-     "gloss": "neighbor"
+     "gloss": "neighbor",
+     "collocations": [
+      {
+       "text": "পাশের বাসার প্রতিবেশী",
+       "id": "4108a5082acf4f9fcded"
+      }
+     ]
     },
     {
      "id": "playmate-role",
      "label": "খেলার সাথি",
-     "gloss": "playmate"
+     "gloss": "playmate",
+     "collocations": [
+      {
+       "text": "ছোটবেলার খেলার সাথি",
+       "id": "8f6969178f0e12091576"
+      }
+     ]
     },
     {
      "id": "classmate-role",
      "label": "সহপাঠী",
-     "gloss": "classmate"
+     "gloss": "classmate",
+     "collocations": [
+      {
+       "text": "পুরোনো সহপাঠী",
+       "id": "a2703dd44602b45cf0c6"
+      }
+     ]
     },
     {
      "id": "coworker-role",
      "label": "সহকর্মী",
-     "gloss": "coworker"
+     "gloss": "coworker",
+     "collocations": [
+      {
+       "text": "সহকর্মীর সঙ্গে কথা বলি",
+       "id": "ba9f92ac0c8346210821"
+      }
+     ]
     },
     {
      "id": "landlord-role",
      "label": "বাড়িওয়ালা",
-     "gloss": "landlord or landlady"
+     "gloss": "landlord or landlady",
+     "collocations": [
+      {
+       "text": "বাড়িওয়ালাকে বলুন",
+       "id": "fde4f9be64eada0c0f81"
+      }
+     ]
     },
     {
      "id": "tenant-role",
      "label": "ভাড়াটে",
-     "gloss": "tenant"
+     "gloss": "tenant",
+     "collocations": [
+      {
+       "text": "নতুন ভাড়াটে এসেছেন",
+       "id": "305afbc354d690936277"
+      }
+     ]
     }
    ],
    "questions": [
@@ -6591,32 +11631,68 @@ window.PTB_DECK = {
     {
      "id": "new-object",
      "label": "নতুন",
-     "gloss": "new"
+     "gloss": "new",
+     "collocations": [
+      {
+       "text": "নতুন জামা",
+       "id": "aa0bcd3b891b4006dc4e"
+      }
+     ]
     },
     {
      "id": "old-object",
      "label": "পুরোনো",
-     "gloss": "old or worn from use"
+     "gloss": "old or worn from use",
+     "collocations": [
+      {
+       "text": "পুরোনো জুতা",
+       "id": "738920137209bcb783c4"
+      }
+     ]
     },
     {
      "id": "expensive-object",
      "label": "দামি",
-     "gloss": "expensive"
+     "gloss": "expensive",
+     "collocations": [
+      {
+       "text": "খুব দামি",
+       "id": "fce25953fdead034f9e2"
+      }
+     ]
     },
     {
      "id": "cheap-object",
      "label": "সস্তা",
-     "gloss": "inexpensive"
+     "gloss": "inexpensive",
+     "collocations": [
+      {
+       "text": "সস্তা কাপড়",
+       "id": "c79cd1d43c520ee78a57"
+      }
+     ]
     },
     {
      "id": "deep-water",
      "label": "গভীর",
-     "gloss": "deep"
+     "gloss": "deep",
+     "collocations": [
+      {
+       "text": "গভীর পানি",
+       "id": "ab629653b7fe4eb14b93"
+      }
+     ]
     },
     {
      "id": "shallow-water",
      "label": "অগভীর",
-     "gloss": "shallow"
+     "gloss": "shallow",
+     "collocations": [
+      {
+       "text": "অগভীর পুকুর",
+       "id": "7d8c6ea812a99aa8c3a7"
+      }
+     ]
     }
    ],
    "questions": [
@@ -6638,32 +11714,68 @@ window.PTB_DECK = {
     {
      "id": "rice-seedling",
      "label": "চারা",
-     "gloss": "rice seedling"
+     "gloss": "rice seedling",
+     "collocations": [
+      {
+       "text": "ধানের চারা",
+       "id": "839582e1e94946960b68"
+      }
+     ]
     },
     {
      "id": "cut-paddy",
      "label": "ধান কাটা",
-     "gloss": "to cut ripe paddy stalks"
+     "gloss": "to cut ripe paddy stalks",
+     "collocations": [
+      {
+       "text": "পাকা ধান কেটে নিন",
+       "id": "46dc59b1f8c5531ab7fb"
+      }
+     ]
     },
     {
      "id": "thresh-paddy",
      "label": "মাড়াই করা",
-     "gloss": "to thresh paddy"
+     "gloss": "to thresh paddy",
+     "collocations": [
+      {
+       "text": "ধান মাড়াই করেন",
+       "id": "f19835c156ba05be8f31"
+      }
+     ]
     },
     {
      "id": "dry-paddy",
      "label": "ধান শুকানো",
-     "gloss": "to dry paddy after harvest"
+     "gloss": "to dry paddy after harvest",
+     "collocations": [
+      {
+       "text": "রোদে ধান শুকান",
+       "id": "1c4f4e621fe5d732bb5a"
+      }
+     ]
     },
     {
      "id": "winnow-rice",
      "label": "চাল ঝাড়া",
-     "gloss": "to winnow rice"
+     "gloss": "to winnow rice",
+     "collocations": [
+      {
+       "text": "কুলায় চাল ঝাড়েন",
+       "id": "3324893083ba0f0db2e9"
+      }
+     ]
     },
     {
      "id": "cook-rice",
      "label": "ভাত রান্না করা",
-     "gloss": "to cook plain rice"
+     "gloss": "to cook plain rice",
+     "collocations": [
+      {
+       "text": "হাঁড়িতে ভাত রান্না করুন",
+       "id": "d6eee717ba88781ef63d"
+      }
+     ]
     }
    ],
    "questions": [
@@ -6685,32 +11797,68 @@ window.PTB_DECK = {
     {
      "id": "shirt-sleeve",
      "label": "হাতা",
-     "gloss": "garment sleeve"
+     "gloss": "garment sleeve",
+     "collocations": [
+      {
+       "text": "জামার হাতা",
+       "id": "512802df5093686bbf3f"
+      }
+     ]
     },
     {
      "id": "collar-opening",
      "label": "জামার গলা",
-     "gloss": "neck opening of a garment"
+     "gloss": "neck opening of a garment",
+     "collocations": [
+      {
+       "text": "জামার গলা ছোট",
+       "id": "c3e781fe2571e82fd888"
+      }
+     ]
     },
     {
      "id": "cloth-fringe",
      "label": "ঝালর",
-     "gloss": "cloth fringe"
+     "gloss": "cloth fringe",
+     "collocations": [
+      {
+       "text": "কাপড়ের ঝালর",
+       "id": "53040cdfb54a364991d7"
+      }
+     ]
     },
     {
      "id": "garment-lining",
      "label": "আস্তর",
-     "gloss": "garment lining"
+     "gloss": "garment lining",
+     "collocations": [
+      {
+       "text": "জামার ভেতরে আস্তর",
+       "id": "e507b14934c6c868503f"
+      }
+     ]
     },
     {
      "id": "sari-border",
      "label": "পাড়",
-     "gloss": "woven garment border"
+     "gloss": "woven garment border",
+     "collocations": [
+      {
+       "text": "শাড়ির পাড়",
+       "id": "a05baaa248712c65347a"
+      }
+     ]
     },
     {
      "id": "sari-pallu",
      "label": "আঁচল",
-     "gloss": "loose decorative sari end"
+     "gloss": "loose decorative sari end",
+     "collocations": [
+      {
+       "text": "শাড়ির আঁচল",
+       "id": "bd6d7e490943c977d66c"
+      }
+     ]
     }
    ],
    "questions": [
@@ -6732,32 +11880,68 @@ window.PTB_DECK = {
     {
      "id": "hungry-person",
      "label": "খিদে লাগা",
-     "gloss": "to feel hungry"
+     "gloss": "to feel hungry",
+     "collocations": [
+      {
+       "text": "খুব খিদে লেগেছে",
+       "id": "94c12bd73b48747c232e"
+      }
+     ]
     },
     {
      "id": "full-person",
      "label": "পেট ভরা",
-     "gloss": "full after eating"
+     "gloss": "full after eating",
+     "collocations": [
+      {
+       "text": "পেট ভরে গেছে",
+       "id": "b9363c4be9d4ccecbe0f"
+      }
+     ]
     },
     {
      "id": "thirsty-person",
      "label": "তেষ্টা পাওয়া",
-     "gloss": "to feel thirsty"
+     "gloss": "to feel thirsty",
+     "collocations": [
+      {
+       "text": "তেষ্টা পেয়েছে",
+       "id": "1a56bf9706de21eadde7"
+      }
+     ]
     },
     {
      "id": "sleepy-person",
      "label": "ঘুম পাওয়া",
-     "gloss": "to feel sleepy"
+     "gloss": "to feel sleepy",
+     "collocations": [
+      {
+       "text": "আমার ঘুম পাচ্ছে",
+       "id": "c012c708667d8a6863b3"
+      }
+     ]
     },
     {
      "id": "feeling-hot",
      "label": "গরম লাগা",
-     "gloss": "to feel too warm"
+     "gloss": "to feel too warm",
+     "collocations": [
+      {
+       "text": "আজ খুব গরম লাগছে",
+       "id": "7f61598def133914e25e"
+      }
+     ]
     },
     {
      "id": "feeling-chilly",
      "label": "শীত করা",
-     "gloss": "to feel chilly"
+     "gloss": "to feel chilly",
+     "collocations": [
+      {
+       "text": "আমার শীত করছে",
+       "id": "947aba91f8d801726b73"
+      }
+     ]
     }
    ],
    "questions": [
@@ -6779,32 +11963,68 @@ window.PTB_DECK = {
     {
      "id": "bright-sun",
      "label": "সূর্য",
-     "gloss": "sun"
+     "gloss": "sun",
+     "collocations": [
+      {
+       "text": "সূর্য উঠছে",
+       "id": "a5fcc41e9ca10a6194e0"
+      }
+     ]
     },
     {
      "id": "full-moon",
      "label": "পূর্ণিমার চাঁদ",
-     "gloss": "full moon"
+     "gloss": "full moon",
+     "collocations": [
+      {
+       "text": "পূর্ণিমার চাঁদ উঠেছে",
+       "id": "560ac9ce69d3f14d3a4e"
+      }
+     ]
     },
     {
      "id": "night-stars",
      "label": "তারা",
-     "gloss": "stars in the sky"
+     "gloss": "stars in the sky",
+     "collocations": [
+      {
+       "text": "আকাশে তারা দেখা যায়",
+       "id": "97447c912a379c119de6"
+      }
+     ]
     },
     {
      "id": "rainbow-arc",
      "label": "রংধনু",
-     "gloss": "rainbow"
+     "gloss": "rainbow",
+     "collocations": [
+      {
+       "text": "বৃষ্টির পরে রংধনু",
+       "id": "5cc2f313532bcdae2be5"
+      }
+     ]
     },
     {
      "id": "hail-fall",
      "label": "শিলাবৃষ্টি",
-     "gloss": "hail falling"
+     "gloss": "hail falling",
+     "collocations": [
+      {
+       "text": "শিলাবৃষ্টি হচ্ছে",
+       "id": "58bf3217a4a5627b9766"
+      }
+     ]
     },
     {
      "id": "lightning-flash",
      "label": "বিদ্যুৎ চমক",
-     "gloss": "lightning flash"
+     "gloss": "lightning flash",
+     "collocations": [
+      {
+       "text": "আকাশে বিদ্যুৎ চমকাচ্ছে",
+       "id": "f75210d9a2be8dc85ff1"
+      }
+     ]
     }
    ],
    "questions": [
@@ -6826,32 +12046,68 @@ window.PTB_DECK = {
     {
      "id": "trip-over",
      "label": "হোঁচট খাওয়া",
-     "gloss": "to trip over something"
+     "gloss": "to trip over something",
+     "collocations": [
+      {
+       "text": "ইটে হোঁচট খেয়েছেন",
+       "id": "9f9539920c7929d30070"
+      }
+     ]
     },
     {
      "id": "foot-slip",
      "label": "পিছলে যাওয়া",
-     "gloss": "to slip on a surface"
+     "gloss": "to slip on a surface",
+     "collocations": [
+      {
+       "text": "ভেজা মেঝেতে পিছলে গেলেন",
+       "id": "871ad91f3df0f238fb4e"
+      }
+     ]
     },
     {
      "id": "bump-into",
      "label": "ধাক্কা খাওয়া",
-     "gloss": "to bump into someone"
+     "gloss": "to bump into someone",
+     "collocations": [
+      {
+       "text": "কাঁধে ধাক্কা খেলেন",
+       "id": "079ac6c5fbc20e37ed9d"
+      }
+     ]
     },
     {
      "id": "knocked-away",
      "label": "ছিটকে পড়া",
-     "gloss": "to be knocked flying"
+     "gloss": "to be knocked flying",
+     "collocations": [
+      {
+       "text": "হাত থেকে ছিটকে পড়ল",
+       "id": "c842a26c206b4763a508"
+      }
+     ]
     },
     {
      "id": "bend-out-of-shape",
      "label": "বেঁকে যাওয়া",
-     "gloss": "to become bent out of shape"
+     "gloss": "to become bent out of shape",
+     "collocations": [
+      {
+       "text": "লোহার দণ্ড বেঁকে গেছে",
+       "id": "c7ea64eefef9fe501dc1"
+      }
+     ]
     },
     {
      "id": "stuck-to-surface",
      "label": "লেগে থাকা",
-     "gloss": "to be stuck to a surface"
+     "gloss": "to be stuck to a surface",
+     "collocations": [
+      {
+       "text": "জুতায় কাদা লেগে আছে",
+       "id": "054694a14fc0532e1506"
+      }
+     ]
     }
    ],
    "questions": [
@@ -6873,32 +12129,68 @@ window.PTB_DECK = {
     {
      "id": "view-rental",
      "label": "বাসা দেখতে আসা",
-     "gloss": "to come to view a rental"
+     "gloss": "to come to view a rental",
+     "collocations": [
+      {
+       "text": "আজ বাসা দেখতে এসেছি",
+       "id": "864056b6d007af24cac2"
+      }
+     ]
     },
     {
      "id": "vacant-home",
      "label": "খালি বাসা",
-     "gloss": "empty rental home"
+     "gloss": "empty rental home",
+     "collocations": [
+      {
+       "text": "এখানে খালি বাসা আছে",
+       "id": "3397b27cc26b9c5323a5"
+      }
+     ]
     },
     {
      "id": "pay-rent",
      "label": "ভাড়ার টাকা দেওয়া",
-     "gloss": "to pay rent"
+     "gloss": "to pay rent",
+     "collocations": [
+      {
+       "text": "সময়মতো ভাড়ার টাকা দিন",
+       "id": "93af3eeb76488a8b6c81"
+      }
+     ]
     },
     {
      "id": "security-deposit",
      "label": "জামানত",
-     "gloss": "refundable security deposit"
+     "gloss": "refundable security deposit",
+     "collocations": [
+      {
+       "text": "জামানত কত",
+       "id": "dc8fd542771245e59056"
+      }
+     ]
     },
     {
      "id": "rental-agreement",
      "label": "ভাড়ার চুক্তি",
-     "gloss": "rental agreement"
+     "gloss": "rental agreement",
+     "collocations": [
+      {
+       "text": "ভাড়ার চুক্তিতে সই করুন",
+       "id": "df6c4a2846256202c47e"
+      }
+     ]
     },
     {
      "id": "move-home",
      "label": "বাসা বদলানো",
-     "gloss": "to move to a different home"
+     "gloss": "to move to a different home",
+     "collocations": [
+      {
+       "text": "আগামী মাসে বাসা বদলাব",
+       "id": "6c3874d072db5286f2b4"
+      }
+     ]
     }
    ],
    "questions": [
@@ -6920,32 +12212,68 @@ window.PTB_DECK = {
     {
      "id": "paternal-grandfather",
      "label": "দাদা",
-     "gloss": "paternal grandfather"
+     "gloss": "paternal grandfather",
+     "collocations": [
+      {
+       "text": "আমার দাদা",
+       "id": "b0ade4f3681fd7ab0b9c"
+      }
+     ]
     },
     {
      "id": "paternal-grandmother",
      "label": "দাদি",
-     "gloss": "paternal grandmother"
+     "gloss": "paternal grandmother",
+     "collocations": [
+      {
+       "text": "দাদির কাছে যাই",
+       "id": "7065b5843a70028ee7a6"
+      }
+     ]
     },
     {
      "id": "paternal-uncle",
      "label": "চাচা",
-     "gloss": "paternal uncle"
+     "gloss": "paternal uncle",
+     "collocations": [
+      {
+       "text": "ছোট চাচা",
+       "id": "4863d7d60b3f5dacb4fd"
+      }
+     ]
     },
     {
      "id": "paternal-aunt",
      "label": "চাচি",
-     "gloss": "wife of paternal uncle"
+     "gloss": "wife of paternal uncle",
+     "collocations": [
+      {
+       "text": "চাচির রান্না",
+       "id": "fa48c57659abf30b3d9c"
+      }
+     ]
     },
     {
      "id": "maternal-uncle",
      "label": "মামা",
-     "gloss": "maternal uncle"
+     "gloss": "maternal uncle",
+     "collocations": [
+      {
+       "text": "মামার বাড়ি",
+       "id": "5ca40b04c3825e57898b"
+      }
+     ]
     },
     {
      "id": "maternal-aunt",
      "label": "মামি",
-     "gloss": "wife of maternal uncle"
+     "gloss": "wife of maternal uncle",
+     "collocations": [
+      {
+       "text": "মামি বেড়াতে এসেছেন",
+       "id": "40c8086476675d71c172"
+      }
+     ]
     }
    ],
    "questions": [
@@ -6967,32 +12295,68 @@ window.PTB_DECK = {
     {
      "id": "tea-stall",
      "label": "চায়ের দোকান",
-     "gloss": "tea stall"
+     "gloss": "tea stall",
+     "collocations": [
+      {
+       "text": "চায়ের দোকানে বসি",
+       "id": "03870ef9aa65e44d672c"
+      }
+     ]
     },
     {
      "id": "meal-shop",
      "label": "ভাতের দোকান",
-     "gloss": "small rice-meal eatery"
+     "gloss": "small rice-meal eatery",
+     "collocations": [
+      {
+       "text": "ভাতের দোকানে খাই",
+       "id": "dbc422297e45ee4879fd"
+      }
+     ]
     },
     {
      "id": "medicine-shop",
      "label": "ওষুধের দোকান",
-     "gloss": "medicine shop"
+     "gloss": "medicine shop",
+     "collocations": [
+      {
+       "text": "ওষুধের দোকান কোথায়",
+       "id": "1ad8ec5ccb8c25b522c4"
+      }
+     ]
     },
     {
      "id": "barber-shop",
      "label": "নাপিতের দোকান",
-     "gloss": "barbershop"
+     "gloss": "barbershop",
+     "collocations": [
+      {
+       "text": "নাপিতের দোকানে চুল কাটাই",
+       "id": "b64ab9fe7f56ff385e13"
+      }
+     ]
     },
     {
      "id": "grocery-shop",
      "label": "মুদিদোকান",
-     "gloss": "small dry-goods grocery"
+     "gloss": "small dry-goods grocery",
+     "collocations": [
+      {
+       "text": "মুদিদোকান থেকে চাল আনি",
+       "id": "0838d58299666f4c80bb"
+      }
+     ]
     },
     {
      "id": "sweet-shop",
      "label": "মিষ্টির দোকান",
-     "gloss": "sweet shop"
+     "gloss": "sweet shop",
+     "collocations": [
+      {
+       "text": "মিষ্টির দোকান থেকে দই আনুন",
+       "id": "614ecdb2df12645b3a3d"
+      }
+     ]
     }
    ],
    "questions": [
@@ -7014,32 +12378,68 @@ window.PTB_DECK = {
     {
      "id": "mud",
      "label": "কাদা",
-     "gloss": "wet mud"
+     "gloss": "wet mud",
+     "collocations": [
+      {
+       "text": "জুতায় কাদা",
+       "id": "8a2d2d46191c5e2e8b5e"
+      }
+     ]
     },
     {
      "id": "dust",
      "label": "ধুলো",
-     "gloss": "dry loose dust"
+     "gloss": "dry loose dust",
+     "collocations": [
+      {
+       "text": "রাস্তায় অনেক ধুলো",
+       "id": "52c8a9a4403d5eb5b191"
+      }
+     ]
     },
     {
      "id": "footprint",
      "label": "পায়ের ছাপ",
-     "gloss": "bare human footprint"
+     "gloss": "bare human footprint",
+     "collocations": [
+      {
+       "text": "কাদায় পায়ের ছাপ",
+       "id": "5a509aa9c517de08be11"
+      }
+     ]
     },
     {
      "id": "tire-track-mark",
      "label": "চাকার দাগ",
-     "gloss": "tire tread impression in dirt"
+     "gloss": "tire tread impression in dirt",
+     "collocations": [
+      {
+       "text": "মাটিতে চাকার দাগ",
+       "id": "1359aeba8659148127bf"
+      }
+     ]
     },
     {
      "id": "ground-hole",
      "label": "গর্ত",
-     "gloss": "hole in the ground"
+     "gloss": "hole in the ground",
+     "collocations": [
+      {
+       "text": "রাস্তায় বড় গর্ত",
+       "id": "84c2964e9f9b5fceb70a"
+      }
+     ]
     },
     {
      "id": "earthworm",
      "label": "কেঁচো",
-     "gloss": "earthworm"
+     "gloss": "earthworm",
+     "collocations": [
+      {
+       "text": "মাটিতে কেঁচো",
+       "id": "a5a4f243c100581108ed"
+      }
+     ]
     }
    ],
    "questions": [
@@ -7061,32 +12461,68 @@ window.PTB_DECK = {
     {
      "id": "bitter-gourd",
      "label": "করলা",
-     "gloss": "bitter gourd"
+     "gloss": "bitter gourd",
+     "collocations": [
+      {
+       "text": "করলা ভাজি",
+       "id": "d0e6bae72c0130903c92"
+      }
+     ]
     },
     {
      "id": "snake-gourd",
      "label": "চিচিঙ্গা",
-     "gloss": "snake gourd"
+     "gloss": "snake gourd",
+     "collocations": [
+      {
+       "text": "চিচিঙ্গা দিয়ে ডাল",
+       "id": "800f36aee3523e2efef6"
+      }
+     ]
     },
     {
      "id": "green-papaya",
      "label": "কাঁচা পেঁপে",
-     "gloss": "unripe papaya for cooking"
+     "gloss": "unripe papaya for cooking",
+     "collocations": [
+      {
+       "text": "কাঁচা পেঁপের তরকারি",
+       "id": "30176cf121b671aff877"
+      }
+     ]
     },
     {
      "id": "ash-gourd",
      "label": "চালকুমড়া",
-     "gloss": "ash gourd"
+     "gloss": "ash gourd",
+     "collocations": [
+      {
+       "text": "চালকুমড়ার বড়ি",
+       "id": "e8e8905250063869f099"
+      }
+     ]
     },
     {
      "id": "green-cooking-banana",
      "label": "কাঁচকলা",
-     "gloss": "green cooking banana"
+     "gloss": "green cooking banana",
+     "collocations": [
+      {
+       "text": "কাঁচকলার ভর্তা",
+       "id": "d5f8ef2dfc633895e9d4"
+      }
+     ]
     },
     {
      "id": "moringa-pods",
      "label": "সজনে ডাঁটা",
-     "gloss": "moringa pods eaten as a vegetable"
+     "gloss": "moringa pods eaten as a vegetable",
+     "collocations": [
+      {
+       "text": "সজনে ডাঁটার ঝোল",
+       "id": "26d2153cc08ec84efdd2"
+      }
+     ]
     }
    ],
    "questions": [
@@ -7108,32 +12544,68 @@ window.PTB_DECK = {
     {
      "id": "spinach-greens",
      "label": "পালংশাক",
-     "gloss": "spinach leaves sold in bundles"
+     "gloss": "spinach leaves sold in bundles",
+     "collocations": [
+      {
+       "text": "পালংশাক ভাজি",
+       "id": "a842a70e97c6918d5d47"
+      }
+     ]
     },
     {
      "id": "red-amaranth-greens",
      "label": "লালশাক",
-     "gloss": "red amaranth greens"
+     "gloss": "red amaranth greens",
+     "collocations": [
+      {
+       "text": "লালশাক রান্না করুন",
+       "id": "3fde79e80f7314a16479"
+      }
+     ]
     },
     {
      "id": "malabar-spinach-greens",
      "label": "পুঁইশাক",
-     "gloss": "Malabar spinach vine greens"
+     "gloss": "Malabar spinach vine greens",
+     "collocations": [
+      {
+       "text": "পুঁইশাকের চচ্চড়ি",
+       "id": "deb36d0e78162838b44b"
+      }
+     ]
     },
     {
      "id": "water-spinach-greens",
      "label": "কলমিশাক",
-     "gloss": "water spinach greens"
+     "gloss": "water spinach greens",
+     "collocations": [
+      {
+       "text": "এক আঁটি কলমিশাক",
+       "id": "d0418fa2e1eb6ba927be"
+      }
+     ]
     },
     {
      "id": "amaranth-stem-greens",
      "label": "ডাঁটাশাক",
-     "gloss": "amaranth grown for edible thick stalks"
+     "gloss": "amaranth grown for edible thick stalks",
+     "collocations": [
+      {
+       "text": "চিংড়ি দিয়ে ডাঁটাশাক রান্না করুন",
+       "id": "b68db87f29e5d509def8"
+      }
+     ]
     },
     {
      "id": "bottle-gourd-leaves",
      "label": "লাউশাক",
-     "gloss": "bottle gourd vine tips and leaves eaten as greens"
+     "gloss": "bottle gourd vine tips and leaves eaten as greens",
+     "collocations": [
+      {
+       "text": "কচি লাউশাক",
+       "id": "e79b07f15a04110beed6"
+      }
+     ]
     }
    ],
    "questions": [
@@ -7155,32 +12627,68 @@ window.PTB_DECK = {
     {
      "id": "silver-pomfret-local",
      "label": "রূপচাঁদা",
-     "gloss": "silver pomfret"
+     "gloss": "silver pomfret",
+     "collocations": [
+      {
+       "text": "রূপচাঁদা ভেজে খান",
+       "id": "99344bc15e2f041eb752"
+      }
+     ]
     },
     {
      "id": "catla-carp-local",
      "label": "কাতলা",
-     "gloss": "catla carp"
+     "gloss": "catla carp",
+     "collocations": [
+      {
+       "text": "কাতলা মাছের মাথা",
+       "id": "14b4d4e62a18c7787db8"
+      }
+     ]
     },
     {
      "id": "boal-catfish-local",
      "label": "বোয়াল",
-     "gloss": "Wallago attu freshwater catfish"
+     "gloss": "Wallago attu freshwater catfish",
+     "collocations": [
+      {
+       "text": "বোয়াল মাছের ঝোল",
+       "id": "e4834aa2929173d7c296"
+      }
+     ]
     },
     {
      "id": "pabda-catfish-local",
      "label": "পাবদা",
-     "gloss": "pabda butter catfish"
+     "gloss": "pabda butter catfish",
+     "collocations": [
+      {
+       "text": "পাবদা মাছের ঝোল",
+       "id": "35b51f3a96120ceaa4f0"
+      }
+     ]
     },
     {
      "id": "mola-fish-local",
      "label": "মলা",
-     "gloss": "mola carplet"
+     "gloss": "mola carplet",
+     "collocations": [
+      {
+       "text": "মলা মাছ ভাজি",
+       "id": "996269adfa46109cb359"
+      }
+     ]
     },
     {
      "id": "tengra-fish-local",
      "label": "টেংরা",
-     "gloss": "tengra striped freshwater catfish"
+     "gloss": "tengra striped freshwater catfish",
+     "collocations": [
+      {
+       "text": "টেংরা মাছের চচ্চড়ি",
+       "id": "141b0f2babb919607376"
+      }
+     ]
     }
    ],
    "questions": [
@@ -7202,32 +12710,68 @@ window.PTB_DECK = {
     {
      "id": "fuchka-snack",
      "label": "ফুচকা",
-     "gloss": "fuchka stuffed crisp shells"
+     "gloss": "fuchka stuffed crisp shells",
+     "collocations": [
+      {
+       "text": "তেঁতুলের পানি দিয়ে ফুচকা",
+       "id": "4dfaafe02f951b9f2652"
+      }
+     ]
     },
     {
      "id": "chotpoti-snack",
      "label": "চটপটি",
-     "gloss": "chotpoti pea and tamarind snack"
+     "gloss": "chotpoti pea and tamarind snack",
+     "collocations": [
+      {
+       "text": "এক বাটি চটপটি",
+       "id": "2792da79556ffc6a0800"
+      }
+     ]
     },
     {
      "id": "jhalmuri-snack",
      "label": "ঝালমুড়ি",
-     "gloss": "spiced puffed-rice snack"
+     "gloss": "spiced puffed-rice snack",
+     "collocations": [
+      {
+       "text": "এক ঠোঙা ঝালমুড়ি",
+       "id": "8a6973bc501d2dde9e1c"
+      }
+     ]
     },
     {
      "id": "onion-fritters",
      "label": "পেঁয়াজু",
-     "gloss": "Bangladeshi onion lentil fritter"
+     "gloss": "Bangladeshi onion lentil fritter",
+     "collocations": [
+      {
+       "text": "গরম পেঁয়াজু",
+       "id": "a84de112f686a34c9a8f"
+      }
+     ]
     },
     {
      "id": "eggplant-fritters",
      "label": "বেগুনি",
-     "gloss": "battered Bangladeshi eggplant fritter"
+     "gloss": "battered Bangladeshi eggplant fritter",
+     "collocations": [
+      {
+       "text": "বেগুনি ভাজা হচ্ছে",
+       "id": "4106b14dcd6d52472dec"
+      }
+     ]
     },
     {
      "id": "lentil-puri-snack",
      "label": "ডালপুরি",
-     "gloss": "lentil-filled fried flatbread"
+     "gloss": "lentil-filled fried flatbread",
+     "collocations": [
+      {
+       "text": "ডালপুরি ভেজে দিন",
+       "id": "31275c54baa535180c80"
+      }
+     ]
     }
    ],
    "questions": [
@@ -7249,32 +12793,68 @@ window.PTB_DECK = {
     {
      "id": "plain-paratha",
      "label": "পরোটা",
-     "gloss": "layered plain Bangladeshi paratha"
+     "gloss": "layered plain Bangladeshi paratha",
+     "collocations": [
+      {
+       "text": "গরম পরোটা",
+       "id": "9f67dcf15b7f81ac2063"
+      }
+     ]
     },
     {
      "id": "luchi-fried-bread",
      "label": "লুচি",
-     "gloss": "puffed white flour luchi"
+     "gloss": "puffed white flour luchi",
+     "collocations": [
+      {
+       "text": "ফুলে ওঠা লুচি",
+       "id": "2afd74269e30676b6cdd"
+      }
+     ]
     },
     {
      "id": "bakarkhani-bread",
      "label": "বাখরখানি",
-     "gloss": "Dhaka flaky baked bakarkhani"
+     "gloss": "Dhaka flaky baked bakarkhani",
+     "collocations": [
+      {
+       "text": "পুরান ঢাকার বাখরখানি",
+       "id": "6e32668e66212bb73bdb"
+      }
+     ]
     },
     {
      "id": "nimki-savory-cracker",
      "label": "নিমকি",
-     "gloss": "small diamond Bengali nimki cracker"
+     "gloss": "small diamond Bengali nimki cracker",
+     "collocations": [
+      {
+       "text": "মচমচে নিমকি",
+       "id": "6fdecf74531c0e00c2c6"
+      }
+     ]
     },
     {
      "id": "stuffed-mughlai-paratha",
      "label": "মোগলাই পরোটা",
-     "gloss": "egg-stuffed Mughlai paratha"
+     "gloss": "egg-stuffed Mughlai paratha",
+     "collocations": [
+      {
+       "text": "ডিমের মোগলাই পরোটা",
+       "id": "88f6343c0699bc0a3bb6"
+      }
+     ]
     },
     {
      "id": "sliced-bread-loaf",
      "label": "পাউরুটি",
-     "gloss": "loaf of sliced sandwich bread"
+     "gloss": "loaf of sliced sandwich bread",
+     "collocations": [
+      {
+       "text": "পাউরুটির টুকরা",
+       "id": "efc10388714ff9977f24"
+      }
+     ]
     }
    ],
    "questions": [
@@ -7296,32 +12876,68 @@ window.PTB_DECK = {
     {
      "id": "grind-to-paste",
      "label": "বাটা",
-     "gloss": "to grind ingredients into a paste"
+     "gloss": "to grind ingredients into a paste",
+     "collocations": [
+      {
+       "text": "শিলে মসলা বাটুন",
+       "id": "fd348b47e95ddbdb6f7f"
+      }
+     ]
     },
     {
      "id": "grate-coconut",
      "label": "নারকেল কোরা",
-     "gloss": "to grate a coconut"
+     "gloss": "to grate a coconut",
+     "collocations": [
+      {
+       "text": "নারকেল কুরে নিন",
+       "id": "40228945c41e290d92bd"
+      }
+     ]
     },
     {
      "id": "whisk-eggs",
      "label": "ডিম ফেটানো",
-     "gloss": "to whisk eggs"
+     "gloss": "to whisk eggs",
+     "collocations": [
+      {
+       "text": "ডিম ফেটিয়ে নিন",
+       "id": "cd138a2b0187908c2203"
+      }
+     ]
     },
     {
      "id": "mash-potato",
      "label": "আলু চটকানো",
-     "gloss": "to mash a potato"
+     "gloss": "to mash a potato",
+     "collocations": [
+      {
+       "text": "সেদ্ধ আলু চটকে নিন",
+       "id": "9f25e5ba53368749dece"
+      }
+     ]
     },
     {
      "id": "drain-rice-water",
      "label": "মাড় ঝরানো",
-     "gloss": "to drain starchy cooking water from cooked rice"
+     "gloss": "to drain starchy cooking water from cooked rice",
+     "collocations": [
+      {
+       "text": "ভাতের মাড় ঝরান",
+       "id": "ce36b19d4a011276ac5d"
+      }
+     ]
     },
     {
      "id": "reduce-syrup",
      "label": "রস জ্বাল দেওয়া",
-     "gloss": "to reduce sugar syrup by simmering"
+     "gloss": "to reduce sugar syrup by simmering",
+     "collocations": [
+      {
+       "text": "খেজুরের রস জ্বাল দিন",
+       "id": "3fa458a128e2e8e1dfb3"
+      }
+     ]
     }
    ],
    "questions": [
@@ -7343,32 +12959,68 @@ window.PTB_DECK = {
     {
      "id": "crispy-texture",
      "label": "মচমচে",
-     "gloss": "crispy food texture"
+     "gloss": "crispy food texture",
+     "collocations": [
+      {
+       "text": "মচমচে ভাজা",
+       "id": "df949519948bd59a2a30"
+      }
+     ]
     },
     {
      "id": "sticky-food-texture",
      "label": "আঠালো",
-     "gloss": "sticky food texture"
+     "gloss": "sticky food texture",
+     "collocations": [
+      {
+       "text": "আঠালো ভাত",
+       "id": "bb6b6cc92efb409741f3"
+      }
+     ]
     },
     {
      "id": "juicy-fruit-texture",
      "label": "রসালো",
-     "gloss": "juicy food texture"
+     "gloss": "juicy food texture",
+     "collocations": [
+      {
+       "text": "রসালো কমলা",
+       "id": "2bcfcf7dc66fff2ee967"
+      }
+     ]
     },
     {
      "id": "fluffy-separate-grains",
      "label": "ঝুরঝুরে",
-     "gloss": "fluffy loose rice grains"
+     "gloss": "fluffy loose rice grains",
+     "collocations": [
+      {
+       "text": "ঝুরঝুরে ভাত",
+       "id": "d4726aff4d276fd149ae"
+      }
+     ]
     },
     {
      "id": "thick-gloopy-food",
      "label": "থকথকে",
-     "gloss": "thick gloopy food texture"
+     "gloss": "thick gloopy food texture",
+     "collocations": [
+      {
+       "text": "থকথকে ডাল",
+       "id": "5b5c74fbf58ae8e05c92"
+      }
+     ]
     },
     {
      "id": "hollow-puffed-food",
      "label": "ফাঁপা",
-     "gloss": "hollow interior of puffed food"
+     "gloss": "hollow interior of puffed food",
+     "collocations": [
+      {
+       "text": "ভেতরটা ফাঁপা",
+       "id": "d2626e0620970d5f534b"
+      }
+     ]
     }
    ],
    "questions": [
@@ -7390,32 +13042,68 @@ window.PTB_DECK = {
     {
      "id": "flatbread-griddle",
      "label": "তাওয়া",
-     "gloss": "tawa griddle for flatbread"
+     "gloss": "tawa griddle for flatbread",
+     "collocations": [
+      {
+       "text": "তাওয়ায় রুটি সেঁকুন",
+       "id": "bee789bc0dfefe47427a"
+      }
+     ]
     },
     {
      "id": "wooden-rolling-pin-local",
      "label": "বেলন",
-     "gloss": "South Asian wooden rolling pin"
+     "gloss": "South Asian wooden rolling pin",
+     "collocations": [
+      {
+       "text": "বেলন দিয়ে বেলুন",
+       "id": "7762ad2e3fc4b347fb0d"
+      }
+     ]
     },
     {
      "id": "rolling-board-round",
      "label": "রুটি বেলার পিঁড়ি",
-     "gloss": "low round board for rolling flatbread"
+     "gloss": "low round board for rolling flatbread",
+     "collocations": [
+      {
+       "text": "রুটি বেলার পিঁড়িতে আটা দিন",
+       "id": "b5eda84911f2cfb746b4"
+      }
+     ]
     },
     {
      "id": "coconut-scraper-tool",
      "label": "নারকেল কোরানি",
-     "gloss": "fixed Bengali coconut grater"
+     "gloss": "fixed Bengali coconut grater",
+     "collocations": [
+      {
+       "text": "নারকেল কোরানি দিয়ে কুরিয়ে নিন",
+       "id": "753d49fb78d51cd57278"
+      }
+     ]
     },
     {
      "id": "deep-serving-ladle",
      "label": "রান্নার হাতা",
-     "gloss": "deep metal cooking ladle"
+     "gloss": "deep metal cooking ladle",
+     "collocations": [
+      {
+       "text": "রান্নার হাতা দিয়ে ঝোল তুলুন",
+       "id": "b4384c5337e6bab195a8"
+      }
+     ]
     },
     {
      "id": "flat-skimmer",
      "label": "ঝাঁঝরি",
-     "gloss": "flat perforated frying skimmer"
+     "gloss": "flat perforated frying skimmer",
+     "collocations": [
+      {
+       "text": "ঝাঁঝরি দিয়ে ভাজা তুলুন",
+       "id": "e6ea88448720bb641202"
+      }
+     ]
     }
    ],
    "questions": [
@@ -7437,32 +13125,68 @@ window.PTB_DECK = {
     {
      "id": "window-fixed-bars",
      "label": "জানালার শিক",
-     "gloss": "fixed metal window bars"
+     "gloss": "fixed metal window bars",
+     "collocations": [
+      {
+       "text": "জানালার শিক ধরে আছে",
+       "id": "d00657a84fdf963ae83c"
+      }
+     ]
     },
     {
      "id": "door-pull-handle",
      "label": "দরজার হাতল",
-     "gloss": "door pull handle"
+     "gloss": "door pull handle",
+     "collocations": [
+      {
+       "text": "দরজার হাতল ধরে টানুন",
+       "id": "d6a69764a39d45abd240"
+      }
+     ]
     },
     {
      "id": "door-butt-hinge",
      "label": "কবজা",
-     "gloss": "door butt hinge"
+     "gloss": "door butt hinge",
+     "collocations": [
+      {
+       "text": "কবজায় তেল দিন",
+       "id": "b2a6da04ea57d4337307"
+      }
+     ]
     },
     {
      "id": "door-ring-knocker",
      "label": "দোরের কড়া",
-     "gloss": "door ring knocker"
+     "gloss": "door ring knocker",
+     "collocations": [
+      {
+       "text": "দোরের কড়া নাড়ুন",
+       "id": "93c12a0677316e236587"
+      }
+     ]
     },
     {
      "id": "door-entire-frame",
      "label": "চৌকাঠ",
-     "gloss": "complete wooden door frame"
+     "gloss": "complete wooden door frame",
+     "collocations": [
+      {
+       "text": "চৌকাঠ পেরিয়ে আসুন",
+       "id": "1493be0c86dc7a099e7f"
+      }
+     ]
     },
     {
      "id": "door-lock-keyhole",
      "label": "তালার ছিদ্র",
-     "gloss": "door lock keyhole"
+     "gloss": "door lock keyhole",
+     "collocations": [
+      {
+       "text": "তালার ছিদ্রে চাবি ঢোকান",
+       "id": "414db088fab45b8aa5c7"
+      }
+     ]
     }
    ],
    "questions": [
@@ -7484,32 +13208,68 @@ window.PTB_DECK = {
     {
      "id": "hammer-a-nail",
      "label": "পেরেক ঠোকা",
-     "gloss": "to hammer a nail into wood"
+     "gloss": "to hammer a nail into wood",
+     "collocations": [
+      {
+       "text": "কাঠে পেরেক ঠুকুন",
+       "id": "065df97627f2c17969c5"
+      }
+     ]
     },
     {
      "id": "saw-along-wood",
      "label": "করাত দিয়ে চেরা",
-     "gloss": "to saw along wood"
+     "gloss": "to saw along wood",
+     "collocations": [
+      {
+       "text": "করাত দিয়ে কাঠ চিরুন",
+       "id": "a74aeaf76a24fbbd4664"
+      }
+     ]
     },
     {
      "id": "tighten-a-screw",
      "label": "প্যাঁচ কষা",
-     "gloss": "to tighten a screw"
+     "gloss": "to tighten a screw",
+     "collocations": [
+      {
+       "text": "প্যাঁচটা কষে দিন",
+       "id": "15e5ee06ed26b5ab80d8"
+      }
+     ]
     },
     {
      "id": "bore-a-hole",
      "label": "ফুটো করা",
-     "gloss": "to drill a neat hole"
+     "gloss": "to drill a neat hole",
+     "collocations": [
+      {
+       "text": "কাঠে ফুটো করুন",
+       "id": "5caf5866dfdd99992156"
+      }
+     ]
     },
     {
      "id": "whitewash-a-wall",
      "label": "চুনকাম করা",
-     "gloss": "to apply lime whitewash"
+     "gloss": "to apply lime whitewash",
+     "collocations": [
+      {
+       "text": "দেয়ালে চুনকাম করুন",
+       "id": "3f1ae1d012827ab96038"
+      }
+     ]
     },
     {
      "id": "glue-two-pieces",
      "label": "জোড়া লাগানো",
-     "gloss": "to join broken pieces back together"
+     "gloss": "to join broken pieces back together",
+     "collocations": [
+      {
+       "text": "কাঠ দুটো জোড়া লাগান",
+       "id": "f281687166b2fbf3598a"
+      }
+     ]
     }
    ],
    "questions": [
@@ -7531,32 +13291,68 @@ window.PTB_DECK = {
     {
      "id": "casual-fatua-top",
      "label": "ফতুয়া",
-     "gloss": "short cotton Bangladeshi fatua tunic"
+     "gloss": "short cotton Bangladeshi fatua tunic",
+     "collocations": [
+      {
+       "text": "সুতির ফতুয়া",
+       "id": "f29530a6dfe6789013eb"
+      }
+     ]
     },
     {
      "id": "pajama-trousers",
      "label": "পায়জামা",
-     "gloss": "men's narrow drawstring pajama trousers"
+     "gloss": "men's narrow drawstring pajama trousers",
+     "collocations": [
+      {
+       "text": "সাদা পায়জামা",
+       "id": "53cf97df86dcf4cc430e"
+      }
+     ]
     },
     {
      "id": "sleeveless-shirt",
      "label": "হাতা কাটা জামা",
-     "gloss": "sleeveless shirt"
+     "gloss": "sleeveless shirt",
+     "collocations": [
+      {
+       "text": "হাতা কাটা জামা পরুন",
+       "id": "5b3f26d94ce758a78dd4"
+      }
+     ]
     },
     {
      "id": "winter-shawl",
      "label": "শাল",
-     "gloss": "woven shoulder shawl"
+     "gloss": "woven shoulder shawl",
+     "collocations": [
+      {
+       "text": "কাঁধে শাল জড়ান",
+       "id": "da21a13e5084ea98b6de"
+      }
+     ]
     },
     {
      "id": "head-turban",
      "label": "পাগড়ি",
-     "gloss": "wrapped head turban"
+     "gloss": "wrapped head turban",
+     "collocations": [
+      {
+       "text": "মাথায় পাগড়ি বাঁধুন",
+       "id": "c0a0a9ab2fc4d991c78f"
+      }
+     ]
     },
     {
      "id": "long-borka",
      "label": "বোরকা",
-     "gloss": "long Bangladeshi outer borka garment"
+     "gloss": "long Bangladeshi outer borka garment",
+     "collocations": [
+      {
+       "text": "কালো বোরকা",
+       "id": "63f5e9596a4502f96878"
+      }
+     ]
     }
    ],
    "questions": [
@@ -7578,32 +13374,68 @@ window.PTB_DECK = {
     {
      "id": "everyday-open-sandal",
      "label": "চটি",
-     "gloss": "simple open-backed everyday sandal"
+     "gloss": "simple open-backed everyday sandal",
+     "collocations": [
+      {
+       "text": "এক জোড়া চটি",
+       "id": "4c7b0d8931164f4fb176"
+      }
+     ]
     },
     {
      "id": "wooden-kharam-sandal",
      "label": "খড়ম",
-     "gloss": "traditional wooden kharam toe-knob sandals"
+     "gloss": "traditional wooden kharam toe-knob sandals",
+     "collocations": [
+      {
+       "text": "কাঠের খড়ম",
+       "id": "38bbf23600cfe2a3d737"
+      }
+     ]
     },
     {
      "id": "embroidered-nagra-shoe",
      "label": "নাগরা",
-     "gloss": "traditional embroidered nagra shoes"
+     "gloss": "traditional embroidered nagra shoes",
+     "collocations": [
+      {
+       "text": "চামড়ার নাগরা",
+       "id": "73ec37ed5609a34a204a"
+      }
+     ]
     },
     {
      "id": "shoelace",
      "label": "জুতার ফিতা",
-     "gloss": "shoelace"
+     "gloss": "shoelace",
+     "collocations": [
+      {
+       "text": "জুতার ফিতা বাঁধুন",
+       "id": "20b7acee714f0190c415"
+      }
+     ]
     },
     {
      "id": "shoe-outsole",
      "label": "জুতার তলা",
-     "gloss": "outer bottom sole of a shoe"
+     "gloss": "outer bottom sole of a shoe",
+     "collocations": [
+      {
+       "text": "জুতার তলা ক্ষয়ে গেছে",
+       "id": "6becc09e58b3e09563df"
+      }
+     ]
     },
     {
      "id": "foot-anklet-bells",
      "label": "নূপুর",
-     "gloss": "decorative anklet with tiny bells"
+     "gloss": "decorative anklet with tiny bells",
+     "collocations": [
+      {
+       "text": "পায়ে নূপুর",
+       "id": "a33e874e5585d052146c"
+      }
+     ]
     }
    ],
    "questions": [
@@ -7625,32 +13457,68 @@ window.PTB_DECK = {
     {
      "id": "head-hair",
      "label": "চুল",
-     "gloss": "hair on the head"
+     "gloss": "hair on the head",
+     "collocations": [
+      {
+       "text": "লম্বা চুল",
+       "id": "42113ee9edbf56cca0c6"
+      }
+     ]
     },
     {
      "id": "beard-hair",
      "label": "দাড়ি",
-     "gloss": "beard on chin and cheeks"
+     "gloss": "beard on chin and cheeks",
+     "collocations": [
+      {
+       "text": "ঘন দাড়ি",
+       "id": "0fc187ab205b5ad907f1"
+      }
+     ]
     },
     {
      "id": "moustache-hair",
      "label": "গোঁফ",
-     "gloss": "moustache on upper lip"
+     "gloss": "moustache on upper lip",
+     "collocations": [
+      {
+       "text": "পাকা গোঁফ",
+       "id": "2b02c70d1e3c9e8d19af"
+      }
+     ]
     },
     {
      "id": "sideburn-hair",
      "label": "জুলফি",
-     "gloss": "sideburns of hair in front of ear"
+     "gloss": "sideburns of hair in front of ear",
+     "collocations": [
+      {
+       "text": "জুলফি ছোট করুন",
+       "id": "ea39e62fac7b5c488b45"
+      }
+     ]
     },
     {
      "id": "bald-head",
      "label": "টাক",
-     "gloss": "bald area on crown of head"
+     "gloss": "bald area on crown of head",
+     "collocations": [
+      {
+       "text": "মাথায় টাক পড়েছে",
+       "id": "0c0f65bda661f8939826"
+      }
+     ]
     },
     {
      "id": "part-in-hair",
      "label": "সিঁথি",
-     "gloss": "line parting hair on the scalp"
+     "gloss": "line parting hair on the scalp",
+     "collocations": [
+      {
+       "text": "চুলে সিঁথি করুন",
+       "id": "50227870b2e8c975a85a"
+      }
+     ]
     }
    ],
    "questions": [
@@ -7672,32 +13540,68 @@ window.PTB_DECK = {
     {
      "id": "small-flat-mole",
      "label": "তিল",
-     "gloss": "small flat dark skin mole"
+     "gloss": "small flat dark skin mole",
+     "collocations": [
+      {
+       "text": "গালে তিল",
+       "id": "8a32597ec3f0c2948687"
+      }
+     ]
     },
     {
      "id": "raised-wart",
      "label": "আঁচিল",
-     "gloss": "small rough raised wart"
+     "gloss": "small rough raised wart",
+     "collocations": [
+      {
+       "text": "হাতে আঁচিল",
+       "id": "020edb76b92e6091e3af"
+      }
+     ]
     },
     {
      "id": "old-cut-scar",
      "label": "পুরোনো কাটা দাগ",
-     "gloss": "fully healed linear cut scar"
+     "gloss": "fully healed linear cut scar",
+     "collocations": [
+      {
+       "text": "হাতে পুরোনো কাটা দাগ",
+       "id": "dd76606b810d39cd2a72"
+      }
+     ]
     },
     {
      "id": "face-wrinkles",
      "label": "বলিরেখা",
-     "gloss": "multiple facial wrinkles"
+     "gloss": "multiple facial wrinkles",
+     "collocations": [
+      {
+       "text": "কপালের বলিরেখা",
+       "id": "018af7ff5c1a97cdc3e8"
+      }
+     ]
     },
     {
      "id": "cheek-melasma",
      "label": "মেছতা",
-     "gloss": "brown melasma patches on cheeks"
+     "gloss": "brown melasma patches on cheeks",
+     "collocations": [
+      {
+       "text": "গালে মেছতা",
+       "id": "1300845019d473e7823d"
+      }
+     ]
     },
     {
      "id": "tiny-skin-rash",
      "label": "ফুসকুড়ি",
-     "gloss": "group of small rash bumps"
+     "gloss": "group of small rash bumps",
+     "collocations": [
+      {
+       "text": "গায়ে ফুসকুড়ি উঠেছে",
+       "id": "0df81624eab0cd5c169b"
+      }
+     ]
     }
    ],
    "questions": [
@@ -7719,32 +13623,68 @@ window.PTB_DECK = {
     {
      "id": "professional-cook-local",
      "label": "রাঁধুনি",
-     "gloss": "cook preparing meals for a group"
+     "gloss": "cook preparing meals for a group",
+     "collocations": [
+      {
+       "text": "রাঁধুনি ভাত রাঁধেন",
+       "id": "814c7bb874241867f206"
+      }
+     ]
     },
     {
      "id": "laundry-worker-local",
      "label": "ধোপা",
-     "gloss": "washerperson who washes clothes for a living"
+     "gloss": "washerperson who washes clothes for a living",
+     "collocations": [
+      {
+       "text": "ধোপা কাপড় কাচেন",
+       "id": "bc001617946b48de838d"
+      }
+     ]
     },
     {
      "id": "garden-worker-local",
      "label": "মালি",
-     "gloss": "gardener who tends plants"
+     "gloss": "gardener who tends plants",
+     "collocations": [
+      {
+       "text": "মালি গাছে পানি দেন",
+       "id": "a3a0972e8d88a6636805"
+      }
+     ]
     },
     {
      "id": "butcher-local",
      "label": "কসাই",
-     "gloss": "market butcher selling cuts of meat"
+     "gloss": "market butcher selling cuts of meat",
+     "collocations": [
+      {
+       "text": "কসাই মাংস কাটেন",
+       "id": "a4d906b7ad1c9521da23"
+      }
+     ]
     },
     {
      "id": "fish-seller-local",
      "label": "মাছওয়ালা",
-     "gloss": "fishmonger at a local market"
+     "gloss": "fishmonger at a local market",
+     "collocations": [
+      {
+       "text": "মাছওয়ালা মাছ বিক্রি করেন",
+       "id": "8ab636f7a571fb0fda13"
+      }
+     ]
     },
     {
      "id": "milk-seller-local",
      "label": "দুধওয়ালা",
-     "gloss": "street milk seller carrying fresh milk"
+     "gloss": "street milk seller carrying fresh milk",
+     "collocations": [
+      {
+       "text": "দুধওয়ালা দুধ নিয়ে আসেন",
+       "id": "7afcabf4c1102ed337f0"
+      }
+     ]
     }
    ],
    "questions": [
@@ -7766,32 +13706,68 @@ window.PTB_DECK = {
     {
      "id": "swaying-object",
      "label": "দুলতে থাকা",
-     "gloss": "object swaying from side to side"
+     "gloss": "object swaying from side to side",
+     "collocations": [
+      {
+       "text": "দোলনাটা দুলছে",
+       "id": "fa62076da7d9a02b87b5"
+      }
+     ]
     },
     {
      "id": "spinning-object",
      "label": "ঘুরতে থাকা",
-     "gloss": "an object spinning around its axis"
+     "gloss": "an object spinning around its axis",
+     "collocations": [
+      {
+       "text": "চাকাটা ঘুরছে",
+       "id": "a9831e0b8c1c14d3df90"
+      }
+     ]
     },
     {
      "id": "floating-object",
      "label": "ভেসে থাকা",
-     "gloss": "an object floating at water surface"
+     "gloss": "an object floating at water surface",
+     "collocations": [
+      {
+       "text": "পানিতে পাতা ভাসছে",
+       "id": "b1d7b8f02a0b9db51690"
+      }
+     ]
     },
     {
      "id": "sinking-object",
      "label": "ডুবে যাওয়া",
-     "gloss": "an object sinking below water surface"
+     "gloss": "an object sinking below water surface",
+     "collocations": [
+      {
+       "text": "পানিতে পাথর ডুবে গেল",
+       "id": "b25de4f10ffc1d771f53"
+      }
+     ]
     },
     {
      "id": "bursting-object",
      "label": "ফেটে যাওয়া",
-     "gloss": "an object bursting from internal pressure"
+     "gloss": "an object bursting from internal pressure",
+     "collocations": [
+      {
+       "text": "হঠাৎ ফেটে গেল",
+       "id": "e94d3105c164ebc84311"
+      }
+     ]
     },
     {
      "id": "flame-going-out",
      "label": "নিভে যাওয়া",
-     "gloss": "a flame going out"
+     "gloss": "a flame going out",
+     "collocations": [
+      {
+       "text": "বাতি নিভে গেছে",
+       "id": "3bf2f1657720763bf58a"
+      }
+     ]
     }
    ],
    "questions": [
@@ -7813,32 +13789,68 @@ window.PTB_DECK = {
     {
      "id": "container-full",
      "label": "ভরতি",
-     "gloss": "completely full container"
+     "gloss": "completely full container",
+     "collocations": [
+      {
+       "text": "পানি ভরতি কলসি",
+       "id": "f56f728ef34ce71631a9"
+      }
+     ]
     },
     {
      "id": "container-empty",
      "label": "ফাঁকা",
-     "gloss": "completely empty container"
+     "gloss": "completely empty container",
+     "collocations": [
+      {
+       "text": "ফাঁকা ঝুড়ি",
+       "id": "827bcc331bd7cc791840"
+      }
+     ]
     },
     {
      "id": "tight-fitting-sleeve",
      "label": "আঁটসাঁট",
-     "gloss": "tight fitting garment"
+     "gloss": "tight fitting garment",
+     "collocations": [
+      {
+       "text": "আঁটসাঁট জামা",
+       "id": "97408543ba7fd8c64186"
+      }
+     ]
     },
     {
      "id": "loose-fitting-sleeve",
      "label": "ঢিলেঢালা",
-     "gloss": "loose fitting garment"
+     "gloss": "loose fitting garment",
+     "collocations": [
+      {
+       "text": "ঢিলেঢালা পায়জামা",
+       "id": "dbb7b33c62a6fbe5d0a0"
+      }
+     ]
     },
     {
      "id": "thick-fabric",
      "label": "পুরু",
-     "gloss": "thick material in cross section"
+     "gloss": "thick material in cross section",
+     "collocations": [
+      {
+       "text": "পুরু তক্তা",
+       "id": "a0e53b60f4887fef4ef1"
+      }
+     ]
     },
     {
      "id": "thin-fabric",
      "label": "পাতলা",
-     "gloss": "thin material in cross section"
+     "gloss": "thin material in cross section",
+     "collocations": [
+      {
+       "text": "পাতলা কাপড়",
+       "id": "4bbc7245599106a826f7"
+      }
+     ]
     }
    ],
    "questions": [
@@ -7860,32 +13872,68 @@ window.PTB_DECK = {
     {
      "id": "single-tied-bundle",
      "label": "এক আঁটি",
-     "gloss": "one tied bunch of greens"
+     "gloss": "one tied bunch of greens",
+     "collocations": [
+      {
+       "text": "এক আঁটি শাক",
+       "id": "29a147a26c02170c1742"
+      }
+     ]
     },
     {
      "id": "one-handful",
      "label": "এক মুঠো",
-     "gloss": "one handful of dry food"
+     "gloss": "one handful of dry food",
+     "collocations": [
+      {
+       "text": "এক মুঠো চাল",
+       "id": "9dfa93c1d0bb208b4b8e"
+      }
+     ]
     },
     {
      "id": "one-pinch",
      "label": "এক চিমটি",
-     "gloss": "one pinch of a powder"
+     "gloss": "one pinch of a powder",
+     "collocations": [
+      {
+       "text": "এক চিমটি লবণ দিন",
+       "id": "c3452c65e5fcafa94074"
+      }
+     ]
     },
     {
      "id": "one-sip",
      "label": "এক চুমুক",
-     "gloss": "one sip of a drink"
+     "gloss": "one sip of a drink",
+     "collocations": [
+      {
+       "text": "এক চুমুক চা",
+       "id": "fe8c076bb0690f3e1a59"
+      }
+     ]
     },
     {
      "id": "one-mouthful",
      "label": "এক লোকমা",
-     "gloss": "one small mouthful of food"
+     "gloss": "one small mouthful of food",
+     "collocations": [
+      {
+       "text": "এক লোকমা ভাত",
+       "id": "80c110a85d8108db01d5"
+      }
+     ]
     },
     {
      "id": "one-liquid-drop",
      "label": "এক ফোঁটা",
-     "gloss": "one single liquid drop"
+     "gloss": "one single liquid drop",
+     "collocations": [
+      {
+       "text": "এক ফোঁটা পানি",
+       "id": "ce53c02c17cc67091f60"
+      }
+     ]
     }
    ],
    "questions": [
@@ -7907,32 +13955,68 @@ window.PTB_DECK = {
     {
      "id": "mango-tree-local",
      "label": "আমগাছ",
-     "gloss": "mango tree as landmark"
+     "gloss": "mango tree as landmark",
+     "collocations": [
+      {
+       "text": "আমগাছে আম ধরেছে",
+       "id": "4f629a32dcb50a4b04dd"
+      }
+     ]
     },
     {
      "id": "jackfruit-tree-local",
      "label": "কাঁঠালগাছ",
-     "gloss": "jackfruit tree as landmark"
+     "gloss": "jackfruit tree as landmark",
+     "collocations": [
+      {
+       "text": "কাঁঠালগাছের গুঁড়ি",
+       "id": "bed570e1ec33e8616d3f"
+      }
+     ]
     },
     {
      "id": "neem-tree-local",
      "label": "নিমগাছ",
-     "gloss": "neem tree as landmark"
+     "gloss": "neem tree as landmark",
+     "collocations": [
+      {
+       "text": "নিমগাছের পাতা",
+       "id": "e1deaa173e18fbba227b"
+      }
+     ]
     },
     {
      "id": "tamarind-tree-local",
      "label": "তেঁতুলগাছ",
-     "gloss": "tamarind tree as landmark"
+     "gloss": "tamarind tree as landmark",
+     "collocations": [
+      {
+       "text": "তেঁতুলগাছের ছায়া",
+       "id": "5fdcd3de45a91df61543"
+      }
+     ]
     },
     {
      "id": "red-silk-cotton-tree",
      "label": "শিমুলগাছ",
-     "gloss": "red silk cotton Bombax tree"
+     "gloss": "red silk cotton Bombax tree",
+     "collocations": [
+      {
+       "text": "শিমুলগাছে লাল ফুল",
+       "id": "237515ae46a129418528"
+      }
+     ]
     },
     {
      "id": "kadam-tree-local",
      "label": "কদমগাছ",
-     "gloss": "kadam burflower tree"
+     "gloss": "kadam burflower tree",
+     "collocations": [
+      {
+       "text": "কদমগাছে ফুল ফুটেছে",
+       "id": "0b3e3719e3edf6f93ccc"
+      }
+     ]
     }
    ],
    "questions": [
@@ -7954,32 +14038,68 @@ window.PTB_DECK = {
     {
      "id": "wood-apple-bael",
      "label": "বেল",
-     "gloss": "hard-shelled bael fruit"
+     "gloss": "hard-shelled bael fruit",
+     "collocations": [
+      {
+       "text": "পাকা বেলের শরবত",
+       "id": "08e1211174fee4e4d21e"
+      }
+     ]
     },
     {
      "id": "tamarind-pods",
      "label": "তেঁতুল",
-     "gloss": "tamarind pods as fruit"
+     "gloss": "tamarind pods as fruit",
+     "collocations": [
+      {
+       "text": "টক তেঁতুল",
+       "id": "d41c4565c34deb34fd99"
+      }
+     ]
     },
     {
      "id": "starfruit",
      "label": "কামরাঙা",
-     "gloss": "five-ridged star fruit"
+     "gloss": "five-ridged star fruit",
+     "collocations": [
+      {
+       "text": "কামরাঙা কেটে খান",
+       "id": "7bbd1b60fbf3dbc723ff"
+      }
+     ]
     },
     {
      "id": "latkan-fruit",
      "label": "লটকন",
-     "gloss": "Burmese grape fruit cluster sold in Bangladesh"
+     "gloss": "Burmese grape fruit cluster sold in Bangladesh",
+     "collocations": [
+      {
+       "text": "এক থোকা লটকন",
+       "id": "4b9e8c0531b8b86b9fd1"
+      }
+     ]
     },
     {
      "id": "deua-fruit",
      "label": "ডেউয়া",
-     "gloss": "monkey jack deua fruit"
+     "gloss": "monkey jack deua fruit",
+     "collocations": [
+      {
+       "text": "পাকা ডেউয়া",
+       "id": "0a678950b9d4ef212c05"
+      }
+     ]
     },
     {
      "id": "amla-fruit",
      "label": "আমলকী",
-     "gloss": "Indian gooseberry amla fruit"
+     "gloss": "Indian gooseberry amla fruit",
+     "collocations": [
+      {
+       "text": "আমলকীর আচার",
+       "id": "c2a575a4109322c91bfa"
+      }
+     ]
     }
    ],
    "questions": [
@@ -8001,32 +14121,68 @@ window.PTB_DECK = {
     {
      "id": "oriental-magpie-robin",
      "label": "দোয়েল",
-     "gloss": "Oriental magpie robin"
+     "gloss": "Oriental magpie robin",
+     "collocations": [
+      {
+       "text": "দোয়েল ডাকছে",
+       "id": "c3f8a426c688b4d4996e"
+      }
+     ]
     },
     {
      "id": "white-throated-kingfisher",
      "label": "মাছরাঙা",
-     "gloss": "white-throated kingfisher"
+     "gloss": "white-throated kingfisher",
+     "collocations": [
+      {
+       "text": "মাছরাঙা মাছ ধরছে",
+       "id": "a864fdae54508efe15cc"
+      }
+     ]
     },
     {
      "id": "black-drongo",
      "label": "ফিঙে",
-     "gloss": "black drongo"
+     "gloss": "black drongo",
+     "collocations": [
+      {
+       "text": "কালো ফিঙে",
+       "id": "550993e6f54ed2b0a5d5"
+      }
+     ]
     },
     {
      "id": "asian-koel",
      "label": "কোকিল",
-     "gloss": "Asian koel"
+     "gloss": "Asian koel",
+     "collocations": [
+      {
+       "text": "কোকিলের ডাক",
+       "id": "7fb89748f62831b6d00c"
+      }
+     ]
     },
     {
      "id": "baya-weaver",
      "label": "বাবুই",
-     "gloss": "Baya weaver bird"
+     "gloss": "Baya weaver bird",
+     "collocations": [
+      {
+       "text": "বাবুই পাখির বাসা",
+       "id": "dceaa3f13c3f1fd93829"
+      }
+     ]
     },
     {
      "id": "rose-ringed-parakeet",
      "label": "টিয়া",
-     "gloss": "rose-ringed parakeet"
+     "gloss": "rose-ringed parakeet",
+     "collocations": [
+      {
+       "text": "সবুজ টিয়া",
+       "id": "856b7c1a87dbbc84c792"
+      }
+     ]
     }
    ],
    "questions": [
@@ -8048,32 +14204,68 @@ window.PTB_DECK = {
     {
      "id": "termite-local",
      "label": "উইপোকা",
-     "gloss": "wood-eating termite"
+     "gloss": "wood-eating termite",
+     "collocations": [
+      {
+       "text": "কাঠে উইপোকা ধরেছে",
+       "id": "4852bf3ca721e5b1cddc"
+      }
+     ]
     },
     {
      "id": "bedbug-local",
      "label": "ছারপোকা",
-     "gloss": "bed bug"
+     "gloss": "bed bug",
+     "collocations": [
+      {
+       "text": "খাটে ছারপোকা",
+       "id": "33f60ee1a711233ac10b"
+      }
+     ]
     },
     {
      "id": "head-louse-local",
      "label": "উকুন",
-     "gloss": "head louse"
+     "gloss": "head louse",
+     "collocations": [
+      {
+       "text": "মাথায় উকুন",
+       "id": "0c39f717677227f4036b"
+      }
+     ]
     },
     {
      "id": "house-spider-local",
      "label": "মাকড়সা",
-     "gloss": "house spider"
+     "gloss": "house spider",
+     "collocations": [
+      {
+       "text": "মাকড়সার জাল",
+       "id": "9a016cca8f1eb26b3529"
+      }
+     ]
     },
     {
      "id": "asian-honey-bee",
      "label": "মৌমাছি",
-     "gloss": "Asian honey bee"
+     "gloss": "Asian honey bee",
+     "collocations": [
+      {
+       "text": "ফুলে মৌমাছি বসেছে",
+       "id": "5e93c8f1d3ce370bd225"
+      }
+     ]
     },
     {
      "id": "paper-wasp-local",
      "label": "বোলতা",
-     "gloss": "paper wasp"
+     "gloss": "paper wasp",
+     "collocations": [
+      {
+       "text": "বোলতা হুল ফুটিয়েছে",
+       "id": "67068fc339721f978892"
+      }
+     ]
     }
    ],
    "questions": [
@@ -8095,32 +14287,68 @@ window.PTB_DECK = {
     {
      "id": "stroke-hair-caring",
      "label": "মাথায় হাত বুলানো",
-     "gloss": "to gently stroke someone's hair"
+     "gloss": "to gently stroke someone's hair",
+     "collocations": [
+      {
+       "text": "বাচ্চার মাথায় হাত বুলান",
+       "id": "37de7d83be973e982ed2"
+      }
+     ]
     },
     {
      "id": "lift-into-lap",
      "label": "কোলে নেওয়া",
-     "gloss": "to take a child onto one's lap"
+     "gloss": "to take a child onto one's lap",
+     "collocations": [
+      {
+       "text": "বাচ্চাকে কোলে নিন",
+       "id": "d21080fb9427aebc86eb"
+      }
+     ]
     },
     {
      "id": "feed-someone-mouthful",
      "label": "খাইয়ে দেওয়া",
-     "gloss": "to give someone a bite of food"
+     "gloss": "to give someone a bite of food",
+     "collocations": [
+      {
+       "text": "বাচ্চাকে ভাত খাইয়ে দিন",
+       "id": "58fd68ab26872b6bd8b7"
+      }
+     ]
     },
     {
      "id": "lay-someone-down",
      "label": "শুইয়ে দেওয়া",
-     "gloss": "to help someone lie down"
+     "gloss": "to help someone lie down",
+     "collocations": [
+      {
+       "text": "খাটে শুইয়ে দিন",
+       "id": "d2453287d08c535a8da4"
+      }
+     ]
     },
     {
      "id": "wrap-shawl-around-someone",
      "label": "গায়ে চাদর দেওয়া",
-     "gloss": "to put a blanket or shawl over someone"
+     "gloss": "to put a blanket or shawl over someone",
+     "collocations": [
+      {
+       "text": "ওর গায়ে চাদর দিন",
+       "id": "1dd178b580173ae73216"
+      }
+     ]
     },
     {
      "id": "walk-with-hand-support",
      "label": "হাত ধরে হাঁটানো",
-     "gloss": "to help someone walk by the hand"
+     "gloss": "to help someone walk by the hand",
+     "collocations": [
+      {
+       "text": "হাত ধরে একটু হাঁটান",
+       "id": "86969c0f678232a6e56b"
+      }
+     ]
     }
    ],
    "questions": [
@@ -8142,32 +14370,68 @@ window.PTB_DECK = {
     {
      "id": "cattle-market",
      "label": "গরুর হাট",
-     "gloss": "open-air cattle market"
+     "gloss": "open-air cattle market",
+     "collocations": [
+      {
+       "text": "গরুর হাটে গরু কিনি",
+       "id": "efc959aff01c77d76ef8"
+      }
+     ]
     },
     {
      "id": "fish-wholesale-market",
      "label": "মাছের আড়ত",
-     "gloss": "wholesale fish market auction shed"
+     "gloss": "wholesale fish market auction shed",
+     "collocations": [
+      {
+       "text": "মাছের আড়তে মাছ আসে",
+       "id": "142f528fa3acd55fb895"
+      }
+     ]
     },
     {
      "id": "rice-mill-site",
      "label": "ধানকল",
-     "gloss": "local rice hulling mill"
+     "gloss": "local rice hulling mill",
+     "collocations": [
+      {
+       "text": "ধানকলে চাল হয়",
+       "id": "d501b4b35ddd6c3b0841"
+      }
+     ]
     },
     {
      "id": "local-madrasa-site",
      "label": "মাদরাসা",
-     "gloss": "Bangladeshi madrasa school"
+     "gloss": "Bangladeshi madrasa school",
+     "collocations": [
+      {
+       "text": "মাদরাসায় পড়ে",
+       "id": "a2dd030ab878115ef099"
+      }
+     ]
     },
     {
      "id": "sewing-workshop",
      "label": "সেলাইঘর",
-     "gloss": "neighborhood sewing workshop"
+     "gloss": "neighborhood sewing workshop",
+     "collocations": [
+      {
+       "text": "সেলাইঘরে জামা বানান",
+       "id": "e4990b2293dd0e57897a"
+      }
+     ]
     },
     {
      "id": "dairy-farm-site",
      "label": "দুধের খামার",
-     "gloss": "local dairy farm"
+     "gloss": "local dairy farm",
+     "collocations": [
+      {
+       "text": "দুধের খামারে গরু আছে",
+       "id": "d24141b43e8e51339ba0"
+      }
+     ]
     }
    ],
    "questions": [
@@ -8189,32 +14453,68 @@ window.PTB_DECK = {
     {
      "id": "no-entry-notice",
      "label": "ঢোকা মানা",
-     "gloss": "no entry for pedestrians notice"
+     "gloss": "no entry for pedestrians notice",
+     "collocations": [
+      {
+       "text": "এখানে ঢোকা মানা",
+       "id": "428afe0fa7dea07a79d8"
+      }
+     ]
     },
     {
      "id": "shoes-off-entry",
      "label": "জুতা খুলে ঢোকা",
-     "gloss": "removing footwear before entering"
+     "gloss": "removing footwear before entering",
+     "collocations": [
+      {
+       "text": "জুতা খুলে ঢুকুন",
+       "id": "e190be631fcd185ea15e"
+      }
+     ]
     },
     {
      "id": "handwash-station",
      "label": "হাত ধোয়ার জায়গা",
-     "gloss": "handwashing station"
+     "gloss": "handwashing station",
+     "collocations": [
+      {
+       "text": "এখানে হাত ধোয়ার জায়গা",
+       "id": "4103596cf78ace9a966e"
+      }
+     ]
     },
     {
      "id": "waiting-seat-area",
      "label": "বসার জায়গা",
-     "gloss": "public seating space"
+     "gloss": "public seating space",
+     "collocations": [
+      {
+       "text": "ওখানে বসার জায়গা আছে",
+       "id": "9e17c0fb7d9c03d6eacb"
+      }
+     ]
     },
     {
      "id": "road-closed-barrier",
      "label": "পথ বন্ধ",
-     "gloss": "path closed by barrier"
+     "gloss": "path closed by barrier",
+     "collocations": [
+      {
+       "text": "সামনে পথ বন্ধ",
+       "id": "df7bccc676d262d1758e"
+      }
+     ]
     },
     {
      "id": "no-litter-notice",
      "label": "ময়লা ফেলা মানা",
-     "gloss": "no littering notice"
+     "gloss": "no littering notice",
+     "collocations": [
+      {
+       "text": "এখানে ময়লা ফেলা মানা",
+       "id": "f41a4b922eb3c5148596"
+      }
+     ]
     }
    ],
    "questions": [
@@ -8236,32 +14536,68 @@ window.PTB_DECK = {
     {
      "id": "turn-room-light-on",
      "label": "বাতি জ্বালানো",
-     "gloss": "turning an electric room light on"
+     "gloss": "turning an electric room light on",
+     "collocations": [
+      {
+       "text": "ঘরের বাতি জ্বালান",
+       "id": "bcb925be7c72e991b108"
+      }
+     ]
     },
     {
      "id": "turn-room-light-off",
      "label": "বাতি নেভানো",
-     "gloss": "turning an electric room light off"
+     "gloss": "turning an electric room light off",
+     "collocations": [
+      {
+       "text": "বাতি নিভিয়ে দিন",
+       "id": "ed37b43342e86d033e41"
+      }
+     ]
     },
     {
      "id": "speed-up-fan",
      "label": "পাখার গতি বাড়ানো",
-     "gloss": "increasing the speed of an electric fan"
+     "gloss": "increasing the speed of an electric fan",
+     "collocations": [
+      {
+       "text": "পাখার গতি বাড়ান",
+       "id": "2c55f60d7b662e71c1e5"
+      }
+     ]
     },
     {
      "id": "connect-power-cord",
      "label": "বিদ্যুতের তার লাগানো",
-     "gloss": "plugging an appliance into mains power"
+     "gloss": "plugging an appliance into mains power",
+     "collocations": [
+      {
+       "text": "বিদ্যুতের তার লাগান",
+       "id": "590e6b588c30bc535e0b"
+      }
+     ]
     },
     {
      "id": "disconnect-power-cord",
      "label": "বিদ্যুতের তার খুলে রাখা",
-     "gloss": "unplugging an appliance"
+     "gloss": "unplugging an appliance",
+     "collocations": [
+      {
+       "text": "বিদ্যুতের তার খুলে রাখুন",
+       "id": "bbce2e8ce632f8df95e0"
+      }
+     ]
     },
     {
      "id": "blackout-at-home",
      "label": "বিদ্যুৎ চলে যাওয়া",
-     "gloss": "electricity outage at home"
+     "gloss": "electricity outage at home",
+     "collocations": [
+      {
+       "text": "বিদ্যুৎ চলে গেছে",
+       "id": "cc82d2b022f04da71bb7"
+      }
+     ]
     }
    ],
    "questions": [
@@ -8283,32 +14619,68 @@ window.PTB_DECK = {
     {
      "id": "jute-sack-storage",
      "label": "বস্তা",
-     "gloss": "full jute sack for bulk goods"
+     "gloss": "full jute sack for bulk goods",
+     "collocations": [
+      {
+       "text": "চালের বস্তা",
+       "id": "e16ff7ba51c070cb8c5e"
+      }
+     ]
     },
     {
      "id": "paper-snack-cone",
      "label": "ঠোঙা",
-     "gloss": "empty folded paper cone"
+     "gloss": "empty folded paper cone",
+     "collocations": [
+      {
+       "text": "কাগজের ঠোঙা",
+       "id": "228499e3d3c27d9d108c"
+      }
+     ]
     },
     {
      "id": "knotted-cloth-bundle",
      "label": "পুঁটলি",
-     "gloss": "small bundle tied in a cloth"
+     "gloss": "small bundle tied in a cloth",
+     "collocations": [
+      {
+       "text": "কাপড়ের পুঁটলি",
+       "id": "3a32f9b4d8b5a04781e8"
+      }
+     ]
     },
     {
      "id": "wooden-box-storage",
      "label": "বাক্স",
-     "gloss": "small ordinary rectangular wooden box"
+     "gloss": "small ordinary rectangular wooden box",
+     "collocations": [
+      {
+       "text": "কাঠের বাক্স",
+       "id": "0be94bf6ad90c234dc4b"
+      }
+     ]
     },
     {
      "id": "metal-trunk-storage",
      "label": "তোরঙ্গ",
-     "gloss": "large metal storage trunk"
+     "gloss": "large metal storage trunk",
+     "collocations": [
+      {
+       "text": "তোরঙ্গে কাঁথা রাখেন",
+       "id": "b28c4b2142199a99d100"
+      }
+     ]
     },
     {
      "id": "long-strap-shoulder-bag",
      "label": "ঝোলা",
-     "gloss": "soft long-strap shoulder bag"
+     "gloss": "soft long-strap shoulder bag",
+     "collocations": [
+      {
+       "text": "কাঁধে ঝোলা",
+       "id": "2de70e08677eccc3c068"
+      }
+     ]
     }
    ],
    "questions": [
@@ -8330,32 +14702,68 @@ window.PTB_DECK = {
     {
      "id": "sew-a-button-on",
      "label": "বোতাম লাগানো",
-     "gloss": "sewing a button onto clothing"
+     "gloss": "sewing a button onto clothing",
+     "collocations": [
+      {
+       "text": "জামায় বোতাম লাগান",
+       "id": "e368dfc2f4b538943751"
+      }
+     ]
     },
     {
      "id": "patch-a-hole-in-clothes",
      "label": "তালি লাগানো",
-     "gloss": "sewing a patch on torn cloth"
+     "gloss": "sewing a patch on torn cloth",
+     "collocations": [
+      {
+       "text": "ছেঁড়া জায়গায় তালি লাগান",
+       "id": "4c08477b799d68fbddaa"
+      }
+     ]
     },
     {
      "id": "thread-a-needle",
      "label": "সুঁইয়ে সুতা পরানো",
-     "gloss": "threading a needle"
+     "gloss": "threading a needle",
+     "collocations": [
+      {
+       "text": "সুঁইয়ে সুতা পরান",
+       "id": "547170745b562b1cb0fb"
+      }
+     ]
     },
     {
      "id": "tie-thread-knot",
      "label": "সুতায় গিঁট দেওয়া",
-     "gloss": "tying a knot in sewing thread"
+     "gloss": "tying a knot in sewing thread",
+     "collocations": [
+      {
+       "text": "সুতায় গিঁট দিন",
+       "id": "9fe6ee17f8ed8bcbfe5f"
+      }
+     ]
     },
     {
      "id": "unpick-a-seam",
      "label": "সেলাই খুলে ফেলা",
-     "gloss": "unpick a stitched seam"
+     "gloss": "unpick a stitched seam",
+     "collocations": [
+      {
+       "text": "পুরোনো সেলাই খুলে ফেলুন",
+       "id": "6c1cf9e77683e4b82124"
+      }
+     ]
     },
     {
      "id": "shorten-a-sleeve",
      "label": "হাতা ছোট করা",
-     "gloss": "shortening a garment sleeve"
+     "gloss": "shortening a garment sleeve",
+     "collocations": [
+      {
+       "text": "জামার হাতা ছোট করুন",
+       "id": "5369537f7f45058e6e23"
+      }
+     ]
     }
    ],
    "questions": [
@@ -8377,32 +14785,68 @@ window.PTB_DECK = {
     {
      "id": "fill-dough-pocket",
      "label": "পুর ভরা",
-     "gloss": "filling a pastry dough pocket"
+     "gloss": "filling a pastry dough pocket",
+     "collocations": [
+      {
+       "text": "ভেতরে পুর ভরে দিন",
+       "id": "617ed4a16efd43bd2b21"
+      }
+     ]
     },
     {
      "id": "shape-lentil-fritter",
      "label": "বড়া বানানো",
-     "gloss": "shaping a lentil fritter"
+     "gloss": "shaping a lentil fritter",
+     "collocations": [
+      {
+       "text": "ডালের বড়া বানান",
+       "id": "9e64fa26c4d681931358"
+      }
+     ]
     },
     {
      "id": "temper-in-hot-oil",
      "label": "তেলে ফোড়ন দেওয়া",
-     "gloss": "tempering whole spices in hot oil"
+     "gloss": "tempering whole spices in hot oil",
+     "collocations": [
+      {
+       "text": "গরম তেলে ফোড়ন দিন",
+       "id": "1c53f655e35125a0d150"
+      }
+     ]
     },
     {
      "id": "fry-spice-masala",
      "label": "মসলা কষানো",
-     "gloss": "frying down a wet spice paste"
+     "gloss": "frying down a wet spice paste",
+     "collocations": [
+      {
+       "text": "মসলা ভালো করে কষান",
+       "id": "f0ad2f48d628e084d789"
+      }
+     ]
     },
     {
      "id": "lower-stove-heat",
      "label": "আঁচ কমানো",
-     "gloss": "lowering a stove flame"
+     "gloss": "lowering a stove flame",
+     "collocations": [
+      {
+       "text": "চুলার আঁচ কমান",
+       "id": "a2544bf5acea3466a530"
+      }
+     ]
     },
     {
      "id": "descale-a-fish",
      "label": "মাছের আঁশ ছাড়ানো",
-     "gloss": "descaling a whole fish"
+     "gloss": "descaling a whole fish",
+     "collocations": [
+      {
+       "text": "মাছের আঁশ ছাড়িয়ে নিন",
+       "id": "532de24166a139556225"
+      }
+     ]
     }
    ],
    "questions": [
@@ -8424,32 +14868,68 @@ window.PTB_DECK = {
     {
      "id": "bengali-five-spice-blend",
      "label": "পাঁচফোড়ন",
-     "gloss": "Bengali five whole seed spice blend"
+     "gloss": "Bengali five whole seed spice blend",
+     "collocations": [
+      {
+       "text": "তেলে পাঁচফোড়ন দিন",
+       "id": "ffcb5a09fe2013fa362a"
+      }
+     ]
     },
     {
      "id": "nigella-seed-local",
      "label": "কালোজিরা",
-     "gloss": "whole black nigella seeds"
+     "gloss": "whole black nigella seeds",
+     "collocations": [
+      {
+       "text": "পিঠায় কালোজিরা",
+       "id": "ef41896c8f6c7102ab8c"
+      }
+     ]
     },
     {
      "id": "fenugreek-seeds-local",
      "label": "মেথি",
-     "gloss": "whole fenugreek seeds"
+     "gloss": "whole fenugreek seeds",
+     "collocations": [
+      {
+       "text": "মেথির দানা",
+       "id": "fddb2f10998a2d43f525"
+      }
+     ]
     },
     {
      "id": "fennel-seeds-local",
      "label": "মৌরি",
-     "gloss": "whole fennel seeds"
+     "gloss": "whole fennel seeds",
+     "collocations": [
+      {
+       "text": "মৌরির গন্ধ",
+       "id": "49802ee4e0b924377b9d"
+      }
+     ]
     },
     {
      "id": "poppy-seeds-local",
      "label": "পোস্তদানা",
-     "gloss": "whole white poppy seeds"
+     "gloss": "whole white poppy seeds",
+     "collocations": [
+      {
+       "text": "পোস্তদানা বাটুন",
+       "id": "d193887e61236b5f1e66"
+      }
+     ]
     },
     {
      "id": "sesame-seeds-local",
      "label": "তিলের দানা",
-     "gloss": "whole white sesame seeds"
+     "gloss": "whole white sesame seeds",
+     "collocations": [
+      {
+       "text": "ভাজা তিলের দানা",
+       "id": "3df4b836ca062b5c2a97"
+      }
+     ]
     }
    ],
    "questions": [
@@ -8471,32 +14951,68 @@ window.PTB_DECK = {
     {
      "id": "taro-stolon-local",
      "label": "কচুর লতি",
-     "gloss": "edible taro stolons"
+     "gloss": "edible taro stolons",
+     "collocations": [
+      {
+       "text": "কচুর লতির তরকারি",
+       "id": "1c2345fea526805b67d7"
+      }
+     ]
     },
     {
      "id": "small-taro-corms",
      "label": "কচুর মুখি",
-     "gloss": "small edible taro cormels"
+     "gloss": "small edible taro cormels",
+     "collocations": [
+      {
+       "text": "কচুর মুখি সেদ্ধ করুন",
+       "id": "e10f96f8979f555fb9cf"
+      }
+     ]
     },
     {
      "id": "banana-blossom-local",
      "label": "কলার মোচা",
-     "gloss": "banana blossom"
+     "gloss": "banana blossom",
+     "collocations": [
+      {
+       "text": "কলার মোচার ভাজি",
+       "id": "35454f53ab5c5e61dc6c"
+      }
+     ]
     },
     {
      "id": "turnip-root-local",
      "label": "শালগম",
-     "gloss": "turnip root"
+     "gloss": "turnip root",
+     "collocations": [
+      {
+       "text": "শালগমের তরকারি",
+       "id": "28754e568d86ee23a198"
+      }
+     ]
     },
     {
      "id": "jackfruit-seeds",
      "label": "কাঁঠালের বিচি",
-     "gloss": "edible jackfruit seeds"
+     "gloss": "edible jackfruit seeds",
+     "collocations": [
+      {
+       "text": "কাঁঠালের বিচি ভর্তা",
+       "id": "e31e19aba3949292f7fa"
+      }
+     ]
     },
     {
      "id": "pumpkin-blossom-local",
      "label": "কুমড়ার ফুল",
-     "gloss": "pumpkin blossom used as food"
+     "gloss": "pumpkin blossom used as food",
+     "collocations": [
+      {
+       "text": "কুমড়ার ফুল ভেজে খান",
+       "id": "6caaf73c6a22d1906b00"
+      }
+     ]
     }
    ],
    "questions": [
@@ -8518,32 +15034,68 @@ window.PTB_DECK = {
     {
      "id": "open-mouth-wide",
      "label": "মুখ হাঁ করা",
-     "gloss": "opening the mouth wide"
+     "gloss": "opening the mouth wide",
+     "collocations": [
+      {
+       "text": "মুখ হাঁ করুন",
+       "id": "5dd106d77ab280261fba"
+      }
+     ]
     },
     {
      "id": "finger-to-lips",
      "label": "ঠোঁটে আঙুল দেওয়া",
-     "gloss": "putting a finger to the lips to signal quiet"
+     "gloss": "putting a finger to the lips to signal quiet",
+     "collocations": [
+      {
+       "text": "ঠোঁটে আঙুল দিয়ে চুপ করতে বলছেন",
+       "id": "c00d6c79b19e98378495"
+      }
+     ]
     },
     {
      "id": "expose-teeth",
      "label": "দাঁত বের করা",
-     "gloss": "baring the teeth rather than opening the jaw wide"
+     "gloss": "baring the teeth rather than opening the jaw wide",
+     "collocations": [
+      {
+       "text": "দাঁত বের করে দেখান",
+       "id": "e7c18e9dfe37232c36bd"
+      }
+     ]
     },
     {
      "id": "stick-tongue-out",
      "label": "জিব বের করা",
-     "gloss": "sticking the tongue out"
+     "gloss": "sticking the tongue out",
+     "collocations": [
+      {
+       "text": "জিব বের করুন",
+       "id": "991e77a4f02345c75715"
+      }
+     ]
     },
     {
      "id": "cup-ear-to-listen",
      "label": "কান পাতা",
-     "gloss": "cupping one ear to hear better"
+     "gloss": "cupping one ear to hear better",
+     "collocations": [
+      {
+       "text": "কান পেতে শুনুন",
+       "id": "911d27ec3be0016ca1cc"
+      }
+     ]
     },
     {
      "id": "press-both-ears-closed",
      "label": "কানে হাত চাপা",
-     "gloss": "covering both ears with the hands"
+     "gloss": "covering both ears with the hands",
+     "collocations": [
+      {
+       "text": "দুই কানে হাত চাপা দিন",
+       "id": "ebe02ea187977d4fd8c8"
+      }
+     ]
     }
    ],
    "questions": [
@@ -8565,32 +15117,68 @@ window.PTB_DECK = {
     {
      "id": "put-jacket-on",
      "label": "জামা পরা",
-     "gloss": "putting on a shirt or jacket"
+     "gloss": "putting on a shirt or jacket",
+     "collocations": [
+      {
+       "text": "জামা পরে নিন",
+       "id": "10de4186fb5f040eef00"
+      }
+     ]
     },
     {
      "id": "take-shirt-off",
      "label": "জামা খোলা",
-     "gloss": "taking off a shirt"
+     "gloss": "taking off a shirt",
+     "collocations": [
+      {
+       "text": "ভেজা জামা খুলে ফেলুন",
+       "id": "8890b5829d2f461f1a74"
+      }
+     ]
     },
     {
      "id": "roll-up-sleeves",
      "label": "হাতা গোটানো",
-     "gloss": "rolling up a sleeve"
+     "gloss": "rolling up a sleeve",
+     "collocations": [
+      {
+       "text": "জামার হাতা গোটান",
+       "id": "0e4abceadb662a307f2b"
+      }
+     ]
     },
     {
      "id": "wrap-scarf-at-neck",
      "label": "গলায় পেঁচানো",
-     "gloss": "looping fabric around the neck"
+     "gloss": "looping fabric around the neck",
+     "collocations": [
+      {
+       "text": "গলায় চাদর পেঁচান",
+       "id": "5f51969c8230482f4667"
+      }
+     ]
     },
     {
      "id": "cover-head-with-orna",
      "label": "মাথা ঢাকা",
-     "gloss": "covering one's head with fabric"
+     "gloss": "covering one's head with fabric",
+     "collocations": [
+      {
+       "text": "ওড়না দিয়ে মাথা ঢাকুন",
+       "id": "83754ec7c55c82e8bee0"
+      }
+     ]
     },
     {
      "id": "tuck-in-cloth",
      "label": "কোমরে গোঁজা",
-     "gloss": "tucking cloth into a waist band"
+     "gloss": "tucking cloth into a waist band",
+     "collocations": [
+      {
+       "text": "কোমরে কাপড় গুঁজুন",
+       "id": "2804dd0393d3f14f91e0"
+      }
+     ]
     }
    ],
    "questions": [
@@ -8612,32 +15200,68 @@ window.PTB_DECK = {
     {
      "id": "fried-egg-local",
      "label": "ভাজা ডিম",
-     "gloss": "fried egg served whole"
+     "gloss": "fried egg served whole",
+     "collocations": [
+      {
+       "text": "একটা ভাজা ডিম",
+       "id": "d0575e5c410a805f642e"
+      }
+     ]
     },
     {
      "id": "fish-curry-broth",
      "label": "মাছের ঝোল",
-     "gloss": "fish in a thin Bengali curry broth"
+     "gloss": "fish in a thin Bengali curry broth",
+     "collocations": [
+      {
+       "text": "গরম ভাতের সঙ্গে মাছের ঝোল",
+       "id": "f70d026822cd0734506b"
+      }
+     ]
     },
     {
      "id": "egg-curry-broth",
      "label": "ডিমের ঝোল",
-     "gloss": "boiled egg in Bengali curry broth"
+     "gloss": "boiled egg in Bengali curry broth",
+     "collocations": [
+      {
+       "text": "ভাতের সঙ্গে ডিমের ঝোল",
+       "id": "20e59bcd15c1bd3a4939"
+      }
+     ]
     },
     {
      "id": "stir-fried-vegetable-bhaji",
      "label": "সবজি ভাজি",
-     "gloss": "Bangladeshi lightly fried vegetable side dish"
+     "gloss": "Bangladeshi lightly fried vegetable side dish",
+     "collocations": [
+      {
+       "text": "এক বাটি সবজি ভাজি",
+       "id": "9dae5b6f79748988157d"
+      }
+     ]
     },
     {
      "id": "bengali-mashed-side",
      "label": "ভর্তা",
-     "gloss": "Bangladeshi seasoned mashed side dish"
+     "gloss": "Bangladeshi seasoned mashed side dish",
+     "collocations": [
+      {
+       "text": "আলুর ভর্তা",
+       "id": "00215fc7b1d9403f5a7c"
+      }
+     ]
     },
     {
      "id": "bangla-condiment-pickle",
      "label": "আচার",
-     "gloss": "Bangladeshi fruit pickle condiment"
+     "gloss": "Bangladeshi fruit pickle condiment",
+     "collocations": [
+      {
+       "text": "আমের আচার",
+       "id": "194adbfda1fa097da034"
+      }
+     ]
     }
    ],
    "questions": [
@@ -8659,32 +15283,68 @@ window.PTB_DECK = {
     {
      "id": "four-way-crossroads",
      "label": "চৌরাস্তা",
-     "gloss": "intersection with four distinct road branches"
+     "gloss": "intersection with four distinct road branches",
+     "collocations": [
+      {
+       "text": "চৌরাস্তায় থামুন",
+       "id": "662d1dd5ce28a4ec944e"
+      }
+     ]
     },
     {
      "id": "three-way-junction",
      "label": "তিন রাস্তার মোড়",
-     "gloss": "road junction with exactly three arms"
+     "gloss": "road junction with exactly three arms",
+     "collocations": [
+      {
+       "text": "তিন রাস্তার মোড়ে দাঁড়ান",
+       "id": "5bdb35d777ccba57fc3f"
+      }
+     ]
     },
     {
      "id": "roundabout-junction",
      "label": "গোলচত্বর",
-     "gloss": "roundabout with circular central island"
+     "gloss": "roundabout with circular central island",
+     "collocations": [
+      {
+       "text": "গোলচত্বর ঘুরে যান",
+       "id": "2638d715d365f2ca56e7"
+      }
+     ]
     },
     {
      "id": "alley-mouth",
      "label": "গলির মুখ",
-     "gloss": "entrance of a narrow residential alley"
+     "gloss": "entrance of a narrow residential alley",
+     "collocations": [
+      {
+       "text": "গলির মুখে দোকান",
+       "id": "014306be47779ce79a12"
+      }
+     ]
     },
     {
      "id": "road-dead-end",
      "label": "রাস্তার শেষ",
-     "gloss": "the end of a dead-end road"
+     "gloss": "the end of a dead-end road",
+     "collocations": [
+      {
+       "text": "রাস্তার শেষে বাসা",
+       "id": "2e13809bea386558a0f8"
+      }
+     ]
     },
     {
      "id": "urban-flyover",
      "label": "উড়ালপুল",
-     "gloss": "urban road flyover"
+     "gloss": "urban road flyover",
+     "collocations": [
+      {
+       "text": "উড়ালপুলের ওপর দিয়ে যান",
+       "id": "afad499c0e247bdc1c93"
+      }
+     ]
     }
    ],
    "questions": [
@@ -8706,32 +15366,68 @@ window.PTB_DECK = {
     {
      "id": "bengal-sailboat",
      "label": "পালতোলা নৌকা",
-     "gloss": "Bengali sailboat with its sail raised"
+     "gloss": "Bengali sailboat with its sail raised",
+     "collocations": [
+      {
+       "text": "পালতোলা নৌকা চলে যাচ্ছে",
+       "id": "cfbd954fc0daa92068a9"
+      }
+     ]
     },
     {
      "id": "dugout-dinghy-local",
      "label": "ডিঙি",
-     "gloss": "small open Bangladeshi dinghy"
+     "gloss": "small open Bangladeshi dinghy",
+     "collocations": [
+      {
+       "text": "ছোট ডিঙিতে উঠুন",
+       "id": "ad7a710c26d22f99fca3"
+      }
+     ]
     },
     {
      "id": "boat-for-crossing-river",
      "label": "খেয়ানৌকা",
-     "gloss": "passenger boat shuttling across a river"
+     "gloss": "passenger boat shuttling across a river",
+     "collocations": [
+      {
+       "text": "খেয়ানৌকায় নদী পার হই",
+       "id": "d110d512eac31572df9e"
+      }
+     ]
     },
     {
      "id": "traditional-fishing-boat",
      "label": "মাছ ধরার নৌকা",
-     "gloss": "traditional open fishing boat with a fishing net"
+     "gloss": "traditional open fishing boat with a fishing net",
+     "collocations": [
+      {
+       "text": "মাছ ধরার নৌকায় জাল",
+       "id": "ac502770209c5f8c4979"
+      }
+     ]
     },
     {
      "id": "river-cargo-boat",
      "label": "মালবাহী নৌকা",
-     "gloss": "large cargo-carrying riverboat"
+     "gloss": "large cargo-carrying riverboat",
+     "collocations": [
+      {
+       "text": "মালবাহী নৌকায় বস্তা",
+       "id": "1ac812b458c7f908a3e5"
+      }
+     ]
     },
     {
      "id": "hood-roofed-riverboat",
      "label": "ছইওয়ালা নৌকা",
-     "gloss": "wooden riverboat with an arched bamboo roof cover"
+     "gloss": "wooden riverboat with an arched bamboo roof cover",
+     "collocations": [
+      {
+       "text": "ছইওয়ালা নৌকার ভেতরে",
+       "id": "83410c1e7ab5f09e3fc2"
+      }
+     ]
     }
    ],
    "questions": [
@@ -8753,32 +15449,68 @@ window.PTB_DECK = {
     {
      "id": "upper-eyelid",
      "label": "চোখের পাতা",
-     "gloss": "upper eyelid"
+     "gloss": "upper eyelid",
+     "collocations": [
+      {
+       "text": "চোখের পাতা নামান",
+       "id": "c08df7c6238eb1eaad58"
+      }
+     ]
     },
     {
      "id": "upper-eyelashes",
      "label": "চোখের পাপড়ি",
-     "gloss": "eyelashes along the upper lid"
+     "gloss": "eyelashes along the upper lid",
+     "collocations": [
+      {
+       "text": "লম্বা চোখের পাপড়ি",
+       "id": "cf4eace3f4752678ac44"
+      }
+     ]
     },
     {
      "id": "dark-eye-pupil",
      "label": "চোখের মণি",
-     "gloss": "pupil at the center of the eye"
+     "gloss": "pupil at the center of the eye",
+     "collocations": [
+      {
+       "text": "চোখের মণিতে আলো পড়েছে",
+       "id": "e650029665d5a63a0661"
+      }
+     ]
     },
     {
      "id": "earlobe-detail",
      "label": "কানের লতি",
-     "gloss": "soft lobe at bottom of ear"
+     "gloss": "soft lobe at bottom of ear",
+     "collocations": [
+      {
+       "text": "কানের লতিতে দুল",
+       "id": "6623768092aed8df331c"
+      }
+     ]
     },
     {
      "id": "nostril-detail",
      "label": "নাকের ফুটো",
-     "gloss": "nostrils at the base of the nose"
+     "gloss": "nostrils at the base of the nose",
+     "collocations": [
+      {
+       "text": "নাকের ফুটো দিয়ে বাতাস যায়",
+       "id": "e4379d87d0ca89767f20"
+      }
+     ]
     },
     {
      "id": "cheek-dimple",
      "label": "গালের টোল",
-     "gloss": "a dimple in the cheek"
+     "gloss": "a dimple in the cheek",
+     "collocations": [
+      {
+       "text": "হাসলে গালে টোল পড়ে",
+       "id": "87837862864d8dc7ddd4"
+      }
+     ]
     }
    ],
    "questions": [
@@ -8800,32 +15532,68 @@ window.PTB_DECK = {
     {
      "id": "palm-of-hand",
      "label": "তালু",
-     "gloss": "palm side of the hand"
+     "gloss": "palm side of the hand",
+     "collocations": [
+      {
+       "text": "হাতের তালু দেখান",
+       "id": "0dc3d8ee7fddaceaf204"
+      }
+     ]
     },
     {
      "id": "back-of-hand-detail",
      "label": "হাতের পিঠ",
-     "gloss": "back side of the hand"
+     "gloss": "back side of the hand",
+     "collocations": [
+      {
+       "text": "হাতের পিঠে দাগ",
+       "id": "8bd0b341e8e9031b87b1"
+      }
+     ]
     },
     {
      "id": "fingers-of-hand",
      "label": "আঙুল",
-     "gloss": "the fingers of a hand as a group"
+     "gloss": "the fingers of a hand as a group",
+     "collocations": [
+      {
+       "text": "আঙুল তুলে দেখান",
+       "id": "ffc3a0a696efd588bf68"
+      }
+     ]
     },
     {
      "id": "thumb-detail",
      "label": "বুড়ো আঙুল",
-     "gloss": "the thumb of a hand"
+     "gloss": "the thumb of a hand",
+     "collocations": [
+      {
+       "text": "বুড়ো আঙুল তুলে ধরুন",
+       "id": "505ad8c36a68d2192ce7"
+      }
+     ]
     },
     {
      "id": "toes-detail",
      "label": "পায়ের আঙুল",
-     "gloss": "toes of a foot"
+     "gloss": "toes of a foot",
+     "collocations": [
+      {
+       "text": "পায়ের আঙুল নাড়ান",
+       "id": "9936f5feab90d4ff252e"
+      }
+     ]
     },
     {
      "id": "sole-of-foot",
      "label": "পায়ের তলা",
-     "gloss": "sole of a bare foot"
+     "gloss": "sole of a bare foot",
+     "collocations": [
+      {
+       "text": "পায়ের তলায় কাদা",
+       "id": "4028a69f88a694428b12"
+      }
+     ]
     }
    ],
    "questions": [
@@ -8847,32 +15615,68 @@ window.PTB_DECK = {
     {
      "id": "ask-forgiveness",
      "label": "মাফ চাওয়া",
-     "gloss": "apologizing to someone"
+     "gloss": "apologizing to someone",
+     "collocations": [
+      {
+       "text": "ভুলের জন্য মাফ চান",
+       "id": "7971d1b959673ea6a014"
+      }
+     ]
     },
     {
      "id": "give-thanks",
      "label": "ধন্যবাদ দেওয়া",
-     "gloss": "thanking someone for a kindness"
+     "gloss": "thanking someone for a kindness",
+     "collocations": [
+      {
+       "text": "সাহায্যের জন্য ধন্যবাদ",
+       "id": "b76a73a2dfa1bccf9c36"
+      }
+     ]
     },
     {
      "id": "ask-permission",
      "label": "অনুমতি চাওয়া",
-     "gloss": "asking permission before entering"
+     "gloss": "asking permission before entering",
+     "collocations": [
+      {
+       "text": "ঢোকার আগে অনুমতি চান",
+       "id": "648fad740d93e04e0b82"
+      }
+     ]
     },
     {
      "id": "say-yes",
      "label": "হ্যাঁ বলা",
-     "gloss": "saying yes with an agreeing nod"
+     "gloss": "saying yes with an agreeing nod",
+     "collocations": [
+      {
+       "text": "মাথা নেড়ে হ্যাঁ বললেন",
+       "id": "863724a2c8f35b74c479"
+      }
+     ]
     },
     {
      "id": "say-no",
      "label": "না বলা",
-     "gloss": "saying no with a refusing gesture"
+     "gloss": "saying no with a refusing gesture",
+     "collocations": [
+      {
+       "text": "মাথা নেড়ে না বললেন",
+       "id": "b62802588ce872b53187"
+      }
+     ]
     },
     {
      "id": "ask-to-speak-aloud",
      "label": "জোরে বলতে বলা",
-     "gloss": "asking someone to speak louder"
+     "gloss": "asking someone to speak louder",
+     "collocations": [
+      {
+       "text": "আরেকটু জোরে বলুন",
+       "id": "70ae5d1eddda784c6655"
+      }
+     ]
     }
    ],
    "questions": [
@@ -8894,32 +15698,68 @@ window.PTB_DECK = {
     {
      "id": "barber-local-person",
      "label": "নাপিত",
-     "gloss": "barber cutting hair"
+     "gloss": "barber cutting hair",
+     "collocations": [
+      {
+       "text": "নাপিত চুল কাটেন",
+       "id": "1dede571af8bc73b41cc"
+      }
+     ]
     },
     {
      "id": "private-tutor-home",
      "label": "গৃহশিক্ষক",
-     "gloss": "private tutor who teaches in someone's home"
+     "gloss": "private tutor who teaches in someone's home",
+     "collocations": [
+      {
+       "text": "গৃহশিক্ষক বাসায় পড়ান",
+       "id": "5ee78bc59ff90e16fdde"
+      }
+     ]
     },
     {
      "id": "newspaper-seller-local",
      "label": "খবরের কাগজওয়ালা",
-     "gloss": "street newspaper vendor"
+     "gloss": "street newspaper vendor",
+     "collocations": [
+      {
+       "text": "খবরের কাগজওয়ালা কাগজ দিয়ে যান",
+       "id": "13005416f3fc48ff314b"
+      }
+     ]
     },
     {
      "id": "building-painter-local",
      "label": "রংমিস্ত্রি",
-     "gloss": "painter who paints a building"
+     "gloss": "painter who paints a building",
+     "collocations": [
+      {
+       "text": "রংমিস্ত্রি দেয়াল রং করেন",
+       "id": "4151bc18ec64a2108500"
+      }
+     ]
     },
     {
      "id": "muezzin-local",
      "label": "মোয়াজ্জিন",
-     "gloss": "muezzin calling the azan"
+     "gloss": "muezzin calling the azan",
+     "collocations": [
+      {
+       "text": "মোয়াজ্জিন আজান দেন",
+       "id": "612de5bd41ad8ef1239e"
+      }
+     ]
     },
     {
      "id": "roti-vendor-local",
      "label": "রুটিওয়ালা",
-     "gloss": "street bread seller"
+     "gloss": "street bread seller",
+     "collocations": [
+      {
+       "text": "রুটিওয়ালা গরম রুটি বেচেন",
+       "id": "62d47bd3cee938684e7d"
+      }
+     ]
     }
    ],
    "questions": [
@@ -8941,32 +15781,68 @@ window.PTB_DECK = {
     {
      "id": "fufu-fathers-sister",
      "label": "ফুফু",
-     "gloss": "father's sister"
+     "gloss": "father's sister",
+     "collocations": [
+      {
+       "text": "ছোট ফুফু",
+       "id": "85b748fd073941501c7d"
+      }
+     ]
     },
     {
      "id": "fufa-fathers-sisters-husband",
      "label": "ফুফা",
-     "gloss": "husband of father's sister"
+     "gloss": "husband of father's sister",
+     "collocations": [
+      {
+       "text": "ফুফা বেড়াতে এসেছেন",
+       "id": "88d9977717f8fcb4fe0f"
+      }
+     ]
     },
     {
      "id": "khala-mothers-sister",
      "label": "খালা",
-     "gloss": "mother's sister"
+     "gloss": "mother's sister",
+     "collocations": [
+      {
+       "text": "খালার সঙ্গে কথা বলি",
+       "id": "9af0920001a76f2dcaac"
+      }
+     ]
     },
     {
      "id": "khalu-mothers-sisters-husband",
      "label": "খালু",
-     "gloss": "husband of mother's sister"
+     "gloss": "husband of mother's sister",
+     "collocations": [
+      {
+       "text": "খালু নিতে এসেছেন",
+       "id": "5e00f5cd81084070825f"
+      }
+     ]
     },
     {
      "id": "nephew-brothers-son",
      "label": "ভাতিজা",
-     "gloss": "brother's son relative to the parent sibling"
+     "gloss": "brother's son relative to the parent sibling",
+     "collocations": [
+      {
+       "text": "ভাতিজা খেলছে",
+       "id": "31a386248668242ba64d"
+      }
+     ]
     },
     {
      "id": "nephew-sisters-son",
      "label": "ভাগ্নে",
-     "gloss": "sister's son relative to the parent sibling"
+     "gloss": "sister's son relative to the parent sibling",
+     "collocations": [
+      {
+       "text": "ভাগ্নে বেড়াতে এসেছে",
+       "id": "55fbc822a2bb1cca81ff"
+      }
+     ]
     }
    ],
    "questions": [
@@ -8988,32 +15864,68 @@ window.PTB_DECK = {
     {
      "id": "mosque-minaret-local",
      "label": "মিনার",
-     "gloss": "minaret tower of a mosque"
+     "gloss": "minaret tower of a mosque",
+     "collocations": [
+      {
+       "text": "মসজিদের মিনার",
+       "id": "fe515091f2c60ce0ea15"
+      }
+     ]
     },
     {
      "id": "mosque-dome-local",
      "label": "গম্বুজ",
-     "gloss": "main architectural dome atop a mosque"
+     "gloss": "main architectural dome atop a mosque",
+     "collocations": [
+      {
+       "text": "মসজিদের গম্বুজ",
+       "id": "2d2041a5e60ad20c632c"
+      }
+     ]
     },
     {
      "id": "mosque-prayer-niche",
      "label": "মেহরাব",
-     "gloss": "prayer niche in the wall facing Mecca"
+     "gloss": "prayer niche in the wall facing Mecca",
+     "collocations": [
+      {
+       "text": "মেহরাবের সামনে",
+       "id": "b006e9f13bb6e487117b"
+      }
+     ]
     },
     {
      "id": "mosque-minbar-pulpit",
      "label": "মিম্বর",
-     "gloss": "raised stepped mosque pulpit"
+     "gloss": "raised stepped mosque pulpit",
+     "collocations": [
+      {
+       "text": "মিম্বরে উঠে খুতবা দেন",
+       "id": "961f05c160d31e07572b"
+      }
+     ]
     },
     {
      "id": "ablution-installation-local",
      "label": "অজুখানা",
-     "gloss": "mosque ablution area"
+     "gloss": "mosque ablution area",
+     "collocations": [
+      {
+       "text": "অজুখানায় অজু করেন",
+       "id": "9696f9f5d1f2bf9175e5"
+      }
+     ]
     },
     {
      "id": "mosque-shoe-rack",
      "label": "জুতার তাক",
-     "gloss": "shoe shelves at mosque entrance"
+     "gloss": "shoe shelves at mosque entrance",
+     "collocations": [
+      {
+       "text": "জুতার তাকে জুতা রাখুন",
+       "id": "cf6aaad26b81a1a55d93"
+      }
+     ]
     }
    ],
    "questions": [
@@ -9035,32 +15947,68 @@ window.PTB_DECK = {
     {
      "id": "riverbank-local",
      "label": "নদীর পাড়",
-     "gloss": "riverbank between water and dry land"
+     "gloss": "riverbank between water and dry land",
+     "collocations": [
+      {
+       "text": "নদীর পাড়ে বসুন",
+       "id": "e4e81ff7196cb4a9d428"
+      }
+     ]
     },
     {
      "id": "river-current-local",
      "label": "স্রোত",
-     "gloss": "one-direction water current"
+     "gloss": "one-direction water current",
+     "collocations": [
+      {
+       "text": "নদীতে জোর স্রোত",
+       "id": "cefe55cfaa43e2f8c968"
+      }
+     ]
     },
     {
      "id": "water-wave-local",
      "label": "ঢেউ",
-     "gloss": "cresting surface wave on water"
+     "gloss": "cresting surface wave on water",
+     "collocations": [
+      {
+       "text": "পানিতে ঢেউ উঠছে",
+       "id": "c0833db5ba6379314579"
+      }
+     ]
     },
     {
      "id": "high-tide-local",
      "label": "জোয়ার",
-     "gloss": "high or rising tide against a river landing"
+     "gloss": "high or rising tide against a river landing",
+     "collocations": [
+      {
+       "text": "জোয়ারে পানি বাড়ে",
+       "id": "a13b7e1df6acc84501ed"
+      }
+     ]
     },
     {
      "id": "low-tide-local",
      "label": "ভাটা",
-     "gloss": "low or receding tide at a river landing"
+     "gloss": "low or receding tide at a river landing",
+     "collocations": [
+      {
+       "text": "ভাটায় পানি নামে",
+       "id": "ad12d6f66da9dbbd57f9"
+      }
+     ]
     },
     {
      "id": "river-eddy-local",
      "label": "ঘূর্ণি",
-     "gloss": "an eddy swirling in river water"
+     "gloss": "an eddy swirling in river water",
+     "collocations": [
+      {
+       "text": "পানিতে ঘূর্ণি উঠেছে",
+       "id": "275674b3ecebc8fdcd5c"
+      }
+     ]
     }
    ],
    "questions": [
@@ -9082,32 +16030,68 @@ window.PTB_DECK = {
     {
      "id": "ordinary-room-light",
      "label": "আলো",
-     "gloss": "ordinary light falling in a room"
+     "gloss": "ordinary light falling in a room",
+     "collocations": [
+      {
+       "text": "জানালা দিয়ে আলো ঢুকছে",
+       "id": "c7c907efaa1ac3906691"
+      }
+     ]
     },
     {
      "id": "deep-room-darkness",
      "label": "অন্ধকার",
-     "gloss": "very dark interior with almost nothing lit"
+     "gloss": "very dark interior with almost nothing lit",
+     "collocations": [
+      {
+       "text": "ঘরটা অন্ধকার",
+       "id": "c3141807cde3bb1ea03d"
+      }
+     ]
     },
     {
      "id": "faint-flickering-light",
      "label": "মিটমিটে",
-     "gloss": "dim faint flickering light"
+     "gloss": "dim faint flickering light",
+     "collocations": [
+      {
+       "text": "বাতিটা মিটমিট করে জ্বলছে",
+       "id": "e1fb4ca8e694e66f4638"
+      }
+     ]
     },
     {
      "id": "intense-light-source",
      "label": "তীব্র আলো",
-     "gloss": "very bright dazzling light"
+     "gloss": "very bright dazzling light",
+     "collocations": [
+      {
+       "text": "চোখে তীব্র আলো পড়ছে",
+       "id": "ab6cbd6988ee89680a32"
+      }
+     ]
     },
     {
      "id": "blurry-view",
      "label": "ঝাপসা",
-     "gloss": "blurred unfocused visual detail"
+     "gloss": "blurred unfocused visual detail",
+     "collocations": [
+      {
+       "text": "দূরেরটা ঝাপসা দেখছি",
+       "id": "32425d7cfae490f0867e"
+      }
+     ]
     },
     {
      "id": "sharp-clear-view",
      "label": "স্পষ্ট",
-     "gloss": "clearly defined sharp visual detail"
+     "gloss": "clearly defined sharp visual detail",
+     "collocations": [
+      {
+       "text": "এখন স্পষ্ট দেখা যায়",
+       "id": "649e2a6041198c7e7dcc"
+      }
+     ]
     }
    ],
    "questions": [
@@ -9129,32 +16113,68 @@ window.PTB_DECK = {
     {
      "id": "heavy-tropical-rain",
      "label": "ঝুম বৃষ্টি",
-     "gloss": "heavy pouring rain"
+     "gloss": "heavy pouring rain",
+     "collocations": [
+      {
+       "text": "বাইরে ঝুম বৃষ্টি",
+       "id": "8fe00d53261705c2433f"
+      }
+     ]
     },
     {
      "id": "fine-intermittent-drizzle",
      "label": "গুঁড়ি গুঁড়ি বৃষ্টি",
-     "gloss": "fine light drizzle"
+     "gloss": "fine light drizzle",
+     "collocations": [
+      {
+       "text": "গুঁড়ি গুঁড়ি বৃষ্টি পড়ছে",
+       "id": "8956198db43198b0a2be"
+      }
+     ]
     },
     {
      "id": "street-waterlogging",
      "label": "রাস্তায় পানি জমা",
-     "gloss": "standing water covering a street"
+     "gloss": "standing water covering a street",
+     "collocations": [
+      {
+       "text": "বৃষ্টিতে রাস্তায় পানি জমেছে",
+       "id": "1df8b16152a89f796f39"
+      }
+     ]
     },
     {
      "id": "spread-open-umbrella",
      "label": "ছাতা মেলা",
-     "gloss": "opening an umbrella"
+     "gloss": "opening an umbrella",
+     "collocations": [
+      {
+       "text": "ছাতাটা মেলে ধরুন",
+       "id": "dc5b44ef4eb5e2e7a4b7"
+      }
+     ]
     },
     {
      "id": "get-wet-in-rain",
      "label": "বৃষ্টিতে ভেজা",
-     "gloss": "getting soaked in the rain"
+     "gloss": "getting soaked in the rain",
+     "collocations": [
+      {
+       "text": "বৃষ্টিতে ভিজে গেছি",
+       "id": "9cec12401a38bdf2bcd5"
+      }
+     ]
     },
     {
      "id": "foot-stuck-in-mud",
      "label": "কাদায় পা আটকে যাওয়া",
-     "gloss": "one foot stuck in mud"
+     "gloss": "one foot stuck in mud",
+     "collocations": [
+      {
+       "text": "কাদায় পা আটকে গেছে",
+       "id": "47a4b68efe392bcff596"
+      }
+     ]
     }
    ],
    "questions": [
@@ -9176,32 +16196,68 @@ window.PTB_DECK = {
     {
      "id": "dry-fish-in-sun",
      "label": "মাছ রোদে শুকানো",
-     "gloss": "sun-drying fresh fish"
+     "gloss": "sun-drying fresh fish",
+     "collocations": [
+      {
+       "text": "মাছ রোদে শুকাতে দিন",
+       "id": "851cc343e03c23c93655"
+      }
+     ]
     },
     {
      "id": "dried-fish-product",
      "label": "শুঁটকি",
-     "gloss": "fully dried fish as a food"
+     "gloss": "fully dried fish as a food",
+     "collocations": [
+      {
+       "text": "শুঁটকির ভর্তা",
+       "id": "27c8d60eaaf37421a760"
+      }
+     ]
     },
     {
      "id": "keep-fish-on-ice",
      "label": "বরফে মাছ রাখা",
-     "gloss": "putting fish on ice"
+     "gloss": "putting fish on ice",
+     "collocations": [
+      {
+       "text": "বরফের ওপর মাছ রাখুন",
+       "id": "a6e70ba1fccaf4b001eb"
+      }
+     ]
     },
     {
      "id": "cover-prepared-food",
      "label": "খাবার ঢেকে রাখা",
-     "gloss": "covering food with a protective dome"
+     "gloss": "covering food with a protective dome",
+     "collocations": [
+      {
+       "text": "খাবার ঢেকে দিন",
+       "id": "d1a97e62d09db80a0279"
+      }
+     ]
     },
     {
      "id": "keep-with-salt",
      "label": "লবণ মাখিয়ে রাখা",
-     "gloss": "covering food with salt to keep it"
+     "gloss": "covering food with salt to keep it",
+     "collocations": [
+      {
+       "text": "মাছে লবণ মাখিয়ে রাখুন",
+       "id": "5642159b5c56635c61bf"
+      }
+     ]
     },
     {
      "id": "keep-immersed-in-oil",
      "label": "তেলে ডুবিয়ে রাখা",
-     "gloss": "keeping pieces of food submerged in oil"
+     "gloss": "keeping pieces of food submerged in oil",
+     "collocations": [
+      {
+       "text": "আচার তেলে ডুবিয়ে রাখুন",
+       "id": "38f49d553614ef320ba2"
+      }
+     ]
     }
    ],
    "questions": [
@@ -9223,32 +16279,68 @@ window.PTB_DECK = {
     {
      "id": "rust-forming-on-metal",
      "label": "জং ধরা",
-     "gloss": "metal becoming rusty"
+     "gloss": "metal becoming rusty",
+     "collocations": [
+      {
+       "text": "লোহায় জং ধরেছে",
+       "id": "229fd52cf40114e22ff2"
+      }
+     ]
     },
     {
      "id": "wall-plaster-flaking",
      "label": "পলেস্তারা খসে পড়া",
-     "gloss": "wall plaster falling off"
+     "gloss": "wall plaster falling off",
+     "collocations": [
+      {
+       "text": "দেয়ালের পলেস্তারা খসে পড়েছে",
+       "id": "4ee3e83eb1359574b67f"
+      }
+     ]
     },
     {
      "id": "loose-pull-handle",
      "label": "হাতল ঢিলা হওয়া",
-     "gloss": "a fitted handle becoming loose"
+     "gloss": "a fitted handle becoming loose",
+     "collocations": [
+      {
+       "text": "দরজার হাতল ঢিলা হয়ে গেছে",
+       "id": "a4b0d1cd9283160a3617"
+      }
+     ]
     },
     {
      "id": "rope-snapping",
      "label": "দড়ি ছিঁড়ে যাওয়া",
-     "gloss": "a rope snapping into two loose ends"
+     "gloss": "a rope snapping into two loose ends",
+     "collocations": [
+      {
+       "text": "দড়ি ছিঁড়ে গেছে",
+       "id": "74859a6bde6507d6c992"
+      }
+     ]
     },
     {
      "id": "knot-coming-loose",
      "label": "গিঁট খুলে যাওয়া",
-     "gloss": "a knot slipping open"
+     "gloss": "a knot slipping open",
+     "collocations": [
+      {
+       "text": "দড়ির গিঁট খুলে গেছে",
+       "id": "e1bb8f10ca60f953998e"
+      }
+     ]
     },
     {
      "id": "water-overflowing",
      "label": "পানি উপচে পড়া",
-     "gloss": "water overflowing a filled container"
+     "gloss": "water overflowing a filled container",
+     "collocations": [
+      {
+       "text": "বালতি থেকে পানি উপচে পড়ছে",
+       "id": "98c107ec7871ef94b510"
+      }
+     ]
     }
    ],
    "questions": [
@@ -9270,32 +16362,68 @@ window.PTB_DECK = {
     {
      "id": "stretch-arms-to-sides",
      "label": "হাত ছড়ানো",
-     "gloss": "stretching both arms out sideways"
+     "gloss": "stretching both arms out sideways",
+     "collocations": [
+      {
+       "text": "দুই হাত ছড়িয়ে দিন",
+       "id": "504f8248af12a3882fbd"
+      }
+     ]
     },
     {
      "id": "raise-both-hands",
      "label": "হাত তুলে ধরা",
-     "gloss": "raising both arms overhead"
+     "gloss": "raising both arms overhead",
+     "collocations": [
+      {
+       "text": "এক হাত তুলে ধরুন",
+       "id": "f5a30ef53ddcae260fd9"
+      }
+     ]
     },
     {
      "id": "sit-legs-extended",
      "label": "পা মেলে বসা",
-     "gloss": "sitting with legs stretched out forward"
+     "gloss": "sitting with legs stretched out forward",
+     "collocations": [
+      {
+       "text": "পা মেলে বসুন",
+       "id": "0a2587ecc331c2a89879"
+      }
+     ]
     },
     {
      "id": "sit-cross-legged",
      "label": "পা ভাঁজ করে বসা",
-     "gloss": "sitting cross-legged"
+     "gloss": "sitting cross-legged",
+     "collocations": [
+      {
+       "text": "পা ভাঁজ করে বসুন",
+       "id": "4e71dcf291cbe03da19f"
+      }
+     ]
     },
     {
      "id": "stand-on-toes",
      "label": "আঙুলে ভর দিয়ে দাঁড়ানো",
-     "gloss": "standing on the balls of both feet"
+     "gloss": "standing on the balls of both feet",
+     "collocations": [
+      {
+       "text": "পায়ের আঙুলে ভর দিয়ে দাঁড়ান",
+       "id": "698c17b446c5eedde23a"
+      }
+     ]
     },
     {
      "id": "tiptoe-quietly",
      "label": "পা টিপে হাঁটা",
-     "gloss": "walking quietly on one's toes"
+     "gloss": "walking quietly on one's toes",
+     "collocations": [
+      {
+       "text": "পা টিপে টিপে হাঁটুন",
+       "id": "ee97da8c900fb4906a4d"
+      }
+     ]
     }
    ],
    "questions": [
@@ -9317,32 +16445,68 @@ window.PTB_DECK = {
     {
      "id": "old-tree-stump",
      "label": "গাছের গুঁড়ি",
-     "gloss": "thick tree stump after cutting"
+     "gloss": "thick tree stump after cutting",
+     "collocations": [
+      {
+       "text": "গাছের গুঁড়িতে বসুন",
+       "id": "dfe8044bb422655ab85f"
+      }
+     ]
     },
     {
      "id": "bark-of-tree-local",
      "label": "বাকল",
-     "gloss": "bark of a tree"
+     "gloss": "bark of a tree",
+     "collocations": [
+      {
+       "text": "গাছের বাকল খসে গেছে",
+       "id": "6c69c67aa4c2176c3fb7"
+      }
+     ]
     },
     {
      "id": "soft-growing-tip",
      "label": "ডগা",
-     "gloss": "tip of a growing twig or shoot"
+     "gloss": "tip of a growing twig or shoot",
+     "collocations": [
+      {
+       "text": "ডালের ডগায় কুঁড়ি",
+       "id": "515e8980a3321ca80a12"
+      }
+     ]
     },
     {
      "id": "plant-trunk-and-stem",
      "label": "কাণ্ড",
-     "gloss": "upright supporting stem of a plant"
+     "gloss": "upright supporting stem of a plant",
+     "collocations": [
+      {
+       "text": "গাছের কাণ্ড মোটা",
+       "id": "589cb1859fe903909bd2"
+      }
+     ]
     },
     {
      "id": "tender-new-leaf",
      "label": "কচি পাতা",
-     "gloss": "tender newly emerging leaf"
+     "gloss": "tender newly emerging leaf",
+     "collocations": [
+      {
+       "text": "কচি পাতা গজিয়েছে",
+       "id": "4b9ac3a867114b06ccc3"
+      }
+     ]
     },
     {
      "id": "woody-plant-thorn",
      "label": "কাঁটা",
-     "gloss": "sharp plant thorn"
+     "gloss": "sharp plant thorn",
+     "collocations": [
+      {
+       "text": "ডালে কাঁটা আছে",
+       "id": "aed933d9d9e4ad716d20"
+      }
+     ]
     }
    ],
    "questions": [
@@ -9364,32 +16528,68 @@ window.PTB_DECK = {
     {
      "id": "natural-rattan-material",
      "label": "বেত",
-     "gloss": "raw flexible rattan cane"
+     "gloss": "raw flexible rattan cane",
+     "collocations": [
+      {
+       "text": "বেতের মোড়া",
+       "id": "ed789e1fcae5764f9716"
+      }
+     ]
     },
     {
      "id": "coir-fiber-material",
      "label": "নারকেলের আঁশ",
-     "gloss": "loose fibers separated from coconut husk"
+     "gloss": "loose fibers separated from coconut husk",
+     "collocations": [
+      {
+       "text": "নারকেলের আঁশ ছাড়ান",
+       "id": "d720bdd2b026eda99c62"
+      }
+     ]
     },
     {
      "id": "raw-wool-material",
      "label": "পশম",
-     "gloss": "raw sheep's wool"
+     "gloss": "raw sheep's wool",
+     "collocations": [
+      {
+       "text": "ভেড়ার নরম পশম",
+       "id": "fa690c41e24d525d40fb"
+      }
+     ]
     },
     {
      "id": "feather-material",
      "label": "পালক",
-     "gloss": "bird feather"
+     "gloss": "bird feather",
+     "collocations": [
+      {
+       "text": "পাখির পালক",
+       "id": "c95eb5ff822ff6da4136"
+      }
+     ]
     },
     {
      "id": "mollusk-shell-material",
      "label": "ঝিনুকের খোল",
-     "gloss": "empty bivalve shell"
+     "gloss": "empty bivalve shell",
+     "collocations": [
+      {
+       "text": "ঝিনুকের খোল কুড়ান",
+       "id": "255ec759edad581ac558"
+      }
+     ]
     },
     {
      "id": "beeswax-material",
      "label": "মোম",
-     "gloss": "solid natural beeswax"
+     "gloss": "solid natural beeswax",
+     "collocations": [
+      {
+       "text": "মোম গলে গেছে",
+       "id": "596ae97f0ddabf67fdac"
+      }
+     ]
     }
    ],
    "questions": [
@@ -9401,6 +16601,171 @@ window.PTB_DECK = {
     "একটা জিনিস বানাতে কোন উপকরণ ভালো হবে, সেটা কীভাবে ঠিক করবেন?"
    ]
   }
- ]
+ ],
+ "nurturerLines": {
+  "ask": [
+   {
+    "bangla": [
+     {
+      "text": "মন দিয়ে শুনুন।",
+      "id": "5769c5c7eaad60efcad8"
+     },
+     {
+      "text": "{w}।"
+     },
+     {
+      "text": "ছবিটা দেখান।",
+      "id": "2d5683d6e8af4a593adb"
+     }
+    ],
+    "english": "Listen carefully. Show me the picture for “{g}”."
+   },
+   {
+    "bangla": [
+     {
+      "text": "{w}।"
+     },
+     {
+      "text": "কোন ছবিতে আছে? দেখান।",
+      "id": "0dd848c246a115d48cd7"
+     }
+    ],
+    "english": "Which picture shows “{g}”? Show me."
+   },
+   {
+    "bangla": [
+     {
+      "text": "খুঁজে দেখুন।",
+      "id": "1c3e995c88536b28997a"
+     },
+     {
+      "text": "{w}।"
+     }
+    ],
+    "english": "Find “{g}”."
+   }
+  ],
+  "yes": [
+   {
+    "bangla": [
+     {
+      "text": "হ্যাঁ, ঠিক হয়েছে।",
+      "id": "dea1369867f34247851b"
+     },
+     {
+      "text": "{w}।"
+     }
+    ],
+    "english": "Yes! This is “{g}”."
+   },
+   {
+    "bangla": [
+     {
+      "text": "খুব ভালো।",
+      "id": "55afe9376bda1b8e2632"
+     },
+     {
+      "text": "{w}।"
+     }
+    ],
+    "english": "Very good! This is “{g}”."
+   },
+   {
+    "bangla": [
+     {
+      "text": "দারুণ।",
+      "id": "2550f4c8d44680437ed0"
+     },
+     {
+      "text": "{w}।"
+     }
+    ],
+    "english": "Great! This is “{g}”."
+   },
+   {
+    "bangla": [
+     {
+      "text": "বাহ্।",
+      "id": "2120d49e2f81ccdd2f9c"
+     },
+     {
+      "text": "{w}।"
+     }
+    ],
+    "english": "Wow! This is “{g}”."
+   },
+   {
+    "bangla": [
+     {
+      "text": "চমৎকার।",
+      "id": "222f1b867ceaed1f878d"
+     },
+     {
+      "text": "{w}।"
+     }
+    ],
+    "english": "Excellent! This is “{g}”."
+   },
+   {
+    "bangla": [
+     {
+      "text": "একদম ঠিক।",
+      "id": "1ca7acf0ecab1a177511"
+     },
+     {
+      "text": "{w}।"
+     }
+    ],
+    "english": "Exactly right! This is “{g}”."
+   },
+   {
+    "bangla": [
+     {
+      "text": "শাবাশ।",
+      "id": "65f148ba29bda45be88a"
+     },
+     {
+      "text": "{w}।"
+     }
+    ],
+    "english": "Well done! This is “{g}”."
+   }
+  ],
+  "recast": [
+   {
+    "bangla": [
+     {
+      "text": "এই ছবিটা দেখুন।",
+      "id": "f54f7b8d42940a27814f"
+     },
+     {
+      "text": "{w}।"
+     }
+    ],
+    "english": "Look at this picture. This is “{g}”."
+   }
+  ],
+  "example": {
+   "text": "যেমন।",
+   "id": "1540ee6f524d2bacd384"
+  },
+  "next": {
+   "text": "এবার শুনুন।",
+   "id": "0dec32f23dd81cfd17ae"
+  },
+  "retry": {
+   "text": "সময় নিয়ে আবার শুনুন।",
+   "id": "5d39e3a0ec4ddd88706d"
+  },
+  "done": {
+   "bangla": [
+    {
+     "text": "দারুণ! ছয়টা ছবিই পেয়েছেন।",
+     "id": "faf3f6f313ed4ee1f41d"
+    }
+   ],
+   "english": "Wonderful! You found all six pictures."
+  }
+ }
 };
 window.PICTURE_THIS_GAME_DATA = {"home-things": ["খাট", "বালিশ", "মোড়া", "আলমারি", "পাখা", "বাতি"], "study-things": ["বই", "খাতা", "কলম", "কাঁচি", "আঠা", "খাম"], "tableware": ["থালা", "বাটি", "চামচ", "কাঁটাচামচ", "পিরিচ", "পেয়ালা"], "market-vegetables": ["আলু", "পেঁয়াজ", "বেগুন", "ফুলকপি", "শসা", "শাক"], "market-fruit": ["আম", "কলা", "পেঁপে", "আনারস", "কাঁঠাল", "আঙুর"], "lunch": ["ভাত", "রুটি", "ডাল", "ডিম", "মাছ", "মাংস"], "tea-things": ["পানি", "চা", "দুধ", "লেবু", "মধু", "গুড়"], "cooking-things": ["হাঁড়ি", "ঢাকনা", "ছুরি", "কাটার তক্তা", "কড়াই", "খুন্তি"], "pantry": ["লবণ", "চিনি", "সরিষা", "জিরা", "তেল", "ঘি"], "clothing": ["ওড়না", "শাড়ি", "লুঙ্গি", "পাঞ্জাবি", "সালোয়ার", "কামিজ"], "washing-things": ["বালতি", "বদনা", "গামছা", "সাবান", "চিরুনি", "আয়না"], "home-parts": ["দরজা", "জানালা", "সিঁড়ি", "ছাদ", "বারান্দা", "দেয়াল"], "where-things-are": ["ওপরে", "নিচে", "ভেতরে", "বাইরে", "মাঝে", "পেছনে"], "colours": ["লাল", "নীল", "সবুজ", "হলুদ", "কালো", "সাদা"], "weather": ["রোদ", "ছায়া", "বৃষ্টি", "ঝড়", "মেঘ", "কুয়াশা"], "daily-actions": ["খাওয়া", "পানি খাওয়া", "বসা", "দাঁড়ানো", "ঘুমানো", "ঘুম থেকে ওঠা"], "with-your-hands": ["খোলা", "বন্ধ করা", "ধোয়া", "মোছা", "পড়া", "লেখা"], "family": ["আব্বা", "আম্মা", "ভাইয়া", "আপু", "নানা", "নানি"], "getting-around": ["রাস্তা", "গলি", "মোড়", "পুল", "ঘাট", "নৌকা"], "feeling-unwell": ["জ্বর", "কাশি", "হাঁচি", "দাঁতে ব্যথা", "পেটে ব্যথা", "চুলকানি"], "body": ["চোখ", "কান", "নাক", "মুখ", "হাত", "পা"], "care-things": ["ওষুধ", "মলম", "তুলা", "পট্টি", "বরফ", "গরম পানির থলি"], "shopping-things": ["টাকা", "খুচরা", "দাঁড়িপাল্লা", "রসিদ", "থলে", "ঝুড়ি"], "familiar-animals": ["গরু", "ছাগল", "মুরগি", "হাঁস", "বিড়াল", "কুকুর"], "small-repairs": ["হাতুড়ি", "পেরেক", "করাত", "কাঠ", "তালা", "চাবি"], "body-movement": ["হাঁটা", "দৌড়ানো", "লাফানো", "বেয়ে ওঠা", "ঝোঁকা", "হামাগুড়ি দেওয়া"], "objects-in-motion": ["দেওয়া", "নেওয়া", "ধরা", "ছোড়া", "ঠেলা", "টানা"], "putting-things-away": ["ভাঁজ করা", "ঝোলানো", "বাঁধা", "মোড়ানো", "রাখা", "তোলা"], "cooking-actions": ["কাটা", "খোসা ছাড়ানো", "নাড়া", "ঢালা", "মাখা", "বেলা"], "snack-foods": ["মুড়ি", "চিড়া", "সিঙ্গারা", "সমুচা", "ভাপা পিঠা", "জিলাপি"], "prayer-time": ["মসজিদ", "জায়নামাজ", "নামাজ পড়া", "অজু করা", "টুপি", "তসবিহ"], "size-and-width": ["বড়", "ছোট", "লম্বা", "খাটো", "চওড়া", "সরু"], "basic-shapes": ["সমান চারকোনা", "লম্বা চারকোনা", "গোল", "ডিমের মতো", "তারার মতো", "পাঁচকোনা"], "everyday-qualities": ["পরিষ্কার", "নোংরা", "গরম", "ঠান্ডা", "ভারী", "হালকা"], "familiar-bugs": ["মশা", "পিঁপড়া", "মাছি", "তেলাপোকা", "শুঁয়োপোকা", "প্রজাপতি"], "land-and-water": ["নদী", "খাল", "পুকুর", "বিল", "পাহাড়", "বন"], "play-things": ["ঘুড়ি", "লাটিম", "তাস", "দাবার গুটি", "দোলনা", "লাফের দড়ি"], "going-out-gear": ["জুতা", "মোজা", "চশমা", "চশমার খাপ", "ছাতা", "বর্ষাতি"], "everyday-materials": ["কাগজ", "কাপড়", "কাচ", "লোহা", "মাটি", "পাথর"], "neighborhood-places": ["দোকান", "বাজার", "থানা", "স্বাস্থ্যকেন্দ্র", "ডাকঘর", "পাঠাগার"], "people-at-work": ["দোকানি", "খদ্দের", "দর্জি", "তাঁতি", "রাজমিস্ত্রি", "কাঠমিস্ত্রি"], "times-of-day": ["ভোর", "সকাল", "দুপুর", "বিকেল", "সন্ধ্যা", "রাত"], "dry-groceries": ["চাল", "আটা", "ছোলা", "শুকনা মটর", "চিনাবাদাম", "ভুট্টা"], "fire-and-fuel": ["চুলা", "কয়লা", "দিয়াশলাই", "আগুন", "ধোঁয়া", "ছাই"], "sewing-repairs": ["সুঁই", "সুতা", "বোতাম", "মাপের ফিতা", "সেলাই", "ছেঁড়া"], "jewelry-and-adornment": ["কানের দুল", "নাকফুল", "চুড়ি", "আংটি", "হার", "চুলের কাঁটা"], "household-trouble": ["চুইয়ে পড়া", "আটকে যাওয়া", "দাগ", "ছাতা পড়া", "ফাটল", "দেবে যাওয়া"], "orientation": ["উত্তর", "দক্ষিণ", "পূর্ব", "পশ্চিম", "ডানে", "বামে"], "talk-and-gesture": ["বলা", "শোনা", "হাসা", "কাঁদা", "ডাকা", "ইশারা করা"], "counting-one-to-six": ["এক", "দুই", "তিন", "চার", "পাঁচ", "ছয়"], "coming-and-going": ["আসা", "যাওয়া", "ঢোকা", "বের হওয়া", "পার হওয়া", "থামা"], "buying-and-selling": ["কেনা", "বেচা", "দাম মেটানো", "বদলে নেওয়া", "ওজন করা", "বেছে নেওয়া"], "finding-and-showing": ["খোঁজা", "খুঁজে পাওয়া", "লুকানো", "বের করা", "দেখা", "দেখানো"], "feelings-and-reactions": ["খুশি", "মন খারাপ", "ভয় পাওয়া", "অবাক হওয়া", "রাগ", "ক্লান্ত"], "amounts-and-parts": ["বেশি", "কম", "অর্ধেক", "দুই গুণ", "সব", "একটাও নেই"], "surface-and-feel": ["মসৃণ", "খসখসে", "নরম", "শক্ত", "ধারালো", "ভোঁতা"], "cleaning-tools": ["ঝাড়ু", "ময়লার বেলচা", "ময়লার পাত্র", "ছোবড়া", "ন্যাকড়া", "পাপোশ"], "building-materials": ["ইট", "বালু", "কাঁকর", "বাঁশ", "মই", "খুঁটি"], "parts-of-plants": ["ফুল", "কুঁড়ি", "বীজ", "শিকড়", "পাতা", "ডালপালা"], "roots-and-vines": ["গাজর", "মুলা", "কুমড়া", "লাউ", "বরবটি", "শিম"], "vehicles": ["গাড়ি", "বিমান", "জাহাজ", "ভেলা", "ঠেলাগাড়ি", "গরুর গাড়ি"], "rooms-and-courtyard": ["রান্নাঘর", "শোবার ঘর", "বসার ঘর", "খাবার ঘর", "গোসলখানা", "উঠান"], "useful-papers": ["চিঠি", "চিরকুট", "পরিচয়পত্র", "ছবি", "সই", "ছাপ"], "getting-water": ["কল", "নল", "নলকূপ", "কুয়া", "কলসি", "ছাঁকনি"], "winter-warmth": ["চাদর", "কাঁথা", "কম্বল", "গরম জামা", "হাতমোজা", "পশমি টুপি"], "features-of-paths": ["কাছে", "দূরে", "সোজা", "বাঁকা", "খাড়া", "ঢালু"], "dairy-foods": ["দই", "পায়েস", "মাখন", "দুধের সর", "পনির", "ছানা"], "personal-care-objects": ["রুমাল", "মিসওয়াক", "সুরমা", "মেহেদি", "নখ কাটার যন্ত্র", "ক্ষুর"], "wedding-and-invitation": ["বর", "কনে", "অতিথি", "দাওয়াত", "ফুলের তোড়া", "ফুলের মালা"], "common-birds": ["কাক", "কবুতর", "চড়ুই", "শালিক", "বক", "পেঁচা"], "laying-out-the-home": ["মশারি", "পর্দা", "চাটাই", "তোশক", "তাক", "আলনা"], "music-and-rhythm": ["বাঁশি", "একতারা", "ঢোল", "তবলা", "ঘণ্টা", "করতাল"], "seasons-in-bangladesh": ["গরমকাল", "বর্ষাকাল", "শরৎকাল", "হেমন্তকাল", "শীতকাল", "বসন্তকাল"], "drawing-materials": ["তুলি", "কালি", "খড়ি", "মোমরং", "রং মেশানোর থালা", "রঙের বাক্স"], "farm-and-field": ["ধান", "খেত", "খড়", "গোবর", "কাস্তে", "লাঙল"], "arranging-objects": ["সামনে", "পাশে", "চারপাশে", "সারিতে", "আড়াআড়ি", "লম্বালম্বি"], "doing-housework": ["ঝাড়ু দেওয়া", "ময়লা ফেলা", "বাসন মাজা", "কাপড় কাচা", "কাপড় শুকানো", "বিছানা পাতা"], "food-tastes": ["মিষ্টি", "টক", "ঝাল", "তেতো", "নোনতা", "পানসে"], "more-local-fruit": ["পেয়ারা", "জাম", "লিচু", "আমড়া", "বরই", "তরমুজ"], "aromatic-spices": ["দারুচিনি", "লবঙ্গ", "এলাচ", "গোলমরিচ", "তেজপাতা", "কাঁচা হলুদ"], "ways-of-heating-food": ["ভাজা", "সেদ্ধ করা", "ভাপ দেওয়া", "পানি ফুটানো", "সেঁকা", "দম দেওয়া"], "local-market-fish": ["ইলিশ", "রুই", "শিং মাছ", "কই", "চিংড়ি", "পুঁটি"], "grooming-actions": ["দাঁত মাজা", "দাড়ি কামানো", "চুল আঁচড়ানো", "চুল কাটা", "গোসল করা", "নখ কাটা"], "joints-and-neck": ["ঘাড়", "কাঁধ", "কনুই", "কবজি", "হাঁটু", "গোড়ালি"], "face-details": ["ঠোঁট", "দাঁত", "জিব", "গাল", "থুতনি", "কপাল"], "minor-injuries": ["কেটে যাওয়া", "পুড়ে যাওয়া", "মচকে যাওয়া", "ফুলে যাওয়া", "কালশিটে", "মাথা ঘোরা"], "storage-containers": ["বয়াম", "কৌটা", "মটকা", "পানির পিপা", "ফুলদানি", "শিশি"], "object-states": ["ভেজা", "শুকনা", "ভাঙা", "ফুটো", "উল্টানো", "চ্যাপ্টা"], "parts-and-cuts-of-food": ["টুকরা", "ফালি", "কোয়া", "আঁটি", "খোসা", "ডাঁটা"], "local-open-and-work-sites": ["খেলার মাঠ", "ফলের বাগান", "কবরস্থান", "ঈদগাহ", "ইটভাটা", "কারখানা"], "ages-of-people": ["নতুন বাচ্চা", "ছোট বাচ্চা", "কিশোর", "তরুণী", "মাঝবয়সি", "বয়স্ক"], "ramadan-and-eid": ["ইফতার", "সেহরি", "খেজুর", "ঈদের চাঁদ", "ঈদের জামা", "ঈদি"], "food-for-guests": ["বিরিয়ানি", "ভুনা খিচুড়ি", "কোরমা", "কাবাব", "জর্দা", "ফিরনি"], "features-of-streets": ["যাত্রীছাউনি", "রাস্তার বাতি", "রাস্তা পারাপারের দাগ", "পায়ে চলার পথ", "গাড়ি রাখার জায়গা", "রাস্তার নালা"], "packing-and-carrying": ["গুছানো", "ভরা", "খালি করা", "বোঝাই করা", "কাঁধে নেওয়া", "নামানো"], "mouth-and-nose-actions": ["শোঁকা", "চেখে দেখা", "কামড়ানো", "চিবানো", "গেলা", "ফুঁ দেওয়া"], "making-sounds": ["হাততালি দেওয়া", "টোকা দেওয়া", "গুনগুন করা", "বাঁশি বাজানো", "চেঁচানো", "ফিসফিস করা"], "familiar-bangladesh-trees": ["নারকেলগাছ", "সুপারিগাছ", "কলাগাছ", "তালগাছ", "বটগাছ", "বাঁশঝাড়"], "small-local-animals": ["টিকটিকি", "ব্যাঙ", "সাপ", "কচ্ছপ", "ইঁদুর", "বাদুড়"], "appearance-contrasts": ["চকচকে", "মলিন", "গাঢ়", "ফিকে", "স্বচ্ছ", "ঘোলা"], "hands-on-learning-actions": ["আঁকা", "মুছে ফেলা", "গোনা", "মাপা", "মেলানো", "আলাদা করা"], "torso-and-nails": ["বুক", "পিঠ", "কোমর", "পেট", "নাভি", "নখ"], "traditional-yard-games": ["এক্কাদোক্কা", "কানামাছি", "লুকোচুরি", "কাবাডি", "দড়ি টানাটানি", "পাঞ্জা লড়া"], "posture-and-turning": ["হেলান দেওয়া", "শোয়া", "গড়ানো", "ঘুরে দাঁড়ানো", "হাঁটু গেড়ে বসা", "উবু হয়ে বসা"], "local-trades": ["চাষি", "জেলে", "মাঝি", "মুচি", "কামার", "কুমার"], "telling-time-and-dates": ["দেয়ালঘড়ি", "হাতঘড়ি", "বালুঘড়ি", "তারিখ", "সপ্তাহ", "মাস"], "electricity-and-light": ["বিদ্যুতের তার", "বিদ্যুতের খুঁটি", "কুপি", "মোমবাতি", "বাতির বোতাম", "হাতবাতি"], "house-edges-and-fittings": ["মেঝে", "কোণা", "দোরগোড়া", "ছিটকিনি", "ফটক", "বেড়া"], "metals-and-natural-materials": ["সোনা", "রুপা", "তামা", "পিতল", "পাট", "চামড়া"], "familiar-bangladesh-flowers": ["শাপলা", "পদ্ম", "জবা", "গাঁদা", "শিউলি", "গন্ধরাজ"], "more-cooking-vegetables": ["ঢেঁড়স", "পটল", "কচু", "মিষ্টি আলু", "বাঁধাকপি", "ঝিঙে"], "people-out-on-the-street": ["যাত্রী", "চালক", "পথচারী", "পাহারাদার", "ফেরিওয়ালা", "মুটে"], "wild-bangladesh-animals": ["হাতি", "বানর", "ভালুক", "হরিণ", "বাঘ", "শিয়াল"], "preparing-food-to-serve": ["খাবার বেড়ে দেওয়া", "ভাগ করা", "ছিটানো", "চিপে রস বের করা", "ছেঁকে নেওয়া", "গুঁড়া করা"], "types-of-homes": ["কুঁড়েঘর", "মাটির ঘর", "বাঁশের ঘর", "একতলা বাড়ি", "দোতলা বাড়ি", "উঁচু দালান"], "on-the-way-actions": ["অপেক্ষা করা", "রওনা হওয়া", "পিছু নেওয়া", "পথ ছেড়ে দেওয়া", "পথ বদলানো", "পথ হারানো"], "actions-for-care": ["জ্বর মাপা", "নাড়ি দেখা", "শ্বাস নেওয়া", "ক্ষত ধোয়া", "পট্টি বাঁধা", "মলম লাগানো"], "local-cold-drinks": ["ডাবের পানি", "আখের রস", "বেলের শরবত", "লেবুপানি", "ঘোল", "বোরহানি"], "food-ripeness-and-condition": ["কাঁচা", "পাকা", "টাটকা", "বাসি", "জমাট বাঁধা", "গলে যাওয়া"], "river-work-gear": ["জাল", "পলো", "বড়শি", "ছিপ", "খালুই", "বৈঠা"], "clothing-patterns": ["ডোরাকাটা", "ঘরকাটা", "ফোঁটাওয়ালা", "ফুলের ছাপ", "সুতার নকশা", "একরঙা"], "small-facial-actions": ["চোখ টেপা", "পলক ফেলা", "হাই তোলা", "মুখ বাঁকানো", "ভুরু কুঁচকানো", "মাথা ঝাঁকানো"], "counting-seven-to-twelve": ["সাত", "আট", "নয়", "দশ", "এগারো", "বারো"], "pace-and-turn-taking": ["তাড়াতাড়ি", "ধীরে", "একসঙ্গে", "পালা করে", "একবার", "বারবার"], "river-and-coast-landforms": ["চর", "দ্বীপ", "বাঁধ", "ঝরনা", "মোহনা", "সমুদ্র"], "talking-prices-and-money": ["দরদাম করা", "টাকা গোনা", "টাকা জমানো", "দাম কমানো", "বাকি লেখা", "ভাঙতি করা"], "greeting-and-helping": ["সালাম দেওয়া", "হাত মেলানো", "জড়িয়ে ধরা", "বিদায় নেওয়া", "স্বাগত জানানো", "সাহায্য করা"], "ties-and-fasteners": ["দড়ি", "শিকল", "চুলের ফিতা", "আংটা", "চুম্বক", "কাপড়ের চিমটি"], "finger-and-palm-actions": ["খোঁচানো", "বোতাম টেপা", "চিমটি কাটা", "খামচানো", "ঘষা", "চাপ দেওয়া"], "garden-planting-actions": ["মাটি খোঁড়া", "বীজ বোনা", "পানি দেওয়া", "চারা লাগানো", "আগাছা তোলা", "সবজি পাড়া"], "repair-and-garden-tools": ["পেঁচকস", "সাঁড়াশি", "ছেনি", "শিরীষ কাগজ", "কোদাল", "খুরপি"], "traditional-household-objects": ["পিঁড়ি", "হাতপাখা", "কুলা", "চালুনি", "ডালা", "পানের বাটা"], "fabric-care-actions": ["ইস্ত্রি করা", "কুঁচি দেওয়া", "ভিজিয়ে রাখা", "নিংড়ানো", "দাগ তোলা", "রং করা"], "describing-common-symptoms": ["মাথা ব্যথা", "পিঠে ব্যথা", "গিলতে কষ্ট", "বমি", "নাক বন্ধ", "শ্বাসকষ্ট"], "local-kitchen-implements": ["চিমটা", "বঁটি", "শিলপাটা", "হামানদিস্তা", "ডেকচি", "চুলার জালি"], "more-domestic-animals": ["মহিষ", "ভেড়া", "ঘোড়া", "গাধা", "খরগোশ", "রাজহাঁস"], "more-market-fruit": ["কমলা", "জাম্বুরা", "ডালিম", "আতা", "সফেদা", "জলপাই"], "fresh-kitchen-aromatics": ["আদা", "রসুন", "কাঁচামরিচ", "পেঁয়াজপাতা", "ধনেপাতা", "পুদিনা"], "bangladesh-sweets": ["রসমালাই", "সন্দেশ", "চমচম", "লাড্ডু", "বরফি", "বাতাসা"], "people-we-know-daily": ["প্রতিবেশী", "খেলার সাথি", "সহপাঠী", "সহকর্মী", "বাড়িওয়ালা", "ভাড়াটে"], "price-age-and-depth": ["নতুন", "পুরোনো", "দামি", "সস্তা", "গভীর", "অগভীর"], "rice-from-field-to-pot": ["চারা", "ধান কাটা", "মাড়াই করা", "ধান শুকানো", "চাল ঝাড়া", "ভাত রান্না করা"], "parts-of-clothing": ["হাতা", "জামার গলা", "ঝালর", "আস্তর", "পাড়", "আঁচল"], "everyday-bodily-needs": ["খিদে লাগা", "পেট ভরা", "তেষ্টা পাওয়া", "ঘুম পাওয়া", "গরম লাগা", "শীত করা"], "things-in-the-sky": ["সূর্য", "পূর্ণিমার চাঁদ", "তারা", "রংধনু", "শিলাবৃষ্টি", "বিদ্যুৎ চমক"], "small-everyday-mishaps": ["হোঁচট খাওয়া", "পিছলে যাওয়া", "ধাক্কা খাওয়া", "ছিটকে পড়া", "বেঁকে যাওয়া", "লেগে থাকা"], "renting-and-moving-home": ["বাসা দেখতে আসা", "খালি বাসা", "ভাড়ার টাকা দেওয়া", "জামানত", "ভাড়ার চুক্তি", "বাসা বদলানো"], "extended-family-on-both-sides": ["দাদা", "দাদি", "চাচা", "চাচি", "মামা", "মামি"], "neighborhood-shop-types": ["চায়ের দোকান", "ভাতের দোকান", "ওষুধের দোকান", "নাপিতের দোকান", "মুদিদোকান", "মিষ্টির দোকান"], "marks-and-things-on-the-ground": ["কাদা", "ধুলো", "পায়ের ছাপ", "চাকার দাগ", "গর্ত", "কেঁচো"], "vegetables-for-curry-and-bhaji": ["করলা", "চিচিঙ্গা", "কাঁচা পেঁপে", "চালকুমড়া", "কাঁচকলা", "সজনে ডাঁটা"], "leafy-greens-at-market": ["পালংশাক", "লালশাক", "পুঁইশাক", "কলমিশাক", "ডাঁটাশাক", "লাউশাক"], "more-fish-from-the-market": ["রূপচাঁদা", "কাতলা", "বোয়াল", "পাবদা", "মলা", "টেংরা"], "market-stall-snacks": ["ফুচকা", "চটপটি", "ঝালমুড়ি", "পেঁয়াজু", "বেগুনি", "ডালপুরি"], "bangladesh-flour-snacks": ["পরোটা", "লুচি", "বাখরখানি", "নিমকি", "মোগলাই পরোটা", "পাউরুটি"], "working-ingredients-while-cooking": ["বাটা", "নারকেল কোরা", "ডিম ফেটানো", "আলু চটকানো", "মাড় ঝরানো", "রস জ্বাল দেওয়া"], "texture-of-food": ["মচমচে", "আঠালো", "রসালো", "ঝুরঝুরে", "থকথকে", "ফাঁপা"], "flatbread-and-serving-tools": ["তাওয়া", "বেলন", "রুটি বেলার পিঁড়ি", "নারকেল কোরানি", "রান্নার হাতা", "ঝাঁঝরি"], "door-and-window-fittings": ["জানালার শিক", "দরজার হাতল", "কবজা", "দোরের কড়া", "চৌকাঠ", "তালার ছিদ্র"], "hands-on-small-repairs": ["পেরেক ঠোকা", "করাত দিয়ে চেরা", "প্যাঁচ কষা", "ফুটো করা", "চুনকাম করা", "জোড়া লাগানো"], "more-clothes-to-wear": ["ফতুয়া", "পায়জামা", "হাতা কাটা জামা", "শাল", "পাগড়ি", "বোরকা"], "footwear-and-its-parts": ["চটি", "খড়ম", "নাগরা", "জুতার ফিতা", "জুতার তলা", "নূপুর"], "hair-on-head-and-face": ["চুল", "দাড়ি", "গোঁফ", "জুলফি", "টাক", "সিঁথি"], "small-skin-marks": ["তিল", "আঁচিল", "পুরোনো কাটা দাগ", "বলিরেখা", "মেছতা", "ফুসকুড়ি"], "food-laundry-and-garden-workers": ["রাঁধুনি", "ধোপা", "মালি", "কসাই", "মাছওয়ালা", "দুধওয়ালা"], "things-that-move-or-change": ["দুলতে থাকা", "ঘুরতে থাকা", "ভেসে থাকা", "ডুবে যাওয়া", "ফেটে যাওয়া", "নিভে যাওয়া"], "full-empty-fit-and-thickness": ["ভরতি", "ফাঁকা", "আঁটসাঁট", "ঢিলেঢালা", "পুরু", "পাতলা"], "small-everyday-measures": ["এক আঁটি", "এক মুঠো", "এক চিমটি", "এক চুমুক", "এক লোকমা", "এক ফোঁটা"], "roadside-and-homestead-trees": ["আমগাছ", "কাঁঠালগাছ", "নিমগাছ", "তেঁতুলগাছ", "শিমুলগাছ", "কদমগাছ"], "tart-and-fragrant-local-fruits": ["বেল", "তেঁতুল", "কামরাঙা", "লটকন", "ডেউয়া", "আমলকী"], "more-familiar-local-birds": ["দোয়েল", "মাছরাঙা", "ফিঙে", "কোকিল", "বাবুই", "টিয়া"], "small-pests-and-pollinators": ["উইপোকা", "ছারপোকা", "উকুন", "মাকড়সা", "মৌমাছি", "বোলতা"], "caring-for-babies-and-elders": ["মাথায় হাত বুলানো", "কোলে নেওয়া", "খাইয়ে দেওয়া", "শুইয়ে দেওয়া", "গায়ে চাদর দেওয়া", "হাত ধরে হাঁটানো"], "places-for-work-learning-and-trade": ["গরুর হাট", "মাছের আড়ত", "ধানকল", "মাদরাসা", "সেলাইঘর", "দুধের খামার"], "common-wordless-notices": ["ঢোকা মানা", "জুতা খুলে ঢোকা", "হাত ধোয়ার জায়গা", "বসার জায়গা", "পথ বন্ধ", "ময়লা ফেলা মানা"], "lights-fans-and-power": ["বাতি জ্বালানো", "বাতি নেভানো", "পাখার গতি বাড়ানো", "বিদ্যুতের তার লাগানো", "বিদ্যুতের তার খুলে রাখা", "বিদ্যুৎ চলে যাওয়া"], "bags-and-cases-for-carrying": ["বস্তা", "ঠোঙা", "পুঁটলি", "বাক্স", "তোরঙ্গ", "ঝোলা"], "mending-clothes-by-hand": ["বোতাম লাগানো", "তালি লাগানো", "সুঁইয়ে সুতা পরানো", "সুতায় গিঁট দেওয়া", "সেলাই খুলে ফেলা", "হাতা ছোট করা"], "more-actions-at-the-stove": ["পুর ভরা", "বড়া বানানো", "তেলে ফোড়ন দেওয়া", "মসলা কষানো", "আঁচ কমানো", "মাছের আঁশ ছাড়ানো"], "small-seeds-for-cooking": ["পাঁচফোড়ন", "কালোজিরা", "মেথি", "মৌরি", "পোস্তদানা", "তিলের দানা"], "edible-stems-blossoms-and-seeds": ["কচুর লতি", "কচুর মুখি", "কলার মোচা", "শালগম", "কাঁঠালের বিচি", "কুমড়ার ফুল"], "mouth-and-ear-gestures": ["মুখ হাঁ করা", "ঠোঁটে আঙুল দেওয়া", "দাঁত বের করা", "জিব বের করা", "কান পাতা", "কানে হাত চাপা"], "putting-clothes-on-and-off": ["জামা পরা", "জামা খোলা", "হাতা গোটানো", "গলায় পেঁচানো", "মাথা ঢাকা", "কোমরে গোঁজা"], "foods-served-alongside-rice": ["ভাজা ডিম", "মাছের ঝোল", "ডিমের ঝোল", "সবজি ভাজি", "ভর্তা", "আচার"], "features-for-giving-directions": ["চৌরাস্তা", "তিন রাস্তার মোড়", "গোলচত্বর", "গলির মুখ", "রাস্তার শেষ", "উড়ালপুল"], "types-of-river-boats": ["পালতোলা নৌকা", "ডিঙি", "খেয়ানৌকা", "মাছ ধরার নৌকা", "মালবাহী নৌকা", "ছইওয়ালা নৌকা"], "small-parts-of-the-face": ["চোখের পাতা", "চোখের পাপড়ি", "চোখের মণি", "কানের লতি", "নাকের ফুটো", "গালের টোল"], "small-parts-of-hands-and-feet": ["তালু", "হাতের পিঠ", "আঙুল", "বুড়ো আঙুল", "পায়ের আঙুল", "পায়ের তলা"], "polite-responses-and-requests": ["মাফ চাওয়া", "ধন্যবাদ দেওয়া", "অনুমতি চাওয়া", "হ্যাঁ বলা", "না বলা", "জোরে বলতে বলা"], "more-people-at-local-jobs": ["নাপিত", "গৃহশিক্ষক", "খবরের কাগজওয়ালা", "রংমিস্ত্রি", "মোয়াজ্জিন", "রুটিওয়ালা"], "aunts-uncles-and-nephews": ["ফুফু", "ফুফা", "খালা", "খালু", "ভাতিজা", "ভাগ্নে"], "features-around-a-mosque": ["মিনার", "গম্বুজ", "মেহরাব", "মিম্বর", "অজুখানা", "জুতার তাক"], "riverbanks-and-water-movement": ["নদীর পাড়", "স্রোত", "ঢেউ", "জোয়ার", "ভাটা", "ঘূর্ণি"], "brightness-and-clear-vision": ["আলো", "অন্ধকার", "মিটমিটে", "তীব্র আলো", "ঝাপসা", "স্পষ্ট"], "getting-around-in-the-rain": ["ঝুম বৃষ্টি", "গুঁড়ি গুঁড়ি বৃষ্টি", "রাস্তায় পানি জমা", "ছাতা মেলা", "বৃষ্টিতে ভেজা", "কাদায় পা আটকে যাওয়া"], "ways-to-keep-food": ["মাছ রোদে শুকানো", "শুঁটকি", "বরফে মাছ রাখা", "খাবার ঢেকে রাখা", "লবণ মাখিয়ে রাখা", "তেলে ডুবিয়ে রাখা"], "small-wear-and-breakage": ["জং ধরা", "পলেস্তারা খসে পড়া", "হাতল ঢিলা হওয়া", "দড়ি ছিঁড়ে যাওয়া", "গিঁট খুলে যাওয়া", "পানি উপচে পড়া"], "simple-stretching-and-footwork": ["হাত ছড়ানো", "হাত তুলে ধরা", "পা মেলে বসা", "পা ভাঁজ করে বসা", "আঙুলে ভর দিয়ে দাঁড়ানো", "পা টিপে হাঁটা"], "tree-and-stem-details": ["গাছের গুঁড়ি", "বাকল", "ডগা", "কাণ্ড", "কচি পাতা", "কাঁটা"], "materials-from-plants-and-animals": ["বেত", "নারকেলের আঁশ", "পশম", "পালক", "ঝিনুকের খোল", "মোম"]};
