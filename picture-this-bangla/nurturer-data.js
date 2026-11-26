@@ -84261,6 +84261,9347 @@ window.PTB_NURTURER = {
      }
     ]
    }
+  },
+  "washroom-fixtures-and-tools": {
+   "washroom-handwashing-basin": {
+    "word": {
+     "id": "washroom-fixtures-and-tools--washroom-handwashing-basin--word--fc511453c10f0cd3",
+     "text": "হাত ধোয়ার পাত্র",
+     "fallback": [
+      {
+       "word": "washroom-handwashing-basin"
+      }
+     ]
+    },
+    "ask": {
+     "id": "washroom-fixtures-and-tools--washroom-handwashing-basin--ask--548afad2c101fbec",
+     "text": "খুঁজে দেখুন। হাত ধোয়ার পাত্র।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "washroom-handwashing-basin"
+      }
+     ],
+     "english": "Find “washbasin fixture”."
+    },
+    "yes": {
+     "id": "washroom-fixtures-and-tools--washroom-handwashing-basin--yes--99eff2513c515f10",
+     "text": "দারুণ। হাত ধোয়ার পাত্র।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "washroom-handwashing-basin"
+      }
+     ],
+     "english": "Great! This is “washbasin fixture”."
+    },
+    "recast": {
+     "id": "washroom-fixtures-and-tools--washroom-handwashing-basin--recast--2f75d06078049c6b",
+     "text": "এই ছবিটা দেখুন। হাত ধোয়ার পাত্র।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "washroom-handwashing-basin"
+      }
+     ],
+     "english": "Look at this picture. This is “washbasin fixture”."
+    },
+    "examples": [
+     {
+      "id": "washroom-fixtures-and-tools--washroom-handwashing-basin--example-1--8ed78c6f869bdcba",
+      "text": "হাত ধোয়ার পাত্রটা কোথায়?",
+      "fallback": [
+       {
+        "clip": "8ed78c6f869bdcbad06d"
+       }
+      ]
+     }
+    ]
+   },
+   "bathroom-showerhead": {
+    "word": {
+     "id": "washroom-fixtures-and-tools--bathroom-showerhead--word--2f7efed80d1ec6ac",
+     "text": "গোসলের ঝরনা",
+     "fallback": [
+      {
+       "word": "bathroom-showerhead"
+      }
+     ]
+    },
+    "ask": {
+     "id": "washroom-fixtures-and-tools--bathroom-showerhead--ask--4def8b4501cf048d",
+     "text": "খুঁজে দেখুন। গোসলের ঝরনা।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "bathroom-showerhead"
+      }
+     ],
+     "english": "Find “showerhead fixture”."
+    },
+    "yes": {
+     "id": "washroom-fixtures-and-tools--bathroom-showerhead--yes--b44614688905f5ef",
+     "text": "দারুণ। গোসলের ঝরনা।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "bathroom-showerhead"
+      }
+     ],
+     "english": "Great! This is “showerhead fixture”."
+    },
+    "recast": {
+     "id": "washroom-fixtures-and-tools--bathroom-showerhead--recast--00564529e1c649e5",
+     "text": "এই ছবিটা দেখুন। গোসলের ঝরনা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "bathroom-showerhead"
+      }
+     ],
+     "english": "Look at this picture. This is “showerhead fixture”."
+    },
+    "examples": [
+     {
+      "id": "washroom-fixtures-and-tools--bathroom-showerhead--example-1--4eaaba914a7cd9ca",
+      "text": "ঝরনার নিচে দাঁড়ান",
+      "fallback": [
+       {
+        "clip": "4eaaba914a7cd9ca5800"
+       }
+      ]
+     }
+    ]
+   },
+   "bengali-squat-toilet-pan": {
+    "word": {
+     "id": "washroom-fixtures-and-tools--bengali-squat-toilet-pan--word--412fed2f08da675d",
+     "text": "পায়খানা",
+     "fallback": [
+      {
+       "word": "bengali-squat-toilet-pan"
+      }
+     ]
+    },
+    "ask": {
+     "id": "washroom-fixtures-and-tools--bengali-squat-toilet-pan--ask--e84db4d76f6b073c",
+     "text": "মন দিয়ে শুনুন। পায়খানা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "bengali-squat-toilet-pan"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “ceramic squat toilet pan”."
+    },
+    "yes": {
+     "id": "washroom-fixtures-and-tools--bengali-squat-toilet-pan--yes--15fdec3766575583",
+     "text": "চমৎকার। পায়খানা।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "bengali-squat-toilet-pan"
+      }
+     ],
+     "english": "Excellent! This is “ceramic squat toilet pan”."
+    },
+    "recast": {
+     "id": "washroom-fixtures-and-tools--bengali-squat-toilet-pan--recast--419cab6c16a45d9a",
+     "text": "এই ছবিটা দেখুন। পায়খানা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "bengali-squat-toilet-pan"
+      }
+     ],
+     "english": "Look at this picture. This is “ceramic squat toilet pan”."
+    },
+    "examples": [
+     {
+      "id": "washroom-fixtures-and-tools--bengali-squat-toilet-pan--example-1--1198b3e129577ee0",
+      "text": "পায়খানায় পানি ঢালুন",
+      "fallback": [
+       {
+        "clip": "1198b3e129577ee03baf"
+       }
+      ]
+     }
+    ]
+   },
+   "toilet-bowl-brush": {
+    "word": {
+     "id": "washroom-fixtures-and-tools--toilet-bowl-brush--word--893873e1c6c0cba2",
+     "text": "পায়খানার ঝাড়নি",
+     "fallback": [
+      {
+       "word": "toilet-bowl-brush"
+      }
+     ]
+    },
+    "ask": {
+     "id": "washroom-fixtures-and-tools--toilet-bowl-brush--ask--43459f3da4b4ef0d",
+     "text": "পায়খানার ঝাড়নি। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "toilet-bowl-brush"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “toilet bowl brush”? Show me."
+    },
+    "yes": {
+     "id": "washroom-fixtures-and-tools--toilet-bowl-brush--yes--ffd11a2937dc08f3",
+     "text": "চমৎকার। পায়খানার ঝাড়নি।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "toilet-bowl-brush"
+      }
+     ],
+     "english": "Excellent! This is “toilet bowl brush”."
+    },
+    "recast": {
+     "id": "washroom-fixtures-and-tools--toilet-bowl-brush--recast--9e1ef460a26747b4",
+     "text": "এই ছবিটা দেখুন। পায়খানার ঝাড়নি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "toilet-bowl-brush"
+      }
+     ],
+     "english": "Look at this picture. This is “toilet bowl brush”."
+    },
+    "examples": [
+     {
+      "id": "washroom-fixtures-and-tools--toilet-bowl-brush--example-1--f3581404ba7ebaa0",
+      "text": "ঝাড়নি দিয়ে পায়খানা পরিষ্কার করুন",
+      "fallback": [
+       {
+        "clip": "f3581404ba7ebaa02bc9"
+       }
+      ]
+     }
+    ]
+   },
+   "bathroom-soap-rest": {
+    "word": {
+     "id": "washroom-fixtures-and-tools--bathroom-soap-rest--word--6f03540e86fb672d",
+     "text": "সাবান রাখার পাত্র",
+     "fallback": [
+      {
+       "word": "bathroom-soap-rest"
+      }
+     ]
+    },
+    "ask": {
+     "id": "washroom-fixtures-and-tools--bathroom-soap-rest--ask--d6a8908b7f2eff53",
+     "text": "খুঁজে দেখুন। সাবান রাখার পাত্র।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "bathroom-soap-rest"
+      }
+     ],
+     "english": "Find “soap dish”."
+    },
+    "yes": {
+     "id": "washroom-fixtures-and-tools--bathroom-soap-rest--yes--56c9a5c1ac276fd8",
+     "text": "চমৎকার। সাবান রাখার পাত্র।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "bathroom-soap-rest"
+      }
+     ],
+     "english": "Excellent! This is “soap dish”."
+    },
+    "recast": {
+     "id": "washroom-fixtures-and-tools--bathroom-soap-rest--recast--0f4fdbea0a8e2259",
+     "text": "এই ছবিটা দেখুন। সাবান রাখার পাত্র।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "bathroom-soap-rest"
+      }
+     ],
+     "english": "Look at this picture. This is “soap dish”."
+    },
+    "examples": [
+     {
+      "id": "washroom-fixtures-and-tools--bathroom-soap-rest--example-1--efb789bf62ae0056",
+      "text": "সাবানটা পাত্রে রাখুন",
+      "fallback": [
+       {
+        "clip": "efb789bf62ae00564047"
+       }
+      ]
+     }
+    ]
+   },
+   "washroom-hand-towel": {
+    "word": {
+     "id": "washroom-fixtures-and-tools--washroom-hand-towel--word--79eb17c2152e0547",
+     "text": "মুখ মোছার কাপড়",
+     "fallback": [
+      {
+       "word": "washroom-hand-towel"
+      }
+     ]
+    },
+    "ask": {
+     "id": "washroom-fixtures-and-tools--washroom-hand-towel--ask--2496d1bd5468c18a",
+     "text": "মুখ মোছার কাপড়। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "washroom-hand-towel"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “small terry face towel”? Show me."
+    },
+    "yes": {
+     "id": "washroom-fixtures-and-tools--washroom-hand-towel--yes--17776223739f2ca0",
+     "text": "শাবাশ। মুখ মোছার কাপড়।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "washroom-hand-towel"
+      }
+     ],
+     "english": "Well done! This is “small terry face towel”."
+    },
+    "recast": {
+     "id": "washroom-fixtures-and-tools--washroom-hand-towel--recast--921f3473c6bb81f8",
+     "text": "এই ছবিটা দেখুন। মুখ মোছার কাপড়।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "washroom-hand-towel"
+      }
+     ],
+     "english": "Look at this picture. This is “small terry face towel”."
+    },
+    "examples": [
+     {
+      "id": "washroom-fixtures-and-tools--washroom-hand-towel--example-1--6a2f68adeeca8274",
+      "text": "মুখ মোছার কাপড়টা দিন",
+      "fallback": [
+       {
+        "clip": "6a2f68adeeca82748719"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "familiar-parts-of-a-car": {
+   "car-road-wheel": {
+    "word": {
+     "id": "familiar-parts-of-a-car--car-road-wheel--word--8bbb9cc15573b764",
+     "text": "গাড়ির চাকা",
+     "fallback": [
+      {
+       "word": "car-road-wheel"
+      }
+     ]
+    },
+    "ask": {
+     "id": "familiar-parts-of-a-car--car-road-wheel--ask--5c461253f881e7dc",
+     "text": "খুঁজে দেখুন। গাড়ির চাকা।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "car-road-wheel"
+      }
+     ],
+     "english": "Find “car road wheel and tyre”."
+    },
+    "yes": {
+     "id": "familiar-parts-of-a-car--car-road-wheel--yes--88da74d89ea5ee0b",
+     "text": "খুব ভালো। গাড়ির চাকা।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "car-road-wheel"
+      }
+     ],
+     "english": "Very good! This is “car road wheel and tyre”."
+    },
+    "recast": {
+     "id": "familiar-parts-of-a-car--car-road-wheel--recast--cf175728c33b4d25",
+     "text": "এই ছবিটা দেখুন। গাড়ির চাকা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "car-road-wheel"
+      }
+     ],
+     "english": "Look at this picture. This is “car road wheel and tyre”."
+    },
+    "examples": [
+     {
+      "id": "familiar-parts-of-a-car--car-road-wheel--example-1--60706f19883fc887",
+      "text": "গাড়ির চাকায় বাতাস কম",
+      "fallback": [
+       {
+        "clip": "60706f19883fc88720f6"
+       }
+      ]
+     }
+    ]
+   },
+   "car-steering-wheel": {
+    "word": {
+     "id": "familiar-parts-of-a-car--car-steering-wheel--word--4df443a0ddb0ab13",
+     "text": "গাড়ি ঘোরানোর চাকা",
+     "fallback": [
+      {
+       "word": "car-steering-wheel"
+      }
+     ]
+    },
+    "ask": {
+     "id": "familiar-parts-of-a-car--car-steering-wheel--ask--c86452482319d8fa",
+     "text": "খুঁজে দেখুন। গাড়ি ঘোরানোর চাকা।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "car-steering-wheel"
+      }
+     ],
+     "english": "Find “car steering wheel”."
+    },
+    "yes": {
+     "id": "familiar-parts-of-a-car--car-steering-wheel--yes--7e3e2ec1f26984ca",
+     "text": "দারুণ। গাড়ি ঘোরানোর চাকা।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "car-steering-wheel"
+      }
+     ],
+     "english": "Great! This is “car steering wheel”."
+    },
+    "recast": {
+     "id": "familiar-parts-of-a-car--car-steering-wheel--recast--9a335448639439ed",
+     "text": "এই ছবিটা দেখুন। গাড়ি ঘোরানোর চাকা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "car-steering-wheel"
+      }
+     ],
+     "english": "Look at this picture. This is “car steering wheel”."
+    },
+    "examples": [
+     {
+      "id": "familiar-parts-of-a-car--car-steering-wheel--example-1--9637570f97ce66b8",
+      "text": "চাকা ঘুরিয়ে গাড়ির দিক বদলান",
+      "fallback": [
+       {
+        "clip": "9637570f97ce66b85b35"
+       }
+      ]
+     }
+    ]
+   },
+   "side-mirror-of-car": {
+    "word": {
+     "id": "familiar-parts-of-a-car--side-mirror-of-car--word--d0ca07994ba9616f",
+     "text": "পাশের আয়না",
+     "fallback": [
+      {
+       "word": "side-mirror-of-car"
+      }
+     ]
+    },
+    "ask": {
+     "id": "familiar-parts-of-a-car--side-mirror-of-car--ask--1e4eddce696b5894",
+     "text": "মন দিয়ে শুনুন। পাশের আয়না। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "side-mirror-of-car"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “car side-view mirror”."
+    },
+    "yes": {
+     "id": "familiar-parts-of-a-car--side-mirror-of-car--yes--08de3707a7df0067",
+     "text": "দারুণ। পাশের আয়না।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "side-mirror-of-car"
+      }
+     ],
+     "english": "Great! This is “car side-view mirror”."
+    },
+    "recast": {
+     "id": "familiar-parts-of-a-car--side-mirror-of-car--recast--33b884f04afe541e",
+     "text": "এই ছবিটা দেখুন। পাশের আয়না।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "side-mirror-of-car"
+      }
+     ],
+     "english": "Look at this picture. This is “car side-view mirror”."
+    },
+    "examples": [
+     {
+      "id": "familiar-parts-of-a-car--side-mirror-of-car--example-1--62a10cbca790a9b8",
+      "text": "পাশের আয়নায় দেখুন",
+      "fallback": [
+       {
+        "clip": "62a10cbca790a9b8cec9"
+       }
+      ]
+     }
+    ]
+   },
+   "red-rear-car-light": {
+    "word": {
+     "id": "familiar-parts-of-a-car--red-rear-car-light--word--b36b7657060ec466",
+     "text": "পেছনের বাতি",
+     "fallback": [
+      {
+       "word": "red-rear-car-light"
+      }
+     ]
+    },
+    "ask": {
+     "id": "familiar-parts-of-a-car--red-rear-car-light--ask--07ef0f4819fc720f",
+     "text": "পেছনের বাতি। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "red-rear-car-light"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “rear car tail light”? Show me."
+    },
+    "yes": {
+     "id": "familiar-parts-of-a-car--red-rear-car-light--yes--17519e219667cb18",
+     "text": "শাবাশ। পেছনের বাতি।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "red-rear-car-light"
+      }
+     ],
+     "english": "Well done! This is “rear car tail light”."
+    },
+    "recast": {
+     "id": "familiar-parts-of-a-car--red-rear-car-light--recast--67aa5b51bcba3a47",
+     "text": "এই ছবিটা দেখুন। পেছনের বাতি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "red-rear-car-light"
+      }
+     ],
+     "english": "Look at this picture. This is “rear car tail light”."
+    },
+    "examples": [
+     {
+      "id": "familiar-parts-of-a-car--red-rear-car-light--example-1--cfa1d7a7f70e19b8",
+      "text": "পেছনের বাতি জ্বলছে না",
+      "fallback": [
+       {
+        "clip": "cfa1d7a7f70e19b88bd8"
+       }
+      ]
+     }
+    ]
+   },
+   "car-driver-seat": {
+    "word": {
+     "id": "familiar-parts-of-a-car--car-driver-seat--word--15e1663c2f47945d",
+     "text": "চালকের আসন",
+     "fallback": [
+      {
+       "word": "car-driver-seat"
+      }
+     ]
+    },
+    "ask": {
+     "id": "familiar-parts-of-a-car--car-driver-seat--ask--210a4d0fe5e2e290",
+     "text": "খুঁজে দেখুন। চালকের আসন।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "car-driver-seat"
+      }
+     ],
+     "english": "Find “car driver's seat”."
+    },
+    "yes": {
+     "id": "familiar-parts-of-a-car--car-driver-seat--yes--61ff8995d85639dd",
+     "text": "শাবাশ। চালকের আসন।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "car-driver-seat"
+      }
+     ],
+     "english": "Well done! This is “car driver's seat”."
+    },
+    "recast": {
+     "id": "familiar-parts-of-a-car--car-driver-seat--recast--0d7992e25518823c",
+     "text": "এই ছবিটা দেখুন। চালকের আসন।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "car-driver-seat"
+      }
+     ],
+     "english": "Look at this picture. This is “car driver's seat”."
+    },
+    "examples": [
+     {
+      "id": "familiar-parts-of-a-car--car-driver-seat--example-1--8572c656d0307e8b",
+      "text": "চালকের আসনটা সামনে টানুন",
+      "fallback": [
+       {
+        "clip": "8572c656d0307e8b3308"
+       }
+      ]
+     }
+    ]
+   },
+   "front-car-windscreen": {
+    "word": {
+     "id": "familiar-parts-of-a-car--front-car-windscreen--word--b1d3d033fcbad016",
+     "text": "গাড়ির সামনের কাচ",
+     "fallback": [
+      {
+       "word": "front-car-windscreen"
+      }
+     ]
+    },
+    "ask": {
+     "id": "familiar-parts-of-a-car--front-car-windscreen--ask--0ea073a7cbd7c60e",
+     "text": "গাড়ির সামনের কাচ। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "front-car-windscreen"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “car windscreen”? Show me."
+    },
+    "yes": {
+     "id": "familiar-parts-of-a-car--front-car-windscreen--yes--4b687b19b07935b0",
+     "text": "খুব ভালো। গাড়ির সামনের কাচ।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "front-car-windscreen"
+      }
+     ],
+     "english": "Very good! This is “car windscreen”."
+    },
+    "recast": {
+     "id": "familiar-parts-of-a-car--front-car-windscreen--recast--5554396d353463b6",
+     "text": "এই ছবিটা দেখুন। গাড়ির সামনের কাচ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "front-car-windscreen"
+      }
+     ],
+     "english": "Look at this picture. This is “car windscreen”."
+    },
+    "examples": [
+     {
+      "id": "familiar-parts-of-a-car--front-car-windscreen--example-1--7f85b71d383818c4",
+      "text": "সামনের কাচটা মুছুন",
+      "fallback": [
+       {
+        "clip": "7f85b71d383818c4f431"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "parts-of-a-reading-book": {
+   "hard-cover-of-book": {
+    "word": {
+     "id": "parts-of-a-reading-book--hard-cover-of-book--word--340fab78287c434b",
+     "text": "বইয়ের মলাট",
+     "fallback": [
+      {
+       "word": "hard-cover-of-book"
+      }
+     ]
+    },
+    "ask": {
+     "id": "parts-of-a-reading-book--hard-cover-of-book--ask--1f2771c0d467f633",
+     "text": "বইয়ের মলাট। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "hard-cover-of-book"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “book cover”? Show me."
+    },
+    "yes": {
+     "id": "parts-of-a-reading-book--hard-cover-of-book--yes--f163c4009c3c9e94",
+     "text": "চমৎকার। বইয়ের মলাট।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "hard-cover-of-book"
+      }
+     ],
+     "english": "Excellent! This is “book cover”."
+    },
+    "recast": {
+     "id": "parts-of-a-reading-book--hard-cover-of-book--recast--5386abe49ccf8ff6",
+     "text": "এই ছবিটা দেখুন। বইয়ের মলাট।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "hard-cover-of-book"
+      }
+     ],
+     "english": "Look at this picture. This is “book cover”."
+    },
+    "examples": [
+     {
+      "id": "parts-of-a-reading-book--hard-cover-of-book--example-1--8270bea4526d4ea1",
+      "text": "বইয়ের মলাটে ছবি আছে",
+      "fallback": [
+       {
+        "clip": "8270bea4526d4ea198dc"
+       }
+      ]
+     }
+    ]
+   },
+   "book-binding-spine": {
+    "word": {
+     "id": "parts-of-a-reading-book--book-binding-spine--word--ded6621dec297a6f",
+     "text": "বইয়ের পিঠ",
+     "fallback": [
+      {
+       "word": "book-binding-spine"
+      }
+     ]
+    },
+    "ask": {
+     "id": "parts-of-a-reading-book--book-binding-spine--ask--43511a739c6802a8",
+     "text": "খুঁজে দেখুন। বইয়ের পিঠ।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "book-binding-spine"
+      }
+     ],
+     "english": "Find “bound spine of a book”."
+    },
+    "yes": {
+     "id": "parts-of-a-reading-book--book-binding-spine--yes--d84627360e7529cf",
+     "text": "দারুণ। বইয়ের পিঠ।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "book-binding-spine"
+      }
+     ],
+     "english": "Great! This is “bound spine of a book”."
+    },
+    "recast": {
+     "id": "parts-of-a-reading-book--book-binding-spine--recast--24c4bde0184069df",
+     "text": "এই ছবিটা দেখুন। বইয়ের পিঠ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "book-binding-spine"
+      }
+     ],
+     "english": "Look at this picture. This is “bound spine of a book”."
+    },
+    "examples": [
+     {
+      "id": "parts-of-a-reading-book--book-binding-spine--example-1--b34b9be771149be1",
+      "text": "বইয়ের পিঠটা ছিঁড়েছে",
+      "fallback": [
+       {
+        "clip": "b34b9be771149be121e4"
+       }
+      ]
+     }
+    ]
+   },
+   "open-reading-page": {
+    "word": {
+     "id": "parts-of-a-reading-book--open-reading-page--word--1cf9e0afd03f71c7",
+     "text": "বইয়ের পাতা",
+     "fallback": [
+      {
+       "word": "open-reading-page"
+      }
+     ]
+    },
+    "ask": {
+     "id": "parts-of-a-reading-book--open-reading-page--ask--fe1a32a2bb3de938",
+     "text": "বইয়ের পাতা। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "open-reading-page"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “open leaf of a book”? Show me."
+    },
+    "yes": {
+     "id": "parts-of-a-reading-book--open-reading-page--yes--ebd7560cc92e6330",
+     "text": "বাহ্। বইয়ের পাতা।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "open-reading-page"
+      }
+     ],
+     "english": "Wow! This is “open leaf of a book”."
+    },
+    "recast": {
+     "id": "parts-of-a-reading-book--open-reading-page--recast--56f9433e4b02e59e",
+     "text": "এই ছবিটা দেখুন। বইয়ের পাতা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "open-reading-page"
+      }
+     ],
+     "english": "Look at this picture. This is “open leaf of a book”."
+    },
+    "examples": [
+     {
+      "id": "parts-of-a-reading-book--open-reading-page--example-1--48a2b83030a1bdf2",
+      "text": "একটা পাতা উল্টান",
+      "fallback": [
+       {
+        "clip": "48a2b83030a1bdf2e267"
+       }
+      ]
+     }
+    ]
+   },
+   "illustrated-book-endpaper": {
+    "word": {
+     "id": "parts-of-a-reading-book--illustrated-book-endpaper--word--762e252ef87a1b27",
+     "text": "বইয়ের ছবি",
+     "fallback": [
+      {
+       "word": "illustrated-book-endpaper"
+      }
+     ]
+    },
+    "ask": {
+     "id": "parts-of-a-reading-book--illustrated-book-endpaper--ask--dbc5ae464b3bf51f",
+     "text": "মন দিয়ে শুনুন। বইয়ের ছবি। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "illustrated-book-endpaper"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “illustration printed in a book”."
+    },
+    "yes": {
+     "id": "parts-of-a-reading-book--illustrated-book-endpaper--yes--b2ddf1bf76925a39",
+     "text": "চমৎকার। বইয়ের ছবি।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "illustrated-book-endpaper"
+      }
+     ],
+     "english": "Excellent! This is “illustration printed in a book”."
+    },
+    "recast": {
+     "id": "parts-of-a-reading-book--illustrated-book-endpaper--recast--7c183621cbbab6af",
+     "text": "এই ছবিটা দেখুন। বইয়ের ছবি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "illustrated-book-endpaper"
+      }
+     ],
+     "english": "Look at this picture. This is “illustration printed in a book”."
+    },
+    "examples": [
+     {
+      "id": "parts-of-a-reading-book--illustrated-book-endpaper--example-1--10229476ca0f1239",
+      "text": "বইয়ের ছবিটা দেখুন",
+      "fallback": [
+       {
+        "clip": "10229476ca0f1239eca0"
+       }
+      ]
+     }
+    ]
+   },
+   "reading-bookmark": {
+    "word": {
+     "id": "parts-of-a-reading-book--reading-bookmark--word--fbb56cde0b57f4d7",
+     "text": "পাতা চেনার দাগ",
+     "fallback": [
+      {
+       "word": "reading-bookmark"
+      }
+     ]
+    },
+    "ask": {
+     "id": "parts-of-a-reading-book--reading-bookmark--ask--ddc4822e26a96a4b",
+     "text": "খুঁজে দেখুন। পাতা চেনার দাগ।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "reading-bookmark"
+      }
+     ],
+     "english": "Find “bookmark marking a page”."
+    },
+    "yes": {
+     "id": "parts-of-a-reading-book--reading-bookmark--yes--1ab75751af51192a",
+     "text": "শাবাশ। পাতা চেনার দাগ।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "reading-bookmark"
+      }
+     ],
+     "english": "Well done! This is “bookmark marking a page”."
+    },
+    "recast": {
+     "id": "parts-of-a-reading-book--reading-bookmark--recast--201d9c897781cbe9",
+     "text": "এই ছবিটা দেখুন। পাতা চেনার দাগ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "reading-bookmark"
+      }
+     ],
+     "english": "Look at this picture. This is “bookmark marking a page”."
+    },
+    "examples": [
+     {
+      "id": "parts-of-a-reading-book--reading-bookmark--example-1--ea31b7f5f0af83ef",
+      "text": "যে পাতায় পড়া থামালেন সেখানে দাগ রাখুন",
+      "fallback": [
+       {
+        "clip": "ea31b7f5f0af83ef1e0b"
+       }
+      ]
+     }
+    ]
+   },
+   "book-contents-page": {
+    "word": {
+     "id": "parts-of-a-reading-book--book-contents-page--word--36d4cf7d226f8cc8",
+     "text": "সূচিপত্র",
+     "fallback": [
+      {
+       "word": "book-contents-page"
+      }
+     ]
+    },
+    "ask": {
+     "id": "parts-of-a-reading-book--book-contents-page--ask--460c59b3caa21142",
+     "text": "খুঁজে দেখুন। সূচিপত্র।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "book-contents-page"
+      }
+     ],
+     "english": "Find “table of contents in a book”."
+    },
+    "yes": {
+     "id": "parts-of-a-reading-book--book-contents-page--yes--8829e77b3681fc2c",
+     "text": "শাবাশ। সূচিপত্র।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "book-contents-page"
+      }
+     ],
+     "english": "Well done! This is “table of contents in a book”."
+    },
+    "recast": {
+     "id": "parts-of-a-reading-book--book-contents-page--recast--cfb5aa8a3421da4e",
+     "text": "এই ছবিটা দেখুন। সূচিপত্র।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "book-contents-page"
+      }
+     ],
+     "english": "Look at this picture. This is “table of contents in a book”."
+    },
+    "examples": [
+     {
+      "id": "parts-of-a-reading-book--book-contents-page--example-1--8d7fc28418b3757f",
+      "text": "সূচিপত্র দেখে গল্প খুঁজুন",
+      "fallback": [
+       {
+        "clip": "8d7fc28418b3757fdb66"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "everyday-groups-and-pairs": {
+   "pair-of-sandals": {
+    "word": {
+     "id": "everyday-groups-and-pairs--pair-of-sandals--word--9f68e39743758490",
+     "text": "এক জোড়া",
+     "fallback": [
+      {
+       "word": "pair-of-sandals"
+      }
+     ]
+    },
+    "ask": {
+     "id": "everyday-groups-and-pairs--pair-of-sandals--ask--747eabed62cff5a2",
+     "text": "এক জোড়া। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "pair-of-sandals"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “one pair of matching objects”? Show me."
+    },
+    "yes": {
+     "id": "everyday-groups-and-pairs--pair-of-sandals--yes--9d0802e02c32418d",
+     "text": "বাহ্। এক জোড়া।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "pair-of-sandals"
+      }
+     ],
+     "english": "Wow! This is “one pair of matching objects”."
+    },
+    "recast": {
+     "id": "everyday-groups-and-pairs--pair-of-sandals--recast--d768a0220c9e2e85",
+     "text": "এই ছবিটা দেখুন। এক জোড়া।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "pair-of-sandals"
+      }
+     ],
+     "english": "Look at this picture. This is “one pair of matching objects”."
+    },
+    "examples": [
+     {
+      "id": "everyday-groups-and-pairs--pair-of-sandals--example-1--bc5bfcfea92ce9a5",
+      "text": "এক জোড়া চটি দিন",
+      "fallback": [
+       {
+        "clip": "bc5bfcfea92ce9a50517"
+       }
+      ]
+     }
+    ]
+   },
+   "bunch-of-keys": {
+    "word": {
+     "id": "everyday-groups-and-pairs--bunch-of-keys--word--2d3866871d76ab73",
+     "text": "এক গোছা",
+     "fallback": [
+      {
+       "word": "bunch-of-keys"
+      }
+     ]
+    },
+    "ask": {
+     "id": "everyday-groups-and-pairs--bunch-of-keys--ask--53227b4f9767c65b",
+     "text": "এক গোছা। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "bunch-of-keys"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “one bunch held together”? Show me."
+    },
+    "yes": {
+     "id": "everyday-groups-and-pairs--bunch-of-keys--yes--4141e77d955226e0",
+     "text": "হ্যাঁ, ঠিক হয়েছে। এক গোছা।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "bunch-of-keys"
+      }
+     ],
+     "english": "Yes! This is “one bunch held together”."
+    },
+    "recast": {
+     "id": "everyday-groups-and-pairs--bunch-of-keys--recast--2c82cc8cde58bc6d",
+     "text": "এই ছবিটা দেখুন। এক গোছা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "bunch-of-keys"
+      }
+     ],
+     "english": "Look at this picture. This is “one bunch held together”."
+    },
+    "examples": [
+     {
+      "id": "everyday-groups-and-pairs--bunch-of-keys--example-1--6e2b681dcf4bf221",
+      "text": "এক গোছা চাবি রাখুন",
+      "fallback": [
+       {
+        "clip": "6e2b681dcf4bf2212385"
+       }
+      ]
+     }
+    ]
+   },
+   "pile-of-empty-bags": {
+    "word": {
+     "id": "everyday-groups-and-pairs--pile-of-empty-bags--word--53378b5a7fec76ea",
+     "text": "এক গাদা",
+     "fallback": [
+      {
+       "word": "pile-of-empty-bags"
+      }
+     ]
+    },
+    "ask": {
+     "id": "everyday-groups-and-pairs--pile-of-empty-bags--ask--ab24ceb8d178fecd",
+     "text": "এক গাদা। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "pile-of-empty-bags"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “one heap”? Show me."
+    },
+    "yes": {
+     "id": "everyday-groups-and-pairs--pile-of-empty-bags--yes--ddf103c59d1f1409",
+     "text": "হ্যাঁ, ঠিক হয়েছে। এক গাদা।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "pile-of-empty-bags"
+      }
+     ],
+     "english": "Yes! This is “one heap”."
+    },
+    "recast": {
+     "id": "everyday-groups-and-pairs--pile-of-empty-bags--recast--f41b4e4ea1f48497",
+     "text": "এই ছবিটা দেখুন। এক গাদা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "pile-of-empty-bags"
+      }
+     ],
+     "english": "Look at this picture. This is “one heap”."
+    },
+    "examples": [
+     {
+      "id": "everyday-groups-and-pairs--pile-of-empty-bags--example-1--12fe3d6200e44294",
+      "text": "এক গাদা বস্তা পড়ে আছে",
+      "fallback": [
+       {
+        "clip": "12fe3d6200e44294f8b5"
+       }
+      ]
+     }
+    ]
+   },
+   "one-bundle-load": {
+    "word": {
+     "id": "everyday-groups-and-pairs--one-bundle-load--word--0a0bd313c635ada6",
+     "text": "এক বোঝা",
+     "fallback": [
+      {
+       "word": "one-bundle-load"
+      }
+     ]
+    },
+    "ask": {
+     "id": "everyday-groups-and-pairs--one-bundle-load--ask--8368f5bba021c567",
+     "text": "মন দিয়ে শুনুন। এক বোঝা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "one-bundle-load"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “one tied load”."
+    },
+    "yes": {
+     "id": "everyday-groups-and-pairs--one-bundle-load--yes--38e3290c61d5a58f",
+     "text": "শাবাশ। এক বোঝা।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "one-bundle-load"
+      }
+     ],
+     "english": "Well done! This is “one tied load”."
+    },
+    "recast": {
+     "id": "everyday-groups-and-pairs--one-bundle-load--recast--90d69d0b0204178a",
+     "text": "এই ছবিটা দেখুন। এক বোঝা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "one-bundle-load"
+      }
+     ],
+     "english": "Look at this picture. This is “one tied load”."
+    },
+    "examples": [
+     {
+      "id": "everyday-groups-and-pairs--one-bundle-load--example-1--06e73beb0db627a1",
+      "text": "এক বোঝা খড় এনেছেন",
+      "fallback": [
+       {
+        "clip": "06e73beb0db627a18e4d"
+       }
+      ]
+     }
+    ]
+   },
+   "flock-of-flying-birds": {
+    "word": {
+     "id": "everyday-groups-and-pairs--flock-of-flying-birds--word--04037ab6295eb3f8",
+     "text": "এক ঝাঁক",
+     "fallback": [
+      {
+       "word": "flock-of-flying-birds"
+      }
+     ]
+    },
+    "ask": {
+     "id": "everyday-groups-and-pairs--flock-of-flying-birds--ask--7da56f085407645a",
+     "text": "এক ঝাঁক। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "flock-of-flying-birds"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “one flock of birds”? Show me."
+    },
+    "yes": {
+     "id": "everyday-groups-and-pairs--flock-of-flying-birds--yes--0dfdf31ef8d69977",
+     "text": "একদম ঠিক। এক ঝাঁক।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "flock-of-flying-birds"
+      }
+     ],
+     "english": "Exactly right! This is “one flock of birds”."
+    },
+    "recast": {
+     "id": "everyday-groups-and-pairs--flock-of-flying-birds--recast--18b6186df98c551e",
+     "text": "এই ছবিটা দেখুন। এক ঝাঁক।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "flock-of-flying-birds"
+      }
+     ],
+     "english": "Look at this picture. This is “one flock of birds”."
+    },
+    "examples": [
+     {
+      "id": "everyday-groups-and-pairs--flock-of-flying-birds--example-1--de6d515337697f64",
+      "text": "এক ঝাঁক পাখি উড়ছে",
+      "fallback": [
+       {
+        "clip": "de6d515337697f645cf4"
+       }
+      ]
+     }
+    ]
+   },
+   "group-of-local-people": {
+    "word": {
+     "id": "everyday-groups-and-pairs--group-of-local-people--word--9d642b7fb2291dd2",
+     "text": "এক দল",
+     "fallback": [
+      {
+       "word": "group-of-local-people"
+      }
+     ]
+    },
+    "ask": {
+     "id": "everyday-groups-and-pairs--group-of-local-people--ask--30f29b71f36faedf",
+     "text": "খুঁজে দেখুন। এক দল।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "group-of-local-people"
+      }
+     ],
+     "english": "Find “one group of people”."
+    },
+    "yes": {
+     "id": "everyday-groups-and-pairs--group-of-local-people--yes--8d529877ef083482",
+     "text": "দারুণ। এক দল।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "group-of-local-people"
+      }
+     ],
+     "english": "Great! This is “one group of people”."
+    },
+    "recast": {
+     "id": "everyday-groups-and-pairs--group-of-local-people--recast--18a44a6f2e7bf149",
+     "text": "এই ছবিটা দেখুন। এক দল।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "group-of-local-people"
+      }
+     ],
+     "english": "Look at this picture. This is “one group of people”."
+    },
+    "examples": [
+     {
+      "id": "everyday-groups-and-pairs--group-of-local-people--example-1--cc24ce3ca5f48573",
+      "text": "এক দল মানুষ দাঁড়িয়ে আছে",
+      "fallback": [
+       {
+        "clip": "cc24ce3ca5f485735864"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "hair-care-at-home": {
+   "hair-drying-tool": {
+    "word": {
+     "id": "hair-care-at-home--hair-drying-tool--word--16ad1d6b1e133243",
+     "text": "চুল শুকানোর যন্ত্র",
+     "fallback": [
+      {
+       "word": "hair-drying-tool"
+      }
+     ]
+    },
+    "ask": {
+     "id": "hair-care-at-home--hair-drying-tool--ask--1e5e59f171c8711b",
+     "text": "মন দিয়ে শুনুন। চুল শুকানোর যন্ত্র। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "hair-drying-tool"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “hair dryer”."
+    },
+    "yes": {
+     "id": "hair-care-at-home--hair-drying-tool--yes--c022c26dab6171e4",
+     "text": "খুব ভালো। চুল শুকানোর যন্ত্র।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "hair-drying-tool"
+      }
+     ],
+     "english": "Very good! This is “hair dryer”."
+    },
+    "recast": {
+     "id": "hair-care-at-home--hair-drying-tool--recast--34d9d5b2abf90a54",
+     "text": "এই ছবিটা দেখুন। চুল শুকানোর যন্ত্র।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "hair-drying-tool"
+      }
+     ],
+     "english": "Look at this picture. This is “hair dryer”."
+    },
+    "examples": [
+     {
+      "id": "hair-care-at-home--hair-drying-tool--example-1--b7e82b69ad33b0a1",
+      "text": "চুল শুকানোর যন্ত্রটা চালান",
+      "fallback": [
+       {
+        "clip": "b7e82b69ad33b0a10b3c"
+       }
+      ]
+     }
+    ]
+   },
+   "wide-brush-for-hair": {
+    "word": {
+     "id": "hair-care-at-home--wide-brush-for-hair--word--b61e6babe747694f",
+     "text": "চুলের ঝাড়নি",
+     "fallback": [
+      {
+       "word": "wide-brush-for-hair"
+      }
+     ]
+    },
+    "ask": {
+     "id": "hair-care-at-home--wide-brush-for-hair--ask--f04a22ab3a65102e",
+     "text": "খুঁজে দেখুন। চুলের ঝাড়নি।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "wide-brush-for-hair"
+      }
+     ],
+     "english": "Find “hairbrush”."
+    },
+    "yes": {
+     "id": "hair-care-at-home--wide-brush-for-hair--yes--68bdb4f95442be88",
+     "text": "চমৎকার। চুলের ঝাড়নি।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "wide-brush-for-hair"
+      }
+     ],
+     "english": "Excellent! This is “hairbrush”."
+    },
+    "recast": {
+     "id": "hair-care-at-home--wide-brush-for-hair--recast--0d05a1d134042987",
+     "text": "এই ছবিটা দেখুন। চুলের ঝাড়নি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "wide-brush-for-hair"
+      }
+     ],
+     "english": "Look at this picture. This is “hairbrush”."
+    },
+    "examples": [
+     {
+      "id": "hair-care-at-home--wide-brush-for-hair--example-1--3aaa437f450416e1",
+      "text": "ঝাড়নি দিয়ে চুল আঁচড়ান",
+      "fallback": [
+       {
+        "clip": "3aaa437f450416e1e00b"
+       }
+      ]
+     }
+    ]
+   },
+   "hair-washing-liquid": {
+    "word": {
+     "id": "hair-care-at-home--hair-washing-liquid--word--facb0c3cedf46e3b",
+     "text": "চুল ধোয়ার সাবান",
+     "fallback": [
+      {
+       "word": "hair-washing-liquid"
+      }
+     ]
+    },
+    "ask": {
+     "id": "hair-care-at-home--hair-washing-liquid--ask--f6ef014ddb5c498c",
+     "text": "চুল ধোয়ার সাবান। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "hair-washing-liquid"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “liquid soap used for washing hair”? Show me."
+    },
+    "yes": {
+     "id": "hair-care-at-home--hair-washing-liquid--yes--6a95b3915326d6f6",
+     "text": "বাহ্। চুল ধোয়ার সাবান।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "hair-washing-liquid"
+      }
+     ],
+     "english": "Wow! This is “liquid soap used for washing hair”."
+    },
+    "recast": {
+     "id": "hair-care-at-home--hair-washing-liquid--recast--72f1e27ede8a3c96",
+     "text": "এই ছবিটা দেখুন। চুল ধোয়ার সাবান।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "hair-washing-liquid"
+      }
+     ],
+     "english": "Look at this picture. This is “liquid soap used for washing hair”."
+    },
+    "examples": [
+     {
+      "id": "hair-care-at-home--hair-washing-liquid--example-1--0b3fb132da82536d",
+      "text": "চুল ধোয়ার সাবানটা দিন",
+      "fallback": [
+       {
+        "clip": "0b3fb132da82536da1c5"
+       }
+      ]
+     }
+    ]
+   },
+   "bengali-hair-oil-bottle": {
+    "word": {
+     "id": "hair-care-at-home--bengali-hair-oil-bottle--word--923791931f1b8b5b",
+     "text": "চুলের তেল",
+     "fallback": [
+      {
+       "word": "bengali-hair-oil-bottle"
+      }
+     ]
+    },
+    "ask": {
+     "id": "hair-care-at-home--bengali-hair-oil-bottle--ask--b7c3bd5718c8f86a",
+     "text": "খুঁজে দেখুন। চুলের তেল।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "bengali-hair-oil-bottle"
+      }
+     ],
+     "english": "Find “hair oil”."
+    },
+    "yes": {
+     "id": "hair-care-at-home--bengali-hair-oil-bottle--yes--7c651b864afff8c9",
+     "text": "দারুণ। চুলের তেল।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "bengali-hair-oil-bottle"
+      }
+     ],
+     "english": "Great! This is “hair oil”."
+    },
+    "recast": {
+     "id": "hair-care-at-home--bengali-hair-oil-bottle--recast--bcba2aa21e84066b",
+     "text": "এই ছবিটা দেখুন। চুলের তেল।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "bengali-hair-oil-bottle"
+      }
+     ],
+     "english": "Look at this picture. This is “hair oil”."
+    },
+    "examples": [
+     {
+      "id": "hair-care-at-home--bengali-hair-oil-bottle--example-1--9d779ef0210dbce0",
+      "text": "চুলে একটু তেল দিন",
+      "fallback": [
+       {
+        "clip": "9d779ef0210dbce0c813"
+       }
+      ]
+     }
+    ]
+   },
+   "elastic-tie-for-hair": {
+    "word": {
+     "id": "hair-care-at-home--elastic-tie-for-hair--word--af1f0e6aea585de9",
+     "text": "চুলের বাঁধনি",
+     "fallback": [
+      {
+       "word": "elastic-tie-for-hair"
+      }
+     ]
+    },
+    "ask": {
+     "id": "hair-care-at-home--elastic-tie-for-hair--ask--3c99726be2760a56",
+     "text": "চুলের বাঁধনি। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "elastic-tie-for-hair"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “elastic hair tie”? Show me."
+    },
+    "yes": {
+     "id": "hair-care-at-home--elastic-tie-for-hair--yes--de33306fc2d7b312",
+     "text": "হ্যাঁ, ঠিক হয়েছে। চুলের বাঁধনি।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "elastic-tie-for-hair"
+      }
+     ],
+     "english": "Yes! This is “elastic hair tie”."
+    },
+    "recast": {
+     "id": "hair-care-at-home--elastic-tie-for-hair--recast--e6b53239701c1619",
+     "text": "এই ছবিটা দেখুন। চুলের বাঁধনি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "elastic-tie-for-hair"
+      }
+     ],
+     "english": "Look at this picture. This is “elastic hair tie”."
+    },
+    "examples": [
+     {
+      "id": "hair-care-at-home--elastic-tie-for-hair--example-1--880fe473a9671c75",
+      "text": "চুলের বাঁধনিটা দিন",
+      "fallback": [
+       {
+        "clip": "880fe473a9671c75e3e2"
+       }
+      ]
+     }
+    ]
+   },
+   "small-claw-hair-grip": {
+    "word": {
+     "id": "hair-care-at-home--small-claw-hair-grip--word--bd8d24d1fa70bbba",
+     "text": "চুলের চিমটি",
+     "fallback": [
+      {
+       "word": "small-claw-hair-grip"
+      }
+     ]
+    },
+    "ask": {
+     "id": "hair-care-at-home--small-claw-hair-grip--ask--70d2405f4dedb098",
+     "text": "খুঁজে দেখুন। চুলের চিমটি।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "small-claw-hair-grip"
+      }
+     ],
+     "english": "Find “claw hair clip”."
+    },
+    "yes": {
+     "id": "hair-care-at-home--small-claw-hair-grip--yes--9fb5146bba35dccd",
+     "text": "দারুণ। চুলের চিমটি।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "small-claw-hair-grip"
+      }
+     ],
+     "english": "Great! This is “claw hair clip”."
+    },
+    "recast": {
+     "id": "hair-care-at-home--small-claw-hair-grip--recast--35083532f5a57304",
+     "text": "এই ছবিটা দেখুন। চুলের চিমটি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "small-claw-hair-grip"
+      }
+     ],
+     "english": "Look at this picture. This is “claw hair clip”."
+    },
+    "examples": [
+     {
+      "id": "hair-care-at-home--small-claw-hair-grip--example-1--9fc2595fe842017e",
+      "text": "চিমটি দিয়ে চুল আটকান",
+      "fallback": [
+       {
+        "clip": "9fc2595fe842017e2a62"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "reading-a-bangla-newspaper": {
+   "newspaper-front-page": {
+    "word": {
+     "id": "reading-a-bangla-newspaper--newspaper-front-page--word--7b0cddc241a76a2b",
+     "text": "খবরের কাগজের প্রথম পাতা",
+     "fallback": [
+      {
+       "word": "newspaper-front-page"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reading-a-bangla-newspaper--newspaper-front-page--ask--2215a045c0212dfa",
+     "text": "মন দিয়ে শুনুন। খবরের কাগজের প্রথম পাতা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "newspaper-front-page"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “newspaper front page”."
+    },
+    "yes": {
+     "id": "reading-a-bangla-newspaper--newspaper-front-page--yes--a2dfbdbcbe46e02e",
+     "text": "চমৎকার। খবরের কাগজের প্রথম পাতা।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "newspaper-front-page"
+      }
+     ],
+     "english": "Excellent! This is “newspaper front page”."
+    },
+    "recast": {
+     "id": "reading-a-bangla-newspaper--newspaper-front-page--recast--1c3e798787386965",
+     "text": "এই ছবিটা দেখুন। খবরের কাগজের প্রথম পাতা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "newspaper-front-page"
+      }
+     ],
+     "english": "Look at this picture. This is “newspaper front page”."
+    },
+    "examples": [
+     {
+      "id": "reading-a-bangla-newspaper--newspaper-front-page--example-1--c3952155a4c25825",
+      "text": "প্রথম পাতায় বড় খবর থাকে",
+      "fallback": [
+       {
+        "clip": "c3952155a4c2582571d1"
+       }
+      ]
+     }
+    ]
+   },
+   "newspaper-large-headline": {
+    "word": {
+     "id": "reading-a-bangla-newspaper--newspaper-large-headline--word--accc2e50166eee4b",
+     "text": "খবরের বড় শিরোনাম",
+     "fallback": [
+      {
+       "word": "newspaper-large-headline"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reading-a-bangla-newspaper--newspaper-large-headline--ask--188a3032ed9f1eed",
+     "text": "খবরের বড় শিরোনাম। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "newspaper-large-headline"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “large news headline”? Show me."
+    },
+    "yes": {
+     "id": "reading-a-bangla-newspaper--newspaper-large-headline--yes--34d443bee3db2b2d",
+     "text": "বাহ্। খবরের বড় শিরোনাম।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "newspaper-large-headline"
+      }
+     ],
+     "english": "Wow! This is “large news headline”."
+    },
+    "recast": {
+     "id": "reading-a-bangla-newspaper--newspaper-large-headline--recast--12b8621468c7d09f",
+     "text": "এই ছবিটা দেখুন। খবরের বড় শিরোনাম।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "newspaper-large-headline"
+      }
+     ],
+     "english": "Look at this picture. This is “large news headline”."
+    },
+    "examples": [
+     {
+      "id": "reading-a-bangla-newspaper--newspaper-large-headline--example-1--44e83c38668988c5",
+      "text": "খবরের শিরোনামটা পড়ুন",
+      "fallback": [
+       {
+        "clip": "44e83c38668988c547df"
+       }
+      ]
+     }
+    ]
+   },
+   "newspaper-picture-with-caption": {
+    "word": {
+     "id": "reading-a-bangla-newspaper--newspaper-picture-with-caption--word--193e0a8a093d0626",
+     "text": "ছবির নিচের লেখা",
+     "fallback": [
+      {
+       "word": "newspaper-picture-with-caption"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reading-a-bangla-newspaper--newspaper-picture-with-caption--ask--0aece6dd9383e2c0",
+     "text": "ছবির নিচের লেখা। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "newspaper-picture-with-caption"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “caption beneath a newspaper photo”? Show me."
+    },
+    "yes": {
+     "id": "reading-a-bangla-newspaper--newspaper-picture-with-caption--yes--edeb982a678a23ac",
+     "text": "শাবাশ। ছবির নিচের লেখা।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "newspaper-picture-with-caption"
+      }
+     ],
+     "english": "Well done! This is “caption beneath a newspaper photo”."
+    },
+    "recast": {
+     "id": "reading-a-bangla-newspaper--newspaper-picture-with-caption--recast--a74024f761d0d9b9",
+     "text": "এই ছবিটা দেখুন। ছবির নিচের লেখা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "newspaper-picture-with-caption"
+      }
+     ],
+     "english": "Look at this picture. This is “caption beneath a newspaper photo”."
+    },
+    "examples": [
+     {
+      "id": "reading-a-bangla-newspaper--newspaper-picture-with-caption--example-1--0a3099799e23c2c9",
+      "text": "ছবির নিচের লেখাটা দেখুন",
+      "fallback": [
+       {
+        "clip": "0a3099799e23c2c903fa"
+       }
+      ]
+     }
+    ]
+   },
+   "newspaper-weather-section": {
+    "word": {
+     "id": "reading-a-bangla-newspaper--newspaper-weather-section--word--001d1e935a62f5c1",
+     "text": "আবহাওয়ার খবর",
+     "fallback": [
+      {
+       "word": "newspaper-weather-section"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reading-a-bangla-newspaper--newspaper-weather-section--ask--07ddc9e1b3aed1c2",
+     "text": "মন দিয়ে শুনুন। আবহাওয়ার খবর। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "newspaper-weather-section"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “newspaper weather panel”."
+    },
+    "yes": {
+     "id": "reading-a-bangla-newspaper--newspaper-weather-section--yes--7b82a38d48ec3f2c",
+     "text": "শাবাশ। আবহাওয়ার খবর।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "newspaper-weather-section"
+      }
+     ],
+     "english": "Well done! This is “newspaper weather panel”."
+    },
+    "recast": {
+     "id": "reading-a-bangla-newspaper--newspaper-weather-section--recast--d2fd5eb62d19e152",
+     "text": "এই ছবিটা দেখুন। আবহাওয়ার খবর।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "newspaper-weather-section"
+      }
+     ],
+     "english": "Look at this picture. This is “newspaper weather panel”."
+    },
+    "examples": [
+     {
+      "id": "reading-a-bangla-newspaper--newspaper-weather-section--example-1--109cc94f98a9b6f7",
+      "text": "আবহাওয়ার খবরটা দেখুন",
+      "fallback": [
+       {
+        "clip": "109cc94f98a9b6f74d52"
+       }
+      ]
+     }
+    ]
+   },
+   "newspaper-classified-section": {
+    "word": {
+     "id": "reading-a-bangla-newspaper--newspaper-classified-section--word--1db223d922193dee",
+     "text": "ছোট বিজ্ঞাপন",
+     "fallback": [
+      {
+       "word": "newspaper-classified-section"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reading-a-bangla-newspaper--newspaper-classified-section--ask--d9b3ebdf8ada9226",
+     "text": "মন দিয়ে শুনুন। ছোট বিজ্ঞাপন। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "newspaper-classified-section"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “newspaper classifieds”."
+    },
+    "yes": {
+     "id": "reading-a-bangla-newspaper--newspaper-classified-section--yes--f4141efc6107bbab",
+     "text": "একদম ঠিক। ছোট বিজ্ঞাপন।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "newspaper-classified-section"
+      }
+     ],
+     "english": "Exactly right! This is “newspaper classifieds”."
+    },
+    "recast": {
+     "id": "reading-a-bangla-newspaper--newspaper-classified-section--recast--4d5d73d6d3c42a96",
+     "text": "এই ছবিটা দেখুন। ছোট বিজ্ঞাপন।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "newspaper-classified-section"
+      }
+     ],
+     "english": "Look at this picture. This is “newspaper classifieds”."
+    },
+    "examples": [
+     {
+      "id": "reading-a-bangla-newspaper--newspaper-classified-section--example-1--8b28ed0bfc1486eb",
+      "text": "ছোট বিজ্ঞাপনে বাসা খুঁজি",
+      "fallback": [
+       {
+        "clip": "8b28ed0bfc1486ebcd0a"
+       }
+      ]
+     }
+    ]
+   },
+   "newspaper-sports-page": {
+    "word": {
+     "id": "reading-a-bangla-newspaper--newspaper-sports-page--word--200529bd3a9c29b9",
+     "text": "খেলার খবর",
+     "fallback": [
+      {
+       "word": "newspaper-sports-page"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reading-a-bangla-newspaper--newspaper-sports-page--ask--b35c5d1c0f8e7532",
+     "text": "খেলার খবর। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "newspaper-sports-page"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “newspaper sports reporting panel”? Show me."
+    },
+    "yes": {
+     "id": "reading-a-bangla-newspaper--newspaper-sports-page--yes--7686f0218cf4868e",
+     "text": "শাবাশ। খেলার খবর।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "newspaper-sports-page"
+      }
+     ],
+     "english": "Well done! This is “newspaper sports reporting panel”."
+    },
+    "recast": {
+     "id": "reading-a-bangla-newspaper--newspaper-sports-page--recast--e056b2a70f369502",
+     "text": "এই ছবিটা দেখুন। খেলার খবর।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "newspaper-sports-page"
+      }
+     ],
+     "english": "Look at this picture. This is “newspaper sports reporting panel”."
+    },
+    "examples": [
+     {
+      "id": "reading-a-bangla-newspaper--newspaper-sports-page--example-1--768a5560470c3b72",
+      "text": "খেলার খবরটা পড়েছেন?",
+      "fallback": [
+       {
+        "clip": "768a5560470c3b727b22"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "holding-food-for-an-outing": {
+   "tiffin-stack-for-carrying": {
+    "word": {
+     "id": "holding-food-for-an-outing--tiffin-stack-for-carrying--word--9088751807deb527",
+     "text": "খাবার নেওয়ার পাত্র",
+     "fallback": [
+      {
+       "word": "tiffin-stack-for-carrying"
+      }
+     ]
+    },
+    "ask": {
+     "id": "holding-food-for-an-outing--tiffin-stack-for-carrying--ask--94ca5acd60c50a6a",
+     "text": "খুঁজে দেখুন। খাবার নেওয়ার পাত্র।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "tiffin-stack-for-carrying"
+      }
+     ],
+     "english": "Find “stacked steel meal carrier”."
+    },
+    "yes": {
+     "id": "holding-food-for-an-outing--tiffin-stack-for-carrying--yes--f6352dc2a17932d2",
+     "text": "চমৎকার। খাবার নেওয়ার পাত্র।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "tiffin-stack-for-carrying"
+      }
+     ],
+     "english": "Excellent! This is “stacked steel meal carrier”."
+    },
+    "recast": {
+     "id": "holding-food-for-an-outing--tiffin-stack-for-carrying--recast--bf88cc4a35d4e5f8",
+     "text": "এই ছবিটা দেখুন। খাবার নেওয়ার পাত্র।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "tiffin-stack-for-carrying"
+      }
+     ],
+     "english": "Look at this picture. This is “stacked steel meal carrier”."
+    },
+    "examples": [
+     {
+      "id": "holding-food-for-an-outing--tiffin-stack-for-carrying--example-1--ed9e0105f5925f85",
+      "text": "খাবারটা পাত্রে নিয়ে যান",
+      "fallback": [
+       {
+        "clip": "ed9e0105f5925f85e14f"
+       }
+      ]
+     }
+    ]
+   },
+   "reusable-drinking-bottle": {
+    "word": {
+     "id": "holding-food-for-an-outing--reusable-drinking-bottle--word--d30bf6154c84466d",
+     "text": "পানির বোতল",
+     "fallback": [
+      {
+       "word": "reusable-drinking-bottle"
+      }
+     ]
+    },
+    "ask": {
+     "id": "holding-food-for-an-outing--reusable-drinking-bottle--ask--077b1af06917a3b0",
+     "text": "খুঁজে দেখুন। পানির বোতল।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "reusable-drinking-bottle"
+      }
+     ],
+     "english": "Find “reusable drinking-water bottle”."
+    },
+    "yes": {
+     "id": "holding-food-for-an-outing--reusable-drinking-bottle--yes--1fe7eeb8c837dc58",
+     "text": "শাবাশ। পানির বোতল।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "reusable-drinking-bottle"
+      }
+     ],
+     "english": "Well done! This is “reusable drinking-water bottle”."
+    },
+    "recast": {
+     "id": "holding-food-for-an-outing--reusable-drinking-bottle--recast--c77d8716ecb4e1cd",
+     "text": "এই ছবিটা দেখুন। পানির বোতল।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "reusable-drinking-bottle"
+      }
+     ],
+     "english": "Look at this picture. This is “reusable drinking-water bottle”."
+    },
+    "examples": [
+     {
+      "id": "holding-food-for-an-outing--reusable-drinking-bottle--example-1--f69f8165a2f2025a",
+      "text": "পানির বোতলটা ভরে নিন",
+      "fallback": [
+       {
+        "clip": "f69f8165a2f2025a1153"
+       }
+      ]
+     }
+    ]
+   },
+   "lidded-picnic-basket": {
+    "word": {
+     "id": "holding-food-for-an-outing--lidded-picnic-basket--word--ed89c2a270e34844",
+     "text": "খাবারের ঝুড়ি",
+     "fallback": [
+      {
+       "word": "lidded-picnic-basket"
+      }
+     ]
+    },
+    "ask": {
+     "id": "holding-food-for-an-outing--lidded-picnic-basket--ask--337bdd0a30b89fca",
+     "text": "খাবারের ঝুড়ি। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "lidded-picnic-basket"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “lidded picnic basket”? Show me."
+    },
+    "yes": {
+     "id": "holding-food-for-an-outing--lidded-picnic-basket--yes--9148cc61099decb8",
+     "text": "শাবাশ। খাবারের ঝুড়ি।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "lidded-picnic-basket"
+      }
+     ],
+     "english": "Well done! This is “lidded picnic basket”."
+    },
+    "recast": {
+     "id": "holding-food-for-an-outing--lidded-picnic-basket--recast--833345c502b144e7",
+     "text": "এই ছবিটা দেখুন। খাবারের ঝুড়ি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "lidded-picnic-basket"
+      }
+     ],
+     "english": "Look at this picture. This is “lidded picnic basket”."
+    },
+    "examples": [
+     {
+      "id": "holding-food-for-an-outing--lidded-picnic-basket--example-1--2335c9253bbe5eee",
+      "text": "ঝুড়িতে খাবার রাখুন",
+      "fallback": [
+       {
+        "clip": "2335c9253bbe5eeeaee2"
+       }
+      ]
+     }
+    ]
+   },
+   "insulated-hot-drink-flask": {
+    "word": {
+     "id": "holding-food-for-an-outing--insulated-hot-drink-flask--word--ed127677033f5d1f",
+     "text": "গরম রাখার বোতল",
+     "fallback": [
+      {
+       "word": "insulated-hot-drink-flask"
+      }
+     ]
+    },
+    "ask": {
+     "id": "holding-food-for-an-outing--insulated-hot-drink-flask--ask--0e65be3dd2dd7181",
+     "text": "মন দিয়ে শুনুন। গরম রাখার বোতল। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "insulated-hot-drink-flask"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “insulated flask for hot drinks”."
+    },
+    "yes": {
+     "id": "holding-food-for-an-outing--insulated-hot-drink-flask--yes--93a0c94c5b2af944",
+     "text": "একদম ঠিক। গরম রাখার বোতল।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "insulated-hot-drink-flask"
+      }
+     ],
+     "english": "Exactly right! This is “insulated flask for hot drinks”."
+    },
+    "recast": {
+     "id": "holding-food-for-an-outing--insulated-hot-drink-flask--recast--f0d607356a71584d",
+     "text": "এই ছবিটা দেখুন। গরম রাখার বোতল।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "insulated-hot-drink-flask"
+      }
+     ],
+     "english": "Look at this picture. This is “insulated flask for hot drinks”."
+    },
+    "examples": [
+     {
+      "id": "holding-food-for-an-outing--insulated-hot-drink-flask--example-1--0f07e8d6e754f538",
+      "text": "বোতলে চা গরম থাকবে",
+      "fallback": [
+       {
+        "clip": "0f07e8d6e754f538872e"
+       }
+      ]
+     }
+    ]
+   },
+   "portable-cold-food-box": {
+    "word": {
+     "id": "holding-food-for-an-outing--portable-cold-food-box--word--16fa6da0595d4c50",
+     "text": "ঠান্ডা রাখার বাক্স",
+     "fallback": [
+      {
+       "word": "portable-cold-food-box"
+      }
+     ]
+    },
+    "ask": {
+     "id": "holding-food-for-an-outing--portable-cold-food-box--ask--7bfc5e35a3169b34",
+     "text": "খুঁজে দেখুন। ঠান্ডা রাখার বাক্স।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "portable-cold-food-box"
+      }
+     ],
+     "english": "Find “insulated lidded cold-food box”."
+    },
+    "yes": {
+     "id": "holding-food-for-an-outing--portable-cold-food-box--yes--5da5433439489d60",
+     "text": "দারুণ। ঠান্ডা রাখার বাক্স।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "portable-cold-food-box"
+      }
+     ],
+     "english": "Great! This is “insulated lidded cold-food box”."
+    },
+    "recast": {
+     "id": "holding-food-for-an-outing--portable-cold-food-box--recast--4acd9eca6720e3c6",
+     "text": "এই ছবিটা দেখুন। ঠান্ডা রাখার বাক্স।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "portable-cold-food-box"
+      }
+     ],
+     "english": "Look at this picture. This is “insulated lidded cold-food box”."
+    },
+    "examples": [
+     {
+      "id": "holding-food-for-an-outing--portable-cold-food-box--example-1--c9151367d75b9dd1",
+      "text": "বাক্সে মাছ ঠান্ডা থাকবে",
+      "fallback": [
+       {
+        "clip": "c9151367d75b9dd1a567"
+       }
+      ]
+     }
+    ]
+   },
+   "water-freezing-tray": {
+    "word": {
+     "id": "holding-food-for-an-outing--water-freezing-tray--word--61cd06f72ec030dd",
+     "text": "বরফ জমানোর ছাঁচ",
+     "fallback": [
+      {
+       "word": "water-freezing-tray"
+      }
+     ]
+    },
+    "ask": {
+     "id": "holding-food-for-an-outing--water-freezing-tray--ask--015c4aef435ccf8a",
+     "text": "বরফ জমানোর ছাঁচ। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "water-freezing-tray"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “ice cube tray”? Show me."
+    },
+    "yes": {
+     "id": "holding-food-for-an-outing--water-freezing-tray--yes--471946afebb8cfa2",
+     "text": "শাবাশ। বরফ জমানোর ছাঁচ।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "water-freezing-tray"
+      }
+     ],
+     "english": "Well done! This is “ice cube tray”."
+    },
+    "recast": {
+     "id": "holding-food-for-an-outing--water-freezing-tray--recast--cb5d786426851de1",
+     "text": "এই ছবিটা দেখুন। বরফ জমানোর ছাঁচ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "water-freezing-tray"
+      }
+     ],
+     "english": "Look at this picture. This is “ice cube tray”."
+    },
+    "examples": [
+     {
+      "id": "holding-food-for-an-outing--water-freezing-tray--example-1--bf69a2a48e0c344a",
+      "text": "ছাঁচে পানি দিয়ে বরফ জমান",
+      "fallback": [
+       {
+        "clip": "bf69a2a48e0c344a5e43"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "getting-through-a-crowded-place": {
+   "joining-the-back-of-a-line": {
+    "word": {
+     "id": "getting-through-a-crowded-place--joining-the-back-of-a-line--word--0ae785d7792b5809",
+     "text": "সারির শেষে দাঁড়ানো",
+     "fallback": [
+      {
+       "word": "joining-the-back-of-a-line"
+      }
+     ]
+    },
+    "ask": {
+     "id": "getting-through-a-crowded-place--joining-the-back-of-a-line--ask--70afe7cb02136f44",
+     "text": "খুঁজে দেখুন। সারির শেষে দাঁড়ানো।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "joining-the-back-of-a-line"
+      }
+     ],
+     "english": "Find “joining a queue at the back”."
+    },
+    "yes": {
+     "id": "getting-through-a-crowded-place--joining-the-back-of-a-line--yes--e0e3cfa7601338ce",
+     "text": "হ্যাঁ, ঠিক হয়েছে। সারির শেষে দাঁড়ানো।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "joining-the-back-of-a-line"
+      }
+     ],
+     "english": "Yes! This is “joining a queue at the back”."
+    },
+    "recast": {
+     "id": "getting-through-a-crowded-place--joining-the-back-of-a-line--recast--b32407fc21ceb81b",
+     "text": "এই ছবিটা দেখুন। সারির শেষে দাঁড়ানো।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "joining-the-back-of-a-line"
+      }
+     ],
+     "english": "Look at this picture. This is “joining a queue at the back”."
+    },
+    "examples": [
+     {
+      "id": "getting-through-a-crowded-place--joining-the-back-of-a-line--example-1--8c6549467ed58aa4",
+      "text": "সারির শেষে দাঁড়ান",
+      "fallback": [
+       {
+        "clip": "8c6549467ed58aa49245"
+       }
+      ]
+     }
+    ]
+   },
+   "cutting-in-front-of-a-line": {
+    "word": {
+     "id": "getting-through-a-crowded-place--cutting-in-front-of-a-line--word--bda7b06c93bc8c50",
+     "text": "আগে ঢুকে পড়া",
+     "fallback": [
+      {
+       "word": "cutting-in-front-of-a-line"
+      }
+     ]
+    },
+    "ask": {
+     "id": "getting-through-a-crowded-place--cutting-in-front-of-a-line--ask--3d184787bbd7d484",
+     "text": "আগে ঢুকে পড়া। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "cutting-in-front-of-a-line"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “cutting into a queue”? Show me."
+    },
+    "yes": {
+     "id": "getting-through-a-crowded-place--cutting-in-front-of-a-line--yes--828132587311b060",
+     "text": "দারুণ। আগে ঢুকে পড়া।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "cutting-in-front-of-a-line"
+      }
+     ],
+     "english": "Great! This is “cutting into a queue”."
+    },
+    "recast": {
+     "id": "getting-through-a-crowded-place--cutting-in-front-of-a-line--recast--3d7e2986bbd16daf",
+     "text": "এই ছবিটা দেখুন। আগে ঢুকে পড়া।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "cutting-in-front-of-a-line"
+      }
+     ],
+     "english": "Look at this picture. This is “cutting into a queue”."
+    },
+    "examples": [
+     {
+      "id": "getting-through-a-crowded-place--cutting-in-front-of-a-line--example-1--9f36f997ce1ae78d",
+      "text": "সবার আগে ঢুকে পড়বেন না",
+      "fallback": [
+       {
+        "clip": "9f36f997ce1ae78df2c8"
+       }
+      ]
+     }
+    ]
+   },
+   "blocking-a-narrow-passage": {
+    "word": {
+     "id": "getting-through-a-crowded-place--blocking-a-narrow-passage--word--08fc8c8751bffaa6",
+     "text": "পথ আটকে দাঁড়ানো",
+     "fallback": [
+      {
+       "word": "blocking-a-narrow-passage"
+      }
+     ]
+    },
+    "ask": {
+     "id": "getting-through-a-crowded-place--blocking-a-narrow-passage--ask--9ee2df7a028abe00",
+     "text": "পথ আটকে দাঁড়ানো। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "blocking-a-narrow-passage"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “standing across a passage”? Show me."
+    },
+    "yes": {
+     "id": "getting-through-a-crowded-place--blocking-a-narrow-passage--yes--538af547c3ee074f",
+     "text": "একদম ঠিক। পথ আটকে দাঁড়ানো।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "blocking-a-narrow-passage"
+      }
+     ],
+     "english": "Exactly right! This is “standing across a passage”."
+    },
+    "recast": {
+     "id": "getting-through-a-crowded-place--blocking-a-narrow-passage--recast--035dc25075927bf3",
+     "text": "এই ছবিটা দেখুন। পথ আটকে দাঁড়ানো।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "blocking-a-narrow-passage"
+      }
+     ],
+     "english": "Look at this picture. This is “standing across a passage”."
+    },
+    "examples": [
+     {
+      "id": "getting-through-a-crowded-place--blocking-a-narrow-passage--example-1--44a43eff9ffb221a",
+      "text": "পথ আটকে দাঁড়াবেন না",
+      "fallback": [
+       {
+        "clip": "44a43eff9ffb221a7e8b"
+       }
+      ]
+     }
+    ]
+   },
+   "walking-through-a-gap": {
+    "word": {
+     "id": "getting-through-a-crowded-place--walking-through-a-gap--word--ff01b44b117b65de",
+     "text": "ফাঁক দিয়ে যাওয়া",
+     "fallback": [
+      {
+       "word": "walking-through-a-gap"
+      }
+     ]
+    },
+    "ask": {
+     "id": "getting-through-a-crowded-place--walking-through-a-gap--ask--fbe04c5f2286dc78",
+     "text": "ফাঁক দিয়ে যাওয়া। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "walking-through-a-gap"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “walking through a narrow gap”? Show me."
+    },
+    "yes": {
+     "id": "getting-through-a-crowded-place--walking-through-a-gap--yes--4bb5b78e8cdd4134",
+     "text": "শাবাশ। ফাঁক দিয়ে যাওয়া।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "walking-through-a-gap"
+      }
+     ],
+     "english": "Well done! This is “walking through a narrow gap”."
+    },
+    "recast": {
+     "id": "getting-through-a-crowded-place--walking-through-a-gap--recast--7eb2b777102ec5ba",
+     "text": "এই ছবিটা দেখুন। ফাঁক দিয়ে যাওয়া।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "walking-through-a-gap"
+      }
+     ],
+     "english": "Look at this picture. This is “walking through a narrow gap”."
+    },
+    "examples": [
+     {
+      "id": "getting-through-a-crowded-place--walking-through-a-gap--example-1--94e80499fbc263d9",
+      "text": "এই ফাঁক দিয়ে যান",
+      "fallback": [
+       {
+        "clip": "94e80499fbc263d9cc56"
+       }
+      ]
+     }
+    ]
+   },
+   "coming-nearer-to-someone": {
+    "word": {
+     "id": "getting-through-a-crowded-place--coming-nearer-to-someone--word--d42e3287e202aa07",
+     "text": "কাছে এগিয়ে আসা",
+     "fallback": [
+      {
+       "word": "coming-nearer-to-someone"
+      }
+     ]
+    },
+    "ask": {
+     "id": "getting-through-a-crowded-place--coming-nearer-to-someone--ask--e06297a692b13238",
+     "text": "মন দিয়ে শুনুন। কাছে এগিয়ে আসা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "coming-nearer-to-someone"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “walking nearer to a caller”."
+    },
+    "yes": {
+     "id": "getting-through-a-crowded-place--coming-nearer-to-someone--yes--bb0ab31c92b5fe06",
+     "text": "বাহ্। কাছে এগিয়ে আসা।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "coming-nearer-to-someone"
+      }
+     ],
+     "english": "Wow! This is “walking nearer to a caller”."
+    },
+    "recast": {
+     "id": "getting-through-a-crowded-place--coming-nearer-to-someone--recast--0a83717b6bf6fa1c",
+     "text": "এই ছবিটা দেখুন। কাছে এগিয়ে আসা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "coming-nearer-to-someone"
+      }
+     ],
+     "english": "Look at this picture. This is “walking nearer to a caller”."
+    },
+    "examples": [
+     {
+      "id": "getting-through-a-crowded-place--coming-nearer-to-someone--example-1--a63acb9b2ce13cfb",
+      "text": "একটু কাছে এগিয়ে আসুন",
+      "fallback": [
+       {
+        "clip": "a63acb9b2ce13cfba14c"
+       }
+      ]
+     }
+    ]
+   },
+   "moving-sideways-for-someone": {
+    "word": {
+     "id": "getting-through-a-crowded-place--moving-sideways-for-someone--word--36ff4a1456eaa667",
+     "text": "এক পাশে সরে যাওয়া",
+     "fallback": [
+      {
+       "word": "moving-sideways-for-someone"
+      }
+     ]
+    },
+    "ask": {
+     "id": "getting-through-a-crowded-place--moving-sideways-for-someone--ask--02336b5f9a4f5476",
+     "text": "খুঁজে দেখুন। এক পাশে সরে যাওয়া।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "moving-sideways-for-someone"
+      }
+     ],
+     "english": "Find “stepping to one side”."
+    },
+    "yes": {
+     "id": "getting-through-a-crowded-place--moving-sideways-for-someone--yes--efa42ea4eccddf4b",
+     "text": "বাহ্। এক পাশে সরে যাওয়া।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "moving-sideways-for-someone"
+      }
+     ],
+     "english": "Wow! This is “stepping to one side”."
+    },
+    "recast": {
+     "id": "getting-through-a-crowded-place--moving-sideways-for-someone--recast--fb44030148d442d9",
+     "text": "এই ছবিটা দেখুন। এক পাশে সরে যাওয়া।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "moving-sideways-for-someone"
+      }
+     ],
+     "english": "Look at this picture. This is “stepping to one side”."
+    },
+    "examples": [
+     {
+      "id": "getting-through-a-crowded-place--moving-sideways-for-someone--example-1--48bd4eda509565f9",
+      "text": "একটু এক পাশে সরে যান",
+      "fallback": [
+       {
+        "clip": "48bd4eda509565f98051"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "welcoming-guests-at-home": {
+   "holding-door-open-for-guest": {
+    "word": {
+     "id": "welcoming-guests-at-home--holding-door-open-for-guest--word--fb888a28bf4e77e1",
+     "text": "দরজা ধরে রাখা",
+     "fallback": [
+      {
+       "word": "holding-door-open-for-guest"
+      }
+     ]
+    },
+    "ask": {
+     "id": "welcoming-guests-at-home--holding-door-open-for-guest--ask--b04c458b5fc7f028",
+     "text": "মন দিয়ে শুনুন। দরজা ধরে রাখা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "holding-door-open-for-guest"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “holding a door open for a guest”."
+    },
+    "yes": {
+     "id": "welcoming-guests-at-home--holding-door-open-for-guest--yes--9cf068a45a2e035c",
+     "text": "খুব ভালো। দরজা ধরে রাখা।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "holding-door-open-for-guest"
+      }
+     ],
+     "english": "Very good! This is “holding a door open for a guest”."
+    },
+    "recast": {
+     "id": "welcoming-guests-at-home--holding-door-open-for-guest--recast--440934bad46a191d",
+     "text": "এই ছবিটা দেখুন। দরজা ধরে রাখা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "holding-door-open-for-guest"
+      }
+     ],
+     "english": "Look at this picture. This is “holding a door open for a guest”."
+    },
+    "examples": [
+     {
+      "id": "welcoming-guests-at-home--holding-door-open-for-guest--example-1--75821556a6e165df",
+      "text": "মেহমানের জন্য দরজাটা ধরে রাখুন",
+      "fallback": [
+       {
+        "clip": "75821556a6e165df69f0"
+       }
+      ]
+     }
+    ]
+   },
+   "setting-out-a-mat-for-guests": {
+    "word": {
+     "id": "welcoming-guests-at-home--setting-out-a-mat-for-guests--word--82301a834369d9ab",
+     "text": "মেহমানের জন্য পাটি পাতা",
+     "fallback": [
+      {
+       "word": "setting-out-a-mat-for-guests"
+      }
+     ]
+    },
+    "ask": {
+     "id": "welcoming-guests-at-home--setting-out-a-mat-for-guests--ask--eacf96f3e2a7024a",
+     "text": "মেহমানের জন্য পাটি পাতা। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "setting-out-a-mat-for-guests"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “laying out a mat for guests”? Show me."
+    },
+    "yes": {
+     "id": "welcoming-guests-at-home--setting-out-a-mat-for-guests--yes--e937aeec0635cb3b",
+     "text": "চমৎকার। মেহমানের জন্য পাটি পাতা।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "setting-out-a-mat-for-guests"
+      }
+     ],
+     "english": "Excellent! This is “laying out a mat for guests”."
+    },
+    "recast": {
+     "id": "welcoming-guests-at-home--setting-out-a-mat-for-guests--recast--256cb3f5975444ac",
+     "text": "এই ছবিটা দেখুন। মেহমানের জন্য পাটি পাতা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "setting-out-a-mat-for-guests"
+      }
+     ],
+     "english": "Look at this picture. This is “laying out a mat for guests”."
+    },
+    "examples": [
+     {
+      "id": "welcoming-guests-at-home--setting-out-a-mat-for-guests--example-1--319ba619738ae52d",
+      "text": "মেহমানের জন্য পাটিটা পাতুন",
+      "fallback": [
+       {
+        "clip": "319ba619738ae52d051a"
+       }
+      ]
+     }
+    ]
+   },
+   "sliding-a-seat-toward-a-guest": {
+    "word": {
+     "id": "welcoming-guests-at-home--sliding-a-seat-toward-a-guest--word--441fd534e64d10b3",
+     "text": "বসার আসন এগিয়ে দেওয়া",
+     "fallback": [
+      {
+       "word": "sliding-a-seat-toward-a-guest"
+      }
+     ]
+    },
+    "ask": {
+     "id": "welcoming-guests-at-home--sliding-a-seat-toward-a-guest--ask--33b6dc052eaae12b",
+     "text": "খুঁজে দেখুন। বসার আসন এগিয়ে দেওয়া।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "sliding-a-seat-toward-a-guest"
+      }
+     ],
+     "english": "Find “offering a seat by bringing it closer”."
+    },
+    "yes": {
+     "id": "welcoming-guests-at-home--sliding-a-seat-toward-a-guest--yes--7c57ca3545df24c9",
+     "text": "শাবাশ। বসার আসন এগিয়ে দেওয়া।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "sliding-a-seat-toward-a-guest"
+      }
+     ],
+     "english": "Well done! This is “offering a seat by bringing it closer”."
+    },
+    "recast": {
+     "id": "welcoming-guests-at-home--sliding-a-seat-toward-a-guest--recast--bf5247d89a4a02af",
+     "text": "এই ছবিটা দেখুন। বসার আসন এগিয়ে দেওয়া।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "sliding-a-seat-toward-a-guest"
+      }
+     ],
+     "english": "Look at this picture. This is “offering a seat by bringing it closer”."
+    },
+    "examples": [
+     {
+      "id": "welcoming-guests-at-home--sliding-a-seat-toward-a-guest--example-1--7e1ad769b921804d",
+      "text": "আসনটা আরেকটু এগিয়ে দিন",
+      "fallback": [
+       {
+        "clip": "7e1ad769b921804dd74c"
+       }
+      ]
+     }
+    ]
+   },
+   "offering-filled-water-glass": {
+    "word": {
+     "id": "welcoming-guests-at-home--offering-filled-water-glass--word--e58d2d9f093647bd",
+     "text": "পানি এগিয়ে দেওয়া",
+     "fallback": [
+      {
+       "word": "offering-filled-water-glass"
+      }
+     ]
+    },
+    "ask": {
+     "id": "welcoming-guests-at-home--offering-filled-water-glass--ask--d65fd2dcf0458dc7",
+     "text": "মন দিয়ে শুনুন। পানি এগিয়ে দেওয়া। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "offering-filled-water-glass"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “offering someone a glass of water”."
+    },
+    "yes": {
+     "id": "welcoming-guests-at-home--offering-filled-water-glass--yes--7e19449bd1c3b7d8",
+     "text": "হ্যাঁ, ঠিক হয়েছে। পানি এগিয়ে দেওয়া।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "offering-filled-water-glass"
+      }
+     ],
+     "english": "Yes! This is “offering someone a glass of water”."
+    },
+    "recast": {
+     "id": "welcoming-guests-at-home--offering-filled-water-glass--recast--355945924ab80b91",
+     "text": "এই ছবিটা দেখুন। পানি এগিয়ে দেওয়া।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "offering-filled-water-glass"
+      }
+     ],
+     "english": "Look at this picture. This is “offering someone a glass of water”."
+    },
+    "examples": [
+     {
+      "id": "welcoming-guests-at-home--offering-filled-water-glass--example-1--cf29ee0878a9c073",
+      "text": "মেহমানকে পানি এগিয়ে দিন",
+      "fallback": [
+       {
+        "clip": "cf29ee0878a9c0738be1"
+       }
+      ]
+     }
+    ]
+   },
+   "uncovering-the-served-food": {
+    "word": {
+     "id": "welcoming-guests-at-home--uncovering-the-served-food--word--385d99014f512500",
+     "text": "খাবারের ঢাকনা সরানো",
+     "fallback": [
+      {
+       "word": "uncovering-the-served-food"
+      }
+     ]
+    },
+    "ask": {
+     "id": "welcoming-guests-at-home--uncovering-the-served-food--ask--688c7970d2ca7a06",
+     "text": "খুঁজে দেখুন। খাবারের ঢাকনা সরানো।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "uncovering-the-served-food"
+      }
+     ],
+     "english": "Find “uncovering already served food”."
+    },
+    "yes": {
+     "id": "welcoming-guests-at-home--uncovering-the-served-food--yes--2b6cabfb5ad22e19",
+     "text": "শাবাশ। খাবারের ঢাকনা সরানো।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "uncovering-the-served-food"
+      }
+     ],
+     "english": "Well done! This is “uncovering already served food”."
+    },
+    "recast": {
+     "id": "welcoming-guests-at-home--uncovering-the-served-food--recast--99e4015a9e7c4519",
+     "text": "এই ছবিটা দেখুন। খাবারের ঢাকনা সরানো।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "uncovering-the-served-food"
+      }
+     ],
+     "english": "Look at this picture. This is “uncovering already served food”."
+    },
+    "examples": [
+     {
+      "id": "welcoming-guests-at-home--uncovering-the-served-food--example-1--aae8e38b8861fff9",
+      "text": "খাবারের ঢাকনাটা সরান",
+      "fallback": [
+       {
+        "clip": "aae8e38b8861fff97f7b"
+       }
+      ]
+     }
+    ]
+   },
+   "pouring-tea-for-a-guest": {
+    "word": {
+     "id": "welcoming-guests-at-home--pouring-tea-for-a-guest--word--266d991ccf097436",
+     "text": "মেহমানকে চা ঢেলে দেওয়া",
+     "fallback": [
+      {
+       "word": "pouring-tea-for-a-guest"
+      }
+     ]
+    },
+    "ask": {
+     "id": "welcoming-guests-at-home--pouring-tea-for-a-guest--ask--253bf9da76e15e41",
+     "text": "মন দিয়ে শুনুন। মেহমানকে চা ঢেলে দেওয়া। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "pouring-tea-for-a-guest"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “pouring tea for a house guest”."
+    },
+    "yes": {
+     "id": "welcoming-guests-at-home--pouring-tea-for-a-guest--yes--4ab6f52a186f106a",
+     "text": "বাহ্। মেহমানকে চা ঢেলে দেওয়া।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "pouring-tea-for-a-guest"
+      }
+     ],
+     "english": "Wow! This is “pouring tea for a house guest”."
+    },
+    "recast": {
+     "id": "welcoming-guests-at-home--pouring-tea-for-a-guest--recast--30d7af1fe39dadf8",
+     "text": "এই ছবিটা দেখুন। মেহমানকে চা ঢেলে দেওয়া।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "pouring-tea-for-a-guest"
+      }
+     ],
+     "english": "Look at this picture. This is “pouring tea for a house guest”."
+    },
+    "examples": [
+     {
+      "id": "welcoming-guests-at-home--pouring-tea-for-a-guest--example-1--b4125ca7cdbb2a19",
+      "text": "মেহমানের পেয়ালায় চা ঢেলে দিন",
+      "fallback": [
+       {
+        "clip": "b4125ca7cdbb2a195d12"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "counting-nineteen-to-twenty-four": {
+   "nineteen-count": {
+    "word": {
+     "id": "counting-nineteen-to-twenty-four--nineteen-count--word--c74256d03a704220",
+     "text": "উনিশ",
+     "fallback": [
+      {
+       "word": "nineteen-count"
+      }
+     ]
+    },
+    "ask": {
+     "id": "counting-nineteen-to-twenty-four--nineteen-count--ask--8858ae2f4a90bf4f",
+     "text": "খুঁজে দেখুন। উনিশ।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "nineteen-count"
+      }
+     ],
+     "english": "Find “nineteen”."
+    },
+    "yes": {
+     "id": "counting-nineteen-to-twenty-four--nineteen-count--yes--8a34a84b41ffde50",
+     "text": "খুব ভালো। উনিশ।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "nineteen-count"
+      }
+     ],
+     "english": "Very good! This is “nineteen”."
+    },
+    "recast": {
+     "id": "counting-nineteen-to-twenty-four--nineteen-count--recast--c7a7a89e767a6bb5",
+     "text": "এই ছবিটা দেখুন। উনিশ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "nineteen-count"
+      }
+     ],
+     "english": "Look at this picture. This is “nineteen”."
+    },
+    "examples": [
+     {
+      "id": "counting-nineteen-to-twenty-four--nineteen-count--example-1--b27b9eb385d58f07",
+      "text": "উনিশটা গুনুন",
+      "fallback": [
+       {
+        "clip": "b27b9eb385d58f07966e"
+       }
+      ]
+     }
+    ]
+   },
+   "twenty-count": {
+    "word": {
+     "id": "counting-nineteen-to-twenty-four--twenty-count--word--e53cdfb5c5f55f1d",
+     "text": "বিশ",
+     "fallback": [
+      {
+       "word": "twenty-count"
+      }
+     ]
+    },
+    "ask": {
+     "id": "counting-nineteen-to-twenty-four--twenty-count--ask--b22324421a4fe5c0",
+     "text": "খুঁজে দেখুন। বিশ।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "twenty-count"
+      }
+     ],
+     "english": "Find “twenty”."
+    },
+    "yes": {
+     "id": "counting-nineteen-to-twenty-four--twenty-count--yes--675daeffd38886eb",
+     "text": "চমৎকার। বিশ।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "twenty-count"
+      }
+     ],
+     "english": "Excellent! This is “twenty”."
+    },
+    "recast": {
+     "id": "counting-nineteen-to-twenty-four--twenty-count--recast--e30310bbf7ae970c",
+     "text": "এই ছবিটা দেখুন। বিশ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "twenty-count"
+      }
+     ],
+     "english": "Look at this picture. This is “twenty”."
+    },
+    "examples": [
+     {
+      "id": "counting-nineteen-to-twenty-four--twenty-count--example-1--0485cd09329c48d6",
+      "text": "বিশটা দিন",
+      "fallback": [
+       {
+        "clip": "0485cd09329c48d692fd"
+       }
+      ]
+     }
+    ]
+   },
+   "twenty-one-count": {
+    "word": {
+     "id": "counting-nineteen-to-twenty-four--twenty-one-count--word--37162ef7e0faecfc",
+     "text": "একুশ",
+     "fallback": [
+      {
+       "word": "twenty-one-count"
+      }
+     ]
+    },
+    "ask": {
+     "id": "counting-nineteen-to-twenty-four--twenty-one-count--ask--182c3e5daf5716a1",
+     "text": "মন দিয়ে শুনুন। একুশ। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "twenty-one-count"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “twenty-one”."
+    },
+    "yes": {
+     "id": "counting-nineteen-to-twenty-four--twenty-one-count--yes--7554ee672190fa99",
+     "text": "চমৎকার। একুশ।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "twenty-one-count"
+      }
+     ],
+     "english": "Excellent! This is “twenty-one”."
+    },
+    "recast": {
+     "id": "counting-nineteen-to-twenty-four--twenty-one-count--recast--fbee9e5dfd476bee",
+     "text": "এই ছবিটা দেখুন। একুশ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "twenty-one-count"
+      }
+     ],
+     "english": "Look at this picture. This is “twenty-one”."
+    },
+    "examples": [
+     {
+      "id": "counting-nineteen-to-twenty-four--twenty-one-count--example-1--f64ad89e63cdcb69",
+      "text": "একুশটা আছে",
+      "fallback": [
+       {
+        "clip": "f64ad89e63cdcb6984ae"
+       }
+      ]
+     }
+    ]
+   },
+   "twenty-two-count": {
+    "word": {
+     "id": "counting-nineteen-to-twenty-four--twenty-two-count--word--f87566d33f033524",
+     "text": "বাইশ",
+     "fallback": [
+      {
+       "word": "twenty-two-count"
+      }
+     ]
+    },
+    "ask": {
+     "id": "counting-nineteen-to-twenty-four--twenty-two-count--ask--fd3b27ea23aca7ef",
+     "text": "মন দিয়ে শুনুন। বাইশ। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "twenty-two-count"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “twenty-two”."
+    },
+    "yes": {
+     "id": "counting-nineteen-to-twenty-four--twenty-two-count--yes--a68cb7bbc2a007d3",
+     "text": "চমৎকার। বাইশ।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "twenty-two-count"
+      }
+     ],
+     "english": "Excellent! This is “twenty-two”."
+    },
+    "recast": {
+     "id": "counting-nineteen-to-twenty-four--twenty-two-count--recast--a7876043485c1b7c",
+     "text": "এই ছবিটা দেখুন। বাইশ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "twenty-two-count"
+      }
+     ],
+     "english": "Look at this picture. This is “twenty-two”."
+    },
+    "examples": [
+     {
+      "id": "counting-nineteen-to-twenty-four--twenty-two-count--example-1--f59bf39ccb77948f",
+      "text": "বাইশটা রাখুন",
+      "fallback": [
+       {
+        "clip": "f59bf39ccb77948f672f"
+       }
+      ]
+     }
+    ]
+   },
+   "twenty-three-count": {
+    "word": {
+     "id": "counting-nineteen-to-twenty-four--twenty-three-count--word--7de5c134e00e307a",
+     "text": "তেইশ",
+     "fallback": [
+      {
+       "word": "twenty-three-count"
+      }
+     ]
+    },
+    "ask": {
+     "id": "counting-nineteen-to-twenty-four--twenty-three-count--ask--a8933a56cc374346",
+     "text": "খুঁজে দেখুন। তেইশ।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "twenty-three-count"
+      }
+     ],
+     "english": "Find “twenty-three”."
+    },
+    "yes": {
+     "id": "counting-nineteen-to-twenty-four--twenty-three-count--yes--471348884ffac79c",
+     "text": "দারুণ। তেইশ।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "twenty-three-count"
+      }
+     ],
+     "english": "Great! This is “twenty-three”."
+    },
+    "recast": {
+     "id": "counting-nineteen-to-twenty-four--twenty-three-count--recast--73ebc11f9b762a0e",
+     "text": "এই ছবিটা দেখুন। তেইশ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "twenty-three-count"
+      }
+     ],
+     "english": "Look at this picture. This is “twenty-three”."
+    },
+    "examples": [
+     {
+      "id": "counting-nineteen-to-twenty-four--twenty-three-count--example-1--14c3505a6a47b5a6",
+      "text": "তেইশটা হয়েছে",
+      "fallback": [
+       {
+        "clip": "14c3505a6a47b5a67b32"
+       }
+      ]
+     }
+    ]
+   },
+   "twenty-four-count": {
+    "word": {
+     "id": "counting-nineteen-to-twenty-four--twenty-four-count--word--8967b1bbce929114",
+     "text": "চব্বিশ",
+     "fallback": [
+      {
+       "word": "twenty-four-count"
+      }
+     ]
+    },
+    "ask": {
+     "id": "counting-nineteen-to-twenty-four--twenty-four-count--ask--5c94a0a19e0e7de5",
+     "text": "খুঁজে দেখুন। চব্বিশ।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "twenty-four-count"
+      }
+     ],
+     "english": "Find “twenty-four”."
+    },
+    "yes": {
+     "id": "counting-nineteen-to-twenty-four--twenty-four-count--yes--ab19c77382fdd8ee",
+     "text": "দারুণ। চব্বিশ।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "twenty-four-count"
+      }
+     ],
+     "english": "Great! This is “twenty-four”."
+    },
+    "recast": {
+     "id": "counting-nineteen-to-twenty-four--twenty-four-count--recast--74b9f9afb82d49eb",
+     "text": "এই ছবিটা দেখুন। চব্বিশ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "twenty-four-count"
+      }
+     ],
+     "english": "Look at this picture. This is “twenty-four”."
+    },
+    "examples": [
+     {
+      "id": "counting-nineteen-to-twenty-four--twenty-four-count--example-1--1516cf6fc29a94d4",
+      "text": "চব্বিশটা নিন",
+      "fallback": [
+       {
+        "clip": "1516cf6fc29a94d46f8a"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "everyday-medicine-shop-terms": {
+   "medicine-pill-tablet": {
+    "word": {
+     "id": "everyday-medicine-shop-terms--medicine-pill-tablet--word--561eecec17ab0164",
+     "text": "বড়ি",
+     "fallback": [
+      {
+       "word": "medicine-pill-tablet"
+      }
+     ]
+    },
+    "ask": {
+     "id": "everyday-medicine-shop-terms--medicine-pill-tablet--ask--fcadb993a1d3a827",
+     "text": "খুঁজে দেখুন। বড়ি।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "medicine-pill-tablet"
+      }
+     ],
+     "english": "Find “medicine tablet pill”."
+    },
+    "yes": {
+     "id": "everyday-medicine-shop-terms--medicine-pill-tablet--yes--a24c7b01e407cee1",
+     "text": "চমৎকার। বড়ি।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "medicine-pill-tablet"
+      }
+     ],
+     "english": "Excellent! This is “medicine tablet pill”."
+    },
+    "recast": {
+     "id": "everyday-medicine-shop-terms--medicine-pill-tablet--recast--1f749732da470855",
+     "text": "এই ছবিটা দেখুন। বড়ি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "medicine-pill-tablet"
+      }
+     ],
+     "english": "Look at this picture. This is “medicine tablet pill”."
+    },
+    "examples": [
+     {
+      "id": "everyday-medicine-shop-terms--medicine-pill-tablet--example-1--5abc0f0ef23c622f",
+      "text": "বড়িটা দেখান",
+      "fallback": [
+       {
+        "clip": "5abc0f0ef23c622fad65"
+       }
+      ]
+     }
+    ]
+   },
+   "pill-storage-bottle": {
+    "word": {
+     "id": "everyday-medicine-shop-terms--pill-storage-bottle--word--64c63bbd04a1eccf",
+     "text": "বড়ির বোতল",
+     "fallback": [
+      {
+       "word": "pill-storage-bottle"
+      }
+     ]
+    },
+    "ask": {
+     "id": "everyday-medicine-shop-terms--pill-storage-bottle--ask--cccbb0c7bad58f4e",
+     "text": "মন দিয়ে শুনুন। বড়ির বোতল। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "pill-storage-bottle"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “lidded pill bottle”."
+    },
+    "yes": {
+     "id": "everyday-medicine-shop-terms--pill-storage-bottle--yes--f5cb6f05162d10e0",
+     "text": "শাবাশ। বড়ির বোতল।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "pill-storage-bottle"
+      }
+     ],
+     "english": "Well done! This is “lidded pill bottle”."
+    },
+    "recast": {
+     "id": "everyday-medicine-shop-terms--pill-storage-bottle--recast--a198887643e02874",
+     "text": "এই ছবিটা দেখুন। বড়ির বোতল।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "pill-storage-bottle"
+      }
+     ],
+     "english": "Look at this picture. This is “lidded pill bottle”."
+    },
+    "examples": [
+     {
+      "id": "everyday-medicine-shop-terms--pill-storage-bottle--example-1--4a850d03072c2d29",
+      "text": "বড়ির বোতলটা দিন",
+      "fallback": [
+       {
+        "clip": "4a850d03072c2d29afc2"
+       }
+      ]
+     }
+    ]
+   },
+   "plain-medication-carton": {
+    "word": {
+     "id": "everyday-medicine-shop-terms--plain-medication-carton--word--9055d48abe372740",
+     "text": "ওষুধের বাক্স",
+     "fallback": [
+      {
+       "word": "plain-medication-carton"
+      }
+     ]
+    },
+    "ask": {
+     "id": "everyday-medicine-shop-terms--plain-medication-carton--ask--e1c666fa570d1a11",
+     "text": "খুঁজে দেখুন। ওষুধের বাক্স।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "plain-medication-carton"
+      }
+     ],
+     "english": "Find “medicine carton box”."
+    },
+    "yes": {
+     "id": "everyday-medicine-shop-terms--plain-medication-carton--yes--d65dddaaaa0000ad",
+     "text": "একদম ঠিক। ওষুধের বাক্স।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "plain-medication-carton"
+      }
+     ],
+     "english": "Exactly right! This is “medicine carton box”."
+    },
+    "recast": {
+     "id": "everyday-medicine-shop-terms--plain-medication-carton--recast--efc2fb735a377111",
+     "text": "এই ছবিটা দেখুন। ওষুধের বাক্স।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "plain-medication-carton"
+      }
+     ],
+     "english": "Look at this picture. This is “medicine carton box”."
+    },
+    "examples": [
+     {
+      "id": "everyday-medicine-shop-terms--plain-medication-carton--example-1--90a693ed9590a477",
+      "text": "ওষুধের বাক্সটা কোথায়?",
+      "fallback": [
+       {
+        "clip": "90a693ed9590a477966b"
+       }
+      ]
+     }
+    ]
+   },
+   "medication-measuring-spoon": {
+    "word": {
+     "id": "everyday-medicine-shop-terms--medication-measuring-spoon--word--8ef206f01f8f87ca",
+     "text": "ওষুধ মাপার চামচ",
+     "fallback": [
+      {
+       "word": "medication-measuring-spoon"
+      }
+     ]
+    },
+    "ask": {
+     "id": "everyday-medicine-shop-terms--medication-measuring-spoon--ask--0eeccbf069b33aa6",
+     "text": "খুঁজে দেখুন। ওষুধ মাপার চামচ।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "medication-measuring-spoon"
+      }
+     ],
+     "english": "Find “medicine measuring spoon”."
+    },
+    "yes": {
+     "id": "everyday-medicine-shop-terms--medication-measuring-spoon--yes--a2e201d614c0c882",
+     "text": "হ্যাঁ, ঠিক হয়েছে। ওষুধ মাপার চামচ।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "medication-measuring-spoon"
+      }
+     ],
+     "english": "Yes! This is “medicine measuring spoon”."
+    },
+    "recast": {
+     "id": "everyday-medicine-shop-terms--medication-measuring-spoon--recast--0b962f141aca3afe",
+     "text": "এই ছবিটা দেখুন। ওষুধ মাপার চামচ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "medication-measuring-spoon"
+      }
+     ],
+     "english": "Look at this picture. This is “medicine measuring spoon”."
+    },
+    "examples": [
+     {
+      "id": "everyday-medicine-shop-terms--medication-measuring-spoon--example-1--2d39786667fdf5b9",
+      "text": "ওষুধ মাপার চামচটা আনুন",
+      "fallback": [
+       {
+        "clip": "2d39786667fdf5b97176"
+       }
+      ]
+     }
+    ]
+   },
+   "oral-liquid-medication": {
+    "word": {
+     "id": "everyday-medicine-shop-terms--oral-liquid-medication--word--50c0b698d9082d1b",
+     "text": "খাওয়ার তরল ওষুধ",
+     "fallback": [
+      {
+       "word": "oral-liquid-medication"
+      }
+     ]
+    },
+    "ask": {
+     "id": "everyday-medicine-shop-terms--oral-liquid-medication--ask--5e6d2e9b73b949e1",
+     "text": "খাওয়ার তরল ওষুধ। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "oral-liquid-medication"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “liquid oral medicine”? Show me."
+    },
+    "yes": {
+     "id": "everyday-medicine-shop-terms--oral-liquid-medication--yes--128ff97090b362b7",
+     "text": "খুব ভালো। খাওয়ার তরল ওষুধ।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "oral-liquid-medication"
+      }
+     ],
+     "english": "Very good! This is “liquid oral medicine”."
+    },
+    "recast": {
+     "id": "everyday-medicine-shop-terms--oral-liquid-medication--recast--63155e3029c13c56",
+     "text": "এই ছবিটা দেখুন। খাওয়ার তরল ওষুধ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "oral-liquid-medication"
+      }
+     ],
+     "english": "Look at this picture. This is “liquid oral medicine”."
+    },
+    "examples": [
+     {
+      "id": "everyday-medicine-shop-terms--oral-liquid-medication--example-1--84632b7118926dd6",
+      "text": "খাওয়ার তরল ওষুধ আছে?",
+      "fallback": [
+       {
+        "clip": "84632b7118926dd63285"
+       }
+      ]
+     }
+    ]
+   },
+   "doctor-written-medicine-paper": {
+    "word": {
+     "id": "everyday-medicine-shop-terms--doctor-written-medicine-paper--word--4983903e71b6ce16",
+     "text": "ওষুধের কাগজ",
+     "fallback": [
+      {
+       "word": "doctor-written-medicine-paper"
+      }
+     ]
+    },
+    "ask": {
+     "id": "everyday-medicine-shop-terms--doctor-written-medicine-paper--ask--fe6bb2dd57f0232f",
+     "text": "মন দিয়ে শুনুন। ওষুধের কাগজ। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "doctor-written-medicine-paper"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “prescription sheet for medicine”."
+    },
+    "yes": {
+     "id": "everyday-medicine-shop-terms--doctor-written-medicine-paper--yes--ab34dea546a8978d",
+     "text": "চমৎকার। ওষুধের কাগজ।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "doctor-written-medicine-paper"
+      }
+     ],
+     "english": "Excellent! This is “prescription sheet for medicine”."
+    },
+    "recast": {
+     "id": "everyday-medicine-shop-terms--doctor-written-medicine-paper--recast--068048ca1781ff33",
+     "text": "এই ছবিটা দেখুন। ওষুধের কাগজ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "doctor-written-medicine-paper"
+      }
+     ],
+     "english": "Look at this picture. This is “prescription sheet for medicine”."
+    },
+    "examples": [
+     {
+      "id": "everyday-medicine-shop-terms--doctor-written-medicine-paper--example-1--21fa27392a0ec1f7",
+      "text": "ওষুধের কাগজটা দেখান",
+      "fallback": [
+       {
+        "clip": "21fa27392a0ec1f76cf4"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "ground-and-crushed-kitchen-spices": {
+   "whole-dried-chillies": {
+    "word": {
+     "id": "ground-and-crushed-kitchen-spices--whole-dried-chillies--word--378406cea72e916a",
+     "text": "শুকনা মরিচ",
+     "fallback": [
+      {
+       "word": "whole-dried-chillies"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ground-and-crushed-kitchen-spices--whole-dried-chillies--ask--f58bdc5131d9da8d",
+     "text": "শুকনা মরিচ। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "whole-dried-chillies"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “whole dried red chillies”? Show me."
+    },
+    "yes": {
+     "id": "ground-and-crushed-kitchen-spices--whole-dried-chillies--yes--d594ee98b29ec1b0",
+     "text": "হ্যাঁ, ঠিক হয়েছে। শুকনা মরিচ।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "whole-dried-chillies"
+      }
+     ],
+     "english": "Yes! This is “whole dried red chillies”."
+    },
+    "recast": {
+     "id": "ground-and-crushed-kitchen-spices--whole-dried-chillies--recast--7d0a90c2af7020b3",
+     "text": "এই ছবিটা দেখুন। শুকনা মরিচ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "whole-dried-chillies"
+      }
+     ],
+     "english": "Look at this picture. This is “whole dried red chillies”."
+    },
+    "examples": [
+     {
+      "id": "ground-and-crushed-kitchen-spices--whole-dried-chillies--example-1--ea7c3259a96193b4",
+      "text": "শুকনা মরিচ ভেজে নিন",
+      "fallback": [
+       {
+        "clip": "ea7c3259a96193b42f22"
+       }
+      ]
+     }
+    ]
+   },
+   "turmeric-ground-powder": {
+    "word": {
+     "id": "ground-and-crushed-kitchen-spices--turmeric-ground-powder--word--07c89bf6a2141b6a",
+     "text": "হলুদের গুঁড়া",
+     "fallback": [
+      {
+       "word": "turmeric-ground-powder"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ground-and-crushed-kitchen-spices--turmeric-ground-powder--ask--d6b6de6d7464ddbe",
+     "text": "হলুদের গুঁড়া। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "turmeric-ground-powder"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “ground turmeric powder”? Show me."
+    },
+    "yes": {
+     "id": "ground-and-crushed-kitchen-spices--turmeric-ground-powder--yes--2bb37d8a88459b9b",
+     "text": "হ্যাঁ, ঠিক হয়েছে। হলুদের গুঁড়া।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "turmeric-ground-powder"
+      }
+     ],
+     "english": "Yes! This is “ground turmeric powder”."
+    },
+    "recast": {
+     "id": "ground-and-crushed-kitchen-spices--turmeric-ground-powder--recast--2a579cdcf4bf6fe4",
+     "text": "এই ছবিটা দেখুন। হলুদের গুঁড়া।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "turmeric-ground-powder"
+      }
+     ],
+     "english": "Look at this picture. This is “ground turmeric powder”."
+    },
+    "examples": [
+     {
+      "id": "ground-and-crushed-kitchen-spices--turmeric-ground-powder--example-1--ad83d0be88ccb574",
+      "text": "হলুদের গুঁড়া একটু দিন",
+      "fallback": [
+       {
+        "clip": "ad83d0be88ccb5748aee"
+       }
+      ]
+     }
+    ]
+   },
+   "red-chilli-powder": {
+    "word": {
+     "id": "ground-and-crushed-kitchen-spices--red-chilli-powder--word--82a9387ab29ef2f7",
+     "text": "মরিচের গুঁড়া",
+     "fallback": [
+      {
+       "word": "red-chilli-powder"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ground-and-crushed-kitchen-spices--red-chilli-powder--ask--ddef4cea2f465424",
+     "text": "মন দিয়ে শুনুন। মরিচের গুঁড়া। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "red-chilli-powder"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “ground red chilli powder”."
+    },
+    "yes": {
+     "id": "ground-and-crushed-kitchen-spices--red-chilli-powder--yes--1e571f000b5398ff",
+     "text": "শাবাশ। মরিচের গুঁড়া।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "red-chilli-powder"
+      }
+     ],
+     "english": "Well done! This is “ground red chilli powder”."
+    },
+    "recast": {
+     "id": "ground-and-crushed-kitchen-spices--red-chilli-powder--recast--579d8041ecbab112",
+     "text": "এই ছবিটা দেখুন। মরিচের গুঁড়া।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "red-chilli-powder"
+      }
+     ],
+     "english": "Look at this picture. This is “ground red chilli powder”."
+    },
+    "examples": [
+     {
+      "id": "ground-and-crushed-kitchen-spices--red-chilli-powder--example-1--22f57c83ccaf99ba",
+      "text": "মরিচের গুঁড়া কম দিন",
+      "fallback": [
+       {
+        "clip": "22f57c83ccaf99baa509"
+       }
+      ]
+     }
+    ]
+   },
+   "ground-coriander-seeds": {
+    "word": {
+     "id": "ground-and-crushed-kitchen-spices--ground-coriander-seeds--word--c9ca1a08b4cf46f8",
+     "text": "ধনে গুঁড়া",
+     "fallback": [
+      {
+       "word": "ground-coriander-seeds"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ground-and-crushed-kitchen-spices--ground-coriander-seeds--ask--50b789d491accf2e",
+     "text": "খুঁজে দেখুন। ধনে গুঁড়া।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "ground-coriander-seeds"
+      }
+     ],
+     "english": "Find “ground coriander seed powder”."
+    },
+    "yes": {
+     "id": "ground-and-crushed-kitchen-spices--ground-coriander-seeds--yes--3f2ebfcbf54b943a",
+     "text": "হ্যাঁ, ঠিক হয়েছে। ধনে গুঁড়া।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "ground-coriander-seeds"
+      }
+     ],
+     "english": "Yes! This is “ground coriander seed powder”."
+    },
+    "recast": {
+     "id": "ground-and-crushed-kitchen-spices--ground-coriander-seeds--recast--bbb7c4689eb84a15",
+     "text": "এই ছবিটা দেখুন। ধনে গুঁড়া।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ground-coriander-seeds"
+      }
+     ],
+     "english": "Look at this picture. This is “ground coriander seed powder”."
+    },
+    "examples": [
+     {
+      "id": "ground-and-crushed-kitchen-spices--ground-coriander-seeds--example-1--14be43c8cceffee0",
+      "text": "ধনে গুঁড়া মিশিয়ে নিন",
+      "fallback": [
+       {
+        "clip": "14be43c8cceffee0aa1f"
+       }
+      ]
+     }
+    ]
+   },
+   "mustard-seed-paste": {
+    "word": {
+     "id": "ground-and-crushed-kitchen-spices--mustard-seed-paste--word--046de94f96d6460c",
+     "text": "সরিষা বাটা",
+     "fallback": [
+      {
+       "word": "mustard-seed-paste"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ground-and-crushed-kitchen-spices--mustard-seed-paste--ask--555ede01faa2b0d7",
+     "text": "খুঁজে দেখুন। সরিষা বাটা।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "mustard-seed-paste"
+      }
+     ],
+     "english": "Find “prepared mustard seed paste”."
+    },
+    "yes": {
+     "id": "ground-and-crushed-kitchen-spices--mustard-seed-paste--yes--4fb02964fef91f20",
+     "text": "দারুণ। সরিষা বাটা।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "mustard-seed-paste"
+      }
+     ],
+     "english": "Great! This is “prepared mustard seed paste”."
+    },
+    "recast": {
+     "id": "ground-and-crushed-kitchen-spices--mustard-seed-paste--recast--b9df443f5b4214df",
+     "text": "এই ছবিটা দেখুন। সরিষা বাটা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "mustard-seed-paste"
+      }
+     ],
+     "english": "Look at this picture. This is “prepared mustard seed paste”."
+    },
+    "examples": [
+     {
+      "id": "ground-and-crushed-kitchen-spices--mustard-seed-paste--example-1--1f72d8a4000576cc",
+      "text": "মাছে সরিষা বাটা দিন",
+      "fallback": [
+       {
+        "clip": "1f72d8a4000576cc68ac"
+       }
+      ]
+     }
+    ]
+   },
+   "crushed-fresh-ginger-paste": {
+    "word": {
+     "id": "ground-and-crushed-kitchen-spices--crushed-fresh-ginger-paste--word--fa328581b77d2e0a",
+     "text": "আদা বাটা",
+     "fallback": [
+      {
+       "word": "crushed-fresh-ginger-paste"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ground-and-crushed-kitchen-spices--crushed-fresh-ginger-paste--ask--a67d32c85386ba5e",
+     "text": "আদা বাটা। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "crushed-fresh-ginger-paste"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “fresh crushed ginger paste”? Show me."
+    },
+    "yes": {
+     "id": "ground-and-crushed-kitchen-spices--crushed-fresh-ginger-paste--yes--bc099af6bba7281e",
+     "text": "হ্যাঁ, ঠিক হয়েছে। আদা বাটা।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "crushed-fresh-ginger-paste"
+      }
+     ],
+     "english": "Yes! This is “fresh crushed ginger paste”."
+    },
+    "recast": {
+     "id": "ground-and-crushed-kitchen-spices--crushed-fresh-ginger-paste--recast--86d164a1110caf95",
+     "text": "এই ছবিটা দেখুন। আদা বাটা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "crushed-fresh-ginger-paste"
+      }
+     ],
+     "english": "Look at this picture. This is “fresh crushed ginger paste”."
+    },
+    "examples": [
+     {
+      "id": "ground-and-crushed-kitchen-spices--crushed-fresh-ginger-paste--example-1--3f48279dcba8a298",
+      "text": "আদা বাটা দিয়ে নেড়ে দিন",
+      "fallback": [
+       {
+        "clip": "3f48279dcba8a298c2a3"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "sewing-room-tools": {
+   "tailors-sewing-machine": {
+    "word": {
+     "id": "sewing-room-tools--tailors-sewing-machine--word--f58dd3b289516864",
+     "text": "সেলাইকল",
+     "fallback": [
+      {
+       "word": "tailors-sewing-machine"
+      }
+     ]
+    },
+    "ask": {
+     "id": "sewing-room-tools--tailors-sewing-machine--ask--a9fb73961b58319f",
+     "text": "সেলাইকল। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "tailors-sewing-machine"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “sewing machine”? Show me."
+    },
+    "yes": {
+     "id": "sewing-room-tools--tailors-sewing-machine--yes--6b7d17d7abfda095",
+     "text": "বাহ্। সেলাইকল।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "tailors-sewing-machine"
+      }
+     ],
+     "english": "Wow! This is “sewing machine”."
+    },
+    "recast": {
+     "id": "sewing-room-tools--tailors-sewing-machine--recast--78d55a28fbf13a49",
+     "text": "এই ছবিটা দেখুন। সেলাইকল।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "tailors-sewing-machine"
+      }
+     ],
+     "english": "Look at this picture. This is “sewing machine”."
+    },
+    "examples": [
+     {
+      "id": "sewing-room-tools--tailors-sewing-machine--example-1--89392243a0f00642",
+      "text": "সেলাইকলটা চালান",
+      "fallback": [
+       {
+        "clip": "89392243a0f006423eb7"
+       }
+      ]
+     }
+    ]
+   },
+   "sewing-thread-spool": {
+    "word": {
+     "id": "sewing-room-tools--sewing-thread-spool--word--b0fdf316e8c66927",
+     "text": "সুতা পেঁচানোর নলি",
+     "fallback": [
+      {
+       "word": "sewing-thread-spool"
+      }
+     ]
+    },
+    "ask": {
+     "id": "sewing-room-tools--sewing-thread-spool--ask--a56598e1cf57a4c1",
+     "text": "মন দিয়ে শুনুন। সুতা পেঁচানোর নলি। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "sewing-thread-spool"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “spool for winding thread”."
+    },
+    "yes": {
+     "id": "sewing-room-tools--sewing-thread-spool--yes--3c0da4376dd1c66e",
+     "text": "শাবাশ। সুতা পেঁচানোর নলি।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "sewing-thread-spool"
+      }
+     ],
+     "english": "Well done! This is “spool for winding thread”."
+    },
+    "recast": {
+     "id": "sewing-room-tools--sewing-thread-spool--recast--8aa9e45694009750",
+     "text": "এই ছবিটা দেখুন। সুতা পেঁচানোর নলি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "sewing-thread-spool"
+      }
+     ],
+     "english": "Look at this picture. This is “spool for winding thread”."
+    },
+    "examples": [
+     {
+      "id": "sewing-room-tools--sewing-thread-spool--example-1--2dc42170b22c8791",
+      "text": "নলিতে সুতা পেঁচান",
+      "fallback": [
+       {
+        "clip": "2dc42170b22c87910869"
+       }
+      ]
+     }
+    ]
+   },
+   "sewing-finger-thimble": {
+    "word": {
+     "id": "sewing-room-tools--sewing-finger-thimble--word--f0fbdd51629573de",
+     "text": "সেলাইয়ের আঙুলঢাকনি",
+     "fallback": [
+      {
+       "word": "sewing-finger-thimble"
+      }
+     ]
+    },
+    "ask": {
+     "id": "sewing-room-tools--sewing-finger-thimble--ask--b4c27679911522eb",
+     "text": "সেলাইয়ের আঙুলঢাকনি। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "sewing-finger-thimble"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “metal sewing thimble”? Show me."
+    },
+    "yes": {
+     "id": "sewing-room-tools--sewing-finger-thimble--yes--b6fc5be53d568eb6",
+     "text": "চমৎকার। সেলাইয়ের আঙুলঢাকনি।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "sewing-finger-thimble"
+      }
+     ],
+     "english": "Excellent! This is “metal sewing thimble”."
+    },
+    "recast": {
+     "id": "sewing-room-tools--sewing-finger-thimble--recast--05019d5252bf8990",
+     "text": "এই ছবিটা দেখুন। সেলাইয়ের আঙুলঢাকনি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "sewing-finger-thimble"
+      }
+     ],
+     "english": "Look at this picture. This is “metal sewing thimble”."
+    },
+    "examples": [
+     {
+      "id": "sewing-room-tools--sewing-finger-thimble--example-1--8949e72fa5a9d0d3",
+      "text": "আঙুলঢাকনিটা পরুন",
+      "fallback": [
+       {
+        "clip": "8949e72fa5a9d0d33454"
+       }
+      ]
+     }
+    ]
+   },
+   "sewing-pin-cushion": {
+    "word": {
+     "id": "sewing-room-tools--sewing-pin-cushion--word--5f879195c18b42db",
+     "text": "সুঁই রাখার গদি",
+     "fallback": [
+      {
+       "word": "sewing-pin-cushion"
+      }
+     ]
+    },
+    "ask": {
+     "id": "sewing-room-tools--sewing-pin-cushion--ask--130c31286901040e",
+     "text": "মন দিয়ে শুনুন। সুঁই রাখার গদি। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "sewing-pin-cushion"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “cushion for holding needles”."
+    },
+    "yes": {
+     "id": "sewing-room-tools--sewing-pin-cushion--yes--fbac0feaabf3fd40",
+     "text": "হ্যাঁ, ঠিক হয়েছে। সুঁই রাখার গদি।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "sewing-pin-cushion"
+      }
+     ],
+     "english": "Yes! This is “cushion for holding needles”."
+    },
+    "recast": {
+     "id": "sewing-room-tools--sewing-pin-cushion--recast--b8bf7ead804d913c",
+     "text": "এই ছবিটা দেখুন। সুঁই রাখার গদি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "sewing-pin-cushion"
+      }
+     ],
+     "english": "Look at this picture. This is “cushion for holding needles”."
+    },
+    "examples": [
+     {
+      "id": "sewing-room-tools--sewing-pin-cushion--example-1--e9506cac283f9eab",
+      "text": "সুঁইগুলো গদিতে গুঁজে রাখুন",
+      "fallback": [
+       {
+        "clip": "e9506cac283f9eabadf6"
+       }
+      ]
+     }
+    ]
+   },
+   "sewing-supplies-box": {
+    "word": {
+     "id": "sewing-room-tools--sewing-supplies-box--word--469cb00922cda8a4",
+     "text": "সেলাইয়ের বাক্স",
+     "fallback": [
+      {
+       "word": "sewing-supplies-box"
+      }
+     ]
+    },
+    "ask": {
+     "id": "sewing-room-tools--sewing-supplies-box--ask--972aa4be8d464ef5",
+     "text": "খুঁজে দেখুন। সেলাইয়ের বাক্স।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "sewing-supplies-box"
+      }
+     ],
+     "english": "Find “box for sewing tools”."
+    },
+    "yes": {
+     "id": "sewing-room-tools--sewing-supplies-box--yes--9dbafe199da9cdf0",
+     "text": "হ্যাঁ, ঠিক হয়েছে। সেলাইয়ের বাক্স।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "sewing-supplies-box"
+      }
+     ],
+     "english": "Yes! This is “box for sewing tools”."
+    },
+    "recast": {
+     "id": "sewing-room-tools--sewing-supplies-box--recast--93ba9957fe1b7506",
+     "text": "এই ছবিটা দেখুন। সেলাইয়ের বাক্স।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "sewing-supplies-box"
+      }
+     ],
+     "english": "Look at this picture. This is “box for sewing tools”."
+    },
+    "examples": [
+     {
+      "id": "sewing-room-tools--sewing-supplies-box--example-1--6f1b132218ac8ac5",
+      "text": "সেলাইয়ের বাক্সটা খুলুন",
+      "fallback": [
+       {
+        "clip": "6f1b132218ac8ac56900"
+       }
+      ]
+     }
+    ]
+   },
+   "paper-clothing-pattern": {
+    "word": {
+     "id": "sewing-room-tools--paper-clothing-pattern--word--590031ee1935e7d5",
+     "text": "জামা কাটার ছাঁদ",
+     "fallback": [
+      {
+       "word": "paper-clothing-pattern"
+      }
+     ]
+    },
+    "ask": {
+     "id": "sewing-room-tools--paper-clothing-pattern--ask--4bd5542b401a6af2",
+     "text": "মন দিয়ে শুনুন। জামা কাটার ছাঁদ। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "paper-clothing-pattern"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “paper clothing pattern for cutting fabric”."
+    },
+    "yes": {
+     "id": "sewing-room-tools--paper-clothing-pattern--yes--c644e21d496c504b",
+     "text": "চমৎকার। জামা কাটার ছাঁদ।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "paper-clothing-pattern"
+      }
+     ],
+     "english": "Excellent! This is “paper clothing pattern for cutting fabric”."
+    },
+    "recast": {
+     "id": "sewing-room-tools--paper-clothing-pattern--recast--7a196bd56f70e23a",
+     "text": "এই ছবিটা দেখুন। জামা কাটার ছাঁদ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "paper-clothing-pattern"
+      }
+     ],
+     "english": "Look at this picture. This is “paper clothing pattern for cutting fabric”."
+    },
+    "examples": [
+     {
+      "id": "sewing-room-tools--paper-clothing-pattern--example-1--3f187eb3c105fba9",
+      "text": "ছাঁদ দেখে কাপড় কাটুন",
+      "fallback": [
+       {
+        "clip": "3f187eb3c105fba97511"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "equipment-at-the-playground": {
+   "sliding-playground-ramp": {
+    "word": {
+     "id": "equipment-at-the-playground--sliding-playground-ramp--word--e26413c54a29dc60",
+     "text": "পিছলে নামার সিঁড়ি",
+     "fallback": [
+      {
+       "word": "sliding-playground-ramp"
+      }
+     ]
+    },
+    "ask": {
+     "id": "equipment-at-the-playground--sliding-playground-ramp--ask--087304b0aab673d5",
+     "text": "পিছলে নামার সিঁড়ি। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "sliding-playground-ramp"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “playground slide”? Show me."
+    },
+    "yes": {
+     "id": "equipment-at-the-playground--sliding-playground-ramp--yes--075eebe5410ab086",
+     "text": "হ্যাঁ, ঠিক হয়েছে। পিছলে নামার সিঁড়ি।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "sliding-playground-ramp"
+      }
+     ],
+     "english": "Yes! This is “playground slide”."
+    },
+    "recast": {
+     "id": "equipment-at-the-playground--sliding-playground-ramp--recast--061f6b46a78ce61d",
+     "text": "এই ছবিটা দেখুন। পিছলে নামার সিঁড়ি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "sliding-playground-ramp"
+      }
+     ],
+     "english": "Look at this picture. This is “playground slide”."
+    },
+    "examples": [
+     {
+      "id": "equipment-at-the-playground--sliding-playground-ramp--example-1--15693ebecb773fc1",
+      "text": "সিঁড়ি দিয়ে উঠে পিছলে নামুন",
+      "fallback": [
+       {
+        "clip": "15693ebecb773fc19fdc"
+       }
+      ]
+     }
+    ]
+   },
+   "seesaw-playground-seat": {
+    "word": {
+     "id": "equipment-at-the-playground--seesaw-playground-seat--word--9214d3bf8235d51e",
+     "text": "ওঠানামার দোলনা",
+     "fallback": [
+      {
+       "word": "seesaw-playground-seat"
+      }
+     ]
+    },
+    "ask": {
+     "id": "equipment-at-the-playground--seesaw-playground-seat--ask--e47816d848a64b55",
+     "text": "ওঠানামার দোলনা। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "seesaw-playground-seat"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “playground seesaw”? Show me."
+    },
+    "yes": {
+     "id": "equipment-at-the-playground--seesaw-playground-seat--yes--95538310b60bbbd3",
+     "text": "হ্যাঁ, ঠিক হয়েছে। ওঠানামার দোলনা।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "seesaw-playground-seat"
+      }
+     ],
+     "english": "Yes! This is “playground seesaw”."
+    },
+    "recast": {
+     "id": "equipment-at-the-playground--seesaw-playground-seat--recast--9b22e122720baa89",
+     "text": "এই ছবিটা দেখুন। ওঠানামার দোলনা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "seesaw-playground-seat"
+      }
+     ],
+     "english": "Look at this picture. This is “playground seesaw”."
+    },
+    "examples": [
+     {
+      "id": "equipment-at-the-playground--seesaw-playground-seat--example-1--6553a2e58e9155c4",
+      "text": "দোলনার দুই মাথায় বসুন",
+      "fallback": [
+       {
+        "clip": "6553a2e58e9155c4b210"
+       }
+      ]
+     }
+    ]
+   },
+   "ball-for-foot-play": {
+    "word": {
+     "id": "equipment-at-the-playground--ball-for-foot-play--word--5873fe35fe8028e5",
+     "text": "খেলার বল",
+     "fallback": [
+      {
+       "word": "ball-for-foot-play"
+      }
+     ]
+    },
+    "ask": {
+     "id": "equipment-at-the-playground--ball-for-foot-play--ask--717f04c22ee79366",
+     "text": "মন দিয়ে শুনুন। খেলার বল। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "ball-for-foot-play"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “football for play”."
+    },
+    "yes": {
+     "id": "equipment-at-the-playground--ball-for-foot-play--yes--7c58b22e9b2c6dfe",
+     "text": "দারুণ। খেলার বল।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "ball-for-foot-play"
+      }
+     ],
+     "english": "Great! This is “football for play”."
+    },
+    "recast": {
+     "id": "equipment-at-the-playground--ball-for-foot-play--recast--0ee1df29cdfb4d5e",
+     "text": "এই ছবিটা দেখুন। খেলার বল।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ball-for-foot-play"
+      }
+     ],
+     "english": "Look at this picture. This is “football for play”."
+    },
+    "examples": [
+     {
+      "id": "equipment-at-the-playground--ball-for-foot-play--example-1--e03ca28e3be7f812",
+      "text": "বলটা পা দিয়ে ঠেলুন",
+      "fallback": [
+       {
+        "clip": "e03ca28e3be7f812b88a"
+       }
+      ]
+     }
+    ]
+   },
+   "round-throwing-disc": {
+    "word": {
+     "id": "equipment-at-the-playground--round-throwing-disc--word--70bf9c96a141d136",
+     "text": "ছোড়ার চাকতি",
+     "fallback": [
+      {
+       "word": "round-throwing-disc"
+      }
+     ]
+    },
+    "ask": {
+     "id": "equipment-at-the-playground--round-throwing-disc--ask--70802df47d51c7a2",
+     "text": "মন দিয়ে শুনুন। ছোড়ার চাকতি। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "round-throwing-disc"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “flying disc for play”."
+    },
+    "yes": {
+     "id": "equipment-at-the-playground--round-throwing-disc--yes--5c4070401edd3787",
+     "text": "খুব ভালো। ছোড়ার চাকতি।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "round-throwing-disc"
+      }
+     ],
+     "english": "Very good! This is “flying disc for play”."
+    },
+    "recast": {
+     "id": "equipment-at-the-playground--round-throwing-disc--recast--fd6acd93d49cb784",
+     "text": "এই ছবিটা দেখুন। ছোড়ার চাকতি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "round-throwing-disc"
+      }
+     ],
+     "english": "Look at this picture. This is “flying disc for play”."
+    },
+    "examples": [
+     {
+      "id": "equipment-at-the-playground--round-throwing-disc--example-1--b142bb260e52e538",
+      "text": "চাকতিটা ছুড়ে দিন",
+      "fallback": [
+       {
+        "clip": "b142bb260e52e538ea36"
+       }
+      ]
+     }
+    ]
+   },
+   "raised-net-for-play": {
+    "word": {
+     "id": "equipment-at-the-playground--raised-net-for-play--word--9b3816e4b806e3e3",
+     "text": "খেলার জাল",
+     "fallback": [
+      {
+       "word": "raised-net-for-play"
+      }
+     ]
+    },
+    "ask": {
+     "id": "equipment-at-the-playground--raised-net-for-play--ask--e8441962aa70cb37",
+     "text": "মন দিয়ে শুনুন। খেলার জাল। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "raised-net-for-play"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “standing net for court games”."
+    },
+    "yes": {
+     "id": "equipment-at-the-playground--raised-net-for-play--yes--1541a05851c65d1f",
+     "text": "খুব ভালো। খেলার জাল।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "raised-net-for-play"
+      }
+     ],
+     "english": "Very good! This is “standing net for court games”."
+    },
+    "recast": {
+     "id": "equipment-at-the-playground--raised-net-for-play--recast--7b253df8f392c3b9",
+     "text": "এই ছবিটা দেখুন। খেলার জাল।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "raised-net-for-play"
+      }
+     ],
+     "english": "Look at this picture. This is “standing net for court games”."
+    },
+    "examples": [
+     {
+      "id": "equipment-at-the-playground--raised-net-for-play--example-1--d7c5b452ad65bdfd",
+      "text": "জালটা টাঙিয়ে দিন",
+      "fallback": [
+       {
+        "clip": "d7c5b452ad65bdfd1866"
+       }
+      ]
+     }
+    ]
+   },
+   "referee-hand-whistle": {
+    "word": {
+     "id": "equipment-at-the-playground--referee-hand-whistle--word--f2f28beda25249ba",
+     "text": "খেলার বাঁশি",
+     "fallback": [
+      {
+       "word": "referee-hand-whistle"
+      }
+     ]
+    },
+    "ask": {
+     "id": "equipment-at-the-playground--referee-hand-whistle--ask--b0e2fe2fca7f8bd9",
+     "text": "খুঁজে দেখুন। খেলার বাঁশি।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "referee-hand-whistle"
+      }
+     ],
+     "english": "Find “handheld referee whistle”."
+    },
+    "yes": {
+     "id": "equipment-at-the-playground--referee-hand-whistle--yes--bd2ccaaeae16b3a0",
+     "text": "একদম ঠিক। খেলার বাঁশি।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "referee-hand-whistle"
+      }
+     ],
+     "english": "Exactly right! This is “handheld referee whistle”."
+    },
+    "recast": {
+     "id": "equipment-at-the-playground--referee-hand-whistle--recast--0f6bfbfda5c41e89",
+     "text": "এই ছবিটা দেখুন। খেলার বাঁশি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "referee-hand-whistle"
+      }
+     ],
+     "english": "Look at this picture. This is “handheld referee whistle”."
+    },
+    "examples": [
+     {
+      "id": "equipment-at-the-playground--referee-hand-whistle--example-1--4602935b2103c60a",
+      "text": "খেলা থামাতে বাঁশি বাজান",
+      "fallback": [
+       {
+        "clip": "4602935b2103c60a0f7d"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "things-on-a-performance-stage": {
+   "theater-stage-curtain": {
+    "word": {
+     "id": "things-on-a-performance-stage--theater-stage-curtain--word--13cde76215a1e647",
+     "text": "মঞ্চের পর্দা",
+     "fallback": [
+      {
+       "word": "theater-stage-curtain"
+      }
+     ]
+    },
+    "ask": {
+     "id": "things-on-a-performance-stage--theater-stage-curtain--ask--ba0881bbcba78b05",
+     "text": "মঞ্চের পর্দা। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "theater-stage-curtain"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “stage curtain”? Show me."
+    },
+    "yes": {
+     "id": "things-on-a-performance-stage--theater-stage-curtain--yes--abc84fe3508ea21e",
+     "text": "একদম ঠিক। মঞ্চের পর্দা।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "theater-stage-curtain"
+      }
+     ],
+     "english": "Exactly right! This is “stage curtain”."
+    },
+    "recast": {
+     "id": "things-on-a-performance-stage--theater-stage-curtain--recast--82b88e69ef9a40ee",
+     "text": "এই ছবিটা দেখুন। মঞ্চের পর্দা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "theater-stage-curtain"
+      }
+     ],
+     "english": "Look at this picture. This is “stage curtain”."
+    },
+    "examples": [
+     {
+      "id": "things-on-a-performance-stage--theater-stage-curtain--example-1--0f81e4e735359de9",
+      "text": "মঞ্চের পর্দা সরান",
+      "fallback": [
+       {
+        "clip": "0f81e4e735359de9dd8c"
+       }
+      ]
+     }
+    ]
+   },
+   "light-for-a-stage": {
+    "word": {
+     "id": "things-on-a-performance-stage--light-for-a-stage--word--7b831e27a2b3d69f",
+     "text": "মঞ্চের আলো",
+     "fallback": [
+      {
+       "word": "light-for-a-stage"
+      }
+     ]
+    },
+    "ask": {
+     "id": "things-on-a-performance-stage--light-for-a-stage--ask--24e353087d94aa71",
+     "text": "খুঁজে দেখুন। মঞ্চের আলো।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "light-for-a-stage"
+      }
+     ],
+     "english": "Find “stage spotlight”."
+    },
+    "yes": {
+     "id": "things-on-a-performance-stage--light-for-a-stage--yes--60d17af365d1bebd",
+     "text": "হ্যাঁ, ঠিক হয়েছে। মঞ্চের আলো।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "light-for-a-stage"
+      }
+     ],
+     "english": "Yes! This is “stage spotlight”."
+    },
+    "recast": {
+     "id": "things-on-a-performance-stage--light-for-a-stage--recast--0c88decd1b11c4f6",
+     "text": "এই ছবিটা দেখুন। মঞ্চের আলো।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "light-for-a-stage"
+      }
+     ],
+     "english": "Look at this picture. This is “stage spotlight”."
+    },
+    "examples": [
+     {
+      "id": "things-on-a-performance-stage--light-for-a-stage--example-1--0a2c9b6b5939666d",
+      "text": "মঞ্চে আলো দিন",
+      "fallback": [
+       {
+        "clip": "0a2c9b6b5939666dc3bd"
+       }
+      ]
+     }
+    ]
+   },
+   "theater-face-mask": {
+    "word": {
+     "id": "things-on-a-performance-stage--theater-face-mask--word--59924af7d01dce12",
+     "text": "মুখোশ",
+     "fallback": [
+      {
+       "word": "theater-face-mask"
+      }
+     ]
+    },
+    "ask": {
+     "id": "things-on-a-performance-stage--theater-face-mask--ask--f39ccd9b004e2d7e",
+     "text": "খুঁজে দেখুন। মুখোশ।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "theater-face-mask"
+      }
+     ],
+     "english": "Find “theatrical face mask”."
+    },
+    "yes": {
+     "id": "things-on-a-performance-stage--theater-face-mask--yes--518ffa6de8f1c35a",
+     "text": "খুব ভালো। মুখোশ।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "theater-face-mask"
+      }
+     ],
+     "english": "Very good! This is “theatrical face mask”."
+    },
+    "recast": {
+     "id": "things-on-a-performance-stage--theater-face-mask--recast--08525ff770380f82",
+     "text": "এই ছবিটা দেখুন। মুখোশ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "theater-face-mask"
+      }
+     ],
+     "english": "Look at this picture. This is “theatrical face mask”."
+    },
+    "examples": [
+     {
+      "id": "things-on-a-performance-stage--theater-face-mask--example-1--2469242e988d866b",
+      "text": "মুখোশ পরে দেখান",
+      "fallback": [
+       {
+        "clip": "2469242e988d866b21a9"
+       }
+      ]
+     }
+    ]
+   },
+   "prop-royal-crown": {
+    "word": {
+     "id": "things-on-a-performance-stage--prop-royal-crown--word--1c0b0db6bf26ac83",
+     "text": "মুকুট",
+     "fallback": [
+      {
+       "word": "prop-royal-crown"
+      }
+     ]
+    },
+    "ask": {
+     "id": "things-on-a-performance-stage--prop-royal-crown--ask--dbf53866e17891f4",
+     "text": "মন দিয়ে শুনুন। মুকুট। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "prop-royal-crown"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “theatrical crown prop”."
+    },
+    "yes": {
+     "id": "things-on-a-performance-stage--prop-royal-crown--yes--0c72cd4d5bdf6391",
+     "text": "চমৎকার। মুকুট।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "prop-royal-crown"
+      }
+     ],
+     "english": "Excellent! This is “theatrical crown prop”."
+    },
+    "recast": {
+     "id": "things-on-a-performance-stage--prop-royal-crown--recast--6082f37374644a7f",
+     "text": "এই ছবিটা দেখুন। মুকুট।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "prop-royal-crown"
+      }
+     ],
+     "english": "Look at this picture. This is “theatrical crown prop”."
+    },
+    "examples": [
+     {
+      "id": "things-on-a-performance-stage--prop-royal-crown--example-1--c542da04e5b21a7c",
+      "text": "মাথায় মুকুট পরুন",
+      "fallback": [
+       {
+        "clip": "c542da04e5b21a7cee48"
+       }
+      ]
+     }
+    ]
+   },
+   "megaphone-amplifier": {
+    "word": {
+     "id": "things-on-a-performance-stage--megaphone-amplifier--word--dee583f402d81497",
+     "text": "আওয়াজ বড় করার যন্ত্র",
+     "fallback": [
+      {
+       "word": "megaphone-amplifier"
+      }
+     ]
+    },
+    "ask": {
+     "id": "things-on-a-performance-stage--megaphone-amplifier--ask--17eb10a7bea95cf0",
+     "text": "মন দিয়ে শুনুন। আওয়াজ বড় করার যন্ত্র। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "megaphone-amplifier"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “handheld megaphone”."
+    },
+    "yes": {
+     "id": "things-on-a-performance-stage--megaphone-amplifier--yes--969ee95cad547a46",
+     "text": "শাবাশ। আওয়াজ বড় করার যন্ত্র।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "megaphone-amplifier"
+      }
+     ],
+     "english": "Well done! This is “handheld megaphone”."
+    },
+    "recast": {
+     "id": "things-on-a-performance-stage--megaphone-amplifier--recast--3a55fc0b0422e62b",
+     "text": "এই ছবিটা দেখুন। আওয়াজ বড় করার যন্ত্র।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "megaphone-amplifier"
+      }
+     ],
+     "english": "Look at this picture. This is “handheld megaphone”."
+    },
+    "examples": [
+     {
+      "id": "things-on-a-performance-stage--megaphone-amplifier--example-1--56b6e8fe411b3d1e",
+      "text": "যন্ত্র দিয়ে জোরে কথা শোনান",
+      "fallback": [
+       {
+        "clip": "56b6e8fe411b3d1e0b14"
+       }
+      ]
+     }
+    ]
+   },
+   "small-podium-stage-stairs": {
+    "word": {
+     "id": "things-on-a-performance-stage--small-podium-stage-stairs--word--324cc41388c7d5d3",
+     "text": "মঞ্চে ওঠার সিঁড়ি",
+     "fallback": [
+      {
+       "word": "small-podium-stage-stairs"
+      }
+     ]
+    },
+    "ask": {
+     "id": "things-on-a-performance-stage--small-podium-stage-stairs--ask--35493a5f2235fabf",
+     "text": "খুঁজে দেখুন। মঞ্চে ওঠার সিঁড়ি।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "small-podium-stage-stairs"
+      }
+     ],
+     "english": "Find “portable stage stairs”."
+    },
+    "yes": {
+     "id": "things-on-a-performance-stage--small-podium-stage-stairs--yes--999cc7494c2aeb5f",
+     "text": "হ্যাঁ, ঠিক হয়েছে। মঞ্চে ওঠার সিঁড়ি।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "small-podium-stage-stairs"
+      }
+     ],
+     "english": "Yes! This is “portable stage stairs”."
+    },
+    "recast": {
+     "id": "things-on-a-performance-stage--small-podium-stage-stairs--recast--b0090d3c22d6ce04",
+     "text": "এই ছবিটা দেখুন। মঞ্চে ওঠার সিঁড়ি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "small-podium-stage-stairs"
+      }
+     ],
+     "english": "Look at this picture. This is “portable stage stairs”."
+    },
+    "examples": [
+     {
+      "id": "things-on-a-performance-stage--small-podium-stage-stairs--example-1--6adafa93cf56cab2",
+      "text": "সিঁড়ি দিয়ে মঞ্চে উঠুন",
+      "fallback": [
+       {
+        "clip": "6adafa93cf56cab20c68"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "things-to-take-on-a-trip": {
+   "backpack-for-travel": {
+    "word": {
+     "id": "things-to-take-on-a-trip--backpack-for-travel--word--c2bf2de7f41567ca",
+     "text": "পিঠের থলে",
+     "fallback": [
+      {
+       "word": "backpack-for-travel"
+      }
+     ]
+    },
+    "ask": {
+     "id": "things-to-take-on-a-trip--backpack-for-travel--ask--e8fd129ba7aa2a09",
+     "text": "মন দিয়ে শুনুন। পিঠের থলে। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "backpack-for-travel"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “travel backpack”."
+    },
+    "yes": {
+     "id": "things-to-take-on-a-trip--backpack-for-travel--yes--e8b8bc932d1116b7",
+     "text": "দারুণ। পিঠের থলে।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "backpack-for-travel"
+      }
+     ],
+     "english": "Great! This is “travel backpack”."
+    },
+    "recast": {
+     "id": "things-to-take-on-a-trip--backpack-for-travel--recast--59ce956c8b00ba0a",
+     "text": "এই ছবিটা দেখুন। পিঠের থলে।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "backpack-for-travel"
+      }
+     ],
+     "english": "Look at this picture. This is “travel backpack”."
+    },
+    "examples": [
+     {
+      "id": "things-to-take-on-a-trip--backpack-for-travel--example-1--a7fc9e91f998e4e8",
+      "text": "পিঠের থলেটা নিন",
+      "fallback": [
+       {
+        "clip": "a7fc9e91f998e4e82e9b"
+       }
+      ]
+     }
+    ]
+   },
+   "travel-pillow-around-neck": {
+    "word": {
+     "id": "things-to-take-on-a-trip--travel-pillow-around-neck--word--27e08633c08ce6fa",
+     "text": "ঘাড়ের বালিশ",
+     "fallback": [
+      {
+       "word": "travel-pillow-around-neck"
+      }
+     ]
+    },
+    "ask": {
+     "id": "things-to-take-on-a-trip--travel-pillow-around-neck--ask--e69753f74a035de3",
+     "text": "মন দিয়ে শুনুন। ঘাড়ের বালিশ। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "travel-pillow-around-neck"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “neck travel pillow”."
+    },
+    "yes": {
+     "id": "things-to-take-on-a-trip--travel-pillow-around-neck--yes--dba80aee0f16d111",
+     "text": "একদম ঠিক। ঘাড়ের বালিশ।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "travel-pillow-around-neck"
+      }
+     ],
+     "english": "Exactly right! This is “neck travel pillow”."
+    },
+    "recast": {
+     "id": "things-to-take-on-a-trip--travel-pillow-around-neck--recast--9345c25696c54fae",
+     "text": "এই ছবিটা দেখুন। ঘাড়ের বালিশ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "travel-pillow-around-neck"
+      }
+     ],
+     "english": "Look at this picture. This is “neck travel pillow”."
+    },
+    "examples": [
+     {
+      "id": "things-to-take-on-a-trip--travel-pillow-around-neck--example-1--b836e9880705ed29",
+      "text": "ঘাড়ে বালিশটা দিন",
+      "fallback": [
+       {
+        "clip": "b836e9880705ed296ffb"
+       }
+      ]
+     }
+    ]
+   },
+   "travel-mask-over-eyes": {
+    "word": {
+     "id": "things-to-take-on-a-trip--travel-mask-over-eyes--word--8384d38a875eddc7",
+     "text": "চোখ ঢাকার কাপড়",
+     "fallback": [
+      {
+       "word": "travel-mask-over-eyes"
+      }
+     ]
+    },
+    "ask": {
+     "id": "things-to-take-on-a-trip--travel-mask-over-eyes--ask--6eb286d8ecf60367",
+     "text": "মন দিয়ে শুনুন। চোখ ঢাকার কাপড়। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "travel-mask-over-eyes"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “sleep eye mask”."
+    },
+    "yes": {
+     "id": "things-to-take-on-a-trip--travel-mask-over-eyes--yes--1d9bb401aff8ef87",
+     "text": "একদম ঠিক। চোখ ঢাকার কাপড়।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "travel-mask-over-eyes"
+      }
+     ],
+     "english": "Exactly right! This is “sleep eye mask”."
+    },
+    "recast": {
+     "id": "things-to-take-on-a-trip--travel-mask-over-eyes--recast--84c0e85872d0ba31",
+     "text": "এই ছবিটা দেখুন। চোখ ঢাকার কাপড়।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "travel-mask-over-eyes"
+      }
+     ],
+     "english": "Look at this picture. This is “sleep eye mask”."
+    },
+    "examples": [
+     {
+      "id": "things-to-take-on-a-trip--travel-mask-over-eyes--example-1--8461f00b3d0ec7b0",
+      "text": "চোখ ঢাকার কাপড়টা দিন",
+      "fallback": [
+       {
+        "clip": "8461f00b3d0ec7b0b213"
+       }
+      ]
+     }
+    ]
+   },
+   "label-tag-on-luggage": {
+    "word": {
+     "id": "things-to-take-on-a-trip--label-tag-on-luggage--word--f7ea56c18b5ec83c",
+     "text": "মালে নাম লেখার চিহ্ন",
+     "fallback": [
+      {
+       "word": "label-tag-on-luggage"
+      }
+     ]
+    },
+    "ask": {
+     "id": "things-to-take-on-a-trip--label-tag-on-luggage--ask--e24bc3255fa29536",
+     "text": "খুঁজে দেখুন। মালে নাম লেখার চিহ্ন।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "label-tag-on-luggage"
+      }
+     ],
+     "english": "Find “luggage identification tag”."
+    },
+    "yes": {
+     "id": "things-to-take-on-a-trip--label-tag-on-luggage--yes--a097c371febf7f3b",
+     "text": "শাবাশ। মালে নাম লেখার চিহ্ন।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "label-tag-on-luggage"
+      }
+     ],
+     "english": "Well done! This is “luggage identification tag”."
+    },
+    "recast": {
+     "id": "things-to-take-on-a-trip--label-tag-on-luggage--recast--84b31b0faf157b15",
+     "text": "এই ছবিটা দেখুন। মালে নাম লেখার চিহ্ন।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "label-tag-on-luggage"
+      }
+     ],
+     "english": "Look at this picture. This is “luggage identification tag”."
+    },
+    "examples": [
+     {
+      "id": "things-to-take-on-a-trip--label-tag-on-luggage--example-1--4ab75e156b6a81e8",
+      "text": "মালের চিহ্নে নিজের নাম লিখুন",
+      "fallback": [
+       {
+        "clip": "4ab75e156b6a81e8c315"
+       }
+      ]
+     }
+    ]
+   },
+   "hand-scale-to-weigh-luggage": {
+    "word": {
+     "id": "things-to-take-on-a-trip--hand-scale-to-weigh-luggage--word--b05c388235386b7d",
+     "text": "মাল মাপার যন্ত্র",
+     "fallback": [
+      {
+       "word": "hand-scale-to-weigh-luggage"
+      }
+     ]
+    },
+    "ask": {
+     "id": "things-to-take-on-a-trip--hand-scale-to-weigh-luggage--ask--7413000ec6d85105",
+     "text": "খুঁজে দেখুন। মাল মাপার যন্ত্র।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "hand-scale-to-weigh-luggage"
+      }
+     ],
+     "english": "Find “handheld luggage scale”."
+    },
+    "yes": {
+     "id": "things-to-take-on-a-trip--hand-scale-to-weigh-luggage--yes--8d55bd4680d78d4d",
+     "text": "একদম ঠিক। মাল মাপার যন্ত্র।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "hand-scale-to-weigh-luggage"
+      }
+     ],
+     "english": "Exactly right! This is “handheld luggage scale”."
+    },
+    "recast": {
+     "id": "things-to-take-on-a-trip--hand-scale-to-weigh-luggage--recast--6da2bd1490bdd2e9",
+     "text": "এই ছবিটা দেখুন। মাল মাপার যন্ত্র।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "hand-scale-to-weigh-luggage"
+      }
+     ],
+     "english": "Look at this picture. This is “handheld luggage scale”."
+    },
+    "examples": [
+     {
+      "id": "things-to-take-on-a-trip--hand-scale-to-weigh-luggage--example-1--3b8334a8858d176f",
+      "text": "যন্ত্র দিয়ে মালের ওজন মাপুন",
+      "fallback": [
+       {
+        "clip": "3b8334a8858d176fb781"
+       }
+      ]
+     }
+    ]
+   },
+   "water-canteen-with-strap": {
+    "word": {
+     "id": "things-to-take-on-a-trip--water-canteen-with-strap--word--ddcb762db020ca01",
+     "text": "কাঁধে ঝোলানো পানির পাত্র",
+     "fallback": [
+      {
+       "word": "water-canteen-with-strap"
+      }
+     ]
+    },
+    "ask": {
+     "id": "things-to-take-on-a-trip--water-canteen-with-strap--ask--23b248fa5db8e34c",
+     "text": "কাঁধে ঝোলানো পানির পাত্র। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "water-canteen-with-strap"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “strap-mounted travel canteen”? Show me."
+    },
+    "yes": {
+     "id": "things-to-take-on-a-trip--water-canteen-with-strap--yes--8d1b881621789442",
+     "text": "দারুণ। কাঁধে ঝোলানো পানির পাত্র।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "water-canteen-with-strap"
+      }
+     ],
+     "english": "Great! This is “strap-mounted travel canteen”."
+    },
+    "recast": {
+     "id": "things-to-take-on-a-trip--water-canteen-with-strap--recast--5e7da76d07a0ba0e",
+     "text": "এই ছবিটা দেখুন। কাঁধে ঝোলানো পানির পাত্র।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "water-canteen-with-strap"
+      }
+     ],
+     "english": "Look at this picture. This is “strap-mounted travel canteen”."
+    },
+    "examples": [
+     {
+      "id": "things-to-take-on-a-trip--water-canteen-with-strap--example-1--ba130e41e47fbbf7",
+      "text": "পানির পাত্রটা কাঁধে নিন",
+      "fallback": [
+       {
+        "clip": "ba130e41e47fbbf7f410"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "bed-linens-and-nightwear": {
+   "quilted-winter-bed-cover": {
+    "word": {
+     "id": "bed-linens-and-nightwear--quilted-winter-bed-cover--word--37a662f047ed89ad",
+     "text": "লেপ",
+     "fallback": [
+      {
+       "word": "quilted-winter-bed-cover"
+      }
+     ]
+    },
+    "ask": {
+     "id": "bed-linens-and-nightwear--quilted-winter-bed-cover--ask--d4ba8a90aebf2112",
+     "text": "লেপ। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "quilted-winter-bed-cover"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “thick traditional winter quilt”? Show me."
+    },
+    "yes": {
+     "id": "bed-linens-and-nightwear--quilted-winter-bed-cover--yes--b2322af7e1876540",
+     "text": "দারুণ। লেপ।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "quilted-winter-bed-cover"
+      }
+     ],
+     "english": "Great! This is “thick traditional winter quilt”."
+    },
+    "recast": {
+     "id": "bed-linens-and-nightwear--quilted-winter-bed-cover--recast--a2c935784794aa21",
+     "text": "এই ছবিটা দেখুন। লেপ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "quilted-winter-bed-cover"
+      }
+     ],
+     "english": "Look at this picture. This is “thick traditional winter quilt”."
+    },
+    "examples": [
+     {
+      "id": "bed-linens-and-nightwear--quilted-winter-bed-cover--example-1--2a4a93eccc072013",
+      "text": "শীতে গায়ে লেপ দিই",
+      "fallback": [
+       {
+        "clip": "2a4a93eccc072013dfb6"
+       }
+      ]
+     }
+    ]
+   },
+   "plain-bed-sheet": {
+    "word": {
+     "id": "bed-linens-and-nightwear--plain-bed-sheet--word--17e570b63e25c57f",
+     "text": "বিছানার চাদর",
+     "fallback": [
+      {
+       "word": "plain-bed-sheet"
+      }
+     ]
+    },
+    "ask": {
+     "id": "bed-linens-and-nightwear--plain-bed-sheet--ask--b8bbc70b3d4621f3",
+     "text": "বিছানার চাদর। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "plain-bed-sheet"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “flat bed sheet”? Show me."
+    },
+    "yes": {
+     "id": "bed-linens-and-nightwear--plain-bed-sheet--yes--f7ec8a135c0886c2",
+     "text": "বাহ্। বিছানার চাদর।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "plain-bed-sheet"
+      }
+     ],
+     "english": "Wow! This is “flat bed sheet”."
+    },
+    "recast": {
+     "id": "bed-linens-and-nightwear--plain-bed-sheet--recast--1855ae0a189a4c37",
+     "text": "এই ছবিটা দেখুন। বিছানার চাদর।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "plain-bed-sheet"
+      }
+     ],
+     "english": "Look at this picture. This is “flat bed sheet”."
+    },
+    "examples": [
+     {
+      "id": "bed-linens-and-nightwear--plain-bed-sheet--example-1--1955037efe6edde0",
+      "text": "বিছানার চাদরটা বদলান",
+      "fallback": [
+       {
+        "clip": "1955037efe6edde0a92e"
+       }
+      ]
+     }
+    ]
+   },
+   "removable-pillowcase": {
+    "word": {
+     "id": "bed-linens-and-nightwear--removable-pillowcase--word--70db03b4521fb5a3",
+     "text": "বালিশের ওয়াড়",
+     "fallback": [
+      {
+       "word": "removable-pillowcase"
+      }
+     ]
+    },
+    "ask": {
+     "id": "bed-linens-and-nightwear--removable-pillowcase--ask--2455e54a2ead614c",
+     "text": "খুঁজে দেখুন। বালিশের ওয়াড়।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "removable-pillowcase"
+      }
+     ],
+     "english": "Find “removable pillowcase”."
+    },
+    "yes": {
+     "id": "bed-linens-and-nightwear--removable-pillowcase--yes--3272e01fa3ca9e1c",
+     "text": "বাহ্। বালিশের ওয়াড়।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "removable-pillowcase"
+      }
+     ],
+     "english": "Wow! This is “removable pillowcase”."
+    },
+    "recast": {
+     "id": "bed-linens-and-nightwear--removable-pillowcase--recast--edd3d205f1446b6b",
+     "text": "এই ছবিটা দেখুন। বালিশের ওয়াড়।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "removable-pillowcase"
+      }
+     ],
+     "english": "Look at this picture. This is “removable pillowcase”."
+    },
+    "examples": [
+     {
+      "id": "bed-linens-and-nightwear--removable-pillowcase--example-1--deaf69dbed97fcf1",
+      "text": "বালিশে নতুন ওয়াড় পরান",
+      "fallback": [
+       {
+        "clip": "deaf69dbed97fcf1d768"
+       }
+      ]
+     }
+    ]
+   },
+   "long-bolster-pillow": {
+    "word": {
+     "id": "bed-linens-and-nightwear--long-bolster-pillow--word--5d03de7a9ddcee03",
+     "text": "কোলবালিশ",
+     "fallback": [
+      {
+       "word": "long-bolster-pillow"
+      }
+     ]
+    },
+    "ask": {
+     "id": "bed-linens-and-nightwear--long-bolster-pillow--ask--c5e5b255bbde7751",
+     "text": "কোলবালিশ। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "long-bolster-pillow"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “long cylindrical hugging pillow”? Show me."
+    },
+    "yes": {
+     "id": "bed-linens-and-nightwear--long-bolster-pillow--yes--83257131c64937ba",
+     "text": "চমৎকার। কোলবালিশ।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "long-bolster-pillow"
+      }
+     ],
+     "english": "Excellent! This is “long cylindrical hugging pillow”."
+    },
+    "recast": {
+     "id": "bed-linens-and-nightwear--long-bolster-pillow--recast--00bc8079ed209ec6",
+     "text": "এই ছবিটা দেখুন। কোলবালিশ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "long-bolster-pillow"
+      }
+     ],
+     "english": "Look at this picture. This is “long cylindrical hugging pillow”."
+    },
+    "examples": [
+     {
+      "id": "bed-linens-and-nightwear--long-bolster-pillow--example-1--115d2df62ca95cbe",
+      "text": "কোলবালিশটা পাশে রাখুন",
+      "fallback": [
+       {
+        "clip": "115d2df62ca95cbe7d04"
+       }
+      ]
+     }
+    ]
+   },
+   "cotton-sleepwear-set": {
+    "word": {
+     "id": "bed-linens-and-nightwear--cotton-sleepwear-set--word--2955159534d9798a",
+     "text": "ঘুমানোর পোশাক",
+     "fallback": [
+      {
+       "word": "cotton-sleepwear-set"
+      }
+     ]
+    },
+    "ask": {
+     "id": "bed-linens-and-nightwear--cotton-sleepwear-set--ask--dbb442e26d605292",
+     "text": "ঘুমানোর পোশাক। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "cotton-sleepwear-set"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “light cotton sleepwear”? Show me."
+    },
+    "yes": {
+     "id": "bed-linens-and-nightwear--cotton-sleepwear-set--yes--867a8863f68054a6",
+     "text": "একদম ঠিক। ঘুমানোর পোশাক।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "cotton-sleepwear-set"
+      }
+     ],
+     "english": "Exactly right! This is “light cotton sleepwear”."
+    },
+    "recast": {
+     "id": "bed-linens-and-nightwear--cotton-sleepwear-set--recast--c5c756fb3d38eb79",
+     "text": "এই ছবিটা দেখুন। ঘুমানোর পোশাক।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "cotton-sleepwear-set"
+      }
+     ],
+     "english": "Look at this picture. This is “light cotton sleepwear”."
+    },
+    "examples": [
+     {
+      "id": "bed-linens-and-nightwear--cotton-sleepwear-set--example-1--2404b24d22a805d0",
+      "text": "ঘুমানোর পোশাক পরে নিন",
+      "fallback": [
+       {
+        "clip": "2404b24d22a805d099fa"
+       }
+      ]
+     }
+    ]
+   },
+   "bedside-bednet-post": {
+    "word": {
+     "id": "bed-linens-and-nightwear--bedside-bednet-post--word--f3238d40cd92e6b6",
+     "text": "মশারির খুঁটি",
+     "fallback": [
+      {
+       "word": "bedside-bednet-post"
+      }
+     ]
+    },
+    "ask": {
+     "id": "bed-linens-and-nightwear--bedside-bednet-post--ask--90440d241038a265",
+     "text": "মন দিয়ে শুনুন। মশারির খুঁটি। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "bedside-bednet-post"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “bed mosquito net support post”."
+    },
+    "yes": {
+     "id": "bed-linens-and-nightwear--bedside-bednet-post--yes--75ce99c838548b04",
+     "text": "একদম ঠিক। মশারির খুঁটি।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "bedside-bednet-post"
+      }
+     ],
+     "english": "Exactly right! This is “bed mosquito net support post”."
+    },
+    "recast": {
+     "id": "bed-linens-and-nightwear--bedside-bednet-post--recast--8e14cb177dcb619c",
+     "text": "এই ছবিটা দেখুন। মশারির খুঁটি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "bedside-bednet-post"
+      }
+     ],
+     "english": "Look at this picture. This is “bed mosquito net support post”."
+    },
+    "examples": [
+     {
+      "id": "bed-linens-and-nightwear--bedside-bednet-post--example-1--7bbe3e80465c724b",
+      "text": "খুঁটিতে মশারি বাঁধুন",
+      "fallback": [
+       {
+        "clip": "7bbe3e80465c724b7b59"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "taking-and-keeping-photos": {
+   "handheld-picture-taking-device": {
+    "word": {
+     "id": "taking-and-keeping-photos--handheld-picture-taking-device--word--3578566d4c180923",
+     "text": "ছবি তোলার যন্ত্র",
+     "fallback": [
+      {
+       "word": "handheld-picture-taking-device"
+      }
+     ]
+    },
+    "ask": {
+     "id": "taking-and-keeping-photos--handheld-picture-taking-device--ask--fcdb411423e379e6",
+     "text": "মন দিয়ে শুনুন। ছবি তোলার যন্ত্র। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "handheld-picture-taking-device"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “photographic camera”."
+    },
+    "yes": {
+     "id": "taking-and-keeping-photos--handheld-picture-taking-device--yes--a63805e3a938d22c",
+     "text": "একদম ঠিক। ছবি তোলার যন্ত্র।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "handheld-picture-taking-device"
+      }
+     ],
+     "english": "Exactly right! This is “photographic camera”."
+    },
+    "recast": {
+     "id": "taking-and-keeping-photos--handheld-picture-taking-device--recast--c1751bd8e70d151f",
+     "text": "এই ছবিটা দেখুন। ছবি তোলার যন্ত্র।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "handheld-picture-taking-device"
+      }
+     ],
+     "english": "Look at this picture. This is “photographic camera”."
+    },
+    "examples": [
+     {
+      "id": "taking-and-keeping-photos--handheld-picture-taking-device--example-1--38acd3afa8ea428e",
+      "text": "ছবি তোলার যন্ত্রটা আনুন",
+      "fallback": [
+       {
+        "clip": "38acd3afa8ea428e244c"
+       }
+      ]
+     }
+    ]
+   },
+   "camera-lens-focusing-glass": {
+    "word": {
+     "id": "taking-and-keeping-photos--camera-lens-focusing-glass--word--55f98517393d18f9",
+     "text": "ছবি তোলার কাচ",
+     "fallback": [
+      {
+       "word": "camera-lens-focusing-glass"
+      }
+     ]
+    },
+    "ask": {
+     "id": "taking-and-keeping-photos--camera-lens-focusing-glass--ask--d0cb71b1b8e64c7d",
+     "text": "ছবি তোলার কাচ। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "camera-lens-focusing-glass"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “detached photographic lens”? Show me."
+    },
+    "yes": {
+     "id": "taking-and-keeping-photos--camera-lens-focusing-glass--yes--7068ff472bcb10f2",
+     "text": "দারুণ। ছবি তোলার কাচ।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "camera-lens-focusing-glass"
+      }
+     ],
+     "english": "Great! This is “detached photographic lens”."
+    },
+    "recast": {
+     "id": "taking-and-keeping-photos--camera-lens-focusing-glass--recast--64f23bbbea50caa1",
+     "text": "এই ছবিটা দেখুন। ছবি তোলার কাচ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "camera-lens-focusing-glass"
+      }
+     ],
+     "english": "Look at this picture. This is “detached photographic lens”."
+    },
+    "examples": [
+     {
+      "id": "taking-and-keeping-photos--camera-lens-focusing-glass--example-1--7ed06e25cea625d9",
+      "text": "কাচটা ঘুরিয়ে দেখুন",
+      "fallback": [
+       {
+        "clip": "7ed06e25cea625d92b8c"
+       }
+      ]
+     }
+    ]
+   },
+   "three-legged-camera-support": {
+    "word": {
+     "id": "taking-and-keeping-photos--three-legged-camera-support--word--c751fcf2c0e39acc",
+     "text": "যন্ত্র রাখার তিনপায়া",
+     "fallback": [
+      {
+       "word": "three-legged-camera-support"
+      }
+     ]
+    },
+    "ask": {
+     "id": "taking-and-keeping-photos--three-legged-camera-support--ask--647da86cf16a5a7d",
+     "text": "খুঁজে দেখুন। যন্ত্র রাখার তিনপায়া।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "three-legged-camera-support"
+      }
+     ],
+     "english": "Find “photography tripod”."
+    },
+    "yes": {
+     "id": "taking-and-keeping-photos--three-legged-camera-support--yes--7080149d60bc6d06",
+     "text": "হ্যাঁ, ঠিক হয়েছে। যন্ত্র রাখার তিনপায়া।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "three-legged-camera-support"
+      }
+     ],
+     "english": "Yes! This is “photography tripod”."
+    },
+    "recast": {
+     "id": "taking-and-keeping-photos--three-legged-camera-support--recast--92b228b8232a8c2c",
+     "text": "এই ছবিটা দেখুন। যন্ত্র রাখার তিনপায়া।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "three-legged-camera-support"
+      }
+     ],
+     "english": "Look at this picture. This is “photography tripod”."
+    },
+    "examples": [
+     {
+      "id": "taking-and-keeping-photos--three-legged-camera-support--example-1--7112bac31beb5223",
+      "text": "যন্ত্রটা তিনপায়ায় রাখুন",
+      "fallback": [
+       {
+        "clip": "7112bac31beb52231e12"
+       }
+      ]
+     }
+    ]
+   },
+   "photography-flash-unit": {
+    "word": {
+     "id": "taking-and-keeping-photos--photography-flash-unit--word--ee2f5f4520e84eff",
+     "text": "ঝলক দেওয়ার বাতি",
+     "fallback": [
+      {
+       "word": "photography-flash-unit"
+      }
+     ]
+    },
+    "ask": {
+     "id": "taking-and-keeping-photos--photography-flash-unit--ask--4d550c075e1c92cb",
+     "text": "খুঁজে দেখুন। ঝলক দেওয়ার বাতি।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "photography-flash-unit"
+      }
+     ],
+     "english": "Find “camera flash unit”."
+    },
+    "yes": {
+     "id": "taking-and-keeping-photos--photography-flash-unit--yes--a9e7a3ffb6dabcf8",
+     "text": "খুব ভালো। ঝলক দেওয়ার বাতি।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "photography-flash-unit"
+      }
+     ],
+     "english": "Very good! This is “camera flash unit”."
+    },
+    "recast": {
+     "id": "taking-and-keeping-photos--photography-flash-unit--recast--d0d8c2dc846d9ffa",
+     "text": "এই ছবিটা দেখুন। ঝলক দেওয়ার বাতি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "photography-flash-unit"
+      }
+     ],
+     "english": "Look at this picture. This is “camera flash unit”."
+    },
+    "examples": [
+     {
+      "id": "taking-and-keeping-photos--photography-flash-unit--example-1--42042586cfc16c41",
+      "text": "ঝলক দেওয়ার বাতিটা লাগান",
+      "fallback": [
+       {
+        "clip": "42042586cfc16c41ef4e"
+       }
+      ]
+     }
+    ]
+   },
+   "book-for-loose-photographs": {
+    "word": {
+     "id": "taking-and-keeping-photos--book-for-loose-photographs--word--d1ba1600bbf63daf",
+     "text": "ছবি রাখার বই",
+     "fallback": [
+      {
+       "word": "book-for-loose-photographs"
+      }
+     ]
+    },
+    "ask": {
+     "id": "taking-and-keeping-photos--book-for-loose-photographs--ask--5051fc60e943cb83",
+     "text": "মন দিয়ে শুনুন। ছবি রাখার বই। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "book-for-loose-photographs"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “photo album”."
+    },
+    "yes": {
+     "id": "taking-and-keeping-photos--book-for-loose-photographs--yes--2e3907577f105d85",
+     "text": "হ্যাঁ, ঠিক হয়েছে। ছবি রাখার বই।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "book-for-loose-photographs"
+      }
+     ],
+     "english": "Yes! This is “photo album”."
+    },
+    "recast": {
+     "id": "taking-and-keeping-photos--book-for-loose-photographs--recast--1fc0aecfab2a4d29",
+     "text": "এই ছবিটা দেখুন। ছবি রাখার বই।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "book-for-loose-photographs"
+      }
+     ],
+     "english": "Look at this picture. This is “photo album”."
+    },
+    "examples": [
+     {
+      "id": "taking-and-keeping-photos--book-for-loose-photographs--example-1--47c1855b373c0225",
+      "text": "ছবি রাখার বইটা খুলুন",
+      "fallback": [
+       {
+        "clip": "47c1855b373c022545f9"
+       }
+      ]
+     }
+    ]
+   },
+   "standing-wood-photo-frame": {
+    "word": {
+     "id": "taking-and-keeping-photos--standing-wood-photo-frame--word--70665536fd5f19ae",
+     "text": "ছবি বাঁধানোর কাঠ",
+     "fallback": [
+      {
+       "word": "standing-wood-photo-frame"
+      }
+     ]
+    },
+    "ask": {
+     "id": "taking-and-keeping-photos--standing-wood-photo-frame--ask--2282692e86c060a1",
+     "text": "খুঁজে দেখুন। ছবি বাঁধানোর কাঠ।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "standing-wood-photo-frame"
+      }
+     ],
+     "english": "Find “wooden photo frame”."
+    },
+    "yes": {
+     "id": "taking-and-keeping-photos--standing-wood-photo-frame--yes--c8eb87ba82549d30",
+     "text": "খুব ভালো। ছবি বাঁধানোর কাঠ।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "standing-wood-photo-frame"
+      }
+     ],
+     "english": "Very good! This is “wooden photo frame”."
+    },
+    "recast": {
+     "id": "taking-and-keeping-photos--standing-wood-photo-frame--recast--d73d7a47d2f5ae70",
+     "text": "এই ছবিটা দেখুন। ছবি বাঁধানোর কাঠ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "standing-wood-photo-frame"
+      }
+     ],
+     "english": "Look at this picture. This is “wooden photo frame”."
+    },
+    "examples": [
+     {
+      "id": "taking-and-keeping-photos--standing-wood-photo-frame--example-1--0f62ccf6f76bda96",
+      "text": "ছবিটা কাঠে বাঁধিয়ে রাখুন",
+      "fallback": [
+       {
+        "clip": "0f62ccf6f76bda96b154"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "parts-of-common-containers": {
+   "open-mouth-of-a-bottle": {
+    "word": {
+     "id": "parts-of-common-containers--open-mouth-of-a-bottle--word--30045e4b67da1468",
+     "text": "বোতলের মুখ",
+     "fallback": [
+      {
+       "word": "open-mouth-of-a-bottle"
+      }
+     ]
+    },
+    "ask": {
+     "id": "parts-of-common-containers--open-mouth-of-a-bottle--ask--a95717f06c079fbf",
+     "text": "বোতলের মুখ। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "open-mouth-of-a-bottle"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “opening at the mouth of a bottle”? Show me."
+    },
+    "yes": {
+     "id": "parts-of-common-containers--open-mouth-of-a-bottle--yes--14775e3d697fd3d8",
+     "text": "শাবাশ। বোতলের মুখ।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "open-mouth-of-a-bottle"
+      }
+     ],
+     "english": "Well done! This is “opening at the mouth of a bottle”."
+    },
+    "recast": {
+     "id": "parts-of-common-containers--open-mouth-of-a-bottle--recast--3769fa45e03f138e",
+     "text": "এই ছবিটা দেখুন। বোতলের মুখ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "open-mouth-of-a-bottle"
+      }
+     ],
+     "english": "Look at this picture. This is “opening at the mouth of a bottle”."
+    },
+    "examples": [
+     {
+      "id": "parts-of-common-containers--open-mouth-of-a-bottle--example-1--1b2d729975a0596e",
+      "text": "বোতলের মুখটা খুলে রাখুন",
+      "fallback": [
+       {
+        "clip": "1b2d729975a0596ee667"
+       }
+      ]
+     }
+    ]
+   },
+   "separate-screw-cap-for-bottle": {
+    "word": {
+     "id": "parts-of-common-containers--separate-screw-cap-for-bottle--word--9d024ec1b1217ebc",
+     "text": "বোতলের ছিপি",
+     "fallback": [
+      {
+       "word": "separate-screw-cap-for-bottle"
+      }
+     ]
+    },
+    "ask": {
+     "id": "parts-of-common-containers--separate-screw-cap-for-bottle--ask--04ded68b388c0fb9",
+     "text": "বোতলের ছিপি। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "separate-screw-cap-for-bottle"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “detached bottle screw cap”? Show me."
+    },
+    "yes": {
+     "id": "parts-of-common-containers--separate-screw-cap-for-bottle--yes--25c529596dc0c8b4",
+     "text": "দারুণ। বোতলের ছিপি।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "separate-screw-cap-for-bottle"
+      }
+     ],
+     "english": "Great! This is “detached bottle screw cap”."
+    },
+    "recast": {
+     "id": "parts-of-common-containers--separate-screw-cap-for-bottle--recast--bd0674c31d68fb60",
+     "text": "এই ছবিটা দেখুন। বোতলের ছিপি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "separate-screw-cap-for-bottle"
+      }
+     ],
+     "english": "Look at this picture. This is “detached bottle screw cap”."
+    },
+    "examples": [
+     {
+      "id": "parts-of-common-containers--separate-screw-cap-for-bottle--example-1--2d3895ed4ccc4600",
+      "text": "ছিপিটা ভালো করে লাগান",
+      "fallback": [
+       {
+        "clip": "2d3895ed4ccc46005382"
+       }
+      ]
+     }
+    ]
+   },
+   "handle-of-a-teacup": {
+    "word": {
+     "id": "parts-of-common-containers--handle-of-a-teacup--word--5e34f52f16462562",
+     "text": "পেয়ালার হাতল",
+     "fallback": [
+      {
+       "word": "handle-of-a-teacup"
+      }
+     ]
+    },
+    "ask": {
+     "id": "parts-of-common-containers--handle-of-a-teacup--ask--a29e60d134cf48b0",
+     "text": "পেয়ালার হাতল। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "handle-of-a-teacup"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “looped handle of a teacup”? Show me."
+    },
+    "yes": {
+     "id": "parts-of-common-containers--handle-of-a-teacup--yes--582111e347bd8ec5",
+     "text": "দারুণ। পেয়ালার হাতল।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "handle-of-a-teacup"
+      }
+     ],
+     "english": "Great! This is “looped handle of a teacup”."
+    },
+    "recast": {
+     "id": "parts-of-common-containers--handle-of-a-teacup--recast--cf42d40598bdf00d",
+     "text": "এই ছবিটা দেখুন। পেয়ালার হাতল।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "handle-of-a-teacup"
+      }
+     ],
+     "english": "Look at this picture. This is “looped handle of a teacup”."
+    },
+    "examples": [
+     {
+      "id": "parts-of-common-containers--handle-of-a-teacup--example-1--896dfde35f62607b",
+      "text": "পেয়ালাটা হাতল ধরে নিন",
+      "fallback": [
+       {
+        "clip": "896dfde35f62607b23c1"
+       }
+      ]
+     }
+    ]
+   },
+   "handle-of-a-cooking-pot": {
+    "word": {
+     "id": "parts-of-common-containers--handle-of-a-cooking-pot--word--8ba65940d9370654",
+     "text": "হাঁড়ির হাতল",
+     "fallback": [
+      {
+       "word": "handle-of-a-cooking-pot"
+      }
+     ]
+    },
+    "ask": {
+     "id": "parts-of-common-containers--handle-of-a-cooking-pot--ask--5bc7f4ccb7827c88",
+     "text": "হাঁড়ির হাতল। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "handle-of-a-cooking-pot"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “handle on a cooking pot”? Show me."
+    },
+    "yes": {
+     "id": "parts-of-common-containers--handle-of-a-cooking-pot--yes--349921d05e28dbf3",
+     "text": "শাবাশ। হাঁড়ির হাতল।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "handle-of-a-cooking-pot"
+      }
+     ],
+     "english": "Well done! This is “handle on a cooking pot”."
+    },
+    "recast": {
+     "id": "parts-of-common-containers--handle-of-a-cooking-pot--recast--0aeb1e874cf2d763",
+     "text": "এই ছবিটা দেখুন। হাঁড়ির হাতল।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "handle-of-a-cooking-pot"
+      }
+     ],
+     "english": "Look at this picture. This is “handle on a cooking pot”."
+    },
+    "examples": [
+     {
+      "id": "parts-of-common-containers--handle-of-a-cooking-pot--example-1--8ecb95a0c95f99f0",
+      "text": "হাঁড়ির হাতল ধরে তুলুন",
+      "fallback": [
+       {
+        "clip": "8ecb95a0c95f99f0a6cb"
+       }
+      ]
+     }
+    ]
+   },
+   "underside-foot-of-a-bowl": {
+    "word": {
+     "id": "parts-of-common-containers--underside-foot-of-a-bowl--word--0aae83bfa4ad3e8c",
+     "text": "পাত্রের তলা",
+     "fallback": [
+      {
+       "word": "underside-foot-of-a-bowl"
+      }
+     ]
+    },
+    "ask": {
+     "id": "parts-of-common-containers--underside-foot-of-a-bowl--ask--d49da3d508b572de",
+     "text": "মন দিয়ে শুনুন। পাত্রের তলা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "underside-foot-of-a-bowl"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “underside of a bowl”."
+    },
+    "yes": {
+     "id": "parts-of-common-containers--underside-foot-of-a-bowl--yes--3f113b678a94e052",
+     "text": "হ্যাঁ, ঠিক হয়েছে। পাত্রের তলা।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "underside-foot-of-a-bowl"
+      }
+     ],
+     "english": "Yes! This is “underside of a bowl”."
+    },
+    "recast": {
+     "id": "parts-of-common-containers--underside-foot-of-a-bowl--recast--f42c407a84c97694",
+     "text": "এই ছবিটা দেখুন। পাত্রের তলা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "underside-foot-of-a-bowl"
+      }
+     ],
+     "english": "Look at this picture. This is “underside of a bowl”."
+    },
+    "examples": [
+     {
+      "id": "parts-of-common-containers--underside-foot-of-a-bowl--example-1--ea2820a9bb6ec3b3",
+      "text": "পাত্রের তলাটা মুছুন",
+      "fallback": [
+       {
+        "clip": "ea2820a9bb6ec3b39f1f"
+       }
+      ]
+     }
+    ]
+   },
+   "edge-rim-of-a-plate": {
+    "word": {
+     "id": "parts-of-common-containers--edge-rim-of-a-plate--word--6705d8652c4425fb",
+     "text": "থালার কিনারা",
+     "fallback": [
+      {
+       "word": "edge-rim-of-a-plate"
+      }
+     ]
+    },
+    "ask": {
+     "id": "parts-of-common-containers--edge-rim-of-a-plate--ask--139c395c69858ca8",
+     "text": "মন দিয়ে শুনুন। থালার কিনারা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "edge-rim-of-a-plate"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “outer rim of a plate”."
+    },
+    "yes": {
+     "id": "parts-of-common-containers--edge-rim-of-a-plate--yes--00a85390e2b3e2c5",
+     "text": "দারুণ। থালার কিনারা।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "edge-rim-of-a-plate"
+      }
+     ],
+     "english": "Great! This is “outer rim of a plate”."
+    },
+    "recast": {
+     "id": "parts-of-common-containers--edge-rim-of-a-plate--recast--ab2b11a6d478186a",
+     "text": "এই ছবিটা দেখুন। থালার কিনারা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "edge-rim-of-a-plate"
+      }
+     ],
+     "english": "Look at this picture. This is “outer rim of a plate”."
+    },
+    "examples": [
+     {
+      "id": "parts-of-common-containers--edge-rim-of-a-plate--example-1--292125bb8a75c550",
+      "text": "থালার কিনারা ধরে তুলুন",
+      "fallback": [
+       {
+        "clip": "292125bb8a75c550b40c"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "buying-fabric-cut-to-size": {
+   "opening-out-a-fabric-piece": {
+    "word": {
+     "id": "buying-fabric-cut-to-size--opening-out-a-fabric-piece--word--5852fb12bb3c30d1",
+     "text": "কাপড় মেলে ধরা",
+     "fallback": [
+      {
+       "word": "opening-out-a-fabric-piece"
+      }
+     ]
+    },
+    "ask": {
+     "id": "buying-fabric-cut-to-size--opening-out-a-fabric-piece--ask--48183f4f2c5a587b",
+     "text": "মন দিয়ে শুনুন। কাপড় মেলে ধরা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "opening-out-a-fabric-piece"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “holding a piece of fabric spread up”."
+    },
+    "yes": {
+     "id": "buying-fabric-cut-to-size--opening-out-a-fabric-piece--yes--f2e25ef93447fa24",
+     "text": "দারুণ। কাপড় মেলে ধরা।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "opening-out-a-fabric-piece"
+      }
+     ],
+     "english": "Great! This is “holding a piece of fabric spread up”."
+    },
+    "recast": {
+     "id": "buying-fabric-cut-to-size--opening-out-a-fabric-piece--recast--2ec552ef8073a795",
+     "text": "এই ছবিটা দেখুন। কাপড় মেলে ধরা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "opening-out-a-fabric-piece"
+      }
+     ],
+     "english": "Look at this picture. This is “holding a piece of fabric spread up”."
+    },
+    "examples": [
+     {
+      "id": "buying-fabric-cut-to-size--opening-out-a-fabric-piece--example-1--e9a710cffbc9a41a",
+      "text": "কাপড়টা মেলে ধরুন",
+      "fallback": [
+       {
+        "clip": "e9a710cffbc9a41a2c76"
+       }
+      ]
+     }
+    ]
+   },
+   "unfolding-a-folded-fabric": {
+    "word": {
+     "id": "buying-fabric-cut-to-size--unfolding-a-folded-fabric--word--72a0937248d5d16c",
+     "text": "কাপড়ের ভাঁজ খুলে দেখা",
+     "fallback": [
+      {
+       "word": "unfolding-a-folded-fabric"
+      }
+     ]
+    },
+    "ask": {
+     "id": "buying-fabric-cut-to-size--unfolding-a-folded-fabric--ask--4191497870405b2a",
+     "text": "মন দিয়ে শুনুন। কাপড়ের ভাঁজ খুলে দেখা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "unfolding-a-folded-fabric"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “unfolding cloth to inspect it”."
+    },
+    "yes": {
+     "id": "buying-fabric-cut-to-size--unfolding-a-folded-fabric--yes--ebff2e95598e679e",
+     "text": "চমৎকার। কাপড়ের ভাঁজ খুলে দেখা।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "unfolding-a-folded-fabric"
+      }
+     ],
+     "english": "Excellent! This is “unfolding cloth to inspect it”."
+    },
+    "recast": {
+     "id": "buying-fabric-cut-to-size--unfolding-a-folded-fabric--recast--40c29bc4cba6cb05",
+     "text": "এই ছবিটা দেখুন। কাপড়ের ভাঁজ খুলে দেখা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "unfolding-a-folded-fabric"
+      }
+     ],
+     "english": "Look at this picture. This is “unfolding cloth to inspect it”."
+    },
+    "examples": [
+     {
+      "id": "buying-fabric-cut-to-size--unfolding-a-folded-fabric--example-1--c70dc43b912467b2",
+      "text": "ভাঁজ খুলে কাপড়টা দেখুন",
+      "fallback": [
+       {
+        "clip": "c70dc43b912467b204db"
+       }
+      ]
+     }
+    ]
+   },
+   "matching-two-coloured-fabrics": {
+    "word": {
+     "id": "buying-fabric-cut-to-size--matching-two-coloured-fabrics--word--2f1843e6b2d4559a",
+     "text": "কাপড়ের রং মিলিয়ে দেখা",
+     "fallback": [
+      {
+       "word": "matching-two-coloured-fabrics"
+      }
+     ]
+    },
+    "ask": {
+     "id": "buying-fabric-cut-to-size--matching-two-coloured-fabrics--ask--40bae758ebc79f2a",
+     "text": "মন দিয়ে শুনুন। কাপড়ের রং মিলিয়ে দেখা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "matching-two-coloured-fabrics"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “holding two fabrics side by side to match colors”."
+    },
+    "yes": {
+     "id": "buying-fabric-cut-to-size--matching-two-coloured-fabrics--yes--21aceb07fb23701d",
+     "text": "চমৎকার। কাপড়ের রং মিলিয়ে দেখা।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "matching-two-coloured-fabrics"
+      }
+     ],
+     "english": "Excellent! This is “holding two fabrics side by side to match colors”."
+    },
+    "recast": {
+     "id": "buying-fabric-cut-to-size--matching-two-coloured-fabrics--recast--5eb329226b41a9e3",
+     "text": "এই ছবিটা দেখুন। কাপড়ের রং মিলিয়ে দেখা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "matching-two-coloured-fabrics"
+      }
+     ],
+     "english": "Look at this picture. This is “holding two fabrics side by side to match colors”."
+    },
+    "examples": [
+     {
+      "id": "buying-fabric-cut-to-size--matching-two-coloured-fabrics--example-1--ef867d22ecd7eda0",
+      "text": "দুই কাপড়ের রং মিলিয়ে দেখুন",
+      "fallback": [
+       {
+        "clip": "ef867d22ecd7eda02671"
+       }
+      ]
+     }
+    ]
+   },
+   "marking-the-fabric-edge": {
+    "word": {
+     "id": "buying-fabric-cut-to-size--marking-the-fabric-edge--word--22e9f521c3b2355f",
+     "text": "কাপড়ে দাগ দেওয়া",
+     "fallback": [
+      {
+       "word": "marking-the-fabric-edge"
+      }
+     ]
+    },
+    "ask": {
+     "id": "buying-fabric-cut-to-size--marking-the-fabric-edge--ask--e3b286661b720b31",
+     "text": "খুঁজে দেখুন। কাপড়ে দাগ দেওয়া।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "marking-the-fabric-edge"
+      }
+     ],
+     "english": "Find “marking a cloth edge with chalk”."
+    },
+    "yes": {
+     "id": "buying-fabric-cut-to-size--marking-the-fabric-edge--yes--8e475a99632da6ee",
+     "text": "খুব ভালো। কাপড়ে দাগ দেওয়া।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "marking-the-fabric-edge"
+      }
+     ],
+     "english": "Very good! This is “marking a cloth edge with chalk”."
+    },
+    "recast": {
+     "id": "buying-fabric-cut-to-size--marking-the-fabric-edge--recast--86a7ca29575947eb",
+     "text": "এই ছবিটা দেখুন। কাপড়ে দাগ দেওয়া।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "marking-the-fabric-edge"
+      }
+     ],
+     "english": "Look at this picture. This is “marking a cloth edge with chalk”."
+    },
+    "examples": [
+     {
+      "id": "buying-fabric-cut-to-size--marking-the-fabric-edge--example-1--75b758bb60053361",
+      "text": "কাপড়ে সোজা দাগ দিন",
+      "fallback": [
+       {
+        "clip": "75b758bb60053361b6e7"
+       }
+      ]
+     }
+    ]
+   },
+   "measuring-fabric-by-the-yard": {
+    "word": {
+     "id": "buying-fabric-cut-to-size--measuring-fabric-by-the-yard--word--e903c6ac586f1636",
+     "text": "গজে কাপড় মাপা",
+     "fallback": [
+      {
+       "word": "measuring-fabric-by-the-yard"
+      }
+     ]
+    },
+    "ask": {
+     "id": "buying-fabric-cut-to-size--measuring-fabric-by-the-yard--ask--126a64bcca65b8e4",
+     "text": "খুঁজে দেখুন। গজে কাপড় মাপা।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "measuring-fabric-by-the-yard"
+      }
+     ],
+     "english": "Find “measuring cloth with a yardstick”."
+    },
+    "yes": {
+     "id": "buying-fabric-cut-to-size--measuring-fabric-by-the-yard--yes--325630420f1cf9c5",
+     "text": "শাবাশ। গজে কাপড় মাপা।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "measuring-fabric-by-the-yard"
+      }
+     ],
+     "english": "Well done! This is “measuring cloth with a yardstick”."
+    },
+    "recast": {
+     "id": "buying-fabric-cut-to-size--measuring-fabric-by-the-yard--recast--fdf72294b97bce85",
+     "text": "এই ছবিটা দেখুন। গজে কাপড় মাপা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "measuring-fabric-by-the-yard"
+      }
+     ],
+     "english": "Look at this picture. This is “measuring cloth with a yardstick”."
+    },
+    "examples": [
+     {
+      "id": "buying-fabric-cut-to-size--measuring-fabric-by-the-yard--example-1--80cd7f84337968a0",
+      "text": "দুই গজ কাপড় মাপুন",
+      "fallback": [
+       {
+        "clip": "80cd7f84337968a08155"
+       }
+      ]
+     }
+    ]
+   },
+   "cutting-cloth-from-the-bolt": {
+    "word": {
+     "id": "buying-fabric-cut-to-size--cutting-cloth-from-the-bolt--word--ad10421dfe0f8250",
+     "text": "থান থেকে কাপড় কাটা",
+     "fallback": [
+      {
+       "word": "cutting-cloth-from-the-bolt"
+      }
+     ]
+    },
+    "ask": {
+     "id": "buying-fabric-cut-to-size--cutting-cloth-from-the-bolt--ask--ff6900c7279a7b98",
+     "text": "মন দিয়ে শুনুন। থান থেকে কাপড় কাটা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "cutting-cloth-from-the-bolt"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “cutting cloth from the bolt”."
+    },
+    "yes": {
+     "id": "buying-fabric-cut-to-size--cutting-cloth-from-the-bolt--yes--b18af01b4949a6d5",
+     "text": "একদম ঠিক। থান থেকে কাপড় কাটা।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "cutting-cloth-from-the-bolt"
+      }
+     ],
+     "english": "Exactly right! This is “cutting cloth from the bolt”."
+    },
+    "recast": {
+     "id": "buying-fabric-cut-to-size--cutting-cloth-from-the-bolt--recast--e9e81e50d84003dc",
+     "text": "এই ছবিটা দেখুন। থান থেকে কাপড় কাটা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "cutting-cloth-from-the-bolt"
+      }
+     ],
+     "english": "Look at this picture. This is “cutting cloth from the bolt”."
+    },
+    "examples": [
+     {
+      "id": "buying-fabric-cut-to-size--cutting-cloth-from-the-bolt--example-1--2c17dde2306e1675",
+      "text": "থান থেকে কাপড় কেটে দিন",
+      "fallback": [
+       {
+        "clip": "2c17dde2306e167515e3"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "wet-cleaning-supplies": {
+   "wet-floor-mop": {
+    "word": {
+     "id": "wet-cleaning-supplies--wet-floor-mop--word--70a7eb002940092e",
+     "text": "মেঝে মোছার ঝাড়ু",
+     "fallback": [
+      {
+       "word": "wet-floor-mop"
+      }
+     ]
+    },
+    "ask": {
+     "id": "wet-cleaning-supplies--wet-floor-mop--ask--c3bdcf1a85c81d6a",
+     "text": "মন দিয়ে শুনুন। মেঝে মোছার ঝাড়ু। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "wet-floor-mop"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “wet floor mop”."
+    },
+    "yes": {
+     "id": "wet-cleaning-supplies--wet-floor-mop--yes--94af69602b8cb4c5",
+     "text": "শাবাশ। মেঝে মোছার ঝাড়ু।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "wet-floor-mop"
+      }
+     ],
+     "english": "Well done! This is “wet floor mop”."
+    },
+    "recast": {
+     "id": "wet-cleaning-supplies--wet-floor-mop--recast--40872e0f4119a28a",
+     "text": "এই ছবিটা দেখুন। মেঝে মোছার ঝাড়ু।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "wet-floor-mop"
+      }
+     ],
+     "english": "Look at this picture. This is “wet floor mop”."
+    },
+    "examples": [
+     {
+      "id": "wet-cleaning-supplies--wet-floor-mop--example-1--0fe5a25a94aab241",
+      "text": "ঝাড়ুটা দিয়ে মেঝে মুছুন",
+      "fallback": [
+       {
+        "clip": "0fe5a25a94aab241a039"
+       }
+      ]
+     }
+    ]
+   },
+   "rubber-glass-squeegee": {
+    "word": {
+     "id": "wet-cleaning-supplies--rubber-glass-squeegee--word--97596627790647b9",
+     "text": "কাচ মোছার পাত",
+     "fallback": [
+      {
+       "word": "rubber-glass-squeegee"
+      }
+     ]
+    },
+    "ask": {
+     "id": "wet-cleaning-supplies--rubber-glass-squeegee--ask--c4e761d2171a775b",
+     "text": "কাচ মোছার পাত। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "rubber-glass-squeegee"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “handheld glass squeegee”? Show me."
+    },
+    "yes": {
+     "id": "wet-cleaning-supplies--rubber-glass-squeegee--yes--b07296b2787fc757",
+     "text": "খুব ভালো। কাচ মোছার পাত।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "rubber-glass-squeegee"
+      }
+     ],
+     "english": "Very good! This is “handheld glass squeegee”."
+    },
+    "recast": {
+     "id": "wet-cleaning-supplies--rubber-glass-squeegee--recast--b013ee5b3317da15",
+     "text": "এই ছবিটা দেখুন। কাচ মোছার পাত।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "rubber-glass-squeegee"
+      }
+     ],
+     "english": "Look at this picture. This is “handheld glass squeegee”."
+    },
+    "examples": [
+     {
+      "id": "wet-cleaning-supplies--rubber-glass-squeegee--example-1--f04aae40a525444a",
+      "text": "ভেজা কাচে পাতটা টানুন",
+      "fallback": [
+       {
+        "clip": "f04aae40a525444a6085"
+       }
+      ]
+     }
+    ]
+   },
+   "soapy-liquid-for-dishes": {
+    "word": {
+     "id": "wet-cleaning-supplies--soapy-liquid-for-dishes--word--0ed07c855569b3f5",
+     "text": "বাসন ধোয়ার সাবান",
+     "fallback": [
+      {
+       "word": "soapy-liquid-for-dishes"
+      }
+     ]
+    },
+    "ask": {
+     "id": "wet-cleaning-supplies--soapy-liquid-for-dishes--ask--3b841ab4c2af20dd",
+     "text": "খুঁজে দেখুন। বাসন ধোয়ার সাবান।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "soapy-liquid-for-dishes"
+      }
+     ],
+     "english": "Find “dishwashing liquid soap”."
+    },
+    "yes": {
+     "id": "wet-cleaning-supplies--soapy-liquid-for-dishes--yes--2633f3754e84affb",
+     "text": "একদম ঠিক। বাসন ধোয়ার সাবান।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "soapy-liquid-for-dishes"
+      }
+     ],
+     "english": "Exactly right! This is “dishwashing liquid soap”."
+    },
+    "recast": {
+     "id": "wet-cleaning-supplies--soapy-liquid-for-dishes--recast--338b7e62553c5c78",
+     "text": "এই ছবিটা দেখুন। বাসন ধোয়ার সাবান।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "soapy-liquid-for-dishes"
+      }
+     ],
+     "english": "Look at this picture. This is “dishwashing liquid soap”."
+    },
+    "examples": [
+     {
+      "id": "wet-cleaning-supplies--soapy-liquid-for-dishes--example-1--987a533cde535650",
+      "text": "বাসন ধোয়ার সাবানটা দিন",
+      "fallback": [
+       {
+        "clip": "987a533cde53565035b6"
+       }
+      ]
+     }
+    ]
+   },
+   "cloth-to-wipe-clean-dishes": {
+    "word": {
+     "id": "wet-cleaning-supplies--cloth-to-wipe-clean-dishes--word--70d3599ad13f7831",
+     "text": "বাসন মোছার কাপড়",
+     "fallback": [
+      {
+       "word": "cloth-to-wipe-clean-dishes"
+      }
+     ]
+    },
+    "ask": {
+     "id": "wet-cleaning-supplies--cloth-to-wipe-clean-dishes--ask--b8f57f7bc8396cbd",
+     "text": "বাসন মোছার কাপড়। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "cloth-to-wipe-clean-dishes"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “dish towel”? Show me."
+    },
+    "yes": {
+     "id": "wet-cleaning-supplies--cloth-to-wipe-clean-dishes--yes--00bcbd2285804b5f",
+     "text": "হ্যাঁ, ঠিক হয়েছে। বাসন মোছার কাপড়।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "cloth-to-wipe-clean-dishes"
+      }
+     ],
+     "english": "Yes! This is “dish towel”."
+    },
+    "recast": {
+     "id": "wet-cleaning-supplies--cloth-to-wipe-clean-dishes--recast--0bfafe009b901b36",
+     "text": "এই ছবিটা দেখুন। বাসন মোছার কাপড়।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "cloth-to-wipe-clean-dishes"
+      }
+     ],
+     "english": "Look at this picture. This is “dish towel”."
+    },
+    "examples": [
+     {
+      "id": "wet-cleaning-supplies--cloth-to-wipe-clean-dishes--example-1--2156aa8ad8050a85",
+      "text": "কাপড় দিয়ে থালা মুছুন",
+      "fallback": [
+       {
+        "clip": "2156aa8ad8050a85c8c4"
+       }
+      ]
+     }
+    ]
+   },
+   "cleaning-water-mist-bottle": {
+    "word": {
+     "id": "wet-cleaning-supplies--cleaning-water-mist-bottle--word--95783faa87818f61",
+     "text": "পানি ছিটানোর বোতল",
+     "fallback": [
+      {
+       "word": "cleaning-water-mist-bottle"
+      }
+     ]
+    },
+    "ask": {
+     "id": "wet-cleaning-supplies--cleaning-water-mist-bottle--ask--d197a2bae8c8e3ce",
+     "text": "খুঁজে দেখুন। পানি ছিটানোর বোতল।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "cleaning-water-mist-bottle"
+      }
+     ],
+     "english": "Find “water spray bottle”."
+    },
+    "yes": {
+     "id": "wet-cleaning-supplies--cleaning-water-mist-bottle--yes--c6f38e5b88a0407b",
+     "text": "দারুণ। পানি ছিটানোর বোতল।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "cleaning-water-mist-bottle"
+      }
+     ],
+     "english": "Great! This is “water spray bottle”."
+    },
+    "recast": {
+     "id": "wet-cleaning-supplies--cleaning-water-mist-bottle--recast--598989aa3bc236b0",
+     "text": "এই ছবিটা দেখুন। পানি ছিটানোর বোতল।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "cleaning-water-mist-bottle"
+      }
+     ],
+     "english": "Look at this picture. This is “water spray bottle”."
+    },
+    "examples": [
+     {
+      "id": "wet-cleaning-supplies--cleaning-water-mist-bottle--example-1--e474189979a78b86",
+      "text": "বোতল দিয়ে একটু পানি ছিটান",
+      "fallback": [
+       {
+        "clip": "e474189979a78b8685c0"
+       }
+      ]
+     }
+    ]
+   },
+   "washproof-rubber-gloves": {
+    "word": {
+     "id": "wet-cleaning-supplies--washproof-rubber-gloves--word--e4ee5f17645ecc3a",
+     "text": "পানি আটকানোর হাতমোজা",
+     "fallback": [
+      {
+       "word": "washproof-rubber-gloves"
+      }
+     ]
+    },
+    "ask": {
+     "id": "wet-cleaning-supplies--washproof-rubber-gloves--ask--41f996a51f939043",
+     "text": "মন দিয়ে শুনুন। পানি আটকানোর হাতমোজা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "washproof-rubber-gloves"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “waterproof cleaning gloves”."
+    },
+    "yes": {
+     "id": "wet-cleaning-supplies--washproof-rubber-gloves--yes--be21a510645cf45d",
+     "text": "দারুণ। পানি আটকানোর হাতমোজা।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "washproof-rubber-gloves"
+      }
+     ],
+     "english": "Great! This is “waterproof cleaning gloves”."
+    },
+    "recast": {
+     "id": "wet-cleaning-supplies--washproof-rubber-gloves--recast--d3e740ea66d19d85",
+     "text": "এই ছবিটা দেখুন। পানি আটকানোর হাতমোজা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "washproof-rubber-gloves"
+      }
+     ],
+     "english": "Look at this picture. This is “waterproof cleaning gloves”."
+    },
+    "examples": [
+     {
+      "id": "wet-cleaning-supplies--washproof-rubber-gloves--example-1--8a98e9f490be4b48",
+      "text": "কাজের আগে হাতমোজা পরুন",
+      "fallback": [
+       {
+        "clip": "8a98e9f490be4b4864eb"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "animals-and-shells-of-the-sea": {
+   "marine-shark": {
+    "word": {
+     "id": "animals-and-shells-of-the-sea--marine-shark--word--500f41540a41f681",
+     "text": "হাঙর",
+     "fallback": [
+      {
+       "word": "marine-shark"
+      }
+     ]
+    },
+    "ask": {
+     "id": "animals-and-shells-of-the-sea--marine-shark--ask--b02b6589793c4370",
+     "text": "মন দিয়ে শুনুন। হাঙর। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "marine-shark"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “shark”."
+    },
+    "yes": {
+     "id": "animals-and-shells-of-the-sea--marine-shark--yes--d64290409e0199e8",
+     "text": "দারুণ। হাঙর।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "marine-shark"
+      }
+     ],
+     "english": "Great! This is “shark”."
+    },
+    "recast": {
+     "id": "animals-and-shells-of-the-sea--marine-shark--recast--93b029025fdd9a10",
+     "text": "এই ছবিটা দেখুন। হাঙর।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "marine-shark"
+      }
+     ],
+     "english": "Look at this picture. This is “shark”."
+    },
+    "examples": [
+     {
+      "id": "animals-and-shells-of-the-sea--marine-shark--example-1--b12f58e6bf052a6f",
+      "text": "সাগরে হাঙর থাকে",
+      "fallback": [
+       {
+        "clip": "b12f58e6bf052a6fc275"
+       }
+      ]
+     }
+    ]
+   },
+   "seahorse-vertebrate": {
+    "word": {
+     "id": "animals-and-shells-of-the-sea--seahorse-vertebrate--word--25d53ffd840674e3",
+     "text": "সামুদ্রিক ঘোড়া",
+     "fallback": [
+      {
+       "word": "seahorse-vertebrate"
+      }
+     ]
+    },
+    "ask": {
+     "id": "animals-and-shells-of-the-sea--seahorse-vertebrate--ask--d50dbd2ee633809f",
+     "text": "সামুদ্রিক ঘোড়া। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "seahorse-vertebrate"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “seahorse”? Show me."
+    },
+    "yes": {
+     "id": "animals-and-shells-of-the-sea--seahorse-vertebrate--yes--358b9abe54ce0442",
+     "text": "একদম ঠিক। সামুদ্রিক ঘোড়া।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "seahorse-vertebrate"
+      }
+     ],
+     "english": "Exactly right! This is “seahorse”."
+    },
+    "recast": {
+     "id": "animals-and-shells-of-the-sea--seahorse-vertebrate--recast--643e843865905399",
+     "text": "এই ছবিটা দেখুন। সামুদ্রিক ঘোড়া।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "seahorse-vertebrate"
+      }
+     ],
+     "english": "Look at this picture. This is “seahorse”."
+    },
+    "examples": [
+     {
+      "id": "animals-and-shells-of-the-sea--seahorse-vertebrate--example-1--fd9454891e8959a1",
+      "text": "সামুদ্রিক ঘোড়ার লেজটা দেখুন",
+      "fallback": [
+       {
+        "clip": "fd9454891e8959a18509"
+       }
+      ]
+     }
+    ]
+   },
+   "umbrella-shaped-jelly-creature": {
+    "word": {
+     "id": "animals-and-shells-of-the-sea--umbrella-shaped-jelly-creature--word--8519eb03328a11f8",
+     "text": "ছাতামাছ",
+     "fallback": [
+      {
+       "word": "umbrella-shaped-jelly-creature"
+      }
+     ]
+    },
+    "ask": {
+     "id": "animals-and-shells-of-the-sea--umbrella-shaped-jelly-creature--ask--2b3d8483e281bcd3",
+     "text": "খুঁজে দেখুন। ছাতামাছ।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "umbrella-shaped-jelly-creature"
+      }
+     ],
+     "english": "Find “jellyfish”."
+    },
+    "yes": {
+     "id": "animals-and-shells-of-the-sea--umbrella-shaped-jelly-creature--yes--c6c9a675c67dfbbb",
+     "text": "দারুণ। ছাতামাছ।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "umbrella-shaped-jelly-creature"
+      }
+     ],
+     "english": "Great! This is “jellyfish”."
+    },
+    "recast": {
+     "id": "animals-and-shells-of-the-sea--umbrella-shaped-jelly-creature--recast--7ccc223d640fe143",
+     "text": "এই ছবিটা দেখুন। ছাতামাছ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "umbrella-shaped-jelly-creature"
+      }
+     ],
+     "english": "Look at this picture. This is “jellyfish”."
+    },
+    "examples": [
+     {
+      "id": "animals-and-shells-of-the-sea--umbrella-shaped-jelly-creature--example-1--1be9bcb14f8cdee7",
+      "text": "ছাতামাছের গা স্বচ্ছ",
+      "fallback": [
+       {
+        "clip": "1be9bcb14f8cdee7e765"
+       }
+      ]
+     }
+    ]
+   },
+   "five-rayed-marine-seastar": {
+    "word": {
+     "id": "animals-and-shells-of-the-sea--five-rayed-marine-seastar--word--6f72601c4b4ead77",
+     "text": "তারামাছ",
+     "fallback": [
+      {
+       "word": "five-rayed-marine-seastar"
+      }
+     ]
+    },
+    "ask": {
+     "id": "animals-and-shells-of-the-sea--five-rayed-marine-seastar--ask--2e6fe2ead42bd363",
+     "text": "তারামাছ। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "five-rayed-marine-seastar"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “sea star”? Show me."
+    },
+    "yes": {
+     "id": "animals-and-shells-of-the-sea--five-rayed-marine-seastar--yes--208ae84803d54ec3",
+     "text": "একদম ঠিক। তারামাছ।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "five-rayed-marine-seastar"
+      }
+     ],
+     "english": "Exactly right! This is “sea star”."
+    },
+    "recast": {
+     "id": "animals-and-shells-of-the-sea--five-rayed-marine-seastar--recast--dfbd3c0efee33cfe",
+     "text": "এই ছবিটা দেখুন। তারামাছ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "five-rayed-marine-seastar"
+      }
+     ],
+     "english": "Look at this picture. This is “sea star”."
+    },
+    "examples": [
+     {
+      "id": "animals-and-shells-of-the-sea--five-rayed-marine-seastar--example-1--1b7b967f7d992010",
+      "text": "তারামাছের পাঁচটা দিক আছে",
+      "fallback": [
+       {
+        "clip": "1b7b967f7d992010e53e"
+       }
+      ]
+     }
+    ]
+   },
+   "marine-branch-coral": {
+    "word": {
+     "id": "animals-and-shells-of-the-sea--marine-branch-coral--word--a7f421140c3eeb27",
+     "text": "প্রবাল",
+     "fallback": [
+      {
+       "word": "marine-branch-coral"
+      }
+     ]
+    },
+    "ask": {
+     "id": "animals-and-shells-of-the-sea--marine-branch-coral--ask--8767a9ec605ebf6a",
+     "text": "মন দিয়ে শুনুন। প্রবাল। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "marine-branch-coral"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “branch coral”."
+    },
+    "yes": {
+     "id": "animals-and-shells-of-the-sea--marine-branch-coral--yes--625272de553f1197",
+     "text": "চমৎকার। প্রবাল।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "marine-branch-coral"
+      }
+     ],
+     "english": "Excellent! This is “branch coral”."
+    },
+    "recast": {
+     "id": "animals-and-shells-of-the-sea--marine-branch-coral--recast--9b6ecd305d2071ab",
+     "text": "এই ছবিটা দেখুন। প্রবাল।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "marine-branch-coral"
+      }
+     ],
+     "english": "Look at this picture. This is “branch coral”."
+    },
+    "examples": [
+     {
+      "id": "animals-and-shells-of-the-sea--marine-branch-coral--example-1--ae23a0ad0b24d48e",
+      "text": "প্রবালের ডালপালার মতো অংশ আছে",
+      "fallback": [
+       {
+        "clip": "ae23a0ad0b24d48e2e49"
+       }
+      ]
+     }
+    ]
+   },
+   "marine-conch-shell": {
+    "word": {
+     "id": "animals-and-shells-of-the-sea--marine-conch-shell--word--77ffe707a51e6260",
+     "text": "শঙ্খ",
+     "fallback": [
+      {
+       "word": "marine-conch-shell"
+      }
+     ]
+    },
+    "ask": {
+     "id": "animals-and-shells-of-the-sea--marine-conch-shell--ask--0f6188c4c07e2c31",
+     "text": "খুঁজে দেখুন। শঙ্খ।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "marine-conch-shell"
+      }
+     ],
+     "english": "Find “large spiral marine conch shell”."
+    },
+    "yes": {
+     "id": "animals-and-shells-of-the-sea--marine-conch-shell--yes--40d00616234f4485",
+     "text": "দারুণ। শঙ্খ।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "marine-conch-shell"
+      }
+     ],
+     "english": "Great! This is “large spiral marine conch shell”."
+    },
+    "recast": {
+     "id": "animals-and-shells-of-the-sea--marine-conch-shell--recast--ec7ef43e52dabdcd",
+     "text": "এই ছবিটা দেখুন। শঙ্খ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "marine-conch-shell"
+      }
+     ],
+     "english": "Look at this picture. This is “large spiral marine conch shell”."
+    },
+    "examples": [
+     {
+      "id": "animals-and-shells-of-the-sea--marine-conch-shell--example-1--e66322656f9b7538",
+      "text": "শঙ্খের খোলস শক্ত",
+      "fallback": [
+       {
+        "clip": "e66322656f9b75381da7"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "small-child-care-gear": {
+   "pushchair-for-a-child": {
+    "word": {
+     "id": "small-child-care-gear--pushchair-for-a-child--word--268a486be459544a",
+     "text": "বাচ্চার ঠেলাগাড়ি",
+     "fallback": [
+      {
+       "word": "pushchair-for-a-child"
+      }
+     ]
+    },
+    "ask": {
+     "id": "small-child-care-gear--pushchair-for-a-child--ask--f39b92e0bb05b85f",
+     "text": "মন দিয়ে শুনুন। বাচ্চার ঠেলাগাড়ি। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "pushchair-for-a-child"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “baby stroller pushchair”."
+    },
+    "yes": {
+     "id": "small-child-care-gear--pushchair-for-a-child--yes--94108823bb6c62ed",
+     "text": "একদম ঠিক। বাচ্চার ঠেলাগাড়ি।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "pushchair-for-a-child"
+      }
+     ],
+     "english": "Exactly right! This is “baby stroller pushchair”."
+    },
+    "recast": {
+     "id": "small-child-care-gear--pushchair-for-a-child--recast--966917e4ea73518d",
+     "text": "এই ছবিটা দেখুন। বাচ্চার ঠেলাগাড়ি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "pushchair-for-a-child"
+      }
+     ],
+     "english": "Look at this picture. This is “baby stroller pushchair”."
+    },
+    "examples": [
+     {
+      "id": "small-child-care-gear--pushchair-for-a-child--example-1--51dc772ae707ffa3",
+      "text": "বাচ্চাকে ঠেলাগাড়িতে বসান",
+      "fallback": [
+       {
+        "clip": "51dc772ae707ffa35470"
+       }
+      ]
+     }
+    ]
+   },
+   "raised-infant-meal-seat": {
+    "word": {
+     "id": "small-child-care-gear--raised-infant-meal-seat--word--32e91dcf8084857e",
+     "text": "বাচ্চার উঁচু আসন",
+     "fallback": [
+      {
+       "word": "raised-infant-meal-seat"
+      }
+     ]
+    },
+    "ask": {
+     "id": "small-child-care-gear--raised-infant-meal-seat--ask--02dbb29d6da6ec37",
+     "text": "মন দিয়ে শুনুন। বাচ্চার উঁচু আসন। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "raised-infant-meal-seat"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “baby high chair”."
+    },
+    "yes": {
+     "id": "small-child-care-gear--raised-infant-meal-seat--yes--b5258a5d13d10ba7",
+     "text": "খুব ভালো। বাচ্চার উঁচু আসন।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "raised-infant-meal-seat"
+      }
+     ],
+     "english": "Very good! This is “baby high chair”."
+    },
+    "recast": {
+     "id": "small-child-care-gear--raised-infant-meal-seat--recast--284647b9a33ad858",
+     "text": "এই ছবিটা দেখুন। বাচ্চার উঁচু আসন।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "raised-infant-meal-seat"
+      }
+     ],
+     "english": "Look at this picture. This is “baby high chair”."
+    },
+    "examples": [
+     {
+      "id": "small-child-care-gear--raised-infant-meal-seat--example-1--4439aa2855a561c1",
+      "text": "বাচ্চাকে উঁচু আসনে বসান",
+      "fallback": [
+       {
+        "clip": "4439aa2855a561c1c277"
+       }
+      ]
+     }
+    ]
+   },
+   "infant-comfort-pacifier": {
+    "word": {
+     "id": "small-child-care-gear--infant-comfort-pacifier--word--b0c187cc1de3d4ff",
+     "text": "চুষনি",
+     "fallback": [
+      {
+       "word": "infant-comfort-pacifier"
+      }
+     ]
+    },
+    "ask": {
+     "id": "small-child-care-gear--infant-comfort-pacifier--ask--f921152499069474",
+     "text": "চুষনি। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "infant-comfort-pacifier"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “baby pacifier”? Show me."
+    },
+    "yes": {
+     "id": "small-child-care-gear--infant-comfort-pacifier--yes--ed943211a01ccf56",
+     "text": "চমৎকার। চুষনি।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "infant-comfort-pacifier"
+      }
+     ],
+     "english": "Excellent! This is “baby pacifier”."
+    },
+    "recast": {
+     "id": "small-child-care-gear--infant-comfort-pacifier--recast--ba2b9850112fe434",
+     "text": "এই ছবিটা দেখুন। চুষনি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "infant-comfort-pacifier"
+      }
+     ],
+     "english": "Look at this picture. This is “baby pacifier”."
+    },
+    "examples": [
+     {
+      "id": "small-child-care-gear--infant-comfort-pacifier--example-1--ef658e62209ba10f",
+      "text": "চুষনিটা পরিষ্কার রাখুন",
+      "fallback": [
+       {
+        "clip": "ef658e62209ba10fa533"
+       }
+      ]
+     }
+    ]
+   },
+   "washable-cloth-diaper": {
+    "word": {
+     "id": "small-child-care-gear--washable-cloth-diaper--word--d1be32e9060450d6",
+     "text": "কাপড়ের নেংটি",
+     "fallback": [
+      {
+       "word": "washable-cloth-diaper"
+      }
+     ]
+    },
+    "ask": {
+     "id": "small-child-care-gear--washable-cloth-diaper--ask--e2c528c7455352c6",
+     "text": "কাপড়ের নেংটি। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "washable-cloth-diaper"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “reusable cloth baby diaper”? Show me."
+    },
+    "yes": {
+     "id": "small-child-care-gear--washable-cloth-diaper--yes--3fe0137dc4277328",
+     "text": "দারুণ। কাপড়ের নেংটি।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "washable-cloth-diaper"
+      }
+     ],
+     "english": "Great! This is “reusable cloth baby diaper”."
+    },
+    "recast": {
+     "id": "small-child-care-gear--washable-cloth-diaper--recast--968715f03446be6e",
+     "text": "এই ছবিটা দেখুন। কাপড়ের নেংটি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "washable-cloth-diaper"
+      }
+     ],
+     "english": "Look at this picture. This is “reusable cloth baby diaper”."
+    },
+    "examples": [
+     {
+      "id": "small-child-care-gear--washable-cloth-diaper--example-1--e7edd1e0da406f27",
+      "text": "নেংটিটা ধুয়ে রাখুন",
+      "fallback": [
+       {
+        "clip": "e7edd1e0da406f271481"
+       }
+      ]
+     }
+    ]
+   },
+   "child-body-wrap": {
+    "word": {
+     "id": "small-child-care-gear--child-body-wrap--word--a5a73e58b7b177dd",
+     "text": "বাচ্চার গা মোড়ানোর কাপড়",
+     "fallback": [
+      {
+       "word": "child-body-wrap"
+      }
+     ]
+    },
+    "ask": {
+     "id": "small-child-care-gear--child-body-wrap--ask--cca975e498956940",
+     "text": "খুঁজে দেখুন। বাচ্চার গা মোড়ানোর কাপড়।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "child-body-wrap"
+      }
+     ],
+     "english": "Find “soft baby swaddle wrap”."
+    },
+    "yes": {
+     "id": "small-child-care-gear--child-body-wrap--yes--db9a756daed0140b",
+     "text": "একদম ঠিক। বাচ্চার গা মোড়ানোর কাপড়।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "child-body-wrap"
+      }
+     ],
+     "english": "Exactly right! This is “soft baby swaddle wrap”."
+    },
+    "recast": {
+     "id": "small-child-care-gear--child-body-wrap--recast--dad56058ba55d0aa",
+     "text": "এই ছবিটা দেখুন। বাচ্চার গা মোড়ানোর কাপড়।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "child-body-wrap"
+      }
+     ],
+     "english": "Look at this picture. This is “soft baby swaddle wrap”."
+    },
+    "examples": [
+     {
+      "id": "small-child-care-gear--child-body-wrap--example-1--1fff96abd765c97b",
+      "text": "বাচ্চার গা কাপড়ে মুড়ে দিন",
+      "fallback": [
+       {
+        "clip": "1fff96abd765c97bdf7d"
+       }
+      ]
+     }
+    ]
+   },
+   "baby-carrying-cloth-sling": {
+    "word": {
+     "id": "small-child-care-gear--baby-carrying-cloth-sling--word--7cbe0b3df7244424",
+     "text": "কোলে বাঁধার কাপড়",
+     "fallback": [
+      {
+       "word": "baby-carrying-cloth-sling"
+      }
+     ]
+    },
+    "ask": {
+     "id": "small-child-care-gear--baby-carrying-cloth-sling--ask--6832f9796d2ca709",
+     "text": "মন দিয়ে শুনুন। কোলে বাঁধার কাপড়। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "baby-carrying-cloth-sling"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “soft fabric child carrier sling”."
+    },
+    "yes": {
+     "id": "small-child-care-gear--baby-carrying-cloth-sling--yes--cf43dcba2daa79dd",
+     "text": "দারুণ। কোলে বাঁধার কাপড়।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "baby-carrying-cloth-sling"
+      }
+     ],
+     "english": "Great! This is “soft fabric child carrier sling”."
+    },
+    "recast": {
+     "id": "small-child-care-gear--baby-carrying-cloth-sling--recast--dd9e3b7a0929d061",
+     "text": "এই ছবিটা দেখুন। কোলে বাঁধার কাপড়।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "baby-carrying-cloth-sling"
+      }
+     ],
+     "english": "Look at this picture. This is “soft fabric child carrier sling”."
+    },
+    "examples": [
+     {
+      "id": "small-child-care-gear--baby-carrying-cloth-sling--example-1--6619d14c820bf040",
+      "text": "কোলে বাঁধার কাপড়টা নিন",
+      "fallback": [
+       {
+        "clip": "6619d14c820bf0401062"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "ways-of-carrying-things": {
+   "carrying-a-load-in-one-hand": {
+    "word": {
+     "id": "ways-of-carrying-things--carrying-a-load-in-one-hand--word--d5c3a77f5d83f90e",
+     "text": "এক হাতে নেওয়া",
+     "fallback": [
+      {
+       "word": "carrying-a-load-in-one-hand"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ways-of-carrying-things--carrying-a-load-in-one-hand--ask--e0d3c148ecb58c94",
+     "text": "খুঁজে দেখুন। এক হাতে নেওয়া।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "carrying-a-load-in-one-hand"
+      }
+     ],
+     "english": "Find “carrying a load in one hand”."
+    },
+    "yes": {
+     "id": "ways-of-carrying-things--carrying-a-load-in-one-hand--yes--364c2a139f3c4509",
+     "text": "হ্যাঁ, ঠিক হয়েছে। এক হাতে নেওয়া।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "carrying-a-load-in-one-hand"
+      }
+     ],
+     "english": "Yes! This is “carrying a load in one hand”."
+    },
+    "recast": {
+     "id": "ways-of-carrying-things--carrying-a-load-in-one-hand--recast--1e815d0c728ae7b1",
+     "text": "এই ছবিটা দেখুন। এক হাতে নেওয়া।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "carrying-a-load-in-one-hand"
+      }
+     ],
+     "english": "Look at this picture. This is “carrying a load in one hand”."
+    },
+    "examples": [
+     {
+      "id": "ways-of-carrying-things--carrying-a-load-in-one-hand--example-1--61397b3d00b9bffe",
+      "text": "থলেটা এক হাতে নিন",
+      "fallback": [
+       {
+        "clip": "61397b3d00b9bffedc8d"
+       }
+      ]
+     }
+    ]
+   },
+   "carrying-a-load-in-both-hands": {
+    "word": {
+     "id": "ways-of-carrying-things--carrying-a-load-in-both-hands--word--4e01364d5ba0df08",
+     "text": "দুই হাতে নেওয়া",
+     "fallback": [
+      {
+       "word": "carrying-a-load-in-both-hands"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ways-of-carrying-things--carrying-a-load-in-both-hands--ask--a63eb2b4b989658b",
+     "text": "খুঁজে দেখুন। দুই হাতে নেওয়া।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "carrying-a-load-in-both-hands"
+      }
+     ],
+     "english": "Find “carrying an object with both hands”."
+    },
+    "yes": {
+     "id": "ways-of-carrying-things--carrying-a-load-in-both-hands--yes--6bff7b387125bf94",
+     "text": "শাবাশ। দুই হাতে নেওয়া।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "carrying-a-load-in-both-hands"
+      }
+     ],
+     "english": "Well done! This is “carrying an object with both hands”."
+    },
+    "recast": {
+     "id": "ways-of-carrying-things--carrying-a-load-in-both-hands--recast--6a91d471d5f28b7c",
+     "text": "এই ছবিটা দেখুন। দুই হাতে নেওয়া।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "carrying-a-load-in-both-hands"
+      }
+     ],
+     "english": "Look at this picture. This is “carrying an object with both hands”."
+    },
+    "examples": [
+     {
+      "id": "ways-of-carrying-things--carrying-a-load-in-both-hands--example-1--639313538bda28be",
+      "text": "ঝুড়িটা দুই হাতে নিন",
+      "fallback": [
+       {
+        "clip": "639313538bda28bed70d"
+       }
+      ]
+     }
+    ]
+   },
+   "lifting-an-object-off-the-floor": {
+    "word": {
+     "id": "ways-of-carrying-things--lifting-an-object-off-the-floor--word--d9f3a7e8a86d209f",
+     "text": "নিচ থেকে তুলে ধরা",
+     "fallback": [
+      {
+       "word": "lifting-an-object-off-the-floor"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ways-of-carrying-things--lifting-an-object-off-the-floor--ask--c113e4e570e7d594",
+     "text": "মন দিয়ে শুনুন। নিচ থেকে তুলে ধরা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "lifting-an-object-off-the-floor"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “lifting an object from the floor”."
+    },
+    "yes": {
+     "id": "ways-of-carrying-things--lifting-an-object-off-the-floor--yes--b39fb0952e7c0397",
+     "text": "হ্যাঁ, ঠিক হয়েছে। নিচ থেকে তুলে ধরা।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "lifting-an-object-off-the-floor"
+      }
+     ],
+     "english": "Yes! This is “lifting an object from the floor”."
+    },
+    "recast": {
+     "id": "ways-of-carrying-things--lifting-an-object-off-the-floor--recast--63a0401ed486ccdb",
+     "text": "এই ছবিটা দেখুন। নিচ থেকে তুলে ধরা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "lifting-an-object-off-the-floor"
+      }
+     ],
+     "english": "Look at this picture. This is “lifting an object from the floor”."
+    },
+    "examples": [
+     {
+      "id": "ways-of-carrying-things--lifting-an-object-off-the-floor--example-1--a6309648474228e5",
+      "text": "বাক্সটা নিচ থেকে তুলে ধরুন",
+      "fallback": [
+       {
+        "clip": "a6309648474228e5a66e"
+       }
+      ]
+     }
+    ]
+   },
+   "balancing-a-load-on-the-head": {
+    "word": {
+     "id": "ways-of-carrying-things--balancing-a-load-on-the-head--word--0e1763111ccb2243",
+     "text": "মাথায় নিয়ে যাওয়া",
+     "fallback": [
+      {
+       "word": "balancing-a-load-on-the-head"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ways-of-carrying-things--balancing-a-load-on-the-head--ask--40140084f6eb8659",
+     "text": "মাথায় নিয়ে যাওয়া। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "balancing-a-load-on-the-head"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “carrying a load on the head”? Show me."
+    },
+    "yes": {
+     "id": "ways-of-carrying-things--balancing-a-load-on-the-head--yes--e087dc29ef2f23e7",
+     "text": "চমৎকার। মাথায় নিয়ে যাওয়া।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "balancing-a-load-on-the-head"
+      }
+     ],
+     "english": "Excellent! This is “carrying a load on the head”."
+    },
+    "recast": {
+     "id": "ways-of-carrying-things--balancing-a-load-on-the-head--recast--18d7265b505f310e",
+     "text": "এই ছবিটা দেখুন। মাথায় নিয়ে যাওয়া।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "balancing-a-load-on-the-head"
+      }
+     ],
+     "english": "Look at this picture. This is “carrying a load on the head”."
+    },
+    "examples": [
+     {
+      "id": "ways-of-carrying-things--balancing-a-load-on-the-head--example-1--5ac3861e2bedd4d5",
+      "text": "ঝুড়িটা মাথায় নিয়ে যান",
+      "fallback": [
+       {
+        "clip": "5ac3861e2bedd4d5a011"
+       }
+      ]
+     }
+    ]
+   },
+   "carrying-a-load-on-the-back": {
+    "word": {
+     "id": "ways-of-carrying-things--carrying-a-load-on-the-back--word--ba92bc21ace9efc7",
+     "text": "পিঠে বওয়া",
+     "fallback": [
+      {
+       "word": "carrying-a-load-on-the-back"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ways-of-carrying-things--carrying-a-load-on-the-back--ask--0794f7880b0f217a",
+     "text": "খুঁজে দেখুন। পিঠে বওয়া।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "carrying-a-load-on-the-back"
+      }
+     ],
+     "english": "Find “carrying a load on the back”."
+    },
+    "yes": {
+     "id": "ways-of-carrying-things--carrying-a-load-on-the-back--yes--6236ad1899dab2cd",
+     "text": "বাহ্। পিঠে বওয়া।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "carrying-a-load-on-the-back"
+      }
+     ],
+     "english": "Wow! This is “carrying a load on the back”."
+    },
+    "recast": {
+     "id": "ways-of-carrying-things--carrying-a-load-on-the-back--recast--011c5cb6dfc4d2cd",
+     "text": "এই ছবিটা দেখুন। পিঠে বওয়া।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "carrying-a-load-on-the-back"
+      }
+     ],
+     "english": "Look at this picture. This is “carrying a load on the back”."
+    },
+    "examples": [
+     {
+      "id": "ways-of-carrying-things--carrying-a-load-on-the-back--example-1--00726ed5533fa2ef",
+      "text": "মালটা পিঠে বয়ে নিন",
+      "fallback": [
+       {
+        "clip": "00726ed5533fa2ef5f4f"
+       }
+      ]
+     }
+    ]
+   },
+   "lifting-a-load-together": {
+    "word": {
+     "id": "ways-of-carrying-things--lifting-a-load-together--word--4c12c20a90253c26",
+     "text": "দুজনে ধরে নেওয়া",
+     "fallback": [
+      {
+       "word": "lifting-a-load-together"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ways-of-carrying-things--lifting-a-load-together--ask--9f0d0073e151817f",
+     "text": "খুঁজে দেখুন। দুজনে ধরে নেওয়া।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "lifting-a-load-together"
+      }
+     ],
+     "english": "Find “two people carrying one object together”."
+    },
+    "yes": {
+     "id": "ways-of-carrying-things--lifting-a-load-together--yes--487f3a65c7c6f597",
+     "text": "খুব ভালো। দুজনে ধরে নেওয়া।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "lifting-a-load-together"
+      }
+     ],
+     "english": "Very good! This is “two people carrying one object together”."
+    },
+    "recast": {
+     "id": "ways-of-carrying-things--lifting-a-load-together--recast--d03fe9a9e5fe0c57",
+     "text": "এই ছবিটা দেখুন। দুজনে ধরে নেওয়া।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "lifting-a-load-together"
+      }
+     ],
+     "english": "Look at this picture. This is “two people carrying one object together”."
+    },
+    "examples": [
+     {
+      "id": "ways-of-carrying-things--lifting-a-load-together--example-1--92eabed595857503",
+      "text": "বাক্সটা দুজনে ধরে নিন",
+      "fallback": [
+       {
+        "clip": "92eabed59585750310da"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "bhorta-served-with-rice": {
+   "mashed-potato-bhorta": {
+    "word": {
+     "id": "bhorta-served-with-rice--mashed-potato-bhorta--word--dffc817009ac5938",
+     "text": "আলু ভর্তা",
+     "fallback": [
+      {
+       "word": "mashed-potato-bhorta"
+      }
+     ]
+    },
+    "ask": {
+     "id": "bhorta-served-with-rice--mashed-potato-bhorta--ask--bd59c508298f276a",
+     "text": "খুঁজে দেখুন। আলু ভর্তা।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "mashed-potato-bhorta"
+      }
+     ],
+     "english": "Find “Bangladeshi mashed potato bhorta”."
+    },
+    "yes": {
+     "id": "bhorta-served-with-rice--mashed-potato-bhorta--yes--ab432c95ca024463",
+     "text": "বাহ্। আলু ভর্তা।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "mashed-potato-bhorta"
+      }
+     ],
+     "english": "Wow! This is “Bangladeshi mashed potato bhorta”."
+    },
+    "recast": {
+     "id": "bhorta-served-with-rice--mashed-potato-bhorta--recast--1e0c4a03d625a1e9",
+     "text": "এই ছবিটা দেখুন। আলু ভর্তা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "mashed-potato-bhorta"
+      }
+     ],
+     "english": "Look at this picture. This is “Bangladeshi mashed potato bhorta”."
+    },
+    "examples": [
+     {
+      "id": "bhorta-served-with-rice--mashed-potato-bhorta--example-1--12b32ed9b49dd424",
+      "text": "ভাতের সঙ্গে আলু ভর্তা দিন",
+      "fallback": [
+       {
+        "clip": "12b32ed9b49dd4249659"
+       }
+      ]
+     }
+    ]
+   },
+   "smoky-eggplant-bhorta": {
+    "word": {
+     "id": "bhorta-served-with-rice--smoky-eggplant-bhorta--word--90e3830bc69b414e",
+     "text": "বেগুন ভর্তা",
+     "fallback": [
+      {
+       "word": "smoky-eggplant-bhorta"
+      }
+     ]
+    },
+    "ask": {
+     "id": "bhorta-served-with-rice--smoky-eggplant-bhorta--ask--a14893bb9cf66c49",
+     "text": "বেগুন ভর্তা। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "smoky-eggplant-bhorta"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “smoked eggplant bhorta”? Show me."
+    },
+    "yes": {
+     "id": "bhorta-served-with-rice--smoky-eggplant-bhorta--yes--1c8c8f67216be8ce",
+     "text": "দারুণ। বেগুন ভর্তা।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "smoky-eggplant-bhorta"
+      }
+     ],
+     "english": "Great! This is “smoked eggplant bhorta”."
+    },
+    "recast": {
+     "id": "bhorta-served-with-rice--smoky-eggplant-bhorta--recast--e055d158b9df23a9",
+     "text": "এই ছবিটা দেখুন। বেগুন ভর্তা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "smoky-eggplant-bhorta"
+      }
+     ],
+     "english": "Look at this picture. This is “smoked eggplant bhorta”."
+    },
+    "examples": [
+     {
+      "id": "bhorta-served-with-rice--smoky-eggplant-bhorta--example-1--d2d40ccc156b6447",
+      "text": "বেগুন ভর্তাটা ধোঁয়াটে",
+      "fallback": [
+       {
+        "clip": "d2d40ccc156b64474394"
+       }
+      ]
+     }
+    ]
+   },
+   "dried-fish-bhorta": {
+    "word": {
+     "id": "bhorta-served-with-rice--dried-fish-bhorta--word--fa40e817ad1025cd",
+     "text": "শুঁটকি ভর্তা",
+     "fallback": [
+      {
+       "word": "dried-fish-bhorta"
+      }
+     ]
+    },
+    "ask": {
+     "id": "bhorta-served-with-rice--dried-fish-bhorta--ask--e0731c0864e9c5c5",
+     "text": "মন দিয়ে শুনুন। শুঁটকি ভর্তা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "dried-fish-bhorta"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “dried fish bhorta”."
+    },
+    "yes": {
+     "id": "bhorta-served-with-rice--dried-fish-bhorta--yes--556eb18c3384e443",
+     "text": "খুব ভালো। শুঁটকি ভর্তা।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "dried-fish-bhorta"
+      }
+     ],
+     "english": "Very good! This is “dried fish bhorta”."
+    },
+    "recast": {
+     "id": "bhorta-served-with-rice--dried-fish-bhorta--recast--777739a0dbeca925",
+     "text": "এই ছবিটা দেখুন। শুঁটকি ভর্তা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "dried-fish-bhorta"
+      }
+     ],
+     "english": "Look at this picture. This is “dried fish bhorta”."
+    },
+    "examples": [
+     {
+      "id": "bhorta-served-with-rice--dried-fish-bhorta--example-1--d542749ea0e4dc83",
+      "text": "শুঁটকি ভর্তা ঝাল হয়",
+      "fallback": [
+       {
+        "clip": "d542749ea0e4dc832f39"
+       }
+      ]
+     }
+    ]
+   },
+   "mashed-lentil-bhorta": {
+    "word": {
+     "id": "bhorta-served-with-rice--mashed-lentil-bhorta--word--3727b6dd1e5dbdad",
+     "text": "ডাল ভর্তা",
+     "fallback": [
+      {
+       "word": "mashed-lentil-bhorta"
+      }
+     ]
+    },
+    "ask": {
+     "id": "bhorta-served-with-rice--mashed-lentil-bhorta--ask--f53e3ed2c936e692",
+     "text": "খুঁজে দেখুন। ডাল ভর্তা।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "mashed-lentil-bhorta"
+      }
+     ],
+     "english": "Find “mashed lentil bhorta”."
+    },
+    "yes": {
+     "id": "bhorta-served-with-rice--mashed-lentil-bhorta--yes--71b2ae11cf6e0f0f",
+     "text": "শাবাশ। ডাল ভর্তা।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "mashed-lentil-bhorta"
+      }
+     ],
+     "english": "Well done! This is “mashed lentil bhorta”."
+    },
+    "recast": {
+     "id": "bhorta-served-with-rice--mashed-lentil-bhorta--recast--a05703a478342e5d",
+     "text": "এই ছবিটা দেখুন। ডাল ভর্তা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "mashed-lentil-bhorta"
+      }
+     ],
+     "english": "Look at this picture. This is “mashed lentil bhorta”."
+    },
+    "examples": [
+     {
+      "id": "bhorta-served-with-rice--mashed-lentil-bhorta--example-1--408e57ea9a45e5eb",
+      "text": "ডাল ভর্তায় পেঁয়াজ আছে",
+      "fallback": [
+       {
+        "clip": "408e57ea9a45e5ebaffa"
+       }
+      ]
+     }
+    ]
+   },
+   "fresh-coriander-bhorta": {
+    "word": {
+     "id": "bhorta-served-with-rice--fresh-coriander-bhorta--word--ec3ede214f123167",
+     "text": "ধনেপাতা ভর্তা",
+     "fallback": [
+      {
+       "word": "fresh-coriander-bhorta"
+      }
+     ]
+    },
+    "ask": {
+     "id": "bhorta-served-with-rice--fresh-coriander-bhorta--ask--94f9c8a0c588d6f2",
+     "text": "খুঁজে দেখুন। ধনেপাতা ভর্তা।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "fresh-coriander-bhorta"
+      }
+     ],
+     "english": "Find “fresh coriander leaf bhorta”."
+    },
+    "yes": {
+     "id": "bhorta-served-with-rice--fresh-coriander-bhorta--yes--c8c79780be424aee",
+     "text": "একদম ঠিক। ধনেপাতা ভর্তা।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "fresh-coriander-bhorta"
+      }
+     ],
+     "english": "Exactly right! This is “fresh coriander leaf bhorta”."
+    },
+    "recast": {
+     "id": "bhorta-served-with-rice--fresh-coriander-bhorta--recast--e2a30b4ff74d23fd",
+     "text": "এই ছবিটা দেখুন। ধনেপাতা ভর্তা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "fresh-coriander-bhorta"
+      }
+     ],
+     "english": "Look at this picture. This is “fresh coriander leaf bhorta”."
+    },
+    "examples": [
+     {
+      "id": "bhorta-served-with-rice--fresh-coriander-bhorta--example-1--cb1c959f7373ad52",
+      "text": "ধনেপাতা ভর্তার গন্ধ নিন",
+      "fallback": [
+       {
+        "clip": "cb1c959f7373ad52b339"
+       }
+      ]
+     }
+    ]
+   },
+   "mustard-seed-bhorta": {
+    "word": {
+     "id": "bhorta-served-with-rice--mustard-seed-bhorta--word--5820c76e14c75348",
+     "text": "সরিষা ভর্তা",
+     "fallback": [
+      {
+       "word": "mustard-seed-bhorta"
+      }
+     ]
+    },
+    "ask": {
+     "id": "bhorta-served-with-rice--mustard-seed-bhorta--ask--e99e9f78f08b5c6a",
+     "text": "খুঁজে দেখুন। সরিষা ভর্তা।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "mustard-seed-bhorta"
+      }
+     ],
+     "english": "Find “prepared mustard seed bhorta”."
+    },
+    "yes": {
+     "id": "bhorta-served-with-rice--mustard-seed-bhorta--yes--62769ef25be9e9b4",
+     "text": "বাহ্। সরিষা ভর্তা।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "mustard-seed-bhorta"
+      }
+     ],
+     "english": "Wow! This is “prepared mustard seed bhorta”."
+    },
+    "recast": {
+     "id": "bhorta-served-with-rice--mustard-seed-bhorta--recast--5c127cd3c2fd9340",
+     "text": "এই ছবিটা দেখুন। সরিষা ভর্তা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "mustard-seed-bhorta"
+      }
+     ],
+     "english": "Look at this picture. This is “prepared mustard seed bhorta”."
+    },
+    "examples": [
+     {
+      "id": "bhorta-served-with-rice--mustard-seed-bhorta--example-1--bbc1ba79a584d7e2",
+      "text": "সরিষা ভর্তা একটু দিন",
+      "fallback": [
+       {
+        "clip": "bbc1ba79a584d7e204e3"
+       }
+      ]
+     }
+    ]
+   }
   }
  },
  "edgeClips": {
@@ -85628,7 +94969,157 @@ window.PTB_NURTURER = {
   "b9d6f5ce042f921b0851": "হাওয়ায় পাল ফুলেছে",
   "9994e9a3760879bedb1a": "মাস্তুলে পাল বাঁধুন",
   "2fd960f415449c6ddf2d": "নৌকার পাটাতনে বসুন",
-  "36feb7e33f56e9570aad": "নৌকার গলুই ধরে উঠুন"
+  "36feb7e33f56e9570aad": "নৌকার গলুই ধরে উঠুন",
+  "8ed78c6f869bdcbad06d": "হাত ধোয়ার পাত্রটা কোথায়?",
+  "4eaaba914a7cd9ca5800": "ঝরনার নিচে দাঁড়ান",
+  "1198b3e129577ee03baf": "পায়খানায় পানি ঢালুন",
+  "f3581404ba7ebaa02bc9": "ঝাড়নি দিয়ে পায়খানা পরিষ্কার করুন",
+  "efb789bf62ae00564047": "সাবানটা পাত্রে রাখুন",
+  "6a2f68adeeca82748719": "মুখ মোছার কাপড়টা দিন",
+  "60706f19883fc88720f6": "গাড়ির চাকায় বাতাস কম",
+  "9637570f97ce66b85b35": "চাকা ঘুরিয়ে গাড়ির দিক বদলান",
+  "62a10cbca790a9b8cec9": "পাশের আয়নায় দেখুন",
+  "cfa1d7a7f70e19b88bd8": "পেছনের বাতি জ্বলছে না",
+  "8572c656d0307e8b3308": "চালকের আসনটা সামনে টানুন",
+  "7f85b71d383818c4f431": "সামনের কাচটা মুছুন",
+  "8270bea4526d4ea198dc": "বইয়ের মলাটে ছবি আছে",
+  "b34b9be771149be121e4": "বইয়ের পিঠটা ছিঁড়েছে",
+  "48a2b83030a1bdf2e267": "একটা পাতা উল্টান",
+  "10229476ca0f1239eca0": "বইয়ের ছবিটা দেখুন",
+  "ea31b7f5f0af83ef1e0b": "যে পাতায় পড়া থামালেন সেখানে দাগ রাখুন",
+  "8d7fc28418b3757fdb66": "সূচিপত্র দেখে গল্প খুঁজুন",
+  "bc5bfcfea92ce9a50517": "এক জোড়া চটি দিন",
+  "6e2b681dcf4bf2212385": "এক গোছা চাবি রাখুন",
+  "12fe3d6200e44294f8b5": "এক গাদা বস্তা পড়ে আছে",
+  "06e73beb0db627a18e4d": "এক বোঝা খড় এনেছেন",
+  "de6d515337697f645cf4": "এক ঝাঁক পাখি উড়ছে",
+  "cc24ce3ca5f485735864": "এক দল মানুষ দাঁড়িয়ে আছে",
+  "b7e82b69ad33b0a10b3c": "চুল শুকানোর যন্ত্রটা চালান",
+  "3aaa437f450416e1e00b": "ঝাড়নি দিয়ে চুল আঁচড়ান",
+  "0b3fb132da82536da1c5": "চুল ধোয়ার সাবানটা দিন",
+  "9d779ef0210dbce0c813": "চুলে একটু তেল দিন",
+  "880fe473a9671c75e3e2": "চুলের বাঁধনিটা দিন",
+  "9fc2595fe842017e2a62": "চিমটি দিয়ে চুল আটকান",
+  "c3952155a4c2582571d1": "প্রথম পাতায় বড় খবর থাকে",
+  "44e83c38668988c547df": "খবরের শিরোনামটা পড়ুন",
+  "0a3099799e23c2c903fa": "ছবির নিচের লেখাটা দেখুন",
+  "109cc94f98a9b6f74d52": "আবহাওয়ার খবরটা দেখুন",
+  "8b28ed0bfc1486ebcd0a": "ছোট বিজ্ঞাপনে বাসা খুঁজি",
+  "768a5560470c3b727b22": "খেলার খবরটা পড়েছেন?",
+  "ed9e0105f5925f85e14f": "খাবারটা পাত্রে নিয়ে যান",
+  "f69f8165a2f2025a1153": "পানির বোতলটা ভরে নিন",
+  "2335c9253bbe5eeeaee2": "ঝুড়িতে খাবার রাখুন",
+  "0f07e8d6e754f538872e": "বোতলে চা গরম থাকবে",
+  "c9151367d75b9dd1a567": "বাক্সে মাছ ঠান্ডা থাকবে",
+  "bf69a2a48e0c344a5e43": "ছাঁচে পানি দিয়ে বরফ জমান",
+  "8c6549467ed58aa49245": "সারির শেষে দাঁড়ান",
+  "9f36f997ce1ae78df2c8": "সবার আগে ঢুকে পড়বেন না",
+  "44a43eff9ffb221a7e8b": "পথ আটকে দাঁড়াবেন না",
+  "94e80499fbc263d9cc56": "এই ফাঁক দিয়ে যান",
+  "a63acb9b2ce13cfba14c": "একটু কাছে এগিয়ে আসুন",
+  "48bd4eda509565f98051": "একটু এক পাশে সরে যান",
+  "75821556a6e165df69f0": "মেহমানের জন্য দরজাটা ধরে রাখুন",
+  "319ba619738ae52d051a": "মেহমানের জন্য পাটিটা পাতুন",
+  "7e1ad769b921804dd74c": "আসনটা আরেকটু এগিয়ে দিন",
+  "cf29ee0878a9c0738be1": "মেহমানকে পানি এগিয়ে দিন",
+  "aae8e38b8861fff97f7b": "খাবারের ঢাকনাটা সরান",
+  "b4125ca7cdbb2a195d12": "মেহমানের পেয়ালায় চা ঢেলে দিন",
+  "b27b9eb385d58f07966e": "উনিশটা গুনুন",
+  "0485cd09329c48d692fd": "বিশটা দিন",
+  "f64ad89e63cdcb6984ae": "একুশটা আছে",
+  "f59bf39ccb77948f672f": "বাইশটা রাখুন",
+  "14c3505a6a47b5a67b32": "তেইশটা হয়েছে",
+  "1516cf6fc29a94d46f8a": "চব্বিশটা নিন",
+  "5abc0f0ef23c622fad65": "বড়িটা দেখান",
+  "4a850d03072c2d29afc2": "বড়ির বোতলটা দিন",
+  "90a693ed9590a477966b": "ওষুধের বাক্সটা কোথায়?",
+  "2d39786667fdf5b97176": "ওষুধ মাপার চামচটা আনুন",
+  "84632b7118926dd63285": "খাওয়ার তরল ওষুধ আছে?",
+  "21fa27392a0ec1f76cf4": "ওষুধের কাগজটা দেখান",
+  "ea7c3259a96193b42f22": "শুকনা মরিচ ভেজে নিন",
+  "ad83d0be88ccb5748aee": "হলুদের গুঁড়া একটু দিন",
+  "22f57c83ccaf99baa509": "মরিচের গুঁড়া কম দিন",
+  "14be43c8cceffee0aa1f": "ধনে গুঁড়া মিশিয়ে নিন",
+  "1f72d8a4000576cc68ac": "মাছে সরিষা বাটা দিন",
+  "3f48279dcba8a298c2a3": "আদা বাটা দিয়ে নেড়ে দিন",
+  "89392243a0f006423eb7": "সেলাইকলটা চালান",
+  "2dc42170b22c87910869": "নলিতে সুতা পেঁচান",
+  "8949e72fa5a9d0d33454": "আঙুলঢাকনিটা পরুন",
+  "e9506cac283f9eabadf6": "সুঁইগুলো গদিতে গুঁজে রাখুন",
+  "6f1b132218ac8ac56900": "সেলাইয়ের বাক্সটা খুলুন",
+  "3f187eb3c105fba97511": "ছাঁদ দেখে কাপড় কাটুন",
+  "15693ebecb773fc19fdc": "সিঁড়ি দিয়ে উঠে পিছলে নামুন",
+  "6553a2e58e9155c4b210": "দোলনার দুই মাথায় বসুন",
+  "e03ca28e3be7f812b88a": "বলটা পা দিয়ে ঠেলুন",
+  "b142bb260e52e538ea36": "চাকতিটা ছুড়ে দিন",
+  "d7c5b452ad65bdfd1866": "জালটা টাঙিয়ে দিন",
+  "4602935b2103c60a0f7d": "খেলা থামাতে বাঁশি বাজান",
+  "0f81e4e735359de9dd8c": "মঞ্চের পর্দা সরান",
+  "0a2c9b6b5939666dc3bd": "মঞ্চে আলো দিন",
+  "2469242e988d866b21a9": "মুখোশ পরে দেখান",
+  "c542da04e5b21a7cee48": "মাথায় মুকুট পরুন",
+  "56b6e8fe411b3d1e0b14": "যন্ত্র দিয়ে জোরে কথা শোনান",
+  "6adafa93cf56cab20c68": "সিঁড়ি দিয়ে মঞ্চে উঠুন",
+  "a7fc9e91f998e4e82e9b": "পিঠের থলেটা নিন",
+  "b836e9880705ed296ffb": "ঘাড়ে বালিশটা দিন",
+  "8461f00b3d0ec7b0b213": "চোখ ঢাকার কাপড়টা দিন",
+  "4ab75e156b6a81e8c315": "মালের চিহ্নে নিজের নাম লিখুন",
+  "3b8334a8858d176fb781": "যন্ত্র দিয়ে মালের ওজন মাপুন",
+  "ba130e41e47fbbf7f410": "পানির পাত্রটা কাঁধে নিন",
+  "2a4a93eccc072013dfb6": "শীতে গায়ে লেপ দিই",
+  "1955037efe6edde0a92e": "বিছানার চাদরটা বদলান",
+  "deaf69dbed97fcf1d768": "বালিশে নতুন ওয়াড় পরান",
+  "115d2df62ca95cbe7d04": "কোলবালিশটা পাশে রাখুন",
+  "2404b24d22a805d099fa": "ঘুমানোর পোশাক পরে নিন",
+  "7bbe3e80465c724b7b59": "খুঁটিতে মশারি বাঁধুন",
+  "38acd3afa8ea428e244c": "ছবি তোলার যন্ত্রটা আনুন",
+  "7ed06e25cea625d92b8c": "কাচটা ঘুরিয়ে দেখুন",
+  "7112bac31beb52231e12": "যন্ত্রটা তিনপায়ায় রাখুন",
+  "42042586cfc16c41ef4e": "ঝলক দেওয়ার বাতিটা লাগান",
+  "47c1855b373c022545f9": "ছবি রাখার বইটা খুলুন",
+  "0f62ccf6f76bda96b154": "ছবিটা কাঠে বাঁধিয়ে রাখুন",
+  "1b2d729975a0596ee667": "বোতলের মুখটা খুলে রাখুন",
+  "2d3895ed4ccc46005382": "ছিপিটা ভালো করে লাগান",
+  "896dfde35f62607b23c1": "পেয়ালাটা হাতল ধরে নিন",
+  "8ecb95a0c95f99f0a6cb": "হাঁড়ির হাতল ধরে তুলুন",
+  "ea2820a9bb6ec3b39f1f": "পাত্রের তলাটা মুছুন",
+  "292125bb8a75c550b40c": "থালার কিনারা ধরে তুলুন",
+  "e9a710cffbc9a41a2c76": "কাপড়টা মেলে ধরুন",
+  "c70dc43b912467b204db": "ভাঁজ খুলে কাপড়টা দেখুন",
+  "ef867d22ecd7eda02671": "দুই কাপড়ের রং মিলিয়ে দেখুন",
+  "75b758bb60053361b6e7": "কাপড়ে সোজা দাগ দিন",
+  "80cd7f84337968a08155": "দুই গজ কাপড় মাপুন",
+  "2c17dde2306e167515e3": "থান থেকে কাপড় কেটে দিন",
+  "0fe5a25a94aab241a039": "ঝাড়ুটা দিয়ে মেঝে মুছুন",
+  "f04aae40a525444a6085": "ভেজা কাচে পাতটা টানুন",
+  "987a533cde53565035b6": "বাসন ধোয়ার সাবানটা দিন",
+  "2156aa8ad8050a85c8c4": "কাপড় দিয়ে থালা মুছুন",
+  "e474189979a78b8685c0": "বোতল দিয়ে একটু পানি ছিটান",
+  "8a98e9f490be4b4864eb": "কাজের আগে হাতমোজা পরুন",
+  "b12f58e6bf052a6fc275": "সাগরে হাঙর থাকে",
+  "fd9454891e8959a18509": "সামুদ্রিক ঘোড়ার লেজটা দেখুন",
+  "1be9bcb14f8cdee7e765": "ছাতামাছের গা স্বচ্ছ",
+  "1b7b967f7d992010e53e": "তারামাছের পাঁচটা দিক আছে",
+  "ae23a0ad0b24d48e2e49": "প্রবালের ডালপালার মতো অংশ আছে",
+  "e66322656f9b75381da7": "শঙ্খের খোলস শক্ত",
+  "51dc772ae707ffa35470": "বাচ্চাকে ঠেলাগাড়িতে বসান",
+  "4439aa2855a561c1c277": "বাচ্চাকে উঁচু আসনে বসান",
+  "ef658e62209ba10fa533": "চুষনিটা পরিষ্কার রাখুন",
+  "e7edd1e0da406f271481": "নেংটিটা ধুয়ে রাখুন",
+  "1fff96abd765c97bdf7d": "বাচ্চার গা কাপড়ে মুড়ে দিন",
+  "6619d14c820bf0401062": "কোলে বাঁধার কাপড়টা নিন",
+  "61397b3d00b9bffedc8d": "থলেটা এক হাতে নিন",
+  "639313538bda28bed70d": "ঝুড়িটা দুই হাতে নিন",
+  "a6309648474228e5a66e": "বাক্সটা নিচ থেকে তুলে ধরুন",
+  "5ac3861e2bedd4d5a011": "ঝুড়িটা মাথায় নিয়ে যান",
+  "00726ed5533fa2ef5f4f": "মালটা পিঠে বয়ে নিন",
+  "92eabed59585750310da": "বাক্সটা দুজনে ধরে নিন",
+  "12b32ed9b49dd4249659": "ভাতের সঙ্গে আলু ভর্তা দিন",
+  "d2d40ccc156b64474394": "বেগুন ভর্তাটা ধোঁয়াটে",
+  "d542749ea0e4dc832f39": "শুঁটকি ভর্তা ঝাল হয়",
+  "408e57ea9a45e5ebaffa": "ডাল ভর্তায় পেঁয়াজ আছে",
+  "cb1c959f7373ad52b339": "ধনেপাতা ভর্তার গন্ধ নিন",
+  "bbc1ba79a584d7e204e3": "সরিষা ভর্তা একটু দিন"
  },
  "display": {
   "revealed": {
