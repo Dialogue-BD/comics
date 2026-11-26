@@ -31,7 +31,8 @@ Edge changes. Add a word there when a nurturer reports one, check it with
 import argparse, asyncio, hashlib, json, os, shutil, subprocess, sys, tempfile, unicodedata
 from pathlib import Path
 
-from build_web import load_questions, load_web_deck, nurturer_phrases
+from build_web import NURTURER_DATA_PATH, load_questions, load_web_deck
+from nurturer_data import load_nurturer_data
 from edge_respell import respell, load_list, hits
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -270,7 +271,7 @@ async def main():
         sys.exit("edge-tts is not installed. Run:  python3 -m pip install --user edge-tts")
     deck = load_web_deck()
     items = [it for card in deck["cards"] for it in card["items"]]
-    phrases = [{"id": key, "label": text} for key, text in nurturer_phrases(deck).items()]
+    phrases = [{"id": key, "label": text} for key, text in load_nurturer_data(NURTURER_DATA_PATH)["edgeClips"].items()]
     question_items = [{"id": key, "label": text} for record in load_questions().values()
                       for key, text in zip(record["ids"], record["questions"])]
     if args.test_respell:
@@ -312,7 +313,7 @@ async def main():
                                            redo_respell=args.redo_respell)
     if not (args.questions or args.redo_rr):
         if args.nurturer and not phrases:
-            parser.error("Build deck-data.js with build_web.py --source before recording Nurturer phrases.")
+            parser.error("Build nurturer-data.js with build_web.py --source before recording Nurturer fallbacks.")
         if phrases:
             if not FFMPEG:
                 parser.error("Install ffmpeg before recording Nurturer phrases.")

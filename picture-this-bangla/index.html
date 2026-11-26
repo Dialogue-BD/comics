@@ -1796,6 +1796,7 @@
     const pictureThisDataRevision = Date.now();
     document.write(`<script src="deck-data.js?v=${pictureThisDataRevision}"><\/script>`);
     document.write(`<script src="question-data.js?v=${pictureThisDataRevision}"><\/script>`);
+    document.write(`<script src="nurturer-data.js?v=${pictureThisDataRevision}"><\/script>`);
     document.write(`<script src="audio-index.js?v=${pictureThisDataRevision}"><\/script>`);
   </script>
   <script>
@@ -1828,7 +1829,8 @@
     const gameMeta = window.PICTURE_THIS_GAME_META?.cards || {};
     const curatedLinkData = window.PICTURE_THIS_LINK_DATA || {};
     const questionData = window.PICTURE_THIS_QUESTION_DATA || {};
-    const nurturerLines = window.PTB_DECK?.nurturerLines;
+    const nurturerData = window.PTB_NURTURER;
+    const nurturerShared = nurturerData?.shared;
 
     // --- Picture This Bangla: recorded audio --------------------------------
     // audio-index.js lists every item id with a recording in audio/<id>.mp3.
@@ -1846,9 +1848,12 @@
       return ptbItemsByCard[cardId]?.[index] || null;
     }
 
+    function ptbWordAudioSrc(id) {
+      return ptbAudioIds.has(id) ? `audio/${encodeURIComponent(id)}.mp3?v=${ptbAudio.version || ""}` : "";
+    }
+
     function ptbAudioSrc(cardId, index) {
-      const item = ptbItem(cardId, index);
-      return item && ptbAudioIds.has(item.id) ? `audio/${encodeURIComponent(item.id)}.mp3?v=${ptbAudio.version || ""}` : "";
+      return ptbWordAudioSrc(ptbItem(cardId, index)?.id);
     }
 
     function ptbCardHasAudio(cardId) {
@@ -2026,42 +2031,22 @@
       return ptbNurturerAudioIds.has(id) ? `nurturer-audio/${encodeURIComponent(id)}.mp3?v=${ptbAudio.version || ""}` : "";
     }
 
-    function ptbLineVariant(seed, list) {
-      let hash = 0;
-      for (const ch of String(seed)) hash = (hash * 31 + ch.codePointAt(0)) >>> 0;
-      return list[hash % list.length];
+    function nurturerFallbackSources(line) {
+      const sources = (line?.fallback || []).map(ref => ref.word ? ptbWordAudioSrc(ref.word) : nurturerAudioSrc(ref.clip));
+      return sources.every(Boolean) ? sources : [];
     }
 
-    function nurturerEntryFor(cardId, itemIndex, fallbackLabel = "") {
-      const item = ptbItem(cardId, itemIndex);
-      const label = item?.label || fallbackLabel || (gameData[cardId] || [])[itemIndex] || "এই ছবি";
-      const gloss = item?.gloss || label;
-      const seed = item?.id || `${cardId}-${itemIndex}`;
-      const fill = line => ({
-        bn: line.bangla.map(segment => segment.text.replaceAll("{w}", label)).join(" "),
-        en: line.english.replaceAll("{g}", gloss),
-        speech: line.bangla.map(segment => segment.id || [cardId, itemIndex])
-      });
-      const ask = fill(ptbLineVariant(seed, nurturerLines.ask));
-      const yes = fill(ptbLineVariant(seed, nurturerLines.yes));
-      const recast = fill(ptbLineVariant(seed, nurturerLines.recast));
-      const collocations = item?.collocations || [];
-      const examples = collocations.length
-        ? [nurturerLines.example.id, ...collocations.map(phrase => phrase.id)]
-        : [];
-      return {
-        label,
-        ask: ask.bn,
-        askEn: ask.en,
-        askSpeech: ask.speech,
-        yes: yes.bn,
-        yesEn: yes.en,
-        yesSpeech: [...yes.speech, ...examples],
-        recast: recast.bn,
-        recastEn: recast.en,
-        recastSpeech: [...recast.speech, ...examples],
-        collocations
-      };
+    function hasNurturerRecording(line) {
+      return Boolean(nurturerAudioSrc(line?.id) || nurturerFallbackSources(line).length);
+    }
+
+    function nurturerEntryFor(cardId, itemIndex) {
+      const id = ptbItem(cardId, itemIndex)?.id;
+      return nurturerData?.cards[cardId]?.[id];
+    }
+
+    function nurturerFeedbackSpeech(entry, kind) {
+      return [entry[kind], nurturerShared["example-intro"], ...entry.examples];
     }
 
     function syncNurturerTtsControls() {
@@ -2143,7 +2128,7 @@
         label.textContent = "We often say:";
         wrap.append(label);
         collocations.forEach(phrase => {
-          const playable = Boolean(nurturerAudioSrc(phrase.id));
+          const playable = hasNurturerRecording(phrase);
           const chip = document.createElement(playable ? "button" : "span");
           chip.className = "collocation-chip";
           chip.lang = "bn";
@@ -2153,7 +2138,7 @@
             chip.setAttribute("aria-label", `শুনুন: ${phrase.text}`);
             chip.addEventListener("click", event => {
               event.stopPropagation();
-              speakText([phrase.id], chip, "Bangla example played.");
+              speakText([phrase], chip, "Bangla example played.");
             });
           }
           wrap.append(chip);
@@ -2253,7 +2238,7 @@
         itemIndex,
         label,
         front: entry.front
-      }))).filter(item => typeof item.label === "string" && item.label.trim() && ptbAudioSrc(item.cardId, item.itemIndex));
+      }))).filter(item => typeof item.label === "string" && item.label.trim() && hasNurturerRecording(nurturerEntryFor(item.cardId, item.itemIndex)?.word));
     }
 
     function shuffledCopy(values) {
@@ -2328,12 +2313,14 @@
       speakingControl = null;
     }
 
-    // Word references reuse the deck audio. Phrase IDs address recorded Nurturer speech.
+    // A recording of the exact line takes precedence over the legacy word and phrase clips.
     let ptbClipQueueToken = 0;
-    function speakText(clips, control = null, announcement = "Audio played.") {
-      const queue = (Array.isArray(clips) ? clips : [])
-        .map(ref => Array.isArray(ref) ? ptbAudioSrc(ref[0], ref[1]) : nurturerAudioSrc(ref))
-        .filter(Boolean);
+    function speakText(lines, control = null, announcement = "Audio played.") {
+      const queue = lines.flatMap(line => {
+        const source = nurturerAudioSrc(line.id);
+        const fallback = nurturerFallbackSources(line);
+        return source ? [{ source, fallback }] : fallback.map(source => ({ source }));
+      });
       if (!queue.length) {
         status.textContent = "There is no recording for this line yet.";
         return false;
@@ -2351,7 +2338,8 @@
       const playAt = position => {
         if (token !== ptbClipQueueToken) return;
         if (position >= queue.length) { finish(); return; }
-        const clip = new Audio(queue[position]);
+        const { source, fallback } = queue[position];
+        const clip = new Audio(source);
         clip.playbackRate = nurturerSlowMode ? .8 : 1;
         ptbClip = clip;
         const next = () => {
@@ -2361,8 +2349,15 @@
           else window.setTimeout(() => playAt(position + 1), 100);
         };
         clip.addEventListener("ended", next, { once: true });
-        clip.addEventListener("error", next, { once: true });
-        clip.play().catch(next);
+        const failed = () => {
+          if (ptbClip !== clip) return;
+          if (!fallback?.length) { next(); return; }
+          ptbClip = null;
+          queue.splice(position, 1, ...fallback.map(source => ({ source })));
+          playAt(position);
+        };
+        clip.addEventListener("error", failed, { once: true });
+        clip.play().catch(failed);
       };
       playAt(0);
       status.textContent = announcement;
@@ -2372,12 +2367,6 @@
     // Used by report-wizard.js
     window.ptbCurrentCardIndex = () => cardIndex;
     window.ptbPlayItem = (cardId, index) => playItemAudio(cardId, index);
-
-    function speakAudioMatchWord(cardId, itemIndex) {
-      const played = speakText([[cardId, itemIndex]], null, "Audio vocabulary label played.");
-      if (!played) setAudioMatchFeedback("Speech playback is unavailable in this browser. Try Chrome, Safari, Edge, or Firefox.", "wrong");
-      return played;
-    }
 
     function audioMatchCropPosition(itemIndex) {
       return {
@@ -2478,7 +2467,7 @@
         const label = selectedAudioTile.dataset.label;
         const cardId = selectedAudioTile.dataset.cardId;
         const itemIndex = Number(selectedAudioTile.dataset.itemIndex);
-        const entry = nurturerEntryFor(cardId, itemIndex, label);
+        const entry = nurturerEntryFor(cardId, itemIndex);
         selectedAudioTile.classList.remove("is-selected", "is-recast");
         selectedPictureTile.classList.remove("is-selected", "is-recast");
         selectedAudioTile.classList.add("is-matched");
@@ -2505,31 +2494,29 @@
           renderNurturerAudioFeedback({
             tone: "correct",
             badge: "✓ All 6 matched",
-            mainText: `${entry.yes} (+1)`,
-            mainGloss: entry.yesEn,
-            collocations: entry.collocations,
+            mainText: `${entry.yes.text} (+1)`,
+            mainGloss: entry.yes.english,
+            collocations: entry.examples,
             followUp: `Round complete! You matched all six pairs with ${gamePoints} total point${gamePoints === 1 ? "" : "s"}.`,
-            ttsText: [...entry.yesSpeech, ...nurturerLines.done.bangla.map(segment => segment.id)]
+            ttsText: [...nurturerFeedbackSpeech(entry, "yes"), nurturerShared.done]
           });
         } else {
           renderNurturerAudioFeedback({
             tone: "correct",
             badge: "✓ Match · +1",
-            mainText: `${entry.yes} (+1)`,
-            mainGloss: entry.yesEn,
-            collocations: entry.collocations,
+            mainText: `${entry.yes.text} (+1)`,
+            mainGloss: entry.yes.english,
+            collocations: entry.examples,
             followUp: `Choose another audio tile and picture (${6 - audioMatchPairsFound} pair${6 - audioMatchPairsFound === 1 ? "" : "s"} left).`,
-            ttsText: entry.yesSpeech
+            ttsText: nurturerFeedbackSpeech(entry, "yes")
           });
         }
         return;
       }
 
-      const audioLabel = selectedAudioTile.dataset.label;
       const picCardId = selectedPictureTile.dataset.cardId;
       const picItemIndex = Number(selectedPictureTile.dataset.itemIndex);
-      const picLabel = selectedPictureTile.dataset.label;
-      const picEntry = nurturerEntryFor(picCardId, picItemIndex, picLabel);
+      const picEntry = nurturerEntryFor(picCardId, picItemIndex);
 
       audioMatchLocked = true;
       selectedAudioTile.classList.add("is-recast");
@@ -2537,11 +2524,11 @@
       renderNurturerAudioFeedback({
         tone: "recast",
         badge: "💬 Not quite · no penalty",
-        mainText: picEntry.recast,
-        mainGloss: picEntry.recastEn,
-        collocations: picEntry.collocations,
+        mainText: picEntry.recast.text,
+        mainGloss: picEntry.recast.english,
+        collocations: picEntry.examples,
         followUp: "Take your time — listen again and find its picture.",
-        ttsText: [...picEntry.recastSpeech, nurturerLines.retry.id]
+        ttsText: [...nurturerFeedbackSpeech(picEntry, "recast"), nurturerShared.retry]
       });
       window.setTimeout(() => {
         if (gameMode !== "audio-match") return;
@@ -2554,7 +2541,8 @@
       if (gameMode !== "audio-match" || audioMatchLocked || tile.disabled) return;
       const kind = tile.dataset.kind;
       if (kind === "audio") {
-        playItemAudio(tile.dataset.cardId, Number(tile.dataset.itemIndex), tile);
+        const entry = nurturerEntryFor(tile.dataset.cardId, Number(tile.dataset.itemIndex));
+        speakText([entry.word], tile, "Audio vocabulary label played.");
         if (selectedAudioTile === tile) return;
         selectedAudioTile?.classList.remove("is-selected");
         selectedAudioTile = tile;
@@ -3400,14 +3388,13 @@
     function updateNurturerPrompt(speakIfAuto = false) {
       if (gameMode !== "items") return;
       const current = cards[cardIndex];
-      const items = gameData[current.id] || [];
       if (nurturerTargetIndex < 0 || foundItems.size >= 6) {
-        gamePrompt.replaceChildren(`🎉 ${nurturerLines.done.bangla[0].text}`, Object.assign(document.createElement("span"), { className: "nurturer-prompt-gloss", textContent: nurturerLines.done.english }));
+        gamePrompt.replaceChildren(`🎉 ${nurturerShared.done.text}`, Object.assign(document.createElement("span"), { className: "nurturer-prompt-gloss", textContent: nurturerShared.done.english }));
         lastNurturerPromptSpeech = [];
       } else {
-        const entry = nurturerEntryFor(current.id, nurturerTargetIndex, items[nurturerTargetIndex]);
-        gamePrompt.replaceChildren(`👂 “${entry.ask}”`, Object.assign(document.createElement("span"), { className: "nurturer-prompt-gloss", textContent: entry.askEn }));
-        lastNurturerPromptSpeech = entry.askSpeech;
+        const entry = nurturerEntryFor(current.id, nurturerTargetIndex);
+        gamePrompt.replaceChildren(`👂 “${entry.ask.text}”`, Object.assign(document.createElement("span"), { className: "nurturer-prompt-gloss", textContent: entry.ask.english }));
+        lastNurturerPromptSpeech = [entry.ask];
       }
       syncGameStripMeta();
       if (speakIfAuto && nurturerAutoVoice && lastNurturerPromptSpeech.length) {
@@ -3519,7 +3506,7 @@
             cell.setAttribute("role", "button");
             cell.setAttribute("aria-label", `Picture ${index + 1}`);
           });
-          const firstEntry = nurturerEntryFor(current.id, nurturerTargetIndex, items[nurturerTargetIndex]);
+          const firstEntry = nurturerEntryFor(current.id, nurturerTargetIndex);
           updateNurturerPrompt(true);
           renderNurturerGameFeedback({
             tone: "",
@@ -3527,7 +3514,7 @@
             mainText: "Hear the Bangla prompt, then tap its picture. Listen to the short example after you tap. Wrong taps have no penalty.",
             collocations: [],
             followUp: "Turn on Auto voice to hear prompts and feedback as you play.",
-            ttsText: firstEntry.askSpeech,
+            ttsText: [firstEntry.ask],
             autoSpeak: false
           });
         }
@@ -3844,8 +3831,6 @@
           setGameFeedback("The answer key did not load. Refresh the page to reload the deck data.", "wrong");
           return;
         }
-        const entryIndex = nurturerTargetIndex >= 0 ? nurturerTargetIndex : 0;
-        const entry = nurturerEntryFor(current.id, entryIndex, answers[entryIndex]);
         nurturerTargetIndex = -1;
         itemCells.forEach((cell, index) => {
           foundItems.add(index);
@@ -3858,8 +3843,8 @@
         renderNurturerGameFeedback({
           tone: "correct",
           badge: "🌱 All 6 Pictures Revealed",
-          mainText: "সবগুলো ছবি দেখানো হলো।",
-          mainGloss: "All six pictures are shown.",
+          mainText: nurturerData.display.revealed.text,
+          mainGloss: nurturerData.display.revealed.english,
           collocations: [],
           followUp: "Tap any picture to hear its word and example.",
           ttsText: []
@@ -3888,24 +3873,24 @@
       }
       itemCells.forEach(cell => cell.classList.remove("is-recast"));
 
-      const tappedEntry = nurturerEntryFor(current.id, index, items[index]);
+      const tappedEntry = nurturerEntryFor(current.id, index);
 
       if (foundItems.has(index)) {
         const nextEntry = nurturerTargetIndex >= 0
-          ? nurturerEntryFor(current.id, nurturerTargetIndex, items[nurturerTargetIndex])
+          ? nurturerEntryFor(current.id, nurturerTargetIndex)
           : null;
         renderNurturerGameFeedback({
           tone: "correct",
           badge: "✓ Already found",
-          mainText: tappedEntry.yes,
-          mainGloss: tappedEntry.yesEn,
-          collocations: tappedEntry.collocations,
+          mainText: tappedEntry.yes.text,
+          mainGloss: tappedEntry.yes.english,
+          collocations: tappedEntry.examples,
           followUp: nextEntry
-            ? `এবার: “${nextEntry.ask}” — ${nextEntry.askEn}`
+            ? `${nurturerShared.next.text} “${nextEntry.ask.text}” — ${nextEntry.ask.english}`
             : "All six pictures found! Tap any picture to review or draw a new card.",
           ttsText: nextEntry
-            ? [...tappedEntry.yesSpeech, nurturerLines.next.id, ...nextEntry.askSpeech]
-            : tappedEntry.yesSpeech
+            ? [...nurturerFeedbackSpeech(tappedEntry, "yes"), nurturerShared.next, nextEntry.ask]
+            : nurturerFeedbackSpeech(tappedEntry, "yes")
         });
         return;
       }
@@ -3913,7 +3898,7 @@
       if (index === nurturerTargetIndex) {
         foundItems.add(index);
         itemCells[index].classList.add("is-revealed", "is-correct");
-        itemCells[index].setAttribute("aria-label", `${tappedEntry.label}, found`);
+        itemCells[index].setAttribute("aria-label", `${tappedEntry.word.text}, found`);
         changeScore(1);
         updateItemProgress();
 
@@ -3926,30 +3911,30 @@
           renderNurturerGameFeedback({
             tone: "correct",
             badge: "✓ All 6 found",
-            mainText: `${tappedEntry.yes} (+1)`,
-            mainGloss: tappedEntry.yesEn,
-            collocations: tappedEntry.collocations,
-            followUp: `${nurturerLines.done.bangla[0].text} Tap any picture to hear it again, or click “New card →”.`,
-            ttsText: [...tappedEntry.yesSpeech, ...nurturerLines.done.bangla.map(segment => segment.id)]
+            mainText: `${tappedEntry.yes.text} (+1)`,
+            mainGloss: tappedEntry.yes.english,
+            collocations: tappedEntry.examples,
+            followUp: `${nurturerShared.done.text} Tap any picture to hear it again, or click “New card →”.`,
+            ttsText: [...nurturerFeedbackSpeech(tappedEntry, "yes"), nurturerShared.done]
           });
         } else {
-          const nextEntry = nurturerEntryFor(current.id, nurturerTargetIndex, items[nurturerTargetIndex]);
+          const nextEntry = nurturerEntryFor(current.id, nurturerTargetIndex);
           updateNurturerPrompt(false);
           renderNurturerGameFeedback({
             tone: "correct",
             badge: "✓ Match · +1",
-            mainText: `${tappedEntry.yes} (+1)`,
-            mainGloss: tappedEntry.yesEn,
-            collocations: tappedEntry.collocations,
-            followUp: `এবার: “${nextEntry.ask}” — ${nextEntry.askEn}`,
-            ttsText: [...tappedEntry.yesSpeech, nurturerLines.next.id, ...nextEntry.askSpeech]
+            mainText: `${tappedEntry.yes.text} (+1)`,
+            mainGloss: tappedEntry.yes.english,
+            collocations: tappedEntry.examples,
+            followUp: `${nurturerShared.next.text} “${nextEntry.ask.text}” — ${nextEntry.ask.english}`,
+            ttsText: [...nurturerFeedbackSpeech(tappedEntry, "yes"), nurturerShared.next, nextEntry.ask]
           });
         }
         return;
       }
 
       // Wrong picture tapped -> Gentle GPA Recast (no point penalty!)
-      const targetEntry = nurturerEntryFor(current.id, nurturerTargetIndex, items[nurturerTargetIndex]);
+      const targetEntry = nurturerEntryFor(current.id, nurturerTargetIndex);
       itemCells[index].classList.add("is-recast");
       nurturerRecastTimer = window.setTimeout(() => {
         itemCells[index]?.classList.remove("is-recast");
@@ -3959,11 +3944,11 @@
       renderNurturerGameFeedback({
         tone: "recast",
         badge: "💬 Not quite · no penalty",
-        mainText: tappedEntry.recast,
-        mainGloss: tappedEntry.recastEn,
-        collocations: tappedEntry.collocations,
-        followUp: `আবার দেখুন: “${targetEntry.ask}” — ${targetEntry.askEn}`,
-        ttsText: [...tappedEntry.recastSpeech, nurturerLines.retry.id, ...targetEntry.askSpeech]
+        mainText: tappedEntry.recast.text,
+        mainGloss: tappedEntry.recast.english,
+        collocations: tappedEntry.examples,
+        followUp: `${nurturerShared.retry.text} “${targetEntry.ask.text}” — ${targetEntry.ask.english}`,
+        ttsText: [...nurturerFeedbackSpeech(tappedEntry, "recast"), nurturerShared.retry, targetEntry.ask]
       });
     }
 

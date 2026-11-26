@@ -16,8 +16,11 @@
   "recast": [
     {"bangla": ["এই ছবিটা দেখুন।", "{w}।"], "english": "Look at this picture. This is “{g}”."}
   ],
-  "example": "যেমন।",
+  "example-intro": "যেমন।",
   "next": "এবার শুনুন।",
   "retry": "সময় নিয়ে আবার শুনুন।",
-  "done": {"bangla": ["দারুণ! ছয়টা ছবিই পেয়েছেন।"], "english": "Wonderful! You found all six pictures."}
+  "done": {"bangla": ["দারুণ! ছয়টা ছবিই পেয়েছেন।"], "english": "Wonderful! You found all six pictures."},
+  "display": {
+    "revealed": {"text": "সবগুলো ছবি দেখানো হলো।", "english": "All six pictures are shown."}
+  }
 }
