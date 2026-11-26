@@ -8799,5 +8799,1105 @@ window.PICTURE_THIS_QUESTION_DATA = {
    "materials-from-plants-and-animals-q5-3a8351a267a5",
    "materials-from-plants-and-animals-q6-1f55f39dac60"
   ]
+ },
+ "sweet-breakfast-and-pitha": {
+  "questions": [
+   "খই কোনটা?",
+   "চিতই আর পাটিসাপটার আকারে কী তফাত?",
+   "আপনি কখন সেমাই খান?",
+   "সুজি রান্না করতে কী দেন?",
+   "মুড়কি আর পাটিসাপটার স্বাদে গুড় কী করে বোঝা যায়?",
+   "শীতের সকালে অতিথি এলে কোনটা খাওয়াবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 39.52,
+    "y": 13.18
+   },
+   {
+    "x": 29.82,
+    "y": 25.18
+   },
+   {
+    "x": 68.97,
+    "y": 32.24
+   },
+   {
+    "x": 67.39,
+    "y": 40.08
+   },
+   {
+    "x": 54.79,
+    "y": 51.29
+   },
+   {
+    "x": 60.73,
+    "y": 63.53
+   }
+  ],
+  "ids": [
+   "sweet-breakfast-and-pitha-q1-f6587f2422b6",
+   "sweet-breakfast-and-pitha-q2-c6db122f4e28",
+   "sweet-breakfast-and-pitha-q3-29398c0d247b",
+   "sweet-breakfast-and-pitha-q4-bfa68efa6078",
+   "sweet-breakfast-and-pitha-q5-e1b537dcb285",
+   "sweet-breakfast-and-pitha-q6-0655471a5a7f"
+  ]
+ },
+ "parts-of-a-market-fish": {
+  "questions": [
+   "মাছের লেজ কোন ছবিতে?",
+   "আঁশ আর পাখনা দেখতে কীভাবে আলাদা?",
+   "আপনি মাছের কোন অংশ দিয়ে ঝোল করেন?",
+   "মাছ খাওয়ার সময় কাঁটা কী করে বাছেন?",
+   "ফুলকা দেখতে হলে মাছের কোন পাশে তাকাবেন?",
+   "মাছ পরিষ্কার করতে না জানলে দোকানিকে কী বলবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 67.39,
+    "y": 13.25
+   },
+   {
+    "x": 33.33,
+    "y": 25.18
+   },
+   {
+    "x": 28.36,
+    "y": 36.98
+   },
+   {
+    "x": 29.33,
+    "y": 48.67
+   },
+   {
+    "x": 35.27,
+    "y": 60.24
+   },
+   {
+    "x": 85.09,
+    "y": 71.76
+   }
+  ],
+  "ids": [
+   "parts-of-a-market-fish-q1-b4d2861ca3f0",
+   "parts-of-a-market-fish-q2-166fdb0090bd",
+   "parts-of-a-market-fish-q3-36a757a7787f",
+   "parts-of-a-market-fish-q4-fc51fc51afa5",
+   "parts-of-a-market-fish-q5-ef4e9ce380d7",
+   "parts-of-a-market-fish-q6-e75e0bd86212"
+  ]
+ },
+ "six-market-pulses": {
+  "questions": [
+   "কমলা রঙের ডাল কোনটা?",
+   "মুগ আর ছোলার ডালের দানা কোনটা বড়?",
+   "আপনার বাসায় বেশি কোন ডাল রান্না হয়?",
+   "ডাল ভিজিয়ে রাখলে পরে কী করেন?",
+   "দোকানি ডাল দেখালে চিনতে কী কী দেখবেন?",
+   "একই দামে দুই রকম ডাল পেলে কিসের ওপর ভরসা করে বাছবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 69.94,
+    "y": 13.22
+   },
+   {
+    "x": 23.27,
+    "y": 25.41
+   },
+   {
+    "x": 22.42,
+    "y": 36.98
+   },
+   {
+    "x": 89.33,
+    "y": 43.92
+   },
+   {
+    "x": 32.61,
+    "y": 55.92
+   },
+   {
+    "x": 82.91,
+    "y": 67.37
+   }
+  ],
+  "ids": [
+   "six-market-pulses-q1-72edfa8bd2a7",
+   "six-market-pulses-q2-b17fa14c2e46",
+   "six-market-pulses-q3-a24e256e46ad",
+   "six-market-pulses-q4-59ce8f961cc6",
+   "six-market-pulses-q5-31d7b4ef626b",
+   "six-market-pulses-q6-0535d0de0f1e"
+  ]
+ },
+ "sending-post-and-parcels": {
+  "questions": [
+   "ডাকবাক্সটা কোথায়?",
+   "দুটো খামে লেখার জায়গা কীভাবে আলাদা?",
+   "আপনি কখনও ডাকে কিছু পাঠিয়েছেন?",
+   "পাঠানোর আগে খামে কী কী লাগাবেন?",
+   "ঠিকানা ভুল হলে কী করে ঠিক করবেন?",
+   "কাউকে চিঠি পাঠানো আর হাতে চিঠি দেওয়ার মধ্যে কখন কোনটা বেছে নেবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 56.97,
+    "y": 13.22
+   },
+   {
+    "x": 33.33,
+    "y": 25.18
+   },
+   {
+    "x": 39.15,
+    "y": 36.55
+   },
+   {
+    "x": 35.27,
+    "y": 48.55
+   },
+   {
+    "x": 31.39,
+    "y": 60.35
+   },
+   {
+    "x": 29.45,
+    "y": 76.27
+   }
+  ],
+  "ids": [
+   "sending-post-and-parcels-q1-c51955d38e6a",
+   "sending-post-and-parcels-q2-e80b15cfb3c7",
+   "sending-post-and-parcels-q3-79203867af1a",
+   "sending-post-and-parcels-q4-8bc3e6828f4d",
+   "sending-post-and-parcels-q5-d002ae37c6df",
+   "sending-post-and-parcels-q6-73617998a81b"
+  ]
+ },
+ "counting-thirteen-to-eighteen": {
+  "questions": [
+   "তেরোটা কোথায়?",
+   "পনেরো আর ষোলোর মধ্যে কোনটা বেশি?",
+   "আপনি দোকানে কোনো জিনিস সতেরোটা চেয়েছেন?",
+   "চৌদ্দ থেকে আঠারো পর্যন্ত কীভাবে গুনবেন?",
+   "আঠারোটা থেকে দুইটা সরালে কোন ছবির সঙ্গে মিলবে?",
+   "আঠারোটা জিনিস দ্রুত গুনতে কীভাবে সাজাবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 49.33,
+    "y": 13.22
+   },
+   {
+    "x": 26.42,
+    "y": 24.82
+   },
+   {
+    "x": 54.79,
+    "y": 36.63
+   },
+   {
+    "x": 32.12,
+    "y": 48.63
+   },
+   {
+    "x": 52.97,
+    "y": 60.0
+   },
+   {
+    "x": 75.76,
+    "y": 71.76
+   }
+  ],
+  "ids": [
+   "counting-thirteen-to-eighteen-q1-3152df11b0af",
+   "counting-thirteen-to-eighteen-q2-7cf259371de1",
+   "counting-thirteen-to-eighteen-q3-07f6ecfa8d25",
+   "counting-thirteen-to-eighteen-q4-9b4ad44ebffd",
+   "counting-thirteen-to-eighteen-q5-2a35a20c2928",
+   "counting-thirteen-to-eighteen-q6-ea64f2a1ffbd"
+  ]
+ },
+ "baby-play-and-feeding-things": {
+  "questions": [
+   "ঝুনঝুনি কোনটা?",
+   "খেলনা গাড়ি আর কাঠের ঘোড়া কীভাবে নড়ে?",
+   "ছোটবেলায় আপনার কী খেলনা ছিল?",
+   "বাচ্চাকে খাওয়ানোর আগে বাচ্চার বুকঢাকা কাপড় কীভাবে পরাবেন?",
+   "পুতুল আর ঝুনঝুনির মধ্যে শব্দ হবে কোনটায়?",
+   "বাচ্চাকে শান্ত করতে কোন খেলনাটা আগে দেবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 50.18,
+    "y": 13.73
+   },
+   {
+    "x": 42.3,
+    "y": 24.98
+   },
+   {
+    "x": 92.48,
+    "y": 32.27
+   },
+   {
+    "x": 82.79,
+    "y": 44.43
+   },
+   {
+    "x": 34.67,
+    "y": 55.65
+   },
+   {
+    "x": 64.97,
+    "y": 67.84
+   }
+  ],
+  "ids": [
+   "baby-play-and-feeding-things-q1-c074fbfcd09a",
+   "baby-play-and-feeding-things-q2-7cbf8540656c",
+   "baby-play-and-feeding-things-q3-26c8d51336d9",
+   "baby-play-and-feeding-things-q4-37ed3acaf3b3",
+   "baby-play-and-feeding-things-q5-1ab67f50134c",
+   "baby-play-and-feeding-things-q6-5fc7e8a6e818"
+  ]
+ },
+ "tree-fruit-and-sap-treats": {
+  "questions": [
+   "কোন ছবিতে ডাব আছে?",
+   "তাল আর তালের শাঁসের রং কীভাবে আলাদা?",
+   "আপনি ডাব না নারকেল বেশি কেনেন?",
+   "ডাব কাটতে দোকানিকে কী বলবেন?",
+   "নারকেল আর তালের কোন অংশ খাই?",
+   "শীতে গাছ থেকে কী কী সংগ্রহ করেন, আর সেগুলো কী কাজে লাগে?"
+  ],
+  "endpoints": [
+   {
+    "x": 64.36,
+    "y": 13.25
+   },
+   {
+    "x": 33.33,
+    "y": 25.18
+   },
+   {
+    "x": 30.3,
+    "y": 36.9
+   },
+   {
+    "x": 87.39,
+    "y": 43.84
+   },
+   {
+    "x": 24.48,
+    "y": 55.61
+   },
+   {
+    "x": 76.24,
+    "y": 67.29
+   }
+  ],
+  "ids": [
+   "tree-fruit-and-sap-treats-q1-931a020709b0",
+   "tree-fruit-and-sap-treats-q2-13b5eb83946f",
+   "tree-fruit-and-sap-treats-q3-8d3dce7b5daf",
+   "tree-fruit-and-sap-treats-q4-0aef862d6a06",
+   "tree-fruit-and-sap-treats-q5-1179d13f780d",
+   "tree-fruit-and-sap-treats-q6-335e7aa91548"
+  ]
+ },
+ "wetland-animals-around-bangladesh": {
+  "questions": [
+   "কাঁকড়া কোন ছবিতে?",
+   "কুমির আর শুশুকের শরীর দেখতে কীভাবে আলাদা?",
+   "আপনি কোথায় শামুক দেখেছেন?",
+   "শুশুক পানির ওপর উঠলে কীভাবে চিনবেন?",
+   "শামুক আর ঝিনুকের খোলস হাতে পেলে তফাত কী দেখবেন?",
+   "পুকুরের পাড়ে অনেক গাছ থাকলে এসব প্রাণীর কী সুবিধা হতে পারে?"
+  ],
+  "endpoints": [
+   {
+    "x": 57.82,
+    "y": 13.33
+   },
+   {
+    "x": 50.42,
+    "y": 24.78
+   },
+   {
+    "x": 82.3,
+    "y": 32.75
+   },
+   {
+    "x": 32.48,
+    "y": 43.88
+   },
+   {
+    "x": 66.79,
+    "y": 55.53
+   },
+   {
+    "x": 84.61,
+    "y": 67.76
+   }
+  ],
+  "ids": [
+   "wetland-animals-around-bangladesh-q1-9b2f84ab37b2",
+   "wetland-animals-around-bangladesh-q2-1d03a17921e3",
+   "wetland-animals-around-bangladesh-q3-a8f169bdca8b",
+   "wetland-animals-around-bangladesh-q4-d9ab4a0ec39d",
+   "wetland-animals-around-bangladesh-q5-8e5d619a6452",
+   "wetland-animals-around-bangladesh-q6-01df11657e9e"
+  ]
+ },
+ "undoing-and-gathering-actions": {
+  "questions": [
+   "কে কাগজ ছিঁড়ছেন?",
+   "ছড়িয়ে দেওয়া আর গুটিয়ে নেওয়া দেখতে কীভাবে আলাদা?",
+   "আপনি বাসায় কোন জিনিস গুটিয়ে রাখেন?",
+   "গিঁট শক্ত হলে কীভাবে খুলবেন?",
+   "বোতল ঝাঁকানোর আগে কী দেখে নেবেন?",
+   "ধুলো ঝাড়তে ঘরের ভেতর নাকি বাইরে যাবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 55.27,
+    "y": 13.1
+   },
+   {
+    "x": 65.33,
+    "y": 24.78
+   },
+   {
+    "x": 29.7,
+    "y": 36.94
+   },
+   {
+    "x": 79.52,
+    "y": 44.39
+   },
+   {
+    "x": 29.45,
+    "y": 55.96
+   },
+   {
+    "x": 65.58,
+    "y": 67.49
+   }
+  ],
+  "ids": [
+   "undoing-and-gathering-actions-q1-a24f32e0746f",
+   "undoing-and-gathering-actions-q2-8407f2521591",
+   "undoing-and-gathering-actions-q3-c760b8dfac7f",
+   "undoing-and-gathering-actions-q4-cce3558c679a",
+   "undoing-and-gathering-actions-q5-825cf848ef59",
+   "undoing-and-gathering-actions-q6-6ab68c4b13f9"
+  ]
+ },
+ "rice-varieties-at-the-market": {
+  "questions": [
+   "লাল চাল কোনটা?",
+   "খুদ আর চালের গুঁড়ার মধ্যে কোনটা বেশি মিহি?",
+   "আপনি বাসায় কোন চাল দিয়ে ভাত খান?",
+   "পোলাও রান্নার আগে চাল কীভাবে তৈরি করেন?",
+   "আতপ চাল আর সেদ্ধ চাল না চেখে কীভাবে আলাদা করবেন?",
+   "প্রথমবার নতুন চাল কিনতে গেলে দোকানির কাছে কী জানতে চাইবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 53.09,
+    "y": 13.14
+   },
+   {
+    "x": 37.21,
+    "y": 24.86
+   },
+   {
+    "x": 25.21,
+    "y": 36.86
+   },
+   {
+    "x": 39.76,
+    "y": 48.27
+   },
+   {
+    "x": 66.91,
+    "y": 59.92
+   },
+   {
+    "x": 88.12,
+    "y": 71.65
+   }
+  ],
+  "ids": [
+   "rice-varieties-at-the-market-q1-81584cff0425",
+   "rice-varieties-at-the-market-q2-db980c5a15de",
+   "rice-varieties-at-the-market-q3-c4001b5277ca",
+   "rice-varieties-at-the-market-q4-cf342be0a712",
+   "rice-varieties-at-the-market-q5-0a7edcd1201a",
+   "rice-varieties-at-the-market-q6-20eba9fdb36e"
+  ]
+ },
+ "more-neighborhood-specialty-shops": {
+  "questions": [
+   "মাছের দোকানটা কোথায়?",
+   "কাপড়ের দোকান আর জুতার দোকানে কী তফাত?",
+   "আপনার বাসার কাছে কোন দোকান আছে?",
+   "বই দরকার হলে দোকান খুঁজে কাউকে কী বলবেন?",
+   "দোকানে ফল আর মাছ টাটকা কি না কী দেখে বুঝবেন?",
+   "নতুন পাড়ায় দোকান চিনতে দোকানের নাম না পড়ে কী করতে পারেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 67.27,
+    "y": 13.25
+   },
+   {
+    "x": 36.85,
+    "y": 24.78
+   },
+   {
+    "x": 27.76,
+    "y": 36.98
+   },
+   {
+    "x": 38.67,
+    "y": 48.16
+   },
+   {
+    "x": 49.94,
+    "y": 60.43
+   },
+   {
+    "x": 29.7,
+    "y": 76.31
+   }
+  ],
+  "ids": [
+   "more-neighborhood-specialty-shops-q1-a15504f00a49",
+   "more-neighborhood-specialty-shops-q2-a7ab0916d9fb",
+   "more-neighborhood-specialty-shops-q3-ae35f8b783fb",
+   "more-neighborhood-specialty-shops-q4-6daa29170f8a",
+   "more-neighborhood-specialty-shops-q5-708e6bdc5e3f",
+   "more-neighborhood-specialty-shops-q6-7dd2dc4cbe49"
+  ]
+ },
+ "small-places-around-the-room": {
+  "questions": [
+   "খাটের তলা কোনটা?",
+   "দরজার আড়াল আর দেয়ালের কুলুঙ্গিতে কী তফাত?",
+   "আপনার ঘরে কোথায় চাবি রাখেন?",
+   "জানালার ধারে রাখা জিনিসটা কীভাবে নামাবেন?",
+   "আলমারির ওপর রাখা জিনিস খুঁজতে কাউকে কী বলবেন?",
+   "খেলনা এমন কোথায় রাখবেন যাতে ছোট বাচ্চা সহজে পায়, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 56.85,
+    "y": 13.22
+   },
+   {
+    "x": 57.09,
+    "y": 25.33
+   },
+   {
+    "x": 86.79,
+    "y": 32.27
+   },
+   {
+    "x": 51.52,
+    "y": 43.84
+   },
+   {
+    "x": 54.79,
+    "y": 55.53
+   },
+   {
+    "x": 85.09,
+    "y": 67.49
+   }
+  ],
+  "ids": [
+   "small-places-around-the-room-q1-5a4357edd2aa",
+   "small-places-around-the-room-q2-78415fc2e358",
+   "small-places-around-the-room-q3-ea891769856a",
+   "small-places-around-the-room-q4-b3f5b6304c4e",
+   "small-places-around-the-room-q5-9925682b948b",
+   "small-places-around-the-room-q6-3cb6853da165"
+  ]
+ },
+ "at-a-bangladeshi-fair": {
+  "questions": [
+   "নাগরদোলা কোন ছবিতে?",
+   "নাগরদোলা আর ঘোড়ার গাড়ি কীভাবে চলে?",
+   "আপনি কোথাও মেলায় গিয়েছেন?",
+   "পুতুল কীভাবে নড়ছে?",
+   "দোকানে মাটির খেলনা চাইলে কী বলবেন?",
+   "অচেনা কাউকে মেলায় নিয়ে গেলে আগে কী দেখাবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 66.55,
+    "y": 13.25
+   },
+   {
+    "x": 42.06,
+    "y": 24.78
+   },
+   {
+    "x": 83.64,
+    "y": 32.31
+   },
+   {
+    "x": 58.67,
+    "y": 40.08
+   },
+   {
+    "x": 31.64,
+    "y": 51.65
+   },
+   {
+    "x": 77.21,
+    "y": 63.14
+   }
+  ],
+  "ids": [
+   "at-a-bangladeshi-fair-q1-d4120d951fde",
+   "at-a-bangladeshi-fair-q2-a1a8c45e61f2",
+   "at-a-bangladeshi-fair-q3-62dcb77504c2",
+   "at-a-bangladeshi-fair-q4-16d583e7b0cf",
+   "at-a-bangladeshi-fair-q5-72e44482b910",
+   "at-a-bangladeshi-fair-q6-9b24301441c1"
+  ]
+ },
+ "making-a-clay-pot": {
+  "questions": [
+   "চাক কোথায়?",
+   "শুকানো আর পোড়ানোর ছবিতে কী তফাত?",
+   "আপনি মাটির কোন পাত্র ব্যবহার করেন?",
+   "চাকে মাটি বসানোর পরে কী করেন?",
+   "ভেজা পাত্র কীভাবে ধরলে মুখটা নষ্ট হবে না?",
+   "হাঁড়ি পোড়ানোর আগে শুকিয়ে নেওয়া দরকার কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 41.82,
+    "y": 13.57
+   },
+   {
+    "x": 29.82,
+    "y": 25.18
+   },
+   {
+    "x": 28.36,
+    "y": 36.98
+   },
+   {
+    "x": 86.91,
+    "y": 43.92
+   },
+   {
+    "x": 30.42,
+    "y": 55.96
+   },
+   {
+    "x": 41.45,
+    "y": 67.69
+   }
+  ],
+  "ids": [
+   "making-a-clay-pot-q1-8f8324322777",
+   "making-a-clay-pot-q2-531a25fd9991",
+   "making-a-clay-pot-q3-51660b234262",
+   "making-a-clay-pot-q4-db8e04f1ea85",
+   "making-a-clay-pot-q5-467ed7950e30",
+   "making-a-clay-pot-q6-33ae1e46d655"
+  ]
+ },
+ "plants-by-ponds-and-fields": {
+  "questions": [
+   "কচুরিপানা কোনটা?",
+   "কাশফুল আর নলখাগড়ার মাথায় কী তফাত?",
+   "আপনি কোথায় শেওলা দেখেছেন?",
+   "মাঠে দূর্বা ঘাস থাকলে কী দেখে চিনবেন?",
+   "শোলাগাছের ডাঁটা কেটে ভেতরে কী দেখা যায়?",
+   "পুকুরের চারদিকে গাছ কমে গেলে কী কী বদলাতে পারে?"
+  ],
+  "endpoints": [
+   {
+    "x": 54.79,
+    "y": 13.73
+   },
+   {
+    "x": 29.82,
+    "y": 25.18
+   },
+   {
+    "x": 84.12,
+    "y": 32.31
+   },
+   {
+    "x": 32.48,
+    "y": 43.88
+   },
+   {
+    "x": 35.64,
+    "y": 56.0
+   },
+   {
+    "x": 51.76,
+    "y": 67.29
+   }
+  ],
+  "ids": [
+   "plants-by-ponds-and-fields-q1-8b897a29ee54",
+   "plants-by-ponds-and-fields-q2-4fb62422c4e7",
+   "plants-by-ponds-and-fields-q3-a34070c2343a",
+   "plants-by-ponds-and-fields-q4-10a4b8dea07f",
+   "plants-by-ponds-and-fields-q5-be8f4c9ef8ef",
+   "plants-by-ponds-and-fields-q6-8acb174f6b6d"
+  ]
+ },
+ "preparing-and-ordering-tea": {
+  "questions": [
+   "চায়ের পাত্র কোনটা?",
+   "দুধ চা আর লাল চায়ের রং কেমন?",
+   "আপনি সাধারণত কোন চা খান?",
+   "আদা চা বানাতে আদা কখন দেবেন?",
+   "দোকানে চিনি ছাড়া লেবু চা চাইলে কী বলবেন?",
+   "বাড়িতে অতিথি এলে তাঁর পছন্দের চা কীভাবে জেনে নেবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 55.76,
+    "y": 13.22
+   },
+   {
+    "x": 85.94,
+    "y": 21.41
+   },
+   {
+    "x": 82.06,
+    "y": 27.96
+   },
+   {
+    "x": 89.58,
+    "y": 35.61
+   },
+   {
+    "x": 31.64,
+    "y": 47.33
+   },
+   {
+    "x": 59.03,
+    "y": 58.59
+   }
+  ],
+  "ids": [
+   "preparing-and-ordering-tea-q1-4a0fd5847e2d",
+   "preparing-and-ordering-tea-q2-5ab668c4b5ca",
+   "preparing-and-ordering-tea-q3-5d32b0549dff",
+   "preparing-and-ordering-tea-q4-7f6b5c2c0420",
+   "preparing-and-ordering-tea-q5-8bf11453035f",
+   "preparing-and-ordering-tea-q6-7b69504b0e7f"
+  ]
+ },
+ "local-fabric-and-cloth-types": {
+  "questions": [
+   "কোন কাপড়টায় বড় ফুলের নকশা আছে?",
+   "সুতি আর রেশমি কাপড়ের ওপর আলো পড়লে কী তফাত দেখেন?",
+   "গরমে আপনি কী রকম কাপড় পরেন?",
+   "কাপড় কেনার আগে হাতে ছুঁয়ে কী দেখবেন?",
+   "নকশিকাঁথার ফোঁড় আর জামদানির নকশা কীভাবে আলাদা?",
+   "দাম একই হলে গরমের জামার জন্য কোন কাপড় বাছবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 27.76,
+    "y": 17.92
+   },
+   {
+    "x": 81.33,
+    "y": 29.29
+   },
+   {
+    "x": 91.03,
+    "y": 36.67
+   },
+   {
+    "x": 32.61,
+    "y": 48.55
+   },
+   {
+    "x": 64.85,
+    "y": 59.84
+   },
+   {
+    "x": 81.7,
+    "y": 72.16
+   }
+  ],
+  "ids": [
+   "local-fabric-and-cloth-types-q1-d3ee2983ce1c",
+   "local-fabric-and-cloth-types-q2-f85441fb623a",
+   "local-fabric-and-cloth-types-q3-82f31b1c0966",
+   "local-fabric-and-cloth-types-q4-1dfd5cdd00d2",
+   "local-fabric-and-cloth-types-q5-38fb0f445518",
+   "local-fabric-and-cloth-types-q6-299df0a2ebf0"
+  ]
+ },
+ "working-with-fresh-milk": {
+  "questions": [
+   "কে দুধ দোয়াচ্ছেন?",
+   "দুধ ছাঁকার আর দই পাতার ছবিতে কী তফাত?",
+   "আপনার বাসায় দই পাতেন?",
+   "দুধে কিছু ভাসলে সেটা কীভাবে সরাবেন?",
+   "মাখন আর ঘির রং কীভাবে আলাদা?",
+   "কম খরচে দই কিনবেন নাকি ঘরে পাতবেন, কী দেখে ঠিক করবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 52.36,
+    "y": 14.04
+   },
+   {
+    "x": 29.82,
+    "y": 25.18
+   },
+   {
+    "x": 72.24,
+    "y": 32.27
+   },
+   {
+    "x": 32.73,
+    "y": 44.31
+   },
+   {
+    "x": 91.88,
+    "y": 51.29
+   },
+   {
+    "x": 79.52,
+    "y": 63.1
+   }
+  ],
+  "ids": [
+   "working-with-fresh-milk-q1-86783de5d347",
+   "working-with-fresh-milk-q2-25f4fabe6153",
+   "working-with-fresh-milk-q3-96e3b2bf6356",
+   "working-with-fresh-milk-q4-a6df91429f6a",
+   "working-with-fresh-milk-q5-6bb3a75e89d1",
+   "working-with-fresh-milk-q6-c6b853d021fe"
+  ]
+ },
+ "helping-plants-grow": {
+  "questions": [
+   "কে ফুল তুলছেন?",
+   "ছাঁটা আর কলম করার কাজ দেখতে কীভাবে আলাদা?",
+   "আপনার বাসায় টবে কী গাছ আছে?",
+   "ঢলে পড়া চারাকে খুঁটিতে বাঁধতে কী লাগবে?",
+   "একটা চারা বড় টবে নিতে হলে আগে কী করবেন?",
+   "কোন গাছ কাটাছেঁড়া ছাড়াই ভালো থাকবে কী করে বুঝবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 49.45,
+    "y": 14.12
+   },
+   {
+    "x": 50.42,
+    "y": 24.78
+   },
+   {
+    "x": 88.24,
+    "y": 32.27
+   },
+   {
+    "x": 30.18,
+    "y": 44.24
+   },
+   {
+    "x": 38.42,
+    "y": 55.61
+   },
+   {
+    "x": 64.0,
+    "y": 67.8
+   }
+  ],
+  "ids": [
+   "helping-plants-grow-q1-06a73072714c",
+   "helping-plants-grow-q2-815325983797",
+   "helping-plants-grow-q3-b9260e789167",
+   "helping-plants-grow-q4-13ae522cb3eb",
+   "helping-plants-grow-q5-c8a7dd06e4ec",
+   "helping-plants-grow-q6-86fe38ad5122"
+  ]
+ },
+ "after-meal-dishwashing": {
+  "questions": [
+   "কোন ছবিতে থালা ধুচ্ছেন?",
+   "পানি ঝরানো আর জালিতে শুকানোর ছবিতে কী তফাত?",
+   "বাসায় বাসন শুকাতে কোথায় রাখেন?",
+   "হাঁড়িতে ভাত লেগে থাকলে আগে কী করবেন?",
+   "ভেজা আর শুকনা থালা কীভাবে আলাদা করে রাখবেন?",
+   "পানি কম থাকলে কীভাবে কম পানি দিয়ে বাসন ধুবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 69.33,
+    "y": 13.73
+   },
+   {
+    "x": 51.52,
+    "y": 24.9
+   },
+   {
+    "x": 91.15,
+    "y": 32.63
+   },
+   {
+    "x": 31.39,
+    "y": 44.35
+   },
+   {
+    "x": 61.09,
+    "y": 56.0
+   },
+   {
+    "x": 52.0,
+    "y": 67.84
+   }
+  ],
+  "ids": [
+   "after-meal-dishwashing-q1-38245d778f3e",
+   "after-meal-dishwashing-q2-ac3d7a40342f",
+   "after-meal-dishwashing-q3-17e74f40f940",
+   "after-meal-dishwashing-q4-c099fae83e68",
+   "after-meal-dishwashing-q5-320987f047c6",
+   "after-meal-dishwashing-q6-0dd73368539e"
+  ]
+ },
+ "plants-and-seeds-for-oil": {
+  "questions": [
+   "সূর্যমুখীটা কোথায়?",
+   "তিসির দানা আর চালের কুঁড়ার আকারে কী তফাত?",
+   "আপনার এলাকায় সরিষা ফুল দেখেছেন?",
+   "চিনাবাদাম তুলতে গাছের কোন দিকে হাত দেবেন?",
+   "তিলের গাছ আর সরিষার ফুল দেখলে কীভাবে আলাদা করবেন?",
+   "বাড়ির জন্য তেল বাছার সময় দামের সঙ্গে আর কী মিলিয়ে দেখেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 53.33,
+    "y": 13.69
+   },
+   {
+    "x": 54.91,
+    "y": 24.86
+   },
+   {
+    "x": 34.3,
+    "y": 36.98
+   },
+   {
+    "x": 38.67,
+    "y": 48.59
+   },
+   {
+    "x": 66.91,
+    "y": 59.92
+   },
+   {
+    "x": 75.03,
+    "y": 71.61
+   }
+  ],
+  "ids": [
+   "plants-and-seeds-for-oil-q1-c5f5a1fcf8c7",
+   "plants-and-seeds-for-oil-q2-0819414d86c6",
+   "plants-and-seeds-for-oil-q3-76249ca0d88a",
+   "plants-and-seeds-for-oil-q4-89c1061031dd",
+   "plants-and-seeds-for-oil-q5-9a77737fcafe",
+   "plants-and-seeds-for-oil-q6-33d61debc266"
+  ]
+ },
+ "colorful-local-garden-flowers": {
+  "questions": [
+   "নীল ফুল কোনটা?",
+   "বেলি আর রজনীগন্ধার আকারে কী তফাত?",
+   "আপনি গোলাপ কোথায় দেখেছেন?",
+   "ফুল কিনলে কোনগুলো বেশি গন্ধ দেয় জিজ্ঞেস করবেন কীভাবে?",
+   "কৃষ্ণচূড়া আর অপরাজিতা কীভাবে আলাদা করে চিনবেন?",
+   "আপনার জানালার কাছে কোন ফুল লাগাবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 52.24,
+    "y": 13.69
+   },
+   {
+    "x": 29.82,
+    "y": 25.18
+   },
+   {
+    "x": 85.58,
+    "y": 32.31
+   },
+   {
+    "x": 65.82,
+    "y": 43.92
+   },
+   {
+    "x": 60.85,
+    "y": 55.65
+   },
+   {
+    "x": 58.18,
+    "y": 67.84
+   }
+  ],
+  "ids": [
+   "colorful-local-garden-flowers-q1-3fe848901bf4",
+   "colorful-local-garden-flowers-q2-2315a936dafd",
+   "colorful-local-garden-flowers-q3-e67ed47a80b0",
+   "colorful-local-garden-flowers-q4-276f5aa132ec",
+   "colorful-local-garden-flowers-q5-6016f0cdb651",
+   "colorful-local-garden-flowers-q6-c82c4f4de9df"
+  ]
+ },
+ "common-clinic-and-care-tools": {
+  "questions": [
+   "জ্বর মাপার যন্ত্র কোনটা?",
+   "দাঁত দেখার আয়না আর বুক শোনার যন্ত্র কীভাবে আলাদা দেখায়?",
+   "এগুলোর কোনটা আগে দেখেছেন?",
+   "রক্তচাপ মাপাতে কাউকে কী বলবেন?",
+   "চোখের ওষুধ আর মুখে খাওয়ার ওষুধ চিনতে কী দেখবেন?",
+   "চিকিৎসার সময় কোনো যন্ত্র চিনতে না পারলে কীভাবে জিজ্ঞেস করবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 64.73,
+    "y": 13.61
+   },
+   {
+    "x": 74.42,
+    "y": 24.86
+   },
+   {
+    "x": 83.88,
+    "y": 32.31
+   },
+   {
+    "x": 89.45,
+    "y": 39.65
+   },
+   {
+    "x": 54.42,
+    "y": 51.22
+   },
+   {
+    "x": 87.88,
+    "y": 62.98
+   }
+  ],
+  "ids": [
+   "common-clinic-and-care-tools-q1-30ffc7d0fdb7",
+   "common-clinic-and-care-tools-q2-b4ad2fd9709b",
+   "common-clinic-and-care-tools-q3-5e922a4e56f0",
+   "common-clinic-and-care-tools-q4-db96e43ff613",
+   "common-clinic-and-care-tools-q5-d8bc5fefae6c",
+   "common-clinic-and-care-tools-q6-ec762e9fc55e"
+  ]
+ },
+ "close-family-relationships": {
+  "questions": [
+   "দাদির পাশে কে আছে?",
+   "ছেলে আর নাতির ছবিতে বড় মানুষ দুজন কীভাবে আলাদা?",
+   "আপনার বাড়িতে কে কে থাকেন?",
+   "নিজের মেয়েকে কারও সঙ্গে পরিচয় করিয়ে দিলে কী বলবেন?",
+   "নাতি আর ছেলে বললে সম্পর্কের কী তফাত হয়?",
+   "নিজের পরিবারের ছবি দেখিয়ে নতুন কাউকে পরিচয় করাতে কীভাবে শুরু করবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 60.61,
+    "y": 13.25
+   },
+   {
+    "x": 63.03,
+    "y": 25.33
+   },
+   {
+    "x": 81.09,
+    "y": 32.39
+   },
+   {
+    "x": 65.09,
+    "y": 43.92
+   },
+   {
+    "x": 37.33,
+    "y": 56.0
+   },
+   {
+    "x": 31.39,
+    "y": 72.04
+   }
+  ],
+  "ids": [
+   "close-family-relationships-q1-1b9806130fab",
+   "close-family-relationships-q2-f66e38ecd084",
+   "close-family-relationships-q3-03353087534a",
+   "close-family-relationships-q4-35b0fcbea702",
+   "close-family-relationships-q5-5b19e2fe6665",
+   "close-family-relationships-q6-b7661f513432"
+  ]
+ },
+ "working-parts-of-a-boat": {
+  "questions": [
+   "নোঙর কোনটা?",
+   "পাল আর মাস্তুল দেখতে কীভাবে আলাদা?",
+   "আপনি কোনো পালতোলা নৌকা দেখেছেন?",
+   "নৌকা এক জায়গায় রাখতে কোনটা ব্যবহার করেন?",
+   "নৌকার দিক ঘোরাতে মাঝি কী ধরেন?",
+   "নৌকায় ওঠার আগে বসার জায়গা আর আবহাওয়া দেখে কীভাবে ঠিক করবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 46.55,
+    "y": 13.22
+   },
+   {
+    "x": 33.33,
+    "y": 25.18
+   },
+   {
+    "x": 34.3,
+    "y": 36.98
+   },
+   {
+    "x": 44.85,
+    "y": 48.63
+   },
+   {
+    "x": 91.76,
+    "y": 55.61
+   },
+   {
+    "x": 54.3,
+    "y": 72.16
+   }
+  ],
+  "ids": [
+   "working-parts-of-a-boat-q1-c5559c9d8b2c",
+   "working-parts-of-a-boat-q2-2a11edccd66b",
+   "working-parts-of-a-boat-q3-3dc643b0c55b",
+   "working-parts-of-a-boat-q4-398466949993",
+   "working-parts-of-a-boat-q5-e13d6e8e5b29",
+   "working-parts-of-a-boat-q6-044427332ed1"
+  ]
  }
 };
