@@ -9899,5 +9899,1105 @@ window.PICTURE_THIS_QUESTION_DATA = {
    "working-parts-of-a-boat-q5-e13d6e8e5b29",
    "working-parts-of-a-boat-q6-044427332ed1"
   ]
+ },
+ "washroom-fixtures-and-tools": {
+  "questions": [
+   "গোসলের ঝরনা কোনটা?",
+   "পায়খানা আর হাত ধোয়ার পাত্রে কী তফাত?",
+   "আপনি মুখ মোছার কাপড় কোথায় রাখেন?",
+   "সাবান ভিজে গেলে কোথায় রেখে শুকাবেন?",
+   "ঝরনার পানি বন্ধ করতে না পারলে কী বলবেন?",
+   "নতুন বাসায় গোসলখানা দেখার সময় কোন জিনিসগুলো আগে খুঁজবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 65.82,
+    "y": 13.22
+   },
+   {
+    "x": 29.82,
+    "y": 25.18
+   },
+   {
+    "x": 29.7,
+    "y": 36.94
+   },
+   {
+    "x": 34.3,
+    "y": 48.63
+   },
+   {
+    "x": 38.67,
+    "y": 59.84
+   },
+   {
+    "x": 36.48,
+    "y": 76.31
+   }
+  ],
+  "ids": [
+   "washroom-fixtures-and-tools-q1-2f1a0c665a00",
+   "washroom-fixtures-and-tools-q2-bd18b691a1da",
+   "washroom-fixtures-and-tools-q3-abba5ee1bb84",
+   "washroom-fixtures-and-tools-q4-bc34eb5dcd16",
+   "washroom-fixtures-and-tools-q5-567a04d2d188",
+   "washroom-fixtures-and-tools-q6-a14504e671b6"
+  ]
+ },
+ "familiar-parts-of-a-car": {
+  "questions": [
+   "চালকের আসন কোনটা?",
+   "গাড়ির চাকা আর গাড়ি ঘোরানোর চাকা কীভাবে আলাদা?",
+   "আপনি গাড়ির কোন আসনে বসেন?",
+   "সামনের কাচে ধুলো থাকলে কীভাবে মুছবেন?",
+   "চাকা নরম মনে হলে চালককে কী বলবেন?",
+   "রাতে বের হওয়ার আগে গাড়ির কোন অংশগুলো দেখে নেবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 65.33,
+    "y": 13.22
+   },
+   {
+    "x": 61.94,
+    "y": 24.78
+   },
+   {
+    "x": 88.73,
+    "y": 32.39
+   },
+   {
+    "x": 31.03,
+    "y": 44.82
+   },
+   {
+    "x": 31.64,
+    "y": 55.96
+   },
+   {
+    "x": 87.64,
+    "y": 67.84
+   }
+  ],
+  "ids": [
+   "familiar-parts-of-a-car-q1-52959244b2c0",
+   "familiar-parts-of-a-car-q2-d4155b9f3f15",
+   "familiar-parts-of-a-car-q3-3134d2675755",
+   "familiar-parts-of-a-car-q4-5a02ccefa162",
+   "familiar-parts-of-a-car-q5-7b0788049670",
+   "familiar-parts-of-a-car-q6-ee8d3d03953e"
+  ]
+ },
+ "parts-of-a-reading-book": {
+  "questions": [
+   "বইয়ের মলাট কোনটা?",
+   "বইয়ের ছবি আর সূচিপত্র দেখতে কীভাবে আলাদা?",
+   "আপনি কী রকম বই পড়েন?",
+   "পড়া থামালে পাতা কীভাবে চিনে রাখবেন?",
+   "ছবিওয়ালা গল্প খুঁজতে বইয়ের কোথায় তাকাবেন?",
+   "একটা নতুন বই বাছতে মলাট দেখবেন নাকি ভেতরের পাতা, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 60.12,
+    "y": 13.22
+   },
+   {
+    "x": 50.42,
+    "y": 24.78
+   },
+   {
+    "x": 71.88,
+    "y": 32.35
+   },
+   {
+    "x": 32.73,
+    "y": 44.31
+   },
+   {
+    "x": 35.27,
+    "y": 55.92
+   },
+   {
+    "x": 80.36,
+    "y": 67.49
+   }
+  ],
+  "ids": [
+   "parts-of-a-reading-book-q1-5043d6713354",
+   "parts-of-a-reading-book-q2-f5528f432d6c",
+   "parts-of-a-reading-book-q3-fdb3b266d783",
+   "parts-of-a-reading-book-q4-7b6273dd726a",
+   "parts-of-a-reading-book-q5-7bd583b63ac0",
+   "parts-of-a-reading-book-q6-447dd40d2a3d"
+  ]
+ },
+ "everyday-groups-and-pairs": {
+  "questions": [
+   "এক জোড়া চটি কোথায়?",
+   "এক গাদা আর এক বোঝা দেখতে কীভাবে আলাদা?",
+   "আপনার কাছে এক গোছা চাবি থাকে?",
+   "দুইটা চটি একই জোড়ার কি না কী করে দেখবেন?",
+   "পাখি অনেকগুলো একসঙ্গে উড়লে কী বলবেন?",
+   "মাল সরাতে গাদা করে রাখবেন নাকি বোঝা বেঁধে নেবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 64.85,
+    "y": 13.33
+   },
+   {
+    "x": 50.42,
+    "y": 24.78
+   },
+   {
+    "x": 91.88,
+    "y": 32.31
+   },
+   {
+    "x": 42.55,
+    "y": 44.31
+   },
+   {
+    "x": 31.64,
+    "y": 55.96
+   },
+   {
+    "x": 76.73,
+    "y": 67.49
+   }
+  ],
+  "ids": [
+   "everyday-groups-and-pairs-q1-24e14d3b9c56",
+   "everyday-groups-and-pairs-q2-5f05c6b48610",
+   "everyday-groups-and-pairs-q3-ba488c044936",
+   "everyday-groups-and-pairs-q4-69599baa92fd",
+   "everyday-groups-and-pairs-q5-d03c860894de",
+   "everyday-groups-and-pairs-q6-8dcc5ce43e1e"
+  ]
+ },
+ "hair-care-at-home": {
+  "questions": [
+   "চুলের বাঁধনি কোনটা?",
+   "চুলের চিমটি আর বাঁধনি দেখতে কীভাবে আলাদা?",
+   "আপনি চুলে তেল দেন?",
+   "চুল ধোয়ার পরে কীভাবে শুকান?",
+   "চুলে তেল দিতে আর চুল ধুতে কোন জিনিসগুলো নেবেন?",
+   "বাইরে বের হওয়ার আগে চুল গুছাতে কোনটা বেশি কাজে লাগবে, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 59.27,
+    "y": 13.73
+   },
+   {
+    "x": 50.42,
+    "y": 24.78
+   },
+   {
+    "x": 62.3,
+    "y": 32.78
+   },
+   {
+    "x": 80.97,
+    "y": 40.12
+   },
+   {
+    "x": 57.09,
+    "y": 51.29
+   },
+   {
+    "x": 25.33,
+    "y": 67.65
+   }
+  ],
+  "ids": [
+   "hair-care-at-home-q1-e692e97fef2f",
+   "hair-care-at-home-q2-2450b3ef8f36",
+   "hair-care-at-home-q3-f4e5497a00cc",
+   "hair-care-at-home-q4-22f0dfb0a3cb",
+   "hair-care-at-home-q5-fe5c5bf73c60",
+   "hair-care-at-home-q6-e58dee80cbf9"
+  ]
+ },
+ "reading-a-bangla-newspaper": {
+  "questions": [
+   "কোন ছবিতে বৃষ্টির খবর আছে?",
+   "বড় শিরোনাম আর ছবির নিচের লেখা দেখতে কীভাবে আলাদা?",
+   "আপনি কোন ধরনের খবর পড়েন?",
+   "খেলার খবর খুঁজতে কোন ছবির মতো পাতা দেখবেন?",
+   "বাসা খুঁজতে খবরের কাগজের কোন অংশ দেখবেন?",
+   "সময় কম থাকলে আগে কোন অংশ পড়বেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 77.94,
+    "y": 13.49
+   },
+   {
+    "x": 65.33,
+    "y": 24.78
+   },
+   {
+    "x": 84.97,
+    "y": 32.39
+   },
+   {
+    "x": 44.73,
+    "y": 44.24
+   },
+   {
+    "x": 45.45,
+    "y": 55.92
+   },
+   {
+    "x": 54.79,
+    "y": 67.84
+   }
+  ],
+  "ids": [
+   "reading-a-bangla-newspaper-q1-52b6d4d94dd2",
+   "reading-a-bangla-newspaper-q2-8b9e5e4fe8a1",
+   "reading-a-bangla-newspaper-q3-1fd616e711e9",
+   "reading-a-bangla-newspaper-q4-3c009b1efde2",
+   "reading-a-bangla-newspaper-q5-bb0cff917a98",
+   "reading-a-bangla-newspaper-q6-74aeaf6d0b7b"
+  ]
+ },
+ "holding-food-for-an-outing": {
+  "questions": [
+   "বরফ জমানোর ছাঁচ কোনটা?",
+   "দুটো বোতলের কাজ কীভাবে আলাদা?",
+   "বাইরে গেলে আপনি কীসে পানি নেন?",
+   "চা গরম রাখতে কোন জিনিসটা নেবেন?",
+   "খাবার ঠান্ডা রাখতে বাক্সে আর কী দিতে পারেন?",
+   "অনেক দূরে খাবার নিয়ে গেলে কীভাবে ঠিক করবেন কোন পাত্র নেবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 73.21,
+    "y": 13.25
+   },
+   {
+    "x": 92.61,
+    "y": 21.02
+   },
+   {
+    "x": 91.39,
+    "y": 27.92
+   },
+   {
+    "x": 29.45,
+    "y": 39.96
+   },
+   {
+    "x": 41.09,
+    "y": 51.33
+   },
+   {
+    "x": 78.55,
+    "y": 62.94
+   }
+  ],
+  "ids": [
+   "holding-food-for-an-outing-q1-e28e5f7068db",
+   "holding-food-for-an-outing-q2-b051e8bcc1d8",
+   "holding-food-for-an-outing-q3-11bea44c0f53",
+   "holding-food-for-an-outing-q4-93abeed48218",
+   "holding-food-for-an-outing-q5-8250e85e7d96",
+   "holding-food-for-an-outing-q6-4d9043329013"
+  ]
+ },
+ "getting-through-a-crowded-place": {
+  "questions": [
+   "কে সারির শেষে দাঁড়াচ্ছেন?",
+   "আগে ঢুকে পড়া আর শেষে দাঁড়ানো কীভাবে আলাদা?",
+   "আপনি কোথায় লম্বা সারিতে দাঁড়িয়েছেন?",
+   "সামনে যেতে হলে পাশে দাঁড়ানো মানুষকে কী বলবেন?",
+   "কাউকে আপনার কাছে আসতে হাত দিয়ে কীভাবে দেখাবেন?",
+   "খুব ভিড় হলে সবাইকে সহজে যেতে দিতে কী করা যায়?"
+  ],
+  "endpoints": [
+   {
+    "x": 69.45,
+    "y": 13.33
+   },
+   {
+    "x": 50.42,
+    "y": 24.78
+   },
+   {
+    "x": 39.27,
+    "y": 36.71
+   },
+   {
+    "x": 57.09,
+    "y": 48.71
+   },
+   {
+    "x": 62.06,
+    "y": 59.92
+   },
+   {
+    "x": 52.85,
+    "y": 71.61
+   }
+  ],
+  "ids": [
+   "getting-through-a-crowded-place-q1-4ab4b8eb6e8e",
+   "getting-through-a-crowded-place-q2-8518803b2f8b",
+   "getting-through-a-crowded-place-q3-832d851c43a4",
+   "getting-through-a-crowded-place-q4-819f01ed24ab",
+   "getting-through-a-crowded-place-q5-2297073479fc",
+   "getting-through-a-crowded-place-q6-7918a6f6cde3"
+  ]
+ },
+ "welcoming-guests-at-home": {
+  "questions": [
+   "কোন ছবিতে চা ঢালা হচ্ছে?",
+   "আসন এগিয়ে দেওয়া আর পাটি পাতার মধ্যে কী তফাত?",
+   "মেহমান এলে আপনি কী দিয়ে শুরু করেন?",
+   "খাবার দেওয়ার আগে কী কী গুছিয়ে রাখবেন?",
+   "অতিথিকে পানি দিতে গিয়ে কী বলবেন?",
+   "অচেনা কাউকে বাসায় বসালে কী করলে তিনি স্বচ্ছন্দ বোধ করবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 70.55,
+    "y": 13.25
+   },
+   {
+    "x": 63.15,
+    "y": 24.86
+   },
+   {
+    "x": 28.36,
+    "y": 36.98
+   },
+   {
+    "x": 32.73,
+    "y": 48.63
+   },
+   {
+    "x": 31.64,
+    "y": 60.27
+   },
+   {
+    "x": 83.39,
+    "y": 71.69
+   }
+  ],
+  "ids": [
+   "welcoming-guests-at-home-q1-0633eefcf390",
+   "welcoming-guests-at-home-q2-72fd07e877f1",
+   "welcoming-guests-at-home-q3-a8f86c5e8af3",
+   "welcoming-guests-at-home-q4-3d17ec252f9b",
+   "welcoming-guests-at-home-q5-4bb8be9f8fe3",
+   "welcoming-guests-at-home-q6-af8c82a266d8"
+  ]
+ },
+ "counting-nineteen-to-twenty-four": {
+  "questions": [
+   "বিশটা বল কোন ছবিতে?",
+   "তেইশ আর চব্বিশের নিচের সারিতে কী তফাত?",
+   "আপনি শেষ কবে বিশটার বেশি জিনিস গুনেছেন?",
+   "উনিশ থেকে চব্বিশ পর্যন্ত কীভাবে গুনবেন?",
+   "একুশটা থেকে দুইটা সরালে কোন ছবির সঙ্গে মিলবে?",
+   "চব্বিশটা জিনিস অন্য কাউকে তাড়াতাড়ি গুনতে দিলে কীভাবে সাজাবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 64.97,
+    "y": 13.25
+   },
+   {
+    "x": 29.82,
+    "y": 25.18
+   },
+   {
+    "x": 50.18,
+    "y": 36.63
+   },
+   {
+    "x": 32.12,
+    "y": 48.63
+   },
+   {
+    "x": 52.97,
+    "y": 60.0
+   },
+   {
+    "x": 58.67,
+    "y": 76.47
+   }
+  ],
+  "ids": [
+   "counting-nineteen-to-twenty-four-q1-80f903197cd8",
+   "counting-nineteen-to-twenty-four-q2-b72af6ff9021",
+   "counting-nineteen-to-twenty-four-q3-3f6adb032c17",
+   "counting-nineteen-to-twenty-four-q4-f5678a821e85",
+   "counting-nineteen-to-twenty-four-q5-a412e53e5cbb",
+   "counting-nineteen-to-twenty-four-q6-b4a455376438"
+  ]
+ },
+ "everyday-medicine-shop-terms": {
+  "questions": [
+   "বড়ি কোন ছবিতে?",
+   "বড়ির বোতল আর তরল ওষুধ দেখতে কেমন আলাদা?",
+   "আপনি কখনও ওষুধের কাগজ নিয়ে দোকানে গিয়েছেন?",
+   "ওষুধ মাপতে কী লাগবে, তা দোকানিকে কীভাবে জিজ্ঞেস করবেন?",
+   "কোনটা আপনার ওষুধ বুঝতে না পারলে কাকে কী বলবেন?",
+   "একইরকম দুইটা বাক্স দেখলে কোনটা নিতে হবে তা কীভাবে জানবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 51.52,
+    "y": 13.33
+   },
+   {
+    "x": 47.03,
+    "y": 25.18
+   },
+   {
+    "x": 52.48,
+    "y": 36.63
+   },
+   {
+    "x": 89.33,
+    "y": 48.24
+   },
+   {
+    "x": 66.42,
+    "y": 59.92
+   },
+   {
+    "x": 78.79,
+    "y": 71.57
+   }
+  ],
+  "ids": [
+   "everyday-medicine-shop-terms-q1-e161e2483b46",
+   "everyday-medicine-shop-terms-q2-26bf84e24918",
+   "everyday-medicine-shop-terms-q3-7b4bde900bec",
+   "everyday-medicine-shop-terms-q4-7ec225b629c8",
+   "everyday-medicine-shop-terms-q5-c929d60eb3c9",
+   "everyday-medicine-shop-terms-q6-d55e0797f9f4"
+  ]
+ },
+ "ground-and-crushed-kitchen-spices": {
+  "questions": [
+   "আস্ত শুকনা মরিচ কোনটা?",
+   "হলুদের গুঁড়া আর আদা বাটার ছোঁয়ায় কী তফাত হতে পারে?",
+   "আপনি কোন রান্নায় সরিষা বাটা দেন?",
+   "আস্ত মরিচ থেকে গুঁড়া করতে কী করবেন?",
+   "মরিচের গুঁড়া আর ধনে গুঁড়া চিনতে কী দেখবেন?",
+   "ঝাল কমাতে চাইলে কোন মসলা কতটা দেবেন কীভাবে ঠিক করবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 70.55,
+    "y": 13.22
+   },
+   {
+    "x": 73.45,
+    "y": 24.9
+   },
+   {
+    "x": 92.73,
+    "y": 32.27
+   },
+   {
+    "x": 31.39,
+    "y": 44.35
+   },
+   {
+    "x": 39.64,
+    "y": 55.53
+   },
+   {
+    "x": 86.42,
+    "y": 67.25
+   }
+  ],
+  "ids": [
+   "ground-and-crushed-kitchen-spices-q1-5ac3fd7ee1dd",
+   "ground-and-crushed-kitchen-spices-q2-c4c36173d016",
+   "ground-and-crushed-kitchen-spices-q3-5d4b25993d0c",
+   "ground-and-crushed-kitchen-spices-q4-97003346dcfa",
+   "ground-and-crushed-kitchen-spices-q5-786462f52f14",
+   "ground-and-crushed-kitchen-spices-q6-6f459e055038"
+  ]
+ },
+ "sewing-room-tools": {
+  "questions": [
+   "সেলাইকল কোনটা?",
+   "সুঁই রাখার গদি আর আঙুলঢাকনি দেখতে কীভাবে আলাদা?",
+   "আপনি ঘরে সেলাই করেন?",
+   "সুতা শেষ হলে কীতে নতুন সুতা পেঁচাবেন?",
+   "জামার হাতা কাটার আগে ছাঁদ কীভাবে রাখবেন?",
+   "সেলাইয়ের ছোট জিনিস হারানো আটকাতে কীভাবে গুছিয়ে রাখবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 54.67,
+    "y": 13.18
+   },
+   {
+    "x": 65.33,
+    "y": 24.78
+   },
+   {
+    "x": 69.94,
+    "y": 32.27
+   },
+   {
+    "x": 34.06,
+    "y": 43.8
+   },
+   {
+    "x": 49.82,
+    "y": 55.61
+   },
+   {
+    "x": 86.79,
+    "y": 67.33
+   }
+  ],
+  "ids": [
+   "sewing-room-tools-q1-47d4af68d12c",
+   "sewing-room-tools-q2-498ec7cc4ec4",
+   "sewing-room-tools-q3-2dc0184b41cc",
+   "sewing-room-tools-q4-c25df0d24d59",
+   "sewing-room-tools-q5-8b664bbfbf02",
+   "sewing-room-tools-q6-b14bbec2d028"
+  ]
+ },
+ "equipment-at-the-playground": {
+  "questions": [
+   "ছোড়ার চাকতি কোনটা?",
+   "দোলনা আর পিছলে নামার সিঁড়িতে কী তফাত?",
+   "ছোটবেলায় মাঠে কী খেলতেন?",
+   "খেলার জাল কীভাবে দাঁড় করাবেন?",
+   "খেলা থামাতে হলে কোন জিনিসটা কাজে লাগবে?",
+   "মাঠ ছোট হলে কোন খেলাটা করা সহজ হবে, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 63.03,
+    "y": 13.33
+   },
+   {
+    "x": 36.85,
+    "y": 24.78
+   },
+   {
+    "x": 76.61,
+    "y": 32.27
+   },
+   {
+    "x": 87.15,
+    "y": 39.73
+   },
+   {
+    "x": 43.15,
+    "y": 51.61
+   },
+   {
+    "x": 59.15,
+    "y": 63.53
+   }
+  ],
+  "ids": [
+   "equipment-at-the-playground-q1-ba61c4b0572d",
+   "equipment-at-the-playground-q2-0c6bf102bb68",
+   "equipment-at-the-playground-q3-1a1b618ff145",
+   "equipment-at-the-playground-q4-4e02eb546048",
+   "equipment-at-the-playground-q5-3faa081d85d2",
+   "equipment-at-the-playground-q6-38c47c4fbf9c"
+  ]
+ },
+ "things-on-a-performance-stage": {
+  "questions": [
+   "মুকুট কোনটা?",
+   "মুখোশ আর মুকুট শরীরের কোন আলাদা জায়গায় পরি?",
+   "আপনি কোনো নাটক দেখতে গিয়েছেন?",
+   "মঞ্চে উঠতে কোনটা ব্যবহার করবেন?",
+   "দূরের মানুষ শুনতে না পেলে কী করতে পারেন?",
+   "মঞ্চে নতুন কাউকে গান গাইতে বললে কোন জিনিসগুলো আগে দেখাবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 43.27,
+    "y": 13.69
+   },
+   {
+    "x": 62.18,
+    "y": 24.9
+   },
+   {
+    "x": 34.42,
+    "y": 36.63
+   },
+   {
+    "x": 88.61,
+    "y": 43.96
+   },
+   {
+    "x": 29.7,
+    "y": 56.0
+   },
+   {
+    "x": 36.48,
+    "y": 72.0
+   }
+  ],
+  "ids": [
+   "things-on-a-performance-stage-q1-588a18eba087",
+   "things-on-a-performance-stage-q2-540fac3506ba",
+   "things-on-a-performance-stage-q3-2362bb82a8c9",
+   "things-on-a-performance-stage-q4-e1ba92de5c60",
+   "things-on-a-performance-stage-q5-be58da5c9c9a",
+   "things-on-a-performance-stage-q6-76c6f08fa283"
+  ]
+ },
+ "things-to-take-on-a-trip": {
+  "questions": [
+   "ঘাড়ের বালিশ কোনটা?",
+   "পিঠের থলে আর পানির পাত্র কীভাবে বহন করেন?",
+   "দূরে গেলে আপনি কী কী সঙ্গে নেন?",
+   "মাল চিনে রাখতে নামটা কোথায় লিখবেন?",
+   "থলে ভারী হয়ে গেলে কোন যন্ত্র দিয়ে ওজন দেখবেন?",
+   "অল্প জায়গায় মালপত্র নিতে হলে কোন জিনিসটা রেখে যাবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 62.18,
+    "y": 13.33
+   },
+   {
+    "x": 39.27,
+    "y": 25.29
+   },
+   {
+    "x": 87.64,
+    "y": 32.75
+   },
+   {
+    "x": 33.82,
+    "y": 43.88
+   },
+   {
+    "x": 45.58,
+    "y": 55.92
+   },
+   {
+    "x": 25.33,
+    "y": 71.96
+   }
+  ],
+  "ids": [
+   "things-to-take-on-a-trip-q1-696911478c4c",
+   "things-to-take-on-a-trip-q2-8f31afa85497",
+   "things-to-take-on-a-trip-q3-471aac90633a",
+   "things-to-take-on-a-trip-q4-dd12721a18ad",
+   "things-to-take-on-a-trip-q5-6bbdd5e84271",
+   "things-to-take-on-a-trip-q6-3854a2fd8c10"
+  ]
+ },
+ "bed-linens-and-nightwear": {
+  "questions": [
+   "কোলবালিশ কোনটা?",
+   "চাদর আর লেপের পুরুত্বে কী তফাত?",
+   "আপনি শীতে গায়ে কী দেন?",
+   "বালিশের ওয়াড় কীভাবে বদলাবেন?",
+   "মশারি টানাতে কী কী লাগবে?",
+   "বাড়িতে একজন মেহমান থাকলে ঘুমানোর আগে কী কী গুছিয়ে দেবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 58.3,
+    "y": 13.14
+   },
+   {
+    "x": 90.06,
+    "y": 21.02
+   },
+   {
+    "x": 71.88,
+    "y": 27.92
+   },
+   {
+    "x": 87.03,
+    "y": 35.41
+   },
+   {
+    "x": 75.64,
+    "y": 42.67
+   },
+   {
+    "x": 36.48,
+    "y": 59.06
+   }
+  ],
+  "ids": [
+   "bed-linens-and-nightwear-q1-a69627d5a410",
+   "bed-linens-and-nightwear-q2-eff8bc4b322e",
+   "bed-linens-and-nightwear-q3-dfdc51cce99b",
+   "bed-linens-and-nightwear-q4-be3ae5599f59",
+   "bed-linens-and-nightwear-q5-20da23ac5258",
+   "bed-linens-and-nightwear-q6-765d0c160cf2"
+  ]
+ },
+ "taking-and-keeping-photos": {
+  "questions": [
+   "ছবি রাখার বই কোনটা?",
+   "তিনপায়া আর ঝলক দেওয়ার বাতির কাজ কীভাবে আলাদা?",
+   "আপনি কোন ছবি রেখে দিতে চান?",
+   "যন্ত্র নড়ে গেলে কোথায় দাঁড় করাবেন?",
+   "একটা ছবি ঘরে সাজিয়ে রাখতে কোনটা লাগবে?",
+   "একটা অনুষ্ঠান থেকে মাত্র একটা ছবি রাখতে পারলে কী দেখে বাছবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 62.79,
+    "y": 13.25
+   },
+   {
+    "x": 61.94,
+    "y": 24.78
+   },
+   {
+    "x": 85.33,
+    "y": 32.31
+   },
+   {
+    "x": 91.88,
+    "y": 39.76
+   },
+   {
+    "x": 46.79,
+    "y": 51.25
+   },
+   {
+    "x": 80.97,
+    "y": 63.02
+   }
+  ],
+  "ids": [
+   "taking-and-keeping-photos-q1-52de3f3aba91",
+   "taking-and-keeping-photos-q2-9f8de0378682",
+   "taking-and-keeping-photos-q3-767f0bf94043",
+   "taking-and-keeping-photos-q4-39b5ae48e187",
+   "taking-and-keeping-photos-q5-f3de50905b4e",
+   "taking-and-keeping-photos-q6-252d400664da"
+  ]
+ },
+ "parts-of-common-containers": {
+  "questions": [
+   "বোতলের ছিপি কোনটা?",
+   "পেয়ালার হাতল আর হাঁড়ির হাতল কীভাবে আলাদা?",
+   "আপনার বাসায় কোন পাত্রে হাতল নেই?",
+   "বোতলের মুখ বন্ধ করতে কী লাগাবেন?",
+   "থালা তুলতে হলে কোন অংশটা ধরবেন?",
+   "গরম পাত্র তুলতে হাতল বা কিনারা ধরার আগে কী দেখবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 63.15,
+    "y": 13.25
+   },
+   {
+    "x": 50.42,
+    "y": 24.78
+   },
+   {
+    "x": 24.24,
+    "y": 36.55
+   },
+   {
+    "x": 93.21,
+    "y": 44.39
+   },
+   {
+    "x": 30.91,
+    "y": 56.04
+   },
+   {
+    "x": 88.24,
+    "y": 67.45
+   }
+  ],
+  "ids": [
+   "parts-of-common-containers-q1-14264cd6ffcf",
+   "parts-of-common-containers-q2-01eaeb1adbb9",
+   "parts-of-common-containers-q3-e469e58ebaca",
+   "parts-of-common-containers-q4-56dabf0c9de0",
+   "parts-of-common-containers-q5-b06d2772c094",
+   "parts-of-common-containers-q6-0db038f07755"
+  ]
+ },
+ "buying-fabric-cut-to-size": {
+  "questions": [
+   "কে কাপড় মেলে ধরেছেন?",
+   "ভাঁজ খোলা আর রং মেলানোর ছবিতে কী তফাত?",
+   "আপনি কখন কাপড় মেপে কিনেছেন?",
+   "দুই গজ চাইলে দোকানিকে কী বলবেন?",
+   "কাপড় কাটার আগে দাগ কোথায় দেবেন?",
+   "একই রঙের দুই রকম কাপড় পেলে কোনটা নেবেন কীভাবে ঠিক করবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 65.82,
+    "y": 13.69
+   },
+   {
+    "x": 51.52,
+    "y": 24.9
+   },
+   {
+    "x": 90.42,
+    "y": 32.39
+   },
+   {
+    "x": 31.64,
+    "y": 44.27
+   },
+   {
+    "x": 28.97,
+    "y": 55.96
+   },
+   {
+    "x": 89.7,
+    "y": 67.25
+   }
+  ],
+  "ids": [
+   "buying-fabric-cut-to-size-q1-c8a60052a30b",
+   "buying-fabric-cut-to-size-q2-e04cad1043ad",
+   "buying-fabric-cut-to-size-q3-aea993fe0ab5",
+   "buying-fabric-cut-to-size-q4-b5a877b3b2ab",
+   "buying-fabric-cut-to-size-q5-6ea8d503e830",
+   "buying-fabric-cut-to-size-q6-bc7acad4ab54"
+  ]
+ },
+ "wet-cleaning-supplies": {
+  "questions": [
+   "পানি ছিটানোর বোতল কোনটা?",
+   "কাচ মোছার পাত আর মেঝে মোছার ঝাড়ু দেখতে কীভাবে আলাদা?",
+   "আপনার বাসায় মেঝে কী দিয়ে মোছেন?",
+   "ভেজা থালা শুকনা করতে কোনটা নেবেন?",
+   "কাচে সাবান লেগে থাকলে কী দিয়ে সরাতে পারেন?",
+   "হাতে পানি না লাগিয়ে কোন কোন কাজ করা যায়, আর কীভাবে?"
+  ],
+  "endpoints": [
+   {
+    "x": 79.52,
+    "y": 13.25
+   },
+   {
+    "x": 76.48,
+    "y": 25.29
+   },
+   {
+    "x": 31.03,
+    "y": 36.98
+   },
+   {
+    "x": 29.45,
+    "y": 48.59
+   },
+   {
+    "x": 44.73,
+    "y": 60.31
+   },
+   {
+    "x": 75.52,
+    "y": 71.76
+   }
+  ],
+  "ids": [
+   "wet-cleaning-supplies-q1-1c21b3358bc8",
+   "wet-cleaning-supplies-q2-b273b5dab6c7",
+   "wet-cleaning-supplies-q3-5ba248c3d6e2",
+   "wet-cleaning-supplies-q4-c44b06881d4c",
+   "wet-cleaning-supplies-q5-67d837236d6c",
+   "wet-cleaning-supplies-q6-7fdfc7543f7e"
+  ]
+ },
+ "animals-and-shells-of-the-sea": {
+  "questions": [
+   "তারামাছ কোনটা?",
+   "হাঙর আর সামুদ্রিক ঘোড়ার লেজ কেমন আলাদা?",
+   "আপনি উপকূলে কী রকম খোলস দেখেছেন?",
+   "ছাতামাছ চিনতে গায়ের কোন অংশ দেখবেন?",
+   "প্রবাল আর শঙ্খের আকারে কী তফাত দেখবেন?",
+   "সাগরের প্রাণী কাছ থেকে দেখার সুযোগ হলে কোনটা দেখতে চাইবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 51.15,
+    "y": 13.25
+   },
+   {
+    "x": 47.03,
+    "y": 25.18
+   },
+   {
+    "x": 34.3,
+    "y": 36.98
+   },
+   {
+    "x": 32.61,
+    "y": 48.55
+   },
+   {
+    "x": 32.61,
+    "y": 60.24
+   },
+   {
+    "x": 36.48,
+    "y": 76.31
+   }
+  ],
+  "ids": [
+   "animals-and-shells-of-the-sea-q1-c374e58e7137",
+   "animals-and-shells-of-the-sea-q2-da2dde3a7c72",
+   "animals-and-shells-of-the-sea-q3-5901d86dc437",
+   "animals-and-shells-of-the-sea-q4-d5b3bc605f3a",
+   "animals-and-shells-of-the-sea-q5-cd6d16a28314",
+   "animals-and-shells-of-the-sea-q6-c7d79125136d"
+  ]
+ },
+ "small-child-care-gear": {
+  "questions": [
+   "চুষনি কোনটা?",
+   "বাচ্চার আসন আর ঠেলাগাড়িতে কী তফাত?",
+   "বাড়িতে ছোট বাচ্চাকে কোথায় বসান?",
+   "ধোয়ার পরে নেংটিটা কোথায় রাখবেন?",
+   "কোলে বাঁধার কাপড় আর গা মোড়ানোর কাপড় চিনতে কী দেখবেন?",
+   "বাচ্চাকে নিয়ে দূরে গেলে কোন জিনিসগুলো আগে নেবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 44.24,
+    "y": 13.73
+   },
+   {
+    "x": 29.82,
+    "y": 25.18
+   },
+   {
+    "x": 90.67,
+    "y": 32.39
+   },
+   {
+    "x": 32.73,
+    "y": 44.31
+   },
+   {
+    "x": 91.64,
+    "y": 55.73
+   },
+   {
+    "x": 25.33,
+    "y": 71.96
+   }
+  ],
+  "ids": [
+   "small-child-care-gear-q1-994919e1767e",
+   "small-child-care-gear-q2-992c3859867a",
+   "small-child-care-gear-q3-6a8ad14a92ac",
+   "small-child-care-gear-q4-fde58596faa6",
+   "small-child-care-gear-q5-eed48248f284",
+   "small-child-care-gear-q6-2a533027267c"
+  ]
+ },
+ "ways-of-carrying-things": {
+  "questions": [
+   "কে এক হাতে জিনিস নিয়েছেন?",
+   "মাথায় আর পিঠে নেওয়ার ছবিতে কী তফাত?",
+   "বাজার থেকে মাল কীভাবে নিয়ে আসেন?",
+   "নিচে রাখা বাক্স তুলতে কাউকে কী বলবেন?",
+   "দুজন মিলে মাল ধরলে কে কোন পাশে দাঁড়াবেন?",
+   "একটা ভারী বাক্স একা নেবেন নাকি কাউকে ডাকবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 78.3,
+    "y": 13.25
+   },
+   {
+    "x": 29.82,
+    "y": 25.18
+   },
+   {
+    "x": 31.64,
+    "y": 36.86
+   },
+   {
+    "x": 31.64,
+    "y": 48.59
+   },
+   {
+    "x": 34.42,
+    "y": 60.08
+   },
+   {
+    "x": 72.73,
+    "y": 71.8
+   }
+  ],
+  "ids": [
+   "ways-of-carrying-things-q1-4b94ca9c3a26",
+   "ways-of-carrying-things-q2-47d924753b6d",
+   "ways-of-carrying-things-q3-5307f02a5c4a",
+   "ways-of-carrying-things-q4-454e9769c1a9",
+   "ways-of-carrying-things-q5-44ee58c8b830",
+   "ways-of-carrying-things-q6-4bfc32b2418b"
+  ]
+ },
+ "bhorta-served-with-rice": {
+  "questions": [
+   "আলু ভর্তা কোনটা?",
+   "ধনেপাতা আর শুঁটকি ভর্তার রং কীভাবে আলাদা?",
+   "আপনি ভাতের সঙ্গে কী ভর্তা খান?",
+   "দোকানে কম ঝালের ভর্তা চাইলে কী বলবেন?",
+   "ডাল ভর্তা আর আলু ভর্তা দেখতে কী দেখে চিনবেন?",
+   "ভর্তায় কী আছে বোঝা না গেলে খাওয়ার আগে কীভাবে জানতে চাইবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 54.67,
+    "y": 13.69
+   },
+   {
+    "x": 50.42,
+    "y": 24.78
+   },
+   {
+    "x": 85.94,
+    "y": 32.24
+   },
+   {
+    "x": 31.64,
+    "y": 44.27
+   },
+   {
+    "x": 43.64,
+    "y": 55.57
+   },
+   {
+    "x": 31.76,
+    "y": 71.61
+   }
+  ],
+  "ids": [
+   "bhorta-served-with-rice-q1-f25cd4dfc15c",
+   "bhorta-served-with-rice-q2-9cdd572bd33f",
+   "bhorta-served-with-rice-q3-51d81dbb864f",
+   "bhorta-served-with-rice-q4-a9fbcc084a83",
+   "bhorta-served-with-rice-q5-91ab41920b81",
+   "bhorta-served-with-rice-q6-6c5aabef445f"
+  ]
  }
 };
