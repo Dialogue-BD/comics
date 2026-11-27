@@ -9400,7 +9400,2357 @@ window.PTB_DECK = {
     "পশম আর নারকেলের আঁশ ছুঁয়ে কী তফাত বুঝবেন?",
     "একটা জিনিস বানাতে কোন উপকরণ ভালো হবে, সেটা কীভাবে ঠিক করবেন?"
    ]
+  },
+  {
+   "id": "sweet-breakfast-and-pitha",
+   "number": 201,
+   "title": "পিঠা আর মিষ্টি নাশতা",
+   "front": "pages/201-front.jpg",
+   "back": "pages/201-back.jpg",
+   "items": [
+    {
+     "id": "sweet-semolina-suji",
+     "label": "সুজি",
+     "gloss": "cooked sweet semolina breakfast"
+    },
+    {
+     "id": "sweet-semai-vermicelli",
+     "label": "সেমাই",
+     "gloss": "milk vermicelli pudding"
+    },
+    {
+     "id": "popped-rice-khoi",
+     "label": "খই",
+     "gloss": "popped paddy flakes"
+    },
+    {
+     "id": "jaggery-coated-murki",
+     "label": "মুড়কি",
+     "gloss": "jaggery-coated puffed rice grains"
+    },
+    {
+     "id": "plain-chitoi-pitha",
+     "label": "চিতই পিঠা",
+     "gloss": "plain round steamed rice pitha"
+    },
+    {
+     "id": "rolled-patishapta-pitha",
+     "label": "পাটিসাপটা",
+     "gloss": "rolled filled pitha"
+    }
+   ],
+   "questions": [
+    "খই কোনটা?",
+    "চিতই আর পাটিসাপটার আকারে কী তফাত?",
+    "আপনি কখন সেমাই খান?",
+    "সুজি রান্না করতে কী দেন?",
+    "মুড়কি আর পাটিসাপটার স্বাদে গুড় কী করে বোঝা যায়?",
+    "শীতের সকালে অতিথি এলে কোনটা খাওয়াবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "parts-of-a-market-fish",
+   "number": 202,
+   "title": "মাছের গায়ে আর ভেতরে",
+   "front": "pages/202-front.jpg",
+   "back": "pages/202-back.jpg",
+   "items": [
+    {
+     "id": "fish-scale-piece",
+     "label": "আঁশ",
+     "gloss": "overlapping scales from a fish"
+    },
+    {
+     "id": "fish-bone-spine",
+     "label": "মাছের কাঁটা",
+     "gloss": "fish spine and bones"
+    },
+    {
+     "id": "fish-red-gills",
+     "label": "ফুলকা",
+     "gloss": "fish gills"
+    },
+    {
+     "id": "fish-side-fin",
+     "label": "পাখনা",
+     "gloss": "fish side fin"
+    },
+    {
+     "id": "fish-head-cut",
+     "label": "মাছের মাথা",
+     "gloss": "fish head portion"
+    },
+    {
+     "id": "fish-tail-cut",
+     "label": "মাছের লেজ",
+     "gloss": "fish tail portion"
+    }
+   ],
+   "questions": [
+    "মাছের লেজ কোন ছবিতে?",
+    "আঁশ আর পাখনা দেখতে কীভাবে আলাদা?",
+    "আপনি মাছের কোন অংশ দিয়ে ঝোল করেন?",
+    "মাছ খাওয়ার সময় কাঁটা কী করে বাছেন?",
+    "ফুলকা দেখতে হলে মাছের কোন পাশে তাকাবেন?",
+    "মাছ পরিষ্কার করতে না জানলে দোকানিকে কী বলবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "six-market-pulses",
+   "number": 203,
+   "title": "বাজারে ছয় রকম ডাল",
+   "front": "pages/203-front.jpg",
+   "back": "pages/203-back.jpg",
+   "items": [
+    {
+     "id": "split-red-masoor",
+     "label": "মসুর ডাল",
+     "gloss": "orange split red lentils"
+    },
+    {
+     "id": "split-yellow-moong",
+     "label": "মুগ ডাল",
+     "gloss": "yellow split mung beans"
+    },
+    {
+     "id": "split-black-mashkalai",
+     "label": "মাষকলাই ডাল",
+     "gloss": "split black gram"
+    },
+    {
+     "id": "split-dried-pea-dal",
+     "label": "মটর ডাল",
+     "gloss": "split yellow peas"
+    },
+    {
+     "id": "split-grass-pea-dal",
+     "label": "খেসারি ডাল",
+     "gloss": "split grass peas"
+    },
+    {
+     "id": "split-chana-dal",
+     "label": "ছোলার ডাল",
+     "gloss": "split Bengal gram"
+    }
+   ],
+   "questions": [
+    "কমলা রঙের ডাল কোনটা?",
+    "মুগ আর ছোলার ডালের দানা কোনটা বড়?",
+    "আপনার বাসায় বেশি কোন ডাল রান্না হয়?",
+    "ডাল ভিজিয়ে রাখলে পরে কী করেন?",
+    "দোকানি ডাল দেখালে চিনতে কী কী দেখবেন?",
+    "একই দামে দুই রকম ডাল পেলে কিসের ওপর ভরসা করে বাছবেন?"
+   ]
+  },
+  {
+   "id": "sending-post-and-parcels",
+   "number": 204,
+   "title": "ডাকে জিনিস পাঠাই",
+   "front": "pages/204-front.jpg",
+   "back": "pages/204-back.jpg",
+   "items": [
+    {
+     "id": "red-post-letter-box",
+     "label": "ডাকবাক্স",
+     "gloss": "street posting box"
+    },
+    {
+     "id": "bangla-postmark",
+     "label": "ডাকের ছাপ",
+     "gloss": "postmark on an envelope"
+    },
+    {
+     "id": "brown-paper-parcel",
+     "label": "কাগজে মোড়ানো জিনিস",
+     "gloss": "wrapped parcel for posting"
+    },
+    {
+     "id": "postal-canvas-sack",
+     "label": "ডাকের থলে",
+     "gloss": "postal delivery sack"
+    },
+    {
+     "id": "sender-address-on-letter",
+     "label": "নিজের ঠিকানা",
+     "gloss": "return address on an envelope"
+    },
+    {
+     "id": "receiver-address-on-letter",
+     "label": "পাঠানোর ঠিকানা",
+     "gloss": "recipient address on an envelope"
+    }
+   ],
+   "questions": [
+    "ডাকবাক্সটা কোথায়?",
+    "দুটো খামে লেখার জায়গা কীভাবে আলাদা?",
+    "আপনি কখনও ডাকে কিছু পাঠিয়েছেন?",
+    "পাঠানোর আগে খামে কী কী লাগাবেন?",
+    "ঠিকানা ভুল হলে কী করে ঠিক করবেন?",
+    "কাউকে চিঠি পাঠানো আর হাতে চিঠি দেওয়ার মধ্যে কখন কোনটা বেছে নেবেন?"
+   ]
+  },
+  {
+   "id": "counting-thirteen-to-eighteen",
+   "number": 205,
+   "title": "তেরো থেকে আঠারো",
+   "front": "pages/205-front.jpg",
+   "back": "pages/205-back.jpg",
+   "items": [
+    {
+     "id": "thirteen-count",
+     "label": "তেরো",
+     "gloss": "thirteen"
+    },
+    {
+     "id": "fourteen-count",
+     "label": "চৌদ্দ",
+     "gloss": "fourteen"
+    },
+    {
+     "id": "fifteen-count",
+     "label": "পনেরো",
+     "gloss": "fifteen"
+    },
+    {
+     "id": "sixteen-count",
+     "label": "ষোলো",
+     "gloss": "sixteen"
+    },
+    {
+     "id": "seventeen-count",
+     "label": "সতেরো",
+     "gloss": "seventeen"
+    },
+    {
+     "id": "eighteen-count",
+     "label": "আঠারো",
+     "gloss": "eighteen"
+    }
+   ],
+   "questions": [
+    "তেরোটা কোথায়?",
+    "পনেরো আর ষোলোর মধ্যে কোনটা বেশি?",
+    "আপনি দোকানে কোনো জিনিস সতেরোটা চেয়েছেন?",
+    "চৌদ্দ থেকে আঠারো পর্যন্ত কীভাবে গুনবেন?",
+    "আঠারোটা থেকে দুইটা সরালে কোন ছবির সঙ্গে মিলবে?",
+    "আঠারোটা জিনিস দ্রুত গুনতে কীভাবে সাজাবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "baby-play-and-feeding-things",
+   "number": 206,
+   "title": "ছোট বাচ্চার হাতে আর মুখে",
+   "front": "pages/206-front.jpg",
+   "back": "pages/206-back.jpg",
+   "items": [
+    {
+     "id": "baby-hand-rattle",
+     "label": "ঝুনঝুনি",
+     "gloss": "handheld baby rattle"
+    },
+    {
+     "id": "cloth-baby-doll",
+     "label": "পুতুল",
+     "gloss": "whole cloth doll"
+    },
+    {
+     "id": "wooden-toy-motor-car",
+     "label": "খেলনা গাড়ি",
+     "gloss": "small wooden toy car"
+    },
+    {
+     "id": "small-wooden-toy-horse",
+     "label": "কাঠের ঘোড়া",
+     "gloss": "wooden horse toy"
+    },
+    {
+     "id": "infant-milk-feeding-bottle",
+     "label": "দুধ খাওয়ানোর বোতল",
+     "gloss": "infant milk feeding bottle"
+    },
+    {
+     "id": "baby-feeding-bib-cloth",
+     "label": "বাচ্চার বুকঢাকা কাপড়",
+     "gloss": "cloth bib for feeding"
+    }
+   ],
+   "questions": [
+    "ঝুনঝুনি কোনটা?",
+    "খেলনা গাড়ি আর কাঠের ঘোড়া কীভাবে নড়ে?",
+    "ছোটবেলায় আপনার কী খেলনা ছিল?",
+    "বাচ্চাকে খাওয়ানোর আগে বাচ্চার বুকঢাকা কাপড় কীভাবে পরাবেন?",
+    "পুতুল আর ঝুনঝুনির মধ্যে শব্দ হবে কোনটায়?",
+    "বাচ্চাকে শান্ত করতে কোন খেলনাটা আগে দেবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "tree-fruit-and-sap-treats",
+   "number": 207,
+   "title": "গাছের ফল আর রস",
+   "front": "pages/207-front.jpg",
+   "back": "pages/207-back.jpg",
+   "items": [
+    {
+     "id": "mature-brown-coconut",
+     "label": "নারকেল",
+     "gloss": "mature brown coconut"
+    },
+    {
+     "id": "fresh-green-tender-coconut",
+     "label": "ডাব",
+     "gloss": "young green coconut"
+    },
+    {
+     "id": "ripe-black-palmyra-fruit",
+     "label": "তাল",
+     "gloss": "ripe palmyra palm fruit"
+    },
+    {
+     "id": "areca-betel-nut",
+     "label": "সুপারি",
+     "gloss": "areca nut"
+    },
+    {
+     "id": "palmyra-jelly-kernel",
+     "label": "তালের শাঁস",
+     "gloss": "tender palmyra jelly kernel"
+    },
+    {
+     "id": "fresh-date-palm-sap",
+     "label": "খেজুরের রস",
+     "gloss": "fresh date palm sap collected in a pot"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে ডাব আছে?",
+    "তাল আর তালের শাঁসের রং কীভাবে আলাদা?",
+    "আপনি ডাব না নারকেল বেশি কেনেন?",
+    "ডাব কাটতে দোকানিকে কী বলবেন?",
+    "নারকেল আর তালের কোন অংশ খাই?",
+    "শীতে গাছ থেকে কী কী সংগ্রহ করেন, আর সেগুলো কী কাজে লাগে?"
+   ]
+  },
+  {
+   "id": "wetland-animals-around-bangladesh",
+   "number": 208,
+   "title": "পানি আর পাড়ের প্রাণী",
+   "front": "pages/208-front.jpg",
+   "back": "pages/208-back.jpg",
+   "items": [
+    {
+     "id": "freshwater-paddy-crab",
+     "label": "কাঁকড়া",
+     "gloss": "small freshwater ricefield crab"
+    },
+    {
+     "id": "round-pond-snail",
+     "label": "শামুক",
+     "gloss": "pond apple snail"
+    },
+    {
+     "id": "live-river-mussel",
+     "label": "ঝিনুক",
+     "gloss": "live freshwater mussel"
+    },
+    {
+     "id": "freshwater-crocodile",
+     "label": "কুমির",
+     "gloss": "crocodile"
+    },
+    {
+     "id": "gangetic-river-dolphin",
+     "label": "শুশুক",
+     "gloss": "Ganges river dolphin"
+    },
+    {
+     "id": "wetland-leech",
+     "label": "জোঁক",
+     "gloss": "freshwater leech"
+    }
+   ],
+   "questions": [
+    "কাঁকড়া কোন ছবিতে?",
+    "কুমির আর শুশুকের শরীর দেখতে কীভাবে আলাদা?",
+    "আপনি কোথায় শামুক দেখেছেন?",
+    "শুশুক পানির ওপর উঠলে কীভাবে চিনবেন?",
+    "শামুক আর ঝিনুকের খোলস হাতে পেলে তফাত কী দেখবেন?",
+    "পুকুরের পাড়ে অনেক গাছ থাকলে এসব প্রাণীর কী সুবিধা হতে পারে?"
+   ]
+  },
+  {
+   "id": "undoing-and-gathering-actions",
+   "number": 209,
+   "title": "হাত দিয়ে আলাদা আর এক করি",
+   "front": "pages/209-front.jpg",
+   "back": "pages/209-back.jpg",
+   "items": [
+    {
+     "id": "loosening-a-knot",
+     "label": "গিঁট খোলা",
+     "gloss": "untying a knot by hand"
+    },
+    {
+     "id": "tearing-paper-in-two",
+     "label": "ছিঁড়ে ফেলা",
+     "gloss": "tearing paper into two pieces"
+    },
+    {
+     "id": "spreading-grains-out",
+     "label": "ছড়িয়ে দেওয়া",
+     "gloss": "spreading objects out from a pile"
+    },
+    {
+     "id": "rolling-up-loose-mat",
+     "label": "গুটিয়ে নেওয়া",
+     "gloss": "rolling up a laid-out mat"
+    },
+    {
+     "id": "shaking-up-small-bottle",
+     "label": "ঝাঁকিয়ে নেওয়া",
+     "gloss": "shaking a sealed container"
+    },
+    {
+     "id": "shaking-dust-off-cloth",
+     "label": "ঝেড়ে ফেলা",
+     "gloss": "shaking dust off a cloth"
+    }
+   ],
+   "questions": [
+    "কে কাগজ ছিঁড়ছেন?",
+    "ছড়িয়ে দেওয়া আর গুটিয়ে নেওয়া দেখতে কীভাবে আলাদা?",
+    "আপনি বাসায় কোন জিনিস গুটিয়ে রাখেন?",
+    "গিঁট শক্ত হলে কীভাবে খুলবেন?",
+    "বোতল ঝাঁকানোর আগে কী দেখে নেবেন?",
+    "ধুলো ঝাড়তে ঘরের ভেতর নাকি বাইরে যাবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "rice-varieties-at-the-market",
+   "number": 210,
+   "title": "চালের রকম চিনে নিই",
+   "front": "pages/210-front.jpg",
+   "back": "pages/210-back.jpg",
+   "items": [
+    {
+     "id": "raw-white-atop-rice",
+     "label": "আতপ চাল",
+     "gloss": "raw non-parboiled white rice"
+    },
+    {
+     "id": "cream-parboiled-rice",
+     "label": "সেদ্ধ চাল",
+     "gloss": "dry Bangladeshi parboiled rice"
+    },
+    {
+     "id": "tiny-scented-pilaf-rice",
+     "label": "পোলাওয়ের চাল",
+     "gloss": "fine scented short grain pilaf rice"
+    },
+    {
+     "id": "red-bran-rice",
+     "label": "লাল চাল",
+     "gloss": "whole red bran rice"
+    },
+    {
+     "id": "broken-rice-khud",
+     "label": "খুদ",
+     "gloss": "small broken rice kernels"
+    },
+    {
+     "id": "white-rice-flour",
+     "label": "চালের গুঁড়া",
+     "gloss": "white rice flour"
+    }
+   ],
+   "questions": [
+    "লাল চাল কোনটা?",
+    "খুদ আর চালের গুঁড়ার মধ্যে কোনটা বেশি মিহি?",
+    "আপনি বাসায় কোন চাল দিয়ে ভাত খান?",
+    "পোলাও রান্নার আগে চাল কীভাবে তৈরি করেন?",
+    "আতপ চাল আর সেদ্ধ চাল না চেখে কীভাবে আলাদা করবেন?",
+    "প্রথমবার নতুন চাল কিনতে গেলে দোকানির কাছে কী জানতে চাইবেন?"
+   ]
+  },
+  {
+   "id": "more-neighborhood-specialty-shops",
+   "number": 211,
+   "title": "পাড়ায় জিনিস কিনি যেসব দোকানে",
+   "front": "pages/211-front.jpg",
+   "back": "pages/211-back.jpg",
+   "items": [
+    {
+     "id": "local-book-shop",
+     "label": "বইয়ের দোকান",
+     "gloss": "book shop storefront"
+    },
+    {
+     "id": "local-cloth-shop",
+     "label": "কাপড়ের দোকান",
+     "gloss": "fabric shop storefront"
+    },
+    {
+     "id": "local-shoe-shop",
+     "label": "জুতার দোকান",
+     "gloss": "shoe shop storefront"
+    },
+    {
+     "id": "local-fruit-shop",
+     "label": "ফলের দোকান",
+     "gloss": "fruit shop storefront"
+    },
+    {
+     "id": "local-flower-shop",
+     "label": "ফুলের দোকান",
+     "gloss": "flower shop storefront"
+    },
+    {
+     "id": "local-fish-shop",
+     "label": "মাছের দোকান",
+     "gloss": "fish shop storefront"
+    }
+   ],
+   "questions": [
+    "মাছের দোকানটা কোথায়?",
+    "কাপড়ের দোকান আর জুতার দোকানে কী তফাত?",
+    "আপনার বাসার কাছে কোন দোকান আছে?",
+    "বই দরকার হলে দোকান খুঁজে কাউকে কী বলবেন?",
+    "দোকানে ফল আর মাছ টাটকা কি না কী দেখে বুঝবেন?",
+    "নতুন পাড়ায় দোকান চিনতে দোকানের নাম না পড়ে কী করতে পারেন?"
+   ]
+  },
+  {
+   "id": "small-places-around-the-room",
+   "number": 212,
+   "title": "ঘরের যে জায়গায় জিনিস থাকে",
+   "front": "pages/212-front.jpg",
+   "back": "pages/212-back.jpg",
+   "items": [
+    {
+     "id": "space-under-the-bed",
+     "label": "খাটের তলা",
+     "gloss": "space underneath a bed"
+    },
+    {
+     "id": "top-of-the-cupboard",
+     "label": "আলমারির ওপর",
+     "gloss": "top of a cupboard"
+    },
+    {
+     "id": "inside-window-ledge",
+     "label": "জানালার ধার",
+     "gloss": "ledge at the bottom of a window"
+    },
+    {
+     "id": "concealed-behind-the-door",
+     "label": "দরজার আড়াল",
+     "gloss": "concealed space behind a door"
+    },
+    {
+     "id": "edge-of-the-rooftop",
+     "label": "ছাদের কিনারা",
+     "gloss": "outer edge of a flat roof"
+    },
+    {
+     "id": "wall-storage-niche",
+     "label": "দেয়ালের কুলুঙ্গি",
+     "gloss": "small recessed wall niche"
+    }
+   ],
+   "questions": [
+    "খাটের তলা কোনটা?",
+    "দরজার আড়াল আর দেয়ালের কুলুঙ্গিতে কী তফাত?",
+    "আপনার ঘরে কোথায় চাবি রাখেন?",
+    "জানালার ধারে রাখা জিনিসটা কীভাবে নামাবেন?",
+    "আলমারির ওপর রাখা জিনিস খুঁজতে কাউকে কী বলবেন?",
+    "খেলনা এমন কোথায় রাখবেন যাতে ছোট বাচ্চা সহজে পায়, আর কেন?"
+   ]
+  },
+  {
+   "id": "at-a-bangladeshi-fair",
+   "number": 213,
+   "title": "মেলায় যা দেখি আর করি",
+   "front": "pages/213-front.jpg",
+   "back": "pages/213-back.jpg",
+   "items": [
+    {
+     "id": "bangladesh-village-fair",
+     "label": "মেলা",
+     "gloss": "Bangladesh village fair miniature"
+    },
+    {
+     "id": "traditional-ferris-wheel",
+     "label": "নাগরদোলা",
+     "gloss": "traditional fair Ferris wheel"
+    },
+    {
+     "id": "bangladeshi-string-puppet-show",
+     "label": "পুতুলনাচ",
+     "gloss": "traditional Bangla puppet performance"
+    },
+    {
+     "id": "bengali-horse-drawn-carriage",
+     "label": "ঘোড়ার গাড়ি",
+     "gloss": "Bangladesh horse-drawn passenger carriage"
+    },
+    {
+     "id": "bengali-fair-toy-stall",
+     "label": "খেলনার দোকান",
+     "gloss": "toy shop stall at a fair"
+    },
+    {
+     "id": "bangladeshi-clay-toy-set",
+     "label": "মাটির খেলনা",
+     "gloss": "hand-painted clay fair toys"
+    }
+   ],
+   "questions": [
+    "নাগরদোলা কোন ছবিতে?",
+    "নাগরদোলা আর ঘোড়ার গাড়ি কীভাবে চলে?",
+    "আপনি কোথাও মেলায় গিয়েছেন?",
+    "পুতুল কীভাবে নড়ছে?",
+    "দোকানে মাটির খেলনা চাইলে কী বলবেন?",
+    "অচেনা কাউকে মেলায় নিয়ে গেলে আগে কী দেখাবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "making-a-clay-pot",
+   "number": 214,
+   "title": "মাটির পাত্র বানানোর ধাপ",
+   "front": "pages/214-front.jpg",
+   "back": "pages/214-back.jpg",
+   "items": [
+    {
+     "id": "kneading-potters-clay",
+     "label": "মাটি মাখা",
+     "gloss": "kneading potter's clay"
+    },
+    {
+     "id": "clay-set-on-wheel",
+     "label": "চাকে মাটি বসানো",
+     "gloss": "setting clay on a potter wheel"
+    },
+    {
+     "id": "widening-a-pot-mouth",
+     "label": "পাত্রের মুখ চওড়া করা",
+     "gloss": "widening the mouth of a clay pot"
+    },
+    {
+     "id": "lifting-wet-clay-pot",
+     "label": "ভেজা পাত্র তুলে নেওয়া",
+     "gloss": "lifting formed wet clay pot"
+    },
+    {
+     "id": "air-drying-clay-pots",
+     "label": "মাটির পাত্র শুকানো",
+     "gloss": "air drying clay pots"
+    },
+    {
+     "id": "firing-clay-pots",
+     "label": "মাটির পাত্র পোড়ানো",
+     "gloss": "firing clay pots"
+    }
+   ],
+   "questions": [
+    "চাক কোথায়?",
+    "শুকানো আর পোড়ানোর ছবিতে কী তফাত?",
+    "আপনি মাটির কোন পাত্র ব্যবহার করেন?",
+    "চাকে মাটি বসানোর পরে কী করেন?",
+    "ভেজা পাত্র কীভাবে ধরলে মুখটা নষ্ট হবে না?",
+    "হাঁড়ি পোড়ানোর আগে শুকিয়ে নেওয়া দরকার কেন?"
+   ]
+  },
+  {
+   "id": "plants-by-ponds-and-fields",
+   "number": 215,
+   "title": "পুকুরপাড় আর মাঠের গাছ",
+   "front": "pages/215-front.jpg",
+   "back": "pages/215-back.jpg",
+   "items": [
+    {
+     "id": "water-hyacinth-rosette",
+     "label": "কচুরিপানা",
+     "gloss": "floating water hyacinth"
+    },
+    {
+     "id": "pond-algae-mat",
+     "label": "শেওলা",
+     "gloss": "pond algae covering a surface"
+    },
+    {
+     "id": "bengali-kash-grass-plumes",
+     "label": "কাশফুল",
+     "gloss": "white kash grass plumes"
+    },
+    {
+     "id": "tall-marsh-reed-bundle",
+     "label": "নলখাগড়া",
+     "gloss": "tall wetland reed clump"
+    },
+    {
+     "id": "low-durba-grass",
+     "label": "দূর্বা ঘাস",
+     "gloss": "low Bermuda grass sprig"
+    },
+    {
+     "id": "shola-wetland-plant",
+     "label": "শোলাগাছ",
+     "gloss": "Indian cork shola aquatic plant"
+    }
+   ],
+   "questions": [
+    "কচুরিপানা কোনটা?",
+    "কাশফুল আর নলখাগড়ার মাথায় কী তফাত?",
+    "আপনি কোথায় শেওলা দেখেছেন?",
+    "মাঠে দূর্বা ঘাস থাকলে কী দেখে চিনবেন?",
+    "শোলাগাছের ডাঁটা কেটে ভেতরে কী দেখা যায়?",
+    "পুকুরের চারদিকে গাছ কমে গেলে কী কী বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "preparing-and-ordering-tea",
+   "number": 216,
+   "title": "চা বানাই আর চায়ের রকম বলি",
+   "front": "pages/216-front.jpg",
+   "back": "pages/216-back.jpg",
+   "items": [
+    {
+     "id": "bengali-tea-kettle",
+     "label": "চায়ের পাত্র",
+     "gloss": "Bangladeshi tea kettle"
+    },
+    {
+     "id": "loose-bangla-black-tea-leaves",
+     "label": "চা পাতা",
+     "gloss": "dried black tea leaves"
+    },
+    {
+     "id": "milk-tea-glass",
+     "label": "দুধ চা",
+     "gloss": "Bangladeshi milk tea"
+    },
+    {
+     "id": "plain-black-tea-glass",
+     "label": "লাল চা",
+     "gloss": "red plain black tea without milk"
+    },
+    {
+     "id": "ginger-tea-glass",
+     "label": "আদা চা",
+     "gloss": "ginger tea"
+    },
+    {
+     "id": "lemon-tea-glass",
+     "label": "লেবু চা",
+     "gloss": "lemon tea"
+    }
+   ],
+   "questions": [
+    "চায়ের পাত্র কোনটা?",
+    "দুধ চা আর লাল চায়ের রং কেমন?",
+    "আপনি সাধারণত কোন চা খান?",
+    "আদা চা বানাতে আদা কখন দেবেন?",
+    "দোকানে চিনি ছাড়া লেবু চা চাইলে কী বলবেন?",
+    "বাড়িতে অতিথি এলে তাঁর পছন্দের চা কীভাবে জেনে নেবেন?"
+   ]
+  },
+  {
+   "id": "local-fabric-and-cloth-types",
+   "number": 217,
+   "title": "কাপড়ের রকম চিনে কিনি",
+   "front": "pages/217-front.jpg",
+   "back": "pages/217-back.jpg",
+   "items": [
+    {
+     "id": "plain-cotton-fabric",
+     "label": "সুতি কাপড়",
+     "gloss": "plain woven cotton cloth"
+    },
+    {
+     "id": "smooth-silk-fabric",
+     "label": "রেশমি কাপড়",
+     "gloss": "lustrous silk cloth"
+    },
+    {
+     "id": "fine-bengali-muslin",
+     "label": "মসলিন",
+     "gloss": "ultrafine translucent muslin"
+    },
+    {
+     "id": "woven-jamdani-sample",
+     "label": "জামদানি",
+     "gloss": "patterned Bangladeshi jamdani"
+    },
+    {
+     "id": "bengali-nakshi-kantha",
+     "label": "নকশিকাঁথা",
+     "gloss": "embroidered nakshi kantha quilt"
+    },
+    {
+     "id": "local-handspun-khadi",
+     "label": "খাদি কাপড়",
+     "gloss": "handspun khadi cotton cloth"
+    }
+   ],
+   "questions": [
+    "কোন কাপড়টায় বড় ফুলের নকশা আছে?",
+    "সুতি আর রেশমি কাপড়ের ওপর আলো পড়লে কী তফাত দেখেন?",
+    "গরমে আপনি কী রকম কাপড় পরেন?",
+    "কাপড় কেনার আগে হাতে ছুঁয়ে কী দেখবেন?",
+    "নকশিকাঁথার ফোঁড় আর জামদানির নকশা কীভাবে আলাদা?",
+    "দাম একই হলে গরমের জামার জন্য কোন কাপড় বাছবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "working-with-fresh-milk",
+   "number": 218,
+   "title": "দুধ ঘরে এলে যা করি",
+   "front": "pages/218-front.jpg",
+   "back": "pages/218-back.jpg",
+   "items": [
+    {
+     "id": "milking-dairy-cow",
+     "label": "দুধ দোয়ানো",
+     "gloss": "milking a dairy cow by hand"
+    },
+    {
+     "id": "filtering-fresh-milk",
+     "label": "দুধ ছেঁকে নেওয়া",
+     "gloss": "straining fresh milk through cloth"
+    },
+    {
+     "id": "heating-up-milk",
+     "label": "দুধ জ্বাল দেওয়া",
+     "gloss": "heating milk in a pot"
+    },
+    {
+     "id": "setting-yogurt-in-clay",
+     "label": "দই পাতা",
+     "gloss": "adding starter to set yoghurt"
+    },
+    {
+     "id": "taking-butter-from-churn",
+     "label": "মাখন তুলে নেওয়া",
+     "gloss": "lifting butter from churned milk"
+    },
+    {
+     "id": "clarifying-butter-as-ghee",
+     "label": "ঘি জ্বাল দেওয়া",
+     "gloss": "heating butter to make ghee"
+    }
+   ],
+   "questions": [
+    "কে দুধ দোয়াচ্ছেন?",
+    "দুধ ছাঁকার আর দই পাতার ছবিতে কী তফাত?",
+    "আপনার বাসায় দই পাতেন?",
+    "দুধে কিছু ভাসলে সেটা কীভাবে সরাবেন?",
+    "মাখন আর ঘির রং কীভাবে আলাদা?",
+    "কম খরচে দই কিনবেন নাকি ঘরে পাতবেন, কী দেখে ঠিক করবেন?"
+   ]
+  },
+  {
+   "id": "helping-plants-grow",
+   "number": 219,
+   "title": "গাছের বাড়তি যত্ন",
+   "front": "pages/219-front.jpg",
+   "back": "pages/219-back.jpg",
+   "items": [
+    {
+     "id": "trimming-a-plant-branch",
+     "label": "ডাল ছাঁটা",
+     "gloss": "pruning a plant branch"
+    },
+    {
+     "id": "grafting-a-plant-cutting",
+     "label": "গাছে কলম করা",
+     "gloss": "grafting a live sapling"
+    },
+    {
+     "id": "staking-young-plant",
+     "label": "চারাকে খুঁটিতে বাঁধা",
+     "gloss": "tying a sapling to a stake"
+    },
+    {
+     "id": "picking-one-flower-by-hand",
+     "label": "ফুল তোলা",
+     "gloss": "picking one flower by hand"
+    },
+    {
+     "id": "removing-dry-leaves",
+     "label": "শুকনা পাতা সরানো",
+     "gloss": "removing dry fallen leaves from a plant pot"
+    },
+    {
+     "id": "moving-plant-to-larger-pot",
+     "label": "চারার টব বদলানো",
+     "gloss": "repotting a small plant"
+    }
+   ],
+   "questions": [
+    "কে ফুল তুলছেন?",
+    "ছাঁটা আর কলম করার কাজ দেখতে কীভাবে আলাদা?",
+    "আপনার বাসায় টবে কী গাছ আছে?",
+    "ঢলে পড়া চারাকে খুঁটিতে বাঁধতে কী লাগবে?",
+    "একটা চারা বড় টবে নিতে হলে আগে কী করবেন?",
+    "কোন গাছ কাটাছেঁড়া ছাড়াই ভালো থাকবে কী করে বুঝবেন?"
+   ]
+  },
+  {
+   "id": "after-meal-dishwashing",
+   "number": 220,
+   "title": "খাওয়ার পর বাসন গুছাই",
+   "front": "pages/220-front.jpg",
+   "back": "pages/220-back.jpg",
+   "items": [
+    {
+     "id": "soaking-dirty-cooking-pot",
+     "label": "হাঁড়ি ভিজিয়ে রাখা",
+     "gloss": "soaking a used cooking pot"
+    },
+    {
+     "id": "scrubbing-pot-bottom",
+     "label": "হাঁড়ির তলা ঘষা",
+     "gloss": "scrubbing the underside of a pot"
+    },
+    {
+     "id": "rinsing-a-washed-plate",
+     "label": "থালা ধুয়ে নেওয়া",
+     "gloss": "rinsing a plate under clean water"
+    },
+    {
+     "id": "draining-water-from-bowl",
+     "label": "বাটির পানি ঝরানো",
+     "gloss": "draining rinse water from a bowl"
+    },
+    {
+     "id": "drying-dishes-on-rack",
+     "label": "জালিতে বাসন শুকানো",
+     "gloss": "air drying dishes in a rack"
+    },
+    {
+     "id": "stacking-clean-plates",
+     "label": "থালা একটার ওপর আরেকটা রাখা",
+     "gloss": "stacking clean plates flat"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে থালা ধুচ্ছেন?",
+    "পানি ঝরানো আর জালিতে শুকানোর ছবিতে কী তফাত?",
+    "বাসায় বাসন শুকাতে কোথায় রাখেন?",
+    "হাঁড়িতে ভাত লেগে থাকলে আগে কী করবেন?",
+    "ভেজা আর শুকনা থালা কীভাবে আলাদা করে রাখবেন?",
+    "পানি কম থাকলে কীভাবে কম পানি দিয়ে বাসন ধুবেন?"
+   ]
+  },
+  {
+   "id": "plants-and-seeds-for-oil",
+   "number": 221,
+   "title": "তেল হয় যে গাছ আর দানা থেকে",
+   "front": "pages/221-front.jpg",
+   "back": "pages/221-back.jpg",
+   "items": [
+    {
+     "id": "yellow-mustard-flower-plant",
+     "label": "সরিষার ফুল",
+     "gloss": "yellow mustard blossom"
+    },
+    {
+     "id": "sesame-plant-with-pods",
+     "label": "তিলের গাছ",
+     "gloss": "sesame plant with seed pods"
+    },
+    {
+     "id": "single-sunflower-head",
+     "label": "সূর্যমুখী",
+     "gloss": "sunflower head"
+    },
+    {
+     "id": "uprooted-groundnut-plant",
+     "label": "চিনাবাদামের গাছ",
+     "gloss": "peanut plant with roots"
+    },
+    {
+     "id": "brown-flaxseed-pile",
+     "label": "তিসির দানা",
+     "gloss": "flaxseed grains"
+    },
+    {
+     "id": "fine-rice-bran-pile",
+     "label": "চালের কুঁড়া",
+     "gloss": "rice bran"
+    }
+   ],
+   "questions": [
+    "সূর্যমুখীটা কোথায়?",
+    "তিসির দানা আর চালের কুঁড়ার আকারে কী তফাত?",
+    "আপনার এলাকায় সরিষা ফুল দেখেছেন?",
+    "চিনাবাদাম তুলতে গাছের কোন দিকে হাত দেবেন?",
+    "তিলের গাছ আর সরিষার ফুল দেখলে কীভাবে আলাদা করবেন?",
+    "বাড়ির জন্য তেল বাছার সময় দামের সঙ্গে আর কী মিলিয়ে দেখেন?"
+   ]
+  },
+  {
+   "id": "colorful-local-garden-flowers",
+   "number": 222,
+   "title": "ফুলের গন্ধ আর রং",
+   "front": "pages/222-front.jpg",
+   "back": "pages/222-back.jpg",
+   "items": [
+    {
+     "id": "bengali-red-rose",
+     "label": "গোলাপ",
+     "gloss": "red garden rose"
+    },
+    {
+     "id": "local-beli-jasmine",
+     "label": "বেলি ফুল",
+     "gloss": "Arabian jasmine blossom"
+    },
+    {
+     "id": "bangladesh-tuberose-spike",
+     "label": "রজনীগন্ধা",
+     "gloss": "tuberose flower spike"
+    },
+    {
+     "id": "red-flame-tree-blossom",
+     "label": "কৃষ্ণচূড়া",
+     "gloss": "royal poinciana flowers"
+    },
+    {
+     "id": "pink-periwinkle-bloom",
+     "label": "নয়নতারা",
+     "gloss": "pink Madagascar periwinkle"
+    },
+    {
+     "id": "blue-butterfly-pea-flower",
+     "label": "অপরাজিতা",
+     "gloss": "blue butterfly pea blossom"
+    }
+   ],
+   "questions": [
+    "নীল ফুল কোনটা?",
+    "বেলি আর রজনীগন্ধার আকারে কী তফাত?",
+    "আপনি গোলাপ কোথায় দেখেছেন?",
+    "ফুল কিনলে কোনগুলো বেশি গন্ধ দেয় জিজ্ঞেস করবেন কীভাবে?",
+    "কৃষ্ণচূড়া আর অপরাজিতা কীভাবে আলাদা করে চিনবেন?",
+    "আপনার জানালার কাছে কোন ফুল লাগাবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "common-clinic-and-care-tools",
+   "number": 223,
+   "title": "অসুখ দেখাতে যে জিনিস লাগে",
+   "front": "pages/223-front.jpg",
+   "back": "pages/223-back.jpg",
+   "items": [
+    {
+     "id": "clinic-temperature-tool",
+     "label": "জ্বর মাপার যন্ত্র",
+     "gloss": "clinical thermometer object"
+    },
+    {
+     "id": "clinic-listening-tool",
+     "label": "বুক শোনার যন্ত্র",
+     "gloss": "stethoscope"
+    },
+    {
+     "id": "clinic-pressure-cuff",
+     "label": "রক্তচাপ মাপার যন্ত্র",
+     "gloss": "blood pressure cuff"
+    },
+    {
+     "id": "eye-medicine-dropper",
+     "label": "চোখের ওষুধ",
+     "gloss": "eye medicine dropper bottle"
+    },
+    {
+     "id": "underarm-crutch-support",
+     "label": "বগলে ভর দেওয়ার লাঠি",
+     "gloss": "underarm crutch"
+    },
+    {
+     "id": "clinic-tooth-mirror",
+     "label": "দাঁত দেখার আয়না",
+     "gloss": "dental hand mirror"
+    }
+   ],
+   "questions": [
+    "জ্বর মাপার যন্ত্র কোনটা?",
+    "দাঁত দেখার আয়না আর বুক শোনার যন্ত্র কীভাবে আলাদা দেখায়?",
+    "এগুলোর কোনটা আগে দেখেছেন?",
+    "রক্তচাপ মাপাতে কাউকে কী বলবেন?",
+    "চোখের ওষুধ আর মুখে খাওয়ার ওষুধ চিনতে কী দেখবেন?",
+    "চিকিৎসার সময় কোনো যন্ত্র চিনতে না পারলে কীভাবে জিজ্ঞেস করবেন?"
+   ]
+  },
+  {
+   "id": "close-family-relationships",
+   "number": 224,
+   "title": "নিজের ঘরের আপনজন",
+   "front": "pages/224-front.jpg",
+   "back": "pages/224-back.jpg",
+   "items": [
+    {
+     "id": "family-husband-reference",
+     "label": "স্বামী",
+     "gloss": "husband in a married pair"
+    },
+    {
+     "id": "family-wife-reference",
+     "label": "বউ",
+     "gloss": "wife in a married pair"
+    },
+    {
+     "id": "family-son-reference",
+     "label": "ছেলে",
+     "gloss": "son of a parent"
+    },
+    {
+     "id": "family-daughter-reference",
+     "label": "মেয়ে",
+     "gloss": "daughter of a parent"
+    },
+    {
+     "id": "family-grandson-reference",
+     "label": "নাতি",
+     "gloss": "grandson with an elder"
+    },
+    {
+     "id": "family-granddaughter-reference",
+     "label": "নাতনি",
+     "gloss": "granddaughter with an elder"
+    }
+   ],
+   "questions": [
+    "দাদির পাশে কে আছে?",
+    "ছেলে আর নাতির ছবিতে বড় মানুষ দুজন কীভাবে আলাদা?",
+    "আপনার বাড়িতে কে কে থাকেন?",
+    "নিজের মেয়েকে কারও সঙ্গে পরিচয় করিয়ে দিলে কী বলবেন?",
+    "নাতি আর ছেলে বললে সম্পর্কের কী তফাত হয়?",
+    "নিজের পরিবারের ছবি দেখিয়ে নতুন কাউকে পরিচয় করাতে কীভাবে শুরু করবেন?"
+   ]
+  },
+  {
+   "id": "working-parts-of-a-boat",
+   "number": 225,
+   "title": "নৌকার যে অংশগুলো কাজে লাগে",
+   "front": "pages/225-front.jpg",
+   "back": "pages/225-back.jpg",
+   "items": [
+    {
+     "id": "small-river-boat-anchor",
+     "label": "নোঙর",
+     "gloss": "steel boat anchor"
+    },
+    {
+     "id": "wooden-boat-rudder",
+     "label": "হাল",
+     "gloss": "wooden boat rudder assembly"
+    },
+    {
+     "id": "plain-cloth-on-a-boat-sail",
+     "label": "পাল",
+     "gloss": "cloth sail of a river boat"
+    },
+    {
+     "id": "boat-sail-mast",
+     "label": "মাস্তুল",
+     "gloss": "vertical wooden mast of a boat"
+    },
+    {
+     "id": "river-boat-walking-deck",
+     "label": "নৌকার পাটাতন",
+     "gloss": "planked deck of a boat"
+    },
+    {
+     "id": "upturned-bow-of-a-boat",
+     "label": "নৌকার গলুই",
+     "gloss": "upturned bow of a boat"
+    }
+   ],
+   "questions": [
+    "নোঙর কোনটা?",
+    "পাল আর মাস্তুল দেখতে কীভাবে আলাদা?",
+    "আপনি কোনো পালতোলা নৌকা দেখেছেন?",
+    "নৌকা এক জায়গায় রাখতে কোনটা ব্যবহার করেন?",
+    "নৌকার দিক ঘোরাতে মাঝি কী ধরেন?",
+    "নৌকায় ওঠার আগে বসার জায়গা আর আবহাওয়া দেখে কীভাবে ঠিক করবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "washroom-fixtures-and-tools",
+   "number": 226,
+   "title": "গোসলখানার চেনা জিনিস",
+   "front": "pages/226-front.jpg",
+   "back": "pages/226-back.jpg",
+   "items": [
+    {
+     "id": "washroom-handwashing-basin",
+     "label": "হাত ধোয়ার পাত্র",
+     "gloss": "washbasin fixture"
+    },
+    {
+     "id": "bathroom-showerhead",
+     "label": "গোসলের ঝরনা",
+     "gloss": "showerhead fixture"
+    },
+    {
+     "id": "bengali-squat-toilet-pan",
+     "label": "পায়খানা",
+     "gloss": "ceramic squat toilet pan"
+    },
+    {
+     "id": "toilet-bowl-brush",
+     "label": "পায়খানার ঝাড়নি",
+     "gloss": "toilet bowl brush"
+    },
+    {
+     "id": "bathroom-soap-rest",
+     "label": "সাবান রাখার পাত্র",
+     "gloss": "soap dish"
+    },
+    {
+     "id": "washroom-hand-towel",
+     "label": "মুখ মোছার কাপড়",
+     "gloss": "small terry face towel"
+    }
+   ],
+   "questions": [
+    "গোসলের ঝরনা কোনটা?",
+    "পায়খানা আর হাত ধোয়ার পাত্রে কী তফাত?",
+    "আপনি মুখ মোছার কাপড় কোথায় রাখেন?",
+    "সাবান ভিজে গেলে কোথায় রেখে শুকাবেন?",
+    "ঝরনার পানি বন্ধ করতে না পারলে কী বলবেন?",
+    "নতুন বাসায় গোসলখানা দেখার সময় কোন জিনিসগুলো আগে খুঁজবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "familiar-parts-of-a-car",
+   "number": 227,
+   "title": "গাড়ির চেনা অংশ",
+   "front": "pages/227-front.jpg",
+   "back": "pages/227-back.jpg",
+   "items": [
+    {
+     "id": "car-road-wheel",
+     "label": "গাড়ির চাকা",
+     "gloss": "car road wheel and tyre"
+    },
+    {
+     "id": "car-steering-wheel",
+     "label": "গাড়ি ঘোরানোর চাকা",
+     "gloss": "car steering wheel"
+    },
+    {
+     "id": "side-mirror-of-car",
+     "label": "পাশের আয়না",
+     "gloss": "car side-view mirror"
+    },
+    {
+     "id": "red-rear-car-light",
+     "label": "পেছনের বাতি",
+     "gloss": "rear car tail light"
+    },
+    {
+     "id": "car-driver-seat",
+     "label": "চালকের আসন",
+     "gloss": "car driver's seat"
+    },
+    {
+     "id": "front-car-windscreen",
+     "label": "গাড়ির সামনের কাচ",
+     "gloss": "car windscreen"
+    }
+   ],
+   "questions": [
+    "চালকের আসন কোনটা?",
+    "গাড়ির চাকা আর গাড়ি ঘোরানোর চাকা কীভাবে আলাদা?",
+    "আপনি গাড়ির কোন আসনে বসেন?",
+    "সামনের কাচে ধুলো থাকলে কীভাবে মুছবেন?",
+    "চাকা নরম মনে হলে চালককে কী বলবেন?",
+    "রাতে বের হওয়ার আগে গাড়ির কোন অংশগুলো দেখে নেবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "parts-of-a-reading-book",
+   "number": 228,
+   "title": "বই খুলে ভেতরটা চিনি",
+   "front": "pages/228-front.jpg",
+   "back": "pages/228-back.jpg",
+   "items": [
+    {
+     "id": "hard-cover-of-book",
+     "label": "বইয়ের মলাট",
+     "gloss": "book cover"
+    },
+    {
+     "id": "book-binding-spine",
+     "label": "বইয়ের পিঠ",
+     "gloss": "bound spine of a book"
+    },
+    {
+     "id": "open-reading-page",
+     "label": "বইয়ের পাতা",
+     "gloss": "open leaf of a book"
+    },
+    {
+     "id": "illustrated-book-endpaper",
+     "label": "বইয়ের ছবি",
+     "gloss": "illustration printed in a book"
+    },
+    {
+     "id": "reading-bookmark",
+     "label": "পাতা চেনার দাগ",
+     "gloss": "bookmark marking a page"
+    },
+    {
+     "id": "book-contents-page",
+     "label": "সূচিপত্র",
+     "gloss": "table of contents in a book"
+    }
+   ],
+   "questions": [
+    "বইয়ের মলাট কোনটা?",
+    "বইয়ের ছবি আর সূচিপত্র দেখতে কীভাবে আলাদা?",
+    "আপনি কী রকম বই পড়েন?",
+    "পড়া থামালে পাতা কীভাবে চিনে রাখবেন?",
+    "ছবিওয়ালা গল্প খুঁজতে বইয়ের কোথায় তাকাবেন?",
+    "একটা নতুন বই বাছতে মলাট দেখবেন নাকি ভেতরের পাতা, আর কেন?"
+   ]
+  },
+  {
+   "id": "everyday-groups-and-pairs",
+   "number": 229,
+   "title": "দল আর জোড়া করে বলি",
+   "front": "pages/229-front.jpg",
+   "back": "pages/229-back.jpg",
+   "items": [
+    {
+     "id": "pair-of-sandals",
+     "label": "এক জোড়া",
+     "gloss": "one pair of matching objects"
+    },
+    {
+     "id": "bunch-of-keys",
+     "label": "এক গোছা",
+     "gloss": "one bunch held together"
+    },
+    {
+     "id": "pile-of-empty-bags",
+     "label": "এক গাদা",
+     "gloss": "one heap"
+    },
+    {
+     "id": "one-bundle-load",
+     "label": "এক বোঝা",
+     "gloss": "one tied load"
+    },
+    {
+     "id": "flock-of-flying-birds",
+     "label": "এক ঝাঁক",
+     "gloss": "one flock of birds"
+    },
+    {
+     "id": "group-of-local-people",
+     "label": "এক দল",
+     "gloss": "one group of people"
+    }
+   ],
+   "questions": [
+    "এক জোড়া চটি কোথায়?",
+    "এক গাদা আর এক বোঝা দেখতে কীভাবে আলাদা?",
+    "আপনার কাছে এক গোছা চাবি থাকে?",
+    "দুইটা চটি একই জোড়ার কি না কী করে দেখবেন?",
+    "পাখি অনেকগুলো একসঙ্গে উড়লে কী বলবেন?",
+    "মাল সরাতে গাদা করে রাখবেন নাকি বোঝা বেঁধে নেবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "hair-care-at-home",
+   "number": 230,
+   "title": "চুল ধুয়ে গুছিয়ে নিই",
+   "front": "pages/230-front.jpg",
+   "back": "pages/230-back.jpg",
+   "items": [
+    {
+     "id": "hair-drying-tool",
+     "label": "চুল শুকানোর যন্ত্র",
+     "gloss": "hair dryer"
+    },
+    {
+     "id": "wide-brush-for-hair",
+     "label": "চুলের ঝাড়নি",
+     "gloss": "hairbrush"
+    },
+    {
+     "id": "hair-washing-liquid",
+     "label": "চুল ধোয়ার সাবান",
+     "gloss": "liquid soap used for washing hair"
+    },
+    {
+     "id": "bengali-hair-oil-bottle",
+     "label": "চুলের তেল",
+     "gloss": "hair oil"
+    },
+    {
+     "id": "elastic-tie-for-hair",
+     "label": "চুলের বাঁধনি",
+     "gloss": "elastic hair tie"
+    },
+    {
+     "id": "small-claw-hair-grip",
+     "label": "চুলের চিমটি",
+     "gloss": "claw hair clip"
+    }
+   ],
+   "questions": [
+    "চুলের বাঁধনি কোনটা?",
+    "চুলের চিমটি আর বাঁধনি দেখতে কীভাবে আলাদা?",
+    "আপনি চুলে তেল দেন?",
+    "চুল ধোয়ার পরে কীভাবে শুকান?",
+    "চুলে তেল দিতে আর চুল ধুতে কোন জিনিসগুলো নেবেন?",
+    "বাইরে বের হওয়ার আগে চুল গুছাতে কোনটা বেশি কাজে লাগবে, আর কেন?"
+   ]
+  },
+  {
+   "id": "reading-a-bangla-newspaper",
+   "number": 231,
+   "title": "খবরের কাগজে কোথায় কী দেখি",
+   "front": "pages/231-front.jpg",
+   "back": "pages/231-back.jpg",
+   "items": [
+    {
+     "id": "newspaper-front-page",
+     "label": "খবরের কাগজের প্রথম পাতা",
+     "gloss": "newspaper front page"
+    },
+    {
+     "id": "newspaper-large-headline",
+     "label": "খবরের বড় শিরোনাম",
+     "gloss": "large news headline"
+    },
+    {
+     "id": "newspaper-picture-with-caption",
+     "label": "ছবির নিচের লেখা",
+     "gloss": "caption beneath a newspaper photo"
+    },
+    {
+     "id": "newspaper-weather-section",
+     "label": "আবহাওয়ার খবর",
+     "gloss": "newspaper weather panel"
+    },
+    {
+     "id": "newspaper-classified-section",
+     "label": "ছোট বিজ্ঞাপন",
+     "gloss": "newspaper classifieds"
+    },
+    {
+     "id": "newspaper-sports-page",
+     "label": "খেলার খবর",
+     "gloss": "newspaper sports reporting panel"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে বৃষ্টির খবর আছে?",
+    "বড় শিরোনাম আর ছবির নিচের লেখা দেখতে কীভাবে আলাদা?",
+    "আপনি কোন ধরনের খবর পড়েন?",
+    "খেলার খবর খুঁজতে কোন ছবির মতো পাতা দেখবেন?",
+    "বাসা খুঁজতে খবরের কাগজের কোন অংশ দেখবেন?",
+    "সময় কম থাকলে আগে কোন অংশ পড়বেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "holding-food-for-an-outing",
+   "number": 232,
+   "title": "খাবার নিয়ে যাই আর ঠান্ডা রাখি",
+   "front": "pages/232-front.jpg",
+   "back": "pages/232-back.jpg",
+   "items": [
+    {
+     "id": "tiffin-stack-for-carrying",
+     "label": "খাবার নেওয়ার পাত্র",
+     "gloss": "stacked steel meal carrier"
+    },
+    {
+     "id": "reusable-drinking-bottle",
+     "label": "পানির বোতল",
+     "gloss": "reusable drinking-water bottle"
+    },
+    {
+     "id": "lidded-picnic-basket",
+     "label": "খাবারের ঝুড়ি",
+     "gloss": "lidded picnic basket"
+    },
+    {
+     "id": "insulated-hot-drink-flask",
+     "label": "গরম রাখার বোতল",
+     "gloss": "insulated flask for hot drinks"
+    },
+    {
+     "id": "portable-cold-food-box",
+     "label": "ঠান্ডা রাখার বাক্স",
+     "gloss": "insulated lidded cold-food box"
+    },
+    {
+     "id": "water-freezing-tray",
+     "label": "বরফ জমানোর ছাঁচ",
+     "gloss": "ice cube tray"
+    }
+   ],
+   "questions": [
+    "বরফ জমানোর ছাঁচ কোনটা?",
+    "দুটো বোতলের কাজ কীভাবে আলাদা?",
+    "বাইরে গেলে আপনি কীসে পানি নেন?",
+    "চা গরম রাখতে কোন জিনিসটা নেবেন?",
+    "খাবার ঠান্ডা রাখতে বাক্সে আর কী দিতে পারেন?",
+    "অনেক দূরে খাবার নিয়ে গেলে কীভাবে ঠিক করবেন কোন পাত্র নেবেন?"
+   ]
+  },
+  {
+   "id": "getting-through-a-crowded-place",
+   "number": 233,
+   "title": "ভিড়ের মধ্যে চলি",
+   "front": "pages/233-front.jpg",
+   "back": "pages/233-back.jpg",
+   "items": [
+    {
+     "id": "joining-the-back-of-a-line",
+     "label": "সারির শেষে দাঁড়ানো",
+     "gloss": "joining a queue at the back"
+    },
+    {
+     "id": "cutting-in-front-of-a-line",
+     "label": "আগে ঢুকে পড়া",
+     "gloss": "cutting into a queue"
+    },
+    {
+     "id": "blocking-a-narrow-passage",
+     "label": "পথ আটকে দাঁড়ানো",
+     "gloss": "standing across a passage"
+    },
+    {
+     "id": "walking-through-a-gap",
+     "label": "ফাঁক দিয়ে যাওয়া",
+     "gloss": "walking through a narrow gap"
+    },
+    {
+     "id": "coming-nearer-to-someone",
+     "label": "কাছে এগিয়ে আসা",
+     "gloss": "walking nearer to a caller"
+    },
+    {
+     "id": "moving-sideways-for-someone",
+     "label": "এক পাশে সরে যাওয়া",
+     "gloss": "stepping to one side"
+    }
+   ],
+   "questions": [
+    "কে সারির শেষে দাঁড়াচ্ছেন?",
+    "আগে ঢুকে পড়া আর শেষে দাঁড়ানো কীভাবে আলাদা?",
+    "আপনি কোথায় লম্বা সারিতে দাঁড়িয়েছেন?",
+    "সামনে যেতে হলে পাশে দাঁড়ানো মানুষকে কী বলবেন?",
+    "কাউকে আপনার কাছে আসতে হাত দিয়ে কীভাবে দেখাবেন?",
+    "খুব ভিড় হলে সবাইকে সহজে যেতে দিতে কী করা যায়?"
+   ]
+  },
+  {
+   "id": "welcoming-guests-at-home",
+   "number": 234,
+   "title": "বাসায় মেহমান এলে",
+   "front": "pages/234-front.jpg",
+   "back": "pages/234-back.jpg",
+   "items": [
+    {
+     "id": "holding-door-open-for-guest",
+     "label": "দরজা ধরে রাখা",
+     "gloss": "holding a door open for a guest"
+    },
+    {
+     "id": "setting-out-a-mat-for-guests",
+     "label": "মেহমানের জন্য পাটি পাতা",
+     "gloss": "laying out a mat for guests"
+    },
+    {
+     "id": "sliding-a-seat-toward-a-guest",
+     "label": "বসার আসন এগিয়ে দেওয়া",
+     "gloss": "offering a seat by bringing it closer"
+    },
+    {
+     "id": "offering-filled-water-glass",
+     "label": "পানি এগিয়ে দেওয়া",
+     "gloss": "offering someone a glass of water"
+    },
+    {
+     "id": "uncovering-the-served-food",
+     "label": "খাবারের ঢাকনা সরানো",
+     "gloss": "uncovering already served food"
+    },
+    {
+     "id": "pouring-tea-for-a-guest",
+     "label": "মেহমানকে চা ঢেলে দেওয়া",
+     "gloss": "pouring tea for a house guest"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে চা ঢালা হচ্ছে?",
+    "আসন এগিয়ে দেওয়া আর পাটি পাতার মধ্যে কী তফাত?",
+    "মেহমান এলে আপনি কী দিয়ে শুরু করেন?",
+    "খাবার দেওয়ার আগে কী কী গুছিয়ে রাখবেন?",
+    "অতিথিকে পানি দিতে গিয়ে কী বলবেন?",
+    "অচেনা কাউকে বাসায় বসালে কী করলে তিনি স্বচ্ছন্দ বোধ করবেন?"
+   ]
+  },
+  {
+   "id": "counting-nineteen-to-twenty-four",
+   "number": 235,
+   "title": "উনিশ থেকে চব্বিশ",
+   "front": "pages/235-front.jpg",
+   "back": "pages/235-back.jpg",
+   "items": [
+    {
+     "id": "nineteen-count",
+     "label": "উনিশ",
+     "gloss": "nineteen"
+    },
+    {
+     "id": "twenty-count",
+     "label": "বিশ",
+     "gloss": "twenty"
+    },
+    {
+     "id": "twenty-one-count",
+     "label": "একুশ",
+     "gloss": "twenty-one"
+    },
+    {
+     "id": "twenty-two-count",
+     "label": "বাইশ",
+     "gloss": "twenty-two"
+    },
+    {
+     "id": "twenty-three-count",
+     "label": "তেইশ",
+     "gloss": "twenty-three"
+    },
+    {
+     "id": "twenty-four-count",
+     "label": "চব্বিশ",
+     "gloss": "twenty-four"
+    }
+   ],
+   "questions": [
+    "বিশটা বল কোন ছবিতে?",
+    "তেইশ আর চব্বিশের নিচের সারিতে কী তফাত?",
+    "আপনি শেষ কবে বিশটার বেশি জিনিস গুনেছেন?",
+    "উনিশ থেকে চব্বিশ পর্যন্ত কীভাবে গুনবেন?",
+    "একুশটা থেকে দুইটা সরালে কোন ছবির সঙ্গে মিলবে?",
+    "চব্বিশটা জিনিস অন্য কাউকে তাড়াতাড়ি গুনতে দিলে কীভাবে সাজাবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "everyday-medicine-shop-terms",
+   "number": 236,
+   "title": "ওষুধের দোকানে যা চাই",
+   "front": "pages/236-front.jpg",
+   "back": "pages/236-back.jpg",
+   "items": [
+    {
+     "id": "medicine-pill-tablet",
+     "label": "বড়ি",
+     "gloss": "medicine tablet pill"
+    },
+    {
+     "id": "pill-storage-bottle",
+     "label": "বড়ির বোতল",
+     "gloss": "lidded pill bottle"
+    },
+    {
+     "id": "plain-medication-carton",
+     "label": "ওষুধের বাক্স",
+     "gloss": "medicine carton box"
+    },
+    {
+     "id": "medication-measuring-spoon",
+     "label": "ওষুধ মাপার চামচ",
+     "gloss": "medicine measuring spoon"
+    },
+    {
+     "id": "oral-liquid-medication",
+     "label": "খাওয়ার তরল ওষুধ",
+     "gloss": "liquid oral medicine"
+    },
+    {
+     "id": "doctor-written-medicine-paper",
+     "label": "ওষুধের কাগজ",
+     "gloss": "prescription sheet for medicine"
+    }
+   ],
+   "questions": [
+    "বড়ি কোন ছবিতে?",
+    "বড়ির বোতল আর তরল ওষুধ দেখতে কেমন আলাদা?",
+    "আপনি কখনও ওষুধের কাগজ নিয়ে দোকানে গিয়েছেন?",
+    "ওষুধ মাপতে কী লাগবে, তা দোকানিকে কীভাবে জিজ্ঞেস করবেন?",
+    "কোনটা আপনার ওষুধ বুঝতে না পারলে কাকে কী বলবেন?",
+    "একইরকম দুইটা বাক্স দেখলে কোনটা নিতে হবে তা কীভাবে জানবেন?"
+   ]
+  },
+  {
+   "id": "ground-and-crushed-kitchen-spices",
+   "number": 237,
+   "title": "গুঁড়া আর বাটা মসলা",
+   "front": "pages/237-front.jpg",
+   "back": "pages/237-back.jpg",
+   "items": [
+    {
+     "id": "whole-dried-chillies",
+     "label": "শুকনা মরিচ",
+     "gloss": "whole dried red chillies"
+    },
+    {
+     "id": "turmeric-ground-powder",
+     "label": "হলুদের গুঁড়া",
+     "gloss": "ground turmeric powder"
+    },
+    {
+     "id": "red-chilli-powder",
+     "label": "মরিচের গুঁড়া",
+     "gloss": "ground red chilli powder"
+    },
+    {
+     "id": "ground-coriander-seeds",
+     "label": "ধনে গুঁড়া",
+     "gloss": "ground coriander seed powder"
+    },
+    {
+     "id": "mustard-seed-paste",
+     "label": "সরিষা বাটা",
+     "gloss": "prepared mustard seed paste"
+    },
+    {
+     "id": "crushed-fresh-ginger-paste",
+     "label": "আদা বাটা",
+     "gloss": "fresh crushed ginger paste"
+    }
+   ],
+   "questions": [
+    "আস্ত শুকনা মরিচ কোনটা?",
+    "হলুদের গুঁড়া আর আদা বাটার ছোঁয়ায় কী তফাত হতে পারে?",
+    "আপনি কোন রান্নায় সরিষা বাটা দেন?",
+    "আস্ত মরিচ থেকে গুঁড়া করতে কী করবেন?",
+    "মরিচের গুঁড়া আর ধনে গুঁড়া চিনতে কী দেখবেন?",
+    "ঝাল কমাতে চাইলে কোন মসলা কতটা দেবেন কীভাবে ঠিক করবেন?"
+   ]
+  },
+  {
+   "id": "sewing-room-tools",
+   "number": 238,
+   "title": "দর্জির পাশে যে জিনিসগুলো থাকে",
+   "front": "pages/238-front.jpg",
+   "back": "pages/238-back.jpg",
+   "items": [
+    {
+     "id": "tailors-sewing-machine",
+     "label": "সেলাইকল",
+     "gloss": "sewing machine"
+    },
+    {
+     "id": "sewing-thread-spool",
+     "label": "সুতা পেঁচানোর নলি",
+     "gloss": "spool for winding thread"
+    },
+    {
+     "id": "sewing-finger-thimble",
+     "label": "সেলাইয়ের আঙুলঢাকনি",
+     "gloss": "metal sewing thimble"
+    },
+    {
+     "id": "sewing-pin-cushion",
+     "label": "সুঁই রাখার গদি",
+     "gloss": "cushion for holding needles"
+    },
+    {
+     "id": "sewing-supplies-box",
+     "label": "সেলাইয়ের বাক্স",
+     "gloss": "box for sewing tools"
+    },
+    {
+     "id": "paper-clothing-pattern",
+     "label": "জামা কাটার ছাঁদ",
+     "gloss": "paper clothing pattern for cutting fabric"
+    }
+   ],
+   "questions": [
+    "সেলাইকল কোনটা?",
+    "সুঁই রাখার গদি আর আঙুলঢাকনি দেখতে কীভাবে আলাদা?",
+    "আপনি ঘরে সেলাই করেন?",
+    "সুতা শেষ হলে কীতে নতুন সুতা পেঁচাবেন?",
+    "জামার হাতা কাটার আগে ছাঁদ কীভাবে রাখবেন?",
+    "সেলাইয়ের ছোট জিনিস হারানো আটকাতে কীভাবে গুছিয়ে রাখবেন?"
+   ]
+  },
+  {
+   "id": "equipment-at-the-playground",
+   "number": 239,
+   "title": "খেলার মাঠে যা কাজে লাগে",
+   "front": "pages/239-front.jpg",
+   "back": "pages/239-back.jpg",
+   "items": [
+    {
+     "id": "sliding-playground-ramp",
+     "label": "পিছলে নামার সিঁড়ি",
+     "gloss": "playground slide"
+    },
+    {
+     "id": "seesaw-playground-seat",
+     "label": "ওঠানামার দোলনা",
+     "gloss": "playground seesaw"
+    },
+    {
+     "id": "ball-for-foot-play",
+     "label": "খেলার বল",
+     "gloss": "football for play"
+    },
+    {
+     "id": "round-throwing-disc",
+     "label": "ছোড়ার চাকতি",
+     "gloss": "flying disc for play"
+    },
+    {
+     "id": "raised-net-for-play",
+     "label": "খেলার জাল",
+     "gloss": "standing net for court games"
+    },
+    {
+     "id": "referee-hand-whistle",
+     "label": "খেলার বাঁশি",
+     "gloss": "handheld referee whistle"
+    }
+   ],
+   "questions": [
+    "ছোড়ার চাকতি কোনটা?",
+    "দোলনা আর পিছলে নামার সিঁড়িতে কী তফাত?",
+    "ছোটবেলায় মাঠে কী খেলতেন?",
+    "খেলার জাল কীভাবে দাঁড় করাবেন?",
+    "খেলা থামাতে হলে কোন জিনিসটা কাজে লাগবে?",
+    "মাঠ ছোট হলে কোন খেলাটা করা সহজ হবে, আর কেন?"
+   ]
+  },
+  {
+   "id": "things-on-a-performance-stage",
+   "number": 240,
+   "title": "মঞ্চে সাজ আর সরঞ্জাম",
+   "front": "pages/240-front.jpg",
+   "back": "pages/240-back.jpg",
+   "items": [
+    {
+     "id": "theater-stage-curtain",
+     "label": "মঞ্চের পর্দা",
+     "gloss": "stage curtain"
+    },
+    {
+     "id": "light-for-a-stage",
+     "label": "মঞ্চের আলো",
+     "gloss": "stage spotlight"
+    },
+    {
+     "id": "theater-face-mask",
+     "label": "মুখোশ",
+     "gloss": "theatrical face mask"
+    },
+    {
+     "id": "prop-royal-crown",
+     "label": "মুকুট",
+     "gloss": "theatrical crown prop"
+    },
+    {
+     "id": "megaphone-amplifier",
+     "label": "আওয়াজ বড় করার যন্ত্র",
+     "gloss": "handheld megaphone"
+    },
+    {
+     "id": "small-podium-stage-stairs",
+     "label": "মঞ্চে ওঠার সিঁড়ি",
+     "gloss": "portable stage stairs"
+    }
+   ],
+   "questions": [
+    "মুকুট কোনটা?",
+    "মুখোশ আর মুকুট শরীরের কোন আলাদা জায়গায় পরি?",
+    "আপনি কোনো নাটক দেখতে গিয়েছেন?",
+    "মঞ্চে উঠতে কোনটা ব্যবহার করবেন?",
+    "দূরের মানুষ শুনতে না পেলে কী করতে পারেন?",
+    "মঞ্চে নতুন কাউকে গান গাইতে বললে কোন জিনিসগুলো আগে দেখাবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "things-to-take-on-a-trip",
+   "number": 241,
+   "title": "দূরে গেলে সঙ্গে নিই",
+   "front": "pages/241-front.jpg",
+   "back": "pages/241-back.jpg",
+   "items": [
+    {
+     "id": "backpack-for-travel",
+     "label": "পিঠের থলে",
+     "gloss": "travel backpack"
+    },
+    {
+     "id": "travel-pillow-around-neck",
+     "label": "ঘাড়ের বালিশ",
+     "gloss": "neck travel pillow"
+    },
+    {
+     "id": "travel-mask-over-eyes",
+     "label": "চোখ ঢাকার কাপড়",
+     "gloss": "sleep eye mask"
+    },
+    {
+     "id": "label-tag-on-luggage",
+     "label": "মালে নাম লেখার চিহ্ন",
+     "gloss": "luggage identification tag"
+    },
+    {
+     "id": "hand-scale-to-weigh-luggage",
+     "label": "মাল মাপার যন্ত্র",
+     "gloss": "handheld luggage scale"
+    },
+    {
+     "id": "water-canteen-with-strap",
+     "label": "কাঁধে ঝোলানো পানির পাত্র",
+     "gloss": "strap-mounted travel canteen"
+    }
+   ],
+   "questions": [
+    "ঘাড়ের বালিশ কোনটা?",
+    "পিঠের থলে আর পানির পাত্র কীভাবে বহন করেন?",
+    "দূরে গেলে আপনি কী কী সঙ্গে নেন?",
+    "মাল চিনে রাখতে নামটা কোথায় লিখবেন?",
+    "থলে ভারী হয়ে গেলে কোন যন্ত্র দিয়ে ওজন দেখবেন?",
+    "অল্প জায়গায় মালপত্র নিতে হলে কোন জিনিসটা রেখে যাবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "bed-linens-and-nightwear",
+   "number": 242,
+   "title": "বিছানায় আর ঘুমের সময়",
+   "front": "pages/242-front.jpg",
+   "back": "pages/242-back.jpg",
+   "items": [
+    {
+     "id": "quilted-winter-bed-cover",
+     "label": "লেপ",
+     "gloss": "thick traditional winter quilt"
+    },
+    {
+     "id": "plain-bed-sheet",
+     "label": "বিছানার চাদর",
+     "gloss": "flat bed sheet"
+    },
+    {
+     "id": "removable-pillowcase",
+     "label": "বালিশের ওয়াড়",
+     "gloss": "removable pillowcase"
+    },
+    {
+     "id": "long-bolster-pillow",
+     "label": "কোলবালিশ",
+     "gloss": "long cylindrical hugging pillow"
+    },
+    {
+     "id": "cotton-sleepwear-set",
+     "label": "ঘুমানোর পোশাক",
+     "gloss": "light cotton sleepwear"
+    },
+    {
+     "id": "bedside-bednet-post",
+     "label": "মশারির খুঁটি",
+     "gloss": "bed mosquito net support post"
+    }
+   ],
+   "questions": [
+    "কোলবালিশ কোনটা?",
+    "চাদর আর লেপের পুরুত্বে কী তফাত?",
+    "আপনি শীতে গায়ে কী দেন?",
+    "বালিশের ওয়াড় কীভাবে বদলাবেন?",
+    "মশারি টানাতে কী কী লাগবে?",
+    "বাড়িতে একজন মেহমান থাকলে ঘুমানোর আগে কী কী গুছিয়ে দেবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "taking-and-keeping-photos",
+   "number": 243,
+   "title": "ছবি তুলি আর রেখে দিই",
+   "front": "pages/243-front.jpg",
+   "back": "pages/243-back.jpg",
+   "items": [
+    {
+     "id": "handheld-picture-taking-device",
+     "label": "ছবি তোলার যন্ত্র",
+     "gloss": "photographic camera"
+    },
+    {
+     "id": "camera-lens-focusing-glass",
+     "label": "ছবি তোলার কাচ",
+     "gloss": "detached photographic lens"
+    },
+    {
+     "id": "three-legged-camera-support",
+     "label": "যন্ত্র রাখার তিনপায়া",
+     "gloss": "photography tripod"
+    },
+    {
+     "id": "photography-flash-unit",
+     "label": "ঝলক দেওয়ার বাতি",
+     "gloss": "camera flash unit"
+    },
+    {
+     "id": "book-for-loose-photographs",
+     "label": "ছবি রাখার বই",
+     "gloss": "photo album"
+    },
+    {
+     "id": "standing-wood-photo-frame",
+     "label": "ছবি বাঁধানোর কাঠ",
+     "gloss": "wooden photo frame"
+    }
+   ],
+   "questions": [
+    "ছবি রাখার বই কোনটা?",
+    "তিনপায়া আর ঝলক দেওয়ার বাতির কাজ কীভাবে আলাদা?",
+    "আপনি কোন ছবি রেখে দিতে চান?",
+    "যন্ত্র নড়ে গেলে কোথায় দাঁড় করাবেন?",
+    "একটা ছবি ঘরে সাজিয়ে রাখতে কোনটা লাগবে?",
+    "একটা অনুষ্ঠান থেকে মাত্র একটা ছবি রাখতে পারলে কী দেখে বাছবেন?"
+   ]
+  },
+  {
+   "id": "parts-of-common-containers",
+   "number": 244,
+   "title": "পাত্রের কোন অংশটা",
+   "front": "pages/244-front.jpg",
+   "back": "pages/244-back.jpg",
+   "items": [
+    {
+     "id": "open-mouth-of-a-bottle",
+     "label": "বোতলের মুখ",
+     "gloss": "opening at the mouth of a bottle"
+    },
+    {
+     "id": "separate-screw-cap-for-bottle",
+     "label": "বোতলের ছিপি",
+     "gloss": "detached bottle screw cap"
+    },
+    {
+     "id": "handle-of-a-teacup",
+     "label": "পেয়ালার হাতল",
+     "gloss": "looped handle of a teacup"
+    },
+    {
+     "id": "handle-of-a-cooking-pot",
+     "label": "হাঁড়ির হাতল",
+     "gloss": "handle on a cooking pot"
+    },
+    {
+     "id": "underside-foot-of-a-bowl",
+     "label": "পাত্রের তলা",
+     "gloss": "underside of a bowl"
+    },
+    {
+     "id": "edge-rim-of-a-plate",
+     "label": "থালার কিনারা",
+     "gloss": "outer rim of a plate"
+    }
+   ],
+   "questions": [
+    "বোতলের ছিপি কোনটা?",
+    "পেয়ালার হাতল আর হাঁড়ির হাতল কীভাবে আলাদা?",
+    "আপনার বাসায় কোন পাত্রে হাতল নেই?",
+    "বোতলের মুখ বন্ধ করতে কী লাগাবেন?",
+    "থালা তুলতে হলে কোন অংশটা ধরবেন?",
+    "গরম পাত্র তুলতে হাতল বা কিনারা ধরার আগে কী দেখবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "buying-fabric-cut-to-size",
+   "number": 245,
+   "title": "দোকানে কাপড় বেছে কাটি",
+   "front": "pages/245-front.jpg",
+   "back": "pages/245-back.jpg",
+   "items": [
+    {
+     "id": "opening-out-a-fabric-piece",
+     "label": "কাপড় মেলে ধরা",
+     "gloss": "holding a piece of fabric spread up"
+    },
+    {
+     "id": "unfolding-a-folded-fabric",
+     "label": "কাপড়ের ভাঁজ খুলে দেখা",
+     "gloss": "unfolding cloth to inspect it"
+    },
+    {
+     "id": "matching-two-coloured-fabrics",
+     "label": "কাপড়ের রং মিলিয়ে দেখা",
+     "gloss": "holding two fabrics side by side to match colors"
+    },
+    {
+     "id": "marking-the-fabric-edge",
+     "label": "কাপড়ে দাগ দেওয়া",
+     "gloss": "marking a cloth edge with chalk"
+    },
+    {
+     "id": "measuring-fabric-by-the-yard",
+     "label": "গজে কাপড় মাপা",
+     "gloss": "measuring cloth with a yardstick"
+    },
+    {
+     "id": "cutting-cloth-from-the-bolt",
+     "label": "থান থেকে কাপড় কাটা",
+     "gloss": "cutting cloth from the bolt"
+    }
+   ],
+   "questions": [
+    "কে কাপড় মেলে ধরেছেন?",
+    "ভাঁজ খোলা আর রং মেলানোর ছবিতে কী তফাত?",
+    "আপনি কখন কাপড় মেপে কিনেছেন?",
+    "দুই গজ চাইলে দোকানিকে কী বলবেন?",
+    "কাপড় কাটার আগে দাগ কোথায় দেবেন?",
+    "একই রঙের দুই রকম কাপড় পেলে কোনটা নেবেন কীভাবে ঠিক করবেন?"
+   ]
+  },
+  {
+   "id": "wet-cleaning-supplies",
+   "number": 246,
+   "title": "মেঝে কাচ আর বাসন পরিষ্কার করি",
+   "front": "pages/246-front.jpg",
+   "back": "pages/246-back.jpg",
+   "items": [
+    {
+     "id": "wet-floor-mop",
+     "label": "মেঝে মোছার ঝাড়ু",
+     "gloss": "wet floor mop"
+    },
+    {
+     "id": "rubber-glass-squeegee",
+     "label": "কাচ মোছার পাত",
+     "gloss": "handheld glass squeegee"
+    },
+    {
+     "id": "soapy-liquid-for-dishes",
+     "label": "বাসন ধোয়ার সাবান",
+     "gloss": "dishwashing liquid soap"
+    },
+    {
+     "id": "cloth-to-wipe-clean-dishes",
+     "label": "বাসন মোছার কাপড়",
+     "gloss": "dish towel"
+    },
+    {
+     "id": "cleaning-water-mist-bottle",
+     "label": "পানি ছিটানোর বোতল",
+     "gloss": "water spray bottle"
+    },
+    {
+     "id": "washproof-rubber-gloves",
+     "label": "পানি আটকানোর হাতমোজা",
+     "gloss": "waterproof cleaning gloves"
+    }
+   ],
+   "questions": [
+    "পানি ছিটানোর বোতল কোনটা?",
+    "কাচ মোছার পাত আর মেঝে মোছার ঝাড়ু দেখতে কীভাবে আলাদা?",
+    "আপনার বাসায় মেঝে কী দিয়ে মোছেন?",
+    "ভেজা থালা শুকনা করতে কোনটা নেবেন?",
+    "কাচে সাবান লেগে থাকলে কী দিয়ে সরাতে পারেন?",
+    "হাতে পানি না লাগিয়ে কোন কোন কাজ করা যায়, আর কীভাবে?"
+   ]
+  },
+  {
+   "id": "animals-and-shells-of-the-sea",
+   "number": 247,
+   "title": "সাগরে যে প্রাণীগুলো দেখি",
+   "front": "pages/247-front.jpg",
+   "back": "pages/247-back.jpg",
+   "items": [
+    {
+     "id": "marine-shark",
+     "label": "হাঙর",
+     "gloss": "shark"
+    },
+    {
+     "id": "seahorse-vertebrate",
+     "label": "সামুদ্রিক ঘোড়া",
+     "gloss": "seahorse"
+    },
+    {
+     "id": "umbrella-shaped-jelly-creature",
+     "label": "ছাতামাছ",
+     "gloss": "jellyfish"
+    },
+    {
+     "id": "five-rayed-marine-seastar",
+     "label": "তারামাছ",
+     "gloss": "sea star"
+    },
+    {
+     "id": "marine-branch-coral",
+     "label": "প্রবাল",
+     "gloss": "branch coral"
+    },
+    {
+     "id": "marine-conch-shell",
+     "label": "শঙ্খ",
+     "gloss": "large spiral marine conch shell"
+    }
+   ],
+   "questions": [
+    "তারামাছ কোনটা?",
+    "হাঙর আর সামুদ্রিক ঘোড়ার লেজ কেমন আলাদা?",
+    "আপনি উপকূলে কী রকম খোলস দেখেছেন?",
+    "ছাতামাছ চিনতে গায়ের কোন অংশ দেখবেন?",
+    "প্রবাল আর শঙ্খের আকারে কী তফাত দেখবেন?",
+    "সাগরের প্রাণী কাছ থেকে দেখার সুযোগ হলে কোনটা দেখতে চাইবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "small-child-care-gear",
+   "number": 248,
+   "title": "বাচ্চাকে বসাই আর সঙ্গে নিই",
+   "front": "pages/248-front.jpg",
+   "back": "pages/248-back.jpg",
+   "items": [
+    {
+     "id": "pushchair-for-a-child",
+     "label": "বাচ্চার ঠেলাগাড়ি",
+     "gloss": "baby stroller pushchair"
+    },
+    {
+     "id": "raised-infant-meal-seat",
+     "label": "বাচ্চার উঁচু আসন",
+     "gloss": "baby high chair"
+    },
+    {
+     "id": "infant-comfort-pacifier",
+     "label": "চুষনি",
+     "gloss": "baby pacifier"
+    },
+    {
+     "id": "washable-cloth-diaper",
+     "label": "কাপড়ের নেংটি",
+     "gloss": "reusable cloth baby diaper"
+    },
+    {
+     "id": "child-body-wrap",
+     "label": "বাচ্চার গা মোড়ানোর কাপড়",
+     "gloss": "soft baby swaddle wrap"
+    },
+    {
+     "id": "baby-carrying-cloth-sling",
+     "label": "কোলে বাঁধার কাপড়",
+     "gloss": "soft fabric child carrier sling"
+    }
+   ],
+   "questions": [
+    "চুষনি কোনটা?",
+    "বাচ্চার আসন আর ঠেলাগাড়িতে কী তফাত?",
+    "বাড়িতে ছোট বাচ্চাকে কোথায় বসান?",
+    "ধোয়ার পরে নেংটিটা কোথায় রাখবেন?",
+    "কোলে বাঁধার কাপড় আর গা মোড়ানোর কাপড় চিনতে কী দেখবেন?",
+    "বাচ্চাকে নিয়ে দূরে গেলে কোন জিনিসগুলো আগে নেবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "ways-of-carrying-things",
+   "number": 249,
+   "title": "জিনিস একা আর মিলে বয়ে নিই",
+   "front": "pages/249-front.jpg",
+   "back": "pages/249-back.jpg",
+   "items": [
+    {
+     "id": "carrying-a-load-in-one-hand",
+     "label": "এক হাতে নেওয়া",
+     "gloss": "carrying a load in one hand"
+    },
+    {
+     "id": "carrying-a-load-in-both-hands",
+     "label": "দুই হাতে নেওয়া",
+     "gloss": "carrying an object with both hands"
+    },
+    {
+     "id": "lifting-an-object-off-the-floor",
+     "label": "নিচ থেকে তুলে ধরা",
+     "gloss": "lifting an object from the floor"
+    },
+    {
+     "id": "balancing-a-load-on-the-head",
+     "label": "মাথায় নিয়ে যাওয়া",
+     "gloss": "carrying a load on the head"
+    },
+    {
+     "id": "carrying-a-load-on-the-back",
+     "label": "পিঠে বওয়া",
+     "gloss": "carrying a load on the back"
+    },
+    {
+     "id": "lifting-a-load-together",
+     "label": "দুজনে ধরে নেওয়া",
+     "gloss": "two people carrying one object together"
+    }
+   ],
+   "questions": [
+    "কে এক হাতে জিনিস নিয়েছেন?",
+    "মাথায় আর পিঠে নেওয়ার ছবিতে কী তফাত?",
+    "বাজার থেকে মাল কীভাবে নিয়ে আসেন?",
+    "নিচে রাখা বাক্স তুলতে কাউকে কী বলবেন?",
+    "দুজন মিলে মাল ধরলে কে কোন পাশে দাঁড়াবেন?",
+    "একটা ভারী বাক্স একা নেবেন নাকি কাউকে ডাকবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "bhorta-served-with-rice",
+   "number": 250,
+   "title": "ভাতের সঙ্গে ছয় রকম ভর্তা",
+   "front": "pages/250-front.jpg",
+   "back": "pages/250-back.jpg",
+   "items": [
+    {
+     "id": "mashed-potato-bhorta",
+     "label": "আলু ভর্তা",
+     "gloss": "Bangladeshi mashed potato bhorta"
+    },
+    {
+     "id": "smoky-eggplant-bhorta",
+     "label": "বেগুন ভর্তা",
+     "gloss": "smoked eggplant bhorta"
+    },
+    {
+     "id": "dried-fish-bhorta",
+     "label": "শুঁটকি ভর্তা",
+     "gloss": "dried fish bhorta"
+    },
+    {
+     "id": "mashed-lentil-bhorta",
+     "label": "ডাল ভর্তা",
+     "gloss": "mashed lentil bhorta"
+    },
+    {
+     "id": "fresh-coriander-bhorta",
+     "label": "ধনেপাতা ভর্তা",
+     "gloss": "fresh coriander leaf bhorta"
+    },
+    {
+     "id": "mustard-seed-bhorta",
+     "label": "সরিষা ভর্তা",
+     "gloss": "prepared mustard seed bhorta"
+    }
+   ],
+   "questions": [
+    "আলু ভর্তা কোনটা?",
+    "ধনেপাতা আর শুঁটকি ভর্তার রং কীভাবে আলাদা?",
+    "আপনি ভাতের সঙ্গে কী ভর্তা খান?",
+    "দোকানে কম ঝালের ভর্তা চাইলে কী বলবেন?",
+    "ডাল ভর্তা আর আলু ভর্তা দেখতে কী দেখে চিনবেন?",
+    "ভর্তায় কী আছে বোঝা না গেলে খাওয়ার আগে কীভাবে জানতে চাইবেন?"
+   ]
   }
  ]
 };
-window.PICTURE_THIS_GAME_DATA = {"home-things": ["খাট", "বালিশ", "মোড়া", "আলমারি", "পাখা", "বাতি"], "study-things": ["বই", "খাতা", "কলম", "কাঁচি", "আঠা", "খাম"], "tableware": ["থালা", "বাটি", "চামচ", "কাঁটাচামচ", "পিরিচ", "পেয়ালা"], "market-vegetables": ["আলু", "পেঁয়াজ", "বেগুন", "ফুলকপি", "শসা", "শাক"], "market-fruit": ["আম", "কলা", "পেঁপে", "আনারস", "কাঁঠাল", "আঙুর"], "lunch": ["ভাত", "রুটি", "ডাল", "ডিম", "মাছ", "মাংস"], "tea-things": ["পানি", "চা", "দুধ", "লেবু", "মধু", "গুড়"], "cooking-things": ["হাঁড়ি", "ঢাকনা", "ছুরি", "কাটার তক্তা", "কড়াই", "খুন্তি"], "pantry": ["লবণ", "চিনি", "সরিষা", "জিরা", "তেল", "ঘি"], "clothing": ["ওড়না", "শাড়ি", "লুঙ্গি", "পাঞ্জাবি", "সালোয়ার", "কামিজ"], "washing-things": ["বালতি", "বদনা", "গামছা", "সাবান", "চিরুনি", "আয়না"], "home-parts": ["দরজা", "জানালা", "সিঁড়ি", "ছাদ", "বারান্দা", "দেয়াল"], "where-things-are": ["ওপরে", "নিচে", "ভেতরে", "বাইরে", "মাঝে", "পেছনে"], "colours": ["লাল", "নীল", "সবুজ", "হলুদ", "কালো", "সাদা"], "weather": ["রোদ", "ছায়া", "বৃষ্টি", "ঝড়", "মেঘ", "কুয়াশা"], "daily-actions": ["খাওয়া", "পানি খাওয়া", "বসা", "দাঁড়ানো", "ঘুমানো", "ঘুম থেকে ওঠা"], "with-your-hands": ["খোলা", "বন্ধ করা", "ধোয়া", "মোছা", "পড়া", "লেখা"], "family": ["আব্বা", "আম্মা", "ভাইয়া", "আপু", "নানা", "নানি"], "getting-around": ["রাস্তা", "গলি", "মোড়", "পুল", "ঘাট", "নৌকা"], "feeling-unwell": ["জ্বর", "কাশি", "হাঁচি", "দাঁতে ব্যথা", "পেটে ব্যথা", "চুলকানি"], "body": ["চোখ", "কান", "নাক", "মুখ", "হাত", "পা"], "care-things": ["ওষুধ", "মলম", "তুলা", "পট্টি", "বরফ", "গরম পানির থলি"], "shopping-things": ["টাকা", "খুচরা", "দাঁড়িপাল্লা", "রসিদ", "থলে", "ঝুড়ি"], "familiar-animals": ["গরু", "ছাগল", "মুরগি", "হাঁস", "বিড়াল", "কুকুর"], "small-repairs": ["হাতুড়ি", "পেরেক", "করাত", "কাঠ", "তালা", "চাবি"], "body-movement": ["হাঁটা", "দৌড়ানো", "লাফানো", "বেয়ে ওঠা", "ঝোঁকা", "হামাগুড়ি দেওয়া"], "objects-in-motion": ["দেওয়া", "নেওয়া", "ধরা", "ছোড়া", "ঠেলা", "টানা"], "putting-things-away": ["ভাঁজ করা", "ঝোলানো", "বাঁধা", "মোড়ানো", "রাখা", "তোলা"], "cooking-actions": ["কাটা", "খোসা ছাড়ানো", "নাড়া", "ঢালা", "মাখা", "বেলা"], "snack-foods": ["মুড়ি", "চিড়া", "সিঙ্গারা", "সমুচা", "ভাপা পিঠা", "জিলাপি"], "prayer-time": ["মসজিদ", "জায়নামাজ", "নামাজ পড়া", "অজু করা", "টুপি", "তসবিহ"], "size-and-width": ["বড়", "ছোট", "লম্বা", "খাটো", "চওড়া", "সরু"], "basic-shapes": ["সমান চারকোনা", "লম্বা চারকোনা", "গোল", "ডিমের মতো", "তারার মতো", "পাঁচকোনা"], "everyday-qualities": ["পরিষ্কার", "নোংরা", "গরম", "ঠান্ডা", "ভারী", "হালকা"], "familiar-bugs": ["মশা", "পিঁপড়া", "মাছি", "তেলাপোকা", "শুঁয়োপোকা", "প্রজাপতি"], "land-and-water": ["নদী", "খাল", "পুকুর", "বিল", "পাহাড়", "বন"], "play-things": ["ঘুড়ি", "লাটিম", "তাস", "দাবার গুটি", "দোলনা", "লাফের দড়ি"], "going-out-gear": ["জুতা", "মোজা", "চশমা", "চশমার খাপ", "ছাতা", "বর্ষাতি"], "everyday-materials": ["কাগজ", "কাপড়", "কাচ", "লোহা", "মাটি", "পাথর"], "neighborhood-places": ["দোকান", "বাজার", "থানা", "স্বাস্থ্যকেন্দ্র", "ডাকঘর", "পাঠাগার"], "people-at-work": ["দোকানি", "খদ্দের", "দর্জি", "তাঁতি", "রাজমিস্ত্রি", "কাঠমিস্ত্রি"], "times-of-day": ["ভোর", "সকাল", "দুপুর", "বিকেল", "সন্ধ্যা", "রাত"], "dry-groceries": ["চাল", "আটা", "ছোলা", "শুকনা মটর", "চিনাবাদাম", "ভুট্টা"], "fire-and-fuel": ["চুলা", "কয়লা", "দিয়াশলাই", "আগুন", "ধোঁয়া", "ছাই"], "sewing-repairs": ["সুঁই", "সুতা", "বোতাম", "মাপের ফিতা", "সেলাই", "ছেঁড়া"], "jewelry-and-adornment": ["কানের দুল", "নাকফুল", "চুড়ি", "আংটি", "হার", "চুলের কাঁটা"], "household-trouble": ["চুইয়ে পড়া", "আটকে যাওয়া", "দাগ", "ছাতা পড়া", "ফাটল", "দেবে যাওয়া"], "orientation": ["উত্তর", "দক্ষিণ", "পূর্ব", "পশ্চিম", "ডানে", "বামে"], "talk-and-gesture": ["বলা", "শোনা", "হাসা", "কাঁদা", "ডাকা", "ইশারা করা"], "counting-one-to-six": ["এক", "দুই", "তিন", "চার", "পাঁচ", "ছয়"], "coming-and-going": ["আসা", "যাওয়া", "ঢোকা", "বের হওয়া", "পার হওয়া", "থামা"], "buying-and-selling": ["কেনা", "বেচা", "দাম মেটানো", "বদলে নেওয়া", "ওজন করা", "বেছে নেওয়া"], "finding-and-showing": ["খোঁজা", "খুঁজে পাওয়া", "লুকানো", "বের করা", "দেখা", "দেখানো"], "feelings-and-reactions": ["খুশি", "মন খারাপ", "ভয় পাওয়া", "অবাক হওয়া", "রাগ", "ক্লান্ত"], "amounts-and-parts": ["বেশি", "কম", "অর্ধেক", "দুই গুণ", "সব", "একটাও নেই"], "surface-and-feel": ["মসৃণ", "খসখসে", "নরম", "শক্ত", "ধারালো", "ভোঁতা"], "cleaning-tools": ["ঝাড়ু", "ময়লার বেলচা", "ময়লার পাত্র", "ছোবড়া", "ন্যাকড়া", "পাপোশ"], "building-materials": ["ইট", "বালু", "কাঁকর", "বাঁশ", "মই", "খুঁটি"], "parts-of-plants": ["ফুল", "কুঁড়ি", "বীজ", "শিকড়", "পাতা", "ডালপালা"], "roots-and-vines": ["গাজর", "মুলা", "কুমড়া", "লাউ", "বরবটি", "শিম"], "vehicles": ["গাড়ি", "বিমান", "জাহাজ", "ভেলা", "ঠেলাগাড়ি", "গরুর গাড়ি"], "rooms-and-courtyard": ["রান্নাঘর", "শোবার ঘর", "বসার ঘর", "খাবার ঘর", "গোসলখানা", "উঠান"], "useful-papers": ["চিঠি", "চিরকুট", "পরিচয়পত্র", "ছবি", "সই", "ছাপ"], "getting-water": ["কল", "নল", "নলকূপ", "কুয়া", "কলসি", "ছাঁকনি"], "winter-warmth": ["চাদর", "কাঁথা", "কম্বল", "গরম জামা", "হাতমোজা", "পশমি টুপি"], "features-of-paths": ["কাছে", "দূরে", "সোজা", "বাঁকা", "খাড়া", "ঢালু"], "dairy-foods": ["দই", "পায়েস", "মাখন", "দুধের সর", "পনির", "ছানা"], "personal-care-objects": ["রুমাল", "মিসওয়াক", "সুরমা", "মেহেদি", "নখ কাটার যন্ত্র", "ক্ষুর"], "wedding-and-invitation": ["বর", "কনে", "অতিথি", "দাওয়াত", "ফুলের তোড়া", "ফুলের মালা"], "common-birds": ["কাক", "কবুতর", "চড়ুই", "শালিক", "বক", "পেঁচা"], "laying-out-the-home": ["মশারি", "পর্দা", "চাটাই", "তোশক", "তাক", "আলনা"], "music-and-rhythm": ["বাঁশি", "একতারা", "ঢোল", "তবলা", "ঘণ্টা", "করতাল"], "seasons-in-bangladesh": ["গরমকাল", "বর্ষাকাল", "শরৎকাল", "হেমন্তকাল", "শীতকাল", "বসন্তকাল"], "drawing-materials": ["তুলি", "কালি", "খড়ি", "মোমরং", "রং মেশানোর থালা", "রঙের বাক্স"], "farm-and-field": ["ধান", "খেত", "খড়", "গোবর", "কাস্তে", "লাঙল"], "arranging-objects": ["সামনে", "পাশে", "চারপাশে", "সারিতে", "আড়াআড়ি", "লম্বালম্বি"], "doing-housework": ["ঝাড়ু দেওয়া", "ময়লা ফেলা", "বাসন মাজা", "কাপড় কাচা", "কাপড় শুকানো", "বিছানা পাতা"], "food-tastes": ["মিষ্টি", "টক", "ঝাল", "তেতো", "নোনতা", "পানসে"], "more-local-fruit": ["পেয়ারা", "জাম", "লিচু", "আমড়া", "বরই", "তরমুজ"], "aromatic-spices": ["দারুচিনি", "লবঙ্গ", "এলাচ", "গোলমরিচ", "তেজপাতা", "কাঁচা হলুদ"], "ways-of-heating-food": ["ভাজা", "সেদ্ধ করা", "ভাপ দেওয়া", "পানি ফুটানো", "সেঁকা", "দম দেওয়া"], "local-market-fish": ["ইলিশ", "রুই", "শিং মাছ", "কই", "চিংড়ি", "পুঁটি"], "grooming-actions": ["দাঁত মাজা", "দাড়ি কামানো", "চুল আঁচড়ানো", "চুল কাটা", "গোসল করা", "নখ কাটা"], "joints-and-neck": ["ঘাড়", "কাঁধ", "কনুই", "কবজি", "হাঁটু", "গোড়ালি"], "face-details": ["ঠোঁট", "দাঁত", "জিব", "গাল", "থুতনি", "কপাল"], "minor-injuries": ["কেটে যাওয়া", "পুড়ে যাওয়া", "মচকে যাওয়া", "ফুলে যাওয়া", "কালশিটে", "মাথা ঘোরা"], "storage-containers": ["বয়াম", "কৌটা", "মটকা", "পানির পিপা", "ফুলদানি", "শিশি"], "object-states": ["ভেজা", "শুকনা", "ভাঙা", "ফুটো", "উল্টানো", "চ্যাপ্টা"], "parts-and-cuts-of-food": ["টুকরা", "ফালি", "কোয়া", "আঁটি", "খোসা", "ডাঁটা"], "local-open-and-work-sites": ["খেলার মাঠ", "ফলের বাগান", "কবরস্থান", "ঈদগাহ", "ইটভাটা", "কারখানা"], "ages-of-people": ["নতুন বাচ্চা", "ছোট বাচ্চা", "কিশোর", "তরুণী", "মাঝবয়সি", "বয়স্ক"], "ramadan-and-eid": ["ইফতার", "সেহরি", "খেজুর", "ঈদের চাঁদ", "ঈদের জামা", "ঈদি"], "food-for-guests": ["বিরিয়ানি", "ভুনা খিচুড়ি", "কোরমা", "কাবাব", "জর্দা", "ফিরনি"], "features-of-streets": ["যাত্রীছাউনি", "রাস্তার বাতি", "রাস্তা পারাপারের দাগ", "পায়ে চলার পথ", "গাড়ি রাখার জায়গা", "রাস্তার নালা"], "packing-and-carrying": ["গুছানো", "ভরা", "খালি করা", "বোঝাই করা", "কাঁধে নেওয়া", "নামানো"], "mouth-and-nose-actions": ["শোঁকা", "চেখে দেখা", "কামড়ানো", "চিবানো", "গেলা", "ফুঁ দেওয়া"], "making-sounds": ["হাততালি দেওয়া", "টোকা দেওয়া", "গুনগুন করা", "বাঁশি বাজানো", "চেঁচানো", "ফিসফিস করা"], "familiar-bangladesh-trees": ["নারকেলগাছ", "সুপারিগাছ", "কলাগাছ", "তালগাছ", "বটগাছ", "বাঁশঝাড়"], "small-local-animals": ["টিকটিকি", "ব্যাঙ", "সাপ", "কচ্ছপ", "ইঁদুর", "বাদুড়"], "appearance-contrasts": ["চকচকে", "মলিন", "গাঢ়", "ফিকে", "স্বচ্ছ", "ঘোলা"], "hands-on-learning-actions": ["আঁকা", "মুছে ফেলা", "গোনা", "মাপা", "মেলানো", "আলাদা করা"], "torso-and-nails": ["বুক", "পিঠ", "কোমর", "পেট", "নাভি", "নখ"], "traditional-yard-games": ["এক্কাদোক্কা", "কানামাছি", "লুকোচুরি", "কাবাডি", "দড়ি টানাটানি", "পাঞ্জা লড়া"], "posture-and-turning": ["হেলান দেওয়া", "শোয়া", "গড়ানো", "ঘুরে দাঁড়ানো", "হাঁটু গেড়ে বসা", "উবু হয়ে বসা"], "local-trades": ["চাষি", "জেলে", "মাঝি", "মুচি", "কামার", "কুমার"], "telling-time-and-dates": ["দেয়ালঘড়ি", "হাতঘড়ি", "বালুঘড়ি", "তারিখ", "সপ্তাহ", "মাস"], "electricity-and-light": ["বিদ্যুতের তার", "বিদ্যুতের খুঁটি", "কুপি", "মোমবাতি", "বাতির বোতাম", "হাতবাতি"], "house-edges-and-fittings": ["মেঝে", "কোণা", "দোরগোড়া", "ছিটকিনি", "ফটক", "বেড়া"], "metals-and-natural-materials": ["সোনা", "রুপা", "তামা", "পিতল", "পাট", "চামড়া"], "familiar-bangladesh-flowers": ["শাপলা", "পদ্ম", "জবা", "গাঁদা", "শিউলি", "গন্ধরাজ"], "more-cooking-vegetables": ["ঢেঁড়স", "পটল", "কচু", "মিষ্টি আলু", "বাঁধাকপি", "ঝিঙে"], "people-out-on-the-street": ["যাত্রী", "চালক", "পথচারী", "পাহারাদার", "ফেরিওয়ালা", "মুটে"], "wild-bangladesh-animals": ["হাতি", "বানর", "ভালুক", "হরিণ", "বাঘ", "শিয়াল"], "preparing-food-to-serve": ["খাবার বেড়ে দেওয়া", "ভাগ করা", "ছিটানো", "চিপে রস বের করা", "ছেঁকে নেওয়া", "গুঁড়া করা"], "types-of-homes": ["কুঁড়েঘর", "মাটির ঘর", "বাঁশের ঘর", "একতলা বাড়ি", "দোতলা বাড়ি", "উঁচু দালান"], "on-the-way-actions": ["অপেক্ষা করা", "রওনা হওয়া", "পিছু নেওয়া", "পথ ছেড়ে দেওয়া", "পথ বদলানো", "পথ হারানো"], "actions-for-care": ["জ্বর মাপা", "নাড়ি দেখা", "শ্বাস নেওয়া", "ক্ষত ধোয়া", "পট্টি বাঁধা", "মলম লাগানো"], "local-cold-drinks": ["ডাবের পানি", "আখের রস", "বেলের শরবত", "লেবুপানি", "ঘোল", "বোরহানি"], "food-ripeness-and-condition": ["কাঁচা", "পাকা", "টাটকা", "বাসি", "জমাট বাঁধা", "গলে যাওয়া"], "river-work-gear": ["জাল", "পলো", "বড়শি", "ছিপ", "খালুই", "বৈঠা"], "clothing-patterns": ["ডোরাকাটা", "ঘরকাটা", "ফোঁটাওয়ালা", "ফুলের ছাপ", "সুতার নকশা", "একরঙা"], "small-facial-actions": ["চোখ টেপা", "পলক ফেলা", "হাই তোলা", "মুখ বাঁকানো", "ভুরু কুঁচকানো", "মাথা ঝাঁকানো"], "counting-seven-to-twelve": ["সাত", "আট", "নয়", "দশ", "এগারো", "বারো"], "pace-and-turn-taking": ["তাড়াতাড়ি", "ধীরে", "একসঙ্গে", "পালা করে", "একবার", "বারবার"], "river-and-coast-landforms": ["চর", "দ্বীপ", "বাঁধ", "ঝরনা", "মোহনা", "সমুদ্র"], "talking-prices-and-money": ["দরদাম করা", "টাকা গোনা", "টাকা জমানো", "দাম কমানো", "বাকি লেখা", "ভাঙতি করা"], "greeting-and-helping": ["সালাম দেওয়া", "হাত মেলানো", "জড়িয়ে ধরা", "বিদায় নেওয়া", "স্বাগত জানানো", "সাহায্য করা"], "ties-and-fasteners": ["দড়ি", "শিকল", "চুলের ফিতা", "আংটা", "চুম্বক", "কাপড়ের চিমটি"], "finger-and-palm-actions": ["খোঁচানো", "বোতাম টেপা", "চিমটি কাটা", "খামচানো", "ঘষা", "চাপ দেওয়া"], "garden-planting-actions": ["মাটি খোঁড়া", "বীজ বোনা", "পানি দেওয়া", "চারা লাগানো", "আগাছা তোলা", "সবজি পাড়া"], "repair-and-garden-tools": ["পেঁচকস", "সাঁড়াশি", "ছেনি", "শিরীষ কাগজ", "কোদাল", "খুরপি"], "traditional-household-objects": ["পিঁড়ি", "হাতপাখা", "কুলা", "চালুনি", "ডালা", "পানের বাটা"], "fabric-care-actions": ["ইস্ত্রি করা", "কুঁচি দেওয়া", "ভিজিয়ে রাখা", "নিংড়ানো", "দাগ তোলা", "রং করা"], "describing-common-symptoms": ["মাথা ব্যথা", "পিঠে ব্যথা", "গিলতে কষ্ট", "বমি", "নাক বন্ধ", "শ্বাসকষ্ট"], "local-kitchen-implements": ["চিমটা", "বঁটি", "শিলপাটা", "হামানদিস্তা", "ডেকচি", "চুলার জালি"], "more-domestic-animals": ["মহিষ", "ভেড়া", "ঘোড়া", "গাধা", "খরগোশ", "রাজহাঁস"], "more-market-fruit": ["কমলা", "জাম্বুরা", "ডালিম", "আতা", "সফেদা", "জলপাই"], "fresh-kitchen-aromatics": ["আদা", "রসুন", "কাঁচামরিচ", "পেঁয়াজপাতা", "ধনেপাতা", "পুদিনা"], "bangladesh-sweets": ["রসমালাই", "সন্দেশ", "চমচম", "লাড্ডু", "বরফি", "বাতাসা"], "people-we-know-daily": ["প্রতিবেশী", "খেলার সাথি", "সহপাঠী", "সহকর্মী", "বাড়িওয়ালা", "ভাড়াটে"], "price-age-and-depth": ["নতুন", "পুরোনো", "দামি", "সস্তা", "গভীর", "অগভীর"], "rice-from-field-to-pot": ["চারা", "ধান কাটা", "মাড়াই করা", "ধান শুকানো", "চাল ঝাড়া", "ভাত রান্না করা"], "parts-of-clothing": ["হাতা", "জামার গলা", "ঝালর", "আস্তর", "পাড়", "আঁচল"], "everyday-bodily-needs": ["খিদে লাগা", "পেট ভরা", "তেষ্টা পাওয়া", "ঘুম পাওয়া", "গরম লাগা", "শীত করা"], "things-in-the-sky": ["সূর্য", "পূর্ণিমার চাঁদ", "তারা", "রংধনু", "শিলাবৃষ্টি", "বিদ্যুৎ চমক"], "small-everyday-mishaps": ["হোঁচট খাওয়া", "পিছলে যাওয়া", "ধাক্কা খাওয়া", "ছিটকে পড়া", "বেঁকে যাওয়া", "লেগে থাকা"], "renting-and-moving-home": ["বাসা দেখতে আসা", "খালি বাসা", "ভাড়ার টাকা দেওয়া", "জামানত", "ভাড়ার চুক্তি", "বাসা বদলানো"], "extended-family-on-both-sides": ["দাদা", "দাদি", "চাচা", "চাচি", "মামা", "মামি"], "neighborhood-shop-types": ["চায়ের দোকান", "ভাতের দোকান", "ওষুধের দোকান", "নাপিতের দোকান", "মুদিদোকান", "মিষ্টির দোকান"], "marks-and-things-on-the-ground": ["কাদা", "ধুলো", "পায়ের ছাপ", "চাকার দাগ", "গর্ত", "কেঁচো"], "vegetables-for-curry-and-bhaji": ["করলা", "চিচিঙ্গা", "কাঁচা পেঁপে", "চালকুমড়া", "কাঁচকলা", "সজনে ডাঁটা"], "leafy-greens-at-market": ["পালংশাক", "লালশাক", "পুঁইশাক", "কলমিশাক", "ডাঁটাশাক", "লাউশাক"], "more-fish-from-the-market": ["রূপচাঁদা", "কাতলা", "বোয়াল", "পাবদা", "মলা", "টেংরা"], "market-stall-snacks": ["ফুচকা", "চটপটি", "ঝালমুড়ি", "পেঁয়াজু", "বেগুনি", "ডালপুরি"], "bangladesh-flour-snacks": ["পরোটা", "লুচি", "বাখরখানি", "নিমকি", "মোগলাই পরোটা", "পাউরুটি"], "working-ingredients-while-cooking": ["বাটা", "নারকেল কোরা", "ডিম ফেটানো", "আলু চটকানো", "মাড় ঝরানো", "রস জ্বাল দেওয়া"], "texture-of-food": ["মচমচে", "আঠালো", "রসালো", "ঝুরঝুরে", "থকথকে", "ফাঁপা"], "flatbread-and-serving-tools": ["তাওয়া", "বেলন", "রুটি বেলার পিঁড়ি", "নারকেল কোরানি", "রান্নার হাতা", "ঝাঁঝরি"], "door-and-window-fittings": ["জানালার শিক", "দরজার হাতল", "কবজা", "দোরের কড়া", "চৌকাঠ", "তালার ছিদ্র"], "hands-on-small-repairs": ["পেরেক ঠোকা", "করাত দিয়ে চেরা", "প্যাঁচ কষা", "ফুটো করা", "চুনকাম করা", "জোড়া লাগানো"], "more-clothes-to-wear": ["ফতুয়া", "পায়জামা", "হাতা কাটা জামা", "শাল", "পাগড়ি", "বোরকা"], "footwear-and-its-parts": ["চটি", "খড়ম", "নাগরা", "জুতার ফিতা", "জুতার তলা", "নূপুর"], "hair-on-head-and-face": ["চুল", "দাড়ি", "গোঁফ", "জুলফি", "টাক", "সিঁথি"], "small-skin-marks": ["তিল", "আঁচিল", "পুরোনো কাটা দাগ", "বলিরেখা", "মেছতা", "ফুসকুড়ি"], "food-laundry-and-garden-workers": ["রাঁধুনি", "ধোপা", "মালি", "কসাই", "মাছওয়ালা", "দুধওয়ালা"], "things-that-move-or-change": ["দুলতে থাকা", "ঘুরতে থাকা", "ভেসে থাকা", "ডুবে যাওয়া", "ফেটে যাওয়া", "নিভে যাওয়া"], "full-empty-fit-and-thickness": ["ভরতি", "ফাঁকা", "আঁটসাঁট", "ঢিলেঢালা", "পুরু", "পাতলা"], "small-everyday-measures": ["এক আঁটি", "এক মুঠো", "এক চিমটি", "এক চুমুক", "এক লোকমা", "এক ফোঁটা"], "roadside-and-homestead-trees": ["আমগাছ", "কাঁঠালগাছ", "নিমগাছ", "তেঁতুলগাছ", "শিমুলগাছ", "কদমগাছ"], "tart-and-fragrant-local-fruits": ["বেল", "তেঁতুল", "কামরাঙা", "লটকন", "ডেউয়া", "আমলকী"], "more-familiar-local-birds": ["দোয়েল", "মাছরাঙা", "ফিঙে", "কোকিল", "বাবুই", "টিয়া"], "small-pests-and-pollinators": ["উইপোকা", "ছারপোকা", "উকুন", "মাকড়সা", "মৌমাছি", "বোলতা"], "caring-for-babies-and-elders": ["মাথায় হাত বুলানো", "কোলে নেওয়া", "খাইয়ে দেওয়া", "শুইয়ে দেওয়া", "গায়ে চাদর দেওয়া", "হাত ধরে হাঁটানো"], "places-for-work-learning-and-trade": ["গরুর হাট", "মাছের আড়ত", "ধানকল", "মাদরাসা", "সেলাইঘর", "দুধের খামার"], "common-wordless-notices": ["ঢোকা মানা", "জুতা খুলে ঢোকা", "হাত ধোয়ার জায়গা", "বসার জায়গা", "পথ বন্ধ", "ময়লা ফেলা মানা"], "lights-fans-and-power": ["বাতি জ্বালানো", "বাতি নেভানো", "পাখার গতি বাড়ানো", "বিদ্যুতের তার লাগানো", "বিদ্যুতের তার খুলে রাখা", "বিদ্যুৎ চলে যাওয়া"], "bags-and-cases-for-carrying": ["বস্তা", "ঠোঙা", "পুঁটলি", "বাক্স", "তোরঙ্গ", "ঝোলা"], "mending-clothes-by-hand": ["বোতাম লাগানো", "তালি লাগানো", "সুঁইয়ে সুতা পরানো", "সুতায় গিঁট দেওয়া", "সেলাই খুলে ফেলা", "হাতা ছোট করা"], "more-actions-at-the-stove": ["পুর ভরা", "বড়া বানানো", "তেলে ফোড়ন দেওয়া", "মসলা কষানো", "আঁচ কমানো", "মাছের আঁশ ছাড়ানো"], "small-seeds-for-cooking": ["পাঁচফোড়ন", "কালোজিরা", "মেথি", "মৌরি", "পোস্তদানা", "তিলের দানা"], "edible-stems-blossoms-and-seeds": ["কচুর লতি", "কচুর মুখি", "কলার মোচা", "শালগম", "কাঁঠালের বিচি", "কুমড়ার ফুল"], "mouth-and-ear-gestures": ["মুখ হাঁ করা", "ঠোঁটে আঙুল দেওয়া", "দাঁত বের করা", "জিব বের করা", "কান পাতা", "কানে হাত চাপা"], "putting-clothes-on-and-off": ["জামা পরা", "জামা খোলা", "হাতা গোটানো", "গলায় পেঁচানো", "মাথা ঢাকা", "কোমরে গোঁজা"], "foods-served-alongside-rice": ["ভাজা ডিম", "মাছের ঝোল", "ডিমের ঝোল", "সবজি ভাজি", "ভর্তা", "আচার"], "features-for-giving-directions": ["চৌরাস্তা", "তিন রাস্তার মোড়", "গোলচত্বর", "গলির মুখ", "রাস্তার শেষ", "উড়ালপুল"], "types-of-river-boats": ["পালতোলা নৌকা", "ডিঙি", "খেয়ানৌকা", "মাছ ধরার নৌকা", "মালবাহী নৌকা", "ছইওয়ালা নৌকা"], "small-parts-of-the-face": ["চোখের পাতা", "চোখের পাপড়ি", "চোখের মণি", "কানের লতি", "নাকের ফুটো", "গালের টোল"], "small-parts-of-hands-and-feet": ["তালু", "হাতের পিঠ", "আঙুল", "বুড়ো আঙুল", "পায়ের আঙুল", "পায়ের তলা"], "polite-responses-and-requests": ["মাফ চাওয়া", "ধন্যবাদ দেওয়া", "অনুমতি চাওয়া", "হ্যাঁ বলা", "না বলা", "জোরে বলতে বলা"], "more-people-at-local-jobs": ["নাপিত", "গৃহশিক্ষক", "খবরের কাগজওয়ালা", "রংমিস্ত্রি", "মোয়াজ্জিন", "রুটিওয়ালা"], "aunts-uncles-and-nephews": ["ফুফু", "ফুফা", "খালা", "খালু", "ভাতিজা", "ভাগ্নে"], "features-around-a-mosque": ["মিনার", "গম্বুজ", "মেহরাব", "মিম্বর", "অজুখানা", "জুতার তাক"], "riverbanks-and-water-movement": ["নদীর পাড়", "স্রোত", "ঢেউ", "জোয়ার", "ভাটা", "ঘূর্ণি"], "brightness-and-clear-vision": ["আলো", "অন্ধকার", "মিটমিটে", "তীব্র আলো", "ঝাপসা", "স্পষ্ট"], "getting-around-in-the-rain": ["ঝুম বৃষ্টি", "গুঁড়ি গুঁড়ি বৃষ্টি", "রাস্তায় পানি জমা", "ছাতা মেলা", "বৃষ্টিতে ভেজা", "কাদায় পা আটকে যাওয়া"], "ways-to-keep-food": ["মাছ রোদে শুকানো", "শুঁটকি", "বরফে মাছ রাখা", "খাবার ঢেকে রাখা", "লবণ মাখিয়ে রাখা", "তেলে ডুবিয়ে রাখা"], "small-wear-and-breakage": ["জং ধরা", "পলেস্তারা খসে পড়া", "হাতল ঢিলা হওয়া", "দড়ি ছিঁড়ে যাওয়া", "গিঁট খুলে যাওয়া", "পানি উপচে পড়া"], "simple-stretching-and-footwork": ["হাত ছড়ানো", "হাত তুলে ধরা", "পা মেলে বসা", "পা ভাঁজ করে বসা", "আঙুলে ভর দিয়ে দাঁড়ানো", "পা টিপে হাঁটা"], "tree-and-stem-details": ["গাছের গুঁড়ি", "বাকল", "ডগা", "কাণ্ড", "কচি পাতা", "কাঁটা"], "materials-from-plants-and-animals": ["বেত", "নারকেলের আঁশ", "পশম", "পালক", "ঝিনুকের খোল", "মোম"]};
+window.PICTURE_THIS_GAME_DATA = {"home-things": ["খাট", "বালিশ", "মোড়া", "আলমারি", "পাখা", "বাতি"], "study-things": ["বই", "খাতা", "কলম", "কাঁচি", "আঠা", "খাম"], "tableware": ["থালা", "বাটি", "চামচ", "কাঁটাচামচ", "পিরিচ", "পেয়ালা"], "market-vegetables": ["আলু", "পেঁয়াজ", "বেগুন", "ফুলকপি", "শসা", "শাক"], "market-fruit": ["আম", "কলা", "পেঁপে", "আনারস", "কাঁঠাল", "আঙুর"], "lunch": ["ভাত", "রুটি", "ডাল", "ডিম", "মাছ", "মাংস"], "tea-things": ["পানি", "চা", "দুধ", "লেবু", "মধু", "গুড়"], "cooking-things": ["হাঁড়ি", "ঢাকনা", "ছুরি", "কাটার তক্তা", "কড়াই", "খুন্তি"], "pantry": ["লবণ", "চিনি", "সরিষা", "জিরা", "তেল", "ঘি"], "clothing": ["ওড়না", "শাড়ি", "লুঙ্গি", "পাঞ্জাবি", "সালোয়ার", "কামিজ"], "washing-things": ["বালতি", "বদনা", "গামছা", "সাবান", "চিরুনি", "আয়না"], "home-parts": ["দরজা", "জানালা", "সিঁড়ি", "ছাদ", "বারান্দা", "দেয়াল"], "where-things-are": ["ওপরে", "নিচে", "ভেতরে", "বাইরে", "মাঝে", "পেছনে"], "colours": ["লাল", "নীল", "সবুজ", "হলুদ", "কালো", "সাদা"], "weather": ["রোদ", "ছায়া", "বৃষ্টি", "ঝড়", "মেঘ", "কুয়াশা"], "daily-actions": ["খাওয়া", "পানি খাওয়া", "বসা", "দাঁড়ানো", "ঘুমানো", "ঘুম থেকে ওঠা"], "with-your-hands": ["খোলা", "বন্ধ করা", "ধোয়া", "মোছা", "পড়া", "লেখা"], "family": ["আব্বা", "আম্মা", "ভাইয়া", "আপু", "নানা", "নানি"], "getting-around": ["রাস্তা", "গলি", "মোড়", "পুল", "ঘাট", "নৌকা"], "feeling-unwell": ["জ্বর", "কাশি", "হাঁচি", "দাঁতে ব্যথা", "পেটে ব্যথা", "চুলকানি"], "body": ["চোখ", "কান", "নাক", "মুখ", "হাত", "পা"], "care-things": ["ওষুধ", "মলম", "তুলা", "পট্টি", "বরফ", "গরম পানির থলি"], "shopping-things": ["টাকা", "খুচরা", "দাঁড়িপাল্লা", "রসিদ", "থলে", "ঝুড়ি"], "familiar-animals": ["গরু", "ছাগল", "মুরগি", "হাঁস", "বিড়াল", "কুকুর"], "small-repairs": ["হাতুড়ি", "পেরেক", "করাত", "কাঠ", "তালা", "চাবি"], "body-movement": ["হাঁটা", "দৌড়ানো", "লাফানো", "বেয়ে ওঠা", "ঝোঁকা", "হামাগুড়ি দেওয়া"], "objects-in-motion": ["দেওয়া", "নেওয়া", "ধরা", "ছোড়া", "ঠেলা", "টানা"], "putting-things-away": ["ভাঁজ করা", "ঝোলানো", "বাঁধা", "মোড়ানো", "রাখা", "তোলা"], "cooking-actions": ["কাটা", "খোসা ছাড়ানো", "নাড়া", "ঢালা", "মাখা", "বেলা"], "snack-foods": ["মুড়ি", "চিড়া", "সিঙ্গারা", "সমুচা", "ভাপা পিঠা", "জিলাপি"], "prayer-time": ["মসজিদ", "জায়নামাজ", "নামাজ পড়া", "অজু করা", "টুপি", "তসবিহ"], "size-and-width": ["বড়", "ছোট", "লম্বা", "খাটো", "চওড়া", "সরু"], "basic-shapes": ["সমান চারকোনা", "লম্বা চারকোনা", "গোল", "ডিমের মতো", "তারার মতো", "পাঁচকোনা"], "everyday-qualities": ["পরিষ্কার", "নোংরা", "গরম", "ঠান্ডা", "ভারী", "হালকা"], "familiar-bugs": ["মশা", "পিঁপড়া", "মাছি", "তেলাপোকা", "শুঁয়োপোকা", "প্রজাপতি"], "land-and-water": ["নদী", "খাল", "পুকুর", "বিল", "পাহাড়", "বন"], "play-things": ["ঘুড়ি", "লাটিম", "তাস", "দাবার গুটি", "দোলনা", "লাফের দড়ি"], "going-out-gear": ["জুতা", "মোজা", "চশমা", "চশমার খাপ", "ছাতা", "বর্ষাতি"], "everyday-materials": ["কাগজ", "কাপড়", "কাচ", "লোহা", "মাটি", "পাথর"], "neighborhood-places": ["দোকান", "বাজার", "থানা", "স্বাস্থ্যকেন্দ্র", "ডাকঘর", "পাঠাগার"], "people-at-work": ["দোকানি", "খদ্দের", "দর্জি", "তাঁতি", "রাজমিস্ত্রি", "কাঠমিস্ত্রি"], "times-of-day": ["ভোর", "সকাল", "দুপুর", "বিকেল", "সন্ধ্যা", "রাত"], "dry-groceries": ["চাল", "আটা", "ছোলা", "শুকনা মটর", "চিনাবাদাম", "ভুট্টা"], "fire-and-fuel": ["চুলা", "কয়লা", "দিয়াশলাই", "আগুন", "ধোঁয়া", "ছাই"], "sewing-repairs": ["সুঁই", "সুতা", "বোতাম", "মাপের ফিতা", "সেলাই", "ছেঁড়া"], "jewelry-and-adornment": ["কানের দুল", "নাকফুল", "চুড়ি", "আংটি", "হার", "চুলের কাঁটা"], "household-trouble": ["চুইয়ে পড়া", "আটকে যাওয়া", "দাগ", "ছাতা পড়া", "ফাটল", "দেবে যাওয়া"], "orientation": ["উত্তর", "দক্ষিণ", "পূর্ব", "পশ্চিম", "ডানে", "বামে"], "talk-and-gesture": ["বলা", "শোনা", "হাসা", "কাঁদা", "ডাকা", "ইশারা করা"], "counting-one-to-six": ["এক", "দুই", "তিন", "চার", "পাঁচ", "ছয়"], "coming-and-going": ["আসা", "যাওয়া", "ঢোকা", "বের হওয়া", "পার হওয়া", "থামা"], "buying-and-selling": ["কেনা", "বেচা", "দাম মেটানো", "বদলে নেওয়া", "ওজন করা", "বেছে নেওয়া"], "finding-and-showing": ["খোঁজা", "খুঁজে পাওয়া", "লুকানো", "বের করা", "দেখা", "দেখানো"], "feelings-and-reactions": ["খুশি", "মন খারাপ", "ভয় পাওয়া", "অবাক হওয়া", "রাগ", "ক্লান্ত"], "amounts-and-parts": ["বেশি", "কম", "অর্ধেক", "দুই গুণ", "সব", "একটাও নেই"], "surface-and-feel": ["মসৃণ", "খসখসে", "নরম", "শক্ত", "ধারালো", "ভোঁতা"], "cleaning-tools": ["ঝাড়ু", "ময়লার বেলচা", "ময়লার পাত্র", "ছোবড়া", "ন্যাকড়া", "পাপোশ"], "building-materials": ["ইট", "বালু", "কাঁকর", "বাঁশ", "মই", "খুঁটি"], "parts-of-plants": ["ফুল", "কুঁড়ি", "বীজ", "শিকড়", "পাতা", "ডালপালা"], "roots-and-vines": ["গাজর", "মুলা", "কুমড়া", "লাউ", "বরবটি", "শিম"], "vehicles": ["গাড়ি", "বিমান", "জাহাজ", "ভেলা", "ঠেলাগাড়ি", "গরুর গাড়ি"], "rooms-and-courtyard": ["রান্নাঘর", "শোবার ঘর", "বসার ঘর", "খাবার ঘর", "গোসলখানা", "উঠান"], "useful-papers": ["চিঠি", "চিরকুট", "পরিচয়পত্র", "ছবি", "সই", "ছাপ"], "getting-water": ["কল", "নল", "নলকূপ", "কুয়া", "কলসি", "ছাঁকনি"], "winter-warmth": ["চাদর", "কাঁথা", "কম্বল", "গরম জামা", "হাতমোজা", "পশমি টুপি"], "features-of-paths": ["কাছে", "দূরে", "সোজা", "বাঁকা", "খাড়া", "ঢালু"], "dairy-foods": ["দই", "পায়েস", "মাখন", "দুধের সর", "পনির", "ছানা"], "personal-care-objects": ["রুমাল", "মিসওয়াক", "সুরমা", "মেহেদি", "নখ কাটার যন্ত্র", "ক্ষুর"], "wedding-and-invitation": ["বর", "কনে", "অতিথি", "দাওয়াত", "ফুলের তোড়া", "ফুলের মালা"], "common-birds": ["কাক", "কবুতর", "চড়ুই", "শালিক", "বক", "পেঁচা"], "laying-out-the-home": ["মশারি", "পর্দা", "চাটাই", "তোশক", "তাক", "আলনা"], "music-and-rhythm": ["বাঁশি", "একতারা", "ঢোল", "তবলা", "ঘণ্টা", "করতাল"], "seasons-in-bangladesh": ["গরমকাল", "বর্ষাকাল", "শরৎকাল", "হেমন্তকাল", "শীতকাল", "বসন্তকাল"], "drawing-materials": ["তুলি", "কালি", "খড়ি", "মোমরং", "রং মেশানোর থালা", "রঙের বাক্স"], "farm-and-field": ["ধান", "খেত", "খড়", "গোবর", "কাস্তে", "লাঙল"], "arranging-objects": ["সামনে", "পাশে", "চারপাশে", "সারিতে", "আড়াআড়ি", "লম্বালম্বি"], "doing-housework": ["ঝাড়ু দেওয়া", "ময়লা ফেলা", "বাসন মাজা", "কাপড় কাচা", "কাপড় শুকানো", "বিছানা পাতা"], "food-tastes": ["মিষ্টি", "টক", "ঝাল", "তেতো", "নোনতা", "পানসে"], "more-local-fruit": ["পেয়ারা", "জাম", "লিচু", "আমড়া", "বরই", "তরমুজ"], "aromatic-spices": ["দারুচিনি", "লবঙ্গ", "এলাচ", "গোলমরিচ", "তেজপাতা", "কাঁচা হলুদ"], "ways-of-heating-food": ["ভাজা", "সেদ্ধ করা", "ভাপ দেওয়া", "পানি ফুটানো", "সেঁকা", "দম দেওয়া"], "local-market-fish": ["ইলিশ", "রুই", "শিং মাছ", "কই", "চিংড়ি", "পুঁটি"], "grooming-actions": ["দাঁত মাজা", "দাড়ি কামানো", "চুল আঁচড়ানো", "চুল কাটা", "গোসল করা", "নখ কাটা"], "joints-and-neck": ["ঘাড়", "কাঁধ", "কনুই", "কবজি", "হাঁটু", "গোড়ালি"], "face-details": ["ঠোঁট", "দাঁত", "জিব", "গাল", "থুতনি", "কপাল"], "minor-injuries": ["কেটে যাওয়া", "পুড়ে যাওয়া", "মচকে যাওয়া", "ফুলে যাওয়া", "কালশিটে", "মাথা ঘোরা"], "storage-containers": ["বয়াম", "কৌটা", "মটকা", "পানির পিপা", "ফুলদানি", "শিশি"], "object-states": ["ভেজা", "শুকনা", "ভাঙা", "ফুটো", "উল্টানো", "চ্যাপ্টা"], "parts-and-cuts-of-food": ["টুকরা", "ফালি", "কোয়া", "আঁটি", "খোসা", "ডাঁটা"], "local-open-and-work-sites": ["খেলার মাঠ", "ফলের বাগান", "কবরস্থান", "ঈদগাহ", "ইটভাটা", "কারখানা"], "ages-of-people": ["নতুন বাচ্চা", "ছোট বাচ্চা", "কিশোর", "তরুণী", "মাঝবয়সি", "বয়স্ক"], "ramadan-and-eid": ["ইফতার", "সেহরি", "খেজুর", "ঈদের চাঁদ", "ঈদের জামা", "ঈদি"], "food-for-guests": ["বিরিয়ানি", "ভুনা খিচুড়ি", "কোরমা", "কাবাব", "জর্দা", "ফিরনি"], "features-of-streets": ["যাত্রীছাউনি", "রাস্তার বাতি", "রাস্তা পারাপারের দাগ", "পায়ে চলার পথ", "গাড়ি রাখার জায়গা", "রাস্তার নালা"], "packing-and-carrying": ["গুছানো", "ভরা", "খালি করা", "বোঝাই করা", "কাঁধে নেওয়া", "নামানো"], "mouth-and-nose-actions": ["শোঁকা", "চেখে দেখা", "কামড়ানো", "চিবানো", "গেলা", "ফুঁ দেওয়া"], "making-sounds": ["হাততালি দেওয়া", "টোকা দেওয়া", "গুনগুন করা", "বাঁশি বাজানো", "চেঁচানো", "ফিসফিস করা"], "familiar-bangladesh-trees": ["নারকেলগাছ", "সুপারিগাছ", "কলাগাছ", "তালগাছ", "বটগাছ", "বাঁশঝাড়"], "small-local-animals": ["টিকটিকি", "ব্যাঙ", "সাপ", "কচ্ছপ", "ইঁদুর", "বাদুড়"], "appearance-contrasts": ["চকচকে", "মলিন", "গাঢ়", "ফিকে", "স্বচ্ছ", "ঘোলা"], "hands-on-learning-actions": ["আঁকা", "মুছে ফেলা", "গোনা", "মাপা", "মেলানো", "আলাদা করা"], "torso-and-nails": ["বুক", "পিঠ", "কোমর", "পেট", "নাভি", "নখ"], "traditional-yard-games": ["এক্কাদোক্কা", "কানামাছি", "লুকোচুরি", "কাবাডি", "দড়ি টানাটানি", "পাঞ্জা লড়া"], "posture-and-turning": ["হেলান দেওয়া", "শোয়া", "গড়ানো", "ঘুরে দাঁড়ানো", "হাঁটু গেড়ে বসা", "উবু হয়ে বসা"], "local-trades": ["চাষি", "জেলে", "মাঝি", "মুচি", "কামার", "কুমার"], "telling-time-and-dates": ["দেয়ালঘড়ি", "হাতঘড়ি", "বালুঘড়ি", "তারিখ", "সপ্তাহ", "মাস"], "electricity-and-light": ["বিদ্যুতের তার", "বিদ্যুতের খুঁটি", "কুপি", "মোমবাতি", "বাতির বোতাম", "হাতবাতি"], "house-edges-and-fittings": ["মেঝে", "কোণা", "দোরগোড়া", "ছিটকিনি", "ফটক", "বেড়া"], "metals-and-natural-materials": ["সোনা", "রুপা", "তামা", "পিতল", "পাট", "চামড়া"], "familiar-bangladesh-flowers": ["শাপলা", "পদ্ম", "জবা", "গাঁদা", "শিউলি", "গন্ধরাজ"], "more-cooking-vegetables": ["ঢেঁড়স", "পটল", "কচু", "মিষ্টি আলু", "বাঁধাকপি", "ঝিঙে"], "people-out-on-the-street": ["যাত্রী", "চালক", "পথচারী", "পাহারাদার", "ফেরিওয়ালা", "মুটে"], "wild-bangladesh-animals": ["হাতি", "বানর", "ভালুক", "হরিণ", "বাঘ", "শিয়াল"], "preparing-food-to-serve": ["খাবার বেড়ে দেওয়া", "ভাগ করা", "ছিটানো", "চিপে রস বের করা", "ছেঁকে নেওয়া", "গুঁড়া করা"], "types-of-homes": ["কুঁড়েঘর", "মাটির ঘর", "বাঁশের ঘর", "একতলা বাড়ি", "দোতলা বাড়ি", "উঁচু দালান"], "on-the-way-actions": ["অপেক্ষা করা", "রওনা হওয়া", "পিছু নেওয়া", "পথ ছেড়ে দেওয়া", "পথ বদলানো", "পথ হারানো"], "actions-for-care": ["জ্বর মাপা", "নাড়ি দেখা", "শ্বাস নেওয়া", "ক্ষত ধোয়া", "পট্টি বাঁধা", "মলম লাগানো"], "local-cold-drinks": ["ডাবের পানি", "আখের রস", "বেলের শরবত", "লেবুপানি", "ঘোল", "বোরহানি"], "food-ripeness-and-condition": ["কাঁচা", "পাকা", "টাটকা", "বাসি", "জমাট বাঁধা", "গলে যাওয়া"], "river-work-gear": ["জাল", "পলো", "বড়শি", "ছিপ", "খালুই", "বৈঠা"], "clothing-patterns": ["ডোরাকাটা", "ঘরকাটা", "ফোঁটাওয়ালা", "ফুলের ছাপ", "সুতার নকশা", "একরঙা"], "small-facial-actions": ["চোখ টেপা", "পলক ফেলা", "হাই তোলা", "মুখ বাঁকানো", "ভুরু কুঁচকানো", "মাথা ঝাঁকানো"], "counting-seven-to-twelve": ["সাত", "আট", "নয়", "দশ", "এগারো", "বারো"], "pace-and-turn-taking": ["তাড়াতাড়ি", "ধীরে", "একসঙ্গে", "পালা করে", "একবার", "বারবার"], "river-and-coast-landforms": ["চর", "দ্বীপ", "বাঁধ", "ঝরনা", "মোহনা", "সমুদ্র"], "talking-prices-and-money": ["দরদাম করা", "টাকা গোনা", "টাকা জমানো", "দাম কমানো", "বাকি লেখা", "ভাঙতি করা"], "greeting-and-helping": ["সালাম দেওয়া", "হাত মেলানো", "জড়িয়ে ধরা", "বিদায় নেওয়া", "স্বাগত জানানো", "সাহায্য করা"], "ties-and-fasteners": ["দড়ি", "শিকল", "চুলের ফিতা", "আংটা", "চুম্বক", "কাপড়ের চিমটি"], "finger-and-palm-actions": ["খোঁচানো", "বোতাম টেপা", "চিমটি কাটা", "খামচানো", "ঘষা", "চাপ দেওয়া"], "garden-planting-actions": ["মাটি খোঁড়া", "বীজ বোনা", "পানি দেওয়া", "চারা লাগানো", "আগাছা তোলা", "সবজি পাড়া"], "repair-and-garden-tools": ["পেঁচকস", "সাঁড়াশি", "ছেনি", "শিরীষ কাগজ", "কোদাল", "খুরপি"], "traditional-household-objects": ["পিঁড়ি", "হাতপাখা", "কুলা", "চালুনি", "ডালা", "পানের বাটা"], "fabric-care-actions": ["ইস্ত্রি করা", "কুঁচি দেওয়া", "ভিজিয়ে রাখা", "নিংড়ানো", "দাগ তোলা", "রং করা"], "describing-common-symptoms": ["মাথা ব্যথা", "পিঠে ব্যথা", "গিলতে কষ্ট", "বমি", "নাক বন্ধ", "শ্বাসকষ্ট"], "local-kitchen-implements": ["চিমটা", "বঁটি", "শিলপাটা", "হামানদিস্তা", "ডেকচি", "চুলার জালি"], "more-domestic-animals": ["মহিষ", "ভেড়া", "ঘোড়া", "গাধা", "খরগোশ", "রাজহাঁস"], "more-market-fruit": ["কমলা", "জাম্বুরা", "ডালিম", "আতা", "সফেদা", "জলপাই"], "fresh-kitchen-aromatics": ["আদা", "রসুন", "কাঁচামরিচ", "পেঁয়াজপাতা", "ধনেপাতা", "পুদিনা"], "bangladesh-sweets": ["রসমালাই", "সন্দেশ", "চমচম", "লাড্ডু", "বরফি", "বাতাসা"], "people-we-know-daily": ["প্রতিবেশী", "খেলার সাথি", "সহপাঠী", "সহকর্মী", "বাড়িওয়ালা", "ভাড়াটে"], "price-age-and-depth": ["নতুন", "পুরোনো", "দামি", "সস্তা", "গভীর", "অগভীর"], "rice-from-field-to-pot": ["চারা", "ধান কাটা", "মাড়াই করা", "ধান শুকানো", "চাল ঝাড়া", "ভাত রান্না করা"], "parts-of-clothing": ["হাতা", "জামার গলা", "ঝালর", "আস্তর", "পাড়", "আঁচল"], "everyday-bodily-needs": ["খিদে লাগা", "পেট ভরা", "তেষ্টা পাওয়া", "ঘুম পাওয়া", "গরম লাগা", "শীত করা"], "things-in-the-sky": ["সূর্য", "পূর্ণিমার চাঁদ", "তারা", "রংধনু", "শিলাবৃষ্টি", "বিদ্যুৎ চমক"], "small-everyday-mishaps": ["হোঁচট খাওয়া", "পিছলে যাওয়া", "ধাক্কা খাওয়া", "ছিটকে পড়া", "বেঁকে যাওয়া", "লেগে থাকা"], "renting-and-moving-home": ["বাসা দেখতে আসা", "খালি বাসা", "ভাড়ার টাকা দেওয়া", "জামানত", "ভাড়ার চুক্তি", "বাসা বদলানো"], "extended-family-on-both-sides": ["দাদা", "দাদি", "চাচা", "চাচি", "মামা", "মামি"], "neighborhood-shop-types": ["চায়ের দোকান", "ভাতের দোকান", "ওষুধের দোকান", "নাপিতের দোকান", "মুদিদোকান", "মিষ্টির দোকান"], "marks-and-things-on-the-ground": ["কাদা", "ধুলো", "পায়ের ছাপ", "চাকার দাগ", "গর্ত", "কেঁচো"], "vegetables-for-curry-and-bhaji": ["করলা", "চিচিঙ্গা", "কাঁচা পেঁপে", "চালকুমড়া", "কাঁচকলা", "সজনে ডাঁটা"], "leafy-greens-at-market": ["পালংশাক", "লালশাক", "পুঁইশাক", "কলমিশাক", "ডাঁটাশাক", "লাউশাক"], "more-fish-from-the-market": ["রূপচাঁদা", "কাতলা", "বোয়াল", "পাবদা", "মলা", "টেংরা"], "market-stall-snacks": ["ফুচকা", "চটপটি", "ঝালমুড়ি", "পেঁয়াজু", "বেগুনি", "ডালপুরি"], "bangladesh-flour-snacks": ["পরোটা", "লুচি", "বাখরখানি", "নিমকি", "মোগলাই পরোটা", "পাউরুটি"], "working-ingredients-while-cooking": ["বাটা", "নারকেল কোরা", "ডিম ফেটানো", "আলু চটকানো", "মাড় ঝরানো", "রস জ্বাল দেওয়া"], "texture-of-food": ["মচমচে", "আঠালো", "রসালো", "ঝুরঝুরে", "থকথকে", "ফাঁপা"], "flatbread-and-serving-tools": ["তাওয়া", "বেলন", "রুটি বেলার পিঁড়ি", "নারকেল কোরানি", "রান্নার হাতা", "ঝাঁঝরি"], "door-and-window-fittings": ["জানালার শিক", "দরজার হাতল", "কবজা", "দোরের কড়া", "চৌকাঠ", "তালার ছিদ্র"], "hands-on-small-repairs": ["পেরেক ঠোকা", "করাত দিয়ে চেরা", "প্যাঁচ কষা", "ফুটো করা", "চুনকাম করা", "জোড়া লাগানো"], "more-clothes-to-wear": ["ফতুয়া", "পায়জামা", "হাতা কাটা জামা", "শাল", "পাগড়ি", "বোরকা"], "footwear-and-its-parts": ["চটি", "খড়ম", "নাগরা", "জুতার ফিতা", "জুতার তলা", "নূপুর"], "hair-on-head-and-face": ["চুল", "দাড়ি", "গোঁফ", "জুলফি", "টাক", "সিঁথি"], "small-skin-marks": ["তিল", "আঁচিল", "পুরোনো কাটা দাগ", "বলিরেখা", "মেছতা", "ফুসকুড়ি"], "food-laundry-and-garden-workers": ["রাঁধুনি", "ধোপা", "মালি", "কসাই", "মাছওয়ালা", "দুধওয়ালা"], "things-that-move-or-change": ["দুলতে থাকা", "ঘুরতে থাকা", "ভেসে থাকা", "ডুবে যাওয়া", "ফেটে যাওয়া", "নিভে যাওয়া"], "full-empty-fit-and-thickness": ["ভরতি", "ফাঁকা", "আঁটসাঁট", "ঢিলেঢালা", "পুরু", "পাতলা"], "small-everyday-measures": ["এক আঁটি", "এক মুঠো", "এক চিমটি", "এক চুমুক", "এক লোকমা", "এক ফোঁটা"], "roadside-and-homestead-trees": ["আমগাছ", "কাঁঠালগাছ", "নিমগাছ", "তেঁতুলগাছ", "শিমুলগাছ", "কদমগাছ"], "tart-and-fragrant-local-fruits": ["বেল", "তেঁতুল", "কামরাঙা", "লটকন", "ডেউয়া", "আমলকী"], "more-familiar-local-birds": ["দোয়েল", "মাছরাঙা", "ফিঙে", "কোকিল", "বাবুই", "টিয়া"], "small-pests-and-pollinators": ["উইপোকা", "ছারপোকা", "উকুন", "মাকড়সা", "মৌমাছি", "বোলতা"], "caring-for-babies-and-elders": ["মাথায় হাত বুলানো", "কোলে নেওয়া", "খাইয়ে দেওয়া", "শুইয়ে দেওয়া", "গায়ে চাদর দেওয়া", "হাত ধরে হাঁটানো"], "places-for-work-learning-and-trade": ["গরুর হাট", "মাছের আড়ত", "ধানকল", "মাদরাসা", "সেলাইঘর", "দুধের খামার"], "common-wordless-notices": ["ঢোকা মানা", "জুতা খুলে ঢোকা", "হাত ধোয়ার জায়গা", "বসার জায়গা", "পথ বন্ধ", "ময়লা ফেলা মানা"], "lights-fans-and-power": ["বাতি জ্বালানো", "বাতি নেভানো", "পাখার গতি বাড়ানো", "বিদ্যুতের তার লাগানো", "বিদ্যুতের তার খুলে রাখা", "বিদ্যুৎ চলে যাওয়া"], "bags-and-cases-for-carrying": ["বস্তা", "ঠোঙা", "পুঁটলি", "বাক্স", "তোরঙ্গ", "ঝোলা"], "mending-clothes-by-hand": ["বোতাম লাগানো", "তালি লাগানো", "সুঁইয়ে সুতা পরানো", "সুতায় গিঁট দেওয়া", "সেলাই খুলে ফেলা", "হাতা ছোট করা"], "more-actions-at-the-stove": ["পুর ভরা", "বড়া বানানো", "তেলে ফোড়ন দেওয়া", "মসলা কষানো", "আঁচ কমানো", "মাছের আঁশ ছাড়ানো"], "small-seeds-for-cooking": ["পাঁচফোড়ন", "কালোজিরা", "মেথি", "মৌরি", "পোস্তদানা", "তিলের দানা"], "edible-stems-blossoms-and-seeds": ["কচুর লতি", "কচুর মুখি", "কলার মোচা", "শালগম", "কাঁঠালের বিচি", "কুমড়ার ফুল"], "mouth-and-ear-gestures": ["মুখ হাঁ করা", "ঠোঁটে আঙুল দেওয়া", "দাঁত বের করা", "জিব বের করা", "কান পাতা", "কানে হাত চাপা"], "putting-clothes-on-and-off": ["জামা পরা", "জামা খোলা", "হাতা গোটানো", "গলায় পেঁচানো", "মাথা ঢাকা", "কোমরে গোঁজা"], "foods-served-alongside-rice": ["ভাজা ডিম", "মাছের ঝোল", "ডিমের ঝোল", "সবজি ভাজি", "ভর্তা", "আচার"], "features-for-giving-directions": ["চৌরাস্তা", "তিন রাস্তার মোড়", "গোলচত্বর", "গলির মুখ", "রাস্তার শেষ", "উড়ালপুল"], "types-of-river-boats": ["পালতোলা নৌকা", "ডিঙি", "খেয়ানৌকা", "মাছ ধরার নৌকা", "মালবাহী নৌকা", "ছইওয়ালা নৌকা"], "small-parts-of-the-face": ["চোখের পাতা", "চোখের পাপড়ি", "চোখের মণি", "কানের লতি", "নাকের ফুটো", "গালের টোল"], "small-parts-of-hands-and-feet": ["তালু", "হাতের পিঠ", "আঙুল", "বুড়ো আঙুল", "পায়ের আঙুল", "পায়ের তলা"], "polite-responses-and-requests": ["মাফ চাওয়া", "ধন্যবাদ দেওয়া", "অনুমতি চাওয়া", "হ্যাঁ বলা", "না বলা", "জোরে বলতে বলা"], "more-people-at-local-jobs": ["নাপিত", "গৃহশিক্ষক", "খবরের কাগজওয়ালা", "রংমিস্ত্রি", "মোয়াজ্জিন", "রুটিওয়ালা"], "aunts-uncles-and-nephews": ["ফুফু", "ফুফা", "খালা", "খালু", "ভাতিজা", "ভাগ্নে"], "features-around-a-mosque": ["মিনার", "গম্বুজ", "মেহরাব", "মিম্বর", "অজুখানা", "জুতার তাক"], "riverbanks-and-water-movement": ["নদীর পাড়", "স্রোত", "ঢেউ", "জোয়ার", "ভাটা", "ঘূর্ণি"], "brightness-and-clear-vision": ["আলো", "অন্ধকার", "মিটমিটে", "তীব্র আলো", "ঝাপসা", "স্পষ্ট"], "getting-around-in-the-rain": ["ঝুম বৃষ্টি", "গুঁড়ি গুঁড়ি বৃষ্টি", "রাস্তায় পানি জমা", "ছাতা মেলা", "বৃষ্টিতে ভেজা", "কাদায় পা আটকে যাওয়া"], "ways-to-keep-food": ["মাছ রোদে শুকানো", "শুঁটকি", "বরফে মাছ রাখা", "খাবার ঢেকে রাখা", "লবণ মাখিয়ে রাখা", "তেলে ডুবিয়ে রাখা"], "small-wear-and-breakage": ["জং ধরা", "পলেস্তারা খসে পড়া", "হাতল ঢিলা হওয়া", "দড়ি ছিঁড়ে যাওয়া", "গিঁট খুলে যাওয়া", "পানি উপচে পড়া"], "simple-stretching-and-footwork": ["হাত ছড়ানো", "হাত তুলে ধরা", "পা মেলে বসা", "পা ভাঁজ করে বসা", "আঙুলে ভর দিয়ে দাঁড়ানো", "পা টিপে হাঁটা"], "tree-and-stem-details": ["গাছের গুঁড়ি", "বাকল", "ডগা", "কাণ্ড", "কচি পাতা", "কাঁটা"], "materials-from-plants-and-animals": ["বেত", "নারকেলের আঁশ", "পশম", "পালক", "ঝিনুকের খোল", "মোম"], "sweet-breakfast-and-pitha": ["সুজি", "সেমাই", "খই", "মুড়কি", "চিতই পিঠা", "পাটিসাপটা"], "parts-of-a-market-fish": ["আঁশ", "মাছের কাঁটা", "ফুলকা", "পাখনা", "মাছের মাথা", "মাছের লেজ"], "six-market-pulses": ["মসুর ডাল", "মুগ ডাল", "মাষকলাই ডাল", "মটর ডাল", "খেসারি ডাল", "ছোলার ডাল"], "sending-post-and-parcels": ["ডাকবাক্স", "ডাকের ছাপ", "কাগজে মোড়ানো জিনিস", "ডাকের থলে", "নিজের ঠিকানা", "পাঠানোর ঠিকানা"], "counting-thirteen-to-eighteen": ["তেরো", "চৌদ্দ", "পনেরো", "ষোলো", "সতেরো", "আঠারো"], "baby-play-and-feeding-things": ["ঝুনঝুনি", "পুতুল", "খেলনা গাড়ি", "কাঠের ঘোড়া", "দুধ খাওয়ানোর বোতল", "বাচ্চার বুকঢাকা কাপড়"], "tree-fruit-and-sap-treats": ["নারকেল", "ডাব", "তাল", "সুপারি", "তালের শাঁস", "খেজুরের রস"], "wetland-animals-around-bangladesh": ["কাঁকড়া", "শামুক", "ঝিনুক", "কুমির", "শুশুক", "জোঁক"], "undoing-and-gathering-actions": ["গিঁট খোলা", "ছিঁড়ে ফেলা", "ছড়িয়ে দেওয়া", "গুটিয়ে নেওয়া", "ঝাঁকিয়ে নেওয়া", "ঝেড়ে ফেলা"], "rice-varieties-at-the-market": ["আতপ চাল", "সেদ্ধ চাল", "পোলাওয়ের চাল", "লাল চাল", "খুদ", "চালের গুঁড়া"], "more-neighborhood-specialty-shops": ["বইয়ের দোকান", "কাপড়ের দোকান", "জুতার দোকান", "ফলের দোকান", "ফুলের দোকান", "মাছের দোকান"], "small-places-around-the-room": ["খাটের তলা", "আলমারির ওপর", "জানালার ধার", "দরজার আড়াল", "ছাদের কিনারা", "দেয়ালের কুলুঙ্গি"], "at-a-bangladeshi-fair": ["মেলা", "নাগরদোলা", "পুতুলনাচ", "ঘোড়ার গাড়ি", "খেলনার দোকান", "মাটির খেলনা"], "making-a-clay-pot": ["মাটি মাখা", "চাকে মাটি বসানো", "পাত্রের মুখ চওড়া করা", "ভেজা পাত্র তুলে নেওয়া", "মাটির পাত্র শুকানো", "মাটির পাত্র পোড়ানো"], "plants-by-ponds-and-fields": ["কচুরিপানা", "শেওলা", "কাশফুল", "নলখাগড়া", "দূর্বা ঘাস", "শোলাগাছ"], "preparing-and-ordering-tea": ["চায়ের পাত্র", "চা পাতা", "দুধ চা", "লাল চা", "আদা চা", "লেবু চা"], "local-fabric-and-cloth-types": ["সুতি কাপড়", "রেশমি কাপড়", "মসলিন", "জামদানি", "নকশিকাঁথা", "খাদি কাপড়"], "working-with-fresh-milk": ["দুধ দোয়ানো", "দুধ ছেঁকে নেওয়া", "দুধ জ্বাল দেওয়া", "দই পাতা", "মাখন তুলে নেওয়া", "ঘি জ্বাল দেওয়া"], "helping-plants-grow": ["ডাল ছাঁটা", "গাছে কলম করা", "চারাকে খুঁটিতে বাঁধা", "ফুল তোলা", "শুকনা পাতা সরানো", "চারার টব বদলানো"], "after-meal-dishwashing": ["হাঁড়ি ভিজিয়ে রাখা", "হাঁড়ির তলা ঘষা", "থালা ধুয়ে নেওয়া", "বাটির পানি ঝরানো", "জালিতে বাসন শুকানো", "থালা একটার ওপর আরেকটা রাখা"], "plants-and-seeds-for-oil": ["সরিষার ফুল", "তিলের গাছ", "সূর্যমুখী", "চিনাবাদামের গাছ", "তিসির দানা", "চালের কুঁড়া"], "colorful-local-garden-flowers": ["গোলাপ", "বেলি ফুল", "রজনীগন্ধা", "কৃষ্ণচূড়া", "নয়নতারা", "অপরাজিতা"], "common-clinic-and-care-tools": ["জ্বর মাপার যন্ত্র", "বুক শোনার যন্ত্র", "রক্তচাপ মাপার যন্ত্র", "চোখের ওষুধ", "বগলে ভর দেওয়ার লাঠি", "দাঁত দেখার আয়না"], "close-family-relationships": ["স্বামী", "বউ", "ছেলে", "মেয়ে", "নাতি", "নাতনি"], "working-parts-of-a-boat": ["নোঙর", "হাল", "পাল", "মাস্তুল", "নৌকার পাটাতন", "নৌকার গলুই"], "washroom-fixtures-and-tools": ["হাত ধোয়ার পাত্র", "গোসলের ঝরনা", "পায়খানা", "পায়খানার ঝাড়নি", "সাবান রাখার পাত্র", "মুখ মোছার কাপড়"], "familiar-parts-of-a-car": ["গাড়ির চাকা", "গাড়ি ঘোরানোর চাকা", "পাশের আয়না", "পেছনের বাতি", "চালকের আসন", "গাড়ির সামনের কাচ"], "parts-of-a-reading-book": ["বইয়ের মলাট", "বইয়ের পিঠ", "বইয়ের পাতা", "বইয়ের ছবি", "পাতা চেনার দাগ", "সূচিপত্র"], "everyday-groups-and-pairs": ["এক জোড়া", "এক গোছা", "এক গাদা", "এক বোঝা", "এক ঝাঁক", "এক দল"], "hair-care-at-home": ["চুল শুকানোর যন্ত্র", "চুলের ঝাড়নি", "চুল ধোয়ার সাবান", "চুলের তেল", "চুলের বাঁধনি", "চুলের চিমটি"], "reading-a-bangla-newspaper": ["খবরের কাগজের প্রথম পাতা", "খবরের বড় শিরোনাম", "ছবির নিচের লেখা", "আবহাওয়ার খবর", "ছোট বিজ্ঞাপন", "খেলার খবর"], "holding-food-for-an-outing": ["খাবার নেওয়ার পাত্র", "পানির বোতল", "খাবারের ঝুড়ি", "গরম রাখার বোতল", "ঠান্ডা রাখার বাক্স", "বরফ জমানোর ছাঁচ"], "getting-through-a-crowded-place": ["সারির শেষে দাঁড়ানো", "আগে ঢুকে পড়া", "পথ আটকে দাঁড়ানো", "ফাঁক দিয়ে যাওয়া", "কাছে এগিয়ে আসা", "এক পাশে সরে যাওয়া"], "welcoming-guests-at-home": ["দরজা ধরে রাখা", "মেহমানের জন্য পাটি পাতা", "বসার আসন এগিয়ে দেওয়া", "পানি এগিয়ে দেওয়া", "খাবারের ঢাকনা সরানো", "মেহমানকে চা ঢেলে দেওয়া"], "counting-nineteen-to-twenty-four": ["উনিশ", "বিশ", "একুশ", "বাইশ", "তেইশ", "চব্বিশ"], "everyday-medicine-shop-terms": ["বড়ি", "বড়ির বোতল", "ওষুধের বাক্স", "ওষুধ মাপার চামচ", "খাওয়ার তরল ওষুধ", "ওষুধের কাগজ"], "ground-and-crushed-kitchen-spices": ["শুকনা মরিচ", "হলুদের গুঁড়া", "মরিচের গুঁড়া", "ধনে গুঁড়া", "সরিষা বাটা", "আদা বাটা"], "sewing-room-tools": ["সেলাইকল", "সুতা পেঁচানোর নলি", "সেলাইয়ের আঙুলঢাকনি", "সুঁই রাখার গদি", "সেলাইয়ের বাক্স", "জামা কাটার ছাঁদ"], "equipment-at-the-playground": ["পিছলে নামার সিঁড়ি", "ওঠানামার দোলনা", "খেলার বল", "ছোড়ার চাকতি", "খেলার জাল", "খেলার বাঁশি"], "things-on-a-performance-stage": ["মঞ্চের পর্দা", "মঞ্চের আলো", "মুখোশ", "মুকুট", "আওয়াজ বড় করার যন্ত্র", "মঞ্চে ওঠার সিঁড়ি"], "things-to-take-on-a-trip": ["পিঠের থলে", "ঘাড়ের বালিশ", "চোখ ঢাকার কাপড়", "মালে নাম লেখার চিহ্ন", "মাল মাপার যন্ত্র", "কাঁধে ঝোলানো পানির পাত্র"], "bed-linens-and-nightwear": ["লেপ", "বিছানার চাদর", "বালিশের ওয়াড়", "কোলবালিশ", "ঘুমানোর পোশাক", "মশারির খুঁটি"], "taking-and-keeping-photos": ["ছবি তোলার যন্ত্র", "ছবি তোলার কাচ", "যন্ত্র রাখার তিনপায়া", "ঝলক দেওয়ার বাতি", "ছবি রাখার বই", "ছবি বাঁধানোর কাঠ"], "parts-of-common-containers": ["বোতলের মুখ", "বোতলের ছিপি", "পেয়ালার হাতল", "হাঁড়ির হাতল", "পাত্রের তলা", "থালার কিনারা"], "buying-fabric-cut-to-size": ["কাপড় মেলে ধরা", "কাপড়ের ভাঁজ খুলে দেখা", "কাপড়ের রং মিলিয়ে দেখা", "কাপড়ে দাগ দেওয়া", "গজে কাপড় মাপা", "থান থেকে কাপড় কাটা"], "wet-cleaning-supplies": ["মেঝে মোছার ঝাড়ু", "কাচ মোছার পাত", "বাসন ধোয়ার সাবান", "বাসন মোছার কাপড়", "পানি ছিটানোর বোতল", "পানি আটকানোর হাতমোজা"], "animals-and-shells-of-the-sea": ["হাঙর", "সামুদ্রিক ঘোড়া", "ছাতামাছ", "তারামাছ", "প্রবাল", "শঙ্খ"], "small-child-care-gear": ["বাচ্চার ঠেলাগাড়ি", "বাচ্চার উঁচু আসন", "চুষনি", "কাপড়ের নেংটি", "বাচ্চার গা মোড়ানোর কাপড়", "কোলে বাঁধার কাপড়"], "ways-of-carrying-things": ["এক হাতে নেওয়া", "দুই হাতে নেওয়া", "নিচ থেকে তুলে ধরা", "মাথায় নিয়ে যাওয়া", "পিঠে বওয়া", "দুজনে ধরে নেওয়া"], "bhorta-served-with-rice": ["আলু ভর্তা", "বেগুন ভর্তা", "শুঁটকি ভর্তা", "ডাল ভর্তা", "ধনেপাতা ভর্তা", "সরিষা ভর্তা"]};
