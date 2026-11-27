@@ -10999,5 +10999,1105 @@ window.PICTURE_THIS_QUESTION_DATA = {
    "bhorta-served-with-rice-q5-91ab41920b81",
    "bhorta-served-with-rice-q6-6c5aabef445f"
   ]
+ },
+ "ways-of-handling-money": {
+  "questions": [
+   "কে টাকা তুলছেন?",
+   "জমা দেওয়া আর টাকা তোলা কীভাবে আলাদা?",
+   "আপনি কাকে টাকা পাঠান?",
+   "কারও কাছে টাকা ধার চাইতে কী বলবেন?",
+   "ধার শোধ হলে কীভাবে হিসাব মিলিয়ে দেখবেন?",
+   "সঙ্গে নগদ না থাকলে দূরে থাকা কাউকে টাকা পাঠাতে কী করবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 51.15,
+    "y": 13.65
+   },
+   {
+    "x": 33.33,
+    "y": 25.18
+   },
+   {
+    "x": 70.67,
+    "y": 32.2
+   },
+   {
+    "x": 31.64,
+    "y": 44.27
+   },
+   {
+    "x": 32.61,
+    "y": 55.92
+   },
+   {
+    "x": 36.48,
+    "y": 72.0
+   }
+  ],
+  "ids": [
+   "ways-of-handling-money-q1-c14d08796663",
+   "ways-of-handling-money-q2-b6633f9f7679",
+   "ways-of-handling-money-q3-f56e4c08ebd3",
+   "ways-of-handling-money-q4-e0916514f784",
+   "ways-of-handling-money-q5-4d18ad2334be",
+   "ways-of-handling-money-q6-20efe01e7bed"
+  ]
+ },
+ "organizing-paper-at-a-desk": {
+  "questions": [
+   "কাগজের খাপ কোনটা?",
+   "চিমটি আর কাগজ আটকানোর যন্ত্রের কাজ কীভাবে আলাদা?",
+   "আপনি দরকারি কাগজ কোথায় রাখেন?",
+   "এক পাশে দুটো ফুটো করতে কোনটা নেবেন?",
+   "ভুল কাগজ কুচি করে ফেলার আগে কী দেখে নেবেন?",
+   "অন্য কেউ যাতে সহজে দরকারি কাগজ পায়, টেবিলটা কীভাবে গুছাবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 61.45,
+    "y": 13.22
+   },
+   {
+    "x": 76.0,
+    "y": 24.86
+   },
+   {
+    "x": 29.7,
+    "y": 36.94
+   },
+   {
+    "x": 29.45,
+    "y": 48.59
+   },
+   {
+    "x": 47.64,
+    "y": 59.84
+   },
+   {
+    "x": 56.36,
+    "y": 76.47
+   }
+  ],
+  "ids": [
+   "organizing-paper-at-a-desk-q1-8e8fa457c246",
+   "organizing-paper-at-a-desk-q2-9f9a9d23d2d5",
+   "organizing-paper-at-a-desk-q3-152daedb9525",
+   "organizing-paper-at-a-desk-q4-b2316d3f9388",
+   "organizing-paper-at-a-desk-q5-c0dfcf15ef8c",
+   "organizing-paper-at-a-desk-q6-c14092a57bc0"
+  ]
+ },
+ "parts-and-problems-of-teeth": {
+  "questions": [
+   "মাড়ি কোন ছবিতে দেখানো হয়েছে?",
+   "সামনের আর পেছনের দাঁতের আকারে কী তফাত?",
+   "আপনি খাবার চিবাতে মুখের কোন পাশ বেশি ব্যবহার করেন?",
+   "কোথায় খাবার আটকে আছে, সেটা কীভাবে দেখাবেন?",
+   "দাঁতের ফাঁক আর দাঁতের গর্তের মধ্যে কী তফাত দেখছেন?",
+   "মুখে কোন জায়গায় কষ্ট হচ্ছে বুঝিয়ে বলতে না পারলে কীভাবে সাহায্য চাইবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 84.85,
+    "y": 13.33
+   },
+   {
+    "x": 36.85,
+    "y": 24.78
+   },
+   {
+    "x": 67.03,
+    "y": 36.59
+   },
+   {
+    "x": 51.27,
+    "y": 48.16
+   },
+   {
+    "x": 54.79,
+    "y": 59.96
+   },
+   {
+    "x": 31.76,
+    "y": 75.92
+   }
+  ],
+  "ids": [
+   "parts-and-problems-of-teeth-q1-fa47f52c2342",
+   "parts-and-problems-of-teeth-q2-4ad38e3915a1",
+   "parts-and-problems-of-teeth-q3-355710cf42ec",
+   "parts-and-problems-of-teeth-q4-6d78e59cc7e2",
+   "parts-and-problems-of-teeth-q5-0532c6761d9d",
+   "parts-and-problems-of-teeth-q6-ea73b93a29ce"
+  ]
+ },
+ "cuts-at-a-bangladeshi-meat-shop": {
+  "questions": [
+   "মুরগির ডানা কোনটা?",
+   "রান আর ডানার আকারে কী তফাত?",
+   "আপনি রান্নার জন্য কোন অংশটা বেশি কেনেন?",
+   "কলিজাটা আলাদা করে চাইতে কী বলবেন?",
+   "হাড় আর কিমা কী দেখে আলাদা করবেন?",
+   "একই রান্নার জন্য দুই রকম মাংস দেখালে কোনটা নেবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 59.52,
+    "y": 13.69
+   },
+   {
+    "x": 90.79,
+    "y": 20.55
+   },
+   {
+    "x": 41.82,
+    "y": 32.2
+   },
+   {
+    "x": 31.64,
+    "y": 44.27
+   },
+   {
+    "x": 31.39,
+    "y": 56.04
+   },
+   {
+    "x": 85.82,
+    "y": 67.49
+   }
+  ],
+  "ids": [
+   "cuts-at-a-bangladeshi-meat-shop-q1-cc748dc8141a",
+   "cuts-at-a-bangladeshi-meat-shop-q2-01395371388f",
+   "cuts-at-a-bangladeshi-meat-shop-q3-b03f856f6298",
+   "cuts-at-a-bangladeshi-meat-shop-q4-081e3fb2f6ec",
+   "cuts-at-a-bangladeshi-meat-shop-q5-9360c760f873",
+   "cuts-at-a-bangladeshi-meat-shop-q6-2df409b7bc93"
+  ]
+ },
+ "street-service-vehicles": {
+  "questions": [
+   "দমকলের গাড়ি কোনটা?",
+   "ময়লা নেওয়ার গাড়ি আর মালবাহী গাড়ি দেখতে কীভাবে আলাদা?",
+   "আপনার রাস্তায় কোন গাড়িটা বেশি দেখেন?",
+   "রোগী নেওয়ার গাড়িকে রাস্তা ছেড়ে দিতে কাউকে কী বলবেন?",
+   "পানি ছিটানোর গাড়িটা কী দেখে চিনবেন?",
+   "সরু গলিতে মালবাহী গাড়ি ঢুকতে না পারলে মাল ভেতরে আনার কী উপায় ভাববেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 63.88,
+    "y": 13.33
+   },
+   {
+    "x": 77.33,
+    "y": 24.98
+   },
+   {
+    "x": 29.58,
+    "y": 36.86
+   },
+   {
+    "x": 66.18,
+    "y": 48.16
+   },
+   {
+    "x": 32.48,
+    "y": 59.88
+   },
+   {
+    "x": 33.09,
+    "y": 76.24
+   }
+  ],
+  "ids": [
+   "street-service-vehicles-q1-90765ea3fcf5",
+   "street-service-vehicles-q2-3bbc3da240ed",
+   "street-service-vehicles-q3-957689adad96",
+   "street-service-vehicles-q4-8cd4b939ff1e",
+   "street-service-vehicles-q5-e525803843ab",
+   "street-service-vehicles-q6-8c5f150aa445"
+  ]
+ },
+ "fire-safety-tools-around-buildings": {
+  "questions": [
+   "আগুনের ঘণ্টা কোনটা?",
+   "খবর দেওয়ার বোতাম আর ঘণ্টাটা দেখতে কীভাবে আলাদা?",
+   "আপনার বাসায় আগুন নেভানোর যন্ত্র কোথায় দেখেছেন?",
+   "নতুন বাসায় উঠে আগুনের সময় বের হওয়ার পথ কীভাবে জেনে নেবেন?",
+   "আগুনের খবর দিতে হলে কী কী কথা আগে বলবেন?",
+   "রাতে আগুনের ঘণ্টা শুনে পাশের ঘরে কেউ ঘুমিয়ে থাকলে তাকে কীভাবে জানাবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 63.27,
+    "y": 13.22
+   },
+   {
+    "x": 65.33,
+    "y": 24.78
+   },
+   {
+    "x": 60.85,
+    "y": 36.98
+   },
+   {
+    "x": 83.52,
+    "y": 48.24
+   },
+   {
+    "x": 44.73,
+    "y": 60.24
+   },
+   {
+    "x": 35.64,
+    "y": 76.24
+   }
+  ],
+  "ids": [
+   "fire-safety-tools-around-buildings-q1-9086dac7f96d",
+   "fire-safety-tools-around-buildings-q2-298c62d7b67b",
+   "fire-safety-tools-around-buildings-q3-9431c15f90be",
+   "fire-safety-tools-around-buildings-q4-732538956060",
+   "fire-safety-tools-around-buildings-q5-da91cbcdfc30",
+   "fire-safety-tools-around-buildings-q6-7451812e0364"
+  ]
+ },
+ "parts-of-an-everyday-umbrella": {
+  "questions": [
+   "ছাতা বাঁধার ফিতা কোনটা?",
+   "শিক আর ডাঁট দেখতে কীভাবে আলাদা?",
+   "আপনার ছাতার বাঁটটা কী রকম?",
+   "ছাতার কাপড়ে ছোট ফুটো দেখলে কোথায় দেখিয়ে বলবেন?",
+   "ছাতা বন্ধ করার পর কোন অংশ দিয়ে কাপড়টা আটকে রাখবেন?",
+   "একটা পুরোনো ছাতা মেরামত করতে দিলে আগে কোন অংশটা দেখতে বলবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 70.18,
+    "y": 13.25
+   },
+   {
+    "x": 33.33,
+    "y": 25.18
+   },
+   {
+    "x": 82.18,
+    "y": 32.27
+   },
+   {
+    "x": 64.48,
+    "y": 43.96
+   },
+   {
+    "x": 68.24,
+    "y": 55.76
+   },
+   {
+    "x": 54.55,
+    "y": 72.16
+   }
+  ],
+  "ids": [
+   "parts-of-an-everyday-umbrella-q1-359055362f31",
+   "parts-of-an-everyday-umbrella-q2-1fcacec6e68e",
+   "parts-of-an-everyday-umbrella-q3-c47f4fb8225e",
+   "parts-of-an-everyday-umbrella-q4-fc7c0c8a24d1",
+   "parts-of-an-everyday-umbrella-q5-b8097107068b",
+   "parts-of-an-everyday-umbrella-q6-986d2b98ecac"
+  ]
+ },
+ "ways-of-resting-and-sleeping": {
+  "questions": [
+   "কে কাত হয়ে শুয়ে আছেন?",
+   "চিত আর উপুড় হয়ে শোয়ার মধ্যে কী তফাত?",
+   "বসে থাকতে থাকতে আপনি কখনও ঢুলে পড়েছেন?",
+   "পাশের ঘরে কেউ নাক ডাকলে কীভাবে বুঝবেন?",
+   "কেউ ঘুমের মধ্যে কথা বলছেন, ছবিতে কী দেখে বুঝবেন?",
+   "একই ঘরে একজন ঘুমাচ্ছেন আর আরেকজন জেগে আছেন। ঘুমের ব্যাঘাত কমাতে কী করা যায়?"
+  ],
+  "endpoints": [
+   {
+    "x": 68.48,
+    "y": 13.61
+   },
+   {
+    "x": 29.82,
+    "y": 25.18
+   },
+   {
+    "x": 43.76,
+    "y": 37.37
+   },
+   {
+    "x": 31.76,
+    "y": 49.14
+   },
+   {
+    "x": 49.94,
+    "y": 60.43
+   },
+   {
+    "x": 73.45,
+    "y": 75.92
+   }
+  ],
+  "ids": [
+   "ways-of-resting-and-sleeping-q1-6c24eb911429",
+   "ways-of-resting-and-sleeping-q2-52d1141fd38a",
+   "ways-of-resting-and-sleeping-q3-ca85a451f6e7",
+   "ways-of-resting-and-sleeping-q4-dc53cd82c1dd",
+   "ways-of-resting-and-sleeping-q5-0471d45967be",
+   "ways-of-resting-and-sleeping-q6-638e56bd2803"
+  ]
+ },
+ "familiar-home-and-personal-scents": {
+  "questions": [
+   "আগরবাতি কোনটা?",
+   "আতরের শিশি আর সুগন্ধির বোতলের মধ্যে কী তফাত?",
+   "আপনার কোন গন্ধটা ভালো লাগে?",
+   "গোলাপজলের গন্ধ কেমন, কাউকে কীভাবে বলবেন?",
+   "ধূপদানি আর আগরবাতি দেখে কীভাবে আলাদা করবেন?",
+   "সবার গন্ধের পছন্দ এক রকম না হলে ঘরে কী করবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 56.12,
+    "y": 13.22
+   },
+   {
+    "x": 68.0,
+    "y": 24.86
+   },
+   {
+    "x": 87.15,
+    "y": 32.27
+   },
+   {
+    "x": 48.73,
+    "y": 43.84
+   },
+   {
+    "x": 66.91,
+    "y": 55.61
+   },
+   {
+    "x": 70.91,
+    "y": 67.45
+   }
+  ],
+  "ids": [
+   "familiar-home-and-personal-scents-q1-01e5bc637cc4",
+   "familiar-home-and-personal-scents-q2-5c4c35cb0979",
+   "familiar-home-and-personal-scents-q3-c8d65f57c440",
+   "familiar-home-and-personal-scents-q4-6d7169d8ce7a",
+   "familiar-home-and-personal-scents-q5-4980924a3db5",
+   "familiar-home-and-personal-scents-q6-45e25389fb95"
+  ]
+ },
+ "nuts-and-dried-fruit-at-the-market": {
+  "questions": [
+   "কাজুবাদাম কোনটা?",
+   "আখরোট আর পেস্তার খোল দেখতে কীভাবে আলাদা?",
+   "আপনি নাশতায় কী বাদাম খান?",
+   "দোকানে অল্প কাঠবাদাম চাইতে কী বলবেন?",
+   "শুকনা কিশমিশ আর আলুবোখারা আকার দেখে কীভাবে আলাদা করবেন?",
+   "কারও জন্য নাশতা সাজাতে হলে বাদাম আর শুকনা ফলের কোনটা বাছবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 55.52,
+    "y": 13.69
+   },
+   {
+    "x": 50.42,
+    "y": 24.78
+   },
+   {
+    "x": 82.18,
+    "y": 32.24
+   },
+   {
+    "x": 31.64,
+    "y": 44.27
+   },
+   {
+    "x": 31.39,
+    "y": 60.35
+   },
+   {
+    "x": 55.27,
+    "y": 76.47
+   }
+  ],
+  "ids": [
+   "nuts-and-dried-fruit-at-the-market-q1-296e73c2ba4e",
+   "nuts-and-dried-fruit-at-the-market-q2-892ab72a77a8",
+   "nuts-and-dried-fruit-at-the-market-q3-8d4035ecc7ee",
+   "nuts-and-dried-fruit-at-the-market-q4-2408251c28eb",
+   "nuts-and-dried-fruit-at-the-market-q5-8674e7c84b89",
+   "nuts-and-dried-fruit-at-the-market-q6-20f98ee2e9ae"
+  ]
+ },
+ "objects-for-everyday-exercise": {
+  "questions": [
+   "ব্যায়ামের পাটি কোনটা?",
+   "দুই রকম ওজনের ধরার জায়গায় কী তফাত?",
+   "আপনি কোথায় হাঁটেন বা ব্যায়াম করেন?",
+   "পা চালানোর যন্ত্রে কোথায় বসবেন?",
+   "টানফিতা আর ওজনের মধ্যে কোনটা হাতে টানতে হয়?",
+   "বাসায় খুব কম জায়গা থাকলে কোন জিনিসটা রাখবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 63.03,
+    "y": 13.22
+   },
+   {
+    "x": 29.82,
+    "y": 25.18
+   },
+   {
+    "x": 28.36,
+    "y": 36.98
+   },
+   {
+    "x": 87.27,
+    "y": 44.31
+   },
+   {
+    "x": 48.48,
+    "y": 55.65
+   },
+   {
+    "x": 76.61,
+    "y": 67.49
+   }
+  ],
+  "ids": [
+   "objects-for-everyday-exercise-q1-acfc4b7668cb",
+   "objects-for-everyday-exercise-q2-bb7ec2d99775",
+   "objects-for-everyday-exercise-q3-6fc1ddb3c1cc",
+   "objects-for-everyday-exercise-q4-fd9c5892c0a2",
+   "objects-for-everyday-exercise-q5-ab1a85f39e1d",
+   "objects-for-everyday-exercise-q6-0494f130ab66"
+  ]
+ },
+ "parts-inside-common-fruits": {
+  "questions": [
+   "আমের আঁটি কোনটা?",
+   "আমের আঁটি আর আঙুরের বিচির আকারে কী তফাত?",
+   "আপনি আঙুরের বিচি ফেলেন?",
+   "আপেলের মাঝখানটা কীভাবে বাদ দেবেন?",
+   "তরমুজে সাদা অংশটা কোথায় আছে?",
+   "কাউকে ফল কেটে দিলে কোন অংশগুলো রেখে দেবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 60.12,
+    "y": 13.22
+   },
+   {
+    "x": 54.91,
+    "y": 24.86
+   },
+   {
+    "x": 78.3,
+    "y": 32.82
+   },
+   {
+    "x": 28.97,
+    "y": 44.27
+   },
+   {
+    "x": 91.15,
+    "y": 51.8
+   },
+   {
+    "x": 87.15,
+    "y": 63.53
+   }
+  ],
+  "ids": [
+   "parts-inside-common-fruits-q1-12e1e692953c",
+   "parts-inside-common-fruits-q2-dd083d8ffcba",
+   "parts-inside-common-fruits-q3-e7209bdf7357",
+   "parts-inside-common-fruits-q4-c5d95669aba7",
+   "parts-inside-common-fruits-q5-0a4471e1d5b4",
+   "parts-inside-common-fruits-q6-8fd9e906cd73"
+  ]
+ },
+ "tools-for-serving-a-meal-out": {
+  "questions": [
+   "খাবারের তালিকাটা কোনটা?",
+   "চাটনির বাটি আর ঝোলের পাত্রের মুখ দেখতে কীভাবে আলাদা?",
+   "খাবারের দোকানে আপনি আগে কী দেখতে চান?",
+   "থালাটা গরম হলে কোন জিনিসটা দিয়ে ধরবেন?",
+   "মরিচ পেষার কলটা চিনতে কোন অংশ দেখবেন?",
+   "তালিকায় খাবারের নাম বুঝতে না পারলে দোকানের লোককে কীভাবে জিজ্ঞেস করবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 73.09,
+    "y": 13.22
+   },
+   {
+    "x": 73.82,
+    "y": 25.33
+   },
+   {
+    "x": 39.39,
+    "y": 36.86
+   },
+   {
+    "x": 41.7,
+    "y": 48.27
+   },
+   {
+    "x": 45.45,
+    "y": 60.24
+   },
+   {
+    "x": 48.73,
+    "y": 75.96
+   }
+  ],
+  "ids": [
+   "tools-for-serving-a-meal-out-q1-c9a10ef152e4",
+   "tools-for-serving-a-meal-out-q2-c01d940a2da8",
+   "tools-for-serving-a-meal-out-q3-a2e469694ca5",
+   "tools-for-serving-a-meal-out-q4-edb96a922b37",
+   "tools-for-serving-a-meal-out-q5-42c45a7d86d6",
+   "tools-for-serving-a-meal-out-q6-3ebf2170553c"
+  ]
+ },
+ "writing-and-correcting-on-paper": {
+  "questions": [
+   "কোন ছবিতে লেখার নিচে দাগ দিচ্ছেন?",
+   "লেখা কেটে দেওয়া আর নিচে দাগ দেওয়া দেখতে কীভাবে আলাদা?",
+   "আপনি নতুন শব্দ দেখে দেখে লেখেন?",
+   "খালি ঘরে নাম লিখতে হলে কী দেখে শুরু করবেন?",
+   "বানান ভুল হলে ভুলটা আর ঠিক শব্দটা কীভাবে দেখাবেন?",
+   "লেখা পড়ে পরে দরকারি কথা খুঁজে পেতে কীভাবে দাগ দেবেন বা কথা লিখে রাখবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 31.27,
+    "y": 17.57
+   },
+   {
+    "x": 79.52,
+    "y": 29.18
+   },
+   {
+    "x": 92.0,
+    "y": 37.02
+   },
+   {
+    "x": 41.82,
+    "y": 48.67
+   },
+   {
+    "x": 65.7,
+    "y": 59.84
+   },
+   {
+    "x": 45.09,
+    "y": 75.96
+   }
+  ],
+  "ids": [
+   "writing-and-correcting-on-paper-q1-57df032a7a35",
+   "writing-and-correcting-on-paper-q2-40921c56ff0a",
+   "writing-and-correcting-on-paper-q3-e4db378f5167",
+   "writing-and-correcting-on-paper-q4-2bb74736532e",
+   "writing-and-correcting-on-paper-q5-59ac577b6525",
+   "writing-and-correcting-on-paper-q6-b8bff5fd69d3"
+  ]
+ },
+ "everyday-actions-at-the-front-door": {
+  "questions": [
+   "দরজার ঘণ্টা কে বাজাচ্ছেন?",
+   "দরজা ভেজিয়ে রাখা আর ঠেস দিয়ে খোলা রাখার মধ্যে কী তফাত?",
+   "আপনার বাসায় ঢোকার আগে দরজায় কী করেন?",
+   "তালাটা খুলতে চাবি কোথায় ঢোকাবেন?",
+   "বাইরে কে এসেছেন, দরজা পুরো না খুলে কীভাবে দেখবেন?",
+   "দুই হাতে জিনিস নিয়ে ঢুকতে হলে দরজাটা আগে কীভাবে রাখবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 72.48,
+    "y": 13.25
+   },
+   {
+    "x": 76.36,
+    "y": 24.86
+   },
+   {
+    "x": 52.24,
+    "y": 36.55
+   },
+   {
+    "x": 36.0,
+    "y": 48.55
+   },
+   {
+    "x": 60.48,
+    "y": 60.43
+   },
+   {
+    "x": 25.33,
+    "y": 76.27
+   }
+  ],
+  "ids": [
+   "everyday-actions-at-the-front-door-q1-98c11caede74",
+   "everyday-actions-at-the-front-door-q2-b50da12544d5",
+   "everyday-actions-at-the-front-door-q3-dddb153b14ab",
+   "everyday-actions-at-the-front-door-q4-619e79687f55",
+   "everyday-actions-at-the-front-door-q5-50b917c4f78e",
+   "everyday-actions-at-the-front-door-q6-3287860a1afe"
+  ]
+ },
+ "fittings-for-a-water-line": {
+  "questions": [
+   "নলের বাঁক কোনটা?",
+   "নল জোড়ার প্যাঁচ আর নলের বাঁক দেখতে কীভাবে আলাদা?",
+   "আপনার বাসায় পানি বন্ধ করার চাবি কোথায়?",
+   "কলের জালিতে ময়লা দেখলে মিস্ত্রিকে কী বলে দেখাবেন?",
+   "নলে কোন দিকে পানি যাচ্ছে, সেটা বোঝাতে কোথায় দেখাবেন?",
+   "একই কল বারবার চুইয়ে পড়লে যে ঠিক করতে আসবেন তাঁকে আগে কী কী জানাবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 55.27,
+    "y": 13.22
+   },
+   {
+    "x": 65.33,
+    "y": 24.78
+   },
+   {
+    "x": 31.88,
+    "y": 36.94
+   },
+   {
+    "x": 51.39,
+    "y": 48.16
+   },
+   {
+    "x": 69.82,
+    "y": 60.31
+   },
+   {
+    "x": 42.67,
+    "y": 75.84
+   }
+  ],
+  "ids": [
+   "fittings-for-a-water-line-q1-761c8cb4310f",
+   "fittings-for-a-water-line-q2-5550515327bc",
+   "fittings-for-a-water-line-q3-bbfc0d1eb696",
+   "fittings-for-a-water-line-q4-ee530276b312",
+   "fittings-for-a-water-line-q5-a350359165b4",
+   "fittings-for-a-water-line-q6-149dcaf23ae9"
+  ]
+ },
+ "making-and-looking-at-loaf-bread": {
+  "questions": [
+   "পাউরুটির ছাঁচ কোনটা?",
+   "পাউরুটির ধার আর ভেতর দেখতে কীভাবে আলাদা?",
+   "আপনি কী রকম পাউরুটি খান?",
+   "খামির ফুলেছে কি না কী দেখে বুঝবেন?",
+   "চুল্লি থেকে রুটি বের করতে কোন জিনিসটা চিনবেন?",
+   "দোকানে রুটি নরম আছে কি না বুঝতে কী দেখবেন বা কী জিজ্ঞেস করবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 63.52,
+    "y": 13.25
+   },
+   {
+    "x": 50.42,
+    "y": 24.78
+   },
+   {
+    "x": 80.48,
+    "y": 32.24
+   },
+   {
+    "x": 31.76,
+    "y": 44.82
+   },
+   {
+    "x": 53.45,
+    "y": 55.57
+   },
+   {
+    "x": 31.39,
+    "y": 72.04
+   }
+  ],
+  "ids": [
+   "making-and-looking-at-loaf-bread-q1-5fe42b0ecaa7",
+   "making-and-looking-at-loaf-bread-q2-9bd444a71b67",
+   "making-and-looking-at-loaf-bread-q3-2b8f7157ca9b",
+   "making-and-looking-at-loaf-bread-q4-9970b78128f3",
+   "making-and-looking-at-loaf-bread-q5-51bdeb6efbcd",
+   "making-and-looking-at-loaf-bread-q6-32fd6e5af629"
+  ]
+ },
+ "signs-around-roads-and-buildings": {
+  "questions": [
+   "পানি খাওয়া যাবে না, কোন ছবিটা তা বলছে?",
+   "নিচে নামার দাগ আর পিছলে পড়ার ছবিতে লোকটির পা কীভাবে আলাদা?",
+   "এই ছবির মতো কোন দাগটা আপনি রাস্তায় দেখেছেন?",
+   "গাড়ি রাখা মানা দেখলে চালককে কী বলবেন?",
+   "সামনে রাস্তার কাজ চললে সঙ্গের লোককে কীভাবে জানাবেন?",
+   "লেখা পড়তে না পারলেও একটা সাবধানের দাগ বুঝতে কোন ছবি বা রং কাজে আসে, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 28.36,
+    "y": 17.96
+   },
+   {
+    "x": 92.12,
+    "y": 29.22
+   },
+   {
+    "x": 48.85,
+    "y": 41.29
+   },
+   {
+    "x": 31.64,
+    "y": 52.9
+   },
+   {
+    "x": 70.67,
+    "y": 64.16
+   },
+   {
+    "x": 71.03,
+    "y": 80.78
+   }
+  ],
+  "ids": [
+   "signs-around-roads-and-buildings-q1-dda36ceb0165",
+   "signs-around-roads-and-buildings-q2-63aee961ec2e",
+   "signs-around-roads-and-buildings-q3-cf76439a2f15",
+   "signs-around-roads-and-buildings-q4-88cac918cb7a",
+   "signs-around-roads-and-buildings-q5-6066402736a2",
+   "signs-around-roads-and-buildings-q6-0e521385366f"
+  ]
+ },
+ "taking-a-ride-around-town": {
+  "questions": [
+   "কে হাত তুলে গাড়ি থামাতে বলছেন?",
+   "গাড়িতে পা রাখা আর হাতল ধরে দাঁড়ানোর মধ্যে কী তফাত?",
+   "গাড়িতে উঠলে আপনি কোথায় বসতে চান?",
+   "একজন দাঁড়িয়ে থাকলে তাঁকে কীভাবে আপনার জায়গাটা দেবেন?",
+   "সামনের মোড়ে নামতে হলে চালককে কী বলবেন?",
+   "গাড়িতে খুব ভিড় হলে নামার জায়গায় পৌঁছানোর আগে কী কী করবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 88.36,
+    "y": 13.65
+   },
+   {
+    "x": 69.09,
+    "y": 24.98
+   },
+   {
+    "x": 24.48,
+    "y": 36.86
+   },
+   {
+    "x": 69.33,
+    "y": 48.27
+   },
+   {
+    "x": 38.67,
+    "y": 59.84
+   },
+   {
+    "x": 25.33,
+    "y": 76.27
+   }
+  ],
+  "ids": [
+   "taking-a-ride-around-town-q1-155fd4424651",
+   "taking-a-ride-around-town-q2-4cbaec3e8a31",
+   "taking-a-ride-around-town-q3-cb439ced8c8f",
+   "taking-a-ride-around-town-q4-4990ed9cec7f",
+   "taking-a-ride-around-town-q5-50270578f987",
+   "taking-a-ride-around-town-q6-14bdc64e35d6"
+  ]
+ },
+ "care-and-fit-of-everyday-shoes": {
+  "questions": [
+   "জুতার কালি কোনটা?",
+   "জুতার গোড়া আর ভেতরের তলাটা কীভাবে আলাদা?",
+   "আপনি জুতা কী দিয়ে পরিষ্কার করেন?",
+   "জুতা পায়ে ঢুকতে না চাইলে কোন জিনিসটা নেবেন?",
+   "ধুলো সরাতে আর চকচকে করতে কোন আলাদা জিনিস লাগতে পারে?",
+   "এক জোড়া জুতা অস্বস্তি দিলে মুচিকে কী কী দেখাতে পারেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 58.67,
+    "y": 13.69
+   },
+   {
+    "x": 50.42,
+    "y": 24.78
+   },
+   {
+    "x": 92.36,
+    "y": 32.71
+   },
+   {
+    "x": 50.42,
+    "y": 43.88
+   },
+   {
+    "x": 88.97,
+    "y": 55.65
+   },
+   {
+    "x": 60.24,
+    "y": 67.29
+   }
+  ],
+  "ids": [
+   "care-and-fit-of-everyday-shoes-q1-8a64381f3ac3",
+   "care-and-fit-of-everyday-shoes-q2-9a5b000a7f86",
+   "care-and-fit-of-everyday-shoes-q3-09cbbc69fb94",
+   "care-and-fit-of-everyday-shoes-q4-e47c7bddb978",
+   "care-and-fit-of-everyday-shoes-q5-38c8eb0b1a28",
+   "care-and-fit-of-everyday-shoes-q6-7f2c43c5bfa8"
+  ]
+ },
+ "people-who-service-a-home": {
+  "questions": [
+   "কোন ছবিতে পানির মিস্ত্রি আছেন?",
+   "পানির আর বিদ্যুতের মিস্ত্রির হাতে কী তফাত?",
+   "বাসায় কোন কাজের জন্য কাউকে ডেকেছেন?",
+   "ময়লা নেওয়ার লোককে কোন জায়গাটা দেখিয়ে দেবেন?",
+   "বাসা বদলের লোককে কোন মাল আগে নিতে বলবেন?",
+   "বাসায় পানি আর বিদ্যুৎ দুটোতেই সমস্যা হলে কার সঙ্গে কীভাবে কথা বলবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 85.82,
+    "y": 13.25
+   },
+   {
+    "x": 29.82,
+    "y": 25.18
+   },
+   {
+    "x": 35.27,
+    "y": 37.02
+   },
+   {
+    "x": 65.33,
+    "y": 48.27
+   },
+   {
+    "x": 56.61,
+    "y": 59.88
+   },
+   {
+    "x": 31.64,
+    "y": 76.27
+   }
+  ],
+  "ids": [
+   "people-who-service-a-home-q1-db20e0e3fdeb",
+   "people-who-service-a-home-q2-b7b6d2771216",
+   "people-who-service-a-home-q3-e5080b974a95",
+   "people-who-service-a-home-q4-97303cfcf1b1",
+   "people-who-service-a-home-q5-532ad1a95b15",
+   "people-who-service-a-home-q6-862f9f62d911"
+  ]
+ },
+ "eyeglass-parts-and-eye-shop-objects": {
+  "questions": [
+   "রোদচশমা কোনটা?",
+   "চশমার ডাঁটি আর নাকে ঠেকার পাটি কোথায় থাকে?",
+   "আপনি চশমা কী দিয়ে মোছেন?",
+   "কাচে আঁচড় পড়লে দোকানে কী বলে দেখাবেন?",
+   "চোখ মাপার ছকে কোন দাগটা সবচেয়ে বড়?",
+   "দূরের লেখা ঠিকমতো দেখা না গেলে কীভাবে বুঝিয়ে বলবেন, আর কী উদাহরণ দেবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 53.82,
+    "y": 13.22
+   },
+   {
+    "x": 44.12,
+    "y": 25.25
+   },
+   {
+    "x": 78.91,
+    "y": 32.27
+   },
+   {
+    "x": 34.18,
+    "y": 44.24
+   },
+   {
+    "x": 23.27,
+    "y": 56.16
+   },
+   {
+    "x": 48.12,
+    "y": 71.65
+   }
+  ],
+  "ids": [
+   "eyeglass-parts-and-eye-shop-objects-q1-3426df07b223",
+   "eyeglass-parts-and-eye-shop-objects-q2-49558f58e76c",
+   "eyeglass-parts-and-eye-shop-objects-q3-cb43795e9618",
+   "eyeglass-parts-and-eye-shop-objects-q4-650c81e17b9d",
+   "eyeglass-parts-and-eye-shop-objects-q5-df092451ec30",
+   "eyeglass-parts-and-eye-shop-objects-q6-3e0b8c01ea49"
+  ]
+ },
+ "asking-for-help-during-bangla-practice": {
+  "questions": [
+   "কে খাতায় লিখতে বলছেন?",
+   "আবার বলা আর আস্তে বলার মধ্যে কী তফাত?",
+   "শেখার সময় এই কথাগুলোর কোনটা আপনি বলেন?",
+   "কোনো নতুন জিনিসের বাংলা নাম জানতে কী জিজ্ঞেস করবেন?",
+   "শব্দটা ঠিক বললেন কি না জানতে কী বলবেন?",
+   "কারও কথা বারবার শুনেও বুঝতে না পারলে পরের বার কীভাবে সাহায্য চাইবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 70.18,
+    "y": 13.25
+   },
+   {
+    "x": 36.85,
+    "y": 24.78
+   },
+   {
+    "x": 45.45,
+    "y": 36.51
+   },
+   {
+    "x": 72.12,
+    "y": 48.24
+   },
+   {
+    "x": 31.64,
+    "y": 60.27
+   },
+   {
+    "x": 31.76,
+    "y": 75.92
+   }
+  ],
+  "ids": [
+   "asking-for-help-during-bangla-practice-q1-cdc86ae9ce0e",
+   "asking-for-help-during-bangla-practice-q2-2ac3fd36d36a",
+   "asking-for-help-during-bangla-practice-q3-048bcd2a0cc8",
+   "asking-for-help-during-bangla-practice-q4-9292b4c0022b",
+   "asking-for-help-during-bangla-practice-q5-e2c28d8639d2",
+   "asking-for-help-during-bangla-practice-q6-f6f8a71b7295"
+  ]
+ },
+ "heights-and-reach-relative-to-the-body": {
+  "questions": [
+   "হাঁটুপানি কোন ছবিতে?",
+   "হাঁটুপানি আর কোমরপানির মধ্যে কী তফাত?",
+   "আপনি কোন জিনিস হাতের নাগালে রাখেন?",
+   "পাশের কাউকে চোখের সমান করে ছবি রাখতে কী বলবেন?",
+   "বাক্সটা নাগালের বাইরে গেলে কাকে কী বলে ডাকবেন?",
+   "কাউকে রাস্তার পানির গভীরতা বোঝাতে শরীরের কোন অংশ দিয়ে তুলনা করবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 60.85,
+    "y": 13.65
+   },
+   {
+    "x": 29.82,
+    "y": 25.18
+   },
+   {
+    "x": 29.7,
+    "y": 36.94
+   },
+   {
+    "x": 53.7,
+    "y": 48.24
+   },
+   {
+    "x": 50.91,
+    "y": 59.84
+   },
+   {
+    "x": 68.85,
+    "y": 76.75
+   }
+  ],
+  "ids": [
+   "heights-and-reach-relative-to-the-body-q1-0a42b9c53193",
+   "heights-and-reach-relative-to-the-body-q2-b663b584160c",
+   "heights-and-reach-relative-to-the-body-q3-996b9910752e",
+   "heights-and-reach-relative-to-the-body-q4-6562db9b4153",
+   "heights-and-reach-relative-to-the-body-q5-5f4f5b66438e",
+   "heights-and-reach-relative-to-the-body-q6-ab15aab511e4"
+  ]
+ },
+ "street-repair-equipment": {
+  "questions": [
+   "কোনটা মাটি কাটার গাড়ি?",
+   "মাটি কাটার গাড়ি আর রাস্তা চাপার গাড়ির সামনে কী তফাত?",
+   "আপনি কোথায় রাস্তার কাজ দেখেছেন?",
+   "কমলা চিহ্নগুলো দেখলে সঙ্গের লোককে কী বলবেন?",
+   "রাস্তার কাজ করছেন কে, দূর থেকে কী দেখে বুঝবেন?",
+   "যে রাস্তা দিয়ে রোজ যান সেখানে কাজ চললে অন্য রাস্তা বাছার সময় কী ভাববেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 69.21,
+    "y": 13.33
+   },
+   {
+    "x": 66.91,
+    "y": 24.98
+   },
+   {
+    "x": 34.3,
+    "y": 36.98
+   },
+   {
+    "x": 56.61,
+    "y": 48.16
+   },
+   {
+    "x": 42.91,
+    "y": 60.82
+   },
+   {
+    "x": 33.09,
+    "y": 76.24
+   }
+  ],
+  "ids": [
+   "street-repair-equipment-q1-e3a67022ca5a",
+   "street-repair-equipment-q2-a241978f158a",
+   "street-repair-equipment-q3-0ef1a0e05eec",
+   "street-repair-equipment-q4-b27332427de9",
+   "street-repair-equipment-q5-85b847772fbe",
+   "street-repair-equipment-q6-72dc1ca9670e"
+  ]
  }
 };
