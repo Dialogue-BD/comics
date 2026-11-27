@@ -1522,6 +1522,12 @@
       .app.nurturer-play .strip-toast.correct { border-color: rgba(163, 235, 106, .6); background: rgba(28, 79, 36, .96); }
       .app.nurturer-play .strip-toast.recast { border-color: rgba(246, 198, 103, .65); background: rgba(84, 54, 14, .96); }
       .app.nurturer-play .game-strip.is-open .strip-toast { display: none; }
+      /* The menu keeps only score, progress and actions: the prompt, voice controls and
+         feedback already live in the top drop-down. */
+      .app.nurturer-play .game-panel .game-prompt,
+      .app.nurturer-play .game-panel #nurturer-tts-bar,
+      .app.nurturer-play .game-panel .game-feedback { display: none !important; }
+      .app.nurturer-play .game-panel .game-progress { margin: 6px 0 12px; }
       /* Bottom bar: swipe up (or tap) for the game menu. */
       .app.nurturer-play .drawer-peek {
         left: 8px; right: 8px; width: auto; max-width: none; transform: none;
