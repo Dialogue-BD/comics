@@ -102949,6 +102949,9362 @@ window.PTB_NURTURER = {
      }
     ]
    }
+  },
+  "first-conversations-with-neighbors": {
+   "reply-to-a-salaam": {
+    "word": {
+     "id": "first-conversations-with-neighbors--reply-to-a-salaam--word--67fb3c6bd90d73d6",
+     "text": "ওয়ালাইকুমুস সালাম",
+     "fallback": [
+      {
+       "word": "reply-to-a-salaam"
+      }
+     ]
+    },
+    "ask": {
+     "id": "first-conversations-with-neighbors--reply-to-a-salaam--ask--ebce97c084dc732a",
+     "text": "মন দিয়ে শুনুন। ওয়ালাইকুমুস সালাম। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "reply-to-a-salaam"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “return a salaam already offered by another person”."
+    },
+    "yes": {
+     "id": "first-conversations-with-neighbors--reply-to-a-salaam--yes--6fd80db3bbce8db9",
+     "text": "হ্যাঁ, ঠিক হয়েছে। ওয়ালাইকুমুস সালাম।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "reply-to-a-salaam"
+      }
+     ],
+     "english": "Yes! This is “return a salaam already offered by another person”."
+    },
+    "recast": {
+     "id": "first-conversations-with-neighbors--reply-to-a-salaam--recast--921931b467598d83",
+     "text": "এই ছবিটা দেখুন। ওয়ালাইকুমুস সালাম।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "reply-to-a-salaam"
+      }
+     ],
+     "english": "Look at this picture. This is “return a salaam already offered by another person”."
+    },
+    "examples": [
+     {
+      "id": "first-conversations-with-neighbors--reply-to-a-salaam--example-1--d9f74d52346f86b7",
+      "text": "ওয়ালাইকুমুস সালাম, আপা",
+      "fallback": [
+       {
+        "clip": "d9f74d52346f86b75db3"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-how-someone-is": {
+    "word": {
+     "id": "first-conversations-with-neighbors--ask-how-someone-is--word--94194941759e5643",
+     "text": "কেমন আছেন?",
+     "fallback": [
+      {
+       "word": "ask-how-someone-is"
+      }
+     ]
+    },
+    "ask": {
+     "id": "first-conversations-with-neighbors--ask-how-someone-is--ask--04b0e116937546c0",
+     "text": "খুঁজে দেখুন। কেমন আছেন?।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "ask-how-someone-is"
+      }
+     ],
+     "english": "Find “ask how the other person is doing”."
+    },
+    "yes": {
+     "id": "first-conversations-with-neighbors--ask-how-someone-is--yes--527ec455e0855adf",
+     "text": "চমৎকার। কেমন আছেন?।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "ask-how-someone-is"
+      }
+     ],
+     "english": "Excellent! This is “ask how the other person is doing”."
+    },
+    "recast": {
+     "id": "first-conversations-with-neighbors--ask-how-someone-is--recast--0cba58ecdbe3409c",
+     "text": "এই ছবিটা দেখুন। কেমন আছেন?।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-how-someone-is"
+      }
+     ],
+     "english": "Look at this picture. This is “ask how the other person is doing”."
+    },
+    "examples": [
+     {
+      "id": "first-conversations-with-neighbors--ask-how-someone-is--example-1--8dea3ca34a4df162",
+      "text": "চাচি, কেমন আছেন?",
+      "fallback": [
+       {
+        "clip": "8dea3ca34a4df16207e5"
+       }
+      ]
+     }
+    ]
+   },
+   "say-you-are-well": {
+    "word": {
+     "id": "first-conversations-with-neighbors--say-you-are-well--word--018996b42eb973d0",
+     "text": "ভালো আছি",
+     "fallback": [
+      {
+       "word": "say-you-are-well"
+      }
+     ]
+    },
+    "ask": {
+     "id": "first-conversations-with-neighbors--say-you-are-well--ask--722ac3919c6b660b",
+     "text": "খুঁজে দেখুন। ভালো আছি।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "say-you-are-well"
+      }
+     ],
+     "english": "Find “say that you are well in reply to a greeting”."
+    },
+    "yes": {
+     "id": "first-conversations-with-neighbors--say-you-are-well--yes--36aac2fd5f887924",
+     "text": "চমৎকার। ভালো আছি।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "say-you-are-well"
+      }
+     ],
+     "english": "Excellent! This is “say that you are well in reply to a greeting”."
+    },
+    "recast": {
+     "id": "first-conversations-with-neighbors--say-you-are-well--recast--915dfa48a0fbfff2",
+     "text": "এই ছবিটা দেখুন। ভালো আছি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "say-you-are-well"
+      }
+     ],
+     "english": "Look at this picture. This is “say that you are well in reply to a greeting”."
+    },
+    "examples": [
+     {
+      "id": "first-conversations-with-neighbors--say-you-are-well--example-1--71d50b51fa11915d",
+      "text": "আলহামদুলিল্লাহ, ভালো আছি",
+      "fallback": [
+       {
+        "clip": "71d50b51fa11915da17f"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-a-new-person-their-name": {
+    "word": {
+     "id": "first-conversations-with-neighbors--ask-a-new-person-their-name--word--d2bd50f27a4cb9fa",
+     "text": "আপনার নাম কী?",
+     "fallback": [
+      {
+       "word": "ask-a-new-person-their-name"
+      }
+     ]
+    },
+    "ask": {
+     "id": "first-conversations-with-neighbors--ask-a-new-person-their-name--ask--03971d20c0bae452",
+     "text": "আপনার নাম কী?। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "ask-a-new-person-their-name"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “politely ask someone their name”? Show me."
+    },
+    "yes": {
+     "id": "first-conversations-with-neighbors--ask-a-new-person-their-name--yes--777e26eda55e1709",
+     "text": "খুব ভালো। আপনার নাম কী?।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "ask-a-new-person-their-name"
+      }
+     ],
+     "english": "Very good! This is “politely ask someone their name”."
+    },
+    "recast": {
+     "id": "first-conversations-with-neighbors--ask-a-new-person-their-name--recast--0d8957f7b6a77006",
+     "text": "এই ছবিটা দেখুন। আপনার নাম কী?।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-a-new-person-their-name"
+      }
+     ],
+     "english": "Look at this picture. This is “politely ask someone their name”."
+    },
+    "examples": [
+     {
+      "id": "first-conversations-with-neighbors--ask-a-new-person-their-name--example-1--b0543a862348522b",
+      "text": "ভাই, আপনার নাম কী?",
+      "fallback": [
+       {
+        "clip": "b0543a862348522bea30"
+       }
+      ]
+     }
+    ]
+   },
+   "say-you-are-new-here": {
+    "word": {
+     "id": "first-conversations-with-neighbors--say-you-are-new-here--word--3818ba9e798ba247",
+     "text": "আমি এখানে নতুন",
+     "fallback": [
+      {
+       "word": "say-you-are-new-here"
+      }
+     ]
+    },
+    "ask": {
+     "id": "first-conversations-with-neighbors--say-you-are-new-here--ask--e7ee9853c3edece6",
+     "text": "আমি এখানে নতুন। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "say-you-are-new-here"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “introduce yourself as a newcomer to this area”? Show me."
+    },
+    "yes": {
+     "id": "first-conversations-with-neighbors--say-you-are-new-here--yes--68a5f5075eca43bd",
+     "text": "একদম ঠিক। আমি এখানে নতুন।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "say-you-are-new-here"
+      }
+     ],
+     "english": "Exactly right! This is “introduce yourself as a newcomer to this area”."
+    },
+    "recast": {
+     "id": "first-conversations-with-neighbors--say-you-are-new-here--recast--773bdd7113e0f5ac",
+     "text": "এই ছবিটা দেখুন। আমি এখানে নতুন।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "say-you-are-new-here"
+      }
+     ],
+     "english": "Look at this picture. This is “introduce yourself as a newcomer to this area”."
+    },
+    "examples": [
+     {
+      "id": "first-conversations-with-neighbors--say-you-are-new-here--example-1--a17cd714286bb850",
+      "text": "আমি এই এলাকায় নতুন",
+      "fallback": [
+       {
+        "clip": "a17cd714286bb850d632"
+       }
+      ]
+     }
+    ]
+   },
+   "say-you-are-learning-bangla": {
+    "word": {
+     "id": "first-conversations-with-neighbors--say-you-are-learning-bangla--word--70cae28e116fcd80",
+     "text": "বাংলা শিখছি",
+     "fallback": [
+      {
+       "word": "say-you-are-learning-bangla"
+      }
+     ]
+    },
+    "ask": {
+     "id": "first-conversations-with-neighbors--say-you-are-learning-bangla--ask--de47cc2b5fd30e88",
+     "text": "বাংলা শিখছি। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "say-you-are-learning-bangla"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “say that you are learning Bangla”? Show me."
+    },
+    "yes": {
+     "id": "first-conversations-with-neighbors--say-you-are-learning-bangla--yes--912d59fbe512e215",
+     "text": "দারুণ। বাংলা শিখছি।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "say-you-are-learning-bangla"
+      }
+     ],
+     "english": "Great! This is “say that you are learning Bangla”."
+    },
+    "recast": {
+     "id": "first-conversations-with-neighbors--say-you-are-learning-bangla--recast--2336726ba1d7c711",
+     "text": "এই ছবিটা দেখুন। বাংলা শিখছি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "say-you-are-learning-bangla"
+      }
+     ],
+     "english": "Look at this picture. This is “say that you are learning Bangla”."
+    },
+    "examples": [
+     {
+      "id": "first-conversations-with-neighbors--say-you-are-learning-bangla--example-1--5f589abfde1a00c0",
+      "text": "আমি এখন বাংলা শিখছি",
+      "fallback": [
+       {
+        "clip": "5f589abfde1a00c002fd"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "pointing-to-things-and-places": {
+   "this-one-next-to-speaker": {
+    "word": {
+     "id": "pointing-to-things-and-places--this-one-next-to-speaker--word--bce808db6ff8230a",
+     "text": "এটা",
+     "fallback": [
+      {
+       "word": "this-one-next-to-speaker"
+      }
+     ]
+    },
+    "ask": {
+     "id": "pointing-to-things-and-places--this-one-next-to-speaker--ask--e4f94106d0fae380",
+     "text": "এটা। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "this-one-next-to-speaker"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “this one beside the speaker”? Show me."
+    },
+    "yes": {
+     "id": "pointing-to-things-and-places--this-one-next-to-speaker--yes--661eab6d3fad3027",
+     "text": "বাহ্। এটা।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "this-one-next-to-speaker"
+      }
+     ],
+     "english": "Wow! This is “this one beside the speaker”."
+    },
+    "recast": {
+     "id": "pointing-to-things-and-places--this-one-next-to-speaker--recast--7e814716522a4799",
+     "text": "এই ছবিটা দেখুন। এটা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "this-one-next-to-speaker"
+      }
+     ],
+     "english": "Look at this picture. This is “this one beside the speaker”."
+    },
+    "examples": [
+     {
+      "id": "pointing-to-things-and-places--this-one-next-to-speaker--example-1--a73c9d776e6f1043",
+      "text": "এটা আমার",
+      "fallback": [
+       {
+        "clip": "a73c9d776e6f10438456"
+       }
+      ]
+     }
+    ]
+   },
+   "that-one-across-from-speaker": {
+    "word": {
+     "id": "pointing-to-things-and-places--that-one-across-from-speaker--word--439bd5c108f51732",
+     "text": "ওটা",
+     "fallback": [
+      {
+       "word": "that-one-across-from-speaker"
+      }
+     ]
+    },
+    "ask": {
+     "id": "pointing-to-things-and-places--that-one-across-from-speaker--ask--e6dfa29dc85809ed",
+     "text": "ওটা। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "that-one-across-from-speaker"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “that one away from the speaker”? Show me."
+    },
+    "yes": {
+     "id": "pointing-to-things-and-places--that-one-across-from-speaker--yes--423ccb8b086b1d8e",
+     "text": "একদম ঠিক। ওটা।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "that-one-across-from-speaker"
+      }
+     ],
+     "english": "Exactly right! This is “that one away from the speaker”."
+    },
+    "recast": {
+     "id": "pointing-to-things-and-places--that-one-across-from-speaker--recast--c1dfae43d9eb6285",
+     "text": "এই ছবিটা দেখুন। ওটা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "that-one-across-from-speaker"
+      }
+     ],
+     "english": "Look at this picture. This is “that one away from the speaker”."
+    },
+    "examples": [
+     {
+      "id": "pointing-to-things-and-places--that-one-across-from-speaker--example-1--5f0033715bb760b9",
+      "text": "ওটা দেন",
+      "fallback": [
+       {
+        "clip": "5f0033715bb760b9b449"
+       }
+      ]
+     }
+    ]
+   },
+   "these-objects-next-to-speaker": {
+    "word": {
+     "id": "pointing-to-things-and-places--these-objects-next-to-speaker--word--8f2660d8ee5e77bc",
+     "text": "এগুলো",
+     "fallback": [
+      {
+       "word": "these-objects-next-to-speaker"
+      }
+     ]
+    },
+    "ask": {
+     "id": "pointing-to-things-and-places--these-objects-next-to-speaker--ask--f3c91a360def7c73",
+     "text": "এগুলো। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "these-objects-next-to-speaker"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “these nearby objects”? Show me."
+    },
+    "yes": {
+     "id": "pointing-to-things-and-places--these-objects-next-to-speaker--yes--5567eb81b04485c9",
+     "text": "খুব ভালো। এগুলো।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "these-objects-next-to-speaker"
+      }
+     ],
+     "english": "Very good! This is “these nearby objects”."
+    },
+    "recast": {
+     "id": "pointing-to-things-and-places--these-objects-next-to-speaker--recast--bd822dd54bc92300",
+     "text": "এই ছবিটা দেখুন। এগুলো।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "these-objects-next-to-speaker"
+      }
+     ],
+     "english": "Look at this picture. This is “these nearby objects”."
+    },
+    "examples": [
+     {
+      "id": "pointing-to-things-and-places--these-objects-next-to-speaker--example-1--315db19caabcf183",
+      "text": "এগুলো ভালো আছে",
+      "fallback": [
+       {
+        "clip": "315db19caabcf18389e8"
+       }
+      ]
+     }
+    ]
+   },
+   "those-objects-across-from-speaker": {
+    "word": {
+     "id": "pointing-to-things-and-places--those-objects-across-from-speaker--word--a66dc8c70d2208e6",
+     "text": "ওগুলো",
+     "fallback": [
+      {
+       "word": "those-objects-across-from-speaker"
+      }
+     ]
+    },
+    "ask": {
+     "id": "pointing-to-things-and-places--those-objects-across-from-speaker--ask--3eef0e6dcd0a3524",
+     "text": "ওগুলো। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "those-objects-across-from-speaker"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “those several objects away from the speaker”? Show me."
+    },
+    "yes": {
+     "id": "pointing-to-things-and-places--those-objects-across-from-speaker--yes--929d4f0f8143bae0",
+     "text": "হ্যাঁ, ঠিক হয়েছে। ওগুলো।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "those-objects-across-from-speaker"
+      }
+     ],
+     "english": "Yes! This is “those several objects away from the speaker”."
+    },
+    "recast": {
+     "id": "pointing-to-things-and-places--those-objects-across-from-speaker--recast--8556447d6a4a791e",
+     "text": "এই ছবিটা দেখুন। ওগুলো।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "those-objects-across-from-speaker"
+      }
+     ],
+     "english": "Look at this picture. This is “those several objects away from the speaker”."
+    },
+    "examples": [
+     {
+      "id": "pointing-to-things-and-places--those-objects-across-from-speaker--example-1--d60567655d908d9e",
+      "text": "ওগুলো একটু দেখাবেন?",
+      "fallback": [
+       {
+        "clip": "d60567655d908d9e337f"
+       }
+      ]
+     }
+    ]
+   },
+   "here-right-where-speaker-is": {
+    "word": {
+     "id": "pointing-to-things-and-places--here-right-where-speaker-is--word--2be52c88132927b1",
+     "text": "এখানে",
+     "fallback": [
+      {
+       "word": "here-right-where-speaker-is"
+      }
+     ]
+    },
+    "ask": {
+     "id": "pointing-to-things-and-places--here-right-where-speaker-is--ask--fb9df6d5703d1b13",
+     "text": "খুঁজে দেখুন। এখানে।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "here-right-where-speaker-is"
+      }
+     ],
+     "english": "Find “here at the speaker's own location”."
+    },
+    "yes": {
+     "id": "pointing-to-things-and-places--here-right-where-speaker-is--yes--3259c6a7d73c670b",
+     "text": "চমৎকার। এখানে।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "here-right-where-speaker-is"
+      }
+     ],
+     "english": "Excellent! This is “here at the speaker's own location”."
+    },
+    "recast": {
+     "id": "pointing-to-things-and-places--here-right-where-speaker-is--recast--2ae3905b5edf7c8d",
+     "text": "এই ছবিটা দেখুন। এখানে।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "here-right-where-speaker-is"
+      }
+     ],
+     "english": "Look at this picture. This is “here at the speaker's own location”."
+    },
+    "examples": [
+     {
+      "id": "pointing-to-things-and-places--here-right-where-speaker-is--example-1--e0b6eb714b3f464e",
+      "text": "এখানে রাখেন",
+      "fallback": [
+       {
+        "clip": "e0b6eb714b3f464ee6f5"
+       }
+      ]
+     }
+    ]
+   },
+   "over-there-away-from-speaker": {
+    "word": {
+     "id": "pointing-to-things-and-places--over-there-away-from-speaker--word--73fac405dd887dd0",
+     "text": "ওখানে",
+     "fallback": [
+      {
+       "word": "over-there-away-from-speaker"
+      }
+     ]
+    },
+    "ask": {
+     "id": "pointing-to-things-and-places--over-there-away-from-speaker--ask--421d05fbbd201eda",
+     "text": "মন দিয়ে শুনুন। ওখানে। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "over-there-away-from-speaker"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “over there away from the speaker”."
+    },
+    "yes": {
+     "id": "pointing-to-things-and-places--over-there-away-from-speaker--yes--0dcc3cab896fc449",
+     "text": "একদম ঠিক। ওখানে।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "over-there-away-from-speaker"
+      }
+     ],
+     "english": "Exactly right! This is “over there away from the speaker”."
+    },
+    "recast": {
+     "id": "pointing-to-things-and-places--over-there-away-from-speaker--recast--883acf39125cadb9",
+     "text": "এই ছবিটা দেখুন। ওখানে।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "over-there-away-from-speaker"
+      }
+     ],
+     "english": "Look at this picture. This is “over there away from the speaker”."
+    },
+    "examples": [
+     {
+      "id": "pointing-to-things-and-places--over-there-away-from-speaker--example-1--4a1b5ac69e4bac75",
+      "text": "ওখানে বসেন",
+      "fallback": [
+       {
+        "clip": "4a1b5ac69e4bac7512ad"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "first-questions-and-requests-at-a-shop": {
+   "ask-price-per-unit": {
+    "word": {
+     "id": "first-questions-and-requests-at-a-shop--ask-price-per-unit--word--22b820247b9025dc",
+     "text": "কত করে?",
+     "fallback": [
+      {
+       "word": "ask-price-per-unit"
+      }
+     ]
+    },
+    "ask": {
+     "id": "first-questions-and-requests-at-a-shop--ask-price-per-unit--ask--94b014dbb8f04604",
+     "text": "কত করে?। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "ask-price-per-unit"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “ask the store price per unit”? Show me."
+    },
+    "yes": {
+     "id": "first-questions-and-requests-at-a-shop--ask-price-per-unit--yes--c4642277cbd4e122",
+     "text": "দারুণ। কত করে?।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "ask-price-per-unit"
+      }
+     ],
+     "english": "Great! This is “ask the store price per unit”."
+    },
+    "recast": {
+     "id": "first-questions-and-requests-at-a-shop--ask-price-per-unit--recast--cd30a213eaadb494",
+     "text": "এই ছবিটা দেখুন। কত করে?।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-price-per-unit"
+      }
+     ],
+     "english": "Look at this picture. This is “ask the store price per unit”."
+    },
+    "examples": [
+     {
+      "id": "first-questions-and-requests-at-a-shop--ask-price-per-unit--example-1--4cf76db271de591c",
+      "text": "শসা কত করে?",
+      "fallback": [
+       {
+        "clip": "4cf76db271de591c65ed"
+       }
+      ]
+     }
+    ]
+   },
+   "check-if-goods-are-in-stock": {
+    "word": {
+     "id": "first-questions-and-requests-at-a-shop--check-if-goods-are-in-stock--word--a991310ae559c4f5",
+     "text": "এটা আছে?",
+     "fallback": [
+      {
+       "word": "check-if-goods-are-in-stock"
+      }
+     ]
+    },
+    "ask": {
+     "id": "first-questions-and-requests-at-a-shop--check-if-goods-are-in-stock--ask--d82dd901f50c2f5c",
+     "text": "মন দিয়ে শুনুন। এটা আছে?। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "check-if-goods-are-in-stock"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “ask whether a shown item is available”."
+    },
+    "yes": {
+     "id": "first-questions-and-requests-at-a-shop--check-if-goods-are-in-stock--yes--4a94bd615091c49a",
+     "text": "বাহ্। এটা আছে?।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "check-if-goods-are-in-stock"
+      }
+     ],
+     "english": "Wow! This is “ask whether a shown item is available”."
+    },
+    "recast": {
+     "id": "first-questions-and-requests-at-a-shop--check-if-goods-are-in-stock--recast--618f4c83d4746043",
+     "text": "এই ছবিটা দেখুন। এটা আছে?।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "check-if-goods-are-in-stock"
+      }
+     ],
+     "english": "Look at this picture. This is “ask whether a shown item is available”."
+    },
+    "examples": [
+     {
+      "id": "first-questions-and-requests-at-a-shop--check-if-goods-are-in-stock--example-1--df5ea36f3c45a7bb",
+      "text": "ভাই, এটা আছে?",
+      "fallback": [
+       {
+        "clip": "df5ea36f3c45a7bba183"
+       }
+      ]
+     }
+    ]
+   },
+   "sold-out-in-a-market-stall": {
+    "word": {
+     "id": "first-questions-and-requests-at-a-shop--sold-out-in-a-market-stall--word--d459f24aaf2de379",
+     "text": "শেষ হয়ে গেছে",
+     "fallback": [
+      {
+       "word": "sold-out-in-a-market-stall"
+      }
+     ]
+    },
+    "ask": {
+     "id": "first-questions-and-requests-at-a-shop--sold-out-in-a-market-stall--ask--271aa05a803b47ab",
+     "text": "খুঁজে দেখুন। শেষ হয়ে গেছে।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "sold-out-in-a-market-stall"
+      }
+     ],
+     "english": "Find “say that the stock has sold out”."
+    },
+    "yes": {
+     "id": "first-questions-and-requests-at-a-shop--sold-out-in-a-market-stall--yes--96fcf1b32d9378be",
+     "text": "একদম ঠিক। শেষ হয়ে গেছে।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "sold-out-in-a-market-stall"
+      }
+     ],
+     "english": "Exactly right! This is “say that the stock has sold out”."
+    },
+    "recast": {
+     "id": "first-questions-and-requests-at-a-shop--sold-out-in-a-market-stall--recast--e241933ca94cff7e",
+     "text": "এই ছবিটা দেখুন। শেষ হয়ে গেছে।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "sold-out-in-a-market-stall"
+      }
+     ],
+     "english": "Look at this picture. This is “say that the stock has sold out”."
+    },
+    "examples": [
+     {
+      "id": "first-questions-and-requests-at-a-shop--sold-out-in-a-market-stall--example-1--45f8314488f29b51",
+      "text": "ভাই, শসা শেষ হয়ে গেছে",
+      "fallback": [
+       {
+        "clip": "45f8314488f29b51a839"
+       }
+      ]
+     }
+    ]
+   },
+   "request-only-a-small-amount": {
+    "word": {
+     "id": "first-questions-and-requests-at-a-shop--request-only-a-small-amount--word--2388808a970fbb37",
+     "text": "অল্প করে দেন",
+     "fallback": [
+      {
+       "word": "request-only-a-small-amount"
+      }
+     ]
+    },
+    "ask": {
+     "id": "first-questions-and-requests-at-a-shop--request-only-a-small-amount--ask--37c49208da245930",
+     "text": "অল্প করে দেন। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "request-only-a-small-amount"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “ask for only a small amount at a market stall”? Show me."
+    },
+    "yes": {
+     "id": "first-questions-and-requests-at-a-shop--request-only-a-small-amount--yes--dd4129872d4a1395",
+     "text": "খুব ভালো। অল্প করে দেন।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "request-only-a-small-amount"
+      }
+     ],
+     "english": "Very good! This is “ask for only a small amount at a market stall”."
+    },
+    "recast": {
+     "id": "first-questions-and-requests-at-a-shop--request-only-a-small-amount--recast--d9499192aca26af2",
+     "text": "এই ছবিটা দেখুন। অল্প করে দেন।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "request-only-a-small-amount"
+      }
+     ],
+     "english": "Look at this picture. This is “ask for only a small amount at a market stall”."
+    },
+    "examples": [
+     {
+      "id": "first-questions-and-requests-at-a-shop--request-only-a-small-amount--example-1--adc6ca47df47459a",
+      "text": "অল্প করে পেঁয়াজ দেন",
+      "fallback": [
+       {
+        "clip": "adc6ca47df47459abcaf"
+       }
+      ]
+     }
+    ]
+   },
+   "request-one-more-item": {
+    "word": {
+     "id": "first-questions-and-requests-at-a-shop--request-one-more-item--word--1035927ee52526d2",
+     "text": "আরেকটা দেন",
+     "fallback": [
+      {
+       "word": "request-one-more-item"
+      }
+     ]
+    },
+    "ask": {
+     "id": "first-questions-and-requests-at-a-shop--request-one-more-item--ask--6dcd03908d8ff747",
+     "text": "আরেকটা দেন। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "request-one-more-item"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “ask the seller for one additional item”? Show me."
+    },
+    "yes": {
+     "id": "first-questions-and-requests-at-a-shop--request-one-more-item--yes--bac0b670242a2427",
+     "text": "হ্যাঁ, ঠিক হয়েছে। আরেকটা দেন।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "request-one-more-item"
+      }
+     ],
+     "english": "Yes! This is “ask the seller for one additional item”."
+    },
+    "recast": {
+     "id": "first-questions-and-requests-at-a-shop--request-one-more-item--recast--715420d4ca093110",
+     "text": "এই ছবিটা দেখুন। আরেকটা দেন।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "request-one-more-item"
+      }
+     ],
+     "english": "Look at this picture. This is “ask the seller for one additional item”."
+    },
+    "examples": [
+     {
+      "id": "first-questions-and-requests-at-a-shop--request-one-more-item--example-1--1ae45b0b95b511d7",
+      "text": "এই রকম আরেকটা দেন",
+      "fallback": [
+       {
+        "clip": "1ae45b0b95b511d7a51b"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-to-bag-a-purchase": {
+    "word": {
+     "id": "first-questions-and-requests-at-a-shop--ask-to-bag-a-purchase--word--3de4b6b8a16ddc84",
+     "text": "থলেতে দেন",
+     "fallback": [
+      {
+       "word": "ask-to-bag-a-purchase"
+      }
+     ]
+    },
+    "ask": {
+     "id": "first-questions-and-requests-at-a-shop--ask-to-bag-a-purchase--ask--662b7ce12ceffe3c",
+     "text": "থলেতে দেন। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "ask-to-bag-a-purchase"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “ask a shopkeeper to put a purchase into a bag”? Show me."
+    },
+    "yes": {
+     "id": "first-questions-and-requests-at-a-shop--ask-to-bag-a-purchase--yes--eb167437c27d44d3",
+     "text": "চমৎকার। থলেতে দেন।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "ask-to-bag-a-purchase"
+      }
+     ],
+     "english": "Excellent! This is “ask a shopkeeper to put a purchase into a bag”."
+    },
+    "recast": {
+     "id": "first-questions-and-requests-at-a-shop--ask-to-bag-a-purchase--recast--1caafa57909cb959",
+     "text": "এই ছবিটা দেখুন। থলেতে দেন।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-to-bag-a-purchase"
+      }
+     ],
+     "english": "Look at this picture. This is “ask a shopkeeper to put a purchase into a bag”."
+    },
+    "examples": [
+     {
+      "id": "first-questions-and-requests-at-a-shop--ask-to-bag-a-purchase--example-1--f97fbb355f7d0825",
+      "text": "সবগুলো এই থলেতে দেন",
+      "fallback": [
+       {
+        "clip": "f97fbb355f7d0825888d"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "ordering-simple-food-and-water": {
+   "order-food-to-eat-here": {
+    "word": {
+     "id": "ordering-simple-food-and-water--order-food-to-eat-here--word--880f7948c1c34771",
+     "text": "এখানে খাব",
+     "fallback": [
+      {
+       "word": "order-food-to-eat-here"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ordering-simple-food-and-water--order-food-to-eat-here--ask--b8c2cdcb1a7d773f",
+     "text": "এখানে খাব। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "order-food-to-eat-here"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “tell the seller you will eat here”? Show me."
+    },
+    "yes": {
+     "id": "ordering-simple-food-and-water--order-food-to-eat-here--yes--65be0c279b4f5bf9",
+     "text": "একদম ঠিক। এখানে খাব।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "order-food-to-eat-here"
+      }
+     ],
+     "english": "Exactly right! This is “tell the seller you will eat here”."
+    },
+    "recast": {
+     "id": "ordering-simple-food-and-water--order-food-to-eat-here--recast--82b507f34bd92cb6",
+     "text": "এই ছবিটা দেখুন। এখানে খাব।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "order-food-to-eat-here"
+      }
+     ],
+     "english": "Look at this picture. This is “tell the seller you will eat here”."
+    },
+    "examples": [
+     {
+      "id": "ordering-simple-food-and-water--order-food-to-eat-here--example-1--f060f5c7de3223a4",
+      "text": "আমি এখানেই খাব",
+      "fallback": [
+       {
+        "clip": "f060f5c7de3223a4fdb2"
+       }
+      ]
+     }
+    ]
+   },
+   "order-food-to-take-along": {
+    "word": {
+     "id": "ordering-simple-food-and-water--order-food-to-take-along--word--e656a8865f8913b5",
+     "text": "সঙ্গে নেব",
+     "fallback": [
+      {
+       "word": "order-food-to-take-along"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ordering-simple-food-and-water--order-food-to-take-along--ask--b13ba8755cf2bda8",
+     "text": "সঙ্গে নেব। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "order-food-to-take-along"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “order a meal to take away”? Show me."
+    },
+    "yes": {
+     "id": "ordering-simple-food-and-water--order-food-to-take-along--yes--fd0736850ab25a3c",
+     "text": "দারুণ। সঙ্গে নেব।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "order-food-to-take-along"
+      }
+     ],
+     "english": "Great! This is “order a meal to take away”."
+    },
+    "recast": {
+     "id": "ordering-simple-food-and-water--order-food-to-take-along--recast--db093c93c3be5c45",
+     "text": "এই ছবিটা দেখুন। সঙ্গে নেব।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "order-food-to-take-along"
+      }
+     ],
+     "english": "Look at this picture. This is “order a meal to take away”."
+    },
+    "examples": [
+     {
+      "id": "ordering-simple-food-and-water--order-food-to-take-along--example-1--36847a5792cda437",
+      "text": "খাবারটা সঙ্গে নেব",
+      "fallback": [
+       {
+        "clip": "36847a5792cda437701a"
+       }
+      ]
+     }
+    ]
+   },
+   "asking-for-fewer-chillies": {
+    "word": {
+     "id": "ordering-simple-food-and-water--asking-for-fewer-chillies--word--8125e057ce739b8b",
+     "text": "ঝাল কম দেন",
+     "fallback": [
+      {
+       "word": "asking-for-fewer-chillies"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ordering-simple-food-and-water--asking-for-fewer-chillies--ask--8ffce985b8b1167d",
+     "text": "মন দিয়ে শুনুন। ঝাল কম দেন। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "asking-for-fewer-chillies"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “ask for less chilli heat in food”."
+    },
+    "yes": {
+     "id": "ordering-simple-food-and-water--asking-for-fewer-chillies--yes--108ff898f0f01e02",
+     "text": "দারুণ। ঝাল কম দেন।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "asking-for-fewer-chillies"
+      }
+     ],
+     "english": "Great! This is “ask for less chilli heat in food”."
+    },
+    "recast": {
+     "id": "ordering-simple-food-and-water--asking-for-fewer-chillies--recast--67a4d248b087d043",
+     "text": "এই ছবিটা দেখুন। ঝাল কম দেন।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "asking-for-fewer-chillies"
+      }
+     ],
+     "english": "Look at this picture. This is “ask for less chilli heat in food”."
+    },
+    "examples": [
+     {
+      "id": "ordering-simple-food-and-water--asking-for-fewer-chillies--example-1--fe75ac9ee83b5a2e",
+      "text": "ভাই, ঝাল কম দেন",
+      "fallback": [
+       {
+        "clip": "fe75ac9ee83b5a2e6290"
+       }
+      ]
+     }
+    ]
+   },
+   "ordering-a-dish-without-meat": {
+    "word": {
+     "id": "ordering-simple-food-and-water--ordering-a-dish-without-meat--word--e28308aacf2f3b37",
+     "text": "মাংস ছাড়া দেন",
+     "fallback": [
+      {
+       "word": "ordering-a-dish-without-meat"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ordering-simple-food-and-water--ordering-a-dish-without-meat--ask--449ec41b47beae86",
+     "text": "মন দিয়ে শুনুন। মাংস ছাড়া দেন। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "ordering-a-dish-without-meat"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “ask for a meal without meat”."
+    },
+    "yes": {
+     "id": "ordering-simple-food-and-water--ordering-a-dish-without-meat--yes--7517d0f58f7191ba",
+     "text": "বাহ্। মাংস ছাড়া দেন।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "ordering-a-dish-without-meat"
+      }
+     ],
+     "english": "Wow! This is “ask for a meal without meat”."
+    },
+    "recast": {
+     "id": "ordering-simple-food-and-water--ordering-a-dish-without-meat--recast--cc3ed6c49dd037a2",
+     "text": "এই ছবিটা দেখুন। মাংস ছাড়া দেন।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ordering-a-dish-without-meat"
+      }
+     ],
+     "english": "Look at this picture. This is “ask for a meal without meat”."
+    },
+    "examples": [
+     {
+      "id": "ordering-simple-food-and-water--ordering-a-dish-without-meat--example-1--35ef338a03059cca",
+      "text": "আমাকে মাংস ছাড়া দেন",
+      "fallback": [
+       {
+        "clip": "35ef338a03059cca3cee"
+       }
+      ]
+     }
+    ]
+   },
+   "asking-for-one-glass-of-water": {
+    "word": {
+     "id": "ordering-simple-food-and-water--asking-for-one-glass-of-water--word--99943ce8271d5677",
+     "text": "একটু পানি দেন",
+     "fallback": [
+      {
+       "word": "asking-for-one-glass-of-water"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ordering-simple-food-and-water--asking-for-one-glass-of-water--ask--39bd48724e5c6065",
+     "text": "মন দিয়ে শুনুন। একটু পানি দেন। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "asking-for-one-glass-of-water"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “ask for a glass of drinking water”."
+    },
+    "yes": {
+     "id": "ordering-simple-food-and-water--asking-for-one-glass-of-water--yes--4bbb3e3611049519",
+     "text": "দারুণ। একটু পানি দেন।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "asking-for-one-glass-of-water"
+      }
+     ],
+     "english": "Great! This is “ask for a glass of drinking water”."
+    },
+    "recast": {
+     "id": "ordering-simple-food-and-water--asking-for-one-glass-of-water--recast--eda0f6434e1bbac3",
+     "text": "এই ছবিটা দেখুন। একটু পানি দেন।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "asking-for-one-glass-of-water"
+      }
+     ],
+     "english": "Look at this picture. This is “ask for a glass of drinking water”."
+    },
+    "examples": [
+     {
+      "id": "ordering-simple-food-and-water--asking-for-one-glass-of-water--example-1--c31eb7efc82b816b",
+      "text": "ভাই, একটু পানি দেন",
+      "fallback": [
+       {
+        "clip": "c31eb7efc82b816b80ac"
+       }
+      ]
+     }
+    ]
+   },
+   "turning-down-more-food": {
+    "word": {
+     "id": "ordering-simple-food-and-water--turning-down-more-food--word--cd4776e0e4e55f45",
+     "text": "আর লাগবে না",
+     "fallback": [
+      {
+       "word": "turning-down-more-food"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ordering-simple-food-and-water--turning-down-more-food--ask--0149114ea8523e45",
+     "text": "খুঁজে দেখুন। আর লাগবে না।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "turning-down-more-food"
+      }
+     ],
+     "english": "Find “politely decline a second helping”."
+    },
+    "yes": {
+     "id": "ordering-simple-food-and-water--turning-down-more-food--yes--fc7cb012300ea825",
+     "text": "শাবাশ। আর লাগবে না।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "turning-down-more-food"
+      }
+     ],
+     "english": "Well done! This is “politely decline a second helping”."
+    },
+    "recast": {
+     "id": "ordering-simple-food-and-water--turning-down-more-food--recast--57d82c4ecfc84fd2",
+     "text": "এই ছবিটা দেখুন। আর লাগবে না।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "turning-down-more-food"
+      }
+     ],
+     "english": "Look at this picture. This is “politely decline a second helping”."
+    },
+    "examples": [
+     {
+      "id": "ordering-simple-food-and-water--turning-down-more-food--example-1--53d3bf9b1db7b0b5",
+      "text": "ধন্যবাদ, আর লাগবে না",
+      "fallback": [
+       {
+        "clip": "53d3bf9b1db7b0b58a0a"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "counting-twenty-five-to-thirty": {
+   "twenty-five-count": {
+    "word": {
+     "id": "counting-twenty-five-to-thirty--twenty-five-count--word--306fcf0bc2eaab71",
+     "text": "পঁচিশ",
+     "fallback": [
+      {
+       "word": "twenty-five-count"
+      }
+     ]
+    },
+    "ask": {
+     "id": "counting-twenty-five-to-thirty--twenty-five-count--ask--8198009362889a7c",
+     "text": "পঁচিশ। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "twenty-five-count"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “twenty-five”? Show me."
+    },
+    "yes": {
+     "id": "counting-twenty-five-to-thirty--twenty-five-count--yes--62dd8218a63ba023",
+     "text": "বাহ্। পঁচিশ।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "twenty-five-count"
+      }
+     ],
+     "english": "Wow! This is “twenty-five”."
+    },
+    "recast": {
+     "id": "counting-twenty-five-to-thirty--twenty-five-count--recast--2ba792b109114a66",
+     "text": "এই ছবিটা দেখুন। পঁচিশ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "twenty-five-count"
+      }
+     ],
+     "english": "Look at this picture. This is “twenty-five”."
+    },
+    "examples": [
+     {
+      "id": "counting-twenty-five-to-thirty--twenty-five-count--example-1--c17b557bd11f9f78",
+      "text": "পঁচিশটা গুনে রাখেন",
+      "fallback": [
+       {
+        "clip": "c17b557bd11f9f78b929"
+       }
+      ]
+     }
+    ]
+   },
+   "twenty-six-count": {
+    "word": {
+     "id": "counting-twenty-five-to-thirty--twenty-six-count--word--8eb7cadc16e12301",
+     "text": "ছাব্বিশ",
+     "fallback": [
+      {
+       "word": "twenty-six-count"
+      }
+     ]
+    },
+    "ask": {
+     "id": "counting-twenty-five-to-thirty--twenty-six-count--ask--f30e5f95af7cb1cf",
+     "text": "খুঁজে দেখুন। ছাব্বিশ।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "twenty-six-count"
+      }
+     ],
+     "english": "Find “twenty-six”."
+    },
+    "yes": {
+     "id": "counting-twenty-five-to-thirty--twenty-six-count--yes--2fb78865e29569bc",
+     "text": "চমৎকার। ছাব্বিশ।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "twenty-six-count"
+      }
+     ],
+     "english": "Excellent! This is “twenty-six”."
+    },
+    "recast": {
+     "id": "counting-twenty-five-to-thirty--twenty-six-count--recast--6a44c8c769944af7",
+     "text": "এই ছবিটা দেখুন। ছাব্বিশ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "twenty-six-count"
+      }
+     ],
+     "english": "Look at this picture. This is “twenty-six”."
+    },
+    "examples": [
+     {
+      "id": "counting-twenty-five-to-thirty--twenty-six-count--example-1--031980aac73c2993",
+      "text": "ছাব্বিশটা আছে",
+      "fallback": [
+       {
+        "clip": "031980aac73c299392f6"
+       }
+      ]
+     }
+    ]
+   },
+   "twenty-seven-count": {
+    "word": {
+     "id": "counting-twenty-five-to-thirty--twenty-seven-count--word--ba7d1ce0ba284991",
+     "text": "সাতাশ",
+     "fallback": [
+      {
+       "word": "twenty-seven-count"
+      }
+     ]
+    },
+    "ask": {
+     "id": "counting-twenty-five-to-thirty--twenty-seven-count--ask--cacf0bbcd7b958d4",
+     "text": "খুঁজে দেখুন। সাতাশ।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "twenty-seven-count"
+      }
+     ],
+     "english": "Find “twenty-seven”."
+    },
+    "yes": {
+     "id": "counting-twenty-five-to-thirty--twenty-seven-count--yes--e588af858fa1fb46",
+     "text": "শাবাশ। সাতাশ।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "twenty-seven-count"
+      }
+     ],
+     "english": "Well done! This is “twenty-seven”."
+    },
+    "recast": {
+     "id": "counting-twenty-five-to-thirty--twenty-seven-count--recast--43d393caaf08c69c",
+     "text": "এই ছবিটা দেখুন। সাতাশ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "twenty-seven-count"
+      }
+     ],
+     "english": "Look at this picture. This is “twenty-seven”."
+    },
+    "examples": [
+     {
+      "id": "counting-twenty-five-to-thirty--twenty-seven-count--example-1--3ac0593fb8c5aaeb",
+      "text": "সাতাশটা নিন",
+      "fallback": [
+       {
+        "clip": "3ac0593fb8c5aaeb94ee"
+       }
+      ]
+     }
+    ]
+   },
+   "twenty-eight-count": {
+    "word": {
+     "id": "counting-twenty-five-to-thirty--twenty-eight-count--word--814d58210f86291c",
+     "text": "আটাশ",
+     "fallback": [
+      {
+       "word": "twenty-eight-count"
+      }
+     ]
+    },
+    "ask": {
+     "id": "counting-twenty-five-to-thirty--twenty-eight-count--ask--6aaae5c272f6cb3e",
+     "text": "মন দিয়ে শুনুন। আটাশ। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "twenty-eight-count"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “twenty-eight”."
+    },
+    "yes": {
+     "id": "counting-twenty-five-to-thirty--twenty-eight-count--yes--c36b83bc2d85235e",
+     "text": "একদম ঠিক। আটাশ।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "twenty-eight-count"
+      }
+     ],
+     "english": "Exactly right! This is “twenty-eight”."
+    },
+    "recast": {
+     "id": "counting-twenty-five-to-thirty--twenty-eight-count--recast--c706a98a9de49370",
+     "text": "এই ছবিটা দেখুন। আটাশ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "twenty-eight-count"
+      }
+     ],
+     "english": "Look at this picture. This is “twenty-eight”."
+    },
+    "examples": [
+     {
+      "id": "counting-twenty-five-to-thirty--twenty-eight-count--example-1--a2a5647dc7ab01d4",
+      "text": "আটাশটা গুনেছি",
+      "fallback": [
+       {
+        "clip": "a2a5647dc7ab01d44d82"
+       }
+      ]
+     }
+    ]
+   },
+   "twenty-nine-count": {
+    "word": {
+     "id": "counting-twenty-five-to-thirty--twenty-nine-count--word--cbd5d4f4ebfa1e5f",
+     "text": "উনত্রিশ",
+     "fallback": [
+      {
+       "word": "twenty-nine-count"
+      }
+     ]
+    },
+    "ask": {
+     "id": "counting-twenty-five-to-thirty--twenty-nine-count--ask--bd59c91dd0922630",
+     "text": "খুঁজে দেখুন। উনত্রিশ।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "twenty-nine-count"
+      }
+     ],
+     "english": "Find “twenty-nine”."
+    },
+    "yes": {
+     "id": "counting-twenty-five-to-thirty--twenty-nine-count--yes--7f63f88d9cc785b8",
+     "text": "শাবাশ। উনত্রিশ।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "twenty-nine-count"
+      }
+     ],
+     "english": "Well done! This is “twenty-nine”."
+    },
+    "recast": {
+     "id": "counting-twenty-five-to-thirty--twenty-nine-count--recast--4fcb8e452f60b075",
+     "text": "এই ছবিটা দেখুন। উনত্রিশ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "twenty-nine-count"
+      }
+     ],
+     "english": "Look at this picture. This is “twenty-nine”."
+    },
+    "examples": [
+     {
+      "id": "counting-twenty-five-to-thirty--twenty-nine-count--example-1--79fed3662f2e6465",
+      "text": "উনত্রিশটা রাখেন",
+      "fallback": [
+       {
+        "clip": "79fed3662f2e6465e7d0"
+       }
+      ]
+     }
+    ]
+   },
+   "thirty-count": {
+    "word": {
+     "id": "counting-twenty-five-to-thirty--thirty-count--word--f8f0c02d9e5ed2f5",
+     "text": "ত্রিশ",
+     "fallback": [
+      {
+       "word": "thirty-count"
+      }
+     ]
+    },
+    "ask": {
+     "id": "counting-twenty-five-to-thirty--thirty-count--ask--579742fae0911063",
+     "text": "খুঁজে দেখুন। ত্রিশ।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "thirty-count"
+      }
+     ],
+     "english": "Find “thirty”."
+    },
+    "yes": {
+     "id": "counting-twenty-five-to-thirty--thirty-count--yes--9a46fc29004399ac",
+     "text": "খুব ভালো। ত্রিশ।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "thirty-count"
+      }
+     ],
+     "english": "Very good! This is “thirty”."
+    },
+    "recast": {
+     "id": "counting-twenty-five-to-thirty--thirty-count--recast--d200d4d2f0bce513",
+     "text": "এই ছবিটা দেখুন। ত্রিশ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "thirty-count"
+      }
+     ],
+     "english": "Look at this picture. This is “thirty”."
+    },
+    "examples": [
+     {
+      "id": "counting-twenty-five-to-thirty--thirty-count--example-1--539917c16f7acbed",
+      "text": "ত্রিশটা দিন",
+      "fallback": [
+       {
+        "clip": "539917c16f7acbeddd60"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "finding-a-home-by-its-address": {
+   "address-for-a-home-entrance": {
+    "word": {
+     "id": "finding-a-home-by-its-address--address-for-a-home-entrance--word--4c7215c6c8f1a597",
+     "text": "বাসার ঠিকানা",
+     "fallback": [
+      {
+       "word": "address-for-a-home-entrance"
+      }
+     ]
+    },
+    "ask": {
+     "id": "finding-a-home-by-its-address--address-for-a-home-entrance--ask--5df88a088b0717bf",
+     "text": "মন দিয়ে শুনুন। বাসার ঠিকানা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "address-for-a-home-entrance"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “home address written as location information”."
+    },
+    "yes": {
+     "id": "finding-a-home-by-its-address--address-for-a-home-entrance--yes--e2dbb82aef0f3d53",
+     "text": "খুব ভালো। বাসার ঠিকানা।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "address-for-a-home-entrance"
+      }
+     ],
+     "english": "Very good! This is “home address written as location information”."
+    },
+    "recast": {
+     "id": "finding-a-home-by-its-address--address-for-a-home-entrance--recast--115bccb85c1373e2",
+     "text": "এই ছবিটা দেখুন। বাসার ঠিকানা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "address-for-a-home-entrance"
+      }
+     ],
+     "english": "Look at this picture. This is “home address written as location information”."
+    },
+    "examples": [
+     {
+      "id": "finding-a-home-by-its-address--address-for-a-home-entrance--example-1--0ad8c2a133f17bd2",
+      "text": "বাসার ঠিকানাটা লিখে দেন",
+      "fallback": [
+       {
+        "clip": "0ad8c2a133f17bd28cb2"
+       }
+      ]
+     }
+    ]
+   },
+   "name-plate-for-a-street": {
+    "word": {
+     "id": "finding-a-home-by-its-address--name-plate-for-a-street--word--89bebcbfc22d47cf",
+     "text": "রাস্তার নাম",
+     "fallback": [
+      {
+       "word": "name-plate-for-a-street"
+      }
+     ]
+    },
+    "ask": {
+     "id": "finding-a-home-by-its-address--name-plate-for-a-street--ask--fe4888faa0e5f34a",
+     "text": "রাস্তার নাম। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "name-plate-for-a-street"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “street name on a neighborhood road sign”? Show me."
+    },
+    "yes": {
+     "id": "finding-a-home-by-its-address--name-plate-for-a-street--yes--15d35053c607a939",
+     "text": "খুব ভালো। রাস্তার নাম।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "name-plate-for-a-street"
+      }
+     ],
+     "english": "Very good! This is “street name on a neighborhood road sign”."
+    },
+    "recast": {
+     "id": "finding-a-home-by-its-address--name-plate-for-a-street--recast--c0bb852c2c640966",
+     "text": "এই ছবিটা দেখুন। রাস্তার নাম।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "name-plate-for-a-street"
+      }
+     ],
+     "english": "Look at this picture. This is “street name on a neighborhood road sign”."
+    },
+    "examples": [
+     {
+      "id": "finding-a-home-by-its-address--name-plate-for-a-street--example-1--fb4546720b1aad25",
+      "text": "এই রাস্তার নামটা কী?",
+      "fallback": [
+       {
+        "clip": "fb4546720b1aad25e159"
+       }
+      ]
+     }
+    ]
+   },
+   "local-neighborhood-block": {
+    "word": {
+     "id": "finding-a-home-by-its-address--local-neighborhood-block--word--ebcdf6194b8c6c8e",
+     "text": "মহল্লা",
+     "fallback": [
+      {
+       "word": "local-neighborhood-block"
+      }
+     ]
+    },
+    "ask": {
+     "id": "finding-a-home-by-its-address--local-neighborhood-block--ask--4f8f0a641c47f2cb",
+     "text": "খুঁজে দেখুন। মহল্লা।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "local-neighborhood-block"
+      }
+     ],
+     "english": "Find “a local residential neighborhood block”."
+    },
+    "yes": {
+     "id": "finding-a-home-by-its-address--local-neighborhood-block--yes--ba0739225a207362",
+     "text": "খুব ভালো। মহল্লা।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "local-neighborhood-block"
+      }
+     ],
+     "english": "Very good! This is “a local residential neighborhood block”."
+    },
+    "recast": {
+     "id": "finding-a-home-by-its-address--local-neighborhood-block--recast--326a32a027375132",
+     "text": "এই ছবিটা দেখুন। মহল্লা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "local-neighborhood-block"
+      }
+     ],
+     "english": "Look at this picture. This is “a local residential neighborhood block”."
+    },
+    "examples": [
+     {
+      "id": "finding-a-home-by-its-address--local-neighborhood-block--example-1--6d5eb9c1720f61ad",
+      "text": "আমরা একই মহল্লায় থাকি",
+      "fallback": [
+       {
+        "clip": "6d5eb9c1720f61ad88fd"
+       }
+      ]
+     }
+    ]
+   },
+   "ground-floor-in-a-building": {
+    "word": {
+     "id": "finding-a-home-by-its-address--ground-floor-in-a-building--word--e0c87312881238d4",
+     "text": "নিচতলা",
+     "fallback": [
+      {
+       "word": "ground-floor-in-a-building"
+      }
+     ]
+    },
+    "ask": {
+     "id": "finding-a-home-by-its-address--ground-floor-in-a-building--ask--5e2847b808afbcea",
+     "text": "নিচতলা। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "ground-floor-in-a-building"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “ground floor of a Bangladeshi building”? Show me."
+    },
+    "yes": {
+     "id": "finding-a-home-by-its-address--ground-floor-in-a-building--yes--032d3258bc5e7f58",
+     "text": "বাহ্। নিচতলা।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "ground-floor-in-a-building"
+      }
+     ],
+     "english": "Wow! This is “ground floor of a Bangladeshi building”."
+    },
+    "recast": {
+     "id": "finding-a-home-by-its-address--ground-floor-in-a-building--recast--974058bbd31e236b",
+     "text": "এই ছবিটা দেখুন। নিচতলা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ground-floor-in-a-building"
+      }
+     ],
+     "english": "Look at this picture. This is “ground floor of a Bangladeshi building”."
+    },
+    "examples": [
+     {
+      "id": "finding-a-home-by-its-address--ground-floor-in-a-building--example-1--67f80635ff12bc29",
+      "text": "আমার বাসা নিচতলায়",
+      "fallback": [
+       {
+        "clip": "67f80635ff12bc29351c"
+       }
+      ]
+     }
+    ]
+   },
+   "third-floor-home-in-a-building": {
+    "word": {
+     "id": "finding-a-home-by-its-address--third-floor-home-in-a-building--word--ae5f8aa933e77dea",
+     "text": "তিনতলার বাসা",
+     "fallback": [
+      {
+       "word": "third-floor-home-in-a-building"
+      }
+     ]
+    },
+    "ask": {
+     "id": "finding-a-home-by-its-address--third-floor-home-in-a-building--ask--4105b13d183384de",
+     "text": "মন দিয়ে শুনুন। তিনতলার বাসা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "third-floor-home-in-a-building"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “third floor apartment above the first and second floors”."
+    },
+    "yes": {
+     "id": "finding-a-home-by-its-address--third-floor-home-in-a-building--yes--17041510043a0aff",
+     "text": "দারুণ। তিনতলার বাসা।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "third-floor-home-in-a-building"
+      }
+     ],
+     "english": "Great! This is “third floor apartment above the first and second floors”."
+    },
+    "recast": {
+     "id": "finding-a-home-by-its-address--third-floor-home-in-a-building--recast--521d40a5dc130278",
+     "text": "এই ছবিটা দেখুন। তিনতলার বাসা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "third-floor-home-in-a-building"
+      }
+     ],
+     "english": "Look at this picture. This is “third floor apartment above the first and second floors”."
+    },
+    "examples": [
+     {
+      "id": "finding-a-home-by-its-address--third-floor-home-in-a-building--example-1--920dae009c400956",
+      "text": "আমরা তিনতলায় থাকি",
+      "fallback": [
+       {
+        "clip": "920dae009c4009562f88"
+       }
+      ]
+     }
+    ]
+   },
+   "directly-next-door-home": {
+    "word": {
+     "id": "finding-a-home-by-its-address--directly-next-door-home--word--e5900627e578f7ee",
+     "text": "পাশের বাসা",
+     "fallback": [
+      {
+       "word": "directly-next-door-home"
+      }
+     ]
+    },
+    "ask": {
+     "id": "finding-a-home-by-its-address--directly-next-door-home--ask--5c1873027c04a69a",
+     "text": "খুঁজে দেখুন। পাশের বাসা।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "directly-next-door-home"
+      }
+     ],
+     "english": "Find “neighboring home immediately next door”."
+    },
+    "yes": {
+     "id": "finding-a-home-by-its-address--directly-next-door-home--yes--6772318f82abb3bc",
+     "text": "বাহ্। পাশের বাসা।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "directly-next-door-home"
+      }
+     ],
+     "english": "Wow! This is “neighboring home immediately next door”."
+    },
+    "recast": {
+     "id": "finding-a-home-by-its-address--directly-next-door-home--recast--654dd9bac2f60693",
+     "text": "এই ছবিটা দেখুন। পাশের বাসা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "directly-next-door-home"
+      }
+     ],
+     "english": "Look at this picture. This is “neighboring home immediately next door”."
+    },
+    "examples": [
+     {
+      "id": "finding-a-home-by-its-address--directly-next-door-home--example-1--f5d702184c7655fd",
+      "text": "চাবি পাশের বাসায় রেখে দেন",
+      "fallback": [
+       {
+        "clip": "f5d702184c7655fda3bc"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "taking-a-neighborhood-rickshaw": {
+   "bangladesh-pedal-passenger-rickshaw": {
+    "word": {
+     "id": "taking-a-neighborhood-rickshaw--bangladesh-pedal-passenger-rickshaw--word--9560fa262764b5bd",
+     "text": "রিকশা",
+     "fallback": [
+      {
+       "word": "bangladesh-pedal-passenger-rickshaw"
+      }
+     ]
+    },
+    "ask": {
+     "id": "taking-a-neighborhood-rickshaw--bangladesh-pedal-passenger-rickshaw--ask--530999734e70b8f1",
+     "text": "রিকশা। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "bangladesh-pedal-passenger-rickshaw"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “Bangladeshi pedal passenger rickshaw”? Show me."
+    },
+    "yes": {
+     "id": "taking-a-neighborhood-rickshaw--bangladesh-pedal-passenger-rickshaw--yes--61a31188f1ce08f5",
+     "text": "বাহ্। রিকশা।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "bangladesh-pedal-passenger-rickshaw"
+      }
+     ],
+     "english": "Wow! This is “Bangladeshi pedal passenger rickshaw”."
+    },
+    "recast": {
+     "id": "taking-a-neighborhood-rickshaw--bangladesh-pedal-passenger-rickshaw--recast--88cfbc611474fc69",
+     "text": "এই ছবিটা দেখুন। রিকশা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "bangladesh-pedal-passenger-rickshaw"
+      }
+     ],
+     "english": "Look at this picture. This is “Bangladeshi pedal passenger rickshaw”."
+    },
+    "examples": [
+     {
+      "id": "taking-a-neighborhood-rickshaw--bangladesh-pedal-passenger-rickshaw--example-1--160bd4133ee2e0ec",
+      "text": "এখানে রিকশা পাওয়া যায়?",
+      "fallback": [
+       {
+        "clip": "160bd4133ee2e0eca605"
+       }
+      ]
+     }
+    ]
+   },
+   "neighborhood-rickshaw-driver": {
+    "word": {
+     "id": "taking-a-neighborhood-rickshaw--neighborhood-rickshaw-driver--word--825db934df057804",
+     "text": "রিকশাওয়ালা",
+     "fallback": [
+      {
+       "word": "neighborhood-rickshaw-driver"
+      }
+     ]
+    },
+    "ask": {
+     "id": "taking-a-neighborhood-rickshaw--neighborhood-rickshaw-driver--ask--bc581f9fc281e521",
+     "text": "খুঁজে দেখুন। রিকশাওয়ালা।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "neighborhood-rickshaw-driver"
+      }
+     ],
+     "english": "Find “person who pedals a passenger rickshaw”."
+    },
+    "yes": {
+     "id": "taking-a-neighborhood-rickshaw--neighborhood-rickshaw-driver--yes--66a2fbb2ab3fcfe7",
+     "text": "একদম ঠিক। রিকশাওয়ালা।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "neighborhood-rickshaw-driver"
+      }
+     ],
+     "english": "Exactly right! This is “person who pedals a passenger rickshaw”."
+    },
+    "recast": {
+     "id": "taking-a-neighborhood-rickshaw--neighborhood-rickshaw-driver--recast--1aaf727b77f9165d",
+     "text": "এই ছবিটা দেখুন। রিকশাওয়ালা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "neighborhood-rickshaw-driver"
+      }
+     ],
+     "english": "Look at this picture. This is “person who pedals a passenger rickshaw”."
+    },
+    "examples": [
+     {
+      "id": "taking-a-neighborhood-rickshaw--neighborhood-rickshaw-driver--example-1--d0aaa56828b71ffc",
+      "text": "রিকশাওয়ালাকে ঠিকানাটা বলেন",
+      "fallback": [
+       {
+        "clip": "d0aaa56828b71ffc6d99"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-if-a-driver-will-go": {
+    "word": {
+     "id": "taking-a-neighborhood-rickshaw--ask-if-a-driver-will-go--word--54cd54a82471a4ce",
+     "text": "যাবেন ভাই?",
+     "fallback": [
+      {
+       "word": "ask-if-a-driver-will-go"
+      }
+     ]
+    },
+    "ask": {
+     "id": "taking-a-neighborhood-rickshaw--ask-if-a-driver-will-go--ask--69023bcc5308f80e",
+     "text": "মন দিয়ে শুনুন। যাবেন ভাই?। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "ask-if-a-driver-will-go"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “ask a rickshaw driver if they will go to your destination”."
+    },
+    "yes": {
+     "id": "taking-a-neighborhood-rickshaw--ask-if-a-driver-will-go--yes--21c61041f4c7751a",
+     "text": "শাবাশ। যাবেন ভাই?।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "ask-if-a-driver-will-go"
+      }
+     ],
+     "english": "Well done! This is “ask a rickshaw driver if they will go to your destination”."
+    },
+    "recast": {
+     "id": "taking-a-neighborhood-rickshaw--ask-if-a-driver-will-go--recast--a7f057749da5091f",
+     "text": "এই ছবিটা দেখুন। যাবেন ভাই?।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-if-a-driver-will-go"
+      }
+     ],
+     "english": "Look at this picture. This is “ask a rickshaw driver if they will go to your destination”."
+    },
+    "examples": [
+     {
+      "id": "taking-a-neighborhood-rickshaw--ask-if-a-driver-will-go--example-1--51ecdc17ec175c23",
+      "text": "ভাই, বাজারে যাবেন?",
+      "fallback": [
+       {
+        "clip": "51ecdc17ec175c233609"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-how-much-the-ride-costs": {
+    "word": {
+     "id": "taking-a-neighborhood-rickshaw--ask-how-much-the-ride-costs--word--c0b1248611f22bb0",
+     "text": "ভাড়া কত?",
+     "fallback": [
+      {
+       "word": "ask-how-much-the-ride-costs"
+      }
+     ]
+    },
+    "ask": {
+     "id": "taking-a-neighborhood-rickshaw--ask-how-much-the-ride-costs--ask--047156d618581661",
+     "text": "ভাড়া কত?। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "ask-how-much-the-ride-costs"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “ask what the fare is for the ride”? Show me."
+    },
+    "yes": {
+     "id": "taking-a-neighborhood-rickshaw--ask-how-much-the-ride-costs--yes--536b778720cb9d04",
+     "text": "বাহ্। ভাড়া কত?।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "ask-how-much-the-ride-costs"
+      }
+     ],
+     "english": "Wow! This is “ask what the fare is for the ride”."
+    },
+    "recast": {
+     "id": "taking-a-neighborhood-rickshaw--ask-how-much-the-ride-costs--recast--554f6298effb6826",
+     "text": "এই ছবিটা দেখুন। ভাড়া কত?।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-how-much-the-ride-costs"
+      }
+     ],
+     "english": "Look at this picture. This is “ask what the fare is for the ride”."
+    },
+    "examples": [
+     {
+      "id": "taking-a-neighborhood-rickshaw--ask-how-much-the-ride-costs--example-1--4e6049b86230f522",
+      "text": "ভাই, ওখানে ভাড়া কত?",
+      "fallback": [
+       {
+        "clip": "4e6049b86230f522af0f"
+       }
+      ]
+     }
+    ]
+   },
+   "say-there-will-be-two-riders": {
+    "word": {
+     "id": "taking-a-neighborhood-rickshaw--say-there-will-be-two-riders--word--74b6de79e15596b8",
+     "text": "দুজন যাব",
+     "fallback": [
+      {
+       "word": "say-there-will-be-two-riders"
+      }
+     ]
+    },
+    "ask": {
+     "id": "taking-a-neighborhood-rickshaw--say-there-will-be-two-riders--ask--6ed6edd30db353bc",
+     "text": "খুঁজে দেখুন। দুজন যাব।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "say-there-will-be-two-riders"
+      }
+     ],
+     "english": "Find “say that two people will be taking the ride”."
+    },
+    "yes": {
+     "id": "taking-a-neighborhood-rickshaw--say-there-will-be-two-riders--yes--b11609b0d2e54bac",
+     "text": "বাহ্। দুজন যাব।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "say-there-will-be-two-riders"
+      }
+     ],
+     "english": "Wow! This is “say that two people will be taking the ride”."
+    },
+    "recast": {
+     "id": "taking-a-neighborhood-rickshaw--say-there-will-be-two-riders--recast--1b25a4e967ff73ea",
+     "text": "এই ছবিটা দেখুন। দুজন যাব।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "say-there-will-be-two-riders"
+      }
+     ],
+     "english": "Look at this picture. This is “say that two people will be taking the ride”."
+    },
+    "examples": [
+     {
+      "id": "taking-a-neighborhood-rickshaw--say-there-will-be-two-riders--example-1--ccc82186ec94be24",
+      "text": "আমরা দুজন যাব",
+      "fallback": [
+       {
+        "clip": "ccc82186ec94be249959"
+       }
+      ]
+     }
+    ]
+   },
+   "tell-the-driver-okay-lets-go": {
+    "word": {
+     "id": "taking-a-neighborhood-rickshaw--tell-the-driver-okay-lets-go--word--80f61b3d1b39bd3d",
+     "text": "ঠিক আছে, চলেন",
+     "fallback": [
+      {
+       "word": "tell-the-driver-okay-lets-go"
+      }
+     ]
+    },
+    "ask": {
+     "id": "taking-a-neighborhood-rickshaw--tell-the-driver-okay-lets-go--ask--fcfa111eb4afe0b6",
+     "text": "ঠিক আছে, চলেন। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "tell-the-driver-okay-lets-go"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “agree on the ride and say let's go”? Show me."
+    },
+    "yes": {
+     "id": "taking-a-neighborhood-rickshaw--tell-the-driver-okay-lets-go--yes--bc08d7a95d0702fa",
+     "text": "দারুণ। ঠিক আছে, চলেন।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "tell-the-driver-okay-lets-go"
+      }
+     ],
+     "english": "Great! This is “agree on the ride and say let's go”."
+    },
+    "recast": {
+     "id": "taking-a-neighborhood-rickshaw--tell-the-driver-okay-lets-go--recast--8d0d889634af69eb",
+     "text": "এই ছবিটা দেখুন। ঠিক আছে, চলেন।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "tell-the-driver-okay-lets-go"
+      }
+     ],
+     "english": "Look at this picture. This is “agree on the ride and say let's go”."
+    },
+    "examples": [
+     {
+      "id": "taking-a-neighborhood-rickshaw--tell-the-driver-okay-lets-go--example-1--8a91c9b9169f021f",
+      "text": "ঠিক আছে ভাই, চলেন",
+      "fallback": [
+       {
+        "clip": "8a91c9b9169f021f8403"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "directions-with-a-bridge-and-a-turn": {
+   "before-reaching-a-bridge": {
+    "word": {
+     "id": "directions-with-a-bridge-and-a-turn--before-reaching-a-bridge--word--316265349cb58fb6",
+     "text": "পুলের আগে",
+     "fallback": [
+      {
+       "word": "before-reaching-a-bridge"
+      }
+     ]
+    },
+    "ask": {
+     "id": "directions-with-a-bridge-and-a-turn--before-reaching-a-bridge--ask--52c4e1c967822f3d",
+     "text": "মন দিয়ে শুনুন। পুলের আগে। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "before-reaching-a-bridge"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “before reaching a bridge on the way”."
+    },
+    "yes": {
+     "id": "directions-with-a-bridge-and-a-turn--before-reaching-a-bridge--yes--ab968d18f7296de1",
+     "text": "একদম ঠিক। পুলের আগে।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "before-reaching-a-bridge"
+      }
+     ],
+     "english": "Exactly right! This is “before reaching a bridge on the way”."
+    },
+    "recast": {
+     "id": "directions-with-a-bridge-and-a-turn--before-reaching-a-bridge--recast--44459183aeee9559",
+     "text": "এই ছবিটা দেখুন। পুলের আগে।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "before-reaching-a-bridge"
+      }
+     ],
+     "english": "Look at this picture. This is “before reaching a bridge on the way”."
+    },
+    "examples": [
+     {
+      "id": "directions-with-a-bridge-and-a-turn--before-reaching-a-bridge--example-1--5c1034bb1ae1ec23",
+      "text": "পুলের আগে বাঁয়ে দেখেন",
+      "fallback": [
+       {
+        "clip": "5c1034bb1ae1ec232a93"
+       }
+      ]
+     }
+    ]
+   },
+   "just-after-a-street-turn": {
+    "word": {
+     "id": "directions-with-a-bridge-and-a-turn--just-after-a-street-turn--word--4933c8e127d4fd9c",
+     "text": "মোড়ের পরে",
+     "fallback": [
+      {
+       "word": "just-after-a-street-turn"
+      }
+     ]
+    },
+    "ask": {
+     "id": "directions-with-a-bridge-and-a-turn--just-after-a-street-turn--ask--db85711822eda35b",
+     "text": "খুঁজে দেখুন। মোড়ের পরে।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "just-after-a-street-turn"
+      }
+     ],
+     "english": "Find “just after rounding a street corner”."
+    },
+    "yes": {
+     "id": "directions-with-a-bridge-and-a-turn--just-after-a-street-turn--yes--7ecc8dbf7f73104d",
+     "text": "চমৎকার। মোড়ের পরে।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "just-after-a-street-turn"
+      }
+     ],
+     "english": "Excellent! This is “just after rounding a street corner”."
+    },
+    "recast": {
+     "id": "directions-with-a-bridge-and-a-turn--just-after-a-street-turn--recast--32d935f29e56a0cb",
+     "text": "এই ছবিটা দেখুন। মোড়ের পরে।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "just-after-a-street-turn"
+      }
+     ],
+     "english": "Look at this picture. This is “just after rounding a street corner”."
+    },
+    "examples": [
+     {
+      "id": "directions-with-a-bridge-and-a-turn--just-after-a-street-turn--example-1--9a679882e0ebcdc8",
+      "text": "মোড়ের পরে দোকানটা",
+      "fallback": [
+       {
+        "clip": "9a679882e0ebcdc8f094"
+       }
+      ]
+     }
+    ]
+   },
+   "this-side-of-the-water": {
+    "word": {
+     "id": "directions-with-a-bridge-and-a-turn--this-side-of-the-water--word--5df0d34c7cbe0f85",
+     "text": "এপারে",
+     "fallback": [
+      {
+       "word": "this-side-of-the-water"
+      }
+     ]
+    },
+    "ask": {
+     "id": "directions-with-a-bridge-and-a-turn--this-side-of-the-water--ask--4b120fede6944858",
+     "text": "মন দিয়ে শুনুন। এপারে। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "this-side-of-the-water"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “on this side of the river”."
+    },
+    "yes": {
+     "id": "directions-with-a-bridge-and-a-turn--this-side-of-the-water--yes--6cca0194bee09864",
+     "text": "বাহ্। এপারে।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "this-side-of-the-water"
+      }
+     ],
+     "english": "Wow! This is “on this side of the river”."
+    },
+    "recast": {
+     "id": "directions-with-a-bridge-and-a-turn--this-side-of-the-water--recast--13e6c6d19dae6668",
+     "text": "এই ছবিটা দেখুন। এপারে।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "this-side-of-the-water"
+      }
+     ],
+     "english": "Look at this picture. This is “on this side of the river”."
+    },
+    "examples": [
+     {
+      "id": "directions-with-a-bridge-and-a-turn--this-side-of-the-water--example-1--06a3e1236963044b",
+      "text": "আমি নদীর এপারে আছি",
+      "fallback": [
+       {
+        "clip": "06a3e1236963044b9958"
+       }
+      ]
+     }
+    ]
+   },
+   "on-the-other-side-of-water": {
+    "word": {
+     "id": "directions-with-a-bridge-and-a-turn--on-the-other-side-of-water--word--2c6016861e447470",
+     "text": "ওপারে",
+     "fallback": [
+      {
+       "word": "on-the-other-side-of-water"
+      }
+     ]
+    },
+    "ask": {
+     "id": "directions-with-a-bridge-and-a-turn--on-the-other-side-of-water--ask--fb2c13a16bef2635",
+     "text": "খুঁজে দেখুন। ওপারে।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "on-the-other-side-of-water"
+      }
+     ],
+     "english": "Find “across on the other side of the river”."
+    },
+    "yes": {
+     "id": "directions-with-a-bridge-and-a-turn--on-the-other-side-of-water--yes--26db2cec09d9d052",
+     "text": "শাবাশ। ওপারে।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "on-the-other-side-of-water"
+      }
+     ],
+     "english": "Well done! This is “across on the other side of the river”."
+    },
+    "recast": {
+     "id": "directions-with-a-bridge-and-a-turn--on-the-other-side-of-water--recast--c3fa2e89c95cc528",
+     "text": "এই ছবিটা দেখুন। ওপারে।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "on-the-other-side-of-water"
+      }
+     ],
+     "english": "Look at this picture. This is “across on the other side of the river”."
+    },
+    "examples": [
+     {
+      "id": "directions-with-a-bridge-and-a-turn--on-the-other-side-of-water--example-1--1a561747ce824b32",
+      "text": "ওপারে বাজারটা আছে",
+      "fallback": [
+       {
+        "clip": "1a561747ce824b32ce56"
+       }
+      ]
+     }
+    ]
+   },
+   "walk-along-this-road": {
+    "word": {
+     "id": "directions-with-a-bridge-and-a-turn--walk-along-this-road--word--38cffece67a86ede",
+     "text": "এই রাস্তা ধরে যান",
+     "fallback": [
+      {
+       "word": "walk-along-this-road"
+      }
+     ]
+    },
+    "ask": {
+     "id": "directions-with-a-bridge-and-a-turn--walk-along-this-road--ask--1ef001225cebfe63",
+     "text": "মন দিয়ে শুনুন। এই রাস্তা ধরে যান। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "walk-along-this-road"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “go along this road”."
+    },
+    "yes": {
+     "id": "directions-with-a-bridge-and-a-turn--walk-along-this-road--yes--e8dbe6c914f42fd8",
+     "text": "একদম ঠিক। এই রাস্তা ধরে যান।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "walk-along-this-road"
+      }
+     ],
+     "english": "Exactly right! This is “go along this road”."
+    },
+    "recast": {
+     "id": "directions-with-a-bridge-and-a-turn--walk-along-this-road--recast--154b42eac07c4dcd",
+     "text": "এই ছবিটা দেখুন। এই রাস্তা ধরে যান।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "walk-along-this-road"
+      }
+     ],
+     "english": "Look at this picture. This is “go along this road”."
+    },
+    "examples": [
+     {
+      "id": "directions-with-a-bridge-and-a-turn--walk-along-this-road--example-1--5ddd8b4dafee071e",
+      "text": "এই রাস্তা ধরে গেলে বাজার পাবেন",
+      "fallback": [
+       {
+        "clip": "5ddd8b4dafee071edbc6"
+       }
+      ]
+     }
+    ]
+   },
+   "take-that-narrow-lane": {
+    "word": {
+     "id": "directions-with-a-bridge-and-a-turn--take-that-narrow-lane--word--6a949270208efd9c",
+     "text": "ওই গলি দিয়ে যান",
+     "fallback": [
+      {
+       "word": "take-that-narrow-lane"
+      }
+     ]
+    },
+    "ask": {
+     "id": "directions-with-a-bridge-and-a-turn--take-that-narrow-lane--ask--2fa65406de751f28",
+     "text": "মন দিয়ে শুনুন। ওই গলি দিয়ে যান। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "take-that-narrow-lane"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “go through that lane”."
+    },
+    "yes": {
+     "id": "directions-with-a-bridge-and-a-turn--take-that-narrow-lane--yes--bb288f3e135667d4",
+     "text": "শাবাশ। ওই গলি দিয়ে যান।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "take-that-narrow-lane"
+      }
+     ],
+     "english": "Well done! This is “go through that lane”."
+    },
+    "recast": {
+     "id": "directions-with-a-bridge-and-a-turn--take-that-narrow-lane--recast--983850119a62baaf",
+     "text": "এই ছবিটা দেখুন। ওই গলি দিয়ে যান।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "take-that-narrow-lane"
+      }
+     ],
+     "english": "Look at this picture. This is “go through that lane”."
+    },
+    "examples": [
+     {
+      "id": "directions-with-a-bridge-and-a-turn--take-that-narrow-lane--example-1--351a8049e04de600",
+      "text": "ওই গলি দিয়ে ভেতরে যান",
+      "fallback": [
+       {
+        "clip": "351a8049e04de6000124"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "setting-a-day-and-a-time": {
+   "previous-day-on-a-calendar": {
+    "word": {
+     "id": "setting-a-day-and-a-time--previous-day-on-a-calendar--word--b34ad5993c308014",
+     "text": "গতকাল",
+     "fallback": [
+      {
+       "word": "previous-day-on-a-calendar"
+      }
+     ]
+    },
+    "ask": {
+     "id": "setting-a-day-and-a-time--previous-day-on-a-calendar--ask--f9fe553e09083069",
+     "text": "খুঁজে দেখুন। গতকাল।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "previous-day-on-a-calendar"
+      }
+     ],
+     "english": "Find “yesterday relative to today”."
+    },
+    "yes": {
+     "id": "setting-a-day-and-a-time--previous-day-on-a-calendar--yes--caff820bd9b1e699",
+     "text": "দারুণ। গতকাল।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "previous-day-on-a-calendar"
+      }
+     ],
+     "english": "Great! This is “yesterday relative to today”."
+    },
+    "recast": {
+     "id": "setting-a-day-and-a-time--previous-day-on-a-calendar--recast--d75298db0a046284",
+     "text": "এই ছবিটা দেখুন। গতকাল।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "previous-day-on-a-calendar"
+      }
+     ],
+     "english": "Look at this picture. This is “yesterday relative to today”."
+    },
+    "examples": [
+     {
+      "id": "setting-a-day-and-a-time--previous-day-on-a-calendar--example-1--b1f910725b8b711a",
+      "text": "গতকাল বৃষ্টি ছিল",
+      "fallback": [
+       {
+        "clip": "b1f910725b8b711a1b01"
+       }
+      ]
+     }
+    ]
+   },
+   "current-day-on-a-calendar": {
+    "word": {
+     "id": "setting-a-day-and-a-time--current-day-on-a-calendar--word--5db5eb0a69a50726",
+     "text": "আজ",
+     "fallback": [
+      {
+       "word": "current-day-on-a-calendar"
+      }
+     ]
+    },
+    "ask": {
+     "id": "setting-a-day-and-a-time--current-day-on-a-calendar--ask--201166b89a2f080d",
+     "text": "আজ। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "current-day-on-a-calendar"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “today as the current calendar day”? Show me."
+    },
+    "yes": {
+     "id": "setting-a-day-and-a-time--current-day-on-a-calendar--yes--fd65d862df723f3c",
+     "text": "চমৎকার। আজ।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "current-day-on-a-calendar"
+      }
+     ],
+     "english": "Excellent! This is “today as the current calendar day”."
+    },
+    "recast": {
+     "id": "setting-a-day-and-a-time--current-day-on-a-calendar--recast--8744fd1fceb22689",
+     "text": "এই ছবিটা দেখুন। আজ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "current-day-on-a-calendar"
+      }
+     ],
+     "english": "Look at this picture. This is “today as the current calendar day”."
+    },
+    "examples": [
+     {
+      "id": "setting-a-day-and-a-time--current-day-on-a-calendar--example-1--d8b7b180fb50de9e",
+      "text": "আজ আসতে পারবেন?",
+      "fallback": [
+       {
+        "clip": "d8b7b180fb50de9e3e76"
+       }
+      ]
+     }
+    ]
+   },
+   "next-day-on-a-calendar": {
+    "word": {
+     "id": "setting-a-day-and-a-time--next-day-on-a-calendar--word--f60d1f61f0051bb9",
+     "text": "কাল আসব",
+     "fallback": [
+      {
+       "word": "next-day-on-a-calendar"
+      }
+     ]
+    },
+    "ask": {
+     "id": "setting-a-day-and-a-time--next-day-on-a-calendar--ask--642ad277c71b36c0",
+     "text": "কাল আসব। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "next-day-on-a-calendar"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “say you will come tomorrow”? Show me."
+    },
+    "yes": {
+     "id": "setting-a-day-and-a-time--next-day-on-a-calendar--yes--80b888807f2b4554",
+     "text": "খুব ভালো। কাল আসব।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "next-day-on-a-calendar"
+      }
+     ],
+     "english": "Very good! This is “say you will come tomorrow”."
+    },
+    "recast": {
+     "id": "setting-a-day-and-a-time--next-day-on-a-calendar--recast--c68b1f3c71c5dcae",
+     "text": "এই ছবিটা দেখুন। কাল আসব।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "next-day-on-a-calendar"
+      }
+     ],
+     "english": "Look at this picture. This is “say you will come tomorrow”."
+    },
+    "examples": [
+     {
+      "id": "setting-a-day-and-a-time--next-day-on-a-calendar--example-1--46a985ac8cc1a6a4",
+      "text": "আজ পারব না, কাল আসব",
+      "fallback": [
+       {
+        "clip": "46a985ac8cc1a6a450e8"
+       }
+      ]
+     }
+    ]
+   },
+   "day-after-tomorrow-on-a-calendar": {
+    "word": {
+     "id": "setting-a-day-and-a-time--day-after-tomorrow-on-a-calendar--word--1dc3ea2ee3e0bf46",
+     "text": "পরশু যাব",
+     "fallback": [
+      {
+       "word": "day-after-tomorrow-on-a-calendar"
+      }
+     ]
+    },
+    "ask": {
+     "id": "setting-a-day-and-a-time--day-after-tomorrow-on-a-calendar--ask--aa687d442520a7e0",
+     "text": "পরশু যাব। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "day-after-tomorrow-on-a-calendar"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “say you will go the day after tomorrow”? Show me."
+    },
+    "yes": {
+     "id": "setting-a-day-and-a-time--day-after-tomorrow-on-a-calendar--yes--80b503e8bc272541",
+     "text": "চমৎকার। পরশু যাব।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "day-after-tomorrow-on-a-calendar"
+      }
+     ],
+     "english": "Excellent! This is “say you will go the day after tomorrow”."
+    },
+    "recast": {
+     "id": "setting-a-day-and-a-time--day-after-tomorrow-on-a-calendar--recast--496676702c8c45d1",
+     "text": "এই ছবিটা দেখুন। পরশু যাব।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "day-after-tomorrow-on-a-calendar"
+      }
+     ],
+     "english": "Look at this picture. This is “say you will go the day after tomorrow”."
+    },
+    "examples": [
+     {
+      "id": "setting-a-day-and-a-time--day-after-tomorrow-on-a-calendar--example-1--d477add4524feb9c",
+      "text": "আমি পরশু বাজারে যাব",
+      "fallback": [
+       {
+        "clip": "d477add4524feb9cd038"
+       }
+      ]
+     }
+    ]
+   },
+   "do-it-right-now": {
+    "word": {
+     "id": "setting-a-day-and-a-time--do-it-right-now--word--62143d108c446f6c",
+     "text": "এখনই",
+     "fallback": [
+      {
+       "word": "do-it-right-now"
+      }
+     ]
+    },
+    "ask": {
+     "id": "setting-a-day-and-a-time--do-it-right-now--ask--3793c59d28dafc6c",
+     "text": "মন দিয়ে শুনুন। এখনই। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "do-it-right-now"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “right now, with no delay”."
+    },
+    "yes": {
+     "id": "setting-a-day-and-a-time--do-it-right-now--yes--b5fc830cac798a14",
+     "text": "বাহ্। এখনই।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "do-it-right-now"
+      }
+     ],
+     "english": "Wow! This is “right now, with no delay”."
+    },
+    "recast": {
+     "id": "setting-a-day-and-a-time--do-it-right-now--recast--d1b442832b1e4eb9",
+     "text": "এই ছবিটা দেখুন। এখনই।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "do-it-right-now"
+      }
+     ],
+     "english": "Look at this picture. This is “right now, with no delay”."
+    },
+    "examples": [
+     {
+      "id": "setting-a-day-and-a-time--do-it-right-now--example-1--28897bce722c618e",
+      "text": "এখনই আসেন",
+      "fallback": [
+       {
+        "clip": "28897bce722c618e5d0c"
+       }
+      ]
+     }
+    ]
+   },
+   "wait-a-little-then-do-it": {
+    "word": {
+     "id": "setting-a-day-and-a-time--wait-a-little-then-do-it--word--496d7cf9cf904956",
+     "text": "একটু পরে",
+     "fallback": [
+      {
+       "word": "wait-a-little-then-do-it"
+      }
+     ]
+    },
+    "ask": {
+     "id": "setting-a-day-and-a-time--wait-a-little-then-do-it--ask--1ae703a9be68f1e8",
+     "text": "মন দিয়ে শুনুন। একটু পরে। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "wait-a-little-then-do-it"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “after a short delay”."
+    },
+    "yes": {
+     "id": "setting-a-day-and-a-time--wait-a-little-then-do-it--yes--a587dcd17cda065a",
+     "text": "চমৎকার। একটু পরে।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "wait-a-little-then-do-it"
+      }
+     ],
+     "english": "Excellent! This is “after a short delay”."
+    },
+    "recast": {
+     "id": "setting-a-day-and-a-time--wait-a-little-then-do-it--recast--4121e52e107c8d07",
+     "text": "এই ছবিটা দেখুন। একটু পরে।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "wait-a-little-then-do-it"
+      }
+     ],
+     "english": "Look at this picture. This is “after a short delay”."
+    },
+    "examples": [
+     {
+      "id": "setting-a-day-and-a-time--wait-a-little-then-do-it--example-1--bbf40bfa21d73995",
+      "text": "একটু পরে আসি",
+      "fallback": [
+       {
+        "clip": "bbf40bfa21d7399577c8"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "simple-replies-when-listening": {
+   "say-that-a-demonstration-made-sense": {
+    "word": {
+     "id": "simple-replies-when-listening--say-that-a-demonstration-made-sense--word--27f140b915f84c8b",
+     "text": "বুঝতে পেরেছি",
+     "fallback": [
+      {
+       "word": "say-that-a-demonstration-made-sense"
+      }
+     ]
+    },
+    "ask": {
+     "id": "simple-replies-when-listening--say-that-a-demonstration-made-sense--ask--032372d68955a5c0",
+     "text": "মন দিয়ে শুনুন। বুঝতে পেরেছি। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "say-that-a-demonstration-made-sense"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “say you understood after a demonstration”."
+    },
+    "yes": {
+     "id": "simple-replies-when-listening--say-that-a-demonstration-made-sense--yes--70a2dbbd718aca6e",
+     "text": "হ্যাঁ, ঠিক হয়েছে। বুঝতে পেরেছি।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "say-that-a-demonstration-made-sense"
+      }
+     ],
+     "english": "Yes! This is “say you understood after a demonstration”."
+    },
+    "recast": {
+     "id": "simple-replies-when-listening--say-that-a-demonstration-made-sense--recast--488199f92e83b1f1",
+     "text": "এই ছবিটা দেখুন। বুঝতে পেরেছি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "say-that-a-demonstration-made-sense"
+      }
+     ],
+     "english": "Look at this picture. This is “say you understood after a demonstration”."
+    },
+    "examples": [
+     {
+      "id": "simple-replies-when-listening--say-that-a-demonstration-made-sense--example-1--55049010e46f7bca",
+      "text": "এবার বুঝতে পেরেছি",
+      "fallback": [
+       {
+        "clip": "55049010e46f7bca58a7"
+       }
+      ]
+     }
+    ]
+   },
+   "say-that-you-did-not-understand": {
+    "word": {
+     "id": "simple-replies-when-listening--say-that-you-did-not-understand--word--5d45c99296a91c97",
+     "text": "বুঝতে পারি নাই",
+     "fallback": [
+      {
+       "word": "say-that-you-did-not-understand"
+      }
+     ]
+    },
+    "ask": {
+     "id": "simple-replies-when-listening--say-that-you-did-not-understand--ask--b4fddad78a05e4d8",
+     "text": "মন দিয়ে শুনুন। বুঝতে পারি নাই। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "say-that-you-did-not-understand"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “say you did not understand the words just spoken”."
+    },
+    "yes": {
+     "id": "simple-replies-when-listening--say-that-you-did-not-understand--yes--54cc9e2591612745",
+     "text": "একদম ঠিক। বুঝতে পারি নাই।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "say-that-you-did-not-understand"
+      }
+     ],
+     "english": "Exactly right! This is “say you did not understand the words just spoken”."
+    },
+    "recast": {
+     "id": "simple-replies-when-listening--say-that-you-did-not-understand--recast--2afabe42166de48e",
+     "text": "এই ছবিটা দেখুন। বুঝতে পারি নাই।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "say-that-you-did-not-understand"
+      }
+     ],
+     "english": "Look at this picture. This is “say you did not understand the words just spoken”."
+    },
+    "examples": [
+     {
+      "id": "simple-replies-when-listening--say-that-you-did-not-understand--example-1--33ee846883d245cf",
+      "text": "মাফ করবেন, বুঝতে পারি নাই",
+      "fallback": [
+       {
+        "clip": "33ee846883d245cfaea1"
+       }
+      ]
+     }
+    ]
+   },
+   "say-that-you-do-not-know": {
+    "word": {
+     "id": "simple-replies-when-listening--say-that-you-do-not-know--word--6276675d054bbdf6",
+     "text": "জানি না",
+     "fallback": [
+      {
+       "word": "say-that-you-do-not-know"
+      }
+     ]
+    },
+    "ask": {
+     "id": "simple-replies-when-listening--say-that-you-do-not-know--ask--35605485331c8a7a",
+     "text": "খুঁজে দেখুন। জানি না।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "say-that-you-do-not-know"
+      }
+     ],
+     "english": "Find “say you do not know the answer to a question”."
+    },
+    "yes": {
+     "id": "simple-replies-when-listening--say-that-you-do-not-know--yes--d351a07a0b97c0c4",
+     "text": "বাহ্। জানি না।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "say-that-you-do-not-know"
+      }
+     ],
+     "english": "Wow! This is “say you do not know the answer to a question”."
+    },
+    "recast": {
+     "id": "simple-replies-when-listening--say-that-you-do-not-know--recast--16215435a0649ede",
+     "text": "এই ছবিটা দেখুন। জানি না।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "say-that-you-do-not-know"
+      }
+     ],
+     "english": "Look at this picture. This is “say you do not know the answer to a question”."
+    },
+    "examples": [
+     {
+      "id": "simple-replies-when-listening--say-that-you-do-not-know--example-1--c2fdc59234909ec1",
+      "text": "ওই রাস্তার নাম জানি না",
+      "fallback": [
+       {
+        "clip": "c2fdc59234909ec18364"
+       }
+      ]
+     }
+    ]
+   },
+   "say-that-you-remember": {
+    "word": {
+     "id": "simple-replies-when-listening--say-that-you-remember--word--a988a10334adeb9e",
+     "text": "মনে আছে",
+     "fallback": [
+      {
+       "word": "say-that-you-remember"
+      }
+     ]
+    },
+    "ask": {
+     "id": "simple-replies-when-listening--say-that-you-remember--ask--a2e0ce7b0e2d78c0",
+     "text": "মন দিয়ে শুনুন। মনে আছে। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "say-that-you-remember"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “say you remember recognizable information”."
+    },
+    "yes": {
+     "id": "simple-replies-when-listening--say-that-you-remember--yes--655e5263c067e510",
+     "text": "খুব ভালো। মনে আছে।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "say-that-you-remember"
+      }
+     ],
+     "english": "Very good! This is “say you remember recognizable information”."
+    },
+    "recast": {
+     "id": "simple-replies-when-listening--say-that-you-remember--recast--5172b2e8b02dc5d6",
+     "text": "এই ছবিটা দেখুন। মনে আছে।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "say-that-you-remember"
+      }
+     ],
+     "english": "Look at this picture. This is “say you remember recognizable information”."
+    },
+    "examples": [
+     {
+      "id": "simple-replies-when-listening--say-that-you-remember--example-1--c4185c7e402b7173",
+      "text": "আপনার নামটা মনে আছে",
+      "fallback": [
+       {
+        "clip": "c4185c7e402b71730556"
+       }
+      ]
+     }
+    ]
+   },
+   "unable-to-recall-a-known-word": {
+    "word": {
+     "id": "simple-replies-when-listening--unable-to-recall-a-known-word--word--28c9dd8622f746ed",
+     "text": "মনে পড়ছে না",
+     "fallback": [
+      {
+       "word": "unable-to-recall-a-known-word"
+      }
+     ]
+    },
+    "ask": {
+     "id": "simple-replies-when-listening--unable-to-recall-a-known-word--ask--25bb37ad75c3ff32",
+     "text": "খুঁজে দেখুন। মনে পড়ছে না।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "unable-to-recall-a-known-word"
+      }
+     ],
+     "english": "Find “say a word is familiar but you cannot recall it”."
+    },
+    "yes": {
+     "id": "simple-replies-when-listening--unable-to-recall-a-known-word--yes--e02476a4f1ddabf6",
+     "text": "দারুণ। মনে পড়ছে না।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "unable-to-recall-a-known-word"
+      }
+     ],
+     "english": "Great! This is “say a word is familiar but you cannot recall it”."
+    },
+    "recast": {
+     "id": "simple-replies-when-listening--unable-to-recall-a-known-word--recast--26fd8a994b73389a",
+     "text": "এই ছবিটা দেখুন। মনে পড়ছে না।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "unable-to-recall-a-known-word"
+      }
+     ],
+     "english": "Look at this picture. This is “say a word is familiar but you cannot recall it”."
+    },
+    "examples": [
+     {
+      "id": "simple-replies-when-listening--unable-to-recall-a-known-word--example-1--6bf99bfb94e25053",
+      "text": "শব্দটা মনে পড়ছে না",
+      "fallback": [
+       {
+        "clip": "6bf99bfb94e250530607"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-to-have-a-look-first": {
+    "word": {
+     "id": "simple-replies-when-listening--ask-to-have-a-look-first--word--fdfe38d03bf71c71",
+     "text": "দেখি তো",
+     "fallback": [
+      {
+       "word": "ask-to-have-a-look-first"
+      }
+     ]
+    },
+    "ask": {
+     "id": "simple-replies-when-listening--ask-to-have-a-look-first--ask--3272ac209df664b8",
+     "text": "দেখি তো। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "ask-to-have-a-look-first"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “ask to have a look before answering”? Show me."
+    },
+    "yes": {
+     "id": "simple-replies-when-listening--ask-to-have-a-look-first--yes--fffcb60a6ca8d9cc",
+     "text": "খুব ভালো। দেখি তো।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "ask-to-have-a-look-first"
+      }
+     ],
+     "english": "Very good! This is “ask to have a look before answering”."
+    },
+    "recast": {
+     "id": "simple-replies-when-listening--ask-to-have-a-look-first--recast--26f18123fa8d69a0",
+     "text": "এই ছবিটা দেখুন। দেখি তো।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-to-have-a-look-first"
+      }
+     ],
+     "english": "Look at this picture. This is “ask to have a look before answering”."
+    },
+    "examples": [
+     {
+      "id": "simple-replies-when-listening--ask-to-have-a-look-first--example-1--10ac35d1aebb15d6",
+      "text": "দেখি তো, কোন ছবি?",
+      "fallback": [
+       {
+        "clip": "10ac35d1aebb15d6c367"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "ordinary-meals-through-the-day": {
+   "first-meal-in-the-morning": {
+    "word": {
+     "id": "ordinary-meals-through-the-day--first-meal-in-the-morning--word--a38296edbd9ddbbf",
+     "text": "সকালের নাশতা",
+     "fallback": [
+      {
+       "word": "first-meal-in-the-morning"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ordinary-meals-through-the-day--first-meal-in-the-morning--ask--54eacaeb029ee5c8",
+     "text": "সকালের নাশতা। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "first-meal-in-the-morning"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “breakfast meal served in the morning”? Show me."
+    },
+    "yes": {
+     "id": "ordinary-meals-through-the-day--first-meal-in-the-morning--yes--7a60ffe7a30015bb",
+     "text": "দারুণ। সকালের নাশতা।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "first-meal-in-the-morning"
+      }
+     ],
+     "english": "Great! This is “breakfast meal served in the morning”."
+    },
+    "recast": {
+     "id": "ordinary-meals-through-the-day--first-meal-in-the-morning--recast--b023db1e774170de",
+     "text": "এই ছবিটা দেখুন। সকালের নাশতা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "first-meal-in-the-morning"
+      }
+     ],
+     "english": "Look at this picture. This is “breakfast meal served in the morning”."
+    },
+    "examples": [
+     {
+      "id": "ordinary-meals-through-the-day--first-meal-in-the-morning--example-1--f80781ea72019bb7",
+      "text": "সকালের নাশতা খাবেন?",
+      "fallback": [
+       {
+        "clip": "f80781ea72019bb70110"
+       }
+      ]
+     }
+    ]
+   },
+   "midday-rice-meal": {
+    "word": {
+     "id": "ordinary-meals-through-the-day--midday-rice-meal--word--4c79695180dec583",
+     "text": "দুপুরের খাবার",
+     "fallback": [
+      {
+       "word": "midday-rice-meal"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ordinary-meals-through-the-day--midday-rice-meal--ask--75bebec022fd8265",
+     "text": "দুপুরের খাবার। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "midday-rice-meal"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “lunch in the middle of the day”? Show me."
+    },
+    "yes": {
+     "id": "ordinary-meals-through-the-day--midday-rice-meal--yes--ee231c5eda315c84",
+     "text": "চমৎকার। দুপুরের খাবার।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "midday-rice-meal"
+      }
+     ],
+     "english": "Excellent! This is “lunch in the middle of the day”."
+    },
+    "recast": {
+     "id": "ordinary-meals-through-the-day--midday-rice-meal--recast--4a4b789c29d22867",
+     "text": "এই ছবিটা দেখুন। দুপুরের খাবার।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "midday-rice-meal"
+      }
+     ],
+     "english": "Look at this picture. This is “lunch in the middle of the day”."
+    },
+    "examples": [
+     {
+      "id": "ordinary-meals-through-the-day--midday-rice-meal--example-1--edbe17bcf7a37dce",
+      "text": "দুপুরের খাবার তৈরি",
+      "fallback": [
+       {
+        "clip": "edbe17bcf7a37dcefd83"
+       }
+      ]
+     }
+    ]
+   },
+   "late-afternoon-tea-snack-meal": {
+    "word": {
+     "id": "ordinary-meals-through-the-day--late-afternoon-tea-snack-meal--word--bcad634779b158ab",
+     "text": "বিকেলের নাশতা",
+     "fallback": [
+      {
+       "word": "late-afternoon-tea-snack-meal"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ordinary-meals-through-the-day--late-afternoon-tea-snack-meal--ask--06772c47b6ceb780",
+     "text": "মন দিয়ে শুনুন। বিকেলের নাশতা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "late-afternoon-tea-snack-meal"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “afternoon tea and snack”."
+    },
+    "yes": {
+     "id": "ordinary-meals-through-the-day--late-afternoon-tea-snack-meal--yes--aee2351aa74f0593",
+     "text": "শাবাশ। বিকেলের নাশতা।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "late-afternoon-tea-snack-meal"
+      }
+     ],
+     "english": "Well done! This is “afternoon tea and snack”."
+    },
+    "recast": {
+     "id": "ordinary-meals-through-the-day--late-afternoon-tea-snack-meal--recast--3c71d282f269f598",
+     "text": "এই ছবিটা দেখুন। বিকেলের নাশতা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "late-afternoon-tea-snack-meal"
+      }
+     ],
+     "english": "Look at this picture. This is “afternoon tea and snack”."
+    },
+    "examples": [
+     {
+      "id": "ordinary-meals-through-the-day--late-afternoon-tea-snack-meal--example-1--fd40345dec4e6e9a",
+      "text": "বিকেলের নাশতায় কী খাবেন?",
+      "fallback": [
+       {
+        "clip": "fd40345dec4e6e9a93fc"
+       }
+      ]
+     }
+    ]
+   },
+   "evening-family-dinner-meal": {
+    "word": {
+     "id": "ordinary-meals-through-the-day--evening-family-dinner-meal--word--83a0263f2fbc0c19",
+     "text": "রাতের খাবার",
+     "fallback": [
+      {
+       "word": "evening-family-dinner-meal"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ordinary-meals-through-the-day--evening-family-dinner-meal--ask--1170f2c1033b4e7d",
+     "text": "মন দিয়ে শুনুন। রাতের খাবার। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "evening-family-dinner-meal"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “dinner served at night”."
+    },
+    "yes": {
+     "id": "ordinary-meals-through-the-day--evening-family-dinner-meal--yes--0f5647f64df7fb63",
+     "text": "বাহ্। রাতের খাবার।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "evening-family-dinner-meal"
+      }
+     ],
+     "english": "Wow! This is “dinner served at night”."
+    },
+    "recast": {
+     "id": "ordinary-meals-through-the-day--evening-family-dinner-meal--recast--d98d2f0fd9cc9b22",
+     "text": "এই ছবিটা দেখুন। রাতের খাবার।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "evening-family-dinner-meal"
+      }
+     ],
+     "english": "Look at this picture. This is “dinner served at night”."
+    },
+    "examples": [
+     {
+      "id": "ordinary-meals-through-the-day--evening-family-dinner-meal--example-1--3692dadc4c7b1721",
+      "text": "রাতের খাবার কখন দেবেন?",
+      "fallback": [
+       {
+        "clip": "3692dadc4c7b1721e753"
+       }
+      ]
+     }
+    ]
+   },
+   "everyday-vegetable-curry-serving": {
+    "word": {
+     "id": "ordinary-meals-through-the-day--everyday-vegetable-curry-serving--word--58117e8903e6fe59",
+     "text": "তরকারি",
+     "fallback": [
+      {
+       "word": "everyday-vegetable-curry-serving"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ordinary-meals-through-the-day--everyday-vegetable-curry-serving--ask--5ae02cf51ccd62b8",
+     "text": "খুঁজে দেখুন। তরকারি।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "everyday-vegetable-curry-serving"
+      }
+     ],
+     "english": "Find “a cooked side dish served with rice or roti”."
+    },
+    "yes": {
+     "id": "ordinary-meals-through-the-day--everyday-vegetable-curry-serving--yes--10716f6462d2fb8f",
+     "text": "দারুণ। তরকারি।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "everyday-vegetable-curry-serving"
+      }
+     ],
+     "english": "Great! This is “a cooked side dish served with rice or roti”."
+    },
+    "recast": {
+     "id": "ordinary-meals-through-the-day--everyday-vegetable-curry-serving--recast--daf0d50697b016d1",
+     "text": "এই ছবিটা দেখুন। তরকারি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "everyday-vegetable-curry-serving"
+      }
+     ],
+     "english": "Look at this picture. This is “a cooked side dish served with rice or roti”."
+    },
+    "examples": [
+     {
+      "id": "ordinary-meals-through-the-day--everyday-vegetable-curry-serving--example-1--4323aaf1204d7f5a",
+      "text": "ভাতের সঙ্গে একটু তরকারি দেন",
+      "fallback": [
+       {
+        "clip": "4323aaf1204d7f5a7cad"
+       }
+      ]
+     }
+    ]
+   },
+   "several-dishes-on-a-shared-table": {
+    "word": {
+     "id": "ordinary-meals-through-the-day--several-dishes-on-a-shared-table--word--27f2a3011eb3a1f2",
+     "text": "একসঙ্গে খাওয়া",
+     "fallback": [
+      {
+       "word": "several-dishes-on-a-shared-table"
+      }
+     ]
+    },
+    "ask": {
+     "id": "ordinary-meals-through-the-day--several-dishes-on-a-shared-table--ask--9919f3caa7939fa3",
+     "text": "খুঁজে দেখুন। একসঙ্গে খাওয়া।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "several-dishes-on-a-shared-table"
+      }
+     ],
+     "english": "Find “eat a shared meal together”."
+    },
+    "yes": {
+     "id": "ordinary-meals-through-the-day--several-dishes-on-a-shared-table--yes--5af29367539ded51",
+     "text": "হ্যাঁ, ঠিক হয়েছে। একসঙ্গে খাওয়া।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "several-dishes-on-a-shared-table"
+      }
+     ],
+     "english": "Yes! This is “eat a shared meal together”."
+    },
+    "recast": {
+     "id": "ordinary-meals-through-the-day--several-dishes-on-a-shared-table--recast--e153f8f3d822fe66",
+     "text": "এই ছবিটা দেখুন। একসঙ্গে খাওয়া।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "several-dishes-on-a-shared-table"
+      }
+     ],
+     "english": "Look at this picture. This is “eat a shared meal together”."
+    },
+    "examples": [
+     {
+      "id": "ordinary-meals-through-the-day--several-dishes-on-a-shared-table--example-1--2c2a4864697adf56",
+      "text": "আজ সবাই একসঙ্গে খাব",
+      "fallback": [
+       {
+        "clip": "2c2a4864697adf56859f"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "noticing-when-someone-is-free": {
+   "person-busy-with-several-tasks": {
+    "word": {
+     "id": "noticing-when-someone-is-free--person-busy-with-several-tasks--word--7b824f6aced35a8e",
+     "text": "ব্যস্ত",
+     "fallback": [
+      {
+       "word": "person-busy-with-several-tasks"
+      }
+     ]
+    },
+    "ask": {
+     "id": "noticing-when-someone-is-free--person-busy-with-several-tasks--ask--423eacc3f9a4c806",
+     "text": "খুঁজে দেখুন। ব্যস্ত।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "person-busy-with-several-tasks"
+      }
+     ],
+     "english": "Find “busy at the moment with several things”."
+    },
+    "yes": {
+     "id": "noticing-when-someone-is-free--person-busy-with-several-tasks--yes--40d4110207f2156a",
+     "text": "চমৎকার। ব্যস্ত।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "person-busy-with-several-tasks"
+      }
+     ],
+     "english": "Excellent! This is “busy at the moment with several things”."
+    },
+    "recast": {
+     "id": "noticing-when-someone-is-free--person-busy-with-several-tasks--recast--05a40a1540e47913",
+     "text": "এই ছবিটা দেখুন। ব্যস্ত।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "person-busy-with-several-tasks"
+      }
+     ],
+     "english": "Look at this picture. This is “busy at the moment with several things”."
+    },
+    "examples": [
+     {
+      "id": "noticing-when-someone-is-free--person-busy-with-several-tasks--example-1--73faa226dd19f46f",
+      "text": "এখন আমি একটু ব্যস্ত",
+      "fallback": [
+       {
+        "clip": "73faa226dd19f46fa208"
+       }
+      ]
+     }
+    ]
+   },
+   "available-to-talk-now": {
+    "word": {
+     "id": "noticing-when-someone-is-free--available-to-talk-now--word--9426f8b2d5d57bc2",
+     "text": "সময় আছে",
+     "fallback": [
+      {
+       "word": "available-to-talk-now"
+      }
+     ]
+    },
+    "ask": {
+     "id": "noticing-when-someone-is-free--available-to-talk-now--ask--bbede8de4856b5ca",
+     "text": "সময় আছে। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "available-to-talk-now"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “have time and be available now”? Show me."
+    },
+    "yes": {
+     "id": "noticing-when-someone-is-free--available-to-talk-now--yes--8f319e0b663e0f6f",
+     "text": "চমৎকার। সময় আছে।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "available-to-talk-now"
+      }
+     ],
+     "english": "Excellent! This is “have time and be available now”."
+    },
+    "recast": {
+     "id": "noticing-when-someone-is-free--available-to-talk-now--recast--19eedb8e45ea66fb",
+     "text": "এই ছবিটা দেখুন। সময় আছে।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "available-to-talk-now"
+      }
+     ],
+     "english": "Look at this picture. This is “have time and be available now”."
+    },
+    "examples": [
+     {
+      "id": "noticing-when-someone-is-free--available-to-talk-now--example-1--b4831813cc41af85",
+      "text": "এখন আপনার সময় আছে?",
+      "fallback": [
+       {
+        "clip": "b4831813cc41af85498f"
+       }
+      ]
+     }
+    ]
+   },
+   "beginning-a-task-at-home": {
+    "word": {
+     "id": "noticing-when-someone-is-free--beginning-a-task-at-home--word--b823a2c1688975ee",
+     "text": "কাজ শুরু করা",
+     "fallback": [
+      {
+       "word": "beginning-a-task-at-home"
+      }
+     ]
+    },
+    "ask": {
+     "id": "noticing-when-someone-is-free--beginning-a-task-at-home--ask--0196b3316c7651a8",
+     "text": "মন দিয়ে শুনুন। কাজ শুরু করা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "beginning-a-task-at-home"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “begin a task at the first step”."
+    },
+    "yes": {
+     "id": "noticing-when-someone-is-free--beginning-a-task-at-home--yes--80aa2933d6725b24",
+     "text": "শাবাশ। কাজ শুরু করা।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "beginning-a-task-at-home"
+      }
+     ],
+     "english": "Well done! This is “begin a task at the first step”."
+    },
+    "recast": {
+     "id": "noticing-when-someone-is-free--beginning-a-task-at-home--recast--458d4424b7f49759",
+     "text": "এই ছবিটা দেখুন। কাজ শুরু করা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "beginning-a-task-at-home"
+      }
+     ],
+     "english": "Look at this picture. This is “begin a task at the first step”."
+    },
+    "examples": [
+     {
+      "id": "noticing-when-someone-is-free--beginning-a-task-at-home--example-1--618ee4bca4df08b7",
+      "text": "এখন কাজ শুরু করি",
+      "fallback": [
+       {
+        "clip": "618ee4bca4df08b7ffd3"
+       }
+      ]
+     }
+    ]
+   },
+   "work-partway-done": {
+    "word": {
+     "id": "noticing-when-someone-is-free--work-partway-done--word--cd65f81fdbfd131a",
+     "text": "কাজ চলছে",
+     "fallback": [
+      {
+       "word": "work-partway-done"
+      }
+     ]
+    },
+    "ask": {
+     "id": "noticing-when-someone-is-free--work-partway-done--ask--8d30179c3d133e94",
+     "text": "কাজ চলছে। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "work-partway-done"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “say a task is still in progress”? Show me."
+    },
+    "yes": {
+     "id": "noticing-when-someone-is-free--work-partway-done--yes--20feedc20e971dd1",
+     "text": "চমৎকার। কাজ চলছে।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "work-partway-done"
+      }
+     ],
+     "english": "Excellent! This is “say a task is still in progress”."
+    },
+    "recast": {
+     "id": "noticing-when-someone-is-free--work-partway-done--recast--cea76705b5784427",
+     "text": "এই ছবিটা দেখুন। কাজ চলছে।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "work-partway-done"
+      }
+     ],
+     "english": "Look at this picture. This is “say a task is still in progress”."
+    },
+    "examples": [
+     {
+      "id": "noticing-when-someone-is-free--work-partway-done--example-1--ff8d53de8dd8a3f7",
+      "text": "কাজ এখনও চলছে",
+      "fallback": [
+       {
+        "clip": "ff8d53de8dd8a3f7e9c0"
+       }
+      ]
+     }
+    ]
+   },
+   "finishing-an-everyday-task": {
+    "word": {
+     "id": "noticing-when-someone-is-free--finishing-an-everyday-task--word--d9a319e73b4dfe47",
+     "text": "কাজ শেষ",
+     "fallback": [
+      {
+       "word": "finishing-an-everyday-task"
+      }
+     ]
+    },
+    "ask": {
+     "id": "noticing-when-someone-is-free--finishing-an-everyday-task--ask--b9a1e3d7ae03587a",
+     "text": "মন দিয়ে শুনুন। কাজ শেষ। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "finishing-an-everyday-task"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “say you have finished the task”."
+    },
+    "yes": {
+     "id": "noticing-when-someone-is-free--finishing-an-everyday-task--yes--b6edbe1a22d0e27b",
+     "text": "চমৎকার। কাজ শেষ।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "finishing-an-everyday-task"
+      }
+     ],
+     "english": "Excellent! This is “say you have finished the task”."
+    },
+    "recast": {
+     "id": "noticing-when-someone-is-free--finishing-an-everyday-task--recast--56cedc70e6a21ef8",
+     "text": "এই ছবিটা দেখুন। কাজ শেষ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "finishing-an-everyday-task"
+      }
+     ],
+     "english": "Look at this picture. This is “say you have finished the task”."
+    },
+    "examples": [
+     {
+      "id": "noticing-when-someone-is-free--finishing-an-everyday-task--example-1--1bd252622a956a2f",
+      "text": "আজকের কাজ শেষ",
+      "fallback": [
+       {
+        "clip": "1bd252622a956a2fefdc"
+       }
+      ]
+     }
+    ]
+   },
+   "taking-a-short-rest-break": {
+    "word": {
+     "id": "noticing-when-someone-is-free--taking-a-short-rest-break--word--8931a039ba156a52",
+     "text": "একটু বিরতি",
+     "fallback": [
+      {
+       "word": "taking-a-short-rest-break"
+      }
+     ]
+    },
+    "ask": {
+     "id": "noticing-when-someone-is-free--taking-a-short-rest-break--ask--f30daf28e448f667",
+     "text": "খুঁজে দেখুন। একটু বিরতি।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "taking-a-short-rest-break"
+      }
+     ],
+     "english": "Find “take a short pause in the work”."
+    },
+    "yes": {
+     "id": "noticing-when-someone-is-free--taking-a-short-rest-break--yes--8efa0b5d616792c5",
+     "text": "বাহ্। একটু বিরতি।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "taking-a-short-rest-break"
+      }
+     ],
+     "english": "Wow! This is “take a short pause in the work”."
+    },
+    "recast": {
+     "id": "noticing-when-someone-is-free--taking-a-short-rest-break--recast--264de668127d3ca2",
+     "text": "এই ছবিটা দেখুন। একটু বিরতি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "taking-a-short-rest-break"
+      }
+     ],
+     "english": "Look at this picture. This is “take a short pause in the work”."
+    },
+    "examples": [
+     {
+      "id": "noticing-when-someone-is-free--taking-a-short-rest-break--example-1--f422616c979e30a3",
+      "text": "একটু বিরতি নিই",
+      "fallback": [
+       {
+        "clip": "f422616c979e30a3255b"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "pointing-out-common-pains": {
+   "pain-when-touching-throat": {
+    "word": {
+     "id": "pointing-out-common-pains--pain-when-touching-throat--word--7c4de84dd152fe9e",
+     "text": "গলা ব্যথা",
+     "fallback": [
+      {
+       "word": "pain-when-touching-throat"
+      }
+     ]
+    },
+    "ask": {
+     "id": "pointing-out-common-pains--pain-when-touching-throat--ask--6ea678377e8c9ff5",
+     "text": "খুঁজে দেখুন। গলা ব্যথা।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "pain-when-touching-throat"
+      }
+     ],
+     "english": "Find “sore throat at the front of the neck”."
+    },
+    "yes": {
+     "id": "pointing-out-common-pains--pain-when-touching-throat--yes--2828f26d595ea1d1",
+     "text": "হ্যাঁ, ঠিক হয়েছে। গলা ব্যথা।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "pain-when-touching-throat"
+      }
+     ],
+     "english": "Yes! This is “sore throat at the front of the neck”."
+    },
+    "recast": {
+     "id": "pointing-out-common-pains--pain-when-touching-throat--recast--bec614b1090149c1",
+     "text": "এই ছবিটা দেখুন। গলা ব্যথা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "pain-when-touching-throat"
+      }
+     ],
+     "english": "Look at this picture. This is “sore throat at the front of the neck”."
+    },
+    "examples": [
+     {
+      "id": "pointing-out-common-pains--pain-when-touching-throat--example-1--b5d6de5470cf8581",
+      "text": "দুই দিন ধরে গলা ব্যথা",
+      "fallback": [
+       {
+        "clip": "b5d6de5470cf85814149"
+       }
+      ]
+     }
+    ]
+   },
+   "pain-at-outer-ear": {
+    "word": {
+     "id": "pointing-out-common-pains--pain-at-outer-ear--word--e23fc82039d41efe",
+     "text": "কান ব্যথা",
+     "fallback": [
+      {
+       "word": "pain-at-outer-ear"
+      }
+     ]
+    },
+    "ask": {
+     "id": "pointing-out-common-pains--pain-at-outer-ear--ask--dcf0b157769edb05",
+     "text": "কান ব্যথা। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "pain-at-outer-ear"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “earache felt on one side”? Show me."
+    },
+    "yes": {
+     "id": "pointing-out-common-pains--pain-at-outer-ear--yes--3107ce53e3d2c8bd",
+     "text": "বাহ্। কান ব্যথা।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "pain-at-outer-ear"
+      }
+     ],
+     "english": "Wow! This is “earache felt on one side”."
+    },
+    "recast": {
+     "id": "pointing-out-common-pains--pain-at-outer-ear--recast--b55992bbadb51693",
+     "text": "এই ছবিটা দেখুন। কান ব্যথা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "pain-at-outer-ear"
+      }
+     ],
+     "english": "Look at this picture. This is “earache felt on one side”."
+    },
+    "examples": [
+     {
+      "id": "pointing-out-common-pains--pain-at-outer-ear--example-1--c0539e5c5571ed3f",
+      "text": "এই কানে ব্যথা",
+      "fallback": [
+       {
+        "clip": "c0539e5c5571ed3f1ca2"
+       }
+      ]
+     }
+    ]
+   },
+   "burning-or-stinging-eyes": {
+    "word": {
+     "id": "pointing-out-common-pains--burning-or-stinging-eyes--word--e5eab65077cdedb1",
+     "text": "চোখ জ্বালা",
+     "fallback": [
+      {
+       "word": "burning-or-stinging-eyes"
+      }
+     ]
+    },
+    "ask": {
+     "id": "pointing-out-common-pains--burning-or-stinging-eyes--ask--d35f36d588c74078",
+     "text": "চোখ জ্বালা। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "burning-or-stinging-eyes"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “stinging or burning eyes”? Show me."
+    },
+    "yes": {
+     "id": "pointing-out-common-pains--burning-or-stinging-eyes--yes--a7702543999dc1a0",
+     "text": "একদম ঠিক। চোখ জ্বালা।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "burning-or-stinging-eyes"
+      }
+     ],
+     "english": "Exactly right! This is “stinging or burning eyes”."
+    },
+    "recast": {
+     "id": "pointing-out-common-pains--burning-or-stinging-eyes--recast--5b87ff34bc4f27a7",
+     "text": "এই ছবিটা দেখুন। চোখ জ্বালা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "burning-or-stinging-eyes"
+      }
+     ],
+     "english": "Look at this picture. This is “stinging or burning eyes”."
+    },
+    "examples": [
+     {
+      "id": "pointing-out-common-pains--burning-or-stinging-eyes--example-1--37b091cae5a23bea",
+      "text": "আমার চোখ জ্বালা করছে",
+      "fallback": [
+       {
+        "clip": "37b091cae5a23bea87e8"
+       }
+      ]
+     }
+    ]
+   },
+   "discomfort-in-the-chest": {
+    "word": {
+     "id": "pointing-out-common-pains--discomfort-in-the-chest--word--0641300504e28460",
+     "text": "বুক ব্যথা",
+     "fallback": [
+      {
+       "word": "discomfort-in-the-chest"
+      }
+     ]
+    },
+    "ask": {
+     "id": "pointing-out-common-pains--discomfort-in-the-chest--ask--97ac22af0ac9f6b0",
+     "text": "খুঁজে দেখুন। বুক ব্যথা।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "discomfort-in-the-chest"
+      }
+     ],
+     "english": "Find “pain in the chest”."
+    },
+    "yes": {
+     "id": "pointing-out-common-pains--discomfort-in-the-chest--yes--78da99a4ba2172fe",
+     "text": "দারুণ। বুক ব্যথা।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "discomfort-in-the-chest"
+      }
+     ],
+     "english": "Great! This is “pain in the chest”."
+    },
+    "recast": {
+     "id": "pointing-out-common-pains--discomfort-in-the-chest--recast--8ea010637cff9134",
+     "text": "এই ছবিটা দেখুন। বুক ব্যথা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "discomfort-in-the-chest"
+      }
+     ],
+     "english": "Look at this picture. This is “pain in the chest”."
+    },
+    "examples": [
+     {
+      "id": "pointing-out-common-pains--discomfort-in-the-chest--example-1--28f4ac2c36ddb57e",
+      "text": "এখানে বুকে ব্যথা",
+      "fallback": [
+       {
+        "clip": "28f4ac2c36ddb57e23dd"
+       }
+      ]
+     }
+    ]
+   },
+   "pain-in-hand-below-wrist": {
+    "word": {
+     "id": "pointing-out-common-pains--pain-in-hand-below-wrist--word--1867e972b1e2101c",
+     "text": "হাতে ব্যথা",
+     "fallback": [
+      {
+       "word": "pain-in-hand-below-wrist"
+      }
+     ]
+    },
+    "ask": {
+     "id": "pointing-out-common-pains--pain-in-hand-below-wrist--ask--8479b735c5f6659e",
+     "text": "খুঁজে দেখুন। হাতে ব্যথা।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "pain-in-hand-below-wrist"
+      }
+     ],
+     "english": "Find “pain in the hand rather than elbow or arm”."
+    },
+    "yes": {
+     "id": "pointing-out-common-pains--pain-in-hand-below-wrist--yes--26092687404db7be",
+     "text": "খুব ভালো। হাতে ব্যথা।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "pain-in-hand-below-wrist"
+      }
+     ],
+     "english": "Very good! This is “pain in the hand rather than elbow or arm”."
+    },
+    "recast": {
+     "id": "pointing-out-common-pains--pain-in-hand-below-wrist--recast--1b76adcfb604fd32",
+     "text": "এই ছবিটা দেখুন। হাতে ব্যথা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "pain-in-hand-below-wrist"
+      }
+     ],
+     "english": "Look at this picture. This is “pain in the hand rather than elbow or arm”."
+    },
+    "examples": [
+     {
+      "id": "pointing-out-common-pains--pain-in-hand-below-wrist--example-1--e53071da2bdc7a6e",
+      "text": "এই হাতে ব্যথা করে",
+      "fallback": [
+       {
+        "clip": "e53071da2bdc7a6efaeb"
+       }
+      ]
+     }
+    ]
+   },
+   "pain-in-one-foot": {
+    "word": {
+     "id": "pointing-out-common-pains--pain-in-one-foot--word--39dce5d9d070ed0b",
+     "text": "পায়ে ব্যথা",
+     "fallback": [
+      {
+       "word": "pain-in-one-foot"
+      }
+     ]
+    },
+    "ask": {
+     "id": "pointing-out-common-pains--pain-in-one-foot--ask--3c1f4731ff5780bf",
+     "text": "মন দিয়ে শুনুন। পায়ে ব্যথা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "pain-in-one-foot"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “pain in one foot while seated”."
+    },
+    "yes": {
+     "id": "pointing-out-common-pains--pain-in-one-foot--yes--e40e9e2240d77ccb",
+     "text": "শাবাশ। পায়ে ব্যথা।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "pain-in-one-foot"
+      }
+     ],
+     "english": "Well done! This is “pain in one foot while seated”."
+    },
+    "recast": {
+     "id": "pointing-out-common-pains--pain-in-one-foot--recast--d99a4fee0251032c",
+     "text": "এই ছবিটা দেখুন। পায়ে ব্যথা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "pain-in-one-foot"
+      }
+     ],
+     "english": "Look at this picture. This is “pain in one foot while seated”."
+    },
+    "examples": [
+     {
+      "id": "pointing-out-common-pains--pain-in-one-foot--example-1--ef4acaaa157dd0e5",
+      "text": "হাঁটলে পায়ে ব্যথা করে",
+      "fallback": [
+       {
+        "clip": "ef4acaaa157dd0e5e5a5"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "short-requests-to-move-an-object": {
+   "ask-to-bring-it-here": {
+    "word": {
+     "id": "short-requests-to-move-an-object--ask-to-bring-it-here--word--231017c5e1cd8606",
+     "text": "এটা নিয়ে আসেন",
+     "fallback": [
+      {
+       "word": "ask-to-bring-it-here"
+      }
+     ]
+    },
+    "ask": {
+     "id": "short-requests-to-move-an-object--ask-to-bring-it-here--ask--98676447222089f4",
+     "text": "এটা নিয়ে আসেন। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "ask-to-bring-it-here"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “ask someone to bring a thing toward the speaker”? Show me."
+    },
+    "yes": {
+     "id": "short-requests-to-move-an-object--ask-to-bring-it-here--yes--5dd8ec27acd9444a",
+     "text": "একদম ঠিক। এটা নিয়ে আসেন।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "ask-to-bring-it-here"
+      }
+     ],
+     "english": "Exactly right! This is “ask someone to bring a thing toward the speaker”."
+    },
+    "recast": {
+     "id": "short-requests-to-move-an-object--ask-to-bring-it-here--recast--55f36959cb1040a0",
+     "text": "এই ছবিটা দেখুন। এটা নিয়ে আসেন।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-to-bring-it-here"
+      }
+     ],
+     "english": "Look at this picture. This is “ask someone to bring a thing toward the speaker”."
+    },
+    "examples": [
+     {
+      "id": "short-requests-to-move-an-object--ask-to-bring-it-here--example-1--8843049b823e9869",
+      "text": "বাক্সটা আমার কাছে নিয়ে আসেন",
+      "fallback": [
+       {
+        "clip": "8843049b823e98695a8f"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-to-take-it-away": {
+    "word": {
+     "id": "short-requests-to-move-an-object--ask-to-take-it-away--word--b71a6465e33e5ef1",
+     "text": "ওটা নিয়ে যান",
+     "fallback": [
+      {
+       "word": "ask-to-take-it-away"
+      }
+     ]
+    },
+    "ask": {
+     "id": "short-requests-to-move-an-object--ask-to-take-it-away--ask--6e508dd6340a7232",
+     "text": "ওটা নিয়ে যান। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "ask-to-take-it-away"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “ask someone to take a thing away from the speaker”? Show me."
+    },
+    "yes": {
+     "id": "short-requests-to-move-an-object--ask-to-take-it-away--yes--98318d7fcdca4d72",
+     "text": "একদম ঠিক। ওটা নিয়ে যান।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "ask-to-take-it-away"
+      }
+     ],
+     "english": "Exactly right! This is “ask someone to take a thing away from the speaker”."
+    },
+    "recast": {
+     "id": "short-requests-to-move-an-object--ask-to-take-it-away--recast--bcde80b6fcf49aa0",
+     "text": "এই ছবিটা দেখুন। ওটা নিয়ে যান।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-to-take-it-away"
+      }
+     ],
+     "english": "Look at this picture. This is “ask someone to take a thing away from the speaker”."
+    },
+    "examples": [
+     {
+      "id": "short-requests-to-move-an-object--ask-to-take-it-away--example-1--3dc5dc8fd4a52fe4",
+      "text": "ওটা বাইরে নিয়ে যান",
+      "fallback": [
+       {
+        "clip": "3dc5dc8fd4a52fe4f6b9"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-to-leave-it-here": {
+    "word": {
+     "id": "short-requests-to-move-an-object--ask-to-leave-it-here--word--f88586bc96b378d1",
+     "text": "এখানে রেখে যান",
+     "fallback": [
+      {
+       "word": "ask-to-leave-it-here"
+      }
+     ]
+    },
+    "ask": {
+     "id": "short-requests-to-move-an-object--ask-to-leave-it-here--ask--0d170280f53b3734",
+     "text": "এখানে রেখে যান। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "ask-to-leave-it-here"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “ask someone to leave an object here before departing”? Show me."
+    },
+    "yes": {
+     "id": "short-requests-to-move-an-object--ask-to-leave-it-here--yes--b5bb239f6f7ec84d",
+     "text": "চমৎকার। এখানে রেখে যান।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "ask-to-leave-it-here"
+      }
+     ],
+     "english": "Excellent! This is “ask someone to leave an object here before departing”."
+    },
+    "recast": {
+     "id": "short-requests-to-move-an-object--ask-to-leave-it-here--recast--265a09abc41f07d7",
+     "text": "এই ছবিটা দেখুন। এখানে রেখে যান।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-to-leave-it-here"
+      }
+     ],
+     "english": "Look at this picture. This is “ask someone to leave an object here before departing”."
+    },
+    "examples": [
+     {
+      "id": "short-requests-to-move-an-object--ask-to-leave-it-here--example-1--0cb071e84c429e2f",
+      "text": "চাবিটা এখানে রেখে যান",
+      "fallback": [
+       {
+        "clip": "0cb071e84c429e2fbf0f"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-to-return-the-borrowed-object": {
+    "word": {
+     "id": "short-requests-to-move-an-object--ask-to-return-the-borrowed-object--word--142777d26ff2bee7",
+     "text": "ফিরিয়ে দেন",
+     "fallback": [
+      {
+       "word": "ask-to-return-the-borrowed-object"
+      }
+     ]
+    },
+    "ask": {
+     "id": "short-requests-to-move-an-object--ask-to-return-the-borrowed-object--ask--72a5a3ff51a35b52",
+     "text": "ফিরিয়ে দেন। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "ask-to-return-the-borrowed-object"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “ask somebody to give back something lent”? Show me."
+    },
+    "yes": {
+     "id": "short-requests-to-move-an-object--ask-to-return-the-borrowed-object--yes--c550e9c8ca205aba",
+     "text": "একদম ঠিক। ফিরিয়ে দেন।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "ask-to-return-the-borrowed-object"
+      }
+     ],
+     "english": "Exactly right! This is “ask somebody to give back something lent”."
+    },
+    "recast": {
+     "id": "short-requests-to-move-an-object--ask-to-return-the-borrowed-object--recast--3b549a296e204db3",
+     "text": "এই ছবিটা দেখুন। ফিরিয়ে দেন।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-to-return-the-borrowed-object"
+      }
+     ],
+     "english": "Look at this picture. This is “ask somebody to give back something lent”."
+    },
+    "examples": [
+     {
+      "id": "short-requests-to-move-an-object--ask-to-return-the-borrowed-object--example-1--81ddf8193b603515",
+      "text": "বইটা কাল ফিরিয়ে দেন",
+      "fallback": [
+       {
+        "clip": "81ddf8193b6035153de4"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-to-shift-it-a-little": {
+    "word": {
+     "id": "short-requests-to-move-an-object--ask-to-shift-it-a-little--word--60c24fb08376e522",
+     "text": "একটু সরান",
+     "fallback": [
+      {
+       "word": "ask-to-shift-it-a-little"
+      }
+     ]
+    },
+    "ask": {
+     "id": "short-requests-to-move-an-object--ask-to-shift-it-a-little--ask--0fb54d9ffbab3640",
+     "text": "একটু সরান। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "ask-to-shift-it-a-little"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “ask somebody to shift the object a short distance aside”? Show me."
+    },
+    "yes": {
+     "id": "short-requests-to-move-an-object--ask-to-shift-it-a-little--yes--80bb93d8d5e2c177",
+     "text": "একদম ঠিক। একটু সরান।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "ask-to-shift-it-a-little"
+      }
+     ],
+     "english": "Exactly right! This is “ask somebody to shift the object a short distance aside”."
+    },
+    "recast": {
+     "id": "short-requests-to-move-an-object--ask-to-shift-it-a-little--recast--df820e98ba0fb095",
+     "text": "এই ছবিটা দেখুন। একটু সরান।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-to-shift-it-a-little"
+      }
+     ],
+     "english": "Look at this picture. This is “ask somebody to shift the object a short distance aside”."
+    },
+    "examples": [
+     {
+      "id": "short-requests-to-move-an-object--ask-to-shift-it-a-little--example-1--0514cf4df5e56566",
+      "text": "পিঁড়িটা একটু সরান",
+      "fallback": [
+       {
+        "clip": "0514cf4df5e565660c27"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-to-hold-it-steady": {
+    "word": {
+     "id": "short-requests-to-move-an-object--ask-to-hold-it-steady--word--cd5bd3c180acb5be",
+     "text": "একটু ধরে রাখেন",
+     "fallback": [
+      {
+       "word": "ask-to-hold-it-steady"
+      }
+     ]
+    },
+    "ask": {
+     "id": "short-requests-to-move-an-object--ask-to-hold-it-steady--ask--e21706a40f8c5e1e",
+     "text": "একটু ধরে রাখেন। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "ask-to-hold-it-steady"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “ask someone to keep an object steady in one position”? Show me."
+    },
+    "yes": {
+     "id": "short-requests-to-move-an-object--ask-to-hold-it-steady--yes--41c3cd3144dfe2f2",
+     "text": "খুব ভালো। একটু ধরে রাখেন।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "ask-to-hold-it-steady"
+      }
+     ],
+     "english": "Very good! This is “ask someone to keep an object steady in one position”."
+    },
+    "recast": {
+     "id": "short-requests-to-move-an-object--ask-to-hold-it-steady--recast--cd186ca075db01a0",
+     "text": "এই ছবিটা দেখুন। একটু ধরে রাখেন।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-to-hold-it-steady"
+      }
+     ],
+     "english": "Look at this picture. This is “ask someone to keep an object steady in one position”."
+    },
+    "examples": [
+     {
+      "id": "short-requests-to-move-an-object--ask-to-hold-it-steady--example-1--b2ca1db430a6d9a5",
+      "text": "এটা একটু ধরে রাখেন",
+      "fallback": [
+       {
+        "clip": "b2ca1db430a6d9a53e14"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "everyday-likes-and-needs": {
+   "like-a-food-or-object": {
+    "word": {
+     "id": "everyday-likes-and-needs--like-a-food-or-object--word--f654758bcf1c8070",
+     "text": "ভালো লাগে",
+     "fallback": [
+      {
+       "word": "like-a-food-or-object"
+      }
+     ]
+    },
+    "ask": {
+     "id": "everyday-likes-and-needs--like-a-food-or-object--ask--bd50a9e61be09123",
+     "text": "মন দিয়ে শুনুন। ভালো লাগে। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "like-a-food-or-object"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “say you like something”."
+    },
+    "yes": {
+     "id": "everyday-likes-and-needs--like-a-food-or-object--yes--8813f8821e533195",
+     "text": "খুব ভালো। ভালো লাগে।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "like-a-food-or-object"
+      }
+     ],
+     "english": "Very good! This is “say you like something”."
+    },
+    "recast": {
+     "id": "everyday-likes-and-needs--like-a-food-or-object--recast--df33744d8b1fce18",
+     "text": "এই ছবিটা দেখুন। ভালো লাগে।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "like-a-food-or-object"
+      }
+     ],
+     "english": "Look at this picture. This is “say you like something”."
+    },
+    "examples": [
+     {
+      "id": "everyday-likes-and-needs--like-a-food-or-object--example-1--100d99aa74fc0b60",
+      "text": "আমার এই আমটা ভালো লাগে",
+      "fallback": [
+       {
+        "clip": "100d99aa74fc0b60ff72"
+       }
+      ]
+     }
+    ]
+   },
+   "not-like-the-option": {
+    "word": {
+     "id": "everyday-likes-and-needs--not-like-the-option--word--f3e8f427b90f4fc8",
+     "text": "ভালো লাগে না",
+     "fallback": [
+      {
+       "word": "not-like-the-option"
+      }
+     ]
+    },
+    "ask": {
+     "id": "everyday-likes-and-needs--not-like-the-option--ask--8941552da940a5c2",
+     "text": "খুঁজে দেখুন। ভালো লাগে না।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "not-like-the-option"
+      }
+     ],
+     "english": "Find “say you do not like something”."
+    },
+    "yes": {
+     "id": "everyday-likes-and-needs--not-like-the-option--yes--25eb3052db209544",
+     "text": "একদম ঠিক। ভালো লাগে না।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "not-like-the-option"
+      }
+     ],
+     "english": "Exactly right! This is “say you do not like something”."
+    },
+    "recast": {
+     "id": "everyday-likes-and-needs--not-like-the-option--recast--f6aa7692c455721d",
+     "text": "এই ছবিটা দেখুন। ভালো লাগে না।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "not-like-the-option"
+      }
+     ],
+     "english": "Look at this picture. This is “say you do not like something”."
+    },
+    "examples": [
+     {
+      "id": "everyday-likes-and-needs--not-like-the-option--example-1--5a40d1b84ffdd1d9",
+      "text": "এটা আমার ভালো লাগে না",
+      "fallback": [
+       {
+        "clip": "5a40d1b84ffdd1d9c0f5"
+       }
+      ]
+     }
+    ]
+   },
+   "need-the-missing-object": {
+    "word": {
+     "id": "everyday-likes-and-needs--need-the-missing-object--word--d9199f5cea42cf77",
+     "text": "দরকার আছে",
+     "fallback": [
+      {
+       "word": "need-the-missing-object"
+      }
+     ]
+    },
+    "ask": {
+     "id": "everyday-likes-and-needs--need-the-missing-object--ask--48fde6fff516d87e",
+     "text": "মন দিয়ে শুনুন। দরকার আছে। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "need-the-missing-object"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “say that something is needed”."
+    },
+    "yes": {
+     "id": "everyday-likes-and-needs--need-the-missing-object--yes--0c87ca5ae2a723da",
+     "text": "শাবাশ। দরকার আছে।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "need-the-missing-object"
+      }
+     ],
+     "english": "Well done! This is “say that something is needed”."
+    },
+    "recast": {
+     "id": "everyday-likes-and-needs--need-the-missing-object--recast--0208ad73d052c551",
+     "text": "এই ছবিটা দেখুন। দরকার আছে।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "need-the-missing-object"
+      }
+     ],
+     "english": "Look at this picture. This is “say that something is needed”."
+    },
+    "examples": [
+     {
+      "id": "everyday-likes-and-needs--need-the-missing-object--example-1--29e2ccf91bac2c5e",
+      "text": "আমার একটা ছাতা দরকার আছে",
+      "fallback": [
+       {
+        "clip": "29e2ccf91bac2c5eda74"
+       }
+      ]
+     }
+    ]
+   },
+   "say-that-an-extra-is-unneeded": {
+    "word": {
+     "id": "everyday-likes-and-needs--say-that-an-extra-is-unneeded--word--37c62aae806ab050",
+     "text": "দরকার নাই",
+     "fallback": [
+      {
+       "word": "say-that-an-extra-is-unneeded"
+      }
+     ]
+    },
+    "ask": {
+     "id": "everyday-likes-and-needs--say-that-an-extra-is-unneeded--ask--45d784e7ab84aa09",
+     "text": "খুঁজে দেখুন। দরকার নাই।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "say-that-an-extra-is-unneeded"
+      }
+     ],
+     "english": "Find “say there is no need for one more”."
+    },
+    "yes": {
+     "id": "everyday-likes-and-needs--say-that-an-extra-is-unneeded--yes--9ab48315bfcdb15a",
+     "text": "দারুণ। দরকার নাই।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "say-that-an-extra-is-unneeded"
+      }
+     ],
+     "english": "Great! This is “say there is no need for one more”."
+    },
+    "recast": {
+     "id": "everyday-likes-and-needs--say-that-an-extra-is-unneeded--recast--2798d316ea2d6d09",
+     "text": "এই ছবিটা দেখুন। দরকার নাই।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "say-that-an-extra-is-unneeded"
+      }
+     ],
+     "english": "Look at this picture. This is “say there is no need for one more”."
+    },
+    "examples": [
+     {
+      "id": "everyday-likes-and-needs--say-that-an-extra-is-unneeded--example-1--c6633d82705dbcc4",
+      "text": "আরেকটা ছাতার দরকার নাই",
+      "fallback": [
+       {
+        "clip": "c6633d82705dbcc406d9"
+       }
+      ]
+     }
+    ]
+   },
+   "choose-that-particular-one": {
+    "word": {
+     "id": "everyday-likes-and-needs--choose-that-particular-one--word--b513a323a9345213",
+     "text": "এটাই চাই",
+     "fallback": [
+      {
+       "word": "choose-that-particular-one"
+      }
+     ]
+    },
+    "ask": {
+     "id": "everyday-likes-and-needs--choose-that-particular-one--ask--7b6f7be03433f6ba",
+     "text": "খুঁজে দেখুন। এটাই চাই।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "choose-that-particular-one"
+      }
+     ],
+     "english": "Find “say this is the specific one you want”."
+    },
+    "yes": {
+     "id": "everyday-likes-and-needs--choose-that-particular-one--yes--b7eeb178ef4ef6f6",
+     "text": "দারুণ। এটাই চাই।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "choose-that-particular-one"
+      }
+     ],
+     "english": "Great! This is “say this is the specific one you want”."
+    },
+    "recast": {
+     "id": "everyday-likes-and-needs--choose-that-particular-one--recast--2ba24720995913d1",
+     "text": "এই ছবিটা দেখুন। এটাই চাই।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "choose-that-particular-one"
+      }
+     ],
+     "english": "Look at this picture. This is “say this is the specific one you want”."
+    },
+    "examples": [
+     {
+      "id": "everyday-likes-and-needs--choose-that-particular-one--example-1--242aa91e0ecceeab",
+      "text": "এটাই চাই, অন্যটা থাক",
+      "fallback": [
+       {
+        "clip": "242aa91e0ecceeabafe1"
+       }
+      ]
+     }
+    ]
+   },
+   "decide-to-leave-something-for-now": {
+    "word": {
+     "id": "everyday-likes-and-needs--decide-to-leave-something-for-now--word--89c7f8ad0bb24f08",
+     "text": "থাক, পরে দেখব",
+     "fallback": [
+      {
+       "word": "decide-to-leave-something-for-now"
+      }
+     ]
+    },
+    "ask": {
+     "id": "everyday-likes-and-needs--decide-to-leave-something-for-now--ask--6c6db8d0574f45e1",
+     "text": "মন দিয়ে শুনুন। থাক, পরে দেখব। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "decide-to-leave-something-for-now"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “decide to leave it for now and look later”."
+    },
+    "yes": {
+     "id": "everyday-likes-and-needs--decide-to-leave-something-for-now--yes--ef37cc2ede12694a",
+     "text": "বাহ্। থাক, পরে দেখব।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "decide-to-leave-something-for-now"
+      }
+     ],
+     "english": "Wow! This is “decide to leave it for now and look later”."
+    },
+    "recast": {
+     "id": "everyday-likes-and-needs--decide-to-leave-something-for-now--recast--5e8b682cdf611b0a",
+     "text": "এই ছবিটা দেখুন। থাক, পরে দেখব।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "decide-to-leave-something-for-now"
+      }
+     ],
+     "english": "Look at this picture. This is “decide to leave it for now and look later”."
+    },
+    "examples": [
+     {
+      "id": "everyday-likes-and-needs--decide-to-leave-something-for-now--example-1--1ece426dfae5cbe2",
+      "text": "এখন থাক, পরে দেখব",
+      "fallback": [
+       {
+        "clip": "1ece426dfae5cbe2d72a"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "reading-common-prices-in-taka": {
+   "price-fifty-taka": {
+    "word": {
+     "id": "reading-common-prices-in-taka--price-fifty-taka--word--0813c41cd4848e52",
+     "text": "পঞ্চাশ টাকা",
+     "fallback": [
+      {
+       "word": "price-fifty-taka"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reading-common-prices-in-taka--price-fifty-taka--ask--699e7bbbb9375be3",
+     "text": "মন দিয়ে শুনুন। পঞ্চাশ টাকা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "price-fifty-taka"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “fifty taka as a price or fare”."
+    },
+    "yes": {
+     "id": "reading-common-prices-in-taka--price-fifty-taka--yes--e0e1971f0fbb72f9",
+     "text": "দারুণ। পঞ্চাশ টাকা।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "price-fifty-taka"
+      }
+     ],
+     "english": "Great! This is “fifty taka as a price or fare”."
+    },
+    "recast": {
+     "id": "reading-common-prices-in-taka--price-fifty-taka--recast--624c854703d9c260",
+     "text": "এই ছবিটা দেখুন। পঞ্চাশ টাকা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "price-fifty-taka"
+      }
+     ],
+     "english": "Look at this picture. This is “fifty taka as a price or fare”."
+    },
+    "examples": [
+     {
+      "id": "reading-common-prices-in-taka--price-fifty-taka--example-1--1b5c97eba79067fa",
+      "text": "এটার দাম পঞ্চাশ টাকা",
+      "fallback": [
+       {
+        "clip": "1b5c97eba79067fa37e3"
+       }
+      ]
+     }
+    ]
+   },
+   "price-one-hundred-taka": {
+    "word": {
+     "id": "reading-common-prices-in-taka--price-one-hundred-taka--word--cbb3ff848ab8615f",
+     "text": "একশ টাকা",
+     "fallback": [
+      {
+       "word": "price-one-hundred-taka"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reading-common-prices-in-taka--price-one-hundred-taka--ask--cdfd788a29ea4d69",
+     "text": "মন দিয়ে শুনুন। একশ টাকা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "price-one-hundred-taka"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “one hundred taka as a price or fare”."
+    },
+    "yes": {
+     "id": "reading-common-prices-in-taka--price-one-hundred-taka--yes--f9bfbfc3771165c0",
+     "text": "হ্যাঁ, ঠিক হয়েছে। একশ টাকা।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "price-one-hundred-taka"
+      }
+     ],
+     "english": "Yes! This is “one hundred taka as a price or fare”."
+    },
+    "recast": {
+     "id": "reading-common-prices-in-taka--price-one-hundred-taka--recast--85a253b577f328aa",
+     "text": "এই ছবিটা দেখুন। একশ টাকা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "price-one-hundred-taka"
+      }
+     ],
+     "english": "Look at this picture. This is “one hundred taka as a price or fare”."
+    },
+    "examples": [
+     {
+      "id": "reading-common-prices-in-taka--price-one-hundred-taka--example-1--1d6be25ff1b2461b",
+      "text": "একশ টাকা দিতে হবে",
+      "fallback": [
+       {
+        "clip": "1d6be25ff1b2461bf672"
+       }
+      ]
+     }
+    ]
+   },
+   "price-two-hundred-taka": {
+    "word": {
+     "id": "reading-common-prices-in-taka--price-two-hundred-taka--word--c09fa755be4e133d",
+     "text": "দুইশ টাকা",
+     "fallback": [
+      {
+       "word": "price-two-hundred-taka"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reading-common-prices-in-taka--price-two-hundred-taka--ask--b4ee5757a8b63bab",
+     "text": "মন দিয়ে শুনুন। দুইশ টাকা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "price-two-hundred-taka"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “two hundred taka as a price or fare”."
+    },
+    "yes": {
+     "id": "reading-common-prices-in-taka--price-two-hundred-taka--yes--97d5427538bfd1af",
+     "text": "দারুণ। দুইশ টাকা।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "price-two-hundred-taka"
+      }
+     ],
+     "english": "Great! This is “two hundred taka as a price or fare”."
+    },
+    "recast": {
+     "id": "reading-common-prices-in-taka--price-two-hundred-taka--recast--20837bb491afb75a",
+     "text": "এই ছবিটা দেখুন। দুইশ টাকা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "price-two-hundred-taka"
+      }
+     ],
+     "english": "Look at this picture. This is “two hundred taka as a price or fare”."
+    },
+    "examples": [
+     {
+      "id": "reading-common-prices-in-taka--price-two-hundred-taka--example-1--4a381300efd9ac37",
+      "text": "দুইশ টাকার মধ্যে কিছু আছে?",
+      "fallback": [
+       {
+        "clip": "4a381300efd9ac3784b8"
+       }
+      ]
+     }
+    ]
+   },
+   "price-five-hundred-taka": {
+    "word": {
+     "id": "reading-common-prices-in-taka--price-five-hundred-taka--word--6e7dbdf2d33d060e",
+     "text": "পাঁচশ টাকা",
+     "fallback": [
+      {
+       "word": "price-five-hundred-taka"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reading-common-prices-in-taka--price-five-hundred-taka--ask--a328af4a01aee28a",
+     "text": "পাঁচশ টাকা। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "price-five-hundred-taka"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “five hundred taka as a price or fare”? Show me."
+    },
+    "yes": {
+     "id": "reading-common-prices-in-taka--price-five-hundred-taka--yes--574226f70c892089",
+     "text": "একদম ঠিক। পাঁচশ টাকা।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "price-five-hundred-taka"
+      }
+     ],
+     "english": "Exactly right! This is “five hundred taka as a price or fare”."
+    },
+    "recast": {
+     "id": "reading-common-prices-in-taka--price-five-hundred-taka--recast--6eaf87ba3aa11b6c",
+     "text": "এই ছবিটা দেখুন। পাঁচশ টাকা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "price-five-hundred-taka"
+      }
+     ],
+     "english": "Look at this picture. This is “five hundred taka as a price or fare”."
+    },
+    "examples": [
+     {
+      "id": "reading-common-prices-in-taka--price-five-hundred-taka--example-1--484790d3c3ffda15",
+      "text": "সব মিলিয়ে পাঁচশ টাকা",
+      "fallback": [
+       {
+        "clip": "484790d3c3ffda15503f"
+       }
+      ]
+     }
+    ]
+   },
+   "price-one-thousand-taka": {
+    "word": {
+     "id": "reading-common-prices-in-taka--price-one-thousand-taka--word--31490f56ff9bd70b",
+     "text": "এক হাজার টাকা",
+     "fallback": [
+      {
+       "word": "price-one-thousand-taka"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reading-common-prices-in-taka--price-one-thousand-taka--ask--4921e5eda48f24ff",
+     "text": "মন দিয়ে শুনুন। এক হাজার টাকা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "price-one-thousand-taka"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “one thousand taka as a price or fee”."
+    },
+    "yes": {
+     "id": "reading-common-prices-in-taka--price-one-thousand-taka--yes--ad9f764fbf616b13",
+     "text": "দারুণ। এক হাজার টাকা।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "price-one-thousand-taka"
+      }
+     ],
+     "english": "Great! This is “one thousand taka as a price or fee”."
+    },
+    "recast": {
+     "id": "reading-common-prices-in-taka--price-one-thousand-taka--recast--16cb249f059151ec",
+     "text": "এই ছবিটা দেখুন। এক হাজার টাকা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "price-one-thousand-taka"
+      }
+     ],
+     "english": "Look at this picture. This is “one thousand taka as a price or fee”."
+    },
+    "examples": [
+     {
+      "id": "reading-common-prices-in-taka--price-one-thousand-taka--example-1--e1ee8847080a1af1",
+      "text": "এক হাজার টাকা আলাদা রেখে দেন",
+      "fallback": [
+       {
+        "clip": "e1ee8847080a1af12c20"
+       }
+      ]
+     }
+    ]
+   },
+   "price-two-thousand-taka": {
+    "word": {
+     "id": "reading-common-prices-in-taka--price-two-thousand-taka--word--2b59fd1a65eea141",
+     "text": "দুই হাজার টাকা",
+     "fallback": [
+      {
+       "word": "price-two-thousand-taka"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reading-common-prices-in-taka--price-two-thousand-taka--ask--05734f4b78cebc81",
+     "text": "মন দিয়ে শুনুন। দুই হাজার টাকা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "price-two-thousand-taka"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “two thousand taka as a price or fee”."
+    },
+    "yes": {
+     "id": "reading-common-prices-in-taka--price-two-thousand-taka--yes--7463cab8e014ba99",
+     "text": "দারুণ। দুই হাজার টাকা।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "price-two-thousand-taka"
+      }
+     ],
+     "english": "Great! This is “two thousand taka as a price or fee”."
+    },
+    "recast": {
+     "id": "reading-common-prices-in-taka--price-two-thousand-taka--recast--2299a8ecb7ba30c7",
+     "text": "এই ছবিটা দেখুন। দুই হাজার টাকা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "price-two-thousand-taka"
+      }
+     ],
+     "english": "Look at this picture. This is “two thousand taka as a price or fee”."
+    },
+    "examples": [
+     {
+      "id": "reading-common-prices-in-taka--price-two-thousand-taka--example-1--9b395097d885779d",
+      "text": "এর দাম দুই হাজার টাকা",
+      "fallback": [
+       {
+        "clip": "9b395097d885779d9b08"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "reading-hours-and-minutes": {
+   "clock-one-on-the-hour": {
+    "word": {
+     "id": "reading-hours-and-minutes--clock-one-on-the-hour--word--0156b79f9ba11182",
+     "text": "একটা বাজে",
+     "fallback": [
+      {
+       "word": "clock-one-on-the-hour"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reading-hours-and-minutes--clock-one-on-the-hour--ask--55059be818668a95",
+     "text": "মন দিয়ে শুনুন। একটা বাজে। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "clock-one-on-the-hour"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “one o'clock on an analog clock”."
+    },
+    "yes": {
+     "id": "reading-hours-and-minutes--clock-one-on-the-hour--yes--adfdb4fc7ca6f817",
+     "text": "দারুণ। একটা বাজে।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "clock-one-on-the-hour"
+      }
+     ],
+     "english": "Great! This is “one o'clock on an analog clock”."
+    },
+    "recast": {
+     "id": "reading-hours-and-minutes--clock-one-on-the-hour--recast--3b3404dab9ad00f6",
+     "text": "এই ছবিটা দেখুন। একটা বাজে।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "clock-one-on-the-hour"
+      }
+     ],
+     "english": "Look at this picture. This is “one o'clock on an analog clock”."
+    },
+    "examples": [
+     {
+      "id": "reading-hours-and-minutes--clock-one-on-the-hour--example-1--2fe881ac3f327a2f",
+      "text": "এখন একটা বাজে",
+      "fallback": [
+       {
+        "clip": "2fe881ac3f327a2fc3b7"
+       }
+      ]
+     }
+    ]
+   },
+   "clock-half-past-one": {
+    "word": {
+     "id": "reading-hours-and-minutes--clock-half-past-one--word--7174148d57db6234",
+     "text": "সাড়ে একটা",
+     "fallback": [
+      {
+       "word": "clock-half-past-one"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reading-hours-and-minutes--clock-half-past-one--ask--621c526153ae2a84",
+     "text": "সাড়ে একটা। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "clock-half-past-one"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “half past one on an analog clock”? Show me."
+    },
+    "yes": {
+     "id": "reading-hours-and-minutes--clock-half-past-one--yes--e15a5b33dcf0654e",
+     "text": "খুব ভালো। সাড়ে একটা।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "clock-half-past-one"
+      }
+     ],
+     "english": "Very good! This is “half past one on an analog clock”."
+    },
+    "recast": {
+     "id": "reading-hours-and-minutes--clock-half-past-one--recast--2613f21a43afd2ab",
+     "text": "এই ছবিটা দেখুন। সাড়ে একটা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "clock-half-past-one"
+      }
+     ],
+     "english": "Look at this picture. This is “half past one on an analog clock”."
+    },
+    "examples": [
+     {
+      "id": "reading-hours-and-minutes--clock-half-past-one--example-1--fa04827095a4d8be",
+      "text": "সাড়ে একটায় দেখা হবে",
+      "fallback": [
+       {
+        "clip": "fa04827095a4d8be4700"
+       }
+      ]
+     }
+    ]
+   },
+   "clock-quarter-past-two": {
+    "word": {
+     "id": "reading-hours-and-minutes--clock-quarter-past-two--word--d3dcb7af71484752",
+     "text": "সোয়া দুইটা",
+     "fallback": [
+      {
+       "word": "clock-quarter-past-two"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reading-hours-and-minutes--clock-quarter-past-two--ask--bf7a799188d6f74d",
+     "text": "সোয়া দুইটা। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "clock-quarter-past-two"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “quarter past two on an analog clock”? Show me."
+    },
+    "yes": {
+     "id": "reading-hours-and-minutes--clock-quarter-past-two--yes--1cdffd828f14132e",
+     "text": "বাহ্। সোয়া দুইটা।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "clock-quarter-past-two"
+      }
+     ],
+     "english": "Wow! This is “quarter past two on an analog clock”."
+    },
+    "recast": {
+     "id": "reading-hours-and-minutes--clock-quarter-past-two--recast--cd89a104b2f04adc",
+     "text": "এই ছবিটা দেখুন। সোয়া দুইটা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "clock-quarter-past-two"
+      }
+     ],
+     "english": "Look at this picture. This is “quarter past two on an analog clock”."
+    },
+    "examples": [
+     {
+      "id": "reading-hours-and-minutes--clock-quarter-past-two--example-1--07479106086da86e",
+      "text": "সোয়া দুইটায় আসেন",
+      "fallback": [
+       {
+        "clip": "07479106086da86ef552"
+       }
+      ]
+     }
+    ]
+   },
+   "clock-quarter-to-three": {
+    "word": {
+     "id": "reading-hours-and-minutes--clock-quarter-to-three--word--d05ae1038922f710",
+     "text": "পৌনে তিনটা",
+     "fallback": [
+      {
+       "word": "clock-quarter-to-three"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reading-hours-and-minutes--clock-quarter-to-three--ask--7f1db1212e321244",
+     "text": "পৌনে তিনটা। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "clock-quarter-to-three"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “quarter to three on an analog clock”? Show me."
+    },
+    "yes": {
+     "id": "reading-hours-and-minutes--clock-quarter-to-three--yes--440064729d2bd438",
+     "text": "হ্যাঁ, ঠিক হয়েছে। পৌনে তিনটা।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "clock-quarter-to-three"
+      }
+     ],
+     "english": "Yes! This is “quarter to three on an analog clock”."
+    },
+    "recast": {
+     "id": "reading-hours-and-minutes--clock-quarter-to-three--recast--e9a34016d67b0394",
+     "text": "এই ছবিটা দেখুন। পৌনে তিনটা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "clock-quarter-to-three"
+      }
+     ],
+     "english": "Look at this picture. This is “quarter to three on an analog clock”."
+    },
+    "examples": [
+     {
+      "id": "reading-hours-and-minutes--clock-quarter-to-three--example-1--08f49de2fda19577",
+      "text": "আমরা পৌনে তিনটায় যাব",
+      "fallback": [
+       {
+        "clip": "08f49de2fda195779dee"
+       }
+      ]
+     }
+    ]
+   },
+   "clock-ten-minutes-after-four": {
+    "word": {
+     "id": "reading-hours-and-minutes--clock-ten-minutes-after-four--word--60698a209b57d640",
+     "text": "চারটা দশ",
+     "fallback": [
+      {
+       "word": "clock-ten-minutes-after-four"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reading-hours-and-minutes--clock-ten-minutes-after-four--ask--fefda505cf9d9623",
+     "text": "খুঁজে দেখুন। চারটা দশ।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "clock-ten-minutes-after-four"
+      }
+     ],
+     "english": "Find “ten minutes past four on an analog clock”."
+    },
+    "yes": {
+     "id": "reading-hours-and-minutes--clock-ten-minutes-after-four--yes--89dd9fb8844aa7a8",
+     "text": "বাহ্। চারটা দশ।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "clock-ten-minutes-after-four"
+      }
+     ],
+     "english": "Wow! This is “ten minutes past four on an analog clock”."
+    },
+    "recast": {
+     "id": "reading-hours-and-minutes--clock-ten-minutes-after-four--recast--a6c968fad81a31aa",
+     "text": "এই ছবিটা দেখুন। চারটা দশ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "clock-ten-minutes-after-four"
+      }
+     ],
+     "english": "Look at this picture. This is “ten minutes past four on an analog clock”."
+    },
+    "examples": [
+     {
+      "id": "reading-hours-and-minutes--clock-ten-minutes-after-four--example-1--7ae49a697d515aae",
+      "text": "এখন চারটা দশ",
+      "fallback": [
+       {
+        "clip": "7ae49a697d515aae8be0"
+       }
+      ]
+     }
+    ]
+   },
+   "clock-ten-minutes-before-five": {
+    "word": {
+     "id": "reading-hours-and-minutes--clock-ten-minutes-before-five--word--b20df06465641756",
+     "text": "পাঁচটা বাজতে দশ",
+     "fallback": [
+      {
+       "word": "clock-ten-minutes-before-five"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reading-hours-and-minutes--clock-ten-minutes-before-five--ask--fe293cb17878273c",
+     "text": "খুঁজে দেখুন। পাঁচটা বাজতে দশ।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "clock-ten-minutes-before-five"
+      }
+     ],
+     "english": "Find “ten minutes before five on an analog clock”."
+    },
+    "yes": {
+     "id": "reading-hours-and-minutes--clock-ten-minutes-before-five--yes--246314e149be0be6",
+     "text": "হ্যাঁ, ঠিক হয়েছে। পাঁচটা বাজতে দশ।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "clock-ten-minutes-before-five"
+      }
+     ],
+     "english": "Yes! This is “ten minutes before five on an analog clock”."
+    },
+    "recast": {
+     "id": "reading-hours-and-minutes--clock-ten-minutes-before-five--recast--7e18b3fdf2adf4d5",
+     "text": "এই ছবিটা দেখুন। পাঁচটা বাজতে দশ।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "clock-ten-minutes-before-five"
+      }
+     ],
+     "english": "Look at this picture. This is “ten minutes before five on an analog clock”."
+    },
+    "examples": [
+     {
+      "id": "reading-hours-and-minutes--clock-ten-minutes-before-five--example-1--65a808b3364b31b6",
+      "text": "পাঁচটা বাজতে দশ আছে",
+      "fallback": [
+       {
+        "clip": "65a808b3364b31b6a450"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "asking-when-and-how-long": {
+   "ask-the-day-of-the-week": {
+    "word": {
+     "id": "asking-when-and-how-long--ask-the-day-of-the-week--word--1fff2da25ba3416e",
+     "text": "আজ কী বার?",
+     "fallback": [
+      {
+       "word": "ask-the-day-of-the-week"
+      }
+     ]
+    },
+    "ask": {
+     "id": "asking-when-and-how-long--ask-the-day-of-the-week--ask--6179e9cc287fb56c",
+     "text": "খুঁজে দেখুন। আজ কী বার?।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "ask-the-day-of-the-week"
+      }
+     ],
+     "english": "Find “ask what day of the week it is”."
+    },
+    "yes": {
+     "id": "asking-when-and-how-long--ask-the-day-of-the-week--yes--4b05975cb59cd2c7",
+     "text": "হ্যাঁ, ঠিক হয়েছে। আজ কী বার?।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "ask-the-day-of-the-week"
+      }
+     ],
+     "english": "Yes! This is “ask what day of the week it is”."
+    },
+    "recast": {
+     "id": "asking-when-and-how-long--ask-the-day-of-the-week--recast--7831ef802b14f3e8",
+     "text": "এই ছবিটা দেখুন। আজ কী বার?।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-the-day-of-the-week"
+      }
+     ],
+     "english": "Look at this picture. This is “ask what day of the week it is”."
+    },
+    "examples": [
+     {
+      "id": "asking-when-and-how-long--ask-the-day-of-the-week--example-1--02fd3b0076bbd787",
+      "text": "ভাই, আজ কী বার?",
+      "fallback": [
+       {
+        "clip": "02fd3b0076bbd787ce7f"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-the-calendar-date": {
+    "word": {
+     "id": "asking-when-and-how-long--ask-the-calendar-date--word--062b1a22e426f20b",
+     "text": "আজ কত তারিখ?",
+     "fallback": [
+      {
+       "word": "ask-the-calendar-date"
+      }
+     ]
+    },
+    "ask": {
+     "id": "asking-when-and-how-long--ask-the-calendar-date--ask--fcb0bf833c306dbd",
+     "text": "মন দিয়ে শুনুন। আজ কত তারিখ?। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "ask-the-calendar-date"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “ask for today's calendar date”."
+    },
+    "yes": {
+     "id": "asking-when-and-how-long--ask-the-calendar-date--yes--eadad2117f48d8d6",
+     "text": "শাবাশ। আজ কত তারিখ?।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "ask-the-calendar-date"
+      }
+     ],
+     "english": "Well done! This is “ask for today's calendar date”."
+    },
+    "recast": {
+     "id": "asking-when-and-how-long--ask-the-calendar-date--recast--e7868d136fba8b1e",
+     "text": "এই ছবিটা দেখুন। আজ কত তারিখ?।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-the-calendar-date"
+      }
+     ],
+     "english": "Look at this picture. This is “ask for today's calendar date”."
+    },
+    "examples": [
+     {
+      "id": "asking-when-and-how-long--ask-the-calendar-date--example-1--db59454bb776ffe0",
+      "text": "আজ কত তারিখ বলবেন?",
+      "fallback": [
+       {
+        "clip": "db59454bb776ffe02205"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-what-time-to-meet": {
+    "word": {
+     "id": "asking-when-and-how-long--ask-what-time-to-meet--word--8220adcc7350e809",
+     "text": "কয়টার সময়?",
+     "fallback": [
+      {
+       "word": "ask-what-time-to-meet"
+      }
+     ]
+    },
+    "ask": {
+     "id": "asking-when-and-how-long--ask-what-time-to-meet--ask--b333ed89e0a1556d",
+     "text": "কয়টার সময়?। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "ask-what-time-to-meet"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “ask what time is suitable for a meeting”? Show me."
+    },
+    "yes": {
+     "id": "asking-when-and-how-long--ask-what-time-to-meet--yes--9726787e64354fa7",
+     "text": "দারুণ। কয়টার সময়?।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "ask-what-time-to-meet"
+      }
+     ],
+     "english": "Great! This is “ask what time is suitable for a meeting”."
+    },
+    "recast": {
+     "id": "asking-when-and-how-long--ask-what-time-to-meet--recast--c9f66c869b9e58b6",
+     "text": "এই ছবিটা দেখুন। কয়টার সময়?।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-what-time-to-meet"
+      }
+     ],
+     "english": "Look at this picture. This is “ask what time is suitable for a meeting”."
+    },
+    "examples": [
+     {
+      "id": "asking-when-and-how-long--ask-what-time-to-meet--example-1--e74be7b36616b5c1",
+      "text": "কয়টার সময় দেখা হবে?",
+      "fallback": [
+       {
+        "clip": "e74be7b36616b5c172f4"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-how-long-a-task-takes": {
+    "word": {
+     "id": "asking-when-and-how-long--ask-how-long-a-task-takes--word--da8aaf023e26ed1d",
+     "text": "কতক্ষণ লাগবে?",
+     "fallback": [
+      {
+       "word": "ask-how-long-a-task-takes"
+      }
+     ]
+    },
+    "ask": {
+     "id": "asking-when-and-how-long--ask-how-long-a-task-takes--ask--8071256f61341dc3",
+     "text": "কতক্ষণ লাগবে?। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "ask-how-long-a-task-takes"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “ask how long a process takes”? Show me."
+    },
+    "yes": {
+     "id": "asking-when-and-how-long--ask-how-long-a-task-takes--yes--9335ca5ab2c8bb5f",
+     "text": "একদম ঠিক। কতক্ষণ লাগবে?।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "ask-how-long-a-task-takes"
+      }
+     ],
+     "english": "Exactly right! This is “ask how long a process takes”."
+    },
+    "recast": {
+     "id": "asking-when-and-how-long--ask-how-long-a-task-takes--recast--c955914cd9f389fa",
+     "text": "এই ছবিটা দেখুন। কতক্ষণ লাগবে?।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-how-long-a-task-takes"
+      }
+     ],
+     "english": "Look at this picture. This is “ask how long a process takes”."
+    },
+    "examples": [
+     {
+      "id": "asking-when-and-how-long--ask-how-long-a-task-takes--example-1--dfc13886da0d576d",
+      "text": "যেতে কতক্ষণ লাগবে?",
+      "fallback": [
+       {
+        "clip": "dfc13886da0d576d6bb3"
+       }
+      ]
+     }
+    ]
+   },
+   "warn-that-you-may-be-late": {
+    "word": {
+     "id": "asking-when-and-how-long--warn-that-you-may-be-late--word--e3c7fa8ea561f238",
+     "text": "দেরি হবে",
+     "fallback": [
+      {
+       "word": "warn-that-you-may-be-late"
+      }
+     ]
+    },
+    "ask": {
+     "id": "asking-when-and-how-long--warn-that-you-may-be-late--ask--9c157c2031df164e",
+     "text": "মন দিয়ে শুনুন। দেরি হবে। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "warn-that-you-may-be-late"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “warn someone that you will be late”."
+    },
+    "yes": {
+     "id": "asking-when-and-how-long--warn-that-you-may-be-late--yes--dd79fd220efc7f2e",
+     "text": "খুব ভালো। দেরি হবে।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "warn-that-you-may-be-late"
+      }
+     ],
+     "english": "Very good! This is “warn someone that you will be late”."
+    },
+    "recast": {
+     "id": "asking-when-and-how-long--warn-that-you-may-be-late--recast--546adacdb6e51770",
+     "text": "এই ছবিটা দেখুন। দেরি হবে।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "warn-that-you-may-be-late"
+      }
+     ],
+     "english": "Look at this picture. This is “warn someone that you will be late”."
+    },
+    "examples": [
+     {
+      "id": "asking-when-and-how-long--warn-that-you-may-be-late--example-1--8e582abd34c400b9",
+      "text": "আজ আমার একটু দেরি হবে",
+      "fallback": [
+       {
+        "clip": "8e582abd34c400b90794"
+       }
+      ]
+     }
+    ]
+   },
+   "arrive-at-the-agreed-time": {
+    "word": {
+     "id": "asking-when-and-how-long--arrive-at-the-agreed-time--word--5cb665447352d62d",
+     "text": "সময়মতো",
+     "fallback": [
+      {
+       "word": "arrive-at-the-agreed-time"
+      }
+     ]
+    },
+    "ask": {
+     "id": "asking-when-and-how-long--arrive-at-the-agreed-time--ask--c596d4747f0d8f6e",
+     "text": "মন দিয়ে শুনুন। সময়মতো। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "arrive-at-the-agreed-time"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “at the agreed time or on time”."
+    },
+    "yes": {
+     "id": "asking-when-and-how-long--arrive-at-the-agreed-time--yes--2a26b47ff089023a",
+     "text": "খুব ভালো। সময়মতো।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "arrive-at-the-agreed-time"
+      }
+     ],
+     "english": "Very good! This is “at the agreed time or on time”."
+    },
+    "recast": {
+     "id": "asking-when-and-how-long--arrive-at-the-agreed-time--recast--ce8fd42b84f8db9d",
+     "text": "এই ছবিটা দেখুন। সময়মতো।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "arrive-at-the-agreed-time"
+      }
+     ],
+     "english": "Look at this picture. This is “at the agreed time or on time”."
+    },
+    "examples": [
+     {
+      "id": "asking-when-and-how-long--arrive-at-the-agreed-time--example-1--3dbc936f51a67201",
+      "text": "আমি সময়মতো চলে আসব",
+      "fallback": [
+       {
+        "clip": "3dbc936f51a672013857"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "asking-for-urgent-everyday-help": {
+   "asking-a-person-nearby-for-help": {
+    "word": {
+     "id": "asking-for-urgent-everyday-help--asking-a-person-nearby-for-help--word--0922971816308ddc",
+     "text": "একটু সাহায্য করেন",
+     "fallback": [
+      {
+       "word": "asking-a-person-nearby-for-help"
+      }
+     ]
+    },
+    "ask": {
+     "id": "asking-for-urgent-everyday-help--asking-a-person-nearby-for-help--ask--7ca0853cec6f4e17",
+     "text": "খুঁজে দেখুন। একটু সাহায্য করেন।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "asking-a-person-nearby-for-help"
+      }
+     ],
+     "english": "Find “ask somebody nearby to help you”."
+    },
+    "yes": {
+     "id": "asking-for-urgent-everyday-help--asking-a-person-nearby-for-help--yes--29d21a7016bbf17f",
+     "text": "চমৎকার। একটু সাহায্য করেন।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "asking-a-person-nearby-for-help"
+      }
+     ],
+     "english": "Excellent! This is “ask somebody nearby to help you”."
+    },
+    "recast": {
+     "id": "asking-for-urgent-everyday-help--asking-a-person-nearby-for-help--recast--db21b89e8040cc2e",
+     "text": "এই ছবিটা দেখুন। একটু সাহায্য করেন।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "asking-a-person-nearby-for-help"
+      }
+     ],
+     "english": "Look at this picture. This is “ask somebody nearby to help you”."
+    },
+    "examples": [
+     {
+      "id": "asking-for-urgent-everyday-help--asking-a-person-nearby-for-help--example-1--f58ffdb2f274ccd7",
+      "text": "ভাই, একটু সাহায্য করেন",
+      "fallback": [
+       {
+        "clip": "f58ffdb2f274ccd7cdf1"
+       }
+      ]
+     }
+    ]
+   },
+   "request-getting-a-doctor": {
+    "word": {
+     "id": "asking-for-urgent-everyday-help--request-getting-a-doctor--word--2fe92a9e16065b12",
+     "text": "চিকিৎসা দরকার",
+     "fallback": [
+      {
+       "word": "request-getting-a-doctor"
+      }
+     ]
+    },
+    "ask": {
+     "id": "asking-for-urgent-everyday-help--request-getting-a-doctor--ask--9da90b18c15e8195",
+     "text": "মন দিয়ে শুনুন। চিকিৎসা দরকার। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "request-getting-a-doctor"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “tell others that someone needs medical attention”."
+    },
+    "yes": {
+     "id": "asking-for-urgent-everyday-help--request-getting-a-doctor--yes--41b1e98166290bfc",
+     "text": "দারুণ। চিকিৎসা দরকার।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "request-getting-a-doctor"
+      }
+     ],
+     "english": "Great! This is “tell others that someone needs medical attention”."
+    },
+    "recast": {
+     "id": "asking-for-urgent-everyday-help--request-getting-a-doctor--recast--7734fd8044a85c48",
+     "text": "এই ছবিটা দেখুন। চিকিৎসা দরকার।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "request-getting-a-doctor"
+      }
+     ],
+     "english": "Look at this picture. This is “tell others that someone needs medical attention”."
+    },
+    "examples": [
+     {
+      "id": "asking-for-urgent-everyday-help--request-getting-a-doctor--example-1--9d83aeb7460feb27",
+      "text": "উনার চিকিৎসা দরকার",
+      "fallback": [
+       {
+        "clip": "9d83aeb7460feb271494"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-someone-to-tell-the-police": {
+    "word": {
+     "id": "asking-for-urgent-everyday-help--ask-someone-to-tell-the-police--word--61cb9ddc98f7f87a",
+     "text": "থানায় খবর দেন",
+     "fallback": [
+      {
+       "word": "ask-someone-to-tell-the-police"
+      }
+     ]
+    },
+    "ask": {
+     "id": "asking-for-urgent-everyday-help--ask-someone-to-tell-the-police--ask--f792b1fb13235844",
+     "text": "খুঁজে দেখুন। থানায় খবর দেন।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "ask-someone-to-tell-the-police"
+      }
+     ],
+     "english": "Find “ask a companion to inform the police”."
+    },
+    "yes": {
+     "id": "asking-for-urgent-everyday-help--ask-someone-to-tell-the-police--yes--d03efad04417acb7",
+     "text": "খুব ভালো। থানায় খবর দেন।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "ask-someone-to-tell-the-police"
+      }
+     ],
+     "english": "Very good! This is “ask a companion to inform the police”."
+    },
+    "recast": {
+     "id": "asking-for-urgent-everyday-help--ask-someone-to-tell-the-police--recast--3b767ea5df45951a",
+     "text": "এই ছবিটা দেখুন। থানায় খবর দেন।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-someone-to-tell-the-police"
+      }
+     ],
+     "english": "Look at this picture. This is “ask a companion to inform the police”."
+    },
+    "examples": [
+     {
+      "id": "asking-for-urgent-everyday-help--ask-someone-to-tell-the-police--example-1--279fd5d61400df0a",
+      "text": "ভাই, থানায় খবর দেন",
+      "fallback": [
+       {
+        "clip": "279fd5d61400df0acb69"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-someone-to-inform-your-family": {
+    "word": {
+     "id": "asking-for-urgent-everyday-help--ask-someone-to-inform-your-family--word--b7d8380e43037421",
+     "text": "বাসায় খবর দেন",
+     "fallback": [
+      {
+       "word": "ask-someone-to-inform-your-family"
+      }
+     ]
+    },
+    "ask": {
+     "id": "asking-for-urgent-everyday-help--ask-someone-to-inform-your-family--ask--77daef37425be65c",
+     "text": "বাসায় খবর দেন। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "ask-someone-to-inform-your-family"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “ask that someone inform your household”? Show me."
+    },
+    "yes": {
+     "id": "asking-for-urgent-everyday-help--ask-someone-to-inform-your-family--yes--e8a506cb62f0bd06",
+     "text": "দারুণ। বাসায় খবর দেন।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "ask-someone-to-inform-your-family"
+      }
+     ],
+     "english": "Great! This is “ask that someone inform your household”."
+    },
+    "recast": {
+     "id": "asking-for-urgent-everyday-help--ask-someone-to-inform-your-family--recast--ecf2143639a10dda",
+     "text": "এই ছবিটা দেখুন। বাসায় খবর দেন।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-someone-to-inform-your-family"
+      }
+     ],
+     "english": "Look at this picture. This is “ask that someone inform your household”."
+    },
+    "examples": [
+     {
+      "id": "asking-for-urgent-everyday-help--ask-someone-to-inform-your-family--example-1--2ec1abc4fd15dc16",
+      "text": "আমার বাসায় একটু খবর দেন",
+      "fallback": [
+       {
+        "clip": "2ec1abc4fd15dc161139"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-to-be-allowed-to-sit": {
+    "word": {
+     "id": "asking-for-urgent-everyday-help--ask-to-be-allowed-to-sit--word--6dc5971938c2c32a",
+     "text": "একটু বসতে দেন",
+     "fallback": [
+      {
+       "word": "ask-to-be-allowed-to-sit"
+      }
+     ]
+    },
+    "ask": {
+     "id": "asking-for-urgent-everyday-help--ask-to-be-allowed-to-sit--ask--4728dc8c9288426d",
+     "text": "একটু বসতে দেন। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "ask-to-be-allowed-to-sit"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “ask for a chance to sit down”? Show me."
+    },
+    "yes": {
+     "id": "asking-for-urgent-everyday-help--ask-to-be-allowed-to-sit--yes--f54679052a70a0e7",
+     "text": "খুব ভালো। একটু বসতে দেন।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "ask-to-be-allowed-to-sit"
+      }
+     ],
+     "english": "Very good! This is “ask for a chance to sit down”."
+    },
+    "recast": {
+     "id": "asking-for-urgent-everyday-help--ask-to-be-allowed-to-sit--recast--77a6c191a49a504c",
+     "text": "এই ছবিটা দেখুন। একটু বসতে দেন।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-to-be-allowed-to-sit"
+      }
+     ],
+     "english": "Look at this picture. This is “ask for a chance to sit down”."
+    },
+    "examples": [
+     {
+      "id": "asking-for-urgent-everyday-help--ask-to-be-allowed-to-sit--example-1--4546805756eed03f",
+      "text": "আমাকে একটু বসতে দেন",
+      "fallback": [
+       {
+        "clip": "4546805756eed03f4b76"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-a-person-to-stay-near-you": {
+    "word": {
+     "id": "asking-for-urgent-everyday-help--ask-a-person-to-stay-near-you--word--969c6ea1d6415491",
+     "text": "আমার সঙ্গে থাকেন",
+     "fallback": [
+      {
+       "word": "ask-a-person-to-stay-near-you"
+      }
+     ]
+    },
+    "ask": {
+     "id": "asking-for-urgent-everyday-help--ask-a-person-to-stay-near-you--ask--9f4f229d1351b5e8",
+     "text": "খুঁজে দেখুন। আমার সঙ্গে থাকেন।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "ask-a-person-to-stay-near-you"
+      }
+     ],
+     "english": "Find “ask someone to stay with you for the moment”."
+    },
+    "yes": {
+     "id": "asking-for-urgent-everyday-help--ask-a-person-to-stay-near-you--yes--4c27f8f41d40c336",
+     "text": "একদম ঠিক। আমার সঙ্গে থাকেন।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "ask-a-person-to-stay-near-you"
+      }
+     ],
+     "english": "Exactly right! This is “ask someone to stay with you for the moment”."
+    },
+    "recast": {
+     "id": "asking-for-urgent-everyday-help--ask-a-person-to-stay-near-you--recast--11eafb0333ad6fb6",
+     "text": "এই ছবিটা দেখুন। আমার সঙ্গে থাকেন।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-a-person-to-stay-near-you"
+      }
+     ],
+     "english": "Look at this picture. This is “ask someone to stay with you for the moment”."
+    },
+    "examples": [
+     {
+      "id": "asking-for-urgent-everyday-help--ask-a-person-to-stay-near-you--example-1--2c355c295368c004",
+      "text": "একটু আমার সঙ্গে থাকেন",
+      "fallback": [
+       {
+        "clip": "2c355c295368c004a407"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "finding-basic-facilities-in-a-new-place": {
+   "ask-where-the-restroom-is": {
+    "word": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-the-restroom-is--word--6234c4275f2d8bea",
+     "text": "পায়খানা কোথায়?",
+     "fallback": [
+      {
+       "word": "ask-where-the-restroom-is"
+      }
+     ]
+    },
+    "ask": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-the-restroom-is--ask--a7ad8d0f32f2701a",
+     "text": "মন দিয়ে শুনুন। পায়খানা কোথায়?। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "ask-where-the-restroom-is"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “ask where the restroom is”."
+    },
+    "yes": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-the-restroom-is--yes--c661ded55e89810d",
+     "text": "শাবাশ। পায়খানা কোথায়?।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "ask-where-the-restroom-is"
+      }
+     ],
+     "english": "Well done! This is “ask where the restroom is”."
+    },
+    "recast": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-the-restroom-is--recast--819030835e5cf64d",
+     "text": "এই ছবিটা দেখুন। পায়খানা কোথায়?।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-where-the-restroom-is"
+      }
+     ],
+     "english": "Look at this picture. This is “ask where the restroom is”."
+    },
+    "examples": [
+     {
+      "id": "finding-basic-facilities-in-a-new-place--ask-where-the-restroom-is--example-1--50aa05fee9e677b0",
+      "text": "ভাই, পায়খানা কোথায়?",
+      "fallback": [
+       {
+        "clip": "50aa05fee9e677b0780e"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-where-drinking-water-is": {
+    "word": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-drinking-water-is--word--ca550ccd5d154f2b",
+     "text": "খাওয়ার পানি কোথায়?",
+     "fallback": [
+      {
+       "word": "ask-where-drinking-water-is"
+      }
+     ]
+    },
+    "ask": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-drinking-water-is--ask--26b8332fb87a0183",
+     "text": "মন দিয়ে শুনুন। খাওয়ার পানি কোথায়?। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "ask-where-drinking-water-is"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “ask where to get drinking water”."
+    },
+    "yes": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-drinking-water-is--yes--e5a4537e32963c7d",
+     "text": "শাবাশ। খাওয়ার পানি কোথায়?।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "ask-where-drinking-water-is"
+      }
+     ],
+     "english": "Well done! This is “ask where to get drinking water”."
+    },
+    "recast": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-drinking-water-is--recast--23e2782538a96d5f",
+     "text": "এই ছবিটা দেখুন। খাওয়ার পানি কোথায়?।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-where-drinking-water-is"
+      }
+     ],
+     "english": "Look at this picture. This is “ask where to get drinking water”."
+    },
+    "examples": [
+     {
+      "id": "finding-basic-facilities-in-a-new-place--ask-where-drinking-water-is--example-1--20d2dd29efb22df0",
+      "text": "এখানে খাওয়ার পানি কোথায়?",
+      "fallback": [
+       {
+        "clip": "20d2dd29efb22df0d20e"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-where-to-wash-hands": {
+    "word": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-to-wash-hands--word--f9ca4d097fc057a5",
+     "text": "হাত ধোব কোথায়?",
+     "fallback": [
+      {
+       "word": "ask-where-to-wash-hands"
+      }
+     ]
+    },
+    "ask": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-to-wash-hands--ask--935332ea29b243e3",
+     "text": "খুঁজে দেখুন। হাত ধোব কোথায়?।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "ask-where-to-wash-hands"
+      }
+     ],
+     "english": "Find “ask where you can wash your hands”."
+    },
+    "yes": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-to-wash-hands--yes--7ef9742c8f003e6e",
+     "text": "একদম ঠিক। হাত ধোব কোথায়?।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "ask-where-to-wash-hands"
+      }
+     ],
+     "english": "Exactly right! This is “ask where you can wash your hands”."
+    },
+    "recast": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-to-wash-hands--recast--b5b0bbceaded1bb7",
+     "text": "এই ছবিটা দেখুন। হাত ধোব কোথায়?।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-where-to-wash-hands"
+      }
+     ],
+     "english": "Look at this picture. This is “ask where you can wash your hands”."
+    },
+    "examples": [
+     {
+      "id": "finding-basic-facilities-in-a-new-place--ask-where-to-wash-hands--example-1--c958dad5a17c6d8c",
+      "text": "খাওয়ার আগে হাত ধোব কোথায়?",
+      "fallback": [
+       {
+        "clip": "c958dad5a17c6d8c927e"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-if-you-may-sit-here": {
+    "word": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-if-you-may-sit-here--word--ea6ece785ba1de86",
+     "text": "এখানে বসতে পারি?",
+     "fallback": [
+      {
+       "word": "ask-if-you-may-sit-here"
+      }
+     ]
+    },
+    "ask": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-if-you-may-sit-here--ask--6e90949762dc97b9",
+     "text": "খুঁজে দেখুন। এখানে বসতে পারি?।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "ask-if-you-may-sit-here"
+      }
+     ],
+     "english": "Find “ask permission to sit in this location”."
+    },
+    "yes": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-if-you-may-sit-here--yes--a26f7e67eb229a8a",
+     "text": "হ্যাঁ, ঠিক হয়েছে। এখানে বসতে পারি?।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "ask-if-you-may-sit-here"
+      }
+     ],
+     "english": "Yes! This is “ask permission to sit in this location”."
+    },
+    "recast": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-if-you-may-sit-here--recast--718fd1435e17e3bb",
+     "text": "এই ছবিটা দেখুন। এখানে বসতে পারি?।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-if-you-may-sit-here"
+      }
+     ],
+     "english": "Look at this picture. This is “ask permission to sit in this location”."
+    },
+    "examples": [
+     {
+      "id": "finding-basic-facilities-in-a-new-place--ask-if-you-may-sit-here--example-1--8b3e4a80d5368d94",
+      "text": "আপা, এখানে বসতে পারি?",
+      "fallback": [
+       {
+        "clip": "8b3e4a80d5368d944182"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-which-way-to-leave": {
+    "word": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-which-way-to-leave--word--e3185a4489ed99de",
+     "text": "বের হব কোন দিক দিয়ে?",
+     "fallback": [
+      {
+       "word": "ask-which-way-to-leave"
+      }
+     ]
+    },
+    "ask": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-which-way-to-leave--ask--1e15a9d2fc5e1021",
+     "text": "খুঁজে দেখুন। বের হব কোন দিক দিয়ে?।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "ask-which-way-to-leave"
+      }
+     ],
+     "english": "Find “ask which way you can leave a building”."
+    },
+    "yes": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-which-way-to-leave--yes--4e8be6e723d08ee3",
+     "text": "খুব ভালো। বের হব কোন দিক দিয়ে?।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "ask-which-way-to-leave"
+      }
+     ],
+     "english": "Very good! This is “ask which way you can leave a building”."
+    },
+    "recast": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-which-way-to-leave--recast--07e9b83f5b29fda0",
+     "text": "এই ছবিটা দেখুন। বের হব কোন দিক দিয়ে?।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-which-way-to-leave"
+      }
+     ],
+     "english": "Look at this picture. This is “ask which way you can leave a building”."
+    },
+    "examples": [
+     {
+      "id": "finding-basic-facilities-in-a-new-place--ask-which-way-to-leave--example-1--e2769dadd1f15ee1",
+      "text": "বের হব কোন দিক দিয়ে বলেন",
+      "fallback": [
+       {
+        "clip": "e2769dadd1f15ee13f3f"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-where-to-leave-shoes": {
+    "word": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-to-leave-shoes--word--54c1e4698795b611",
+     "text": "জুতা কোথায় রাখব?",
+     "fallback": [
+      {
+       "word": "ask-where-to-leave-shoes"
+      }
+     ]
+    },
+    "ask": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-to-leave-shoes--ask--084434a9af130a98",
+     "text": "মন দিয়ে শুনুন। জুতা কোথায় রাখব?। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "ask-where-to-leave-shoes"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “ask where to leave your shoes”."
+    },
+    "yes": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-to-leave-shoes--yes--0b2e6107e6beb4a7",
+     "text": "হ্যাঁ, ঠিক হয়েছে। জুতা কোথায় রাখব?।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "ask-where-to-leave-shoes"
+      }
+     ],
+     "english": "Yes! This is “ask where to leave your shoes”."
+    },
+    "recast": {
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-to-leave-shoes--recast--cb985c8c07f7c644",
+     "text": "এই ছবিটা দেখুন। জুতা কোথায় রাখব?।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-where-to-leave-shoes"
+      }
+     ],
+     "english": "Look at this picture. This is “ask where to leave your shoes”."
+    },
+    "examples": [
+     {
+      "id": "finding-basic-facilities-in-a-new-place--ask-where-to-leave-shoes--example-1--0d0a106a1eda36ed",
+      "text": "জুতা কোথায় রাখব, আপা?",
+      "fallback": [
+       {
+        "clip": "0d0a106a1eda36ed3c64"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "exchanging-simple-messages": {
+   "send-a-short-message-to-someone": {
+    "word": {
+     "id": "exchanging-simple-messages--send-a-short-message-to-someone--word--c371eff80f3b40b5",
+     "text": "খবর পাঠান",
+     "fallback": [
+      {
+       "word": "send-a-short-message-to-someone"
+      }
+     ]
+    },
+    "ask": {
+     "id": "exchanging-simple-messages--send-a-short-message-to-someone--ask--8a92c10a916996b3",
+     "text": "খবর পাঠান। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "send-a-short-message-to-someone"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “ask for a short message to be sent”? Show me."
+    },
+    "yes": {
+     "id": "exchanging-simple-messages--send-a-short-message-to-someone--yes--3092c0b3d64edfee",
+     "text": "শাবাশ। খবর পাঠান।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "send-a-short-message-to-someone"
+      }
+     ],
+     "english": "Well done! This is “ask for a short message to be sent”."
+    },
+    "recast": {
+     "id": "exchanging-simple-messages--send-a-short-message-to-someone--recast--4f9e851db39f0c39",
+     "text": "এই ছবিটা দেখুন। খবর পাঠান।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "send-a-short-message-to-someone"
+      }
+     ],
+     "english": "Look at this picture. This is “ask for a short message to be sent”."
+    },
+    "examples": [
+     {
+      "id": "exchanging-simple-messages--send-a-short-message-to-someone--example-1--671e6c4dec4d3416",
+      "text": "সেখানে পৌঁছে খবর পাঠান",
+      "fallback": [
+       {
+        "clip": "671e6c4dec4d341603bd"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-someone-to-send-a-photo": {
+    "word": {
+     "id": "exchanging-simple-messages--ask-someone-to-send-a-photo--word--d9a50d7500f3637d",
+     "text": "ছবি পাঠান",
+     "fallback": [
+      {
+       "word": "ask-someone-to-send-a-photo"
+      }
+     ]
+    },
+    "ask": {
+     "id": "exchanging-simple-messages--ask-someone-to-send-a-photo--ask--2087407ce2723b5d",
+     "text": "মন দিয়ে শুনুন। ছবি পাঠান। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "ask-someone-to-send-a-photo"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “ask someone to send a picture”."
+    },
+    "yes": {
+     "id": "exchanging-simple-messages--ask-someone-to-send-a-photo--yes--628671e67580d4a3",
+     "text": "দারুণ। ছবি পাঠান।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "ask-someone-to-send-a-photo"
+      }
+     ],
+     "english": "Great! This is “ask someone to send a picture”."
+    },
+    "recast": {
+     "id": "exchanging-simple-messages--ask-someone-to-send-a-photo--recast--a9bdd1a305553e9b",
+     "text": "এই ছবিটা দেখুন। ছবি পাঠান।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-someone-to-send-a-photo"
+      }
+     ],
+     "english": "Look at this picture. This is “ask someone to send a picture”."
+    },
+    "examples": [
+     {
+      "id": "exchanging-simple-messages--ask-someone-to-send-a-photo--example-1--55ff132cfb563e62",
+      "text": "এই ছবিটা আমাকে পাঠান",
+      "fallback": [
+       {
+        "clip": "55ff132cfb563e626014"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-someone-to-send-an-address": {
+    "word": {
+     "id": "exchanging-simple-messages--ask-someone-to-send-an-address--word--7bd11bfd53a0be9c",
+     "text": "ঠিকানা পাঠান",
+     "fallback": [
+      {
+       "word": "ask-someone-to-send-an-address"
+      }
+     ]
+    },
+    "ask": {
+     "id": "exchanging-simple-messages--ask-someone-to-send-an-address--ask--706a694701a07a73",
+     "text": "খুঁজে দেখুন। ঠিকানা পাঠান।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "ask-someone-to-send-an-address"
+      }
+     ],
+     "english": "Find “ask someone to send a street address”."
+    },
+    "yes": {
+     "id": "exchanging-simple-messages--ask-someone-to-send-an-address--yes--58f637b0427ed897",
+     "text": "একদম ঠিক। ঠিকানা পাঠান।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "ask-someone-to-send-an-address"
+      }
+     ],
+     "english": "Exactly right! This is “ask someone to send a street address”."
+    },
+    "recast": {
+     "id": "exchanging-simple-messages--ask-someone-to-send-an-address--recast--36acb16349b25eb8",
+     "text": "এই ছবিটা দেখুন। ঠিকানা পাঠান।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-someone-to-send-an-address"
+      }
+     ],
+     "english": "Look at this picture. This is “ask someone to send a street address”."
+    },
+    "examples": [
+     {
+      "id": "exchanging-simple-messages--ask-someone-to-send-an-address--example-1--4b32c0fbab73dcf3",
+      "text": "বাসার ঠিকানাটা পাঠান",
+      "fallback": [
+       {
+        "clip": "4b32c0fbab73dcf3be1a"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-if-the-other-person-can-hear": {
+    "word": {
+     "id": "exchanging-simple-messages--ask-if-the-other-person-can-hear--word--bbe04e5e3103b563",
+     "text": "কথা শুনছেন?",
+     "fallback": [
+      {
+       "word": "ask-if-the-other-person-can-hear"
+      }
+     ]
+    },
+    "ask": {
+     "id": "exchanging-simple-messages--ask-if-the-other-person-can-hear--ask--9fefe6d4830fba59",
+     "text": "খুঁজে দেখুন। কথা শুনছেন?।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "ask-if-the-other-person-can-hear"
+      }
+     ],
+     "english": "Find “ask whether someone can hear you remotely”."
+    },
+    "yes": {
+     "id": "exchanging-simple-messages--ask-if-the-other-person-can-hear--yes--98ab7a9814f1f482",
+     "text": "বাহ্। কথা শুনছেন?।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "ask-if-the-other-person-can-hear"
+      }
+     ],
+     "english": "Wow! This is “ask whether someone can hear you remotely”."
+    },
+    "recast": {
+     "id": "exchanging-simple-messages--ask-if-the-other-person-can-hear--recast--8670a8de7f748f08",
+     "text": "এই ছবিটা দেখুন। কথা শুনছেন?।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-if-the-other-person-can-hear"
+      }
+     ],
+     "english": "Look at this picture. This is “ask whether someone can hear you remotely”."
+    },
+    "examples": [
+     {
+      "id": "exchanging-simple-messages--ask-if-the-other-person-can-hear--example-1--695695a8eb408199",
+      "text": "আমার কথা শুনছেন?",
+      "fallback": [
+       {
+        "clip": "695695a8eb4081992f93"
+       }
+      ]
+     }
+    ]
+   },
+   "tell-someone-that-call-was-interrupted": {
+    "word": {
+     "id": "exchanging-simple-messages--tell-someone-that-call-was-interrupted--word--26358c4f18f40f60",
+     "text": "কথা কেটে গেল",
+     "fallback": [
+      {
+       "word": "tell-someone-that-call-was-interrupted"
+      }
+     ]
+    },
+    "ask": {
+     "id": "exchanging-simple-messages--tell-someone-that-call-was-interrupted--ask--5876ce3b649d012b",
+     "text": "মন দিয়ে শুনুন। কথা কেটে গেল। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "tell-someone-that-call-was-interrupted"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “say that a remote conversation was cut off”."
+    },
+    "yes": {
+     "id": "exchanging-simple-messages--tell-someone-that-call-was-interrupted--yes--5a1e44df384ff67b",
+     "text": "হ্যাঁ, ঠিক হয়েছে। কথা কেটে গেল।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "tell-someone-that-call-was-interrupted"
+      }
+     ],
+     "english": "Yes! This is “say that a remote conversation was cut off”."
+    },
+    "recast": {
+     "id": "exchanging-simple-messages--tell-someone-that-call-was-interrupted--recast--c04bef01837b0922",
+     "text": "এই ছবিটা দেখুন। কথা কেটে গেল।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "tell-someone-that-call-was-interrupted"
+      }
+     ],
+     "english": "Look at this picture. This is “say that a remote conversation was cut off”."
+    },
+    "examples": [
+     {
+      "id": "exchanging-simple-messages--tell-someone-that-call-was-interrupted--example-1--04c4fb328ddd7ea5",
+      "text": "কথাটা মাঝখানে কেটে গেল",
+      "fallback": [
+       {
+        "clip": "04c4fb328ddd7ea55970"
+       }
+      ]
+     }
+    ]
+   },
+   "respond-after-checking-a-message": {
+    "word": {
+     "id": "exchanging-simple-messages--respond-after-checking-a-message--word--aa73c687a262c7da",
+     "text": "দেখে জানাব",
+     "fallback": [
+      {
+       "word": "respond-after-checking-a-message"
+      }
+     ]
+    },
+    "ask": {
+     "id": "exchanging-simple-messages--respond-after-checking-a-message--ask--7980ced80e759668",
+     "text": "মন দিয়ে শুনুন। দেখে জানাব। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "respond-after-checking-a-message"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “say you will check and let the other person know”."
+    },
+    "yes": {
+     "id": "exchanging-simple-messages--respond-after-checking-a-message--yes--eab825763b5660fa",
+     "text": "দারুণ। দেখে জানাব।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "respond-after-checking-a-message"
+      }
+     ],
+     "english": "Great! This is “say you will check and let the other person know”."
+    },
+    "recast": {
+     "id": "exchanging-simple-messages--respond-after-checking-a-message--recast--39aa07452e211d87",
+     "text": "এই ছবিটা দেখুন। দেখে জানাব।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "respond-after-checking-a-message"
+      }
+     ],
+     "english": "Look at this picture. This is “say you will check and let the other person know”."
+    },
+    "examples": [
+     {
+      "id": "exchanging-simple-messages--respond-after-checking-a-message--example-1--2f3cfc0563755a9c",
+      "text": "সময়টা দেখে জানাব",
+      "fallback": [
+       {
+        "clip": "2f3cfc0563755a9ca60d"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "reporting-first-week-home-problems": {
+   "tap-open-but-water-isnt-coming": {
+    "word": {
+     "id": "reporting-first-week-home-problems--tap-open-but-water-isnt-coming--word--7f3aba0f1cb6b690",
+     "text": "পানি আসছে না",
+     "fallback": [
+      {
+       "word": "tap-open-but-water-isnt-coming"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reporting-first-week-home-problems--tap-open-but-water-isnt-coming--ask--dadd2b445e3e3a9c",
+     "text": "মন দিয়ে শুনুন। পানি আসছে না। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "tap-open-but-water-isnt-coming"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “report that a tap is dry although opened”."
+    },
+    "yes": {
+     "id": "reporting-first-week-home-problems--tap-open-but-water-isnt-coming--yes--4cf73d0ccf657df4",
+     "text": "শাবাশ। পানি আসছে না।",
+     "fallback": [
+      {
+       "clip": "65f148ba29bda45be88a"
+      },
+      {
+       "word": "tap-open-but-water-isnt-coming"
+      }
+     ],
+     "english": "Well done! This is “report that a tap is dry although opened”."
+    },
+    "recast": {
+     "id": "reporting-first-week-home-problems--tap-open-but-water-isnt-coming--recast--11c88a32542fdaaf",
+     "text": "এই ছবিটা দেখুন। পানি আসছে না।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "tap-open-but-water-isnt-coming"
+      }
+     ],
+     "english": "Look at this picture. This is “report that a tap is dry although opened”."
+    },
+    "examples": [
+     {
+      "id": "reporting-first-week-home-problems--tap-open-but-water-isnt-coming--example-1--8fc3a792cd4e2b19",
+      "text": "কল খুলেছি, পানি আসছে না",
+      "fallback": [
+       {
+        "clip": "8fc3a792cd4e2b192b03"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-whether-hot-water-is-available": {
+    "word": {
+     "id": "reporting-first-week-home-problems--ask-whether-hot-water-is-available--word--15151327e2b7ba77",
+     "text": "গরম পানি আছে?",
+     "fallback": [
+      {
+       "word": "ask-whether-hot-water-is-available"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reporting-first-week-home-problems--ask-whether-hot-water-is-available--ask--3b4f564f4bacf1cb",
+     "text": "গরম পানি আছে?। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "ask-whether-hot-water-is-available"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “ask whether hot water is available at home”? Show me."
+    },
+    "yes": {
+     "id": "reporting-first-week-home-problems--ask-whether-hot-water-is-available--yes--5f9b2de1a1b7fa60",
+     "text": "দারুণ। গরম পানি আছে?।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "ask-whether-hot-water-is-available"
+      }
+     ],
+     "english": "Great! This is “ask whether hot water is available at home”."
+    },
+    "recast": {
+     "id": "reporting-first-week-home-problems--ask-whether-hot-water-is-available--recast--2ee7180b9eb5cb39",
+     "text": "এই ছবিটা দেখুন। গরম পানি আছে?।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-whether-hot-water-is-available"
+      }
+     ],
+     "english": "Look at this picture. This is “ask whether hot water is available at home”."
+    },
+    "examples": [
+     {
+      "id": "reporting-first-week-home-problems--ask-whether-hot-water-is-available--example-1--54909fd7acea0c34",
+      "text": "গোসলের জন্য গরম পানি আছে?",
+      "fallback": [
+       {
+        "clip": "54909fd7acea0c34b2cf"
+       }
+      ]
+     }
+    ]
+   },
+   "ceiling-fan-does-not-turn": {
+    "word": {
+     "id": "reporting-first-week-home-problems--ceiling-fan-does-not-turn--word--17d319feb1847582",
+     "text": "পাখা চলছে না",
+     "fallback": [
+      {
+       "word": "ceiling-fan-does-not-turn"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reporting-first-week-home-problems--ceiling-fan-does-not-turn--ask--400d9f61dfc2cdd6",
+     "text": "খুঁজে দেখুন। পাখা চলছে না।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "ceiling-fan-does-not-turn"
+      }
+     ],
+     "english": "Find “report that a ceiling fan will not run”."
+    },
+    "yes": {
+     "id": "reporting-first-week-home-problems--ceiling-fan-does-not-turn--yes--3eb20b37dd4e7975",
+     "text": "দারুণ। পাখা চলছে না।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "ceiling-fan-does-not-turn"
+      }
+     ],
+     "english": "Great! This is “report that a ceiling fan will not run”."
+    },
+    "recast": {
+     "id": "reporting-first-week-home-problems--ceiling-fan-does-not-turn--recast--2a14873cd5237b79",
+     "text": "এই ছবিটা দেখুন। পাখা চলছে না।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ceiling-fan-does-not-turn"
+      }
+     ],
+     "english": "Look at this picture. This is “report that a ceiling fan will not run”."
+    },
+    "examples": [
+     {
+      "id": "reporting-first-week-home-problems--ceiling-fan-does-not-turn--example-1--7893ccca907cb929",
+      "text": "সকাল থেকে পাখা চলছে না",
+      "fallback": [
+       {
+        "clip": "7893ccca907cb9294648"
+       }
+      ]
+     }
+    ]
+   },
+   "key-does-not-turn-in-a-lock": {
+    "word": {
+     "id": "reporting-first-week-home-problems--key-does-not-turn-in-a-lock--word--f8c0807cdc7d7506",
+     "text": "চাবি ঘুরছে না",
+     "fallback": [
+      {
+       "word": "key-does-not-turn-in-a-lock"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reporting-first-week-home-problems--key-does-not-turn-in-a-lock--ask--f03db4fc38c0c491",
+     "text": "মন দিয়ে শুনুন। চাবি ঘুরছে না। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "key-does-not-turn-in-a-lock"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “report that you cannot turn a key in its lock”."
+    },
+    "yes": {
+     "id": "reporting-first-week-home-problems--key-does-not-turn-in-a-lock--yes--61782dec242ff0e0",
+     "text": "খুব ভালো। চাবি ঘুরছে না।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "key-does-not-turn-in-a-lock"
+      }
+     ],
+     "english": "Very good! This is “report that you cannot turn a key in its lock”."
+    },
+    "recast": {
+     "id": "reporting-first-week-home-problems--key-does-not-turn-in-a-lock--recast--f541c66ddb763226",
+     "text": "এই ছবিটা দেখুন। চাবি ঘুরছে না।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "key-does-not-turn-in-a-lock"
+      }
+     ],
+     "english": "Look at this picture. This is “report that you cannot turn a key in its lock”."
+    },
+    "examples": [
+     {
+      "id": "reporting-first-week-home-problems--key-does-not-turn-in-a-lock--example-1--a9b13221c2e21513",
+      "text": "তালায় চাবিটা ঘুরছে না",
+      "fallback": [
+       {
+        "clip": "a9b13221c2e215138f50"
+       }
+      ]
+     }
+    ]
+   },
+   "mosquitoes-are-coming-inside": {
+    "word": {
+     "id": "reporting-first-week-home-problems--mosquitoes-are-coming-inside--word--9ef1d2830ef817db",
+     "text": "মশা ঢুকছে",
+     "fallback": [
+      {
+       "word": "mosquitoes-are-coming-inside"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reporting-first-week-home-problems--mosquitoes-are-coming-inside--ask--7d2e4e7f6c6c30c3",
+     "text": "মন দিয়ে শুনুন। মশা ঢুকছে। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "mosquitoes-are-coming-inside"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “report mosquitoes entering a room”."
+    },
+    "yes": {
+     "id": "reporting-first-week-home-problems--mosquitoes-are-coming-inside--yes--02a13c5bba719ba0",
+     "text": "দারুণ। মশা ঢুকছে।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "mosquitoes-are-coming-inside"
+      }
+     ],
+     "english": "Great! This is “report mosquitoes entering a room”."
+    },
+    "recast": {
+     "id": "reporting-first-week-home-problems--mosquitoes-are-coming-inside--recast--4cca9f29c4b57292",
+     "text": "এই ছবিটা দেখুন। মশা ঢুকছে।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "mosquitoes-are-coming-inside"
+      }
+     ],
+     "english": "Look at this picture. This is “report mosquitoes entering a room”."
+    },
+    "examples": [
+     {
+      "id": "reporting-first-week-home-problems--mosquitoes-are-coming-inside--example-1--4002001b5265c081",
+      "text": "জানালা দিয়ে মশা ঢুকছে",
+      "fallback": [
+       {
+        "clip": "4002001b5265c081c163"
+       }
+      ]
+     }
+    ]
+   },
+   "stove-not-lighting": {
+    "word": {
+     "id": "reporting-first-week-home-problems--stove-not-lighting--word--b02728a4d1d2ade1",
+     "text": "চুলা জ্বলছে না",
+     "fallback": [
+      {
+       "word": "stove-not-lighting"
+      }
+     ]
+    },
+    "ask": {
+     "id": "reporting-first-week-home-problems--stove-not-lighting--ask--89a0158fe84a5548",
+     "text": "চুলা জ্বলছে না। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "stove-not-lighting"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “report a kitchen burner not lighting”? Show me."
+    },
+    "yes": {
+     "id": "reporting-first-week-home-problems--stove-not-lighting--yes--7c14aa55e0711cbf",
+     "text": "চমৎকার। চুলা জ্বলছে না।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "stove-not-lighting"
+      }
+     ],
+     "english": "Excellent! This is “report a kitchen burner not lighting”."
+    },
+    "recast": {
+     "id": "reporting-first-week-home-problems--stove-not-lighting--recast--d5cf2841cde4c79c",
+     "text": "এই ছবিটা দেখুন। চুলা জ্বলছে না।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "stove-not-lighting"
+      }
+     ],
+     "english": "Look at this picture. This is “report a kitchen burner not lighting”."
+    },
+    "examples": [
+     {
+      "id": "reporting-first-week-home-problems--stove-not-lighting--example-1--4505619cc2a258be",
+      "text": "চুলা জ্বলছে না, একটু দেখবেন?",
+      "fallback": [
+       {
+        "clip": "4505619cc2a258be8137"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "people-we-mean-when-we-speak": {
+   "speaker-refers-to-self": {
+    "word": {
+     "id": "people-we-mean-when-we-speak--speaker-refers-to-self--word--603a6c5a4044431f",
+     "text": "আমি",
+     "fallback": [
+      {
+       "word": "speaker-refers-to-self"
+      }
+     ]
+    },
+    "ask": {
+     "id": "people-we-mean-when-we-speak--speaker-refers-to-self--ask--06332473b8f093e5",
+     "text": "আমি। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "speaker-refers-to-self"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “first person singular I”? Show me."
+    },
+    "yes": {
+     "id": "people-we-mean-when-we-speak--speaker-refers-to-self--yes--6c8c3bb36226f575",
+     "text": "একদম ঠিক। আমি।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "speaker-refers-to-self"
+      }
+     ],
+     "english": "Exactly right! This is “first person singular I”."
+    },
+    "recast": {
+     "id": "people-we-mean-when-we-speak--speaker-refers-to-self--recast--df73507ab1b3aabb",
+     "text": "এই ছবিটা দেখুন। আমি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "speaker-refers-to-self"
+      }
+     ],
+     "english": "Look at this picture. This is “first person singular I”."
+    },
+    "examples": [
+     {
+      "id": "people-we-mean-when-we-speak--speaker-refers-to-self--example-1--e496abb4e1b4f3c1",
+      "text": "আমি এখন আসব",
+      "fallback": [
+       {
+        "clip": "e496abb4e1b4f3c18505"
+       }
+      ]
+     }
+    ]
+   },
+   "speaker-addresses-one-listener-politely": {
+    "word": {
+     "id": "people-we-mean-when-we-speak--speaker-addresses-one-listener-politely--word--ca7ffbc1cbd78f89",
+     "text": "আপনি",
+     "fallback": [
+      {
+       "word": "speaker-addresses-one-listener-politely"
+      }
+     ]
+    },
+    "ask": {
+     "id": "people-we-mean-when-we-speak--speaker-addresses-one-listener-politely--ask--a8acae82d5f9c2c7",
+     "text": "খুঁজে দেখুন। আপনি।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "speaker-addresses-one-listener-politely"
+      }
+     ],
+     "english": "Find “polite singular second person you”."
+    },
+    "yes": {
+     "id": "people-we-mean-when-we-speak--speaker-addresses-one-listener-politely--yes--a22bc9dfea41c3b3",
+     "text": "দারুণ। আপনি।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "speaker-addresses-one-listener-politely"
+      }
+     ],
+     "english": "Great! This is “polite singular second person you”."
+    },
+    "recast": {
+     "id": "people-we-mean-when-we-speak--speaker-addresses-one-listener-politely--recast--632be481a6369d51",
+     "text": "এই ছবিটা দেখুন। আপনি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "speaker-addresses-one-listener-politely"
+      }
+     ],
+     "english": "Look at this picture. This is “polite singular second person you”."
+    },
+    "examples": [
+     {
+      "id": "people-we-mean-when-we-speak--speaker-addresses-one-listener-politely--example-1--16b93492b9ff48e7",
+      "text": "আপনি আগে বলেন",
+      "fallback": [
+       {
+        "clip": "16b93492b9ff48e78058"
+       }
+      ]
+     }
+    ]
+   },
+   "speaker-refers-to-one-other-adult-politely": {
+    "word": {
+     "id": "people-we-mean-when-we-speak--speaker-refers-to-one-other-adult-politely--word--4a5a328ec66d4c32",
+     "text": "উনি",
+     "fallback": [
+      {
+       "word": "speaker-refers-to-one-other-adult-politely"
+      }
+     ]
+    },
+    "ask": {
+     "id": "people-we-mean-when-we-speak--speaker-refers-to-one-other-adult-politely--ask--5f7f1c73bcf7d61c",
+     "text": "খুঁজে দেখুন। উনি।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "speaker-refers-to-one-other-adult-politely"
+      }
+     ],
+     "english": "Find “polite singular third person he or she”."
+    },
+    "yes": {
+     "id": "people-we-mean-when-we-speak--speaker-refers-to-one-other-adult-politely--yes--a14d8c0d5c1b4812",
+     "text": "চমৎকার। উনি।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "speaker-refers-to-one-other-adult-politely"
+      }
+     ],
+     "english": "Excellent! This is “polite singular third person he or she”."
+    },
+    "recast": {
+     "id": "people-we-mean-when-we-speak--speaker-refers-to-one-other-adult-politely--recast--c02817de68fad408",
+     "text": "এই ছবিটা দেখুন। উনি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "speaker-refers-to-one-other-adult-politely"
+      }
+     ],
+     "english": "Look at this picture. This is “polite singular third person he or she”."
+    },
+    "examples": [
+     {
+      "id": "people-we-mean-when-we-speak--speaker-refers-to-one-other-adult-politely--example-1--31f5ae938675906e",
+      "text": "উনি পাশের বাসায় থাকেন",
+      "fallback": [
+       {
+        "clip": "31f5ae938675906eb5a1"
+       }
+      ]
+     }
+    ]
+   },
+   "speaker-refers-to-their-own-group": {
+    "word": {
+     "id": "people-we-mean-when-we-speak--speaker-refers-to-their-own-group--word--a8fc9b14c0831274",
+     "text": "আমরা",
+     "fallback": [
+      {
+       "word": "speaker-refers-to-their-own-group"
+      }
+     ]
+    },
+    "ask": {
+     "id": "people-we-mean-when-we-speak--speaker-refers-to-their-own-group--ask--bc20ba738fc53379",
+     "text": "আমরা। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "speaker-refers-to-their-own-group"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “first person plural we”? Show me."
+    },
+    "yes": {
+     "id": "people-we-mean-when-we-speak--speaker-refers-to-their-own-group--yes--dc550be02c75dd63",
+     "text": "দারুণ। আমরা।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "speaker-refers-to-their-own-group"
+      }
+     ],
+     "english": "Great! This is “first person plural we”."
+    },
+    "recast": {
+     "id": "people-we-mean-when-we-speak--speaker-refers-to-their-own-group--recast--328b6b8e628da172",
+     "text": "এই ছবিটা দেখুন। আমরা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "speaker-refers-to-their-own-group"
+      }
+     ],
+     "english": "Look at this picture. This is “first person plural we”."
+    },
+    "examples": [
+     {
+      "id": "people-we-mean-when-we-speak--speaker-refers-to-their-own-group--example-1--b4799ef164e00645",
+      "text": "আমরা একসঙ্গে যাব",
+      "fallback": [
+       {
+        "clip": "b4799ef164e006457f16"
+       }
+      ]
+     }
+    ]
+   },
+   "speaker-addresses-multiple-listeners-politely": {
+    "word": {
+     "id": "people-we-mean-when-we-speak--speaker-addresses-multiple-listeners-politely--word--2f2a1c4e9e65f728",
+     "text": "আপনারা",
+     "fallback": [
+      {
+       "word": "speaker-addresses-multiple-listeners-politely"
+      }
+     ]
+    },
+    "ask": {
+     "id": "people-we-mean-when-we-speak--speaker-addresses-multiple-listeners-politely--ask--458e4bc808a05309",
+     "text": "মন দিয়ে শুনুন। আপনারা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "speaker-addresses-multiple-listeners-politely"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “polite plural second person you”."
+    },
+    "yes": {
+     "id": "people-we-mean-when-we-speak--speaker-addresses-multiple-listeners-politely--yes--97b3525a700e8377",
+     "text": "বাহ্। আপনারা।",
+     "fallback": [
+      {
+       "clip": "2120d49e2f81ccdd2f9c"
+      },
+      {
+       "word": "speaker-addresses-multiple-listeners-politely"
+      }
+     ],
+     "english": "Wow! This is “polite plural second person you”."
+    },
+    "recast": {
+     "id": "people-we-mean-when-we-speak--speaker-addresses-multiple-listeners-politely--recast--c9e29e80281d2545",
+     "text": "এই ছবিটা দেখুন। আপনারা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "speaker-addresses-multiple-listeners-politely"
+      }
+     ],
+     "english": "Look at this picture. This is “polite plural second person you”."
+    },
+    "examples": [
+     {
+      "id": "people-we-mean-when-we-speak--speaker-addresses-multiple-listeners-politely--example-1--b66deb5a42f4a4fe",
+      "text": "আপনারা কোথায় বসবেন?",
+      "fallback": [
+       {
+        "clip": "b66deb5a42f4a4fe23a1"
+       }
+      ]
+     }
+    ]
+   },
+   "speaker-refers-to-another-group-politely": {
+    "word": {
+     "id": "people-we-mean-when-we-speak--speaker-refers-to-another-group-politely--word--2b4ace5fec6a0c5b",
+     "text": "ওনারা",
+     "fallback": [
+      {
+       "word": "speaker-refers-to-another-group-politely"
+      }
+     ]
+    },
+    "ask": {
+     "id": "people-we-mean-when-we-speak--speaker-refers-to-another-group-politely--ask--36f1ea9351c6157a",
+     "text": "ওনারা। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "speaker-refers-to-another-group-politely"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “polite plural third person they”? Show me."
+    },
+    "yes": {
+     "id": "people-we-mean-when-we-speak--speaker-refers-to-another-group-politely--yes--3c31a8a8117e19ec",
+     "text": "একদম ঠিক। ওনারা।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "speaker-refers-to-another-group-politely"
+      }
+     ],
+     "english": "Exactly right! This is “polite plural third person they”."
+    },
+    "recast": {
+     "id": "people-we-mean-when-we-speak--speaker-refers-to-another-group-politely--recast--ed68a1f84bd4fcbb",
+     "text": "এই ছবিটা দেখুন। ওনারা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "speaker-refers-to-another-group-politely"
+      }
+     ],
+     "english": "Look at this picture. This is “polite plural third person they”."
+    },
+    "examples": [
+     {
+      "id": "people-we-mean-when-we-speak--speaker-refers-to-another-group-politely--example-1--b4878f004704ef44",
+      "text": "ওনারা একটু পরে আসবেন",
+      "fallback": [
+       {
+        "clip": "b4878f004704ef44dac3"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "short-reactions-and-conversation-replies": {
+   "reassure-someone-no-problem": {
+    "word": {
+     "id": "short-reactions-and-conversation-replies--reassure-someone-no-problem--word--2a1de58e6a3281a1",
+     "text": "সমস্যা নাই",
+     "fallback": [
+      {
+       "word": "reassure-someone-no-problem"
+      }
+     ]
+    },
+    "ask": {
+     "id": "short-reactions-and-conversation-replies--reassure-someone-no-problem--ask--594342cff0a5da5f",
+     "text": "খুঁজে দেখুন। সমস্যা নাই।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "reassure-someone-no-problem"
+      }
+     ],
+     "english": "Find “reassure someone that a small mishap is okay”."
+    },
+    "yes": {
+     "id": "short-reactions-and-conversation-replies--reassure-someone-no-problem--yes--01477d462c96cc5d",
+     "text": "খুব ভালো। সমস্যা নাই।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "reassure-someone-no-problem"
+      }
+     ],
+     "english": "Very good! This is “reassure someone that a small mishap is okay”."
+    },
+    "recast": {
+     "id": "short-reactions-and-conversation-replies--reassure-someone-no-problem--recast--e75a6f04e6a32046",
+     "text": "এই ছবিটা দেখুন। সমস্যা নাই।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "reassure-someone-no-problem"
+      }
+     ],
+     "english": "Look at this picture. This is “reassure someone that a small mishap is okay”."
+    },
+    "examples": [
+     {
+      "id": "short-reactions-and-conversation-replies--reassure-someone-no-problem--example-1--bc84ffd2dd02a269",
+      "text": "আচ্ছা, সমস্যা নাই",
+      "fallback": [
+       {
+        "clip": "bc84ffd2dd02a26906b3"
+       }
+      ]
+     }
+    ]
+   },
+   "realize-you-made-a-mistake": {
+    "word": {
+     "id": "short-reactions-and-conversation-replies--realize-you-made-a-mistake--word--5d22179787437a37",
+     "text": "ভুল হয়েছে",
+     "fallback": [
+      {
+       "word": "realize-you-made-a-mistake"
+      }
+     ]
+    },
+    "ask": {
+     "id": "short-reactions-and-conversation-replies--realize-you-made-a-mistake--ask--575f0cdfdedba895",
+     "text": "খুঁজে দেখুন। ভুল হয়েছে।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "realize-you-made-a-mistake"
+      }
+     ],
+     "english": "Find “acknowledge that you made a mistake”."
+    },
+    "yes": {
+     "id": "short-reactions-and-conversation-replies--realize-you-made-a-mistake--yes--0744840b65210d1a",
+     "text": "চমৎকার। ভুল হয়েছে।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "realize-you-made-a-mistake"
+      }
+     ],
+     "english": "Excellent! This is “acknowledge that you made a mistake”."
+    },
+    "recast": {
+     "id": "short-reactions-and-conversation-replies--realize-you-made-a-mistake--recast--abcc9e32da9d8071",
+     "text": "এই ছবিটা দেখুন। ভুল হয়েছে।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "realize-you-made-a-mistake"
+      }
+     ],
+     "english": "Look at this picture. This is “acknowledge that you made a mistake”."
+    },
+    "examples": [
+     {
+      "id": "short-reactions-and-conversation-replies--realize-you-made-a-mistake--example-1--cb4ce520c6ca1246",
+      "text": "আমার একটু ভুল হয়েছে",
+      "fallback": [
+       {
+        "clip": "cb4ce520c6ca12460cf8"
+       }
+      ]
+     }
+    ]
+   },
+   "express-surprise-at-news": {
+    "word": {
+     "id": "short-reactions-and-conversation-replies--express-surprise-at-news--word--224f208659fe5f08",
+     "text": "সত্যি?",
+     "fallback": [
+      {
+       "word": "express-surprise-at-news"
+      }
+     ]
+    },
+    "ask": {
+     "id": "short-reactions-and-conversation-replies--express-surprise-at-news--ask--caaff81a636b4a6a",
+     "text": "সত্যি?। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "express-surprise-at-news"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “ask whether surprising news is true”? Show me."
+    },
+    "yes": {
+     "id": "short-reactions-and-conversation-replies--express-surprise-at-news--yes--7af5d00cda63564a",
+     "text": "একদম ঠিক। সত্যি?।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "express-surprise-at-news"
+      }
+     ],
+     "english": "Exactly right! This is “ask whether surprising news is true”."
+    },
+    "recast": {
+     "id": "short-reactions-and-conversation-replies--express-surprise-at-news--recast--1f322e3521a7d029",
+     "text": "এই ছবিটা দেখুন। সত্যি?।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "express-surprise-at-news"
+      }
+     ],
+     "english": "Look at this picture. This is “ask whether surprising news is true”."
+    },
+    "examples": [
+     {
+      "id": "short-reactions-and-conversation-replies--express-surprise-at-news--example-1--025dd6af52ab40b3",
+      "text": "সত্যি? খুব ভালো খবর",
+      "fallback": [
+       {
+        "clip": "025dd6af52ab40b36575"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-someone-to-wait-a-moment": {
+    "word": {
+     "id": "short-reactions-and-conversation-replies--ask-someone-to-wait-a-moment--word--385674c1dc59c7cc",
+     "text": "একটু দাঁড়ান",
+     "fallback": [
+      {
+       "word": "ask-someone-to-wait-a-moment"
+      }
+     ]
+    },
+    "ask": {
+     "id": "short-reactions-and-conversation-replies--ask-someone-to-wait-a-moment--ask--440f44dc9eba2248",
+     "text": "মন দিয়ে শুনুন। একটু দাঁড়ান। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "ask-someone-to-wait-a-moment"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “ask someone to wait a moment”."
+    },
+    "yes": {
+     "id": "short-reactions-and-conversation-replies--ask-someone-to-wait-a-moment--yes--be85841c99806545",
+     "text": "একদম ঠিক। একটু দাঁড়ান।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "ask-someone-to-wait-a-moment"
+      }
+     ],
+     "english": "Exactly right! This is “ask someone to wait a moment”."
+    },
+    "recast": {
+     "id": "short-reactions-and-conversation-replies--ask-someone-to-wait-a-moment--recast--d6eedaa27a6ca392",
+     "text": "এই ছবিটা দেখুন। একটু দাঁড়ান।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-someone-to-wait-a-moment"
+      }
+     ],
+     "english": "Look at this picture. This is “ask someone to wait a moment”."
+    },
+    "examples": [
+     {
+      "id": "short-reactions-and-conversation-replies--ask-someone-to-wait-a-moment--example-1--ef83113a7fb724cd",
+      "text": "একটু দাঁড়ান, আমি আসছি",
+      "fallback": [
+       {
+        "clip": "ef83113a7fb724cd5b85"
+       }
+      ]
+     }
+    ]
+   },
+   "tell-someone-you-need-to-go-now": {
+    "word": {
+     "id": "short-reactions-and-conversation-replies--tell-someone-you-need-to-go-now--word--9a28b9ac7fbe2887",
+     "text": "এখন যেতে হবে",
+     "fallback": [
+      {
+       "word": "tell-someone-you-need-to-go-now"
+      }
+     ]
+    },
+    "ask": {
+     "id": "short-reactions-and-conversation-replies--tell-someone-you-need-to-go-now--ask--40296f77e8b729ab",
+     "text": "মন দিয়ে শুনুন। এখন যেতে হবে। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "tell-someone-you-need-to-go-now"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “say you need to leave now”."
+    },
+    "yes": {
+     "id": "short-reactions-and-conversation-replies--tell-someone-you-need-to-go-now--yes--4c998bd09582ade9",
+     "text": "হ্যাঁ, ঠিক হয়েছে। এখন যেতে হবে।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "tell-someone-you-need-to-go-now"
+      }
+     ],
+     "english": "Yes! This is “say you need to leave now”."
+    },
+    "recast": {
+     "id": "short-reactions-and-conversation-replies--tell-someone-you-need-to-go-now--recast--6ad109c580415d6f",
+     "text": "এই ছবিটা দেখুন। এখন যেতে হবে।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "tell-someone-you-need-to-go-now"
+      }
+     ],
+     "english": "Look at this picture. This is “say you need to leave now”."
+    },
+    "examples": [
+     {
+      "id": "short-reactions-and-conversation-replies--tell-someone-you-need-to-go-now--example-1--7a7aadf0a136b8fb",
+      "text": "এখন আমাকে যেতে হবে",
+      "fallback": [
+       {
+        "clip": "7a7aadf0a136b8fb2886"
+       }
+      ]
+     }
+    ]
+   },
+   "say-you-will-see-them-again": {
+    "word": {
+     "id": "short-reactions-and-conversation-replies--say-you-will-see-them-again--word--98ffc9f31259d9b6",
+     "text": "আবার দেখা হবে",
+     "fallback": [
+      {
+       "word": "say-you-will-see-them-again"
+      }
+     ]
+    },
+    "ask": {
+     "id": "short-reactions-and-conversation-replies--say-you-will-see-them-again--ask--ebe678e464c53d8e",
+     "text": "খুঁজে দেখুন। আবার দেখা হবে।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "say-you-will-see-them-again"
+      }
+     ],
+     "english": "Find “say see you again at the end of a visit”."
+    },
+    "yes": {
+     "id": "short-reactions-and-conversation-replies--say-you-will-see-them-again--yes--cc24c8a9a08bfc1a",
+     "text": "খুব ভালো। আবার দেখা হবে।",
+     "fallback": [
+      {
+       "clip": "55afe9376bda1b8e2632"
+      },
+      {
+       "word": "say-you-will-see-them-again"
+      }
+     ],
+     "english": "Very good! This is “say see you again at the end of a visit”."
+    },
+    "recast": {
+     "id": "short-reactions-and-conversation-replies--say-you-will-see-them-again--recast--c5d0df7de75e933d",
+     "text": "এই ছবিটা দেখুন। আবার দেখা হবে।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "say-you-will-see-them-again"
+      }
+     ],
+     "english": "Look at this picture. This is “say see you again at the end of a visit”."
+    },
+    "examples": [
+     {
+      "id": "short-reactions-and-conversation-replies--say-you-will-see-them-again--example-1--61d012c87ff856c5",
+      "text": "ইনশাআল্লাহ, আবার দেখা হবে",
+      "fallback": [
+       {
+        "clip": "61d012c87ff856c59005"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "checking-what-to-pay-and-what-comes-back": {
+   "asking-what-the-final-total-is": {
+    "word": {
+     "id": "checking-what-to-pay-and-what-comes-back--asking-what-the-final-total-is--word--eb2c63866c373096",
+     "text": "মোট কত হলো?",
+     "fallback": [
+      {
+       "word": "asking-what-the-final-total-is"
+      }
+     ]
+    },
+    "ask": {
+     "id": "checking-what-to-pay-and-what-comes-back--asking-what-the-final-total-is--ask--33c953c11cda9f7e",
+     "text": "খুঁজে দেখুন। মোট কত হলো?।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "asking-what-the-final-total-is"
+      }
+     ],
+     "english": "Find “ask for the final total before paying”."
+    },
+    "yes": {
+     "id": "checking-what-to-pay-and-what-comes-back--asking-what-the-final-total-is--yes--7325b13caf89f2aa",
+     "text": "হ্যাঁ, ঠিক হয়েছে। মোট কত হলো?।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "asking-what-the-final-total-is"
+      }
+     ],
+     "english": "Yes! This is “ask for the final total before paying”."
+    },
+    "recast": {
+     "id": "checking-what-to-pay-and-what-comes-back--asking-what-the-final-total-is--recast--fe173b6d70eeecff",
+     "text": "এই ছবিটা দেখুন। মোট কত হলো?।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "asking-what-the-final-total-is"
+      }
+     ],
+     "english": "Look at this picture. This is “ask for the final total before paying”."
+    },
+    "examples": [
+     {
+      "id": "checking-what-to-pay-and-what-comes-back--asking-what-the-final-total-is--example-1--d4bc2104a70f8dd7",
+      "text": "সব মিলিয়ে মোট কত হলো?",
+      "fallback": [
+       {
+        "clip": "d4bc2104a70f8dd7b2a8"
+       }
+      ]
+     }
+    ]
+   },
+   "asking-if-a-price-can-go-lower": {
+    "word": {
+     "id": "checking-what-to-pay-and-what-comes-back--asking-if-a-price-can-go-lower--word--e93dc82f8a410cbe",
+     "text": "কিছু কম হবে?",
+     "fallback": [
+      {
+       "word": "asking-if-a-price-can-go-lower"
+      }
+     ]
+    },
+    "ask": {
+     "id": "checking-what-to-pay-and-what-comes-back--asking-if-a-price-can-go-lower--ask--f630863497f62813",
+     "text": "মন দিয়ে শুনুন। কিছু কম হবে?। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "asking-if-a-price-can-go-lower"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “ask if the listed price can go lower”."
+    },
+    "yes": {
+     "id": "checking-what-to-pay-and-what-comes-back--asking-if-a-price-can-go-lower--yes--d8bc6f077f6104d5",
+     "text": "চমৎকার। কিছু কম হবে?।",
+     "fallback": [
+      {
+       "clip": "222f1b867ceaed1f878d"
+      },
+      {
+       "word": "asking-if-a-price-can-go-lower"
+      }
+     ],
+     "english": "Excellent! This is “ask if the listed price can go lower”."
+    },
+    "recast": {
+     "id": "checking-what-to-pay-and-what-comes-back--asking-if-a-price-can-go-lower--recast--e6cb040f6258954c",
+     "text": "এই ছবিটা দেখুন। কিছু কম হবে?।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "asking-if-a-price-can-go-lower"
+      }
+     ],
+     "english": "Look at this picture. This is “ask if the listed price can go lower”."
+    },
+    "examples": [
+     {
+      "id": "checking-what-to-pay-and-what-comes-back--asking-if-a-price-can-go-lower--example-1--84613b40da0d185b",
+      "text": "ভাই, কিছু কম হবে?",
+      "fallback": [
+       {
+        "clip": "84613b40da0d185b2755"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-how-much-remains-to-be-paid": {
+    "word": {
+     "id": "checking-what-to-pay-and-what-comes-back--ask-how-much-remains-to-be-paid--word--9c2adb1ff387df42",
+     "text": "বাকি কত?",
+     "fallback": [
+      {
+       "word": "ask-how-much-remains-to-be-paid"
+      }
+     ]
+    },
+    "ask": {
+     "id": "checking-what-to-pay-and-what-comes-back--ask-how-much-remains-to-be-paid--ask--6b7cc9605033edbf",
+     "text": "মন দিয়ে শুনুন। বাকি কত?। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "ask-how-much-remains-to-be-paid"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “ask how much payment is still owed”."
+    },
+    "yes": {
+     "id": "checking-what-to-pay-and-what-comes-back--ask-how-much-remains-to-be-paid--yes--e49406ddef2fb230",
+     "text": "দারুণ। বাকি কত?।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "ask-how-much-remains-to-be-paid"
+      }
+     ],
+     "english": "Great! This is “ask how much payment is still owed”."
+    },
+    "recast": {
+     "id": "checking-what-to-pay-and-what-comes-back--ask-how-much-remains-to-be-paid--recast--e5ef6ff52cb6b20f",
+     "text": "এই ছবিটা দেখুন। বাকি কত?।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-how-much-remains-to-be-paid"
+      }
+     ],
+     "english": "Look at this picture. This is “ask how much payment is still owed”."
+    },
+    "examples": [
+     {
+      "id": "checking-what-to-pay-and-what-comes-back--ask-how-much-remains-to-be-paid--example-1--0b982f42fe53d08b",
+      "text": "এত দিলাম, এখন বাকি কত?",
+      "fallback": [
+       {
+        "clip": "0b982f42fe53d08b825d"
+       }
+      ]
+     }
+    ]
+   },
+   "getting-cash-change-back": {
+    "word": {
+     "id": "checking-what-to-pay-and-what-comes-back--getting-cash-change-back--word--175a4e0085b2029e",
+     "text": "ফেরত টাকা",
+     "fallback": [
+      {
+       "word": "getting-cash-change-back"
+      }
+     ]
+    },
+    "ask": {
+     "id": "checking-what-to-pay-and-what-comes-back--getting-cash-change-back--ask--51336ce82fd32733",
+     "text": "মন দিয়ে শুনুন। ফেরত টাকা। ছবিটা দেখান।",
+     "fallback": [
+      {
+       "clip": "5769c5c7eaad60efcad8"
+      },
+      {
+       "word": "getting-cash-change-back"
+      },
+      {
+       "clip": "2d5683d6e8af4a593adb"
+      }
+     ],
+     "english": "Listen carefully. Show me the picture for “money returned as cash change after buying”."
+    },
+    "yes": {
+     "id": "checking-what-to-pay-and-what-comes-back--getting-cash-change-back--yes--0967f0e4429c2ffd",
+     "text": "একদম ঠিক। ফেরত টাকা।",
+     "fallback": [
+      {
+       "clip": "1ca7acf0ecab1a177511"
+      },
+      {
+       "word": "getting-cash-change-back"
+      }
+     ],
+     "english": "Exactly right! This is “money returned as cash change after buying”."
+    },
+    "recast": {
+     "id": "checking-what-to-pay-and-what-comes-back--getting-cash-change-back--recast--73b29659f4993903",
+     "text": "এই ছবিটা দেখুন। ফেরত টাকা।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "getting-cash-change-back"
+      }
+     ],
+     "english": "Look at this picture. This is “money returned as cash change after buying”."
+    },
+    "examples": [
+     {
+      "id": "checking-what-to-pay-and-what-comes-back--getting-cash-change-back--example-1--606f7a93deb2c3eb",
+      "text": "ফেরত টাকাটা গুনে নেন",
+      "fallback": [
+       {
+        "clip": "606f7a93deb2c3eb3322"
+       }
+      ]
+     }
+    ]
+   },
+   "ask-to-whom-payment-goes": {
+    "word": {
+     "id": "checking-what-to-pay-and-what-comes-back--ask-to-whom-payment-goes--word--415036f553dbc003",
+     "text": "কাকে টাকা দেব?",
+     "fallback": [
+      {
+       "word": "ask-to-whom-payment-goes"
+      }
+     ]
+    },
+    "ask": {
+     "id": "checking-what-to-pay-and-what-comes-back--ask-to-whom-payment-goes--ask--f318609f76ac9ed5",
+     "text": "খুঁজে দেখুন। কাকে টাকা দেব?।",
+     "fallback": [
+      {
+       "clip": "1c3e995c88536b28997a"
+      },
+      {
+       "word": "ask-to-whom-payment-goes"
+      }
+     ],
+     "english": "Find “ask which person should receive payment”."
+    },
+    "yes": {
+     "id": "checking-what-to-pay-and-what-comes-back--ask-to-whom-payment-goes--yes--74d6b5ad2f25227a",
+     "text": "দারুণ। কাকে টাকা দেব?।",
+     "fallback": [
+      {
+       "clip": "2550f4c8d44680437ed0"
+      },
+      {
+       "word": "ask-to-whom-payment-goes"
+      }
+     ],
+     "english": "Great! This is “ask which person should receive payment”."
+    },
+    "recast": {
+     "id": "checking-what-to-pay-and-what-comes-back--ask-to-whom-payment-goes--recast--6d86cb7c11196f14",
+     "text": "এই ছবিটা দেখুন। কাকে টাকা দেব?।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "ask-to-whom-payment-goes"
+      }
+     ],
+     "english": "Look at this picture. This is “ask which person should receive payment”."
+    },
+    "examples": [
+     {
+      "id": "checking-what-to-pay-and-what-comes-back--ask-to-whom-payment-goes--example-1--03993725330a6e0a",
+      "text": "ভাই, কাকে টাকা দেব?",
+      "fallback": [
+       {
+        "clip": "03993725330a6e0a8e7b"
+       }
+      ]
+     }
+    ]
+   },
+   "confirm-paying-the-full-amount": {
+    "word": {
+     "id": "checking-what-to-pay-and-what-comes-back--confirm-paying-the-full-amount--word--923766a87b75fdcc",
+     "text": "পুরোটা দিয়েছি",
+     "fallback": [
+      {
+       "word": "confirm-paying-the-full-amount"
+      }
+     ]
+    },
+    "ask": {
+     "id": "checking-what-to-pay-and-what-comes-back--confirm-paying-the-full-amount--ask--6c5c21375d80e42e",
+     "text": "পুরোটা দিয়েছি। কোন ছবিতে আছে? দেখান।",
+     "fallback": [
+      {
+       "word": "confirm-paying-the-full-amount"
+      },
+      {
+       "clip": "0dd848c246a115d48cd7"
+      }
+     ],
+     "english": "Which picture shows “confirm you have paid the full amount”? Show me."
+    },
+    "yes": {
+     "id": "checking-what-to-pay-and-what-comes-back--confirm-paying-the-full-amount--yes--8fad89b3a7cc8ac5",
+     "text": "হ্যাঁ, ঠিক হয়েছে। পুরোটা দিয়েছি।",
+     "fallback": [
+      {
+       "clip": "dea1369867f34247851b"
+      },
+      {
+       "word": "confirm-paying-the-full-amount"
+      }
+     ],
+     "english": "Yes! This is “confirm you have paid the full amount”."
+    },
+    "recast": {
+     "id": "checking-what-to-pay-and-what-comes-back--confirm-paying-the-full-amount--recast--8b9d8a714391b8cc",
+     "text": "এই ছবিটা দেখুন। পুরোটা দিয়েছি।",
+     "fallback": [
+      {
+       "clip": "f54f7b8d42940a27814f"
+      },
+      {
+       "word": "confirm-paying-the-full-amount"
+      }
+     ],
+     "english": "Look at this picture. This is “confirm you have paid the full amount”."
+    },
+    "examples": [
+     {
+      "id": "checking-what-to-pay-and-what-comes-back--confirm-paying-the-full-amount--example-1--0171d4a1d148f053",
+      "text": "আমি পুরোটা দিয়েছি",
+      "fallback": [
+       {
+        "clip": "0171d4a1d148f0530dc2"
+       }
+      ]
+     }
+    ]
+   }
   }
  },
  "edgeClips": {
@@ -104616,7 +113972,157 @@ window.PTB_NURTURER = {
   "f106dec057a4461bf1a9": "মাথা বাঁচাতে শক্ত টুপি পরেন",
   "5041e6f24f0b0b718155": "কমলা চিহ্নটার পাশ দিয়ে হাঁটুন",
   "51550e05ddfcfc37fa27": "উজ্জ্বল জামা পরা লোকটাকে জিজ্ঞেস করুন",
-  "eb26b57812a63df0cc90": "রাস্তা চাপার গাড়িটা চলে যাক"
+  "eb26b57812a63df0cc90": "রাস্তা চাপার গাড়িটা চলে যাক",
+  "d9f74d52346f86b75db3": "ওয়ালাইকুমুস সালাম, আপা",
+  "8dea3ca34a4df16207e5": "চাচি, কেমন আছেন?",
+  "71d50b51fa11915da17f": "আলহামদুলিল্লাহ, ভালো আছি",
+  "b0543a862348522bea30": "ভাই, আপনার নাম কী?",
+  "a17cd714286bb850d632": "আমি এই এলাকায় নতুন",
+  "5f589abfde1a00c002fd": "আমি এখন বাংলা শিখছি",
+  "a73c9d776e6f10438456": "এটা আমার",
+  "5f0033715bb760b9b449": "ওটা দেন",
+  "315db19caabcf18389e8": "এগুলো ভালো আছে",
+  "d60567655d908d9e337f": "ওগুলো একটু দেখাবেন?",
+  "e0b6eb714b3f464ee6f5": "এখানে রাখেন",
+  "4a1b5ac69e4bac7512ad": "ওখানে বসেন",
+  "4cf76db271de591c65ed": "শসা কত করে?",
+  "df5ea36f3c45a7bba183": "ভাই, এটা আছে?",
+  "45f8314488f29b51a839": "ভাই, শসা শেষ হয়ে গেছে",
+  "adc6ca47df47459abcaf": "অল্প করে পেঁয়াজ দেন",
+  "1ae45b0b95b511d7a51b": "এই রকম আরেকটা দেন",
+  "f97fbb355f7d0825888d": "সবগুলো এই থলেতে দেন",
+  "f060f5c7de3223a4fdb2": "আমি এখানেই খাব",
+  "36847a5792cda437701a": "খাবারটা সঙ্গে নেব",
+  "fe75ac9ee83b5a2e6290": "ভাই, ঝাল কম দেন",
+  "35ef338a03059cca3cee": "আমাকে মাংস ছাড়া দেন",
+  "c31eb7efc82b816b80ac": "ভাই, একটু পানি দেন",
+  "53d3bf9b1db7b0b58a0a": "ধন্যবাদ, আর লাগবে না",
+  "c17b557bd11f9f78b929": "পঁচিশটা গুনে রাখেন",
+  "031980aac73c299392f6": "ছাব্বিশটা আছে",
+  "3ac0593fb8c5aaeb94ee": "সাতাশটা নিন",
+  "a2a5647dc7ab01d44d82": "আটাশটা গুনেছি",
+  "79fed3662f2e6465e7d0": "উনত্রিশটা রাখেন",
+  "539917c16f7acbeddd60": "ত্রিশটা দিন",
+  "0ad8c2a133f17bd28cb2": "বাসার ঠিকানাটা লিখে দেন",
+  "fb4546720b1aad25e159": "এই রাস্তার নামটা কী?",
+  "6d5eb9c1720f61ad88fd": "আমরা একই মহল্লায় থাকি",
+  "67f80635ff12bc29351c": "আমার বাসা নিচতলায়",
+  "920dae009c4009562f88": "আমরা তিনতলায় থাকি",
+  "f5d702184c7655fda3bc": "চাবি পাশের বাসায় রেখে দেন",
+  "160bd4133ee2e0eca605": "এখানে রিকশা পাওয়া যায়?",
+  "d0aaa56828b71ffc6d99": "রিকশাওয়ালাকে ঠিকানাটা বলেন",
+  "51ecdc17ec175c233609": "ভাই, বাজারে যাবেন?",
+  "4e6049b86230f522af0f": "ভাই, ওখানে ভাড়া কত?",
+  "ccc82186ec94be249959": "আমরা দুজন যাব",
+  "8a91c9b9169f021f8403": "ঠিক আছে ভাই, চলেন",
+  "5c1034bb1ae1ec232a93": "পুলের আগে বাঁয়ে দেখেন",
+  "9a679882e0ebcdc8f094": "মোড়ের পরে দোকানটা",
+  "06a3e1236963044b9958": "আমি নদীর এপারে আছি",
+  "1a561747ce824b32ce56": "ওপারে বাজারটা আছে",
+  "5ddd8b4dafee071edbc6": "এই রাস্তা ধরে গেলে বাজার পাবেন",
+  "351a8049e04de6000124": "ওই গলি দিয়ে ভেতরে যান",
+  "b1f910725b8b711a1b01": "গতকাল বৃষ্টি ছিল",
+  "d8b7b180fb50de9e3e76": "আজ আসতে পারবেন?",
+  "46a985ac8cc1a6a450e8": "আজ পারব না, কাল আসব",
+  "d477add4524feb9cd038": "আমি পরশু বাজারে যাব",
+  "28897bce722c618e5d0c": "এখনই আসেন",
+  "bbf40bfa21d7399577c8": "একটু পরে আসি",
+  "55049010e46f7bca58a7": "এবার বুঝতে পেরেছি",
+  "33ee846883d245cfaea1": "মাফ করবেন, বুঝতে পারি নাই",
+  "c2fdc59234909ec18364": "ওই রাস্তার নাম জানি না",
+  "c4185c7e402b71730556": "আপনার নামটা মনে আছে",
+  "6bf99bfb94e250530607": "শব্দটা মনে পড়ছে না",
+  "10ac35d1aebb15d6c367": "দেখি তো, কোন ছবি?",
+  "f80781ea72019bb70110": "সকালের নাশতা খাবেন?",
+  "edbe17bcf7a37dcefd83": "দুপুরের খাবার তৈরি",
+  "fd40345dec4e6e9a93fc": "বিকেলের নাশতায় কী খাবেন?",
+  "3692dadc4c7b1721e753": "রাতের খাবার কখন দেবেন?",
+  "4323aaf1204d7f5a7cad": "ভাতের সঙ্গে একটু তরকারি দেন",
+  "2c2a4864697adf56859f": "আজ সবাই একসঙ্গে খাব",
+  "73faa226dd19f46fa208": "এখন আমি একটু ব্যস্ত",
+  "b4831813cc41af85498f": "এখন আপনার সময় আছে?",
+  "618ee4bca4df08b7ffd3": "এখন কাজ শুরু করি",
+  "ff8d53de8dd8a3f7e9c0": "কাজ এখনও চলছে",
+  "1bd252622a956a2fefdc": "আজকের কাজ শেষ",
+  "f422616c979e30a3255b": "একটু বিরতি নিই",
+  "b5d6de5470cf85814149": "দুই দিন ধরে গলা ব্যথা",
+  "c0539e5c5571ed3f1ca2": "এই কানে ব্যথা",
+  "37b091cae5a23bea87e8": "আমার চোখ জ্বালা করছে",
+  "28f4ac2c36ddb57e23dd": "এখানে বুকে ব্যথা",
+  "e53071da2bdc7a6efaeb": "এই হাতে ব্যথা করে",
+  "ef4acaaa157dd0e5e5a5": "হাঁটলে পায়ে ব্যথা করে",
+  "8843049b823e98695a8f": "বাক্সটা আমার কাছে নিয়ে আসেন",
+  "3dc5dc8fd4a52fe4f6b9": "ওটা বাইরে নিয়ে যান",
+  "0cb071e84c429e2fbf0f": "চাবিটা এখানে রেখে যান",
+  "81ddf8193b6035153de4": "বইটা কাল ফিরিয়ে দেন",
+  "0514cf4df5e565660c27": "পিঁড়িটা একটু সরান",
+  "b2ca1db430a6d9a53e14": "এটা একটু ধরে রাখেন",
+  "100d99aa74fc0b60ff72": "আমার এই আমটা ভালো লাগে",
+  "5a40d1b84ffdd1d9c0f5": "এটা আমার ভালো লাগে না",
+  "29e2ccf91bac2c5eda74": "আমার একটা ছাতা দরকার আছে",
+  "c6633d82705dbcc406d9": "আরেকটা ছাতার দরকার নাই",
+  "242aa91e0ecceeabafe1": "এটাই চাই, অন্যটা থাক",
+  "1ece426dfae5cbe2d72a": "এখন থাক, পরে দেখব",
+  "1b5c97eba79067fa37e3": "এটার দাম পঞ্চাশ টাকা",
+  "1d6be25ff1b2461bf672": "একশ টাকা দিতে হবে",
+  "4a381300efd9ac3784b8": "দুইশ টাকার মধ্যে কিছু আছে?",
+  "484790d3c3ffda15503f": "সব মিলিয়ে পাঁচশ টাকা",
+  "e1ee8847080a1af12c20": "এক হাজার টাকা আলাদা রেখে দেন",
+  "9b395097d885779d9b08": "এর দাম দুই হাজার টাকা",
+  "2fe881ac3f327a2fc3b7": "এখন একটা বাজে",
+  "fa04827095a4d8be4700": "সাড়ে একটায় দেখা হবে",
+  "07479106086da86ef552": "সোয়া দুইটায় আসেন",
+  "08f49de2fda195779dee": "আমরা পৌনে তিনটায় যাব",
+  "7ae49a697d515aae8be0": "এখন চারটা দশ",
+  "65a808b3364b31b6a450": "পাঁচটা বাজতে দশ আছে",
+  "02fd3b0076bbd787ce7f": "ভাই, আজ কী বার?",
+  "db59454bb776ffe02205": "আজ কত তারিখ বলবেন?",
+  "e74be7b36616b5c172f4": "কয়টার সময় দেখা হবে?",
+  "dfc13886da0d576d6bb3": "যেতে কতক্ষণ লাগবে?",
+  "8e582abd34c400b90794": "আজ আমার একটু দেরি হবে",
+  "3dbc936f51a672013857": "আমি সময়মতো চলে আসব",
+  "f58ffdb2f274ccd7cdf1": "ভাই, একটু সাহায্য করেন",
+  "9d83aeb7460feb271494": "উনার চিকিৎসা দরকার",
+  "279fd5d61400df0acb69": "ভাই, থানায় খবর দেন",
+  "2ec1abc4fd15dc161139": "আমার বাসায় একটু খবর দেন",
+  "4546805756eed03f4b76": "আমাকে একটু বসতে দেন",
+  "2c355c295368c004a407": "একটু আমার সঙ্গে থাকেন",
+  "50aa05fee9e677b0780e": "ভাই, পায়খানা কোথায়?",
+  "20d2dd29efb22df0d20e": "এখানে খাওয়ার পানি কোথায়?",
+  "c958dad5a17c6d8c927e": "খাওয়ার আগে হাত ধোব কোথায়?",
+  "8b3e4a80d5368d944182": "আপা, এখানে বসতে পারি?",
+  "e2769dadd1f15ee13f3f": "বের হব কোন দিক দিয়ে বলেন",
+  "0d0a106a1eda36ed3c64": "জুতা কোথায় রাখব, আপা?",
+  "671e6c4dec4d341603bd": "সেখানে পৌঁছে খবর পাঠান",
+  "55ff132cfb563e626014": "এই ছবিটা আমাকে পাঠান",
+  "4b32c0fbab73dcf3be1a": "বাসার ঠিকানাটা পাঠান",
+  "695695a8eb4081992f93": "আমার কথা শুনছেন?",
+  "04c4fb328ddd7ea55970": "কথাটা মাঝখানে কেটে গেল",
+  "2f3cfc0563755a9ca60d": "সময়টা দেখে জানাব",
+  "8fc3a792cd4e2b192b03": "কল খুলেছি, পানি আসছে না",
+  "54909fd7acea0c34b2cf": "গোসলের জন্য গরম পানি আছে?",
+  "7893ccca907cb9294648": "সকাল থেকে পাখা চলছে না",
+  "a9b13221c2e215138f50": "তালায় চাবিটা ঘুরছে না",
+  "4002001b5265c081c163": "জানালা দিয়ে মশা ঢুকছে",
+  "4505619cc2a258be8137": "চুলা জ্বলছে না, একটু দেখবেন?",
+  "e496abb4e1b4f3c18505": "আমি এখন আসব",
+  "16b93492b9ff48e78058": "আপনি আগে বলেন",
+  "31f5ae938675906eb5a1": "উনি পাশের বাসায় থাকেন",
+  "b4799ef164e006457f16": "আমরা একসঙ্গে যাব",
+  "b66deb5a42f4a4fe23a1": "আপনারা কোথায় বসবেন?",
+  "b4878f004704ef44dac3": "ওনারা একটু পরে আসবেন",
+  "bc84ffd2dd02a26906b3": "আচ্ছা, সমস্যা নাই",
+  "cb4ce520c6ca12460cf8": "আমার একটু ভুল হয়েছে",
+  "025dd6af52ab40b36575": "সত্যি? খুব ভালো খবর",
+  "ef83113a7fb724cd5b85": "একটু দাঁড়ান, আমি আসছি",
+  "7a7aadf0a136b8fb2886": "এখন আমাকে যেতে হবে",
+  "61d012c87ff856c59005": "ইনশাআল্লাহ, আবার দেখা হবে",
+  "d4bc2104a70f8dd7b2a8": "সব মিলিয়ে মোট কত হলো?",
+  "84613b40da0d185b2755": "ভাই, কিছু কম হবে?",
+  "0b982f42fe53d08b825d": "এত দিলাম, এখন বাকি কত?",
+  "606f7a93deb2c3eb3322": "ফেরত টাকাটা গুনে নেন",
+  "03993725330a6e0a8e7b": "ভাই, কাকে টাকা দেব?",
+  "0171d4a1d148f0530dc2": "আমি পুরোটা দিয়েছি"
  },
  "display": {
   "revealed": {
