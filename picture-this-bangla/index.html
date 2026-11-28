@@ -2351,6 +2351,8 @@
     const AUDIO_MATCH_HISTORY_STORAGE_KEY = "picture-this-bangla-audio-match-items-v1";
     let seenAudioMatchKeys = loadSeenAudioMatchKeys();
     let audioMatchRound = [];
+    // A finished Audio Match round deals the next six on its own (see scheduleNextAudioMatchRound).
+    let audioMatchAutoNextTimer = 0;
     let selectedAudioTile = null;
     let selectedPictureTile = null;
     let audioMatchPairsFound = 0;
@@ -2651,15 +2653,27 @@
     }
 
     function renderNurturerAudioFeedback(payload) {
-      const { tone = "", ttsText = "", mainText = "", autoSpeak = true } = payload;
+      const { tone = "", ttsText = "", mainText = "", autoSpeak = true, onSpoken = null } = payload;
       audioMatchFeedback.replaceChildren(buildNurturerFeedbackFragment({ ...payload, ttsText: "" }));
       audioMatchFeedback.classList.toggle("correct", tone === "correct");
       audioMatchFeedback.classList.toggle("wrong", tone === "wrong");
       audioMatchFeedback.classList.toggle("recast", tone === "recast");
       lastNurturerFeedbackSpeech = Array.isArray(ttsText) ? ttsText : [];
-      if (nurturerAutoVoice && autoSpeak && lastNurturerFeedbackSpeech.length) {
-        speakText(lastNurturerFeedbackSpeech, null, "Nurturer feedback played.");
-      }
+      const spoke = nurturerAutoVoice && autoSpeak && lastNurturerFeedbackSpeech.length
+        && speakText(lastNurturerFeedbackSpeech, null, "Nurturer feedback played.", onSpoken);
+      if (!spoke) onSpoken?.();
+    }
+
+    // Deal the next six after a finished round: wait for the coach's closing line, then a short
+    // pause so the completed board can be seen. The long fallback covers speech that gets cut off
+    // (e.g. the feedback is replayed), which never reports that it finished.
+    function scheduleNextAudioMatchRound(delay) {
+      window.clearTimeout(audioMatchAutoNextTimer);
+      const finishedRound = audioMatchRound;
+      audioMatchAutoNextTimer = window.setTimeout(() => {
+        if (gameMode !== "audio-match" || audioMatchRound !== finishedRound || !roundComplete) return;
+        startAudioMatchRound();
+      }, delay);
     }
 
     function updateAudioMatchScore(delta = 0) {
@@ -2783,6 +2797,7 @@
 
     function startAudioMatchRound() {
       if (gameMode !== "audio-match") return;
+      window.clearTimeout(audioMatchAutoNextTimer);
       window.speechSynthesis?.cancel();
       const { selected, used, total } = takeAudioMatchRound();
       audioMatchRound = selected;
@@ -2863,9 +2878,15 @@
             mainText: `${entry.yes.text} (+1)`,
             mainGloss: entry.yes.english,
             collocations: entry.examples,
-            followUp: `Round complete! You matched all six pairs with ${gamePoints} total point${gamePoints === 1 ? "" : "s"}.`,
-            ttsText: [...nurturerFeedbackSpeech(entry, "yes"), nurturerShared.done]
+            followUp: `Round complete! You matched all six pairs with ${gamePoints} total point${gamePoints === 1 ? "" : "s"}. The next six are coming up…`,
+            ttsText: [...nurturerFeedbackSpeech(entry, "yes"), nurturerShared.done],
+            onSpoken: () => scheduleNextAudioMatchRound(2200)
           });
+          if (!roundComplete) return;
+          const finishedRound = audioMatchRound;
+          window.setTimeout(() => {
+            if (audioMatchRound === finishedRound && roundComplete) scheduleNextAudioMatchRound(0);
+          }, 25000);
         } else {
           renderNurturerAudioFeedback({
             tone: "correct",
