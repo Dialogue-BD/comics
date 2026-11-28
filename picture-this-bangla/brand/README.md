@@ -27,7 +27,7 @@ Minor improvements only:
 
 Folders: `vectorcraft/` (native VectorCraft documents), `svg/`, `pdf/`, `icons/`. High-res PNGs are not kept in the repo; export them from the SVGs or VectorCraft.
 
-On the deck page: the header uses `svg/03A-Bhasha-BhAI-Logomark.svg`; the tab icon is `icons/favicon.svg` (with `icons/favicon.ico` as fallback) and the home-screen icon is `icons/app-icon-180.png`.
+On the deck page: the header uses the full logo as the horizontal lockup, `svg/02A-Bhasha-BhAI-Logo-Horizontal-On-Light.svg` (it reads at header height where the stacked logo would not; the page is always light, so not the adaptive file); the tab icon is `icons/favicon.svg` (with `icons/favicon.ico` as fallback) and the home-screen icon is `icons/app-icon-180.png`.
 
 Colours: bubbles `#8AC95A → #22B26C`, overlap `#2AAA4B → #138540`, ভ and "AI" in the bubbles `#003615`,
 wordmark `#033A17` (light) / `#F3F8EE` (dark), wordmark "AI" `#4ABA52 → #27A24C` (light) / `#7DD67C → #45C46A` (dark).

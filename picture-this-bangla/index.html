@@ -145,12 +145,22 @@
       white-space: nowrap;
     }
 
-    /* Bhasha BhAI logomark (two bubbles, wider than tall): set the height, keep its shape */
+    /* Full Bhasha BhAI logo, horizontal lockup (bubbles + one-line wordmark, light-background version): set the height, keep its shape */
     .brand-mark {
       flex: 0 0 auto;
       width: auto;
-      height: 42px;
+      height: 40px;
       object-fit: contain;
+    }
+
+    /* The wordmark is in the logo now, so the text name is kept for screen readers only */
+    .brand-name.visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
     }
 
     .side-pill {
@@ -1654,6 +1664,8 @@
       .topbar-right { gap: 4px; }
       .brand { gap: 6px; }
       .brand-mark { width: auto; height: 32px; }
+      /* Phones: no room beside the logo for the activity line; keep it for screen readers */
+      .brand-copy { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
       .back-arrow { display: none; }
       .brand-name { font-size: .81rem; }
       .brand-activity { font-size: .67rem; }
@@ -1671,7 +1683,7 @@
 
     @media (max-width: 350px) {
       .topbar { gap: 6px; padding-inline: max(8px, env(safe-area-inset-left)) max(8px, env(safe-area-inset-right)); }
-      .brand-mark { width: auto; height: 22px; }
+      .brand-mark { width: auto; height: 24px; }
       .topbar-right { gap: 2px; }
     }
 
@@ -1848,10 +1860,10 @@
       <div class="brand">
         <a class="activity-back" href="../index.html" aria-label="Back to Dialogue activities" title="Back to Dialogue activities">
           <span class="back-arrow" aria-hidden="true">←</span>
-          <img class="brand-mark" src="brand/svg/03A-Bhasha-BhAI-Logomark.svg" alt="" width="59" height="42">
+          <img class="brand-mark" src="brand/svg/02A-Bhasha-BhAI-Logo-Horizontal-On-Light.svg" alt="Bhasha BhAI" width="195" height="40">
         </a>
         <span class="brand-copy">
-          <strong class="brand-name">Bhasha BhAI</strong>
+          <strong class="brand-name visually-hidden">Bhasha BhAI</strong>
           <span class="brand-activity">Picture This! <span lang="bn" class="ptb-bn">বাংলা</span></span>
         </span>
       </div>
