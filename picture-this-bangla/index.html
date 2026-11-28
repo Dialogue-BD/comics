@@ -145,11 +145,14 @@
       white-space: nowrap;
     }
 
-    /* Full Bhasha BhAI logo, horizontal lockup (bubbles + one-line wordmark, light-background version): set the height, keep its shape */
+    /* Full Bhasha BhAI logo (bubbles with the stacked wordmark under them, light-background version).
+       The header bar must not grow: negative margins let the logo use part of the bar's own padding
+       while taking up only the original 42px of layout, so it is as large as the bar allows. */
     .brand-mark {
       flex: 0 0 auto;
       width: auto;
-      height: 40px;
+      height: 50px;
+      margin: -4px 0;
       object-fit: contain;
     }
 
@@ -1663,7 +1666,7 @@
       .topbar { gap: 8px; padding-inline: max(10px, env(safe-area-inset-left)) max(10px, env(safe-area-inset-right)); }
       .topbar-right { gap: 4px; }
       .brand { gap: 6px; }
-      .brand-mark { width: auto; height: 32px; }
+      .brand-mark { width: auto; height: 42px; margin: -5px 0; }
       /* Phones: no room beside the logo for the activity line; keep it for screen readers */
       .brand-copy { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
       .back-arrow { display: none; }
@@ -1676,14 +1679,14 @@
 
     @media (max-width: 375px) {
       .brand { gap: 3px; }
-      .brand-mark { width: auto; height: 28px; }
+      .brand-mark { width: auto; height: 42px; margin: -5px 0; }
       .brand-activity .ptb-bn { display: none; }
       .app.nurturer-play .game-score-chip { display: none; }
     }
 
     @media (max-width: 350px) {
       .topbar { gap: 6px; padding-inline: max(8px, env(safe-area-inset-left)) max(8px, env(safe-area-inset-right)); }
-      .brand-mark { width: auto; height: 24px; }
+      .brand-mark { width: auto; height: 40px; margin: -5px 0; }
       .topbar-right { gap: 2px; }
     }
 
@@ -1860,7 +1863,7 @@
       <div class="brand">
         <a class="activity-back" href="../index.html" aria-label="Back to Dialogue activities" title="Back to Dialogue activities">
           <span class="back-arrow" aria-hidden="true">←</span>
-          <img class="brand-mark" src="brand/svg/02A-Bhasha-BhAI-Logo-Horizontal-On-Light.svg" alt="Bhasha BhAI" width="195" height="40">
+          <img class="brand-mark" src="brand/svg/01A-Bhasha-BhAI-Logo-On-Light.svg" alt="Bhasha BhAI" width="46" height="50">
         </a>
         <span class="brand-copy">
           <strong class="brand-name visually-hidden">Bhasha BhAI</strong>
