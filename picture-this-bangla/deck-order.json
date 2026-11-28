@@ -1,0 +1,1212 @@
+{
+ "about": "Order of the Bangla Picture This deck, from what a newcomer to Bangladesh needs first to what is most specialised. scripts/build_web.py and scripts/deck_order.py put deck-data.js in this order. New cards are placed by the deck_tier (and optional deck_after) in their card.json; see DECK_ORDER.md.",
+ "tiers": {
+  "1": "First days: greetings, replies, pointing, numbers 1-12, prices, food and water, toilet, rickshaw, family, body, pain, urgent help",
+  "2": "First weeks: home, meals and tea, market produce, time, colours and basic descriptions, family circle, medicine, shops, numbers to 30",
+  "3": "First month: daily life at home, cooking, clothing, weather, getting around, body detail, household problems, festivals",
+  "4": "Settling in: wider vocabulary for markets, crafts, repairs, nature, customs and describing things in detail",
+  "5": "Enrichment: specialist, regional or occasional vocabulary"
+ },
+ "cards": [
+  {
+   "id": "first-conversations-with-neighbors",
+   "tier": 1
+  },
+  {
+   "id": "polite-responses-and-requests",
+   "tier": 1
+  },
+  {
+   "id": "simple-replies-when-listening",
+   "tier": 1
+  },
+  {
+   "id": "asking-for-help-during-bangla-practice",
+   "tier": 1
+  },
+  {
+   "id": "people-we-mean-when-we-speak",
+   "tier": 1
+  },
+  {
+   "id": "pointing-to-things-and-places",
+   "tier": 1
+  },
+  {
+   "id": "counting-one-to-six",
+   "tier": 1
+  },
+  {
+   "id": "everyday-likes-and-needs",
+   "tier": 1
+  },
+  {
+   "id": "everyday-bodily-needs",
+   "tier": 1
+  },
+  {
+   "id": "daily-actions",
+   "tier": 1
+  },
+  {
+   "id": "finding-basic-facilities-in-a-new-place",
+   "tier": 1
+  },
+  {
+   "id": "lunch",
+   "tier": 1
+  },
+  {
+   "id": "ordering-simple-food-and-water",
+   "tier": 1
+  },
+  {
+   "id": "first-questions-and-requests-at-a-shop",
+   "tier": 1
+  },
+  {
+   "id": "counting-seven-to-twelve",
+   "tier": 1
+  },
+  {
+   "id": "reading-common-prices-in-taka",
+   "tier": 1
+  },
+  {
+   "id": "checking-what-to-pay-and-what-comes-back",
+   "tier": 1
+  },
+  {
+   "id": "shopping-things",
+   "tier": 1
+  },
+  {
+   "id": "orientation",
+   "tier": 1
+  },
+  {
+   "id": "taking-a-neighborhood-rickshaw",
+   "tier": 1
+  },
+  {
+   "id": "directions-with-a-bridge-and-a-turn",
+   "tier": 1
+  },
+  {
+   "id": "finding-a-home-by-its-address",
+   "tier": 1
+  },
+  {
+   "id": "setting-a-day-and-a-time",
+   "tier": 1
+  },
+  {
+   "id": "family",
+   "tier": 1
+  },
+  {
+   "id": "greeting-and-helping",
+   "tier": 1
+  },
+  {
+   "id": "short-reactions-and-conversation-replies",
+   "tier": 1
+  },
+  {
+   "id": "body",
+   "tier": 1
+  },
+  {
+   "id": "pointing-out-common-pains",
+   "tier": 1
+  },
+  {
+   "id": "feeling-unwell",
+   "tier": 1
+  },
+  {
+   "id": "asking-for-urgent-everyday-help",
+   "tier": 1
+  },
+  {
+   "id": "short-requests-to-move-an-object",
+   "tier": 1
+  },
+  {
+   "id": "reporting-first-week-home-problems",
+   "tier": 1
+  },
+  {
+   "id": "where-things-are",
+   "tier": 2
+  },
+  {
+   "id": "home-things",
+   "tier": 2
+  },
+  {
+   "id": "colours",
+   "tier": 2
+  },
+  {
+   "id": "tableware",
+   "tier": 2
+  },
+  {
+   "id": "tea-things",
+   "tier": 2
+  },
+  {
+   "id": "times-of-day",
+   "tier": 2
+  },
+  {
+   "id": "rooms-and-courtyard",
+   "tier": 2
+  },
+  {
+   "id": "market-fruit",
+   "tier": 2
+  },
+  {
+   "id": "everyday-qualities",
+   "tier": 2
+  },
+  {
+   "id": "close-family-relationships",
+   "tier": 2
+  },
+  {
+   "id": "telling-time-and-dates",
+   "tier": 2
+  },
+  {
+   "id": "washing-things",
+   "tier": 2
+  },
+  {
+   "id": "market-vegetables",
+   "tier": 2
+  },
+  {
+   "id": "size-and-width",
+   "tier": 2
+  },
+  {
+   "id": "care-things",
+   "tier": 2
+  },
+  {
+   "id": "ordinary-meals-through-the-day",
+   "tier": 2
+  },
+  {
+   "id": "reading-hours-and-minutes",
+   "tier": 2
+  },
+  {
+   "id": "coming-and-going",
+   "tier": 2
+  },
+  {
+   "id": "washroom-fixtures-and-tools",
+   "tier": 2
+  },
+  {
+   "id": "buying-and-selling",
+   "tier": 2
+  },
+  {
+   "id": "feelings-and-reactions",
+   "tier": 2
+  },
+  {
+   "id": "preparing-and-ordering-tea",
+   "tier": 2
+  },
+  {
+   "id": "with-your-hands",
+   "tier": 2
+  },
+  {
+   "id": "everyday-medicine-shop-terms",
+   "tier": 2
+  },
+  {
+   "id": "people-we-know-daily",
+   "tier": 2
+  },
+  {
+   "id": "amounts-and-parts",
+   "tier": 2
+  },
+  {
+   "id": "asking-when-and-how-long",
+   "tier": 2
+  },
+  {
+   "id": "describing-common-symptoms",
+   "tier": 2
+  },
+  {
+   "id": "taking-a-ride-around-town",
+   "tier": 2
+  },
+  {
+   "id": "counting-thirteen-to-eighteen",
+   "tier": 2
+  },
+  {
+   "id": "noticing-when-someone-is-free",
+   "tier": 2
+  },
+  {
+   "id": "talking-prices-and-money",
+   "tier": 2
+  },
+  {
+   "id": "lights-fans-and-power",
+   "tier": 2
+  },
+  {
+   "id": "neighborhood-places",
+   "tier": 2
+  },
+  {
+   "id": "neighborhood-shop-types",
+   "tier": 2
+  },
+  {
+   "id": "exchanging-simple-messages",
+   "tier": 2
+  },
+  {
+   "id": "getting-through-a-crowded-place",
+   "tier": 2
+  },
+  {
+   "id": "counting-nineteen-to-twenty-four",
+   "tier": 2
+  },
+  {
+   "id": "renting-and-moving-home",
+   "tier": 2
+  },
+  {
+   "id": "prayer-time",
+   "tier": 2
+  },
+  {
+   "id": "counting-twenty-five-to-thirty",
+   "tier": 2
+  },
+  {
+   "id": "home-parts",
+   "tier": 3
+  },
+  {
+   "id": "clothing",
+   "tier": 3
+  },
+  {
+   "id": "pantry",
+   "tier": 3
+  },
+  {
+   "id": "getting-around",
+   "tier": 3
+  },
+  {
+   "id": "study-things",
+   "tier": 3
+  },
+  {
+   "id": "familiar-animals",
+   "tier": 3
+  },
+  {
+   "id": "weather",
+   "tier": 3
+  },
+  {
+   "id": "cooking-things",
+   "tier": 3
+  },
+  {
+   "id": "body-movement",
+   "tier": 3
+  },
+  {
+   "id": "going-out-gear",
+   "tier": 3
+  },
+  {
+   "id": "face-details",
+   "tier": 3
+  },
+  {
+   "id": "dry-groceries",
+   "tier": 3
+  },
+  {
+   "id": "finding-and-showing",
+   "tier": 3
+  },
+  {
+   "id": "getting-water",
+   "tier": 3
+  },
+  {
+   "id": "extended-family-on-both-sides",
+   "tier": 3
+  },
+  {
+   "id": "objects-in-motion",
+   "tier": 3
+  },
+  {
+   "id": "fresh-kitchen-aromatics",
+   "tier": 3
+  },
+  {
+   "id": "cleaning-tools",
+   "tier": 3
+  },
+  {
+   "id": "talk-and-gesture",
+   "tier": 3
+  },
+  {
+   "id": "food-tastes",
+   "tier": 3
+  },
+  {
+   "id": "people-out-on-the-street",
+   "tier": 3
+  },
+  {
+   "id": "putting-things-away",
+   "tier": 3
+  },
+  {
+   "id": "laying-out-the-home",
+   "tier": 3
+  },
+  {
+   "id": "minor-injuries",
+   "tier": 3
+  },
+  {
+   "id": "pace-and-turn-taking",
+   "tier": 3
+  },
+  {
+   "id": "snack-foods",
+   "tier": 3
+  },
+  {
+   "id": "features-of-streets",
+   "tier": 3
+  },
+  {
+   "id": "grooming-actions",
+   "tier": 3
+  },
+  {
+   "id": "price-age-and-depth",
+   "tier": 3
+  },
+  {
+   "id": "doing-housework",
+   "tier": 3
+  },
+  {
+   "id": "familiar-bugs",
+   "tier": 3
+  },
+  {
+   "id": "useful-papers",
+   "tier": 3
+  },
+  {
+   "id": "food-ripeness-and-condition",
+   "tier": 3
+  },
+  {
+   "id": "object-states",
+   "tier": 3
+  },
+  {
+   "id": "putting-clothes-on-and-off",
+   "tier": 3
+  },
+  {
+   "id": "winter-warmth",
+   "tier": 3
+  },
+  {
+   "id": "joints-and-neck",
+   "tier": 3
+  },
+  {
+   "id": "on-the-way-actions",
+   "tier": 3
+  },
+  {
+   "id": "torso-and-nails",
+   "tier": 3
+  },
+  {
+   "id": "foods-served-alongside-rice",
+   "tier": 3
+  },
+  {
+   "id": "household-trouble",
+   "tier": 3
+  },
+  {
+   "id": "small-everyday-measures",
+   "tier": 3
+  },
+  {
+   "id": "electricity-and-light",
+   "tier": 3
+  },
+  {
+   "id": "features-for-giving-directions",
+   "tier": 3
+  },
+  {
+   "id": "cooking-actions",
+   "tier": 3
+  },
+  {
+   "id": "welcoming-guests-at-home",
+   "tier": 3
+  },
+  {
+   "id": "ramadan-and-eid",
+   "tier": 3
+  },
+  {
+   "id": "full-empty-fit-and-thickness",
+   "tier": 3
+  },
+  {
+   "id": "small-repairs",
+   "tier": 3
+  },
+  {
+   "id": "getting-around-in-the-rain",
+   "tier": 3
+  },
+  {
+   "id": "market-stall-snacks",
+   "tier": 3
+  },
+  {
+   "id": "ways-of-handling-money",
+   "tier": 3
+  },
+  {
+   "id": "everyday-materials",
+   "tier": 3
+  },
+  {
+   "id": "features-of-paths",
+   "tier": 3
+  },
+  {
+   "id": "hair-on-head-and-face",
+   "tier": 3
+  },
+  {
+   "id": "land-and-water",
+   "tier": 3
+  },
+  {
+   "id": "vehicles",
+   "tier": 3
+  },
+  {
+   "id": "fire-and-fuel",
+   "tier": 3
+  },
+  {
+   "id": "local-market-fish",
+   "tier": 3
+  },
+  {
+   "id": "packing-and-carrying",
+   "tier": 3
+  },
+  {
+   "id": "roots-and-vines",
+   "tier": 3
+  },
+  {
+   "id": "parts-and-cuts-of-food",
+   "tier": 3
+  },
+  {
+   "id": "things-in-the-sky",
+   "tier": 3
+  },
+  {
+   "id": "everyday-groups-and-pairs",
+   "tier": 3
+  },
+  {
+   "id": "dairy-foods",
+   "tier": 3
+  },
+  {
+   "id": "small-parts-of-hands-and-feet",
+   "tier": 3
+  },
+  {
+   "id": "storage-containers",
+   "tier": 3
+  },
+  {
+   "id": "more-cooking-vegetables",
+   "tier": 3
+  },
+  {
+   "id": "footwear-and-its-parts",
+   "tier": 3
+  },
+  {
+   "id": "ties-and-fasteners",
+   "tier": 3
+  },
+  {
+   "id": "aunts-uncles-and-nephews",
+   "tier": 3
+  },
+  {
+   "id": "more-local-fruit",
+   "tier": 3
+  },
+  {
+   "id": "more-clothes-to-wear",
+   "tier": 3
+  },
+  {
+   "id": "more-neighborhood-specialty-shops",
+   "tier": 3
+  },
+  {
+   "id": "sending-post-and-parcels",
+   "tier": 3
+  },
+  {
+   "id": "ages-of-people",
+   "tier": 3
+  },
+  {
+   "id": "food-for-guests",
+   "tier": 3
+  },
+  {
+   "id": "bed-linens-and-nightwear",
+   "tier": 3
+  },
+  {
+   "id": "small-everyday-mishaps",
+   "tier": 3
+  },
+  {
+   "id": "local-cold-drinks",
+   "tier": 3
+  },
+  {
+   "id": "basic-shapes",
+   "tier": 3
+  },
+  {
+   "id": "baby-play-and-feeding-things",
+   "tier": 3
+  },
+  {
+   "id": "ground-and-crushed-kitchen-spices",
+   "tier": 3
+  },
+  {
+   "id": "aromatic-spices",
+   "tier": 3
+  },
+  {
+   "id": "parts-of-common-containers",
+   "tier": 3
+  },
+  {
+   "id": "writing-and-correcting-on-paper",
+   "tier": 3
+  },
+  {
+   "id": "common-wordless-notices",
+   "tier": 3
+  },
+  {
+   "id": "actions-for-care",
+   "tier": 3
+  },
+  {
+   "id": "hands-on-small-repairs",
+   "tier": 3
+  },
+  {
+   "id": "hair-care-at-home",
+   "tier": 3
+  },
+  {
+   "id": "posture-and-turning",
+   "tier": 3
+  },
+  {
+   "id": "ways-of-carrying-things",
+   "tier": 3
+  },
+  {
+   "id": "people-at-work",
+   "tier": 3
+  },
+  {
+   "id": "street-service-vehicles",
+   "tier": 3
+  },
+  {
+   "id": "caring-for-babies-and-elders",
+   "tier": 3
+  },
+  {
+   "id": "bhorta-served-with-rice",
+   "tier": 3
+  },
+  {
+   "id": "small-places-around-the-room",
+   "tier": 3
+  },
+  {
+   "id": "ways-of-resting-and-sleeping",
+   "tier": 3
+  },
+  {
+   "id": "seasons-in-bangladesh",
+   "tier": 3
+  },
+  {
+   "id": "signs-around-roads-and-buildings",
+   "tier": 3
+  },
+  {
+   "id": "small-child-care-gear",
+   "tier": 3
+  },
+  {
+   "id": "wet-cleaning-supplies",
+   "tier": 3
+  },
+  {
+   "id": "after-meal-dishwashing",
+   "tier": 3
+  },
+  {
+   "id": "small-wear-and-breakage",
+   "tier": 3
+  },
+  {
+   "id": "people-who-service-a-home",
+   "tier": 3
+  },
+  {
+   "id": "everyday-actions-at-the-front-door",
+   "tier": 3
+  },
+  {
+   "id": "parts-of-plants",
+   "tier": 4
+  },
+  {
+   "id": "local-trades",
+   "tier": 4
+  },
+  {
+   "id": "food-laundry-and-garden-workers",
+   "tier": 4
+  },
+  {
+   "id": "more-people-at-local-jobs",
+   "tier": 4
+  },
+  {
+   "id": "sewing-repairs",
+   "tier": 4
+  },
+  {
+   "id": "small-local-animals",
+   "tier": 4
+  },
+  {
+   "id": "jewelry-and-adornment",
+   "tier": 4
+  },
+  {
+   "id": "more-domestic-animals",
+   "tier": 4
+  },
+  {
+   "id": "wedding-and-invitation",
+   "tier": 4
+  },
+  {
+   "id": "house-edges-and-fittings",
+   "tier": 4
+  },
+  {
+   "id": "metals-and-natural-materials",
+   "tier": 4
+  },
+  {
+   "id": "hands-on-learning-actions",
+   "tier": 4
+  },
+  {
+   "id": "parts-of-a-market-fish",
+   "tier": 4
+  },
+  {
+   "id": "building-materials",
+   "tier": 4
+  },
+  {
+   "id": "parts-of-clothing",
+   "tier": 4
+  },
+  {
+   "id": "surface-and-feel",
+   "tier": 4
+  },
+  {
+   "id": "marks-and-things-on-the-ground",
+   "tier": 4
+  },
+  {
+   "id": "arranging-objects",
+   "tier": 4
+  },
+  {
+   "id": "more-market-fruit",
+   "tier": 4
+  },
+  {
+   "id": "common-birds",
+   "tier": 4
+  },
+  {
+   "id": "bags-and-cases-for-carrying",
+   "tier": 4
+  },
+  {
+   "id": "tree-fruit-and-sap-treats",
+   "tier": 4
+  },
+  {
+   "id": "drawing-materials",
+   "tier": 4
+  },
+  {
+   "id": "play-things",
+   "tier": 4
+  },
+  {
+   "id": "small-parts-of-the-face",
+   "tier": 4
+  },
+  {
+   "id": "small-pests-and-pollinators",
+   "tier": 4
+  },
+  {
+   "id": "local-open-and-work-sites",
+   "tier": 4
+  },
+  {
+   "id": "repair-and-garden-tools",
+   "tier": 4
+  },
+  {
+   "id": "parts-and-problems-of-teeth",
+   "tier": 4
+  },
+  {
+   "id": "brightness-and-clear-vision",
+   "tier": 4
+  },
+  {
+   "id": "types-of-homes",
+   "tier": 4
+  },
+  {
+   "id": "sweet-breakfast-and-pitha",
+   "tier": 4
+  },
+  {
+   "id": "features-around-a-mosque",
+   "tier": 4
+  },
+  {
+   "id": "mouth-and-nose-actions",
+   "tier": 4
+  },
+  {
+   "id": "ways-of-heating-food",
+   "tier": 4
+  },
+  {
+   "id": "preparing-food-to-serve",
+   "tier": 4
+  },
+  {
+   "id": "fabric-care-actions",
+   "tier": 4
+  },
+  {
+   "id": "familiar-home-and-personal-scents",
+   "tier": 4
+  },
+  {
+   "id": "bangladesh-flour-snacks",
+   "tier": 4
+  },
+  {
+   "id": "making-sounds",
+   "tier": 4
+  },
+  {
+   "id": "door-and-window-fittings",
+   "tier": 4
+  },
+  {
+   "id": "appearance-contrasts",
+   "tier": 4
+  },
+  {
+   "id": "things-that-move-or-change",
+   "tier": 4
+  },
+  {
+   "id": "local-kitchen-implements",
+   "tier": 4
+  },
+  {
+   "id": "personal-care-objects",
+   "tier": 4
+  },
+  {
+   "id": "small-facial-actions",
+   "tier": 4
+  },
+  {
+   "id": "rice-varieties-at-the-market",
+   "tier": 4
+  },
+  {
+   "id": "familiar-bangladesh-trees",
+   "tier": 4
+  },
+  {
+   "id": "finger-and-palm-actions",
+   "tier": 4
+  },
+  {
+   "id": "bangladesh-sweets",
+   "tier": 4
+  },
+  {
+   "id": "garden-planting-actions",
+   "tier": 4
+  },
+  {
+   "id": "mouth-and-ear-gestures",
+   "tier": 4
+  },
+  {
+   "id": "nuts-and-dried-fruit-at-the-market",
+   "tier": 4
+  },
+  {
+   "id": "equipment-at-the-playground",
+   "tier": 4
+  },
+  {
+   "id": "cuts-at-a-bangladeshi-meat-shop",
+   "tier": 4
+  },
+  {
+   "id": "undoing-and-gathering-actions",
+   "tier": 4
+  },
+  {
+   "id": "parts-of-a-reading-book",
+   "tier": 4
+  },
+  {
+   "id": "vegetables-for-curry-and-bhaji",
+   "tier": 4
+  },
+  {
+   "id": "leafy-greens-at-market",
+   "tier": 4
+  },
+  {
+   "id": "familiar-parts-of-a-car",
+   "tier": 4
+  },
+  {
+   "id": "small-seeds-for-cooking",
+   "tier": 4
+  },
+  {
+   "id": "texture-of-food",
+   "tier": 4
+  },
+  {
+   "id": "roadside-and-homestead-trees",
+   "tier": 4
+  },
+  {
+   "id": "simple-stretching-and-footwork",
+   "tier": 4
+  },
+  {
+   "id": "mending-clothes-by-hand",
+   "tier": 4
+  },
+  {
+   "id": "six-market-pulses",
+   "tier": 4
+  },
+  {
+   "id": "heights-and-reach-relative-to-the-body",
+   "tier": 4
+  },
+  {
+   "id": "flatbread-and-serving-tools",
+   "tier": 4
+  },
+  {
+   "id": "eyeglass-parts-and-eye-shop-objects",
+   "tier": 4
+  },
+  {
+   "id": "clothing-patterns",
+   "tier": 4
+  },
+  {
+   "id": "working-ingredients-while-cooking",
+   "tier": 4
+  },
+  {
+   "id": "care-and-fit-of-everyday-shoes",
+   "tier": 4
+  },
+  {
+   "id": "places-for-work-learning-and-trade",
+   "tier": 4
+  },
+  {
+   "id": "parts-inside-common-fruits",
+   "tier": 4
+  },
+  {
+   "id": "fire-safety-tools-around-buildings",
+   "tier": 4
+  },
+  {
+   "id": "objects-for-everyday-exercise",
+   "tier": 4
+  },
+  {
+   "id": "tools-for-serving-a-meal-out",
+   "tier": 4
+  },
+  {
+   "id": "holding-food-for-an-outing",
+   "tier": 4
+  },
+  {
+   "id": "things-to-take-on-a-trip",
+   "tier": 4
+  },
+  {
+   "id": "common-clinic-and-care-tools",
+   "tier": 4
+  },
+  {
+   "id": "ways-to-keep-food",
+   "tier": 4
+  },
+  {
+   "id": "buying-fabric-cut-to-size",
+   "tier": 4
+  },
+  {
+   "id": "more-actions-at-the-stove",
+   "tier": 4
+  },
+  {
+   "id": "working-with-fresh-milk",
+   "tier": 4
+  },
+  {
+   "id": "making-and-looking-at-loaf-bread",
+   "tier": 4
+  },
+  {
+   "id": "wild-bangladesh-animals",
+   "tier": 5
+  },
+  {
+   "id": "music-and-rhythm",
+   "tier": 5
+  },
+  {
+   "id": "working-parts-of-a-boat",
+   "tier": 5
+  },
+  {
+   "id": "river-and-coast-landforms",
+   "tier": 5
+  },
+  {
+   "id": "tree-and-stem-details",
+   "tier": 5
+  },
+  {
+   "id": "wetland-animals-around-bangladesh",
+   "tier": 5
+  },
+  {
+   "id": "tart-and-fragrant-local-fruits",
+   "tier": 5
+  },
+  {
+   "id": "river-work-gear",
+   "tier": 5
+  },
+  {
+   "id": "traditional-household-objects",
+   "tier": 5
+  },
+  {
+   "id": "at-a-bangladeshi-fair",
+   "tier": 5
+  },
+  {
+   "id": "farm-and-field",
+   "tier": 5
+  },
+  {
+   "id": "more-fish-from-the-market",
+   "tier": 5
+  },
+  {
+   "id": "types-of-river-boats",
+   "tier": 5
+  },
+  {
+   "id": "materials-from-plants-and-animals",
+   "tier": 5
+  },
+  {
+   "id": "more-familiar-local-birds",
+   "tier": 5
+  },
+  {
+   "id": "familiar-bangladesh-flowers",
+   "tier": 5
+  },
+  {
+   "id": "rice-from-field-to-pot",
+   "tier": 5
+  },
+  {
+   "id": "parts-of-an-everyday-umbrella",
+   "tier": 5
+  },
+  {
+   "id": "animals-and-shells-of-the-sea",
+   "tier": 5
+  },
+  {
+   "id": "traditional-yard-games",
+   "tier": 5
+  },
+  {
+   "id": "plants-and-seeds-for-oil",
+   "tier": 5
+  },
+  {
+   "id": "riverbanks-and-water-movement",
+   "tier": 5
+  },
+  {
+   "id": "local-fabric-and-cloth-types",
+   "tier": 5
+  },
+  {
+   "id": "edible-stems-blossoms-and-seeds",
+   "tier": 5
+  },
+  {
+   "id": "colorful-local-garden-flowers",
+   "tier": 5
+  },
+  {
+   "id": "things-on-a-performance-stage",
+   "tier": 5
+  },
+  {
+   "id": "reading-a-bangla-newspaper",
+   "tier": 5
+  },
+  {
+   "id": "plants-by-ponds-and-fields",
+   "tier": 5
+  },
+  {
+   "id": "small-skin-marks",
+   "tier": 5
+  },
+  {
+   "id": "helping-plants-grow",
+   "tier": 5
+  },
+  {
+   "id": "taking-and-keeping-photos",
+   "tier": 5
+  },
+  {
+   "id": "sewing-room-tools",
+   "tier": 5
+  },
+  {
+   "id": "making-a-clay-pot",
+   "tier": 5
+  },
+  {
+   "id": "organizing-paper-at-a-desk",
+   "tier": 5
+  },
+  {
+   "id": "fittings-for-a-water-line",
+   "tier": 5
+  },
+  {
+   "id": "street-repair-equipment",
+   "tier": 5
+  }
+ ]
+}

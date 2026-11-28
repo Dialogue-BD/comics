@@ -2,8839 +2,50 @@
 window.PTB_DECK = {
  "cards": [
   {
-   "id": "home-things",
-   "number": 1,
-   "title": "ঘরের জিনিস",
-   "front": "pages/001-front.jpg",
-   "back": "pages/001-back.jpg",
+   "id": "first-conversations-with-neighbors",
+   "number": 276,
+   "title": "প্রথম আলাপে যা বলি",
+   "front": "pages/276-front.jpg",
+   "back": "pages/276-back.jpg",
    "items": [
     {
-     "id": "bed",
-     "label": "খাট",
-     "gloss": "bed"
+     "id": "reply-to-a-salaam",
+     "label": "ওয়ালাইকুম আসসালাম",
+     "gloss": "return a salaam already offered by another person"
     },
     {
-     "id": "pillow",
-     "label": "বালিশ",
-     "gloss": "pillow"
+     "id": "ask-how-someone-is",
+     "label": "কেমন আছেন?",
+     "gloss": "ask how the other person is doing"
     },
     {
-     "id": "stool",
-     "label": "মোড়া",
-     "gloss": "low woven stool"
+     "id": "say-you-are-well",
+     "label": "ভালো আছি",
+     "gloss": "say that you are well in reply to a greeting"
     },
     {
-     "id": "cupboard",
-     "label": "আলমারি",
-     "gloss": "cupboard"
+     "id": "ask-a-new-person-their-name",
+     "label": "আপনার নাম কী?",
+     "gloss": "politely ask someone their name"
     },
     {
-     "id": "fan",
-     "label": "পাখা",
-     "gloss": "ceiling fan"
+     "id": "say-you-are-new-here",
+     "label": "আমি এখানে নতুন",
+     "gloss": "introduce yourself as a newcomer to this area"
     },
     {
-     "id": "bulb",
-     "label": "বাতি",
-     "gloss": "light bulb"
+     "id": "say-you-are-learning-bangla",
+     "label": "বাংলা শিখছি",
+     "gloss": "say that you are learning Bangla"
     }
    ],
    "questions": [
-    "বালিশটা কোথায়?",
-    "কোনটা খাটের পাশে রাখবেন?",
-    "ঘরে কোনটা বেশি কাজে লাগে?",
-    "গরম লাগলে কী চালাবেন?",
-    "আপনার ঘরে আর কী আছে?",
-    "ঘরে বসার জন্য কী রাখবেন?"
-   ]
-  },
-  {
-   "id": "study-things",
-   "number": 2,
-   "title": "লেখাপড়ার জিনিস",
-   "front": "pages/002-front.jpg",
-   "back": "pages/002-back.jpg",
-   "items": [
-    {
-     "id": "book",
-     "label": "বই",
-     "gloss": "book"
-    },
-    {
-     "id": "notebook",
-     "label": "খাতা",
-     "gloss": "notebook"
-    },
-    {
-     "id": "pen",
-     "label": "কলম",
-     "gloss": "pen"
-    },
-    {
-     "id": "scissors",
-     "label": "কাঁচি",
-     "gloss": "scissors"
-    },
-    {
-     "id": "glue",
-     "label": "আঠা",
-     "gloss": "glue"
-    },
-    {
-     "id": "envelope",
-     "label": "খাম",
-     "gloss": "envelope"
-    }
-   ],
-   "questions": [
-    "খাতাটা কোনটা?",
-    "কোন দুটোর পাতা আছে?",
-    "আপনি কী দিয়ে লেখেন?",
-    "খামের ভেতর কী রাখেন?",
-    "পড়ার জন্য আর কী লাগে?",
-    "কাউকে কিছু লিখে পাঠালে কী লাগবে?"
-   ]
-  },
-  {
-   "id": "tableware",
-   "number": 3,
-   "title": "খাওয়ার বাসন",
-   "front": "pages/003-front.jpg",
-   "back": "pages/003-back.jpg",
-   "items": [
-    {
-     "id": "plate",
-     "label": "থালা",
-     "gloss": "dinner plate"
-    },
-    {
-     "id": "bowl",
-     "label": "বাটি",
-     "gloss": "bowl"
-    },
-    {
-     "id": "spoon",
-     "label": "চামচ",
-     "gloss": "spoon"
-    },
-    {
-     "id": "fork",
-     "label": "কাঁটাচামচ",
-     "gloss": "fork"
-    },
-    {
-     "id": "saucer",
-     "label": "পিরিচ",
-     "gloss": "saucer"
-    },
-    {
-     "id": "cup",
-     "label": "পেয়ালা",
-     "gloss": "small tea cup"
-    }
-   ],
-   "questions": [
-    "বাটিটা দেখাবেন?",
-    "কোন দুটো দিয়ে খাবার মুখে তুলি?",
-    "ভাত খেতে কী নেন?",
-    "পিরিচের ওপর কী রাখেন?",
-    "খাওয়ার সময় আর কী লাগে?",
-    "দুজন খাবে। কী কী দেবেন?"
-   ]
-  },
-  {
-   "id": "market-vegetables",
-   "number": 4,
-   "title": "বাজারের সবজি",
-   "front": "pages/004-front.jpg",
-   "back": "pages/004-back.jpg",
-   "items": [
-    {
-     "id": "potato",
-     "label": "আলু",
-     "gloss": "potato"
-    },
-    {
-     "id": "onion",
-     "label": "পেঁয়াজ",
-     "gloss": "red onion"
-    },
-    {
-     "id": "eggplant",
-     "label": "বেগুন",
-     "gloss": "eggplant"
-    },
-    {
-     "id": "cauliflower",
-     "label": "ফুলকপি",
-     "gloss": "cauliflower"
-    },
-    {
-     "id": "cucumber",
-     "label": "শসা",
-     "gloss": "cucumber"
-    },
-    {
-     "id": "greens",
-     "label": "শাক",
-     "gloss": "leafy greens"
-    }
-   ],
-   "questions": [
-    "শসাটা কোনটা?",
-    "কোন দুটো বেগুনি?",
-    "আপনি কোন সবজিটা বেশি খান?",
-    "কোনটা ভর্তা করে খেতে ভালো লাগে?",
-    "আপনার কাছে আর কী সবজি পাওয়া যায়?",
-    "তিনটা সবজি কিনলে কোনগুলো নেবেন?"
-   ]
-  },
-  {
-   "id": "market-fruit",
-   "number": 5,
-   "title": "বাজারের ফল",
-   "front": "pages/005-front.jpg",
-   "back": "pages/005-back.jpg",
-   "items": [
-    {
-     "id": "mango",
-     "label": "আম",
-     "gloss": "mango"
-    },
-    {
-     "id": "banana",
-     "label": "কলা",
-     "gloss": "banana"
-    },
-    {
-     "id": "papaya",
-     "label": "পেঁপে",
-     "gloss": "papaya"
-    },
-    {
-     "id": "pineapple",
-     "label": "আনারস",
-     "gloss": "pineapple"
-    },
-    {
-     "id": "jackfruit",
-     "label": "কাঁঠাল",
-     "gloss": "jackfruit"
-    },
-    {
-     "id": "grapes",
-     "label": "আঙুর",
-     "gloss": "grapes"
-    }
-   ],
-   "questions": [
-    "আমটা দেখাতে পারবেন?",
-    "কোন দুটো গুচ্ছ ধরে থাকে?",
-    "আপনি কোন ফলটা বেশি খান?",
-    "কাঁচা পেঁপে দিয়ে কী বানানো যায়?",
-    "এখানে আর কী ফল পাওয়া যায়?",
-    "কারও বাসায় গেলে কোন ফল নিয়ে যাবেন?"
-   ]
-  },
-  {
-   "id": "lunch",
-   "number": 6,
-   "title": "দুপুরের খাবার",
-   "front": "pages/006-front.jpg",
-   "back": "pages/006-back.jpg",
-   "items": [
-    {
-     "id": "cooked-rice",
-     "label": "ভাত",
-     "gloss": "cooked rice"
-    },
-    {
-     "id": "roti",
-     "label": "রুটি",
-     "gloss": "roti"
-    },
-    {
-     "id": "cooked-dal",
-     "label": "ডাল",
-     "gloss": "cooked lentils"
-    },
-    {
-     "id": "fried-egg",
-     "label": "ডিম",
-     "gloss": "fried egg"
-    },
-    {
-     "id": "fried-fish",
-     "label": "মাছ",
-     "gloss": "whole fried fish"
-    },
-    {
-     "id": "chicken-curry",
-     "label": "মাংস",
-     "gloss": "chicken meat"
-    }
-   ],
-   "questions": [
-    "ভাতটা কোনটা?",
-    "কোন দুটো ভাজা?",
-    "দুপুরে আপনি কী খান?",
-    "ভাতের সঙ্গে কী খেতে ভালো লাগে?",
-    "এখানে খাবারের সঙ্গে আর কী দেয়?",
-    "দুপুরে বাইরে খেলে কী নেবেন?"
-   ]
-  },
-  {
-   "id": "tea-things",
-   "number": 7,
-   "title": "চা আর শরবত",
-   "front": "pages/007-front.jpg",
-   "back": "pages/007-back.jpg",
-   "items": [
-    {
-     "id": "water",
-     "label": "পানি",
-     "gloss": "water"
-    },
-    {
-     "id": "tea",
-     "label": "চা",
-     "gloss": "tea"
-    },
-    {
-     "id": "milk",
-     "label": "দুধ",
-     "gloss": "milk"
-    },
-    {
-     "id": "lemon",
-     "label": "লেবু",
-     "gloss": "lime"
-    },
-    {
-     "id": "honey",
-     "label": "মধু",
-     "gloss": "honey"
-    },
-    {
-     "id": "jaggery",
-     "label": "গুড়",
-     "gloss": "jaggery"
-    }
-   ],
-   "questions": [
-    "পানিটা কোনটা?",
-    "কোনটার রং সাদা?",
-    "আপনি চায়ে দুধ দেন?",
-    "লেবুপানি বানাতে কী কী লাগে?",
-    "চায়ে আর কী দিতে পারেন?",
-    "আপনার জন্য কীভাবে চা বানাব?"
-   ]
-  },
-  {
-   "id": "cooking-things",
-   "number": 8,
-   "title": "রান্নার জিনিস",
-   "front": "pages/008-front.jpg",
-   "back": "pages/008-back.jpg",
-   "items": [
-    {
-     "id": "pot",
-     "label": "হাঁড়ি",
-     "gloss": "cooking pot"
-    },
-    {
-     "id": "lid",
-     "label": "ঢাকনা",
-     "gloss": "pot lid"
-    },
-    {
-     "id": "knife",
-     "label": "ছুরি",
-     "gloss": "kitchen knife"
-    },
-    {
-     "id": "board",
-     "label": "কাটার তক্তা",
-     "gloss": "cutting board"
-    },
-    {
-     "id": "pan",
-     "label": "কড়াই",
-     "gloss": "wok-like frying pan"
-    },
-    {
-     "id": "turner",
-     "label": "খুন্তি",
-     "gloss": "cooking turner"
-    }
-   ],
-   "questions": [
-    "হাঁড়িটা কোথায়?",
-    "কোনটা দিয়ে কাটবেন?",
-    "বাসায় কোনটা বেশি কাজে লাগে?",
-    "হাঁড়ির মুখ কী দিয়ে ঢাকবেন?",
-    "রান্নায় আর কী জিনিস লাগে?",
-    "মাছ ভাজতে কী কী নেবেন?"
-   ]
-  },
-  {
-   "id": "pantry",
-   "number": 9,
-   "title": "মসলা আর তেল",
-   "front": "pages/009-front.jpg",
-   "back": "pages/009-back.jpg",
-   "items": [
-    {
-     "id": "salt",
-     "label": "লবণ",
-     "gloss": "salt"
-    },
-    {
-     "id": "sugar",
-     "label": "চিনি",
-     "gloss": "sugar"
-    },
-    {
-     "id": "mustard",
-     "label": "সরিষা",
-     "gloss": "mustard seed"
-    },
-    {
-     "id": "cumin",
-     "label": "জিরা",
-     "gloss": "cumin seed"
-    },
-    {
-     "id": "oil",
-     "label": "তেল",
-     "gloss": "cooking oil"
-    },
-    {
-     "id": "ghee",
-     "label": "ঘি",
-     "gloss": "ghee"
-    }
-   ],
-   "questions": [
-    "জিরাটা কোনটা?",
-    "কোন দুটো সাদা?",
-    "আপনি রান্নায় কোন তেল দেন?",
-    "ডালে কী মসলা দেন?",
-    "ঝাল করতে আর কী দেবেন?",
-    "আজ রান্না করলে এই ছয়টার মধ্যে কী কী লাগবে?"
-   ]
-  },
-  {
-   "id": "clothing",
-   "number": 10,
-   "title": "পরনের কাপড়",
-   "front": "pages/010-front.jpg",
-   "back": "pages/010-back.jpg",
-   "items": [
-    {
-     "id": "orna",
-     "label": "ওড়না",
-     "gloss": "orna scarf"
-    },
-    {
-     "id": "sari",
-     "label": "শাড়ি",
-     "gloss": "sari"
-    },
-    {
-     "id": "lungi",
-     "label": "লুঙ্গি",
-     "gloss": "lungi"
-    },
-    {
-     "id": "panjabi",
-     "label": "পাঞ্জাবি",
-     "gloss": "panjabi kurta"
-    },
-    {
-     "id": "salwar",
-     "label": "সালোয়ার",
-     "gloss": "salwar trousers"
-    },
-    {
-     "id": "kameez",
-     "label": "কামিজ",
-     "gloss": "kameez tunic"
-    }
-   ],
-   "questions": [
-    "ওড়নাটা কোনটা?",
-    "কোন দুটো লম্বা জামা?",
-    "কোনটা আপনি দোকানে দেখেছেন?",
-    "কামিজের সঙ্গে কী পরেন?",
-    "গরমে আর কী পরা যায়?",
-    "দাওয়াতে গেলে কী পরবেন?"
-   ]
-  },
-  {
-   "id": "washing-things",
-   "number": 11,
-   "title": "গোসলের জিনিস",
-   "front": "pages/011-front.jpg",
-   "back": "pages/011-back.jpg",
-   "items": [
-    {
-     "id": "balti",
-     "label": "বালতি",
-     "gloss": "bucket"
-    },
-    {
-     "id": "bodna",
-     "label": "বদনা",
-     "gloss": "water vessel with spout"
-    },
-    {
-     "id": "gamcha",
-     "label": "গামছা",
-     "gloss": "gamcha towel"
-    },
-    {
-     "id": "soap",
-     "label": "সাবান",
-     "gloss": "bar of soap"
-    },
-    {
-     "id": "comb",
-     "label": "চিরুনি",
-     "gloss": "comb"
-    },
-    {
-     "id": "mirror",
-     "label": "আয়না",
-     "gloss": "mirror"
-    }
-   ],
-   "questions": [
-    "গামছাটা কোথায়?",
-    "কোন দুটোয় পানি রাখা যায়?",
-    "আপনি কী দিয়ে গা মোছেন?",
-    "চুল আঁচড়াতে কী লাগে?",
-    "গোসলের জন্য আর কী রাখেন?",
-    "কোথাও থাকতে গেলে এর কোনগুলো নিয়ে যাবেন?"
-   ]
-  },
-  {
-   "id": "home-parts",
-   "number": 12,
-   "title": "বাসার অংশ",
-   "front": "pages/012-front.jpg",
-   "back": "pages/012-back.jpg",
-   "items": [
-    {
-     "id": "door",
-     "label": "দরজা",
-     "gloss": "door"
-    },
-    {
-     "id": "window",
-     "label": "জানালা",
-     "gloss": "window"
-    },
-    {
-     "id": "stairs",
-     "label": "সিঁড়ি",
-     "gloss": "stairs"
-    },
-    {
-     "id": "roof",
-     "label": "ছাদ",
-     "gloss": "flat roof"
-    },
-    {
-     "id": "balcony",
-     "label": "বারান্দা",
-     "gloss": "balcony"
-    },
-    {
-     "id": "wall",
-     "label": "দেয়াল",
-     "gloss": "wall"
-    }
-   ],
-   "questions": [
-    "জানালাটা কোনটা?",
-    "কোন দুটো খুলতে পারি?",
-    "আপনার বাসায় বারান্দা আছে?",
-    "ছাদে কী দিয়ে উঠবেন?",
-    "বাসার আর কোন কোন অংশ আছে?",
-    "বিকেলে একটু হাওয়া খেতে কোথায় বসবেন?"
-   ]
-  },
-  {
-   "id": "where-things-are",
-   "number": 13,
-   "title": "জিনিস কোথায়",
-   "front": "pages/013-front.jpg",
-   "back": "pages/013-back.jpg",
-   "items": [
-    {
-     "id": "above",
-     "label": "ওপরে",
-     "gloss": "above"
-    },
-    {
-     "id": "below",
-     "label": "নিচে",
-     "gloss": "below"
-    },
-    {
-     "id": "inside",
-     "label": "ভেতরে",
-     "gloss": "inside"
-    },
-    {
-     "id": "outside",
-     "label": "বাইরে",
-     "gloss": "outside"
-    },
-    {
-     "id": "between",
-     "label": "মাঝে",
-     "gloss": "between"
-    },
-    {
-     "id": "behind",
-     "label": "পেছনে",
-     "gloss": "behind"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে বলটা ভেতরে আছে?",
-    "কোন দুটো ছবিতে বলের কিছুটা ঢাকা?",
-    "আপনার চাবিটা কোথায় থাকে?",
-    "বলটা দুই বাক্সের মাঝে রাখলে কোন ছবির মতো হবে?",
-    "আপনার পাশে কী আছে?",
-    "আমাকে বলটা কোথায় রাখতে বলবেন?"
-   ]
-  },
-  {
-   "id": "colours",
-   "number": 14,
-   "title": "রং",
-   "front": "pages/014-front.jpg",
-   "back": "pages/014-back.jpg",
-   "items": [
-    {
-     "id": "red",
-     "label": "লাল",
-     "gloss": "red"
-    },
-    {
-     "id": "blue",
-     "label": "নীল",
-     "gloss": "blue"
-    },
-    {
-     "id": "green",
-     "label": "সবুজ",
-     "gloss": "green"
-    },
-    {
-     "id": "yellow",
-     "label": "হলুদ",
-     "gloss": "yellow"
-    },
-    {
-     "id": "black",
-     "label": "কালো",
-     "gloss": "black"
-    },
-    {
-     "id": "white",
-     "label": "সাদা",
-     "gloss": "white"
-    }
-   ],
-   "questions": [
-    "লালটা কোনটা?",
-    "বাংলাদেশের পতাকায় কোন দুটো রং আছে?",
-    "আপনি কী রঙের জামা বেশি পরেন?",
-    "লেখার জন্য কোন রঙের কালি নেন?",
-    "আপনার ঘরে আর কী কী রং আছে?",
-    "দেয়ালে একটা রং দিলে কোনটা দেবেন?"
-   ]
-  },
-  {
-   "id": "weather",
-   "number": 15,
-   "title": "রোদ আর বৃষ্টি",
-   "front": "pages/015-front.jpg",
-   "back": "pages/015-back.jpg",
-   "items": [
-    {
-     "id": "sunshine",
-     "label": "রোদ",
-     "gloss": "sunshine"
-    },
-    {
-     "id": "shade",
-     "label": "ছায়া",
-     "gloss": "shade"
-    },
-    {
-     "id": "rain",
-     "label": "বৃষ্টি",
-     "gloss": "rain"
-    },
-    {
-     "id": "storm",
-     "label": "ঝড়",
-     "gloss": "storm"
-    },
-    {
-     "id": "cloud",
-     "label": "মেঘ",
-     "gloss": "cloud"
-    },
-    {
-     "id": "fog",
-     "label": "কুয়াশা",
-     "gloss": "fog"
-    }
-   ],
-   "questions": [
-    "বৃষ্টি হচ্ছে কোন ছবিতে?",
-    "কোনটায় কম দেখা যায়?",
-    "রোদে বের হলে আপনি কী করেন?",
-    "ঝড় শুরু হলে কোথায় যাবেন?",
-    "এই সময় এখানে আর কী রকম আবহাওয়া হয়?",
-    "বাইরে বসতে হলে কোন জায়গাটা বেছে নেবেন?"
-   ]
-  },
-  {
-   "id": "daily-actions",
-   "number": 16,
-   "title": "সকালের কাজ",
-   "front": "pages/016-front.jpg",
-   "back": "pages/016-back.jpg",
-   "items": [
-    {
-     "id": "eat",
-     "label": "খাওয়া",
-     "gloss": "to eat"
-    },
-    {
-     "id": "drink",
-     "label": "পানি খাওয়া",
-     "gloss": "to drink water"
-    },
-    {
-     "id": "sit",
-     "label": "বসা",
-     "gloss": "to sit"
-    },
-    {
-     "id": "stand",
-     "label": "দাঁড়ানো",
-     "gloss": "to stand"
-    },
-    {
-     "id": "sleep",
-     "label": "ঘুমানো",
-     "gloss": "to sleep"
-    },
-    {
-     "id": "wake",
-     "label": "ঘুম থেকে ওঠা",
-     "gloss": "to wake up"
-    }
-   ],
-   "questions": [
-    "কে বসে আছেন?",
-    "কে পানি খাচ্ছেন?",
-    "আপনি কখন ঘুম থেকে ওঠেন?",
-    "ঘুম থেকে উঠে আগে কী করেন?",
-    "সকালে আপনি আর কী করেন?",
-    "কাল সকালে আজকের চেয়ে আগে উঠলে কী করবেন?"
-   ]
-  },
-  {
-   "id": "with-your-hands",
-   "number": 17,
-   "title": "হাতের কাজ",
-   "front": "pages/017-front.jpg",
-   "back": "pages/017-back.jpg",
-   "items": [
-    {
-     "id": "open",
-     "label": "খোলা",
-     "gloss": "to open"
-    },
-    {
-     "id": "close",
-     "label": "বন্ধ করা",
-     "gloss": "to close"
-    },
-    {
-     "id": "wash",
-     "label": "ধোয়া",
-     "gloss": "to wash"
-    },
-    {
-     "id": "wipe",
-     "label": "মোছা",
-     "gloss": "to wipe"
-    },
-    {
-     "id": "read",
-     "label": "পড়া",
-     "gloss": "to read"
-    },
-    {
-     "id": "write",
-     "label": "লেখা",
-     "gloss": "to write"
-    }
-   ],
-   "questions": [
-    "কে থালা ধুচ্ছেন?",
-    "কোন দুটো ছবিতে কৌটা দেখছেন?",
-    "বাসায় আপনি কী কী ধোন?",
-    "থালাটা ধোয়ার পর কী করেন?",
-    "ছবির বাইরে আর কী খুলতে পারেন?",
-    "কাউকে কৌটা খুলতে বললে কী বলবেন?"
-   ]
-  },
-  {
-   "id": "family",
-   "number": 18,
-   "title": "পরিবারের মানুষ",
-   "front": "pages/018-front.jpg",
-   "back": "pages/018-back.jpg",
-   "items": [
-    {
-     "id": "abba",
-     "label": "আব্বা",
-     "gloss": "father"
-    },
-    {
-     "id": "amma",
-     "label": "আম্মা",
-     "gloss": "mother"
-    },
-    {
-     "id": "bhai",
-     "label": "ভাইয়া",
-     "gloss": "older brother"
-    },
-    {
-     "id": "apu",
-     "label": "আপু",
-     "gloss": "older sister"
-    },
-    {
-     "id": "nana",
-     "label": "নানা",
-     "gloss": "maternal grandfather"
-    },
-    {
-     "id": "nani",
-     "label": "নানি",
-     "gloss": "maternal grandmother"
-    }
-   ],
-   "questions": [
-    "ছেলেটার আব্বা কোন ছবিতে?",
-    "কারা ছেলেটার বড় ভাইবোন?",
-    "আপনার পরিবারে কাকে কী নামে ডাকেন?",
-    "বন্ধুকে আপনার আম্মার সঙ্গে কীভাবে পরিচয় করিয়ে দেবেন?",
-    "আব্বার মা আর আব্বাকে কী বলে?",
-    "পরিবারের একজনকে নিয়ে কী গল্প বলতে পারেন?"
-   ]
-  },
-  {
-   "id": "getting-around",
-   "number": 19,
-   "title": "পথেঘাটে",
-   "front": "pages/019-front.jpg",
-   "back": "pages/019-back.jpg",
-   "items": [
-    {
-     "id": "road",
-     "label": "রাস্তা",
-     "gloss": "road"
-    },
-    {
-     "id": "alley",
-     "label": "গলি",
-     "gloss": "narrow lane"
-    },
-    {
-     "id": "turn",
-     "label": "মোড়",
-     "gloss": "street corner"
-    },
-    {
-     "id": "bridge",
-     "label": "পুল",
-     "gloss": "bridge"
-    },
-    {
-     "id": "wharf",
-     "label": "ঘাট",
-     "gloss": "river landing"
-    },
-    {
-     "id": "boat",
-     "label": "নৌকা",
-     "gloss": "wooden boat"
-    }
-   ],
-   "questions": [
-    "ঘাটটা কোথায়?",
-    "কোনটা রাস্তার মোড়?",
-    "আপনি এখানে কীভাবে চলাফেরা করেন?",
-    "নৌকায় উঠতে কোথায় যাবেন?",
-    "বাসা থেকে বাজারের পথে আর কী দেখেন?",
-    "কাউকে গলিটা চিনিয়ে দিতে কী বলবেন?"
-   ]
-  },
-  {
-   "id": "feeling-unwell",
-   "number": 20,
-   "title": "শরীর খারাপ",
-   "front": "pages/020-front.jpg",
-   "back": "pages/020-back.jpg",
-   "items": [
-    {
-     "id": "fever",
-     "label": "জ্বর",
-     "gloss": "fever"
-    },
-    {
-     "id": "cough",
-     "label": "কাশি",
-     "gloss": "cough"
-    },
-    {
-     "id": "sneeze",
-     "label": "হাঁচি",
-     "gloss": "sneeze"
-    },
-    {
-     "id": "toothache",
-     "label": "দাঁতে ব্যথা",
-     "gloss": "toothache"
-    },
-    {
-     "id": "stomachache",
-     "label": "পেটে ব্যথা",
-     "gloss": "stomachache"
-    },
-    {
-     "id": "itch",
-     "label": "চুলকানি",
-     "gloss": "itch"
-    }
-   ],
-   "questions": [
-    "কার জ্বর হয়েছে?",
-    "কে পেটে হাত দিয়েছেন?",
-    "আপনার শরীর খারাপ হলে কাকে বলেন?",
-    "দাঁতে ব্যথা হলে কোথায় যাবেন?",
-    "শরীর খারাপের আর কী কী লক্ষণ হয়?",
-    "আপনার কী হয়েছে, সেটা কী করে বলবেন?"
-   ]
-  },
-  {
-   "id": "body",
-   "number": 21,
-   "title": "শরীরের অংশ",
-   "front": "pages/021-front.jpg",
-   "back": "pages/021-back.jpg",
-   "items": [
-    {
-     "id": "eye",
-     "label": "চোখ",
-     "gloss": "eye"
-    },
-    {
-     "id": "ear",
-     "label": "কান",
-     "gloss": "ear"
-    },
-    {
-     "id": "nose",
-     "label": "নাক",
-     "gloss": "nose"
-    },
-    {
-     "id": "mouth",
-     "label": "মুখ",
-     "gloss": "mouth"
-    },
-    {
-     "id": "hand",
-     "label": "হাত",
-     "gloss": "hand"
-    },
-    {
-     "id": "foot",
-     "label": "পা",
-     "gloss": "foot"
-    }
-   ],
-   "questions": [
-    "চোখটা কোনটা?",
-    "কোন দুটোয় আঙুল আছে?",
-    "আপনি কোন হাত দিয়ে লেখেন?",
-    "কিছু শুনতে শরীরের কোন অংশ লাগে?",
-    "ছবিতে নেই, এমন আর কোন অংশের নাম জানেন?",
-    "পায়ে ব্যথা হলে সেটা কীভাবে বলবেন?"
-   ]
-  },
-  {
-   "id": "care-things",
-   "number": 22,
-   "title": "অসুখে কাজে লাগে",
-   "front": "pages/022-front.jpg",
-   "back": "pages/022-back.jpg",
-   "items": [
-    {
-     "id": "medicine",
-     "label": "ওষুধ",
-     "gloss": "medicine"
-    },
-    {
-     "id": "ointment",
-     "label": "মলম",
-     "gloss": "ointment"
-    },
-    {
-     "id": "cotton",
-     "label": "তুলা",
-     "gloss": "cotton wool"
-    },
-    {
-     "id": "bandage",
-     "label": "পট্টি",
-     "gloss": "bandage strip"
-    },
-    {
-     "id": "ice",
-     "label": "বরফ",
-     "gloss": "ice"
-    },
-    {
-     "id": "hot-water-bag",
-     "label": "গরম পানির থলি",
-     "gloss": "hot-water bag"
-    }
-   ],
-   "questions": [
-    "তুলাটা কোথায়?",
-    "কোন দুটো সেঁক দিতে কাজে লাগে?",
-    "এই জিনিসগুলোর মধ্যে কোনটা আপনি চেনেন?",
-    "মলম কীভাবে লাগায়?",
-    "বাসায় আর কী কী জিনিস রাখেন?",
-    "কোনো একটা জিনিস চেয়ে কী বলবেন?"
-   ]
-  },
-  {
-   "id": "shopping-things",
-   "number": 23,
-   "title": "কেনাকাটার জিনিস",
-   "front": "pages/023-front.jpg",
-   "back": "pages/023-back.jpg",
-   "items": [
-    {
-     "id": "taka",
-     "label": "টাকা",
-     "gloss": "paper taka"
-    },
-    {
-     "id": "change",
-     "label": "খুচরা",
-     "gloss": "loose change"
-    },
-    {
-     "id": "scale",
-     "label": "দাঁড়িপাল্লা",
-     "gloss": "balance scale"
-    },
-    {
-     "id": "receipt",
-     "label": "রসিদ",
-     "gloss": "receipt"
-    },
-    {
-     "id": "market-bag",
-     "label": "থলে",
-     "gloss": "shopping bag"
-    },
-    {
-     "id": "basket",
-     "label": "ঝুড়ি",
-     "gloss": "basket"
-    }
-   ],
-   "questions": [
-    "রসিদটা কোথায়?",
-    "কোন দুটোয় বাজারের জিনিস আনা যায়?",
-    "আপনি বাজারে জিনিস কীসে আনেন?",
-    "টাকা ভাঙালে কী পাবেন?",
-    "বাজার করতে গেলে আর কী লাগে?",
-    "দাম জানতে দোকানিকে কী বলবেন?"
-   ]
-  },
-  {
-   "id": "familiar-animals",
-   "number": 24,
-   "title": "বাড়ির আশপাশের প্রাণী",
-   "front": "pages/024-front.jpg",
-   "back": "pages/024-back.jpg",
-   "items": [
-    {
-     "id": "cow",
-     "label": "গরু",
-     "gloss": "cow"
-    },
-    {
-     "id": "goat",
-     "label": "ছাগল",
-     "gloss": "goat"
-    },
-    {
-     "id": "hen",
-     "label": "মুরগি",
-     "gloss": "hen"
-    },
-    {
-     "id": "duck",
-     "label": "হাঁস",
-     "gloss": "duck"
-    },
-    {
-     "id": "cat",
-     "label": "বিড়াল",
-     "gloss": "cat"
-    },
-    {
-     "id": "dog",
-     "label": "কুকুর",
-     "gloss": "dog"
-    }
-   ],
-   "questions": [
-    "হাঁসটা কোথায়?",
-    "কোন দুটো প্রাণী ডিম পাড়ে?",
-    "আপনি আপনার পাড়ায় কোনটা দেখেন?",
-    "কার দুধ আমরা খাই?",
-    "এখানে আর কী কী প্রাণী দেখা যায়?",
-    "বন্ধুকে কোন প্রাণীটার কথা বলবেন?"
-   ]
-  },
-  {
-   "id": "small-repairs",
-   "number": 25,
-   "title": "ছোটখাটো মেরামত",
-   "front": "pages/025-front.jpg",
-   "back": "pages/025-back.jpg",
-   "items": [
-    {
-     "id": "hammer",
-     "label": "হাতুড়ি",
-     "gloss": "hammer"
-    },
-    {
-     "id": "nail",
-     "label": "পেরেক",
-     "gloss": "nail"
-    },
-    {
-     "id": "saw",
-     "label": "করাত",
-     "gloss": "handsaw"
-    },
-    {
-     "id": "wood",
-     "label": "কাঠ",
-     "gloss": "wood"
-    },
-    {
-     "id": "lock",
-     "label": "তালা",
-     "gloss": "padlock"
-    },
-    {
-     "id": "key",
-     "label": "চাবি",
-     "gloss": "key"
-    }
-   ],
-   "questions": [
-    "করাতটা কোথায়?",
-    "কোন দুটো দিয়ে দরজা আটকাই আর খুলি?",
-    "আপনার কাছে এর কোনটা আছে?",
-    "পেরেক ঠুকতে কী লাগে?",
-    "কিছু ভেঙে গেলে আর কী লাগে?",
-    "কাউকে তালাটা খুলতে বললে কী বলবেন?"
-   ]
-  },
-  {
-   "id": "body-movement",
-   "number": 26,
-   "title": "শরীর নাড়ানো",
-   "front": "pages/026-front.jpg",
-   "back": "pages/026-back.jpg",
-   "items": [
-    {
-     "id": "walk",
-     "label": "হাঁটা",
-     "gloss": "to walk"
-    },
-    {
-     "id": "run",
-     "label": "দৌড়ানো",
-     "gloss": "to run"
-    },
-    {
-     "id": "jump",
-     "label": "লাফানো",
-     "gloss": "to jump"
-    },
-    {
-     "id": "climb",
-     "label": "বেয়ে ওঠা",
-     "gloss": "to climb up"
-    },
-    {
-     "id": "bend",
-     "label": "ঝোঁকা",
-     "gloss": "to bend forward"
-    },
-    {
-     "id": "crawl",
-     "label": "হামাগুড়ি দেওয়া",
-     "gloss": "to crawl"
-    }
-   ],
-   "questions": [
-    "কে দৌড়াচ্ছেন?",
-    "কোন দুটো ছবিতে ওপরে উঠছে?",
-    "আপনি বেশি হাঁটেন, নাকি দৌড়ান?",
-    "মই বেয়ে উঠতে হাত কোথায় রাখেন?",
-    "ঘরে আর বাইরে কীভাবে আলাদা করে চলাফেরা করেন?",
-    "চলাফেরা করতে কষ্ট হয় এমন কারও জন্য একটা জায়গা কীভাবে বদলাবেন?"
-   ]
-  },
-  {
-   "id": "objects-in-motion",
-   "number": 27,
-   "title": "দেওয়া নেওয়া আর সরানো",
-   "front": "pages/027-front.jpg",
-   "back": "pages/027-back.jpg",
-   "items": [
-    {
-     "id": "give",
-     "label": "দেওয়া",
-     "gloss": "to give"
-    },
-    {
-     "id": "take",
-     "label": "নেওয়া",
-     "gloss": "to take"
-    },
-    {
-     "id": "catch",
-     "label": "ধরা",
-     "gloss": "to catch"
-    },
-    {
-     "id": "throw",
-     "label": "ছোড়া",
-     "gloss": "to throw"
-    },
-    {
-     "id": "push",
-     "label": "ঠেলা",
-     "gloss": "to push"
-    },
-    {
-     "id": "pull",
-     "label": "টানা",
-     "gloss": "to pull"
-    }
-   ],
-   "questions": [
-    "কে বই দিচ্ছেন?",
-    "কোন দুটো ছবিতে চাকা আছে?",
-    "খেলায় আপনি কী ছুড়েছেন বা ধরেছেন?",
-    "ভারী কিছু সরাতে কখন ঠেলেন, কখন টানেন?",
-    "দুজন মিলে কাজ করলে কে কী করতে পারে?",
-    "কাজ ভাগ করে করলে কখন সহজ হয় আর কখন কঠিন হয়?"
-   ]
-  },
-  {
-   "id": "putting-things-away",
-   "number": 28,
-   "title": "জিনিস গুছিয়ে রাখা",
-   "front": "pages/028-front.jpg",
-   "back": "pages/028-back.jpg",
-   "items": [
-    {
-     "id": "fold",
-     "label": "ভাঁজ করা",
-     "gloss": "to fold"
-    },
-    {
-     "id": "hang",
-     "label": "ঝোলানো",
-     "gloss": "to hang"
-    },
-    {
-     "id": "tie",
-     "label": "বাঁধা",
-     "gloss": "to tie"
-    },
-    {
-     "id": "wrap",
-     "label": "মোড়ানো",
-     "gloss": "to wrap"
-    },
-    {
-     "id": "put-down",
-     "label": "রাখা",
-     "gloss": "to put down"
-    },
-    {
-     "id": "lift",
-     "label": "তোলা",
-     "gloss": "to lift"
-    }
-   ],
-   "questions": [
-    "কে কাপড় ঝোলাচ্ছেন?",
-    "কোন দুটো ছবিতে একই রঙের কাপড় আছে?",
-    "বাসায় আপনি কোন জিনিসটা ভাঁজ করে রাখেন?",
-    "কাপড় ভেজা থাকলে কোথায় ঝোলাবেন?",
-    "কাউকে উপহার পাঠাতে গেলে কীভাবে তৈরি করবেন?",
-    "ছোট বাসা গুছিয়ে রাখা সহজ করতে কী বদলানো যায়?"
-   ]
-  },
-  {
-   "id": "cooking-actions",
-   "number": 29,
-   "title": "রান্নার ধাপ",
-   "front": "pages/029-front.jpg",
-   "back": "pages/029-back.jpg",
-   "items": [
-    {
-     "id": "slice",
-     "label": "কাটা",
-     "gloss": "to cut into slices"
-    },
-    {
-     "id": "peel",
-     "label": "খোসা ছাড়ানো",
-     "gloss": "to peel"
-    },
-    {
-     "id": "stir",
-     "label": "নাড়া",
-     "gloss": "to stir"
-    },
-    {
-     "id": "pour",
-     "label": "ঢালা",
-     "gloss": "to pour"
-    },
-    {
-     "id": "knead",
-     "label": "মাখা",
-     "gloss": "to knead dough"
-    },
-    {
-     "id": "roll-dough",
-     "label": "বেলা",
-     "gloss": "to roll out dough"
-    }
-   ],
-   "questions": [
-    "কে আলু কাটছেন?",
-    "কোন দুটো ছবিতে হাঁড়ি আছে?",
-    "আপনি কোন কাজটা আগে করেছেন?",
-    "রুটি বানাতে মাখার পরে কী করেন?",
-    "কারও কাছে রান্না শিখতে হলে কী দেখতে চান?",
-    "একটা রান্না কেন দেখে শেখা সহজ হতে পারে?"
-   ]
-  },
-  {
-   "id": "snack-foods",
-   "number": 30,
-   "title": "নাস্তার খাবার",
-   "front": "pages/030-front.jpg",
-   "back": "pages/030-back.jpg",
-   "items": [
-    {
-     "id": "muri",
-     "label": "মুড়ি",
-     "gloss": "puffed rice"
-    },
-    {
-     "id": "chira",
-     "label": "চিড়া",
-     "gloss": "flattened rice"
-    },
-    {
-     "id": "singara",
-     "label": "সিঙ্গারা",
-     "gloss": "puffy fried pastry"
-    },
-    {
-     "id": "samucha",
-     "label": "সমুচা",
-     "gloss": "flat fried pastry"
-    },
-    {
-     "id": "bhapa-pitha",
-     "label": "ভাপা পিঠা",
-     "gloss": "steamed rice cake"
-    },
-    {
-     "id": "jilapi",
-     "label": "জিলাপি",
-     "gloss": "jalebi"
-    }
-   ],
-   "questions": [
-    "জিলাপিটা কোনটা?",
-    "কোন দুটো তেকোনা?",
-    "আপনি কোনটা খেয়ে দেখেছেন?",
-    "মুড়ির সঙ্গে কী মিশিয়ে খাওয়া যায়?",
-    "কোন সময়ে কোন নাস্তা বেশি দেখেন?",
-    "একজন নতুন মানুষকে এখানকার নাস্তা চেনাতে কোনটা আগে দেবেন, কেন?"
-   ]
-  },
-  {
-   "id": "prayer-time",
-   "number": 31,
-   "title": "নামাজের সময়",
-   "front": "pages/031-front.jpg",
-   "back": "pages/031-back.jpg",
-   "items": [
-    {
-     "id": "mosque",
-     "label": "মসজিদ",
-     "gloss": "mosque"
-    },
-    {
-     "id": "prayer-mat",
-     "label": "জায়নামাজ",
-     "gloss": "prayer mat"
-    },
-    {
-     "id": "pray",
-     "label": "নামাজ পড়া",
-     "gloss": "to pray salah"
-    },
-    {
-     "id": "ablution",
-     "label": "অজু করা",
-     "gloss": "to perform wudu"
-    },
-    {
-     "id": "prayer-cap",
-     "label": "টুপি",
-     "gloss": "prayer cap"
-    },
-    {
-     "id": "prayer-beads",
-     "label": "তসবিহ",
-     "gloss": "prayer beads"
-    }
-   ],
-   "questions": [
-    "মসজিদটা কোনটা?",
-    "কোন ছবিতে সেজদা করছেন?",
-    "এলাকায় এমন মসজিদ কোথায় দেখেছেন?",
-    "অজু করার পর কী করতে দেখেছেন?",
-    "এলাকায় নামাজের সময়টা কীভাবে বোঝা যায়?",
-    "নতুন কেউ মসজিদের পাশ দিয়ে গেলে তাকে এখানকার কী রীতি বুঝিয়ে বলবেন?"
-   ]
-  },
-  {
-   "id": "size-and-width",
-   "number": 32,
-   "title": "মাপ দেখে বলি",
-   "front": "pages/032-front.jpg",
-   "back": "pages/032-back.jpg",
-   "items": [
-    {
-     "id": "big",
-     "label": "বড়",
-     "gloss": "big"
-    },
-    {
-     "id": "small",
-     "label": "ছোট",
-     "gloss": "small"
-    },
-    {
-     "id": "tall",
-     "label": "লম্বা",
-     "gloss": "tall or long"
-    },
-    {
-     "id": "short",
-     "label": "খাটো",
-     "gloss": "short in height"
-    },
-    {
-     "id": "wide",
-     "label": "চওড়া",
-     "gloss": "wide"
-    },
-    {
-     "id": "narrow",
-     "label": "সরু",
-     "gloss": "narrow"
-    }
-   ],
-   "questions": [
-    "লাল বাক্সটা কোথায় ছোট?",
-    "কোন দরজাটা বেশি চওড়া?",
-    "বাইরে গেলে বড় বাক্স নেন, নাকি ছোটটা?",
-    "সরু দরজা দিয়ে বড় জিনিস কী করে ঢোকাবেন?",
-    "কোন কাজে লম্বা জিনিসের চেয়ে খাটো জিনিস ভালো?",
-    "জায়গার মাপ বদলালে মানুষ সেখানে কীভাবে অন্যভাবে চলাফেরা করবে?"
-   ]
-  },
-  {
-   "id": "basic-shapes",
-   "number": 33,
-   "title": "জিনিসের আকার",
-   "front": "pages/033-front.jpg",
-   "back": "pages/033-back.jpg",
-   "items": [
-    {
-     "id": "square",
-     "label": "সমান চারকোনা",
-     "gloss": "square"
-    },
-    {
-     "id": "rectangle",
-     "label": "লম্বা চারকোনা",
-     "gloss": "rectangle"
-    },
-    {
-     "id": "circle",
-     "label": "গোল",
-     "gloss": "round or circular"
-    },
-    {
-     "id": "oval",
-     "label": "ডিমের মতো",
-     "gloss": "oval"
-    },
-    {
-     "id": "star",
-     "label": "তারার মতো",
-     "gloss": "star-shaped"
-    },
-    {
-     "id": "pentagon",
-     "label": "পাঁচকোনা",
-     "gloss": "five-sided"
-    }
-   ],
-   "questions": [
-    "গোলটা কোনটা?",
-    "কোন দুটোর ধার বাঁকা?",
-    "আপনার ঘরে কী কী গোল জিনিস আছে?",
-    "চারদিক সমান এমন একটা আকার কীভাবে আঁকবেন?",
-    "দরজা আর জানালার আকার কি সব জায়গায় একই হয়?",
-    "মানুষ কেন কিছু জিনিস গোল আর কিছু জিনিস চারকোনা বানায়?"
-   ]
-  },
-  {
-   "id": "everyday-qualities",
-   "number": 34,
-   "title": "জিনিস কেমন আছে",
-   "front": "pages/034-front.jpg",
-   "back": "pages/034-back.jpg",
-   "items": [
-    {
-     "id": "clean",
-     "label": "পরিষ্কার",
-     "gloss": "clean"
-    },
-    {
-     "id": "dirty",
-     "label": "নোংরা",
-     "gloss": "dirty"
-    },
-    {
-     "id": "hot",
-     "label": "গরম",
-     "gloss": "hot"
-    },
-    {
-     "id": "cold",
-     "label": "ঠান্ডা",
-     "gloss": "cold"
-    },
-    {
-     "id": "heavy",
-     "label": "ভারী",
-     "gloss": "heavy"
-    },
-    {
-     "id": "lightweight",
-     "label": "হালকা",
-     "gloss": "light in weight"
-    }
-   ],
-   "questions": [
-    "গরমটা কোনটা?",
-    "কোন জুতাটা পরিষ্কার?",
-    "আপনি সাধারণত গরম না ঠান্ডা পানি খান?",
-    "ভারী কিছু থাকলে কীভাবে সরান?",
-    "কোন জিনিসের জন্য হালকা হওয়াই ভালো?",
-    "পরিষ্কার বলতে কি সব মানুষ একই জিনিস বোঝে?"
-   ]
-  },
-  {
-   "id": "familiar-bugs",
-   "number": 35,
-   "title": "চেনা পোকামাকড়",
-   "front": "pages/035-front.jpg",
-   "back": "pages/035-back.jpg",
-   "items": [
-    {
-     "id": "mosquito",
-     "label": "মশা",
-     "gloss": "mosquito"
-    },
-    {
-     "id": "ant",
-     "label": "পিঁপড়া",
-     "gloss": "ant"
-    },
-    {
-     "id": "housefly",
-     "label": "মাছি",
-     "gloss": "housefly"
-    },
-    {
-     "id": "cockroach",
-     "label": "তেলাপোকা",
-     "gloss": "cockroach"
-    },
-    {
-     "id": "caterpillar",
-     "label": "শুঁয়োপোকা",
-     "gloss": "caterpillar"
-    },
-    {
-     "id": "butterfly",
-     "label": "প্রজাপতি",
-     "gloss": "butterfly"
-    }
-   ],
-   "questions": [
-    "মশাটা কোনটা?",
-    "কোনটার ডানা রঙিন?",
-    "আপনি ঘরের কাছে কোন পোকাটা বেশি দেখেন?",
-    "খাবারে মাছি বসতে না দিতে কী করেন?",
-    "বর্ষায় কী কী পোকা বেশি দেখা যায়?",
-    "সব পোকাকে তাড়ালে ঘরের বাইরে কী বদলে যেতে পারে?"
-   ]
-  },
-  {
-   "id": "land-and-water",
-   "number": 36,
-   "title": "প্রকৃতির জায়গা",
-   "front": "pages/036-front.jpg",
-   "back": "pages/036-back.jpg",
-   "items": [
-    {
-     "id": "river",
-     "label": "নদী",
-     "gloss": "river"
-    },
-    {
-     "id": "canal",
-     "label": "খাল",
-     "gloss": "canal"
-    },
-    {
-     "id": "pond",
-     "label": "পুকুর",
-     "gloss": "pond"
-    },
-    {
-     "id": "wetland",
-     "label": "বিল",
-     "gloss": "open wetland"
-    },
-    {
-     "id": "hill",
-     "label": "পাহাড়",
-     "gloss": "hill"
-    },
-    {
-     "id": "forest",
-     "label": "বন",
-     "gloss": "forest"
-    }
-   ],
-   "questions": [
-    "পুকুরটা কোনটা?",
-    "কোনটা নদীর চেয়ে সরু?",
-    "আপনি কোন রকম জায়গায় গেছেন?",
-    "পুকুর আর বিল কী দেখে আলাদা করবেন?",
-    "বর্ষায় এখানে কোন জায়গায় পানি বেড়ে যায়?",
-    "নদী বদলে গেলে পাশের মানুষের জীবন কীভাবে বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "play-things",
-   "number": 37,
-   "title": "খেলার জিনিস",
-   "front": "pages/037-front.jpg",
-   "back": "pages/037-back.jpg",
-   "items": [
-    {
-     "id": "kite",
-     "label": "ঘুড়ি",
-     "gloss": "kite"
-    },
-    {
-     "id": "spinning-top",
-     "label": "লাটিম",
-     "gloss": "spinning top"
-    },
-    {
-     "id": "cards",
-     "label": "তাস",
-     "gloss": "playing cards"
-    },
-    {
-     "id": "chess-piece",
-     "label": "দাবার গুটি",
-     "gloss": "chess piece"
-    },
-    {
-     "id": "swing",
-     "label": "দোলনা",
-     "gloss": "swing"
-    },
-    {
-     "id": "skipping-rope",
-     "label": "লাফের দড়ি",
-     "gloss": "jump rope"
-    }
-   ],
-   "questions": [
-    "ঘুড়িটা কোনটা?",
-    "কোন দুটোর সঙ্গে সুতা আছে?",
-    "আপনি ছোটবেলায় কোনটা দিয়ে খেলেছেন?",
-    "লাটিম কী করে ঘোরায়?",
-    "এখানে বাচ্চারা কোথায় খেলতে যায়?",
-    "খেলার জায়গা কমে গেলে পাড়ার বাচ্চাদের জীবন কীভাবে বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "going-out-gear",
-   "number": 38,
-   "title": "বাইরে বের হওয়ার জিনিস",
-   "front": "pages/038-front.jpg",
-   "back": "pages/038-back.jpg",
-   "items": [
-    {
-     "id": "shoe",
-     "label": "জুতা",
-     "gloss": "closed shoe"
-    },
-    {
-     "id": "sock",
-     "label": "মোজা",
-     "gloss": "sock"
-    },
-    {
-     "id": "eyeglasses",
-     "label": "চশমা",
-     "gloss": "eyeglasses"
-    },
-    {
-     "id": "glasses-case",
-     "label": "চশমার খাপ",
-     "gloss": "eyeglasses case"
-    },
-    {
-     "id": "umbrella",
-     "label": "ছাতা",
-     "gloss": "umbrella"
-    },
-    {
-     "id": "raincoat",
-     "label": "বর্ষাতি",
-     "gloss": "raincoat"
-    }
-   ],
-   "questions": [
-    "ছাতাটা কোনটা?",
-    "কোন দুটো পায়ে পরবেন?",
-    "বৃষ্টি হলে আপনি কী নিয়ে বের হন?",
-    "ব্যবহারের পরে চশমাটা কোথায় রাখবেন?",
-    "বের হওয়ার আগে আর কী কী দেখে নেন?",
-    "সবার কাছে সমান জিনিস না থাকলে ভারী বৃষ্টিতে চলাফেরা কার জন্য বেশি কঠিন হয়?"
-   ]
-  },
-  {
-   "id": "everyday-materials",
-   "number": 39,
-   "title": "কী দিয়ে বানানো",
-   "front": "pages/039-front.jpg",
-   "back": "pages/039-back.jpg",
-   "items": [
-    {
-     "id": "paper",
-     "label": "কাগজ",
-     "gloss": "paper"
-    },
-    {
-     "id": "fabric",
-     "label": "কাপড়",
-     "gloss": "fabric"
-    },
-    {
-     "id": "glass-material",
-     "label": "কাচ",
-     "gloss": "glass material"
-    },
-    {
-     "id": "iron-metal",
-     "label": "লোহা",
-     "gloss": "iron"
-    },
-    {
-     "id": "soil",
-     "label": "মাটি",
-     "gloss": "soil"
-    },
-    {
-     "id": "stone",
-     "label": "পাথর",
-     "gloss": "stone"
-    }
-   ],
-   "questions": [
-    "পাথরটা কোনটা?",
-    "কোন দুটো ভাঁজ করা যায়?",
-    "আপনি কোনটা বেশি ব্যবহার করেন?",
-    "কোন জিনিস দিয়ে বানানো হলে জানালার ভেতর দিয়ে দেখা যায়?",
-    "একটা পাত্র বানাতে কোনটা বেছে নেবেন?",
-    "একই জিনিস আলাদা উপকরণ দিয়ে বানালে তার দাম বা ব্যবহার কীভাবে বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "neighborhood-places",
-   "number": 40,
-   "title": "পাড়ার দরকারি জায়গা",
-   "front": "pages/040-front.jpg",
-   "back": "pages/040-back.jpg",
-   "items": [
-    {
-     "id": "shop",
-     "label": "দোকান",
-     "gloss": "neighborhood shop"
-    },
-    {
-     "id": "marketplace",
-     "label": "বাজার",
-     "gloss": "market"
-    },
-    {
-     "id": "police-station",
-     "label": "থানা",
-     "gloss": "police station"
-    },
-    {
-     "id": "hospital",
-     "label": "স্বাস্থ্যকেন্দ্র",
-     "gloss": "community health center"
-    },
-    {
-     "id": "post-office",
-     "label": "ডাকঘর",
-     "gloss": "post office"
-    },
-    {
-     "id": "reading-room",
-     "label": "পাঠাগার",
-     "gloss": "library"
-    }
-   ],
-   "questions": [
-    "বাজারটা কোথায়?",
-    "কোন দুটো জায়গায় জিনিস কিনতে পারেন?",
-    "আপনার বাসার কাছে এমন কোন জায়গা আছে?",
-    "চিঠি পাঠাতে হলে কোথায় যাবেন?",
-    "এলাকায় নতুন কাউকে কোন জায়গাটা আগে চিনিয়ে দেবেন?",
-    "পাড়ায় একটা দরকারি জায়গা বন্ধ হলে কারা সবচেয়ে বেশি অসুবিধায় পড়বে?"
-   ]
-  },
-  {
-   "id": "people-at-work",
-   "number": 41,
-   "title": "কাজে যাদের দেখি",
-   "front": "pages/041-front.jpg",
-   "back": "pages/041-back.jpg",
-   "items": [
-    {
-     "id": "shopkeeper",
-     "label": "দোকানি",
-     "gloss": "shopkeeper"
-    },
-    {
-     "id": "customer",
-     "label": "খদ্দের",
-     "gloss": "customer"
-    },
-    {
-     "id": "tailor",
-     "label": "দর্জি",
-     "gloss": "tailor"
-    },
-    {
-     "id": "weaver",
-     "label": "তাঁতি",
-     "gloss": "weaver"
-    },
-    {
-     "id": "mason",
-     "label": "রাজমিস্ত্রি",
-     "gloss": "mason"
-    },
-    {
-     "id": "carpenter",
-     "label": "কাঠমিস্ত্রি",
-     "gloss": "carpenter"
-    }
-   ],
-   "questions": [
-    "দর্জি কোন ছবিতে?",
-    "কারা কাপড় নিয়ে কাজ করছেন?",
-    "আপনার পাড়ায় কার কাজটা দেখেছেন?",
-    "দরজা ঠিক করতে কাকে ডাকবেন?",
-    "দোকানির সঙ্গে খদ্দের কী কথা বলতে পারেন?",
-    "কোন কাজটা চোখের সামনে কম দেখা যায়, তবু তার ওপর মানুষ বেশি নির্ভর করে?"
-   ]
-  },
-  {
-   "id": "times-of-day",
-   "number": 42,
-   "title": "দিনের ভাগ",
-   "front": "pages/042-front.jpg",
-   "back": "pages/042-back.jpg",
-   "items": [
-    {
-     "id": "dawn",
-     "label": "ভোর",
-     "gloss": "dawn"
-    },
-    {
-     "id": "morning",
-     "label": "সকাল",
-     "gloss": "morning"
-    },
-    {
-     "id": "noon",
-     "label": "দুপুর",
-     "gloss": "noon"
-    },
-    {
-     "id": "afternoon",
-     "label": "বিকেল",
-     "gloss": "late afternoon"
-    },
-    {
-     "id": "dusk",
-     "label": "সন্ধ্যা",
-     "gloss": "dusk"
-    },
-    {
-     "id": "night",
-     "label": "রাত",
-     "gloss": "night"
-    }
-   ],
-   "questions": [
-    "রাতের ছবিটা কোনটা?",
-    "কোন দুটো ছবিতে ছায়া দেখা যায়?",
-    "আপনি সাধারণত কখন বাইরে যান?",
-    "সকাল আর বিকেল আলাদা করে বুঝবেন কীভাবে?",
-    "গরমের দিনে কাজের সময় কীভাবে বদলান?",
-    "সবাই একই সময়ে কাজ করলে পাড়ার জীবন কেমন হতো?"
-   ]
-  },
-  {
-   "id": "dry-groceries",
-   "number": 43,
-   "title": "শুকনো বাজার",
-   "front": "pages/043-front.jpg",
-   "back": "pages/043-back.jpg",
-   "items": [
-    {
-     "id": "raw-rice",
-     "label": "চাল",
-     "gloss": "uncooked rice"
-    },
-    {
-     "id": "flour",
-     "label": "আটা",
-     "gloss": "wheat flour"
-    },
-    {
-     "id": "chickpeas",
-     "label": "ছোলা",
-     "gloss": "dried chickpeas"
-    },
-    {
-     "id": "dry-peas",
-     "label": "শুকনা মটর",
-     "gloss": "dried peas"
-    },
-    {
-     "id": "peanuts",
-     "label": "চিনাবাদাম",
-     "gloss": "peanuts"
-    },
-    {
-     "id": "maize",
-     "label": "ভুট্টা",
-     "gloss": "corn cob"
-    }
-   ],
-   "questions": [
-    "চালটা কোনটা?",
-    "কোন দুটো দানা দেখতে প্রায় গোল?",
-    "আপনি কোনটা বাজার থেকে কিনেছেন?",
-    "আটা দিয়ে কী বানানো যায়?",
-    "ভাতের চাল বেছে নেওয়ার সময় কী দেখেন?",
-    "একটা খাবারের দাম বাড়লে মানুষ কেন খাওয়ার অভ্যাস বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "fire-and-fuel",
-   "number": 44,
-   "title": "আগুন জ্বালানো",
-   "front": "pages/044-front.jpg",
-   "back": "pages/044-back.jpg",
-   "items": [
-    {
-     "id": "stove",
-     "label": "চুলা",
-     "gloss": "stove"
-    },
-    {
-     "id": "charcoal",
-     "label": "কয়লা",
-     "gloss": "charcoal"
-    },
-    {
-     "id": "matches",
-     "label": "দিয়াশলাই",
-     "gloss": "matches"
-    },
-    {
-     "id": "flame",
-     "label": "আগুন",
-     "gloss": "fire"
-    },
-    {
-     "id": "smoke",
-     "label": "ধোঁয়া",
-     "gloss": "smoke"
-    },
-    {
-     "id": "ash",
-     "label": "ছাই",
-     "gloss": "ash"
-    }
-   ],
-   "questions": [
-    "চুলাটা কোনটা?",
-    "কোন ছবির জিনিসটা ওপরে উঠে যায়?",
-    "আপনি কী রকম চুলা দেখেছেন?",
-    "আগুন নিভে গেলে কী পড়ে থাকে?",
-    "ধোঁয়া বের হতে না পারলে কী অসুবিধা হয়?",
-    "পাড়ায় রান্নার জ্বালানি বদলালে মানুষের খরচ আর ঘরের হাওয়া কীভাবে বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "sewing-repairs",
-   "number": 45,
-   "title": "সেলাইয়ের জিনিস",
-   "front": "pages/045-front.jpg",
-   "back": "pages/045-back.jpg",
-   "items": [
-    {
-     "id": "needle",
-     "label": "সুঁই",
-     "gloss": "sewing needle"
-    },
-    {
-     "id": "thread",
-     "label": "সুতা",
-     "gloss": "sewing thread"
-    },
-    {
-     "id": "button",
-     "label": "বোতাম",
-     "gloss": "button"
-    },
-    {
-     "id": "cloth-measure",
-     "label": "মাপের ফিতা",
-     "gloss": "tailor measure"
-    },
-    {
-     "id": "seam",
-     "label": "সেলাই",
-     "gloss": "stitched seam"
-    },
-    {
-     "id": "torn",
-     "label": "ছেঁড়া",
-     "gloss": "torn fabric"
-    }
-   ],
-   "questions": [
-    "বোতামটা কোনটা?",
-    "কোন জিনিসে সুতা গাঁথেন?",
-    "জামা ছিঁড়ে গেলে আপনি কী করেন?",
-    "জামা বানাতে দর্জি কী দিয়ে মাপ নেন?",
-    "কোন কাপড় সেলাই করা সহজ বলে মনে হয়?",
-    "কাপড় মেরামত করার অভ্যাস থাকলে পরিবার আর এলাকার ওপর কী প্রভাব পড়তে পারে?"
-   ]
-  },
-  {
-   "id": "jewelry-and-adornment",
-   "number": 46,
-   "title": "সাজের গয়না",
-   "front": "pages/046-front.jpg",
-   "back": "pages/046-back.jpg",
-   "items": [
-    {
-     "id": "earring",
-     "label": "কানের দুল",
-     "gloss": "earring"
-    },
-    {
-     "id": "nose-stud",
-     "label": "নাকফুল",
-     "gloss": "nose stud"
-    },
-    {
-     "id": "bangle",
-     "label": "চুড়ি",
-     "gloss": "bangle"
-    },
-    {
-     "id": "finger-ring",
-     "label": "আংটি",
-     "gloss": "finger ring"
-    },
-    {
-     "id": "necklace",
-     "label": "হার",
-     "gloss": "necklace"
-    },
-    {
-     "id": "hairpin",
-     "label": "চুলের কাঁটা",
-     "gloss": "hair pin"
-    }
-   ],
-   "questions": [
-    "চুড়িটা কোনটা?",
-    "কোনটা নাকে পরা হয়?",
-    "আপনি কোন গয়নাটা এখানে বেশি দেখেন?",
-    "কোন গয়না কীভাবে খুলে রাখবেন?",
-    "দাওয়াতে কেউ কোন গয়না বেছে নিতে পারেন?",
-    "গয়না পরার রীতি সময়ের সঙ্গে কেন বদলায় বলে মনে হয়?"
-   ]
-  },
-  {
-   "id": "household-trouble",
-   "number": 47,
-   "title": "বাসার ঝামেলা",
-   "front": "pages/047-front.jpg",
-   "back": "pages/047-back.jpg",
-   "items": [
-    {
-     "id": "drip",
-     "label": "চুইয়ে পড়া",
-     "gloss": "to leak or drip"
-    },
-    {
-     "id": "clog",
-     "label": "আটকে যাওয়া",
-     "gloss": "to get clogged"
-    },
-    {
-     "id": "stain",
-     "label": "দাগ",
-     "gloss": "stain"
-    },
-    {
-     "id": "mildew",
-     "label": "ছাতা পড়া",
-     "gloss": "to grow mold"
-    },
-    {
-     "id": "crack",
-     "label": "ফাটল",
-     "gloss": "crack"
-    },
-    {
-     "id": "dent",
-     "label": "দেবে যাওয়া",
-     "gloss": "to get dented"
-    }
-   ],
-   "questions": [
-    "কোথায় পানি চুইয়ে পড়ছে?",
-    "কোন ছবিতে ফাটল দেখছেন?",
-    "এমন কোন ঝামেলা আপনার চোখে পড়েছে?",
-    "বাসায় পানি চুইয়ে পড়লে কাকে বলবেন?",
-    "কোন ঝামেলাটা আগে ঠিক করা দরকার বলে মনে হয়?",
-    "ভাড়া বাসায় জিনিস নষ্ট হলে দায়িত্ব কীভাবে ভাগ হওয়া উচিত?"
-   ]
-  },
-  {
-   "id": "orientation",
-   "number": 48,
-   "title": "দিকের নাম",
-   "front": "pages/048-front.jpg",
-   "back": "pages/048-back.jpg",
-   "items": [
-    {
-     "id": "north",
-     "label": "উত্তর",
-     "gloss": "north"
-    },
-    {
-     "id": "south",
-     "label": "দক্ষিণ",
-     "gloss": "south"
-    },
-    {
-     "id": "east",
-     "label": "পূর্ব",
-     "gloss": "east"
-    },
-    {
-     "id": "west",
-     "label": "পশ্চিম",
-     "gloss": "west"
-    },
-    {
-     "id": "right",
-     "label": "ডানে",
-     "gloss": "to the right"
-    },
-    {
-     "id": "left",
-     "label": "বামে",
-     "gloss": "to the left"
-    }
-   ],
-   "questions": [
-    "কোনটা ডানে যাচ্ছে?",
-    "সূর্য কোন দিকে ওঠে?",
-    "বাসা থেকে বেরিয়ে আগে কোন দিকে যান?",
-    "চেনা একটা মোড়ে পৌঁছাতে কী বলবেন?",
-    "কেউ জায়গা না চিনলে তাকে পথ বোঝাতে আর কী কাজে লাগতে পারে?",
-    "দিক ভুল বুঝলে একই পথ দুই মানুষের কাছে কেন আলাদা মনে হতে পারে?"
-   ]
-  },
-  {
-   "id": "talk-and-gesture",
-   "number": 49,
-   "title": "কথা আর ইশারা",
-   "front": "pages/049-front.jpg",
-   "back": "pages/049-back.jpg",
-   "items": [
-    {
-     "id": "speak",
-     "label": "বলা",
-     "gloss": "to speak"
-    },
-    {
-     "id": "listen",
-     "label": "শোনা",
-     "gloss": "to listen"
-    },
-    {
-     "id": "laugh",
-     "label": "হাসা",
-     "gloss": "to laugh"
-    },
-    {
-     "id": "cry",
-     "label": "কাঁদা",
-     "gloss": "to cry"
-    },
-    {
-     "id": "call-out",
-     "label": "ডাকা",
-     "gloss": "to call out"
-    },
-    {
-     "id": "gesture",
-     "label": "ইশারা করা",
-     "gloss": "to gesture"
-    }
-   ],
-   "questions": [
-    "কে হাসছেন?",
-    "কে কথা শুনছেন?",
-    "আপনি কখন কাউকে ইশারা করেন?",
-    "দূরে কাউকে ডাকতে হলে কী করেন?",
-    "কথা না বলেও কী কী বোঝাতে পারেন?",
-    "একই ইশারা দুই জায়গায় আলাদা অর্থ দিতে পারে কেন?"
-   ]
-  },
-  {
-   "id": "counting-one-to-six",
-   "number": 50,
-   "title": "এক থেকে ছয়",
-   "front": "pages/050-front.jpg",
-   "back": "pages/050-back.jpg",
-   "items": [
-    {
-     "id": "one",
-     "label": "এক",
-     "gloss": "one"
-    },
-    {
-     "id": "two",
-     "label": "দুই",
-     "gloss": "two"
-    },
-    {
-     "id": "three",
-     "label": "তিন",
-     "gloss": "three"
-    },
-    {
-     "id": "four",
-     "label": "চার",
-     "gloss": "four"
-    },
-    {
-     "id": "five",
-     "label": "পাঁচ",
-     "gloss": "five"
-    },
-    {
-     "id": "six",
-     "label": "ছয়",
-     "gloss": "six"
-    }
-   ],
-   "questions": [
-    "একটা ফল কোন ছবিতে?",
-    "কোন ছবিতে তিনটা ফল আছে?",
-    "আপনি বাজার থেকে একবারে কয়টা ফল নেন?",
-    "ছয়টা ফল দুজনকে সমান করে দিলে কে কয়টা পাবেন?",
-    "অনেক জিনিস ভুল না করে গুনতে কী করেন?",
-    "একটা জিনিসের দাম বা গুরুত্ব কি সবার কাছে একই হয়? কেন?"
-   ]
-  },
-  {
-   "id": "coming-and-going",
-   "number": 51,
-   "title": "আসা যাওয়ার কাজ",
-   "front": "pages/051-front.jpg",
-   "back": "pages/051-back.jpg",
-   "items": [
-    {
-     "id": "come",
-     "label": "আসা",
-     "gloss": "to come toward here"
-    },
-    {
-     "id": "go",
-     "label": "যাওয়া",
-     "gloss": "to go away from here"
-    },
-    {
-     "id": "enter",
-     "label": "ঢোকা",
-     "gloss": "to enter"
-    },
-    {
-     "id": "exit",
-     "label": "বের হওয়া",
-     "gloss": "to exit"
-    },
-    {
-     "id": "cross",
-     "label": "পার হওয়া",
-     "gloss": "to cross"
-    },
-    {
-     "id": "stop",
-     "label": "থামা",
-     "gloss": "to stop"
-    }
-   ],
-   "questions": [
-    "কে দরজা দিয়ে ঢুকছেন?",
-    "কে এদিকে আসছেন?",
-    "আজ আপনি কোথা থেকে এসেছেন?",
-    "রাস্তা পার হওয়ার আগে কখন থামেন?",
-    "নতুন কাউকে ঘরে ঢুকতে আর বের হতে কী বলে দেখাবেন?",
-    "কাকে নিয়ে চলছেন তার ওপর আপনার চলার গতি আর পথ কীভাবে বদলায়?"
-   ]
-  },
-  {
-   "id": "buying-and-selling",
-   "number": 52,
-   "title": "কেনাবেচার কাজ",
-   "front": "pages/052-front.jpg",
-   "back": "pages/052-back.jpg",
-   "items": [
-    {
-     "id": "buy",
-     "label": "কেনা",
-     "gloss": "to buy"
-    },
-    {
-     "id": "sell",
-     "label": "বেচা",
-     "gloss": "to sell"
-    },
-    {
-     "id": "pay",
-     "label": "দাম মেটানো",
-     "gloss": "to pay the price"
-    },
-    {
-     "id": "exchange-item",
-     "label": "বদলে নেওয়া",
-     "gloss": "to exchange a purchase"
-    },
-    {
-     "id": "weigh",
-     "label": "ওজন করা",
-     "gloss": "to weigh"
-    },
-    {
-     "id": "select",
-     "label": "বেছে নেওয়া",
-     "gloss": "to choose one"
-    }
-   ],
-   "questions": [
-    "কে ফল ওজন করছেন?",
-    "কে অন্য জামা নিচ্ছেন?",
-    "শেষবার বাজারে কী কিনেছেন?",
-    "ফল বেছে নেওয়ার পরে দোকানি কী করেন?",
-    "কেনা জিনিস বদলাতে দোকানিকে কীভাবে বলবেন?",
-    "একই জিনিসের জন্য দুই দোকানে আলাদা দাম চাইলে কোনটা ন্যায্য বুঝবেন কীভাবে?"
-   ]
-  },
-  {
-   "id": "finding-and-showing",
-   "number": 53,
-   "title": "খুঁজি আর দেখাই",
-   "front": "pages/053-front.jpg",
-   "back": "pages/053-back.jpg",
-   "items": [
-    {
-     "id": "look-for",
-     "label": "খোঁজা",
-     "gloss": "to look for"
-    },
-    {
-     "id": "find",
-     "label": "খুঁজে পাওয়া",
-     "gloss": "to find by searching"
-    },
-    {
-     "id": "hide",
-     "label": "লুকানো",
-     "gloss": "to hide"
-    },
-    {
-     "id": "take-out",
-     "label": "বের করা",
-     "gloss": "to take something out"
-    },
-    {
-     "id": "look-at",
-     "label": "দেখা",
-     "gloss": "to look at"
-    },
-    {
-     "id": "show",
-     "label": "দেখানো",
-     "gloss": "to show"
-    }
-   ],
-   "questions": [
-    "কে চাবি পেয়েছেন?",
-    "কোন দুটো ছবিতে ঝুড়ি আছে?",
-    "আপনি কোন জিনিসটা প্রায়ই খোঁজেন?",
-    "জিনিস খুঁজে না পেলে কোথায় আগে দেখেন?",
-    "যে জিনিসটা আপনি দেখতে পাচ্ছেন সেটা অন্যজনকে কীভাবে বোঝাবেন?",
-    "একই ঘটনা দেখে দুজন মানুষ কেন আলাদা কথা বলতে পারেন?"
-   ]
-  },
-  {
-   "id": "feelings-and-reactions",
-   "number": 54,
-   "title": "মন কেমন",
-   "front": "pages/054-front.jpg",
-   "back": "pages/054-back.jpg",
-   "items": [
-    {
-     "id": "happy",
-     "label": "খুশি",
-     "gloss": "happy"
-    },
-    {
-     "id": "sad",
-     "label": "মন খারাপ",
-     "gloss": "sad"
-    },
-    {
-     "id": "afraid",
-     "label": "ভয় পাওয়া",
-     "gloss": "to be afraid"
-    },
-    {
-     "id": "surprised",
-     "label": "অবাক হওয়া",
-     "gloss": "to be surprised"
-    },
-    {
-     "id": "angry",
-     "label": "রাগ",
-     "gloss": "anger"
-    },
-    {
-     "id": "tired",
-     "label": "ক্লান্ত",
-     "gloss": "tired"
-    }
-   ],
-   "questions": [
-    "কে খুশি?",
-    "কার মন খারাপ?",
-    "কখন আপনার ক্লান্ত লাগে?",
-    "কেউ ভয় পেলে তাকে কী বলে শান্ত করেন?",
-    "কখন অবাক হলেও সেটা মুখে বোঝা যায় না?",
-    "মানুষের মনের অবস্থা বুঝতে মুখের ভঙ্গি ছাড়া আর কী জানা দরকার?"
-   ]
-  },
-  {
-   "id": "amounts-and-parts",
-   "number": 55,
-   "title": "কম বেশি কতটা",
-   "front": "pages/055-front.jpg",
-   "back": "pages/055-back.jpg",
-   "items": [
-    {
-     "id": "more",
-     "label": "বেশি",
-     "gloss": "more"
-    },
-    {
-     "id": "less",
-     "label": "কম",
-     "gloss": "less"
-    },
-    {
-     "id": "half",
-     "label": "অর্ধেক",
-     "gloss": "half"
-    },
-    {
-     "id": "double",
-     "label": "দুই গুণ",
-     "gloss": "twice as much"
-    },
-    {
-     "id": "all",
-     "label": "সব",
-     "gloss": "all of the group"
-    },
-    {
-     "id": "none",
-     "label": "একটাও নেই",
-     "gloss": "none at all"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে একটাও নেই?",
-    "কোন ছবিতে লাল তীরটা বেশি দানার দিকে?",
-    "আপনি চায়ে বেশি চিনি দেন, নাকি কম?",
-    "অর্ধেক খাবার থাকলে দুজনের মধ্যে কীভাবে ভাগ করবেন?",
-    "কতটা যথেষ্ট, সেটা কীভাবে ঠিক করেন?",
-    "সমান ভাগ আর ন্যায্য ভাগ কি সব সময় এক হয়? কেন?"
-   ]
-  },
-  {
-   "id": "surface-and-feel",
-   "number": 56,
-   "title": "হাত দিয়ে ছুঁয়ে দেখি",
-   "front": "pages/056-front.jpg",
-   "back": "pages/056-back.jpg",
-   "items": [
-    {
-     "id": "smooth",
-     "label": "মসৃণ",
-     "gloss": "smooth surface"
-    },
-    {
-     "id": "rough",
-     "label": "খসখসে",
-     "gloss": "rough surface"
-    },
-    {
-     "id": "soft",
-     "label": "নরম",
-     "gloss": "soft to the touch"
-    },
-    {
-     "id": "hard",
-     "label": "শক্ত",
-     "gloss": "hard to the touch"
-    },
-    {
-     "id": "sharp",
-     "label": "ধারালো",
-     "gloss": "sharp edged"
-    },
-    {
-     "id": "blunt",
-     "label": "ভোঁতা",
-     "gloss": "blunt edged"
-    }
-   ],
-   "questions": [
-    "নরমটা কোনটা?",
-    "কোন কাঠটা খসখসে?",
-    "আপনার কোনটা ছুঁতে ভালো লাগে?",
-    "কিছু কাটার জন্য কোন ধারটা বেছে নেবেন?",
-    "কোন কোন জিনিস মসৃণ হওয়া দরকার?",
-    "জিনিসটা কী দিয়ে তৈরি তার চেয়ে কখন হাতে কেমন লাগে, সেটাই বেশি গুরুত্বপূর্ণ হয়?"
-   ]
-  },
-  {
-   "id": "cleaning-tools",
-   "number": 57,
-   "title": "বাসা পরিষ্কার করা",
-   "front": "pages/057-front.jpg",
-   "back": "pages/057-back.jpg",
-   "items": [
-    {
-     "id": "broom",
-     "label": "ঝাড়ু",
-     "gloss": "grass broom"
-    },
-    {
-     "id": "dustpan",
-     "label": "ময়লার বেলচা",
-     "gloss": "dustpan"
-    },
-    {
-     "id": "trash-bin",
-     "label": "ময়লার পাত্র",
-     "gloss": "rubbish bin"
-    },
-    {
-     "id": "scrubbing-fiber",
-     "label": "ছোবড়া",
-     "gloss": "coconut husk scrubber"
-    },
-    {
-     "id": "cleaning-rag",
-     "label": "ন্যাকড়া",
-     "gloss": "cleaning rag"
-    },
-    {
-     "id": "doormat",
-     "label": "পাপোশ",
-     "gloss": "doormat"
-    }
-   ],
-   "questions": [
-    "ঝাড়ুটা কোনটা?",
-    "কোনটা দরজার সামনে রাখেন?",
-    "আপনি কোন জিনিসটা বেশি ব্যবহার করেন?",
-    "ঝাড়ু দেওয়ার পর ময়লা কীভাবে সরান?",
-    "একটা বাসায় সবাই মিলে কীভাবে পরিষ্কার রাখেন?",
-    "পরিষ্কার রাখার কাজ একজনের ঘাড়ে পড়লে বাসার সম্পর্ক কীভাবে বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "building-materials",
-   "number": 58,
-   "title": "বাড়ি বানানোর জিনিস",
-   "front": "pages/058-front.jpg",
-   "back": "pages/058-back.jpg",
-   "items": [
-    {
-     "id": "bricks",
-     "label": "ইট",
-     "gloss": "brick"
-    },
-    {
-     "id": "sand",
-     "label": "বালু",
-     "gloss": "sand"
-    },
-    {
-     "id": "gravel",
-     "label": "কাঁকর",
-     "gloss": "gravel"
-    },
-    {
-     "id": "bamboo",
-     "label": "বাঁশ",
-     "gloss": "bamboo"
-    },
-    {
-     "id": "ladder",
-     "label": "মই",
-     "gloss": "ladder"
-    },
-    {
-     "id": "post",
-     "label": "খুঁটি",
-     "gloss": "upright post"
-    }
-   ],
-   "questions": [
-    "মইটা কোনটা?",
-    "কোন দুটো ছোট ছোট দানার মতো?",
-    "আপনার আশপাশে ইটের কাজ কোথায় হয়?",
-    "মই দাঁড় করাতে কোথায় ভর দেবেন?",
-    "একই কাজের জন্য বাঁশ না কাঠ বেছে নিতে কী দেখবেন?",
-    "সহজে পাওয়া উপকরণ বদলে গেলে এলাকার ঘরবাড়ি কীভাবে বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "parts-of-plants",
-   "number": 59,
-   "title": "গাছের অংশ",
-   "front": "pages/059-front.jpg",
-   "back": "pages/059-back.jpg",
-   "items": [
-    {
-     "id": "flower",
-     "label": "ফুল",
-     "gloss": "flower"
-    },
-    {
-     "id": "bud",
-     "label": "কুঁড়ি",
-     "gloss": "flower bud"
-    },
-    {
-     "id": "seed",
-     "label": "বীজ",
-     "gloss": "seed"
-    },
-    {
-     "id": "roots",
-     "label": "শিকড়",
-     "gloss": "roots"
-    },
-    {
-     "id": "leaf",
-     "label": "পাতা",
-     "gloss": "leaf"
-    },
-    {
-     "id": "branches",
-     "label": "ডালপালা",
-     "gloss": "branches"
-    }
-   ],
-   "questions": [
-    "ফুলটা কোনটা?",
-    "কোন দুটো মাটির নিচে?",
-    "আপনি কী রকম গাছের পাতা চেনেন?",
-    "কুঁড়ি থেকে ফুল হলে কী বদল দেখা যায়?",
-    "বীজ বুনলে কোন জিনিসটা আগে দেখা যায়?",
-    "গাছের কোনো একটা অংশ ঠিকমতো না বাড়লে পুরো গাছটার কী হতে পারে?"
-   ]
-  },
-  {
-   "id": "roots-and-vines",
-   "number": 60,
-   "title": "সবজির লতা আর শিকড়",
-   "front": "pages/060-front.jpg",
-   "back": "pages/060-back.jpg",
-   "items": [
-    {
-     "id": "carrot",
-     "label": "গাজর",
-     "gloss": "carrot"
-    },
-    {
-     "id": "radish",
-     "label": "মুলা",
-     "gloss": "white radish"
-    },
-    {
-     "id": "pumpkin",
-     "label": "কুমড়া",
-     "gloss": "pumpkin"
-    },
-    {
-     "id": "bottle-gourd",
-     "label": "লাউ",
-     "gloss": "bottle gourd"
-    },
-    {
-     "id": "yardlong-bean",
-     "label": "বরবটি",
-     "gloss": "yardlong bean"
-    },
-    {
-     "id": "hyacinth-bean",
-     "label": "শিম",
-     "gloss": "flat hyacinth bean"
-    }
-   ],
-   "questions": [
-    "লাউটা কোনটা?",
-    "কোন দুটো মাটির নিচে হয়?",
-    "আপনি কোন সবজিটা বেশি দেখেন?",
-    "বরবটি আর শিম কী দেখে আলাদা করবেন?",
-    "নিজের হাতে সবজি লাগাতে হলে কোনটা বেছে নেবেন?",
-    "একটা সবজি হঠাৎ কম পাওয়া গেলে মানুষ কীভাবে রান্না বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "vehicles",
-   "number": 61,
-   "title": "চলার বাহন",
-   "front": "pages/061-front.jpg",
-   "back": "pages/061-back.jpg",
-   "items": [
-    {
-     "id": "car",
-     "label": "গাড়ি",
-     "gloss": "passenger car"
-    },
-    {
-     "id": "airplane",
-     "label": "বিমান",
-     "gloss": "airplane"
-    },
-    {
-     "id": "ship",
-     "label": "জাহাজ",
-     "gloss": "ship"
-    },
-    {
-     "id": "raft",
-     "label": "ভেলা",
-     "gloss": "raft"
-    },
-    {
-     "id": "handcart",
-     "label": "ঠেলাগাড়ি",
-     "gloss": "handcart"
-    },
-    {
-     "id": "oxcart",
-     "label": "গরুর গাড়ি",
-     "gloss": "oxcart"
-    }
-   ],
-   "questions": [
-    "বিমানটা কোনটা?",
-    "কোন দুটো পানিতে চলে?",
-    "আপনি এখানে সাধারণত কীসে চড়েন?",
-    "বেশি জিনিস একসঙ্গে নিতে হলে কী বেছে নেবেন?",
-    "শহর আর গ্রামে মানুষ কীভাবে আলাদা করে চলাফেরা করেন?",
-    "কোন বাহন সহজে পাওয়া যায় তার ওপর মানুষের কাজ আর পড়াশোনা কীভাবে বদলায়?"
-   ]
-  },
-  {
-   "id": "rooms-and-courtyard",
-   "number": 62,
-   "title": "বাসার ঘর আর উঠান",
-   "front": "pages/062-front.jpg",
-   "back": "pages/062-back.jpg",
-   "items": [
-    {
-     "id": "kitchen",
-     "label": "রান্নাঘর",
-     "gloss": "kitchen room"
-    },
-    {
-     "id": "bedroom",
-     "label": "শোবার ঘর",
-     "gloss": "bedroom"
-    },
-    {
-     "id": "living-room",
-     "label": "বসার ঘর",
-     "gloss": "sitting room"
-    },
-    {
-     "id": "dining-room",
-     "label": "খাবার ঘর",
-     "gloss": "dining room"
-    },
-    {
-     "id": "bathing-room",
-     "label": "গোসলখানা",
-     "gloss": "bathing room"
-    },
-    {
-     "id": "courtyard",
-     "label": "উঠান",
-     "gloss": "household courtyard"
-    }
-   ],
-   "questions": [
-    "রান্নাঘরটা কোনটা?",
-    "কোন ঘরে বসে খায়?",
-    "আপনি বাসায় কোথায় বেশি সময় কাটান?",
-    "কেউ এলে তাকে কোথায় বসতে বলবেন?",
-    "একটা ছোট বাসায় একই ঘর কী কী কাজে লাগে?",
-    "ঘরের ভাগ বদলালে পরিবারের লোকজনের একসঙ্গে সময় কাটানো কীভাবে বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "useful-papers",
-   "number": 63,
-   "title": "দরকারি কাগজপত্র",
-   "front": "pages/063-front.jpg",
-   "back": "pages/063-back.jpg",
-   "items": [
-    {
-     "id": "letter",
-     "label": "চিঠি",
-     "gloss": "written letter"
-    },
-    {
-     "id": "small-note",
-     "label": "চিরকুট",
-     "gloss": "small written note"
-    },
-    {
-     "id": "identity-card",
-     "label": "পরিচয়পত্র",
-     "gloss": "identity document card"
-    },
-    {
-     "id": "portrait-photo",
-     "label": "ছবি",
-     "gloss": "printed photograph"
-    },
-    {
-     "id": "signature",
-     "label": "সই",
-     "gloss": "signature"
-    },
-    {
-     "id": "impression",
-     "label": "ছাপ",
-     "gloss": "fingerprint impression"
-    }
-   ],
-   "questions": [
-    "পরিচয়পত্রটা কোনটা?",
-    "কোন দুটোয় মুখ দেখা যায়?",
-    "আপনি শেষ কবে কাউকে চিঠি লিখেছেন?",
-    "জরুরি কথা ছোট করে লিখে রাখতে হলে কী নেবেন?",
-    "কোনো কাগজে সই করার আগে কী কী দেখেন?",
-    "কাগজপত্র ঠিক না থাকলে কারও জন্য রোজকার কাজ কেন কঠিন হয়ে যেতে পারে?"
-   ]
-  },
-  {
-   "id": "getting-water",
-   "number": 64,
-   "title": "পানির জোগান",
-   "front": "pages/064-front.jpg",
-   "back": "pages/064-back.jpg",
-   "items": [
-    {
-     "id": "tap",
-     "label": "কল",
-     "gloss": "water tap"
-    },
-    {
-     "id": "pipe",
-     "label": "নল",
-     "gloss": "water pipe"
-    },
-    {
-     "id": "handpump",
-     "label": "নলকূপ",
-     "gloss": "tube well hand pump"
-    },
-    {
-     "id": "well",
-     "label": "কুয়া",
-     "gloss": "draw well"
-    },
-    {
-     "id": "water-jar",
-     "label": "কলসি",
-     "gloss": "earthen water jar"
-    },
-    {
-     "id": "strainer",
-     "label": "ছাঁকনি",
-     "gloss": "fine strainer"
-    }
-   ],
-   "questions": [
-    "কলটা কোনটা?",
-    "কোন দুটো দিয়ে মাটির নিচ থেকে পানি তোলা যায়?",
-    "আপনার বাসায় পানি কোথা থেকে আসে?",
-    "পানি ছাঁকতে কী দিয়ে কীভাবে করবেন?",
-    "এক দিন কল দিয়ে পানি না এলে কোথা থেকে আনবেন?",
-    "দুই এলাকায় পানির জোগান আলাদা হলে মানুষের দিন কীভাবে আলাদা হয়ে যায়?"
-   ]
-  },
-  {
-   "id": "winter-warmth",
-   "number": 65,
-   "title": "শীতের জিনিস",
-   "front": "pages/065-front.jpg",
-   "back": "pages/065-back.jpg",
-   "items": [
-    {
-     "id": "shawl",
-     "label": "চাদর",
-     "gloss": "warm shawl"
-    },
-    {
-     "id": "quilt",
-     "label": "কাঁথা",
-     "gloss": "stitched quilt"
-    },
-    {
-     "id": "blanket",
-     "label": "কম্বল",
-     "gloss": "thick blanket"
-    },
-    {
-     "id": "warm-top",
-     "label": "গরম জামা",
-     "gloss": "warm upper garment"
-    },
-    {
-     "id": "gloves",
-     "label": "হাতমোজা",
-     "gloss": "gloves"
-    },
-    {
-     "id": "winter-cap",
-     "label": "পশমি টুপি",
-     "gloss": "knit winter hat"
-    }
-   ],
-   "questions": [
-    "কাঁথাটা কোনটা?",
-    "কোন দুটো কালো?",
-    "শীতের সকালে আপনি কী পরেন?",
-    "ঘুমাতে গিয়ে ঠান্ডা লাগলে কী নেবেন?",
-    "এখানে শীতের জিনিস কোথায় পাওয়া যায়?",
-    "একই ঠান্ডায় দুজন মানুষের আলাদা জিনিসের দরকার হতে পারে কেন?"
-   ]
-  },
-  {
-   "id": "features-of-paths",
-   "number": 66,
-   "title": "পথ কেমন",
-   "front": "pages/066-front.jpg",
-   "back": "pages/066-back.jpg",
-   "items": [
-    {
-     "id": "near",
-     "label": "কাছে",
-     "gloss": "near"
-    },
-    {
-     "id": "far",
-     "label": "দূরে",
-     "gloss": "far"
-    },
-    {
-     "id": "straight",
-     "label": "সোজা",
-     "gloss": "straight"
-    },
-    {
-     "id": "curved",
-     "label": "বাঁকা",
-     "gloss": "curved"
-    },
-    {
-     "id": "steep",
-     "label": "খাড়া",
-     "gloss": "steep incline"
-    },
-    {
-     "id": "sloping",
-     "label": "ঢালু",
-     "gloss": "gently sloping"
-    }
-   ],
-   "questions": [
-    "লাল চিহ্নটা কোন ছবিতে কাছে?",
-    "কোন পথটা বেশি খাড়া?",
-    "আপনার বাসা থেকে বাজার কাছে, নাকি দূরে?",
-    "বৃষ্টি হলে খাড়া পথে উঠতে কী করেন?",
-    "একটা পথ সহজ কি কঠিন, কী দেখে বোঝেন?",
-    "একই জায়গা কারও কাছে কাছে আর কারও কাছে দূরে মনে হতে পারে কেন?"
-   ]
-  },
-  {
-   "id": "dairy-foods",
-   "number": 67,
-   "title": "দুধ থেকে যা হয়",
-   "front": "pages/067-front.jpg",
-   "back": "pages/067-back.jpg",
-   "items": [
-    {
-     "id": "yogurt",
-     "label": "দই",
-     "gloss": "yogurt"
-    },
-    {
-     "id": "rice-pudding",
-     "label": "পায়েস",
-     "gloss": "rice pudding"
-    },
-    {
-     "id": "butter",
-     "label": "মাখন",
-     "gloss": "butter"
-    },
-    {
-     "id": "milk-skin",
-     "label": "দুধের সর",
-     "gloss": "milk skin"
-    },
-    {
-     "id": "paneer",
-     "label": "পনির",
-     "gloss": "paneer cheese"
-    },
-    {
-     "id": "fresh-curds",
-     "label": "ছানা",
-     "gloss": "crumbled fresh milk curds"
-    }
-   ],
-   "questions": [
-    "পায়েসটা কোনটা?",
-    "কোন দুটো বাটিতে আছে?",
-    "এগুলোর মধ্যে কোনটা আপনি খেয়ে দেখেছেন?",
-    "পায়েস বানাতে দুধের সঙ্গে কী লাগে?",
-    "কোন খাবার অতিথিকে দিতে চাইবেন?",
-    "একই দুধ দিয়ে এত রকম জিনিস বানানোর অভ্যাস কেন গড়ে উঠতে পারে?"
-   ]
-  },
-  {
-   "id": "personal-care-objects",
-   "number": 68,
-   "title": "নিজের যত্নের জিনিস",
-   "front": "pages/068-front.jpg",
-   "back": "pages/068-back.jpg",
-   "items": [
-    {
-     "id": "handkerchief",
-     "label": "রুমাল",
-     "gloss": "handkerchief"
-    },
-    {
-     "id": "miswak",
-     "label": "মিসওয়াক",
-     "gloss": "tooth-cleaning twig"
-    },
-    {
-     "id": "kohl",
-     "label": "সুরমা",
-     "gloss": "kohl powder"
-    },
-    {
-     "id": "henna",
-     "label": "মেহেদি",
-     "gloss": "henna dye"
-    },
-    {
-     "id": "nail-clipper",
-     "label": "নখ কাটার যন্ত্র",
-     "gloss": "nail clipper"
-    },
-    {
-     "id": "barber-razor",
-     "label": "ক্ষুর",
-     "gloss": "traditional barber razor"
-    }
-   ],
-   "questions": [
-    "রুমালটা কোনটা?",
-    "কোনটা হাতে লাগানো আছে?",
-    "আপনি কোন জিনিসটা আগে দেখেছেন?",
-    "মেহেদি লাগাতে কী করেন?",
-    "নিজের যত্নে আপনার এলাকার আর কী রীতি আছে?",
-    "একই জিনিস কারও কাছে সাজ আর কারও কাছে রোজকার অভ্যাস হতে পারে কেন?"
-   ]
-  },
-  {
-   "id": "wedding-and-invitation",
-   "number": 69,
-   "title": "বিয়ে আর দাওয়াত",
-   "front": "pages/069-front.jpg",
-   "back": "pages/069-back.jpg",
-   "items": [
-    {
-     "id": "groom",
-     "label": "বর",
-     "gloss": "groom"
-    },
-    {
-     "id": "bride",
-     "label": "কনে",
-     "gloss": "bride"
-    },
-    {
-     "id": "guest",
-     "label": "অতিথি",
-     "gloss": "guest"
-    },
-    {
-     "id": "invitation",
-     "label": "দাওয়াত",
-     "gloss": "written invitation"
-    },
-    {
-     "id": "bouquet",
-     "label": "ফুলের তোড়া",
-     "gloss": "flower bouquet"
-    },
-    {
-     "id": "flower-garland",
-     "label": "ফুলের মালা",
-     "gloss": "flower garland"
-    }
-   ],
-   "questions": [
-    "বর কোথায়?",
-    "কোন দুটো ফুল দিয়ে বানানো?",
-    "আপনি এখানে কোনো বিয়ের আয়োজন দেখেছেন?",
-    "কাউকে দাওয়াত দিতে হলে কী বলে শুরু করবেন?",
-    "অতিথিরা এলে তাদের কীভাবে স্বাগত জানানো হয়?",
-    "একটা বিয়ের রীতি বদলালে কেউ কেন খুশি হয়, আবার কেউ কেন মন খারাপ করে?"
-   ]
-  },
-  {
-   "id": "common-birds",
-   "number": 70,
-   "title": "পাড়ার পাখি",
-   "front": "pages/070-front.jpg",
-   "back": "pages/070-back.jpg",
-   "items": [
-    {
-     "id": "crow",
-     "label": "কাক",
-     "gloss": "house crow"
-    },
-    {
-     "id": "pigeon",
-     "label": "কবুতর",
-     "gloss": "domestic pigeon"
-    },
-    {
-     "id": "sparrow",
-     "label": "চড়ুই",
-     "gloss": "house sparrow"
-    },
-    {
-     "id": "myna",
-     "label": "শালিক",
-     "gloss": "common myna"
-    },
-    {
-     "id": "egret",
-     "label": "বক",
-     "gloss": "egret"
-    },
-    {
-     "id": "owl",
-     "label": "পেঁচা",
-     "gloss": "owl"
-    }
-   ],
-   "questions": [
-    "কাকটা কোনটা?",
-    "কোন দুটো সাদা?",
-    "আপনার বাড়ির কাছে কোন পাখি দেখেন?",
-    "বক কোথায় দাঁড়িয়ে থাকে?",
-    "সকালে কোন পাখির ডাক শুনতে পান?",
-    "এলাকায় গাছ আর পানি কমে গেলে পাখিদের থাকার জায়গা কীভাবে বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "laying-out-the-home",
-   "number": 71,
-   "title": "বাসায় বিছাই আর ঝোলাই",
-   "front": "pages/071-front.jpg",
-   "back": "pages/071-back.jpg",
-   "items": [
-    {
-     "id": "mosquito-net",
-     "label": "মশারি",
-     "gloss": "mosquito net"
-    },
-    {
-     "id": "curtain",
-     "label": "পর্দা",
-     "gloss": "curtain"
-    },
-    {
-     "id": "floor-mat",
-     "label": "চাটাই",
-     "gloss": "woven floor mat"
-    },
-    {
-     "id": "mattress",
-     "label": "তোশক",
-     "gloss": "mattress"
-    },
-    {
-     "id": "shelf",
-     "label": "তাক",
-     "gloss": "shelf unit"
-    },
-    {
-     "id": "clothing-rack",
-     "label": "আলনা",
-     "gloss": "open clothing rack"
-    }
-   ],
-   "questions": [
-    "মশারিটা কোনটা?",
-    "কোন দুটো বিছানো যায়?",
-    "আপনার ঘরে কোন জিনিসটা আছে?",
-    "পর্দা সাধারণত কোথায় ঝোলান?",
-    "ছোট ঘরে জিনিস রাখার জায়গা কীভাবে বের করেন?",
-    "একটা ঘরের জিনিস সাজানোর ধরন দেখে সেখানে কারা কী করেন, কতটা বোঝা যায়?"
-   ]
-  },
-  {
-   "id": "music-and-rhythm",
-   "number": 72,
-   "title": "সুর আর তালের জিনিস",
-   "front": "pages/072-front.jpg",
-   "back": "pages/072-back.jpg",
-   "items": [
-    {
-     "id": "flute",
-     "label": "বাঁশি",
-     "gloss": "bamboo flute"
-    },
-    {
-     "id": "ektara",
-     "label": "একতারা",
-     "gloss": "one-string lute"
-    },
-    {
-     "id": "dhol",
-     "label": "ঢোল",
-     "gloss": "Bangladeshi barrel drum"
-    },
-    {
-     "id": "tabla",
-     "label": "তবলা",
-     "gloss": "tabla pair"
-    },
-    {
-     "id": "bell",
-     "label": "ঘণ্টা",
-     "gloss": "hand bell"
-    },
-    {
-     "id": "cymbals",
-     "label": "করতাল",
-     "gloss": "hand cymbal pair"
-    }
-   ],
-   "questions": [
-    "বাঁশিটা কোনটা?",
-    "কোন দুটোর মুখে চামড়া আছে?",
-    "আপনি কোনটার আওয়াজ শুনেছেন?",
-    "তবলা বাজাতে হাত কোথায় রাখবেন?",
-    "এখানে কী কী আয়োজনে গান বাজে?",
-    "কোনো এলাকার গান শুনে সেখানকার মানুষ আর জীবন নিয়ে কী বোঝা যায়?"
-   ]
-  },
-  {
-   "id": "seasons-in-bangladesh",
-   "number": 73,
-   "title": "বাংলার ছয় ঋতু",
-   "front": "pages/073-front.jpg",
-   "back": "pages/073-back.jpg",
-   "items": [
-    {
-     "id": "summer",
-     "label": "গরমকাল",
-     "gloss": "summer season"
-    },
-    {
-     "id": "monsoon",
-     "label": "বর্ষাকাল",
-     "gloss": "monsoon season"
-    },
-    {
-     "id": "autumn",
-     "label": "শরৎকাল",
-     "gloss": "autumn season in Bangladesh"
-    },
-    {
-     "id": "late-autumn",
-     "label": "হেমন্তকাল",
-     "gloss": "late autumn harvest season"
-    },
-    {
-     "id": "winter",
-     "label": "শীতকাল",
-     "gloss": "winter season"
-    },
-    {
-     "id": "spring",
-     "label": "বসন্তকাল",
-     "gloss": "spring season"
-    }
-   ],
-   "questions": [
-    "বর্ষাকালের ছবি কোনটা?",
-    "কোন ছবিতে গাছ ভরে ফুল ফুটেছে?",
-    "এখানে কোন ঋতুতে থাকতে আপনার ভালো লাগে?",
-    "হেমন্তে ধান পেকেছে কী দেখে বুঝবেন?",
-    "ঋতু বদলালে আপনার এলাকার বাজারে কী বদলায়?",
-    "ঋতুর সময় বদলে গেলে কৃষক আর শহরের মানুষের জীবনে কি একই রকম প্রভাব পড়বে? কেন?"
-   ]
-  },
-  {
-   "id": "drawing-materials",
-   "number": 74,
-   "title": "ছবি আঁকার জিনিস",
-   "front": "pages/074-front.jpg",
-   "back": "pages/074-back.jpg",
-   "items": [
-    {
-     "id": "paintbrush",
-     "label": "তুলি",
-     "gloss": "artist brush"
-    },
-    {
-     "id": "ink",
-     "label": "কালি",
-     "gloss": "drawing ink"
-    },
-    {
-     "id": "chalk",
-     "label": "খড়ি",
-     "gloss": "writing chalk"
-    },
-    {
-     "id": "wax-crayon",
-     "label": "মোমরং",
-     "gloss": "wax drawing crayon"
-    },
-    {
-     "id": "palette",
-     "label": "রং মেশানোর থালা",
-     "gloss": "paint-mixing palette"
-    },
-    {
-     "id": "paint-box",
-     "label": "রঙের বাক্স",
-     "gloss": "small paint box"
-    }
-   ],
-   "questions": [
-    "তুলিটা কোনটা?",
-    "কোন দুটো শুকনা অবস্থায় দাগ ফেলে?",
-    "আপনি কী দিয়ে আঁকতে পছন্দ করেন?",
-    "দুই রং মেশাতে কী ব্যবহার করবেন?",
-    "একটা ছবি দেখে কেউ কীভাবে কথা শুরু করতে পারে?",
-    "একই ছবি দেখে আলাদা মানুষ কেন আলাদা গল্প বলতে পারে?"
-   ]
-  },
-  {
-   "id": "farm-and-field",
-   "number": 75,
-   "title": "ক্ষেতখামারের জিনিস",
-   "front": "pages/075-front.jpg",
-   "back": "pages/075-back.jpg",
-   "items": [
-    {
-     "id": "paddy",
-     "label": "ধান",
-     "gloss": "paddy stalk"
-    },
-    {
-     "id": "field",
-     "label": "খেত",
-     "gloss": "cultivated field"
-    },
-    {
-     "id": "straw",
-     "label": "খড়",
-     "gloss": "rice straw"
-    },
-    {
-     "id": "cow-dung",
-     "label": "গোবর",
-     "gloss": "dried cow dung pat"
-    },
-    {
-     "id": "sickle",
-     "label": "কাস্তে",
-     "gloss": "sickle"
-    },
-    {
-     "id": "plow",
-     "label": "লাঙল",
-     "gloss": "plough"
-    }
-   ],
-   "questions": [
-    "কাস্তেটা কোনটা?",
-    "কোন ছবিতে ফসল সারি করে আছে?",
-    "আপনি কোথাও ধান কাটতে দেখেছেন?",
-    "ধান আর খড় কী দেখে আলাদা করবেন?",
-    "একটা খেতে সার দেওয়া থেকে ফসল কাটা পর্যন্ত কী কী হয়?",
-    "খেতে কাজ করার উপায় বদলালে চাষির কাজ আর গ্রামের জীবন কীভাবে বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "arranging-objects",
-   "number": 76,
-   "title": "জিনিস সাজানোর দিক",
-   "front": "pages/076-front.jpg",
-   "back": "pages/076-back.jpg",
-   "items": [
-    {
-     "id": "in-front",
-     "label": "সামনে",
-     "gloss": "in front of"
-    },
-    {
-     "id": "beside",
-     "label": "পাশে",
-     "gloss": "beside"
-    },
-    {
-     "id": "around",
-     "label": "চারপাশে",
-     "gloss": "all around"
-    },
-    {
-     "id": "in-a-row",
-     "label": "সারিতে",
-     "gloss": "in a row"
-    },
-    {
-     "id": "crosswise",
-     "label": "আড়াআড়ি",
-     "gloss": "crosswise"
-    },
-    {
-     "id": "lengthwise",
-     "label": "লম্বালম্বি",
-     "gloss": "lengthwise"
-    }
-   ],
-   "questions": [
-    "বলটা বাক্সের পাশে কোন ছবিতে?",
-    "কোন ছবিতে বলগুলো সারিতে আছে?",
-    "আপনি নিজের জিনিসগুলো কোথায় রাখেন?",
-    "একটা কাঠি লম্বালম্বি রাখতে হলে কীভাবে রাখবেন?",
-    "ঘরে অনেক জিনিস রাখতে হলে কীভাবে সাজাবেন?",
-    "একই ঘরে কয়েকজনের চলাফেরা সহজ করতে জিনিসগুলো কীভাবে সাজানো যায়?"
-   ]
-  },
-  {
-   "id": "doing-housework",
-   "number": 77,
-   "title": "ঘরের কাজ করি",
-   "front": "pages/077-front.jpg",
-   "back": "pages/077-back.jpg",
-   "items": [
-    {
-     "id": "sweep-floor",
-     "label": "ঝাড়ু দেওয়া",
-     "gloss": "to sweep a floor"
-    },
-    {
-     "id": "throw-away-trash",
-     "label": "ময়লা ফেলা",
-     "gloss": "to throw rubbish away"
-    },
-    {
-     "id": "wash-dishes",
-     "label": "বাসন মাজা",
-     "gloss": "to scrub dishes"
-    },
-    {
-     "id": "wash-clothes",
-     "label": "কাপড় কাচা",
-     "gloss": "to wash clothes by hand"
-    },
-    {
-     "id": "dry-clothes",
-     "label": "কাপড় শুকানো",
-     "gloss": "to dry clothes on a line"
-    },
-    {
-     "id": "make-bed",
-     "label": "বিছানা পাতা",
-     "gloss": "to spread out bedding"
-    }
-   ],
-   "questions": [
-    "কে ঝাড়ু দিচ্ছেন?",
-    "কোন দুটো ছবিতে গামলা আছে?",
-    "এই কাজগুলোর মধ্যে কোনটা আপনি বেশি করেন?",
-    "কাপড় কাচার পর কীভাবে শুকাতে দেন?",
-    "আপনার বাসায় ময়লা কোথায় ফেলতে হয়?",
-    "এক বাসায় কয়েকজন থাকলে ঘরের কাজ ভাগ করার ভালো উপায় কী হতে পারে?"
-   ]
-  },
-  {
-   "id": "food-tastes",
-   "number": 78,
-   "title": "খাবারের স্বাদ",
-   "front": "pages/078-front.jpg",
-   "back": "pages/078-back.jpg",
-   "items": [
-    {
-     "id": "taste-sweet",
-     "label": "মিষ্টি",
-     "gloss": "sweet tasting"
-    },
-    {
-     "id": "taste-sour",
-     "label": "টক",
-     "gloss": "sour tasting"
-    },
-    {
-     "id": "taste-spicy",
-     "label": "ঝাল",
-     "gloss": "chili hot"
-    },
-    {
-     "id": "taste-bitter",
-     "label": "তেতো",
-     "gloss": "bitter tasting"
-    },
-    {
-     "id": "taste-salty",
-     "label": "নোনতা",
-     "gloss": "salty tasting"
-    },
-    {
-     "id": "taste-bland",
-     "label": "পানসে",
-     "gloss": "bland tasting"
-    }
-   ],
-   "questions": [
-    "কোনটা ঝাল?",
-    "কোন ছবির খাবারটা টক আর কোনটা মিষ্টি?",
-    "আপনি কোন স্বাদটা বেশি পছন্দ করেন?",
-    "তরকারি বেশি নোনতা হলে কী করেন?",
-    "আপনার এলাকার কোন খাবারে একসঙ্গে টক আর ঝাল লাগে?",
-    "একই খাবার দুইজনের কাছে আলাদা স্বাদের লাগতে পারে কেন?"
-   ]
-  },
-  {
-   "id": "more-local-fruit",
-   "number": 79,
-   "title": "এই দেশের আরও ফল",
-   "front": "pages/079-front.jpg",
-   "back": "pages/079-back.jpg",
-   "items": [
-    {
-     "id": "guava",
-     "label": "পেয়ারা",
-     "gloss": "guava"
-    },
-    {
-     "id": "java-plum",
-     "label": "জাম",
-     "gloss": "java plum"
-    },
-    {
-     "id": "lychee",
-     "label": "লিচু",
-     "gloss": "lychee"
-    },
-    {
-     "id": "hog-plum",
-     "label": "আমড়া",
-     "gloss": "hog plum"
-    },
-    {
-     "id": "jujube",
-     "label": "বরই",
-     "gloss": "Indian jujube"
-    },
-    {
-     "id": "watermelon",
-     "label": "তরমুজ",
-     "gloss": "watermelon"
-    }
-   ],
-   "questions": [
-    "লিচু কোন ছবিতে?",
-    "কোন ফলের কাটা অংশে কালো বিচি আছে?",
-    "এগুলোর মধ্যে কোন ফলটা আপনি খেয়েছেন?",
-    "খাওয়ার আগে কোন ফলের খোসা ছাড়ান?",
-    "আপনার এলাকায় কোন ফলটা কোন সময় বেশি পাওয়া যায়?",
-    "একটা এলাকার চেনা ফল অন্য জায়গার মানুষকে কীভাবে পরিচয় করিয়ে দেবেন?"
-   ]
-  },
-  {
-   "id": "aromatic-spices",
-   "number": 80,
-   "title": "রান্নার আরও মসলা",
-   "front": "pages/080-front.jpg",
-   "back": "pages/080-back.jpg",
-   "items": [
-    {
-     "id": "cinnamon",
-     "label": "দারুচিনি",
-     "gloss": "cinnamon stick"
-    },
-    {
-     "id": "cloves",
-     "label": "লবঙ্গ",
-     "gloss": "cloves"
-    },
-    {
-     "id": "cardamom",
-     "label": "এলাচ",
-     "gloss": "cardamom"
-    },
-    {
-     "id": "peppercorn",
-     "label": "গোলমরিচ",
-     "gloss": "black peppercorn"
-    },
-    {
-     "id": "bay-leaf",
-     "label": "তেজপাতা",
-     "gloss": "bay leaf"
-    },
-    {
-     "id": "fresh-turmeric",
-     "label": "কাঁচা হলুদ",
-     "gloss": "fresh turmeric root"
-    }
-   ],
-   "questions": [
-    "তেজপাতা কোনটা?",
-    "কোনটা ছোট ছোট গোল দানার মতো?",
-    "আপনি কোন মসলার ঘ্রাণ সবচেয়ে সহজে চিনতে পারেন?",
-    "পুরো মসলা আর গুঁড়া মসলা কখন দেন?",
-    "আপনার পরিচিত কোনো রান্নায় কী কী মসলা পড়ে?",
-    "একই খাবারে মসলার গন্ধ বদলালে মানুষের খাওয়ার অভ্যাস কীভাবে বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "ways-of-heating-food",
-   "number": 81,
-   "title": "আঁচে রান্না করি",
-   "front": "pages/081-front.jpg",
-   "back": "pages/081-back.jpg",
-   "items": [
-    {
-     "id": "shallow-fry",
-     "label": "ভাজা",
-     "gloss": "to fry in oil"
-    },
-    {
-     "id": "boil-food",
-     "label": "সেদ্ধ করা",
-     "gloss": "to boil solid food"
-    },
-    {
-     "id": "steam-food",
-     "label": "ভাপ দেওয়া",
-     "gloss": "to steam food"
-    },
-    {
-     "id": "boil-water",
-     "label": "পানি ফুটানো",
-     "gloss": "to bring water to a boil"
-    },
-    {
-     "id": "dry-toast",
-     "label": "সেঁকা",
-     "gloss": "to toast on dry heat"
-    },
-    {
-     "id": "slow-steam-pot",
-     "label": "দম দেওয়া",
-     "gloss": "to finish cooking on low heat under a sealed lid"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে মাছ ভাজা হচ্ছে?",
-    "কোথায় পানি ফুটছে, অথচ কোনো খাবার নেই?",
-    "আপনি কোন খাবারটা সেদ্ধ করে খান?",
-    "রুটি সেঁকতে কী ধরনের পাত্র লাগে?",
-    "একই খাবার ভেজে আর ভাপে দিলে কী বদলায়?",
-    "একটা খাবার রান্নার উপায় বদলালে সেটা খাওয়ার অভ্যাস কীভাবে বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "local-market-fish",
-   "number": 82,
-   "title": "বাজারের মাছ চিনি",
-   "front": "pages/082-front.jpg",
-   "back": "pages/082-back.jpg",
-   "items": [
-    {
-     "id": "ilish",
-     "label": "ইলিশ",
-     "gloss": "hilsa"
-    },
-    {
-     "id": "ruhu",
-     "label": "রুই",
-     "gloss": "rohu carp"
-    },
-    {
-     "id": "stinging-catfish",
-     "label": "শিং মাছ",
-     "gloss": "stinging catfish"
-    },
-    {
-     "id": "climbing-perch",
-     "label": "কই",
-     "gloss": "climbing perch"
-    },
-    {
-     "id": "prawn",
-     "label": "চিংড়ি",
-     "gloss": "freshwater prawn"
-    },
-    {
-     "id": "punti",
-     "label": "পুঁটি",
-     "gloss": "small freshwater barb"
-    }
-   ],
-   "questions": [
-    "চিংড়ি কোনটা?",
-    "কোন মাছগুলো হাতের তালুতে আছে?",
-    "এর মধ্যে কোন মাছটা আপনি বাজারে দেখেছেন?",
-    "মাছ কেনার আগে কী দেখে বাছেন?",
-    "আপনার এলাকায় ছোট মাছ আর বড় মাছ কীভাবে রান্না করে?",
-    "নদী বা পুকুরের অবস্থা বদলালে বাজারে কোন মাছ পাওয়া যায়, তাতে কী বদল আসতে পারে?"
-   ]
-  },
-  {
-   "id": "grooming-actions",
-   "number": 83,
-   "title": "নিজেকে ধুয়ে গুছাই",
-   "front": "pages/083-front.jpg",
-   "back": "pages/083-back.jpg",
-   "items": [
-    {
-     "id": "brush-teeth",
-     "label": "দাঁত মাজা",
-     "gloss": "to brush teeth"
-    },
-    {
-     "id": "shave-beard",
-     "label": "দাড়ি কামানো",
-     "gloss": "to shave a beard"
-    },
-    {
-     "id": "comb-hair",
-     "label": "চুল আঁচড়ানো",
-     "gloss": "to comb hair"
-    },
-    {
-     "id": "cut-hair",
-     "label": "চুল কাটা",
-     "gloss": "to cut hair"
-    },
-    {
-     "id": "bathe-body",
-     "label": "গোসল করা",
-     "gloss": "to bathe"
-    },
-    {
-     "id": "clip-nails",
-     "label": "নখ কাটা",
-     "gloss": "to clip nails"
-    }
-   ],
-   "questions": [
-    "কে দাঁত মাজছেন?",
-    "কোন দুটো ছবিতে চুল নিয়ে কাজ হচ্ছে?",
-    "আপনি কখন চুল আঁচড়ান?",
-    "দাড়ি কামাতে বা নখ কাটতে কী লাগে?",
-    "বাইরে যাওয়ার আগে আপনার আর কী কী করতে হয়?",
-    "নিজের যত্ন নেওয়ার সময় আর সুযোগ আলাদা হলে মানুষের রোজকার জীবন কীভাবে বদলায়?"
-   ]
-  },
-  {
-   "id": "joints-and-neck",
-   "number": 84,
-   "title": "হাত পা আর ঘাড়ের ভাঁজ",
-   "front": "pages/084-front.jpg",
-   "back": "pages/084-back.jpg",
-   "items": [
-    {
-     "id": "neck",
-     "label": "ঘাড়",
-     "gloss": "back of the neck"
-    },
-    {
-     "id": "shoulder",
-     "label": "কাঁধ",
-     "gloss": "shoulder"
-    },
-    {
-     "id": "elbow",
-     "label": "কনুই",
-     "gloss": "elbow"
-    },
-    {
-     "id": "wrist",
-     "label": "কবজি",
-     "gloss": "wrist"
-    },
-    {
-     "id": "knee",
-     "label": "হাঁটু",
-     "gloss": "knee"
-    },
-    {
-     "id": "ankle",
-     "label": "গোড়ালি",
-     "gloss": "ankle"
-    }
-   ],
-   "questions": [
-    "কনুই কোথায়?",
-    "কোন দুটো পায়ের অংশ?",
-    "কোনটা নাড়িয়ে আপনি কারও নজর কাড়তে পারেন?",
-    "কিছু হাতে ধরতে হাতের কোন অংশগুলো ভাঁজ করেন?",
-    "লম্বা সময় বসে থাকলে কোন কোন জায়গা নাড়াতে ভালো লাগে?",
-    "কেউ শরীরের কোনো অংশ নাড়াতে না পারলে কাজটা অন্যভাবে করার কী উপায় বের করতে পারেন?"
-   ]
-  },
-  {
-   "id": "face-details",
-   "number": 85,
-   "title": "মুখের ছোট ছোট অংশ",
-   "front": "pages/085-front.jpg",
-   "back": "pages/085-back.jpg",
-   "items": [
-    {
-     "id": "lips",
-     "label": "ঠোঁট",
-     "gloss": "lips"
-    },
-    {
-     "id": "teeth",
-     "label": "দাঁত",
-     "gloss": "teeth"
-    },
-    {
-     "id": "tongue",
-     "label": "জিব",
-     "gloss": "tongue"
-    },
-    {
-     "id": "cheek",
-     "label": "গাল",
-     "gloss": "cheek"
-    },
-    {
-     "id": "chin",
-     "label": "থুতনি",
-     "gloss": "chin"
-    },
-    {
-     "id": "forehead",
-     "label": "কপাল",
-     "gloss": "forehead"
-    }
-   ],
-   "questions": [
-    "দাঁত কোন ছবিতে?",
-    "কোনটা চোখের ওপরে?",
-    "মুখ ধোয়ার সময় কোন জায়গায় আগে পানি দেন?",
-    "গরম খাবার খেলে মুখের কোন অংশে আগে টের পান?",
-    "শুধু মুখের ভঙ্গি দিয়ে কীভাবে খুশি বোঝান?",
-    "মানুষের মুখের ভঙ্গি দেখেই তার মন বোঝা কখন ভুল হতে পারে?"
-   ]
-  },
-  {
-   "id": "minor-injuries",
-   "number": 86,
-   "title": "চোট লাগলে যা বলি",
-   "front": "pages/086-front.jpg",
-   "back": "pages/086-back.jpg",
-   "items": [
-    {
-     "id": "minor-cut",
-     "label": "কেটে যাওয়া",
-     "gloss": "to get a minor cut"
-    },
-    {
-     "id": "minor-burn",
-     "label": "পুড়ে যাওয়া",
-     "gloss": "to get a burn"
-    },
-    {
-     "id": "twisted-ankle",
-     "label": "মচকে যাওয়া",
-     "gloss": "to twist a joint"
-    },
-    {
-     "id": "localized-swelling",
-     "label": "ফুলে যাওয়া",
-     "gloss": "to swell up"
-    },
-    {
-     "id": "small-bruise",
-     "label": "কালশিটে",
-     "gloss": "bruise"
-    },
-    {
-     "id": "dizzy",
-     "label": "মাথা ঘোরা",
-     "gloss": "to feel dizzy"
-    }
-   ],
-   "questions": [
-    "কার মাথা ঘুরছে?",
-    "কোথায় হাতটা ফুলে গেছে?",
-    "আপনার কখনও পা মচকেছিল?",
-    "কোথায় ব্যথা হচ্ছে, সেটা অন্য কাউকে কীভাবে বলবেন?",
-    "কেউ মাথা ঘুরছে বললে তার কী দরকার, কীভাবে জিজ্ঞেস করবেন?",
-    "শরীরের কী হয়েছে বোঝাতে ভাষা কম জানা থাকলে আর কী দিয়ে বোঝানো যায়?"
-   ]
-  },
-  {
-   "id": "storage-containers",
-   "number": 87,
-   "title": "যে পাত্রে রাখি",
-   "front": "pages/087-front.jpg",
-   "back": "pages/087-back.jpg",
-   "items": [
-    {
-     "id": "jar",
-     "label": "বয়াম",
-     "gloss": "wide glass storage jar"
-    },
-    {
-     "id": "small-tin",
-     "label": "কৌটা",
-     "gloss": "small lidded tin"
-    },
-    {
-     "id": "earthen-jar",
-     "label": "মটকা",
-     "gloss": "large earthen storage jar"
-    },
-    {
-     "id": "water-barrel",
-     "label": "পানির পিপা",
-     "gloss": "water storage barrel"
-    },
-    {
-     "id": "flower-vase",
-     "label": "ফুলদানি",
-     "gloss": "flower vase"
-    },
-    {
-     "id": "vial",
-     "label": "শিশি",
-     "gloss": "small glass vial"
-    }
-   ],
-   "questions": [
-    "বয়ামটা কোনটা?",
-    "কোন দুটোর গলা সরু?",
-    "আপনি বাড়িতে কোন পাত্রটা বেশি ব্যবহার করেন?",
-    "বেশি পানি ধরে রাখতে কোনটা নেবেন?",
-    "কোন জিনিস পাত্রে রাখলে ঢাকনা লাগানো দরকার?",
-    "বাসায় কী দিয়ে জিনিস রাখেন, সেটা বদলালে অপচয় কীভাবে কমতে পারে?"
-   ]
-  },
-  {
-   "id": "object-states",
-   "number": 88,
-   "title": "জিনিসের কী হাল",
-   "front": "pages/088-front.jpg",
-   "back": "pages/088-back.jpg",
-   "items": [
-    {
-     "id": "wet-cloth",
-     "label": "ভেজা",
-     "gloss": "wet"
-    },
-    {
-     "id": "dry-cloth",
-     "label": "শুকনা",
-     "gloss": "dry"
-    },
-    {
-     "id": "broken-vessel",
-     "label": "ভাঙা",
-     "gloss": "broken into pieces"
-    },
-    {
-     "id": "punctured-vessel",
-     "label": "ফুটো",
-     "gloss": "having a hole"
-    },
-    {
-     "id": "upside-down",
-     "label": "উল্টানো",
-     "gloss": "turned upside down"
-    },
-    {
-     "id": "flattened",
-     "label": "চ্যাপ্টা",
-     "gloss": "flattened"
-    }
-   ],
-   "questions": [
-    "ভেজা কাপড়টা কোথায়?",
-    "কোন পাত্রে ফুটো আছে?",
-    "আপনার বাসায় কোন জিনিসটা সহজে ভেঙে যায়?",
-    "ভেজা কাপড় শুকাতে কোথায় রাখেন?",
-    "উল্টানো পেয়ালা থেকে পানি কেন বের হয়ে যায়?",
-    "একটা জিনিস সামান্য নষ্ট হলে কখন সেটা সারিয়ে নেওয়া ভালো, আর কখন বদলানো ভালো?"
-   ]
-  },
-  {
-   "id": "parts-and-cuts-of-food",
-   "number": 89,
-   "title": "খাবার কাটলে যা দেখি",
-   "front": "pages/089-front.jpg",
-   "back": "pages/089-back.jpg",
-   "items": [
-    {
-     "id": "chunks",
-     "label": "টুকরা",
-     "gloss": "irregular chunk of food"
-    },
-    {
-     "id": "food-slice",
-     "label": "ফালি",
-     "gloss": "long thin slice"
-    },
-    {
-     "id": "clove-garlic",
-     "label": "কোয়া",
-     "gloss": "separated clove"
-    },
-    {
-     "id": "tied-bunch",
-     "label": "আঁটি",
-     "gloss": "bundle tied together"
-    },
-    {
-     "id": "peel-skin",
-     "label": "খোসা",
-     "gloss": "detached fruit peel"
-    },
-    {
-     "id": "stalk",
-     "label": "ডাঁটা",
-     "gloss": "detached food stalk"
-    }
-   ],
-   "questions": [
-    "খোসাটা কোন ছবিতে?",
-    "কোনটা কুমড়ার ফালি?",
-    "এর মধ্যে কোন শব্দটা আপনি বাজারে শুনেছেন?",
-    "রসুনের কত কোয়া লাগবে, সেটা কীভাবে বলেন?",
-    "কোন খাবারের খোসা বা ডাঁটা আপনি ফেলে দেন?",
-    "সবজি কেটে বেচলে ক্রেতা আর দোকানির কী কী সুবিধা বা অসুবিধা হয়?"
-   ]
-  },
-  {
-   "id": "local-open-and-work-sites",
-   "number": 90,
-   "title": "এলাকার বড় খোলা জায়গা",
-   "front": "pages/090-front.jpg",
-   "back": "pages/090-back.jpg",
-   "items": [
-    {
-     "id": "playfield",
-     "label": "খেলার মাঠ",
-     "gloss": "playing field"
-    },
-    {
-     "id": "fruit-orchard",
-     "label": "ফলের বাগান",
-     "gloss": "fruit orchard"
-    },
-    {
-     "id": "cemetery",
-     "label": "কবরস্থান",
-     "gloss": "cemetery"
-    },
-    {
-     "id": "eid-ground",
-     "label": "ঈদগাহ",
-     "gloss": "open Eid prayer ground"
-    },
-    {
-     "id": "brick-kiln",
-     "label": "ইটভাটা",
-     "gloss": "brick kiln"
-    },
-    {
-     "id": "factory",
-     "label": "কারখানা",
-     "gloss": "factory"
-    }
-   ],
-   "questions": [
-    "কারখানা কোন ছবিতে?",
-    "কোন জায়গায় ফল ধরে?",
-    "এর মধ্যে কোন জায়গাটা আপনার বাসার কাছে?",
-    "কাউকে খেলার মাঠে যেতে হলে কীভাবে পথ বলবেন?",
-    "আপনার এলাকায় মানুষ বাইরে একসঙ্গে কোথায় জড়ো হয়?",
-    "খোলা জায়গা কমে গেলে এলাকার লোকের রোজকার কাজকর্ম কীভাবে বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "ages-of-people",
-   "number": 91,
-   "title": "মানুষের বয়স",
-   "front": "pages/091-front.jpg",
-   "back": "pages/091-back.jpg",
-   "items": [
-    {
-     "id": "newborn",
-     "label": "নতুন বাচ্চা",
-     "gloss": "newborn baby"
-    },
-    {
-     "id": "young-child",
-     "label": "ছোট বাচ্চা",
-     "gloss": "young child"
-    },
-    {
-     "id": "teenager",
-     "label": "কিশোর",
-     "gloss": "teenager"
-    },
-    {
-     "id": "young-adult",
-     "label": "তরুণী",
-     "gloss": "young adult woman"
-    },
-    {
-     "id": "middle-aged-adult",
-     "label": "মাঝবয়সি",
-     "gloss": "middle-aged adult"
-    },
-    {
-     "id": "older-adult",
-     "label": "বয়স্ক",
-     "gloss": "older adult"
-    }
-   ],
-   "questions": [
-    "কার বয়স সবচেয়ে কম?",
-    "কোন ছবিতে কিশোর দেখা যাচ্ছে?",
-    "ছোটবেলায় আপনি কী খেলতেন?",
-    "কোন বয়সে কারও কী সাহায্য দরকার হতে পারে?",
-    "মানুষ বড় হওয়ার সঙ্গে পরিবারের কাজ কীভাবে ভাগ করে নেয়?",
-    "একজনের কী করতে পারার কথা, শুধু বয়স দেখে ধরে নিলে কী ভুল হতে পারে?"
-   ]
-  },
-  {
-   "id": "ramadan-and-eid",
-   "number": 92,
-   "title": "রমজান আর ঈদ",
-   "front": "pages/092-front.jpg",
-   "back": "pages/092-back.jpg",
-   "items": [
-    {
-     "id": "iftar",
-     "label": "ইফতার",
-     "gloss": "meal at sunset to break the fast"
-    },
-    {
-     "id": "sehri",
-     "label": "সেহরি",
-     "gloss": "early meal before the fast"
-    },
-    {
-     "id": "dates-fruit",
-     "label": "খেজুর",
-     "gloss": "date fruit"
-    },
-    {
-     "id": "eid-moon",
-     "label": "ঈদের চাঁদ",
-     "gloss": "new Eid moon crescent"
-    },
-    {
-     "id": "eid-clothes",
-     "label": "ঈদের জামা",
-     "gloss": "new clothes for Eid"
-    },
-    {
-     "id": "eid-money",
-     "label": "ঈদি",
-     "gloss": "Eid gift money"
-    }
-   ],
-   "questions": [
-    "খেজুর কোন ছবিতে?",
-    "কোন ছবির খাবারটা সূর্য ডোবার সময় খায়?",
-    "রমজানে আপনার আশপাশে কী বদল দেখতে পান?",
-    "কাউকে ইফতারে ডাকতে হলে কী বলবেন?",
-    "ঈদের সকালে আপনার আশপাশে লোকজন কী করেন?",
-    "মানুষ অন্য দেশে গিয়ে ঈদ করলে কোন পুরোনো রীতি রাখতে চাইতে পারেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "food-for-guests",
-   "number": 93,
-   "title": "দাওয়াতের খাবার",
-   "front": "pages/093-front.jpg",
-   "back": "pages/093-back.jpg",
-   "items": [
-    {
-     "id": "biriyani",
-     "label": "বিরিয়ানি",
-     "gloss": "kacchi biriyani"
-    },
-    {
-     "id": "bhuna-khichuri",
-     "label": "ভুনা খিচুড়ি",
-     "gloss": "bhuna khichuri rice and lentils"
-    },
-    {
-     "id": "korma",
-     "label": "কোরমা",
-     "gloss": "chicken korma"
-    },
-    {
-     "id": "kebab",
-     "label": "কাবাব",
-     "gloss": "kebab"
-    },
-    {
-     "id": "jorda",
-     "label": "জর্দা",
-     "gloss": "sweet orange rice"
-    },
-    {
-     "id": "firni",
-     "label": "ফিরনি",
-     "gloss": "set milk dessert with ground rice"
-    }
-   ],
-   "questions": [
-    "কাবাবটা কোনটা?",
-    "কোন দুটো মিষ্টি?",
-    "এর মধ্যে কোনটা আপনি খেয়ে দেখেছেন?",
-    "ঝাল কম আছে কি না জানতে কী বলবেন?",
-    "অতিথিদের খাবারে কী দেবেন, সেটা কী দেখে ঠিক করেন?",
-    "অনেক রকম খাবারের অভ্যাস আছে এমন অতিথিদের একসঙ্গে খাওয়াতে কীভাবে খাবার ঠিক করবেন?"
-   ]
-  },
-  {
-   "id": "features-of-streets",
-   "number": 94,
-   "title": "চলার পথের জিনিস",
-   "front": "pages/094-front.jpg",
-   "back": "pages/094-back.jpg",
-   "items": [
-    {
-     "id": "road-shelter",
-     "label": "যাত্রীছাউনি",
-     "gloss": "roadside passenger shelter"
-    },
-    {
-     "id": "street-light",
-     "label": "রাস্তার বাতি",
-     "gloss": "streetlight"
-    },
-    {
-     "id": "pedestrian-crossing",
-     "label": "রাস্তা পারাপারের দাগ",
-     "gloss": "zebra crossing marks"
-    },
-    {
-     "id": "sidewalk",
-     "label": "পায়ে চলার পথ",
-     "gloss": "raised sidewalk"
-    },
-    {
-     "id": "parking-area",
-     "label": "গাড়ি রাখার জায়গা",
-     "gloss": "marked parking area"
-    },
-    {
-     "id": "street-drain",
-     "label": "রাস্তার নালা",
-     "gloss": "roadside drainage channel"
-    }
-   ],
-   "questions": [
-    "রাস্তার নালা কোনটা?",
-    "কোথায় রাস্তা পার হওয়ার সাদা দাগ আছে?",
-    "আপনি গাড়ির জন্য কোথায় অপেক্ষা করেন?",
-    "রাস্তা ভিজে গেলে পায়ে চলার কোন অংশ দিয়ে যাবেন?",
-    "আপনার এলাকায় হাঁটতে গেলে কোন জায়গায় বেশি খেয়াল রাখেন?",
-    "শহরে কারও হাঁটা কঠিন হলে রাস্তার কোন বদলটা তার চলাফেরায় সবচেয়ে বেশি কাজে আসবে?"
-   ]
-  },
-  {
-   "id": "packing-and-carrying",
-   "number": 95,
-   "title": "মালপত্র গুছিয়ে নিই",
-   "front": "pages/095-front.jpg",
-   "back": "pages/095-back.jpg",
-   "items": [
-    {
-     "id": "pack-organize",
-     "label": "গুছানো",
-     "gloss": "to organize belongings"
-    },
-    {
-     "id": "pack-fill",
-     "label": "ভরা",
-     "gloss": "to fill a bag"
-    },
-    {
-     "id": "pack-empty",
-     "label": "খালি করা",
-     "gloss": "to empty a container"
-    },
-    {
-     "id": "load-cart",
-     "label": "বোঝাই করা",
-     "gloss": "to load goods onto a cart"
-    },
-    {
-     "id": "shoulder-bag",
-     "label": "কাঁধে নেওয়া",
-     "gloss": "to put a load on the shoulder"
-    },
-    {
-     "id": "set-down-bag",
-     "label": "নামানো",
-     "gloss": "to set a carried item down"
-    }
-   ],
-   "questions": [
-    "কে থলে খালি করছেন?",
-    "কোন ছবিতে কাঁধে থলে নিচ্ছেন?",
-    "বাইরে এক রাত থাকলে আপনি কী কী গুছিয়ে নেন?",
-    "ভারি জিনিস কোথায় বসালে ঠেলাগাড়ি সামলানো সহজ হয়?",
-    "কম জায়গায় সব জিনিস কীভাবে ভরবেন?",
-    "যাওয়ার সময় কী সঙ্গে নেবেন, সেটা ঠিক করতে গিয়ে কোন জিনিসকে বেশি দরকারি মনে হয়, আর কেন?"
-   ]
-  },
-  {
-   "id": "mouth-and-nose-actions",
-   "number": 96,
-   "title": "মুখ আর নাক দিয়ে যা করি",
-   "front": "pages/096-front.jpg",
-   "back": "pages/096-back.jpg",
-   "items": [
-    {
-     "id": "sniff",
-     "label": "শোঁকা",
-     "gloss": "to sniff"
-    },
-    {
-     "id": "taste-a-bite",
-     "label": "চেখে দেখা",
-     "gloss": "to taste a little to find out the flavor"
-    },
-    {
-     "id": "bite",
-     "label": "কামড়ানো",
-     "gloss": "to take a bite"
-    },
-    {
-     "id": "chew",
-     "label": "চিবানো",
-     "gloss": "to chew"
-    },
-    {
-     "id": "swallow",
-     "label": "গেলা",
-     "gloss": "to swallow"
-    },
-    {
-     "id": "blow",
-     "label": "ফুঁ দেওয়া",
-     "gloss": "to blow air out"
-    }
-   ],
-   "questions": [
-    "কে ফুঁ দিচ্ছেন?",
-    "কোন দুটো ছবিতে চামচ আছে?",
-    "কোন খাবার আগে একটু চেখে দেখেন?",
-    "খুব গরম খাবার মুখে দেওয়ার আগে কী করেন?",
-    "ঘ্রাণ থেকে কীভাবে বোঝেন খাবারটা কী?",
-    "একসঙ্গে খাওয়ার সময় মানুষের শব্দ বা খাবারের গন্ধ নিয়ে আলাদা ধারণা কেন থাকতে পারে?"
-   ]
-  },
-  {
-   "id": "making-sounds",
-   "number": 97,
-   "title": "শব্দ করি যেভাবে",
-   "front": "pages/097-front.jpg",
-   "back": "pages/097-back.jpg",
-   "items": [
-    {
-     "id": "clap",
-     "label": "হাততালি দেওয়া",
-     "gloss": "to clap hands"
-    },
-    {
-     "id": "knock",
-     "label": "টোকা দেওয়া",
-     "gloss": "to knock lightly"
-    },
-    {
-     "id": "hum",
-     "label": "গুনগুন করা",
-     "gloss": "to hum"
-    },
-    {
-     "id": "play-flute",
-     "label": "বাঁশি বাজানো",
-     "gloss": "to play a flute"
-    },
-    {
-     "id": "shout",
-     "label": "চেঁচানো",
-     "gloss": "to shout"
-    },
-    {
-     "id": "whisper",
-     "label": "ফিসফিস করা",
-     "gloss": "to whisper"
-    }
-   ],
-   "questions": [
-    "কে হাততালি দিচ্ছেন?",
-    "কে চেঁচাচ্ছেন আর কে ফিসফিস করছেন?",
-    "আপনি কখন দরজায় টোকা দেন?",
-    "কাউকে আস্তে কথা বলতে হলে কী বলবেন?",
-    "কোন জায়গায় জোরে কথা বললে লোকজনের অসুবিধা হয়?",
-    "একই কথা জোরে বললে আর ফিসফিস করে বললে শুনতে কেমন আলাদা লাগে, আর কেন?"
-   ]
-  },
-  {
-   "id": "familiar-bangladesh-trees",
-   "number": 98,
-   "title": "এখানকার চেনা গাছ",
-   "front": "pages/098-front.jpg",
-   "back": "pages/098-back.jpg",
-   "items": [
-    {
-     "id": "coconut-palm",
-     "label": "নারকেলগাছ",
-     "gloss": "coconut palm"
-    },
-    {
-     "id": "areca-palm",
-     "label": "সুপারিগাছ",
-     "gloss": "areca palm"
-    },
-    {
-     "id": "banana-tree",
-     "label": "কলাগাছ",
-     "gloss": "banana plant"
-    },
-    {
-     "id": "palmyra-palm",
-     "label": "তালগাছ",
-     "gloss": "palmyra palm"
-    },
-    {
-     "id": "banyan-tree",
-     "label": "বটগাছ",
-     "gloss": "banyan tree"
-    },
-    {
-     "id": "bamboo-grove",
-     "label": "বাঁশঝাড়",
-     "gloss": "clump of growing bamboo"
-    }
-   ],
-   "questions": [
-    "কলাগাছটা কোনটা?",
-    "কোন গাছের ডাল থেকে ঝুরি নেমেছে?",
-    "এগুলোর মধ্যে কোন গাছটা আপনার আশপাশে আছে?",
-    "নারকেলগাছ আর সুপারিগাছ কী দেখে আলাদা করেন?",
-    "কাউকে গাছ দেখিয়ে পথ চেনাতে কী বলবেন?",
-    "মানুষের কাজে লাগে এমন গাছ আর ছায়া দেয় এমন গাছের মধ্যে বেছে লাগাতে হলে কীভাবে ঠিক করবেন?"
-   ]
-  },
-  {
-   "id": "small-local-animals",
-   "number": 99,
-   "title": "আরও ছয়টা চেনা প্রাণী",
-   "front": "pages/099-front.jpg",
-   "back": "pages/099-back.jpg",
-   "items": [
-    {
-     "id": "house-gecko",
-     "label": "টিকটিকি",
-     "gloss": "house gecko"
-    },
-    {
-     "id": "frog",
-     "label": "ব্যাঙ",
-     "gloss": "frog"
-    },
-    {
-     "id": "snake",
-     "label": "সাপ",
-     "gloss": "snake"
-    },
-    {
-     "id": "turtle",
-     "label": "কচ্ছপ",
-     "gloss": "turtle"
-    },
-    {
-     "id": "mouse",
-     "label": "ইঁদুর",
-     "gloss": "mouse"
-    },
-    {
-     "id": "bat",
-     "label": "বাদুড়",
-     "gloss": "bat"
-    }
-   ],
-   "questions": [
-    "কোন প্রাণীটা উল্টো হয়ে ঝুলছে?",
-    "কার পিঠে শক্ত খোলস আছে?",
-    "এর মধ্যে কোন প্রাণীটা আপনি কাছ থেকে দেখেছেন?",
-    "রাতে কোন প্রাণীটা সহজে দেখা যায়?",
-    "বাসায় টিকটিকি দেখলে মানুষ কী করেন?",
-    "একই প্রাণী কাউকে ভয় দেখায় আর অন্য কাউকে কৌতূহলী করে, এর কারণ কী হতে পারে?"
-   ]
-  },
-  {
-   "id": "appearance-contrasts",
-   "number": 100,
-   "title": "দেখতে কেমন লাগে",
-   "front": "pages/100-front.jpg",
-   "back": "pages/100-back.jpg",
-   "items": [
-    {
-     "id": "glossy",
-     "label": "চকচকে",
-     "gloss": "glossy and reflective"
-    },
-    {
-     "id": "dull",
-     "label": "মলিন",
-     "gloss": "dull from wear"
-    },
-    {
-     "id": "dark-shade",
-     "label": "গাঢ়",
-     "gloss": "deep shade of a color"
-    },
-    {
-     "id": "pale-shade",
-     "label": "ফিকে",
-     "gloss": "pale shade of a color"
-    },
-    {
-     "id": "transparent-water",
-     "label": "স্বচ্ছ",
-     "gloss": "transparent"
-    },
-    {
-     "id": "turbid-water",
-     "label": "ঘোলা",
-     "gloss": "murky liquid"
-    }
-   ],
-   "questions": [
-    "চকচকে থালাটা কোনটা?",
-    "কোনটা ঘোলা পানি?",
-    "আপনি গাঢ় রং বেশি পছন্দ করেন, নাকি ফিকে রং?",
-    "আলো কম হলে কাপড়ের রং কেমন দেখায়?",
-    "দোকানে জিনিস দেখে পুরোনো কি নতুন কীভাবে বোঝেন?",
-    "কোনো জিনিস দেখতে ভালো হলেই সেটা ভালো মানের বলে ধরে নেওয়া কখন ভুল হতে পারে?"
-   ]
-  },
-  {
-   "id": "hands-on-learning-actions",
-   "number": 101,
-   "title": "শেখার সময় যা করি",
-   "front": "pages/101-front.jpg",
-   "back": "pages/101-back.jpg",
-   "items": [
-    {
-     "id": "learn-draw",
-     "label": "আঁকা",
-     "gloss": "to draw"
-    },
-    {
-     "id": "learn-erase",
-     "label": "মুছে ফেলা",
-     "gloss": "to erase a mark"
-    },
-    {
-     "id": "learn-count",
-     "label": "গোনা",
-     "gloss": "to count objects"
-    },
-    {
-     "id": "learn-measure",
-     "label": "মাপা",
-     "gloss": "to measure length or size"
-    },
-    {
-     "id": "learn-match",
-     "label": "মেলানো",
-     "gloss": "to match like things"
-    },
-    {
-     "id": "learn-separate",
-     "label": "আলাদা করা",
-     "gloss": "to sort things out"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে আঁকছেন?",
-    "কোথায় একই রঙের গুটি জোড়া হচ্ছে?",
-    "আপনি রোজ কী কী গোনেন?",
-    "কাঠের টুকরাটা কত লম্বা, কীভাবে দেখবেন?",
-    "কাউকে নতুন কিছু শেখাতে কী দিয়ে শুরু করবেন?",
-    "একটা কাজ শুধু শুনে শেখা আর হাতে করে শেখার মধ্যে কী তফাত হয়?"
-   ]
-  },
-  {
-   "id": "torso-and-nails",
-   "number": 102,
-   "title": "বুক পিঠ আর পেট",
-   "front": "pages/102-front.jpg",
-   "back": "pages/102-back.jpg",
-   "items": [
-    {
-     "id": "chest",
-     "label": "বুক",
-     "gloss": "chest"
-    },
-    {
-     "id": "back-torso",
-     "label": "পিঠ",
-     "gloss": "back of the torso"
-    },
-    {
-     "id": "waist",
-     "label": "কোমর",
-     "gloss": "waist"
-    },
-    {
-     "id": "belly",
-     "label": "পেট",
-     "gloss": "belly"
-    },
-    {
-     "id": "navel",
-     "label": "নাভি",
-     "gloss": "navel"
-    },
-    {
-     "id": "fingernail",
-     "label": "নখ",
-     "gloss": "fingernail"
-    }
-   ],
-   "questions": [
-    "বুক কোথায়?",
-    "কোন ছবিতে লোকটার পিঠ দেখা যাচ্ছে?",
-    "আপনি “পেটে ব্যথা” বলে কীভাবে দেখাবেন?",
-    "ভারী কিছু তুললে শরীরের কোন দিকটায় বেশি চাপ পড়ে?",
-    "ব্যথার জায়গাটা বোঝাতে কী কী শব্দ কাজে লাগে?",
-    "একই ব্যথা দুজন মানুষ আলাদা করে বললে তাঁদের কথা কীভাবে বুঝতে পারেন?"
-   ]
-  },
-  {
-   "id": "traditional-yard-games",
-   "number": 103,
-   "title": "মাঠে যে খেলাগুলো খেলি",
-   "front": "pages/103-front.jpg",
-   "back": "pages/103-back.jpg",
-   "items": [
-    {
-     "id": "hopscotch",
-     "label": "এক্কাদোক্কা",
-     "gloss": "hopscotch"
-    },
-    {
-     "id": "blind-tag",
-     "label": "কানামাছি",
-     "gloss": "blind man's buff"
-    },
-    {
-     "id": "hide-and-seek",
-     "label": "লুকোচুরি",
-     "gloss": "hide-and-seek"
-    },
-    {
-     "id": "kabaddi",
-     "label": "কাবাডি",
-     "gloss": "kabaddi"
-    },
-    {
-     "id": "tug-of-war",
-     "label": "দড়ি টানাটানি",
-     "gloss": "tug of war"
-    },
-    {
-     "id": "arm-wrestle",
-     "label": "পাঞ্জা লড়া",
-     "gloss": "arm wrestling"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে দড়ি টানাটানি হচ্ছে?",
-    "কোন খেলায় চোখ বেঁধে রেখেছে?",
-    "আপনি ছোটবেলায় কোন খেলা খেলতেন?",
-    "এক্কাদোক্কা খেলতে মাটিতে কী আঁকবেন?",
-    "আপনার পরিচিত কোনো খেলায় সবাই কীভাবে পালা পায়?",
-    "খেলার নিয়ম বদলালে কীভাবে আরও বেশি মানুষ তাতে যোগ দিতে পারে?"
-   ]
-  },
-  {
-   "id": "posture-and-turning",
-   "number": 104,
-   "title": "শরীর যেভাবে রাখি",
-   "front": "pages/104-front.jpg",
-   "back": "pages/104-back.jpg",
-   "items": [
-    {
-     "id": "body-lean",
-     "label": "হেলান দেওয়া",
-     "gloss": "to lean against support"
-    },
-    {
-     "id": "body-lie",
-     "label": "শোয়া",
-     "gloss": "to lie down"
-    },
-    {
-     "id": "body-roll",
-     "label": "গড়ানো",
-     "gloss": "to roll one's body over"
-    },
-    {
-     "id": "body-turn",
-     "label": "ঘুরে দাঁড়ানো",
-     "gloss": "to turn around on one's feet"
-    },
-    {
-     "id": "body-kneel",
-     "label": "হাঁটু গেড়ে বসা",
-     "gloss": "to kneel on the ground"
-    },
-    {
-     "id": "body-squat",
-     "label": "উবু হয়ে বসা",
-     "gloss": "to squat low"
-    }
-   ],
-   "questions": [
-    "কে শুয়ে আছেন?",
-    "কার হাঁটু মাটিতে লেগেছে?",
-    "আপনি কীভাবে বসলে আরাম পান?",
-    "মাটিতে রাখা কিছু তুলতে শরীর কীভাবে নামান?",
-    "হাঁটু গেড়ে কখন বসতে হয়?",
-    "দুজনের শরীর আলাদাভাবে নড়লে একই কাজ করার উপায় কীভাবে বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "local-trades",
-   "number": 105,
-   "title": "যাঁরা হাতে কাজ করেন",
-   "front": "pages/105-front.jpg",
-   "back": "pages/105-back.jpg",
-   "items": [
-    {
-     "id": "rice-farmer",
-     "label": "চাষি",
-     "gloss": "crop farmer"
-    },
-    {
-     "id": "fisherman-role",
-     "label": "জেলে",
-     "gloss": "fisherman"
-    },
-    {
-     "id": "boatman-role",
-     "label": "মাঝি",
-     "gloss": "boatman"
-    },
-    {
-     "id": "cobbler-role",
-     "label": "মুচি",
-     "gloss": "cobbler"
-    },
-    {
-     "id": "smith-role",
-     "label": "কামার",
-     "gloss": "blacksmith"
-    },
-    {
-     "id": "potter-role",
-     "label": "কুমার",
-     "gloss": "potter"
-    }
-   ],
-   "questions": [
-    "কে নৌকা চালাচ্ছেন?",
-    "কোন দুজন মাটি নিয়ে কাজ করেন?",
-    "আপনার আশপাশে এঁদের মধ্যে কাকে দেখেছেন?",
-    "জুতার তলা উঠে গেলে কার কাছে নিয়ে যাবেন?",
-    "মাছ জাল থেকে বাজার পর্যন্ত আসতে কার কার কাজ লাগে?",
-    "এলাকার পুরোনো কোনো কাজ কমে গেলে সেখানকার মানুষের জীবন কীভাবে বদলায়?"
-   ]
-  },
-  {
-   "id": "telling-time-and-dates",
-   "number": 106,
-   "title": "দিন আর সময়ের হিসাব",
-   "front": "pages/106-front.jpg",
-   "back": "pages/106-back.jpg",
-   "items": [
-    {
-     "id": "wall-clock",
-     "label": "দেয়ালঘড়ি",
-     "gloss": "wall-mounted clock"
-    },
-    {
-     "id": "wristwatch",
-     "label": "হাতঘড়ি",
-     "gloss": "wristwatch"
-    },
-    {
-     "id": "hourglass",
-     "label": "বালুঘড়ি",
-     "gloss": "sand hourglass"
-    },
-    {
-     "id": "calendar-date",
-     "label": "তারিখ",
-     "gloss": "single calendar date"
-    },
-    {
-     "id": "calendar-week",
-     "label": "সপ্তাহ",
-     "gloss": "seven-day week"
-    },
-    {
-     "id": "calendar-month",
-     "label": "মাস",
-     "gloss": "calendar month"
-    }
-   ],
-   "questions": [
-    "হাতঘড়িটা কোনটা?",
-    "কোন ছবিতে পুরো মাসের ঘরগুলো আছে?",
-    "আপনি কখন সময় দেখে বের হন?",
-    "কাউকে দেখা করার দিন বলতে তারিখটা কীভাবে বলবেন?",
-    "এক সপ্তাহের কাজ গুছিয়ে রাখতে কী করেন?",
-    "সবার কাজের সময় এক রকম না হলে একসঙ্গে সময় বের করতে কীভাবে কথা বলবেন?"
-   ]
-  },
-  {
-   "id": "electricity-and-light",
-   "number": 107,
-   "title": "বিদ্যুৎ আর আলো",
-   "front": "pages/107-front.jpg",
-   "back": "pages/107-back.jpg",
-   "items": [
-    {
-     "id": "electric-wire",
-     "label": "বিদ্যুতের তার",
-     "gloss": "electric cable"
-    },
-    {
-     "id": "utility-pole",
-     "label": "বিদ্যুতের খুঁটি",
-     "gloss": "utility pole"
-    },
-    {
-     "id": "oil-lamp",
-     "label": "কুপি",
-     "gloss": "wick oil lamp"
-    },
-    {
-     "id": "candle",
-     "label": "মোমবাতি",
-     "gloss": "wax candle"
-    },
-    {
-     "id": "light-switch",
-     "label": "বাতির বোতাম",
-     "gloss": "wall light switch"
-    },
-    {
-     "id": "flashlight",
-     "label": "হাতবাতি",
-     "gloss": "handheld light"
-    }
-   ],
-   "questions": [
-    "মোমবাতি কোথায়?",
-    "কোন দুটোতে আগুনের শিখা দেখা যায়?",
-    "আপনি অন্ধকারে কী দিয়ে আলো করেন?",
-    "ঘরে ঢুকে বাতি জ্বালাতে কাউকে কী বলবেন?",
-    "বিদ্যুৎ চলে গেলে আপনার আশপাশে কী কী বদলে যায়?",
-    "আলো পাওয়ার উপায় আলাদা হলে মানুষ কখন কী কাজ করতে পারে, তাতে কী প্রভাব পড়ে?"
-   ]
-  },
-  {
-   "id": "house-edges-and-fittings",
-   "number": 108,
-   "title": "বাড়ির কোন দিকটা",
-   "front": "pages/108-front.jpg",
-   "back": "pages/108-back.jpg",
-   "items": [
-    {
-     "id": "flooring",
-     "label": "মেঝে",
-     "gloss": "room floor"
-    },
-    {
-     "id": "room-corner",
-     "label": "কোণা",
-     "gloss": "inside corner of a room"
-    },
-    {
-     "id": "threshold",
-     "label": "দোরগোড়া",
-     "gloss": "raised doorway threshold"
-    },
-    {
-     "id": "slide-bolt",
-     "label": "ছিটকিনি",
-     "gloss": "sliding door bolt"
-    },
-    {
-     "id": "compound-gate",
-     "label": "ফটক",
-     "gloss": "compound gate"
-    },
-    {
-     "id": "fence",
-     "label": "বেড়া",
-     "gloss": "fence"
-    }
-   ],
-   "questions": [
-    "বেড়াটা কোনটা?",
-    "কোনটায় বলটা কোণায় রাখা?",
-    "আপনার বাসার ফটক কী রকম?",
-    "বাতাসে দরজা খুলে গেলে কী দিয়ে আটকাবেন?",
-    "বাড়িতে ঢোকার আগে অতিথিকে কোথায় দাঁড়াতে বলবেন?",
-    "বাড়ির সীমানা কীভাবে বানানো হয়, তাতে পাড়ার মানুষের আসা-যাওয়া কীভাবে বদলায়?"
-   ]
-  },
-  {
-   "id": "metals-and-natural-materials",
-   "number": 109,
-   "title": "ধাতু পাট আর চামড়া",
-   "front": "pages/109-front.jpg",
-   "back": "pages/109-back.jpg",
-   "items": [
-    {
-     "id": "gold-material",
-     "label": "সোনা",
-     "gloss": "gold metal"
-    },
-    {
-     "id": "silver-material",
-     "label": "রুপা",
-     "gloss": "silver metal"
-    },
-    {
-     "id": "copper-material",
-     "label": "তামা",
-     "gloss": "copper metal"
-    },
-    {
-     "id": "brass-material",
-     "label": "পিতল",
-     "gloss": "brass metal"
-    },
-    {
-     "id": "jute-material",
-     "label": "পাট",
-     "gloss": "jute fiber"
-    },
-    {
-     "id": "leather-material",
-     "label": "চামড়া",
-     "gloss": "leather"
-    }
-   ],
-   "questions": [
-    "পাট কোন ছবিতে?",
-    "কোন দুটো ধাতু পাতের মতো?",
-    "আপনি চামড়ার তৈরি কী কী জিনিস ব্যবহার করেন?",
-    "সোনা আর রুপার রং কী দেখে আলাদা করেন?",
-    "এগুলোর কোনটা দিয়ে আপনার এলাকায় বাসন বানায়?",
-    "কোন জিনিস কী দিয়ে তৈরি হবে, সেটা বদলালে ব্যবহার আর দাম কীভাবে বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "familiar-bangladesh-flowers",
-   "number": 110,
-   "title": "বাংলাদেশের চেনা ফুল",
-   "front": "pages/110-front.jpg",
-   "back": "pages/110-back.jpg",
-   "items": [
-    {
-     "id": "water-lily",
-     "label": "শাপলা",
-     "gloss": "Bangladeshi water lily"
-    },
-    {
-     "id": "lotus-flower",
-     "label": "পদ্ম",
-     "gloss": "lotus flower"
-    },
-    {
-     "id": "hibiscus",
-     "label": "জবা",
-     "gloss": "hibiscus bloom"
-    },
-    {
-     "id": "marigold",
-     "label": "গাঁদা",
-     "gloss": "marigold flower"
-    },
-    {
-     "id": "night-jasmine",
-     "label": "শিউলি",
-     "gloss": "night-flowering jasmine"
-    },
-    {
-     "id": "gardenia",
-     "label": "গন্ধরাজ",
-     "gloss": "gardenia blossom"
-    }
-   ],
-   "questions": [
-    "শাপলা কোনটা?",
-    "কোন দুটো পানিতে জন্মায়?",
-    "আপনি এই ফুলগুলোর মধ্যে কোনটা দেখেছেন?",
-    "জবা আর গাঁদা কী দেখে আলাদা করেন?",
-    "আপনার আশপাশে ফুল কী কী কাজে লাগে?",
-    "কোনো জায়গা বা সময়ের কথা একটা ফুলের গন্ধ মনে করিয়ে দিতে পারে কেন?"
-   ]
-  },
-  {
-   "id": "more-cooking-vegetables",
-   "number": 111,
-   "title": "দেশি রান্নায় আরও সবজি",
-   "front": "pages/111-front.jpg",
-   "back": "pages/111-back.jpg",
-   "items": [
-    {
-     "id": "okra",
-     "label": "ঢেঁড়স",
-     "gloss": "okra"
-    },
-    {
-     "id": "pointed-gourd",
-     "label": "পটল",
-     "gloss": "pointed gourd"
-    },
-    {
-     "id": "taro-root",
-     "label": "কচু",
-     "gloss": "taro corm"
-    },
-    {
-     "id": "sweet-potato",
-     "label": "মিষ্টি আলু",
-     "gloss": "sweet potato"
-    },
-    {
-     "id": "cabbage",
-     "label": "বাঁধাকপি",
-     "gloss": "cabbage"
-    },
-    {
-     "id": "ridge-gourd",
-     "label": "ঝিঙে",
-     "gloss": "ridged luffa gourd"
-    }
-   ],
-   "questions": [
-    "পটলটা কোথায়?",
-    "কোন দুটো মাটির নিচে হয়?",
-    "আপনার সবচেয়ে বেশি কোনটা রান্না করতে হয়?",
-    "ঢেঁড়স কেটে কী দেখে চিনবেন?",
-    "বাজারে সবজি তাজা কি না সেটা কীভাবে বুঝবেন?",
-    "চেনা কোনো সবজি কম পাওয়া গেলে মানুষ কী দিয়ে একই রান্না করতে পারেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "people-out-on-the-street",
-   "number": 112,
-   "title": "পথে যাঁদের দেখি",
-   "front": "pages/112-front.jpg",
-   "back": "pages/112-back.jpg",
-   "items": [
-    {
-     "id": "passenger-role",
-     "label": "যাত্রী",
-     "gloss": "passenger"
-    },
-    {
-     "id": "driver-role",
-     "label": "চালক",
-     "gloss": "vehicle driver"
-    },
-    {
-     "id": "pedestrian-role",
-     "label": "পথচারী",
-     "gloss": "pedestrian"
-    },
-    {
-     "id": "guard-role",
-     "label": "পাহারাদার",
-     "gloss": "guard"
-    },
-    {
-     "id": "street-hawker-role",
-     "label": "ফেরিওয়ালা",
-     "gloss": "roving street seller"
-    },
-    {
-     "id": "porter-role",
-     "label": "মুটে",
-     "gloss": "market porter"
-    }
-   ],
-   "questions": [
-    "কে গাড়ি চালাচ্ছেন?",
-    "কে মাথায় বোঝা নিয়ে যাচ্ছেন?",
-    "আপনার পথে কাদের বেশি দেখা যায়?",
-    "কোথায় নামাবেন, চালককে কীভাবে বলবেন?",
-    "কারও বাড়ির ফটকে গেলে পাহারাদারকে কী বলবেন?",
-    "একটা রাস্তা দিয়ে যাঁরা চলেন আর যাঁরা সেখানে কাজ করেন, তাঁদের দরকারগুলো কীভাবে আলাদা হয়?"
-   ]
-  },
-  {
-   "id": "wild-bangladesh-animals",
-   "number": 113,
-   "title": "বনের বড় আর ছোট প্রাণী",
-   "front": "pages/113-front.jpg",
-   "back": "pages/113-back.jpg",
-   "items": [
-    {
-     "id": "asian-elephant",
-     "label": "হাতি",
-     "gloss": "Asian elephant"
-    },
-    {
-     "id": "wild-monkey",
-     "label": "বানর",
-     "gloss": "monkey"
-    },
-    {
-     "id": "sloth-bear",
-     "label": "ভালুক",
-     "gloss": "South Asian sloth bear"
-    },
-    {
-     "id": "spotted-deer",
-     "label": "হরিণ",
-     "gloss": "spotted deer"
-    },
-    {
-     "id": "bengal-tiger",
-     "label": "বাঘ",
-     "gloss": "Bengal tiger"
-    },
-    {
-     "id": "golden-jackal",
-     "label": "শিয়াল",
-     "gloss": "golden jackal"
-    }
-   ],
-   "questions": [
-    "বাঘ কোন ছবিতে?",
-    "কোন প্রাণীর শিং আছে?",
-    "এর মধ্যে কোন প্রাণীটা আপনি আগে দেখেছেন?",
-    "হাতি আর বানর কীভাবে খাবার তুলে নেয় বলে মনে হয়?",
-    "এই প্রাণীগুলো কোথায় থাকতে পারে?",
-    "বনের পাশে মানুষের বসতি বাড়লে মানুষ আর বন্য প্রাণী কীভাবে একই এলাকার আশপাশে থাকতে পারে?"
-   ]
-  },
-  {
-   "id": "preparing-food-to-serve",
-   "number": 114,
-   "title": "খাবার দেওয়ার আগে",
-   "front": "pages/114-front.jpg",
-   "back": "pages/114-back.jpg",
-   "items": [
-    {
-     "id": "serve-food",
-     "label": "খাবার বেড়ে দেওয়া",
-     "gloss": "to serve food"
-    },
-    {
-     "id": "divide-food",
-     "label": "ভাগ করা",
-     "gloss": "to divide into shares"
-    },
-    {
-     "id": "sprinkle",
-     "label": "ছিটানো",
-     "gloss": "to sprinkle over food"
-    },
-    {
-     "id": "squeeze-juice",
-     "label": "চিপে রস বের করা",
-     "gloss": "to squeeze juice by hand"
-    },
-    {
-     "id": "strain-food",
-     "label": "ছেঁকে নেওয়া",
-     "gloss": "to strain food"
-    },
-    {
-     "id": "grind-food",
-     "label": "গুঁড়া করা",
-     "gloss": "to grind into powder"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে ভাত বেড়ে দিচ্ছেন?",
-    "কোথায় লেবু চিপে রস বের করছেন?",
-    "আপনি কী খাবার দুইজনের মধ্যে ভাগ করেন?",
-    "ছাঁকনি দিয়ে কী কী ছেঁকে নেওয়া যায়?",
-    "অতিথি এলে খাবার বেড়ে দিতে কী বলেন?",
-    "অল্প খাবার অনেকের মধ্যে ভাগ করতে হলে কী কী ভেবে ভাগ করবেন?"
-   ]
-  },
-  {
-   "id": "types-of-homes",
-   "number": 115,
-   "title": "নানা রকম বাড়ি",
-   "front": "pages/115-front.jpg",
-   "back": "pages/115-back.jpg",
-   "items": [
-    {
-     "id": "straw-hut",
-     "label": "কুঁড়েঘর",
-     "gloss": "small straw hut"
-    },
-    {
-     "id": "mud-home",
-     "label": "মাটির ঘর",
-     "gloss": "earthen-walled home"
-    },
-    {
-     "id": "bamboo-home",
-     "label": "বাঁশের ঘর",
-     "gloss": "bamboo-walled home"
-    },
-    {
-     "id": "single-story-home",
-     "label": "একতলা বাড়ি",
-     "gloss": "single-storey home"
-    },
-    {
-     "id": "two-story-home",
-     "label": "দোতলা বাড়ি",
-     "gloss": "two-storey home"
-    },
-    {
-     "id": "tall-building",
-     "label": "উঁচু দালান",
-     "gloss": "tall multi-storey building"
-    }
-   ],
-   "questions": [
-    "দোতলা বাড়িটা কোনটা?",
-    "কোনটায় বাঁশের দেয়াল আছে?",
-    "আপনি কী রকম বাড়িতে থেকেছেন?",
-    "বৃষ্টি হলে মাটির ঘর টিকিয়ে রাখতে কী করা যায়?",
-    "এলাকার বাড়ি দেখে কাউকে ঠিকানা কীভাবে বলবেন?",
-    "জায়গার দাম বা আবহাওয়া বদলালে মানুষ কী রকম বাড়ি বানাতে পারে?"
-   ]
-  },
-  {
-   "id": "on-the-way-actions",
-   "number": 116,
-   "title": "পথে যেসব কাজ করি",
-   "front": "pages/116-front.jpg",
-   "back": "pages/116-back.jpg",
-   "items": [
-    {
-     "id": "waiting-person",
-     "label": "অপেক্ষা করা",
-     "gloss": "to wait"
-    },
-    {
-     "id": "setting-out",
-     "label": "রওনা হওয়া",
-     "gloss": "to set out for a destination"
-    },
-    {
-     "id": "following-person",
-     "label": "পিছু নেওয়া",
-     "gloss": "to follow someone"
-    },
-    {
-     "id": "make-way",
-     "label": "পথ ছেড়ে দেওয়া",
-     "gloss": "to make way for someone"
-    },
-    {
-     "id": "changing-path",
-     "label": "পথ বদলানো",
-     "gloss": "to change routes"
-    },
-    {
-     "id": "lost-person",
-     "label": "পথ হারানো",
-     "gloss": "to lose one's way"
-    }
-   ],
-   "questions": [
-    "কে বসে অপেক্ষা করছেন?",
-    "কোন ছবিতে দুজনের একজন পথ ছেড়ে দিয়েছেন?",
-    "আপনি কোথায় সবচেয়ে বেশি অপেক্ষা করেন?",
-    "পথ হারালে কাউকে কী জিজ্ঞেস করবেন?",
-    "চেনা পথ বন্ধ থাকলে অন্য পথ কীভাবে খুঁজে নেবেন?",
-    "কারও হাতে সময় কম থাকলে পথ বেছে নেওয়ার সিদ্ধান্ত কীভাবে বদলায়?"
-   ]
-  },
-  {
-   "id": "actions-for-care",
-   "number": 117,
-   "title": "অসুখে পাশে থাকি",
-   "front": "pages/117-front.jpg",
-   "back": "pages/117-back.jpg",
-   "items": [
-    {
-     "id": "take-temperature",
-     "label": "জ্বর মাপা",
-     "gloss": "to take a temperature"
-    },
-    {
-     "id": "check-pulse",
-     "label": "নাড়ি দেখা",
-     "gloss": "to feel a pulse"
-    },
-    {
-     "id": "deep-breath",
-     "label": "শ্বাস নেওয়া",
-     "gloss": "to take a breath"
-    },
-    {
-     "id": "wash-scrape",
-     "label": "ক্ষত ধোয়া",
-     "gloss": "to rinse a small scrape"
-    },
-    {
-     "id": "wrap-bandage",
-     "label": "পট্টি বাঁধা",
-     "gloss": "to wrap a bandage"
-    },
-    {
-     "id": "apply-ointment",
-     "label": "মলম লাগানো",
-     "gloss": "to apply ointment"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে জ্বর মাপছেন?",
-    "হাতের কোথায় নাড়ি দেখছেন?",
-    "শরীর খারাপ হলে কাছের কাউকে কী বলেন?",
-    "পট্টি চাইতে হলে কীভাবে বলবেন?",
-    "কেউ খুব আস্তে কথা বললে তাঁর কী দরকার কীভাবে বুঝবেন?",
-    "কাউকে সাহায্য করতে গিয়ে তাঁর কী পছন্দ, সেটা আগে জেনে নেওয়া কেন কাজে লাগে?"
-   ]
-  },
-  {
-   "id": "local-cold-drinks",
-   "number": 118,
-   "title": "ঠান্ডা যা খাই",
-   "front": "pages/118-front.jpg",
-   "back": "pages/118-back.jpg",
-   "items": [
-    {
-     "id": "coconut-water",
-     "label": "ডাবের পানি",
-     "gloss": "water from a tender coconut"
-    },
-    {
-     "id": "sugarcane-juice",
-     "label": "আখের রস",
-     "gloss": "pressed sugarcane juice"
-    },
-    {
-     "id": "bael-drink",
-     "label": "বেলের শরবত",
-     "gloss": "bael sharbat"
-    },
-    {
-     "id": "lemon-water",
-     "label": "লেবুপানি",
-     "gloss": "lemon water"
-    },
-    {
-     "id": "ghol-drink",
-     "label": "ঘোল",
-     "gloss": "Bengali diluted yogurt drink"
-    },
-    {
-     "id": "borhani-drink",
-     "label": "বোরহানি",
-     "gloss": "spiced Bangladeshi yogurt drink"
-    }
-   ],
-   "questions": [
-    "ডাবের পানি কোন ছবিতে?",
-    "কোন দুটো দই দিয়ে বানানো হয়?",
-    "গরমে কোনটা খেতে আপনার ভালো লাগে?",
-    "কোনো দোকানে চিনি কম দিতে কী বলবেন?",
-    "অতিথি এলে ঠান্ডা কী খেতে দেবেন?",
-    "এলাকার গরমকাল বা ফলের ধরন সেখানে কী পান করা হয়, তাতে কীভাবে প্রভাব ফেলে?"
-   ]
-  },
-  {
-   "id": "food-ripeness-and-condition",
-   "number": 119,
-   "title": "খাবারের অবস্থা বুঝি",
-   "front": "pages/119-front.jpg",
-   "back": "pages/119-back.jpg",
-   "items": [
-    {
-     "id": "unripe-food",
-     "label": "কাঁচা",
-     "gloss": "unripe"
-    },
-    {
-     "id": "ripe-food",
-     "label": "পাকা",
-     "gloss": "ripe"
-    },
-    {
-     "id": "fresh-roti",
-     "label": "টাটকা",
-     "gloss": "freshly made"
-    },
-    {
-     "id": "stale-roti",
-     "label": "বাসি",
-     "gloss": "stale"
-    },
-    {
-     "id": "solid-ghee",
-     "label": "জমাট বাঁধা",
-     "gloss": "to set solid when cool"
-    },
-    {
-     "id": "melting-ghee",
-     "label": "গলে যাওয়া",
-     "gloss": "to melt"
-    }
-   ],
-   "questions": [
-    "পাকা কলাটা কোনটা?",
-    "কোন রুটিটা টাটকা?",
-    "কোন ফলটা পাকার আগে আপনি খান?",
-    "রুটি নরম আছে কি না কীভাবে বোঝেন?",
-    "দোকানিকে “টাটকা আছে?” বলে আর কী জিজ্ঞেস করবেন?",
-    "খাবার ফেলে দেওয়া কমাতে বাসায় কেনা আর রান্নার অভ্যাস কীভাবে বদলাতে পারেন?"
-   ]
-  },
-  {
-   "id": "river-work-gear",
-   "number": 120,
-   "title": "মাছ ধরি নৌকা চালাই",
-   "front": "pages/120-front.jpg",
-   "back": "pages/120-back.jpg",
-   "items": [
-    {
-     "id": "cast-net",
-     "label": "জাল",
-     "gloss": "throw fishing net"
-    },
-    {
-     "id": "fish-trap",
-     "label": "পলো",
-     "gloss": "traditional dome-shaped fishing trap"
-    },
-    {
-     "id": "fish-hook",
-     "label": "বড়শি",
-     "gloss": "fishing hook"
-    },
-    {
-     "id": "fishing-rod",
-     "label": "ছিপ",
-     "gloss": "fishing rod"
-    },
-    {
-     "id": "woven-fish-basket",
-     "label": "খালুই",
-     "gloss": "small woven basket that holds fish"
-    },
-    {
-     "id": "wooden-oar",
-     "label": "বৈঠা",
-     "gloss": "boat oar"
-    }
-   ],
-   "questions": [
-    "বৈঠা কোনটা?",
-    "কোনটা গোল করে ছুড়ে ফেলেন?",
-    "এর মধ্যে কোন জিনিসটা আপনি আগে দেখেছেন?",
-    "মাছ ধরার পর কোথায় রাখেন?",
-    "নদীতে মাছ ধরাটা শিখতে হলে কী জিজ্ঞেস করবেন?",
-    "নদীতে মাছ কমে গেলে জেলেদের কাজের উপায় কীভাবে বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "clothing-patterns",
-   "number": 121,
-   "title": "কাপড়ের গায়ে যে ছাপ",
-   "front": "pages/121-front.jpg",
-   "back": "pages/121-back.jpg",
-   "items": [
-    {
-     "id": "cloth-stripes",
-     "label": "ডোরাকাটা",
-     "gloss": "striped cloth"
-    },
-    {
-     "id": "cloth-checks",
-     "label": "ঘরকাটা",
-     "gloss": "checked cloth"
-    },
-    {
-     "id": "cloth-dots",
-     "label": "ফোঁটাওয়ালা",
-     "gloss": "polka-dotted cloth"
-    },
-    {
-     "id": "cloth-flowers",
-     "label": "ফুলের ছাপ",
-     "gloss": "floral print"
-    },
-    {
-     "id": "cloth-embroidered",
-     "label": "সুতার নকশা",
-     "gloss": "embroidered design"
-    },
-    {
-     "id": "cloth-solid",
-     "label": "একরঙা",
-     "gloss": "plain solid-colored cloth"
-    }
-   ],
-   "questions": [
-    "ডোরাকাটা কাপড় কোনটা?",
-    "কোনটায় ফুলের ছাপ আছে?",
-    "আপনি একরঙা কাপড় পছন্দ করেন, নাকি নকশা আছে এমন কাপড়?",
-    "সুতার কাজ আছে কি না কী দেখে বুঝবেন?",
-    "দোকানিকে আপনার পছন্দের নকশা কীভাবে বোঝাবেন?",
-    "কাপড়ের নকশা দেখে এলাকার মানুষের পছন্দ কতটা বোঝা যায়, আর কোথায় ভুল হতে পারে?"
-   ]
-  },
-  {
-   "id": "small-facial-actions",
-   "number": 122,
-   "title": "মুখে যা করে দেখাই",
-   "front": "pages/122-front.jpg",
-   "back": "pages/122-back.jpg",
-   "items": [
-    {
-     "id": "wink",
-     "label": "চোখ টেপা",
-     "gloss": "to wink with one eye"
-    },
-    {
-     "id": "blink",
-     "label": "পলক ফেলা",
-     "gloss": "to blink"
-    },
-    {
-     "id": "yawn",
-     "label": "হাই তোলা",
-     "gloss": "to yawn"
-    },
-    {
-     "id": "mouth-grimace",
-     "label": "মুখ বাঁকানো",
-     "gloss": "to twist one's lips"
-    },
-    {
-     "id": "furrow-brows",
-     "label": "ভুরু কুঁচকানো",
-     "gloss": "to furrow the brows"
-    },
-    {
-     "id": "shake-head",
-     "label": "মাথা ঝাঁকানো",
-     "gloss": "to shake the head sideways"
-    }
-   ],
-   "questions": [
-    "কে চোখ টিপছেন?",
-    "কার মুখ হাই তোলার সময় খোলা আছে?",
-    "ক্লান্ত হলে আপনি কখন হাই তোলেন?",
-    "কথা না বলে “না” বোঝাতে কী করেন?",
-    "ভুরু কুঁচকালে অন্যজন কী ভাবতে পারেন?",
-    "এক দেশে মুখের যে ইশারা একভাবে বোঝে, অন্য দেশে সেটা অন্যভাবে বোঝে কেন?"
-   ]
-  },
-  {
-   "id": "counting-seven-to-twelve",
-   "number": 123,
-   "title": "সাত থেকে বারো",
-   "front": "pages/123-front.jpg",
-   "back": "pages/123-back.jpg",
-   "items": [
-    {
-     "id": "seven",
-     "label": "সাত",
-     "gloss": "seven"
-    },
-    {
-     "id": "eight",
-     "label": "আট",
-     "gloss": "eight"
-    },
-    {
-     "id": "nine",
-     "label": "নয়",
-     "gloss": "nine"
-    },
-    {
-     "id": "ten",
-     "label": "দশ",
-     "gloss": "ten"
-    },
-    {
-     "id": "eleven",
-     "label": "এগারো",
-     "gloss": "eleven"
-    },
-    {
-     "id": "twelve",
-     "label": "বারো",
-     "gloss": "twelve"
-    }
-   ],
-   "questions": [
-    "আটটা বল কোথায়?",
-    "কোন ছবিতে এগারোটার চেয়ে একটা বেশি আছে?",
-    "কোন জিনিস কেনার সময় আপনি গুনে নেন?",
-    "দশটা বল দুইজনকে সমান দিতে হলে কীভাবে দেবেন?",
-    "মুখে মনে রাখা কঠিন হলে কী দিয়ে গুনে দেখাবেন?",
-    "অনেক জিনিস গুনতে গেলে দল করে গোনা কখন সহজ হয়, আর কেন?"
-   ]
-  },
-  {
-   "id": "pace-and-turn-taking",
-   "number": 124,
-   "title": "কাজ কখন আর কতবার",
-   "front": "pages/124-front.jpg",
-   "back": "pages/124-back.jpg",
-   "items": [
-    {
-     "id": "fast-pace",
-     "label": "তাড়াতাড়ি",
-     "gloss": "quickly"
-    },
-    {
-     "id": "slow-pace",
-     "label": "ধীরে",
-     "gloss": "slowly"
-    },
-    {
-     "id": "together-action",
-     "label": "একসঙ্গে",
-     "gloss": "together at the same time"
-    },
-    {
-     "id": "take-turns",
-     "label": "পালা করে",
-     "gloss": "taking turns"
-    },
-    {
-     "id": "once-action",
-     "label": "একবার",
-     "gloss": "once"
-    },
-    {
-     "id": "repeat-action",
-     "label": "বারবার",
-     "gloss": "repeatedly"
-    }
-   ],
-   "questions": [
-    "কোন গাড়িটা তাড়াতাড়ি যাচ্ছে?",
-    "কোথায় দুইজন পালা করে গুটি বসাচ্ছে?",
-    "আপনি কোন কাজটা ধীরে করেন?",
-    "একজনকে ধীরে কথা বলতে হলে কী বলবেন?",
-    "এক কাজ দুইজন করলে কখন পালা করে করা ভালো?",
-    "সব কাজ তাড়াতাড়ি করতে গেলে কোনটা ভালো হয়, আর কোনটা খারাপ হতে পারে?"
-   ]
-  },
-  {
-   "id": "river-and-coast-landforms",
-   "number": 125,
-   "title": "নদী সাগর আর পাড়",
-   "front": "pages/125-front.jpg",
-   "back": "pages/125-back.jpg",
-   "items": [
-    {
-     "id": "river-char",
-     "label": "চর",
-     "gloss": "river sandbar"
-    },
-    {
-     "id": "island-land",
-     "label": "দ্বীপ",
-     "gloss": "island"
-    },
-    {
-     "id": "embankment",
-     "label": "বাঁধ",
-     "gloss": "raised river embankment"
-    },
-    {
-     "id": "waterfall",
-     "label": "ঝরনা",
-     "gloss": "waterfall"
-    },
-    {
-     "id": "estuary",
-     "label": "মোহনা",
-     "gloss": "estuary at a river mouth"
-    },
-    {
-     "id": "sea-water",
-     "label": "সমুদ্র",
-     "gloss": "sea"
-    }
-   ],
-   "questions": [
-    "ঝরনাটা কোনটা?",
-    "কোন জমির চারপাশে পানি আছে?",
-    "এর মধ্যে কোন ধরনের জায়গায় আপনি গিয়েছেন?",
-    "নদীর বাঁধ কোথায় থাকে, কাউকে কীভাবে বোঝাবেন?",
-    "মোহনার কাছে মানুষ কী কী কাজ করেন?",
-    "নদীর গতিপথ বদলালে পানির ধারে থাকা মানুষের রোজকার চলাফেরা কীভাবে বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "talking-prices-and-money",
-   "number": 126,
-   "title": "দাম আর টাকার হিসাব",
-   "front": "pages/126-front.jpg",
-   "back": "pages/126-back.jpg",
-   "items": [
-    {
-     "id": "bargain",
-     "label": "দরদাম করা",
-     "gloss": "to bargain over a price"
-    },
-    {
-     "id": "cash-count",
-     "label": "টাকা গোনা",
-     "gloss": "to count money"
-    },
-    {
-     "id": "cash-save",
-     "label": "টাকা জমানো",
-     "gloss": "to put money aside"
-    },
-    {
-     "id": "discount-price",
-     "label": "দাম কমানো",
-     "gloss": "to reduce a price"
-    },
-    {
-     "id": "record-credit",
-     "label": "বাকি লেখা",
-     "gloss": "to record a sale to be paid later"
-    },
-    {
-     "id": "make-change",
-     "label": "ভাঙতি করা",
-     "gloss": "to break a note into smaller money"
-    }
-   ],
-   "questions": [
-    "কে টাকা গুনছেন?",
-    "কোন ছবিতে বড় টাকা ভাঙাচ্ছেন?",
-    "আপনি কোথায় দরদাম করেছেন?",
-    "দোকানিকে দাম একটু কমাতে কী বলবেন?",
-    "কিছু কেনার জন্য আগে থেকে টাকা জমাতে হলে কীভাবে শুরু করবেন?",
-    "কারও কাছে দামটা ন্যায্য আর অন্যজনের কাছে বেশি মনে হতে পারে কেন?"
-   ]
-  },
-  {
-   "id": "greeting-and-helping",
-   "number": 127,
-   "title": "দেখা হলে যা করি",
-   "front": "pages/127-front.jpg",
-   "back": "pages/127-back.jpg",
-   "items": [
-    {
-     "id": "give-salaam",
-     "label": "সালাম দেওয়া",
-     "gloss": "to give a salaam greeting"
-    },
-    {
-     "id": "shake-hands",
-     "label": "হাত মেলানো",
-     "gloss": "to shake hands"
-    },
-    {
-     "id": "hug-person",
-     "label": "জড়িয়ে ধরা",
-     "gloss": "to hug someone"
-    },
-    {
-     "id": "say-goodbye",
-     "label": "বিদায় নেওয়া",
-     "gloss": "to take leave"
-    },
-    {
-     "id": "welcome-guest",
-     "label": "স্বাগত জানানো",
-     "gloss": "to welcome someone"
-    },
-    {
-     "id": "help-someone",
-     "label": "সাহায্য করা",
-     "gloss": "to help someone"
-    }
-   ],
-   "questions": [
-    "কে হাত মেলাচ্ছেন?",
-    "কোন ছবিতে অতিথিকে ঘরে ডাকছেন?",
-    "নতুন কারও সঙ্গে দেখা হলে আপনি কী বলেন?",
-    "বিদায় নেওয়ার সময় কী বলে বের হবেন?",
-    "কেউ কিছু ফেলে দিলে সাহায্য করতে কী বলবেন?",
-    "একে অন্যকে আপন মনে করানোর জন্য আলাদা জায়গায় মানুষ কী কী ভিন্ন কাজ করেন?"
-   ]
-  },
-  {
-   "id": "ties-and-fasteners",
-   "number": 128,
-   "title": "বাঁধি আর আটকে রাখি",
-   "front": "pages/128-front.jpg",
-   "back": "pages/128-back.jpg",
-   "items": [
-    {
-     "id": "jute-rope",
-     "label": "দড়ি",
-     "gloss": "jute rope"
-    },
-    {
-     "id": "metal-chain",
-     "label": "শিকল",
-     "gloss": "metal chain"
-    },
-    {
-     "id": "hair-ribbon",
-     "label": "চুলের ফিতা",
-     "gloss": "hair ribbon"
-    },
-    {
-     "id": "metal-ring",
-     "label": "আংটা",
-     "gloss": "plain fastener ring"
-    },
-    {
-     "id": "magnet",
-     "label": "চুম্বক",
-     "gloss": "magnet"
-    },
-    {
-     "id": "cloth-peg",
-     "label": "কাপড়ের চিমটি",
-     "gloss": "clothespin"
-    }
-   ],
-   "questions": [
-    "দড়িটা কোনটা?",
-    "কোনটা লোহা টেনে ধরে?",
-    "আপনি কোথায় শিকল ব্যবহার হতে দেখেন?",
-    "ভেজা কাপড় দড়িতে রাখলে কী দিয়ে আটকাবেন?",
-    "হাতে এসব না থাকলে হালকা জিনিস বেঁধে রাখবেন কী দিয়ে?",
-    "জিনিস বাঁধার ধরন বদলালে সেটি খুলতে বা আবার ব্যবহার করতে কী তফাত হয়?"
-   ]
-  },
-  {
-   "id": "finger-and-palm-actions",
-   "number": 129,
-   "title": "আঙুল আর তালু দিয়ে",
-   "front": "pages/129-front.jpg",
-   "back": "pages/129-back.jpg",
-   "items": [
-    {
-     "id": "poke-object",
-     "label": "খোঁচানো",
-     "gloss": "to poke with the tip"
-    },
-    {
-     "id": "press-button",
-     "label": "বোতাম টেপা",
-     "gloss": "to press a button"
-    },
-    {
-     "id": "pinch-skin",
-     "label": "চিমটি কাটা",
-     "gloss": "to pinch"
-    },
-    {
-     "id": "scratch-surface",
-     "label": "খামচানো",
-     "gloss": "to scratch with fingernails"
-    },
-    {
-     "id": "rub-surface",
-     "label": "ঘষা",
-     "gloss": "to rub back and forth"
-    },
-    {
-     "id": "press-down",
-     "label": "চাপ দেওয়া",
-     "gloss": "to press down with a palm"
-    }
-   ],
-   "questions": [
-    "কে বোতাম টিপছেন?",
-    "কোন ছবিতে আঙুলের নখ দিয়ে দাগ করছেন?",
-    "রোজ আপনি কী কী বোতাম টেপেন?",
-    "মাটি একটু চ্যাপ্টা করতে হাতে কী করবেন?",
-    "কোন জিনিস ঘষলে দাগ চলে যায়, আর কোনটায় নতুন দাগ পড়তে পারে?",
-    "দুইজন একই জিনিসে আলাদা জোর দিলে ফল কীভাবে বদলে যায়?"
-   ]
-  },
-  {
-   "id": "garden-planting-actions",
-   "number": 130,
-   "title": "গাছ লাগানো থেকে তোলা",
-   "front": "pages/130-front.jpg",
-   "back": "pages/130-back.jpg",
-   "items": [
-    {
-     "id": "dig-soil",
-     "label": "মাটি খোঁড়া",
-     "gloss": "to dig soil"
-    },
-    {
-     "id": "sow-seeds",
-     "label": "বীজ বোনা",
-     "gloss": "to sow seeds"
-    },
-    {
-     "id": "water-plant",
-     "label": "পানি দেওয়া",
-     "gloss": "to water a plant"
-    },
-    {
-     "id": "transplant-seedling",
-     "label": "চারা লাগানো",
-     "gloss": "to plant a seedling"
-    },
-    {
-     "id": "pull-weeds",
-     "label": "আগাছা তোলা",
-     "gloss": "to pull weeds"
-    },
-    {
-     "id": "pick-vegetables",
-     "label": "সবজি পাড়া",
-     "gloss": "to pick a vegetable from its plant"
-    }
-   ],
-   "questions": [
-    "কে গাছে পানি দিচ্ছেন?",
-    "কোথায় বীজ বুনছেন আর কোথায় চারা লাগাচ্ছেন?",
-    "আপনি কি কখনও টবে কিছু লাগিয়েছেন?",
-    "মাটিতে চারা দেওয়ার পরে কী করেন?",
-    "একই টবে সবজি আর আগাছা উঠলে কোনটা রাখবেন কীভাবে বুঝবেন?",
-    "কারও হাতে খুব অল্প জায়গা থাকলে তিনি কীভাবে নিজের খাবারের জন্য কিছু লাগাতে পারেন?"
-   ]
-  },
-  {
-   "id": "repair-and-garden-tools",
-   "number": 131,
-   "title": "কাঠ মাটি আর মেরামতের সরঞ্জাম",
-   "front": "pages/131-front.jpg",
-   "back": "pages/131-back.jpg",
-   "items": [
-    {
-     "id": "screwdriver-tool",
-     "label": "পেঁচকস",
-     "gloss": "screwdriver"
-    },
-    {
-     "id": "pliers-tool",
-     "label": "সাঁড়াশি",
-     "gloss": "pliers"
-    },
-    {
-     "id": "chisel-tool",
-     "label": "ছেনি",
-     "gloss": "woodworking chisel"
-    },
-    {
-     "id": "sandpaper-tool",
-     "label": "শিরীষ কাগজ",
-     "gloss": "sandpaper"
-    },
-    {
-     "id": "spade-tool",
-     "label": "কোদাল",
-     "gloss": "long-handled spade"
-    },
-    {
-     "id": "hand-hoe-tool",
-     "label": "খুরপি",
-     "gloss": "short hand hoe"
-    }
-   ],
-   "questions": [
-    "কোদালটা কোনটা?",
-    "কোনটা দিয়ে কাঠ ঘষে মসৃণ করা যায়?",
-    "আপনি এর মধ্যে কোনটা ব্যবহার করেছেন?",
-    "টবের মাটি আলগা করতে কোনটা নেবেন?",
-    "কোন কাজটা নিজে করবেন আর কোনটার জন্য কারিগর ডাকবেন?",
-    "দুই এলাকার মানুষ একই কাজ আলাদা হাতিয়ার দিয়ে করলে তার কারণ কী হতে পারে?"
-   ]
-  },
-  {
-   "id": "traditional-household-objects",
-   "number": 132,
-   "title": "বাড়ির পুরোনো দিনের জিনিস",
-   "front": "pages/132-front.jpg",
-   "back": "pages/132-back.jpg",
-   "items": [
-    {
-     "id": "low-stool",
-     "label": "পিঁড়ি",
-     "gloss": "traditional low wooden seat"
-    },
-    {
-     "id": "hand-fan",
-     "label": "হাতপাখা",
-     "gloss": "woven manual hand fan"
-    },
-    {
-     "id": "winnowing-tray",
-     "label": "কুলা",
-     "gloss": "traditional winnowing tray"
-    },
-    {
-     "id": "grain-sieve",
-     "label": "চালুনি",
-     "gloss": "wide grain sieve"
-    },
-    {
-     "id": "woven-platter",
-     "label": "ডালা",
-     "gloss": "shallow woven platter"
-    },
-    {
-     "id": "betel-box",
-     "label": "পানের বাটা",
-     "gloss": "betel serving box"
-    }
-   ],
-   "questions": [
-    "হাতপাখাটা কোনটা?",
-    "কোনটার তলায় ছোট ছোট ফুটো আছে?",
-    "এগুলোর মধ্যে কোনটা আপনি কারও বাসায় দেখেছেন?",
-    "কুলা হাতে নিলে কীভাবে নাড়াবেন?",
-    "বাড়িতে বসার জন্য আর কী রাখেন?",
-    "পুরোনো দিনের কোনো জিনিস ব্যবহার কমে গেলে তার সঙ্গে কোন অভ্যাসটা হারিয়ে যেতে পারে?"
-   ]
-  },
-  {
-   "id": "fabric-care-actions",
-   "number": 133,
-   "title": "কাপড় নিয়ে যে কাজ করি",
-   "front": "pages/133-front.jpg",
-   "back": "pages/133-back.jpg",
-   "items": [
-    {
-     "id": "iron-cloth",
-     "label": "ইস্ত্রি করা",
-     "gloss": "to iron cloth"
-    },
-    {
-     "id": "pleat-cloth",
-     "label": "কুঁচি দেওয়া",
-     "gloss": "to make pleats"
-    },
-    {
-     "id": "soak-fabric",
-     "label": "ভিজিয়ে রাখা",
-     "gloss": "to leave fabric soaking"
-    },
-    {
-     "id": "wring-cloth",
-     "label": "নিংড়ানো",
-     "gloss": "to wring out cloth"
-    },
-    {
-     "id": "remove-stain",
-     "label": "দাগ তোলা",
-     "gloss": "to remove a stain"
-    },
-    {
-     "id": "dye-cloth",
-     "label": "রং করা",
-     "gloss": "to dye cloth"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে ইস্ত্রি করছেন?",
-    "কোন ছবিতে কাপড় থেকে পানি বের হচ্ছে?",
-    "কোন কাপড় আপনি ইস্ত্রি করেন?",
-    "ভেজা কাপড় মেলার আগে নিংড়ান কীভাবে?",
-    "কাপড়ের রং উঠে গেলে কীভাবে বুঝবেন?",
-    "কাপড় সামলানোর অভ্যাস বদলালে একই জামা কত দিন ব্যবহার করা যায়, তাতে কী তফাত হতে পারে?"
-   ]
-  },
-  {
-   "id": "describing-common-symptoms",
-   "number": 134,
-   "title": "শরীরের অসুবিধা বোঝাই",
-   "front": "pages/134-front.jpg",
-   "back": "pages/134-back.jpg",
-   "items": [
-    {
-     "id": "headache",
-     "label": "মাথা ব্যথা",
-     "gloss": "headache"
-    },
-    {
-     "id": "backache",
-     "label": "পিঠে ব্যথা",
-     "gloss": "backache"
-    },
-    {
-     "id": "sore-throat",
-     "label": "গিলতে কষ্ট",
-     "gloss": "difficulty swallowing"
-    },
-    {
-     "id": "vomiting",
-     "label": "বমি",
-     "gloss": "vomiting"
-    },
-    {
-     "id": "stuffy-nose",
-     "label": "নাক বন্ধ",
-     "gloss": "blocked nose"
-    },
-    {
-     "id": "breathing-hard",
-     "label": "শ্বাসকষ্ট",
-     "gloss": "difficulty breathing"
-    }
-   ],
-   "questions": [
-    "কার পিঠে ব্যথা?",
-    "গিলতে কষ্ট হচ্ছে এমন ছবিটা দেখাবেন?",
-    "শরীরের কী লাগছে, সেটা বলতে কোন শব্দগুলো কাজে লাগে?",
-    "মাথায় ব্যথা কোথায় হচ্ছে, সেটা দেখিয়ে কী বলবেন?",
-    "কাউকে সাহায্য চাইতে নিজের অসুবিধা এক কথায় কীভাবে বলবেন?",
-    "একই অসুবিধা দুইজন মানুষ আলাদা শব্দে বললে অন্যজন কীভাবে তাদের বুঝতে পারেন?"
-   ]
-  },
-  {
-   "id": "local-kitchen-implements",
-   "number": 135,
-   "title": "রান্নাঘরের হাতিয়ার",
-   "front": "pages/135-front.jpg",
-   "back": "pages/135-back.jpg",
-   "items": [
-    {
-     "id": "kitchen-tongs",
-     "label": "চিমটা",
-     "gloss": "kitchen tongs"
-    },
-    {
-     "id": "curved-kitchen-blade",
-     "label": "বঁটি",
-     "gloss": "Bengali upright kitchen cutter"
-    },
-    {
-     "id": "stone-grinder",
-     "label": "শিলপাটা",
-     "gloss": "flat stone grinder"
-    },
-    {
-     "id": "mortar-pestle",
-     "label": "হামানদিস্তা",
-     "gloss": "brass mortar and pestle"
-    },
-    {
-     "id": "rice-cooking-pot",
-     "label": "ডেকচি",
-     "gloss": "broad lidded cooking pot"
-    },
-    {
-     "id": "stove-grate",
-     "label": "চুলার জালি",
-     "gloss": "stove pot support grate"
-    }
-   ],
-   "questions": [
-    "বঁটিটা কোনটা?",
-    "কোন দুটো দিয়ে মসলা বাটা যায়?",
-    "বাড়িতে আপনি মসলা কী দিয়ে বাটেন?",
-    "গরম কিছু তুলে নিতে কোনটা নেবেন?",
-    "রান্নার কোনো জিনিস হাতের কাছে না থাকলে তার বদলে কী ব্যবহার করবেন?",
-    "একই খাবার পুরোনো আর নতুন হাতিয়ার দিয়ে বানালে কাজের সময় বা স্বাদ কীভাবে বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "more-domestic-animals",
-   "number": 136,
-   "title": "বাড়িতে পালা আরও প্রাণী",
-   "front": "pages/136-front.jpg",
-   "back": "pages/136-back.jpg",
-   "items": [
-    {
-     "id": "water-buffalo",
-     "label": "মহিষ",
-     "gloss": "domestic water buffalo"
-    },
-    {
-     "id": "domestic-sheep",
-     "label": "ভেড়া",
-     "gloss": "domestic sheep"
-    },
-    {
-     "id": "domestic-horse",
-     "label": "ঘোড়া",
-     "gloss": "domestic horse"
-    },
-    {
-     "id": "domestic-donkey",
-     "label": "গাধা",
-     "gloss": "domestic donkey"
-    },
-    {
-     "id": "domestic-rabbit",
-     "label": "খরগোশ",
-     "gloss": "domestic rabbit"
-    },
-    {
-     "id": "domestic-goose",
-     "label": "রাজহাঁস",
-     "gloss": "domestic goose"
-    }
-   ],
-   "questions": [
-    "মহিষটা কোনটা?",
-    "কোন দুটোর কান লম্বা?",
-    "এদের মধ্যে কোন প্রাণীটা আপনি কাছে থেকে দেখেছেন?",
-    "ঘোড়া আর গাধা দেখতে এক হলেও কী দেখে আলাদা করবেন?",
-    "আপনার এলাকায় মানুষ কোন প্রাণীগুলো পালে?",
-    "মানুষের কাজ বদলে গেলে বাড়িতে কোন প্রাণী পালা হয়, তাতেও কি বদল আসে? কেন?"
-   ]
-  },
-  {
-   "id": "more-market-fruit",
-   "number": 137,
-   "title": "খোসার ভেতরে যে ফল",
-   "front": "pages/137-front.jpg",
-   "back": "pages/137-back.jpg",
-   "items": [
-    {
-     "id": "orange-fruit",
-     "label": "কমলা",
-     "gloss": "orange fruit"
-    },
-    {
-     "id": "pomelo",
-     "label": "জাম্বুরা",
-     "gloss": "pomelo"
-    },
-    {
-     "id": "pomegranate",
-     "label": "ডালিম",
-     "gloss": "pomegranate"
-    },
-    {
-     "id": "custard-apple",
-     "label": "আতা",
-     "gloss": "custard apple"
-    },
-    {
-     "id": "sapodilla",
-     "label": "সফেদা",
-     "gloss": "sapodilla"
-    },
-    {
-     "id": "indian-olive",
-     "label": "জলপাই",
-     "gloss": "Bangladeshi Indian olive"
-    }
-   ],
-   "questions": [
-    "ডালিম কোনটা?",
-    "কোন দুটো ফলের ভেতরে কোয়ার মতো ভাগ দেখা যায়?",
-    "এই ফলগুলোর মধ্যে কোনটা আপনি খেয়েছেন?",
-    "কমলা আর জাম্বুরার খোসা কীভাবে আলাদা চিনবেন?",
-    "ফলের ভেতরটা দেখতে চাইলে দোকানিকে কী বলবেন?",
-    "এক দেশের চেনা ফল আরেক দেশে অপরিচিত হলে সেটা খাওয়ার উপায় কীভাবে বোঝাবেন?"
-   ]
-  },
-  {
-   "id": "fresh-kitchen-aromatics",
-   "number": 138,
-   "title": "রান্নায় ঘ্রাণ আর ঝাল দিই",
-   "front": "pages/138-front.jpg",
-   "back": "pages/138-back.jpg",
-   "items": [
-    {
-     "id": "ginger-root",
-     "label": "আদা",
-     "gloss": "ginger root"
-    },
-    {
-     "id": "garlic-bulb",
-     "label": "রসুন",
-     "gloss": "garlic bulb"
-    },
-    {
-     "id": "green-chili",
-     "label": "কাঁচামরিচ",
-     "gloss": "green chili"
-    },
-    {
-     "id": "scallion-tops",
-     "label": "পেঁয়াজপাতা",
-     "gloss": "onion greens"
-    },
-    {
-     "id": "coriander-leaves",
-     "label": "ধনেপাতা",
-     "gloss": "fresh coriander leaves"
-    },
-    {
-     "id": "fresh-mint",
-     "label": "পুদিনা",
-     "gloss": "mint leaves"
-    }
-   ],
-   "questions": [
-    "কাঁচামরিচ কোনটা?",
-    "কোন দুটো সবুজ পাতার ধার খাঁজকাটা?",
-    "আপনি কোনটার ঘ্রাণ দ্রুত চিনতে পারেন?",
-    "তরকারি ঝাল করতে দোকান থেকে কী কিনবেন?",
-    "আপনার চেনা একটা খাবারে কোন তাজা পাতা দেয়?",
-    "একই খাবারে মানুষ ভিন্ন ঘ্রাণ পছন্দ করেন কেন?"
-   ]
-  },
-  {
-   "id": "bangladesh-sweets",
-   "number": 139,
-   "title": "মিষ্টির দোকানে যা খাই",
-   "front": "pages/139-front.jpg",
-   "back": "pages/139-back.jpg",
-   "items": [
-    {
-     "id": "rasmalai",
-     "label": "রসমালাই",
-     "gloss": "rasmalai sweet in thick milk"
-    },
-    {
-     "id": "sandesh",
-     "label": "সন্দেশ",
-     "gloss": "molded sandesh sweet"
-    },
-    {
-     "id": "chomchom",
-     "label": "চমচম",
-     "gloss": "chomchom sweet"
-    },
-    {
-     "id": "laddu",
-     "label": "লাড্ডু",
-     "gloss": "boondi laddu sweet"
-    },
-    {
-     "id": "barfi",
-     "label": "বরফি",
-     "gloss": "square barfi sweet"
-    },
-    {
-     "id": "batasha",
-     "label": "বাতাসা",
-     "gloss": "airy batasha sugar sweet"
-    }
-   ],
-   "questions": [
-    "লাড্ডু কোনটা?",
-    "কোনটা মিষ্টি দুধের মধ্যে আছে?",
-    "এই মিষ্টিগুলোর মধ্যে আগে কোনটা খেয়েছেন?",
-    "চার রকম মিষ্টি একটু করে চাইলে দোকানে কী বলবেন?",
-    "দাওয়াতে আপনি কোন মিষ্টিটা নিয়ে যাবেন, আর কেন?",
-    "মিষ্টি শুধু খাবার হলেও কোনো কোনো দিনে এর বিশেষ মানে হয় কেন?"
-   ]
-  },
-  {
-   "id": "people-we-know-daily",
-   "number": 140,
-   "title": "রোজ দেখা হয় যাঁদের সঙ্গে",
-   "front": "pages/140-front.jpg",
-   "back": "pages/140-back.jpg",
-   "items": [
-    {
-     "id": "neighbor-role",
-     "label": "প্রতিবেশী",
-     "gloss": "neighbor"
-    },
-    {
-     "id": "playmate-role",
-     "label": "খেলার সাথি",
-     "gloss": "playmate"
-    },
-    {
-     "id": "classmate-role",
-     "label": "সহপাঠী",
-     "gloss": "classmate"
-    },
-    {
-     "id": "coworker-role",
-     "label": "সহকর্মী",
-     "gloss": "coworker"
-    },
-    {
-     "id": "landlord-role",
-     "label": "বাড়িওয়ালা",
-     "gloss": "landlord or landlady"
-    },
-    {
-     "id": "tenant-role",
-     "label": "ভাড়াটে",
-     "gloss": "tenant"
-    }
-   ],
-   "questions": [
-    "কোন দুজন একসঙ্গে পড়ছেন?",
-    "কোন ছবিতে পাশের বাসার মানুষ দেখা যাচ্ছে?",
-    "আপনি পরিচিত কার সঙ্গে সবচেয়ে বেশি দেখা করেন?",
-    "পাশের বাসায় নতুন কেউ এলে কীভাবে কথা শুরু করবেন?",
-    "সহকর্মীর কাছে সাহায্য চাইলে কী বলবেন?",
-    "একে অন্যকে চেনার সুযোগ কম হলে পাড়ার সম্পর্ক কীভাবে বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "price-age-and-depth",
-   "number": 141,
-   "title": "দেখে তফাত বলি",
-   "front": "pages/141-front.jpg",
-   "back": "pages/141-back.jpg",
-   "items": [
-    {
-     "id": "new-object",
-     "label": "নতুন",
-     "gloss": "new"
-    },
-    {
-     "id": "old-object",
-     "label": "পুরোনো",
-     "gloss": "old or worn from use"
-    },
-    {
-     "id": "expensive-object",
-     "label": "দামি",
-     "gloss": "expensive"
-    },
-    {
-     "id": "cheap-object",
-     "label": "সস্তা",
-     "gloss": "inexpensive"
-    },
-    {
-     "id": "deep-water",
-     "label": "গভীর",
-     "gloss": "deep"
-    },
-    {
-     "id": "shallow-water",
-     "label": "অগভীর",
-     "gloss": "shallow"
-    }
-   ],
-   "questions": [
-    "নতুন জিনিসটা কোন ছবিতে?",
-    "কোন ছবির পানি অগভীর?",
-    "আপনি কোন জিনিসটা পুরোনো হলেও এখনও ব্যবহার করেন?",
-    "একই রকম জিনিসের মধ্যে কোনটা দামি কীভাবে বুঝবেন?",
-    "কিছু কিনতে গেলে কোন জিনিসে দাম ছাড়াও আর কী দেখেন?",
-    "দামি জিনিস সব সময় সস্তা জিনিসের চেয়ে ভালো ধরে নিলে কোথায় ভুল হতে পারে?"
-   ]
-  },
-  {
-   "id": "rice-from-field-to-pot",
-   "number": 142,
-   "title": "ধান থেকে ভাত পর্যন্ত",
-   "front": "pages/142-front.jpg",
-   "back": "pages/142-back.jpg",
-   "items": [
-    {
-     "id": "rice-seedling",
-     "label": "চারা",
-     "gloss": "rice seedling"
-    },
-    {
-     "id": "cut-paddy",
-     "label": "ধান কাটা",
-     "gloss": "to cut ripe paddy stalks"
-    },
-    {
-     "id": "thresh-paddy",
-     "label": "মাড়াই করা",
-     "gloss": "to thresh paddy"
-    },
-    {
-     "id": "dry-paddy",
-     "label": "ধান শুকানো",
-     "gloss": "to dry paddy after harvest"
-    },
-    {
-     "id": "winnow-rice",
-     "label": "চাল ঝাড়া",
-     "gloss": "to winnow rice"
-    },
-    {
-     "id": "cook-rice",
-     "label": "ভাত রান্না করা",
-     "gloss": "to cook plain rice"
-    }
-   ],
-   "questions": [
-    "কে ধান কাটছেন?",
-    "কোন ছবিতে ধান উঠানে ছড়ানো?",
-    "আপনি কখনও ধান কাটতে বা শুকাতে দেখেছেন?",
-    "ধান কেটে ঘরে আনার পরে কী কী ধাপ থাকে?",
-    "ধান আর চাল হাতে নিয়ে কী দেখে তফাত বুঝবেন?",
-    "ধানের একটা ধাপ দেরি হলে বাকি কাজ আর যাঁরা করেন তাঁদের ওপর কী প্রভাব পড়তে পারে?"
-   ]
-  },
-  {
-   "id": "parts-of-clothing",
-   "number": 143,
-   "title": "জামাকাপড়ের কোন দিক",
-   "front": "pages/143-front.jpg",
-   "back": "pages/143-back.jpg",
-   "items": [
-    {
-     "id": "shirt-sleeve",
-     "label": "হাতা",
-     "gloss": "garment sleeve"
-    },
-    {
-     "id": "collar-opening",
-     "label": "জামার গলা",
-     "gloss": "neck opening of a garment"
-    },
-    {
-     "id": "cloth-fringe",
-     "label": "ঝালর",
-     "gloss": "cloth fringe"
-    },
-    {
-     "id": "garment-lining",
-     "label": "আস্তর",
-     "gloss": "garment lining"
-    },
-    {
-     "id": "sari-border",
-     "label": "পাড়",
-     "gloss": "woven garment border"
-    },
-    {
-     "id": "sari-pallu",
-     "label": "আঁচল",
-     "gloss": "loose decorative sari end"
-    }
-   ],
-   "questions": [
-    "জামার হাতাটা কোন ছবিতে?",
-    "কোন ছবিতে মহিলা আঁচল ধরে আছেন?",
-    "কোন ধরনের জামার গলা আপনার আরাম লাগে?",
-    "হাতা ছোট করতে দর্জিকে কী বলবেন?",
-    "জামায় আস্তর আছে কি না কীভাবে দেখবেন?",
-    "কোনো জামার ছোট একটা অংশ বদলালে মানুষ সেটি কোথায় বা কখন পরবেন, তা কীভাবে বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "everyday-bodily-needs",
-   "number": 144,
-   "title": "খিদে তেষ্টা আর ঘুম",
-   "front": "pages/144-front.jpg",
-   "back": "pages/144-back.jpg",
-   "items": [
-    {
-     "id": "hungry-person",
-     "label": "খিদে লাগা",
-     "gloss": "to feel hungry"
-    },
-    {
-     "id": "full-person",
-     "label": "পেট ভরা",
-     "gloss": "full after eating"
-    },
-    {
-     "id": "thirsty-person",
-     "label": "তেষ্টা পাওয়া",
-     "gloss": "to feel thirsty"
-    },
-    {
-     "id": "sleepy-person",
-     "label": "ঘুম পাওয়া",
-     "gloss": "to feel sleepy"
-    },
-    {
-     "id": "feeling-hot",
-     "label": "গরম লাগা",
-     "gloss": "to feel too warm"
-    },
-    {
-     "id": "feeling-chilly",
-     "label": "শীত করা",
-     "gloss": "to feel chilly"
-    }
-   ],
-   "questions": [
-    "কার খিদে লেগেছে?",
-    "কার গরম লাগছে আর কার শীত করছে?",
-    "আপনার সাধারণত কখন তেষ্টা পায়?",
-    "খাওয়ার মাঝখানে পেট ভরে গেলে কী বলবেন?",
-    "ঘুম পেলে কাজের ফাঁকে আপনি কী করেন?",
-    "কেউ নিজের কী দরকার তা বলতে না পারলে তাঁর কোন আচরণ দেখে বুঝতে পারেন?"
-   ]
-  },
-  {
-   "id": "things-in-the-sky",
-   "number": 145,
-   "title": "আমাদের মাথার ওপর আকাশ",
-   "front": "pages/145-front.jpg",
-   "back": "pages/145-back.jpg",
-   "items": [
-    {
-     "id": "bright-sun",
-     "label": "সূর্য",
-     "gloss": "sun"
-    },
-    {
-     "id": "full-moon",
-     "label": "পূর্ণিমার চাঁদ",
-     "gloss": "full moon"
-    },
-    {
-     "id": "night-stars",
-     "label": "তারা",
-     "gloss": "stars in the sky"
-    },
-    {
-     "id": "rainbow-arc",
-     "label": "রংধনু",
-     "gloss": "rainbow"
-    },
-    {
-     "id": "hail-fall",
-     "label": "শিলাবৃষ্টি",
-     "gloss": "hail falling"
-    },
-    {
-     "id": "lightning-flash",
-     "label": "বিদ্যুৎ চমক",
-     "gloss": "lightning flash"
-    }
-   ],
-   "questions": [
-    "রংধনু কোন ছবিতে?",
-    "কোন দুটোতে ঝড়ের মেঘ আছে?",
-    "আপনি শেষ কবে আকাশে অনেক তারা দেখেছেন?",
-    "শিলাবৃষ্টি আর সাধারণ বৃষ্টি কী দেখে আলাদা করবেন?",
-    "বিদ্যুৎ চমকালে আকাশটা কী রকম দেখায়?",
-    "একই আকাশের ছবি দেখে দুইজনের আলাদা স্মৃতি মনে পড়তে পারে কেন?"
-   ]
-  },
-  {
-   "id": "small-everyday-mishaps",
-   "number": 146,
-   "title": "চলার সময় ছোটখাটো ঝামেলা",
-   "front": "pages/146-front.jpg",
-   "back": "pages/146-back.jpg",
-   "items": [
-    {
-     "id": "trip-over",
-     "label": "হোঁচট খাওয়া",
-     "gloss": "to trip over something"
-    },
-    {
-     "id": "foot-slip",
-     "label": "পিছলে যাওয়া",
-     "gloss": "to slip on a surface"
-    },
-    {
-     "id": "bump-into",
-     "label": "ধাক্কা খাওয়া",
-     "gloss": "to bump into someone"
-    },
-    {
-     "id": "knocked-away",
-     "label": "ছিটকে পড়া",
-     "gloss": "to be knocked flying"
-    },
-    {
-     "id": "bend-out-of-shape",
-     "label": "বেঁকে যাওয়া",
-     "gloss": "to become bent out of shape"
-    },
-    {
-     "id": "stuck-to-surface",
-     "label": "লেগে থাকা",
-     "gloss": "to be stuck to a surface"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে পা পিছলে যাচ্ছে?",
-    "কোন জিনিসটা ছিটকে পড়ছে?",
-    "আপনি কখনও ভেজা রাস্তায় পিছলে গেছেন?",
-    "কাউকে কোথায় হোঁচট খেলেন সেটা কীভাবে বলবেন?",
-    "পথে কী দেখে বুঝবেন পা সাবধানে ফেলতে হবে?",
-    "একই পথ একেকজনের জন্য একেক রকম কঠিন হতে পারে কেন?"
-   ]
-  },
-  {
-   "id": "renting-and-moving-home",
-   "number": 147,
-   "title": "বাসা ভাড়ার কথাবার্তা",
-   "front": "pages/147-front.jpg",
-   "back": "pages/147-back.jpg",
-   "items": [
-    {
-     "id": "view-rental",
-     "label": "বাসা দেখতে আসা",
-     "gloss": "to come to view a rental"
-    },
-    {
-     "id": "vacant-home",
-     "label": "খালি বাসা",
-     "gloss": "empty rental home"
-    },
-    {
-     "id": "pay-rent",
-     "label": "ভাড়ার টাকা দেওয়া",
-     "gloss": "to pay rent"
-    },
-    {
-     "id": "security-deposit",
-     "label": "জামানত",
-     "gloss": "refundable security deposit"
-    },
-    {
-     "id": "rental-agreement",
-     "label": "ভাড়ার চুক্তি",
-     "gloss": "rental agreement"
-    },
-    {
-     "id": "move-home",
-     "label": "বাসা বদলানো",
-     "gloss": "to move to a different home"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে ঘর খালি আর কেউ নেই?",
-    "কোন ছবিতে মালপত্র নিয়ে যাচ্ছেন?",
-    "বাসা দেখতে গেলে আপনি আগে কী দেখেন?",
-    "ভাড়া কত আর কবে দিতে হয়, কীভাবে জিজ্ঞেস করবেন?",
-    "চুক্তি করার আগে কোন কথা পরিষ্কার করে নেবেন?",
-    "নানা মানুষের বাসার দরকার আলাদা হয় কেন, আর কোন জিনিসের জন্য তাঁরা আপস করতে পারেন?"
-   ]
-  },
-  {
-   "id": "extended-family-on-both-sides",
-   "number": 148,
-   "title": "আব্বা আম্মার দিকের আপনজন",
-   "front": "pages/148-front.jpg",
-   "back": "pages/148-back.jpg",
-   "items": [
-    {
-     "id": "paternal-grandfather",
-     "label": "দাদা",
-     "gloss": "paternal grandfather"
-    },
-    {
-     "id": "paternal-grandmother",
-     "label": "দাদি",
-     "gloss": "paternal grandmother"
-    },
-    {
-     "id": "paternal-uncle",
-     "label": "চাচা",
-     "gloss": "paternal uncle"
-    },
-    {
-     "id": "paternal-aunt",
-     "label": "চাচি",
-     "gloss": "wife of paternal uncle"
-    },
-    {
-     "id": "maternal-uncle",
-     "label": "মামা",
-     "gloss": "maternal uncle"
-    },
-    {
-     "id": "maternal-aunt",
-     "label": "মামি",
-     "gloss": "wife of maternal uncle"
-    }
-   ],
-   "questions": [
-    "আব্বার পাশে সাদা দাড়িওয়ালা দাদা কোন ছবিতে?",
-    "চাচি আর মামি ছবিতে কী রঙের ওড়না পরেছেন?",
-    "আপনার পরিচিত লোকজন আব্বার ভাইকে কী বলে ডাকেন?",
-    "কাউকে নিজের মামার পরিচয় কীভাবে দেবেন?",
-    "পরিবারের বাইরে কাউকে চাচা বা মামা বলে ডাকতে কখন শুনেছেন?",
-    "আত্মীয় না হলেও কাউকে আত্মীয়ের নামে ডাকলে সম্পর্কটা কেমন মনে হয়, আর কখন তা আলাদা বোঝাতে হয়?"
-   ]
-  },
-  {
-   "id": "neighborhood-shop-types",
-   "number": 149,
-   "title": "কোন জিনিসের কোন দোকান",
-   "front": "pages/149-front.jpg",
-   "back": "pages/149-back.jpg",
-   "items": [
-    {
-     "id": "tea-stall",
-     "label": "চায়ের দোকান",
-     "gloss": "tea stall"
-    },
-    {
-     "id": "meal-shop",
-     "label": "ভাতের দোকান",
-     "gloss": "small rice-meal eatery"
-    },
-    {
-     "id": "medicine-shop",
-     "label": "ওষুধের দোকান",
-     "gloss": "medicine shop"
-    },
-    {
-     "id": "barber-shop",
-     "label": "নাপিতের দোকান",
-     "gloss": "barbershop"
-    },
-    {
-     "id": "grocery-shop",
-     "label": "মুদিদোকান",
-     "gloss": "small dry-goods grocery"
-    },
-    {
-     "id": "sweet-shop",
-     "label": "মিষ্টির দোকান",
-     "gloss": "sweet shop"
-    }
-   ],
-   "questions": [
-    "চায়ের দোকান কোনটা?",
-    "কোন দোকানে চুল কাটতে যান?",
-    "আপনার বাসার কাছে কোন ধরনের দোকান আছে?",
-    "ডাল কোথায় পাবেন জানতে কী বলবেন?",
-    "চেনা কাউকে মিষ্টি নিতে হলে কোন দোকানের পথ দেখাবেন?",
-    "পাড়ায় দোকানের ধরন বদলে গেলে কারা কীভাবে কেনাকাটার অভ্যাস বদলাতে পারেন?"
-   ]
-  },
-  {
-   "id": "marks-and-things-on-the-ground",
-   "number": 150,
-   "title": "মাটিতে তাকালে যা দেখি",
-   "front": "pages/150-front.jpg",
-   "back": "pages/150-back.jpg",
-   "items": [
-    {
-     "id": "mud",
-     "label": "কাদা",
-     "gloss": "wet mud"
-    },
-    {
-     "id": "dust",
-     "label": "ধুলো",
-     "gloss": "dry loose dust"
-    },
-    {
-     "id": "footprint",
-     "label": "পায়ের ছাপ",
-     "gloss": "bare human footprint"
-    },
-    {
-     "id": "tire-track-mark",
-     "label": "চাকার দাগ",
-     "gloss": "tire tread impression in dirt"
-    },
-    {
-     "id": "ground-hole",
-     "label": "গর্ত",
-     "gloss": "hole in the ground"
-    },
-    {
-     "id": "earthworm",
-     "label": "কেঁচো",
-     "gloss": "earthworm"
-    }
-   ],
-   "questions": [
-    "পায়ের ছাপ কোন ছবিতে?",
-    "কোন ছবিতে মাটি ভিজে কাদা হয়েছে?",
-    "বৃষ্টি হলে আপনার বাড়ির কাছে কোথায় কাদা হয়?",
-    "ধুলো উড়লে জিনিস রাখার জায়গা কীভাবে বদলান?",
-    "একটা দাগ দেখে কীভাবে বুঝবেন সেটা নতুন না পুরোনো?",
-    "একই জায়গার মাটি বদলে গেলে আশপাশের মানুষ আর প্রাণীর চলাফেরা কীভাবে বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "vegetables-for-curry-and-bhaji",
-   "number": 151,
-   "title": "ঝোল আর ভাজির সবজি",
-   "front": "pages/151-front.jpg",
-   "back": "pages/151-back.jpg",
-   "items": [
-    {
-     "id": "bitter-gourd",
-     "label": "করলা",
-     "gloss": "bitter gourd"
-    },
-    {
-     "id": "snake-gourd",
-     "label": "চিচিঙ্গা",
-     "gloss": "snake gourd"
-    },
-    {
-     "id": "green-papaya",
-     "label": "কাঁচা পেঁপে",
-     "gloss": "unripe papaya for cooking"
-    },
-    {
-     "id": "ash-gourd",
-     "label": "চালকুমড়া",
-     "gloss": "ash gourd"
-    },
-    {
-     "id": "green-cooking-banana",
-     "label": "কাঁচকলা",
-     "gloss": "green cooking banana"
-    },
-    {
-     "id": "moringa-pods",
-     "label": "সজনে ডাঁটা",
-     "gloss": "moringa pods eaten as a vegetable"
-    }
-   ],
-   "questions": [
-    "করলাটা কোনটা?",
-    "কোনটা কলার মতো দেখতে?",
-    "এই সবজিগুলোর মধ্যে কোনটা আপনি খেয়েছেন?",
-    "চিচিঙ্গা কিনতে গেলে দোকানিকে কী বলবেন?",
-    "সজনে ডাঁটা আর চালকুমড়া কাটলে কী তফাত দেখবেন?",
-    "অচেনা সবজি কিনলে কীভাবে বুঝবেন সেটা ঝোলে ভালো হবে, নাকি ভাজিতে?"
-   ]
-  },
-  {
-   "id": "leafy-greens-at-market",
-   "number": 152,
-   "title": "হাটে যে শাক পাই",
-   "front": "pages/152-front.jpg",
-   "back": "pages/152-back.jpg",
-   "items": [
-    {
-     "id": "spinach-greens",
-     "label": "পালংশাক",
-     "gloss": "spinach leaves sold in bundles"
-    },
-    {
-     "id": "red-amaranth-greens",
-     "label": "লালশাক",
-     "gloss": "red amaranth greens"
-    },
-    {
-     "id": "malabar-spinach-greens",
-     "label": "পুঁইশাক",
-     "gloss": "Malabar spinach vine greens"
-    },
-    {
-     "id": "water-spinach-greens",
-     "label": "কলমিশাক",
-     "gloss": "water spinach greens"
-    },
-    {
-     "id": "amaranth-stem-greens",
-     "label": "ডাঁটাশাক",
-     "gloss": "amaranth grown for edible thick stalks"
-    },
-    {
-     "id": "bottle-gourd-leaves",
-     "label": "লাউশাক",
-     "gloss": "bottle gourd vine tips and leaves eaten as greens"
-    }
-   ],
-   "questions": [
-    "লালশাক কোনটা?",
-    "কোন শাকের পাতাগুলো সবচেয়ে সরু?",
-    "আপনি বাড়িতে কোন শাক রান্না হতে দেখেছেন?",
-    "এক আঁটি পুঁইশাক চাইতে কী বলবেন?",
-    "শাকটা ভালো আছে কি না, কিনতে গেলে কী দেখে বুঝবেন?",
-    "একই শাক কেউ ডাঁটাসহ খায় আর কেউ শুধু পাতা নেয়, এর কারণ কী হতে পারে?"
-   ]
-  },
-  {
-   "id": "more-fish-from-the-market",
-   "number": 153,
-   "title": "মাছের বাজারে আরও মাছ",
-   "front": "pages/153-front.jpg",
-   "back": "pages/153-back.jpg",
-   "items": [
-    {
-     "id": "silver-pomfret-local",
-     "label": "রূপচাঁদা",
-     "gloss": "silver pomfret"
-    },
-    {
-     "id": "catla-carp-local",
-     "label": "কাতলা",
-     "gloss": "catla carp"
-    },
-    {
-     "id": "boal-catfish-local",
-     "label": "বোয়াল",
-     "gloss": "Wallago attu freshwater catfish"
-    },
-    {
-     "id": "pabda-catfish-local",
-     "label": "পাবদা",
-     "gloss": "pabda butter catfish"
-    },
-    {
-     "id": "mola-fish-local",
-     "label": "মলা",
-     "gloss": "mola carplet"
-    },
-    {
-     "id": "tengra-fish-local",
-     "label": "টেংরা",
-     "gloss": "tengra striped freshwater catfish"
-    }
-   ],
-   "questions": [
-    "রূপচাঁদা কোনটা?",
-    "কোন দুই ছবিতে মাছের মাথা বেশ বড়?",
-    "আপনি এর মধ্যে কোন মাছ খেয়েছেন?",
-    "মাছের দোকানিকে আধা কেজি পাবদা দিতে কী বলবেন?",
-    "বোয়াল আর টেংরার গায়ে কী তফাত আছে?",
-    "একই বাজারে কেউ বড় মাছ আর কেউ ছোট মাছ বেছে নেন কেন?"
-   ]
-  },
-  {
-   "id": "market-stall-snacks",
-   "number": 154,
-   "title": "হাটে গরম গরম নাশতা",
-   "front": "pages/154-front.jpg",
-   "back": "pages/154-back.jpg",
-   "items": [
-    {
-     "id": "fuchka-snack",
-     "label": "ফুচকা",
-     "gloss": "fuchka stuffed crisp shells"
-    },
-    {
-     "id": "chotpoti-snack",
-     "label": "চটপটি",
-     "gloss": "chotpoti pea and tamarind snack"
-    },
-    {
-     "id": "jhalmuri-snack",
-     "label": "ঝালমুড়ি",
-     "gloss": "spiced puffed-rice snack"
-    },
-    {
-     "id": "onion-fritters",
-     "label": "পেঁয়াজু",
-     "gloss": "Bangladeshi onion lentil fritter"
-    },
-    {
-     "id": "eggplant-fritters",
-     "label": "বেগুনি",
-     "gloss": "battered Bangladeshi eggplant fritter"
-    },
-    {
-     "id": "lentil-puri-snack",
-     "label": "ডালপুরি",
-     "gloss": "lentil-filled fried flatbread"
-    }
-   ],
-   "questions": [
-    "ফুচকা কোনটা?",
-    "কোন খাবারটা কাগজের ঠোঙায় আছে?",
-    "আপনি কখনও চটপটি খেয়েছেন?",
-    "বেগুনি চাইলে দোকানিকে কী বলবেন?",
-    "কোন খাবারে ঝাল কম দিতে বলবেন, আর কীভাবে বলবেন?",
-    "একই নাশতা নিয়ে কারও ভালো লাগে আর কারও ঝাল বেশি মনে হয় কেন?"
-   ]
-  },
-  {
-   "id": "bangladesh-flour-snacks",
-   "number": 155,
-   "title": "ময়দা দিয়ে বানানো খাবার",
-   "front": "pages/155-front.jpg",
-   "back": "pages/155-back.jpg",
-   "items": [
-    {
-     "id": "plain-paratha",
-     "label": "পরোটা",
-     "gloss": "layered plain Bangladeshi paratha"
-    },
-    {
-     "id": "luchi-fried-bread",
-     "label": "লুচি",
-     "gloss": "puffed white flour luchi"
-    },
-    {
-     "id": "bakarkhani-bread",
-     "label": "বাখরখানি",
-     "gloss": "Dhaka flaky baked bakarkhani"
-    },
-    {
-     "id": "nimki-savory-cracker",
-     "label": "নিমকি",
-     "gloss": "small diamond Bengali nimki cracker"
-    },
-    {
-     "id": "stuffed-mughlai-paratha",
-     "label": "মোগলাই পরোটা",
-     "gloss": "egg-stuffed Mughlai paratha"
-    },
-    {
-     "id": "sliced-bread-loaf",
-     "label": "পাউরুটি",
-     "gloss": "loaf of sliced sandwich bread"
-    }
-   ],
-   "questions": [
-    "পাউরুটি কোনটা?",
-    "কোন দুটো খাবার গোল দেখাচ্ছে?",
-    "নাশতায় এর মধ্যে কোনটা আপনি খান?",
-    "পাউরুটি আর বাখরখানি কীভাবে চিনবেন?",
-    "চারটা লুচি চাইতে দোকানিকে কী বলবেন?",
-    "একই ময়দা দিয়ে বানালেও খাবারগুলো দেখতে আর খেতে এত আলাদা হয় কেন?"
-   ]
-  },
-  {
-   "id": "working-ingredients-while-cooking",
-   "number": 156,
-   "title": "রান্নার আগে আর রান্নার মাঝে",
-   "front": "pages/156-front.jpg",
-   "back": "pages/156-back.jpg",
-   "items": [
-    {
-     "id": "grind-to-paste",
-     "label": "বাটা",
-     "gloss": "to grind ingredients into a paste"
-    },
-    {
-     "id": "grate-coconut",
-     "label": "নারকেল কোরা",
-     "gloss": "to grate a coconut"
-    },
-    {
-     "id": "whisk-eggs",
-     "label": "ডিম ফেটানো",
-     "gloss": "to whisk eggs"
-    },
-    {
-     "id": "mash-potato",
-     "label": "আলু চটকানো",
-     "gloss": "to mash a potato"
-    },
-    {
-     "id": "drain-rice-water",
-     "label": "মাড় ঝরানো",
-     "gloss": "to drain starchy cooking water from cooked rice"
-    },
-    {
-     "id": "reduce-syrup",
-     "label": "রস জ্বাল দেওয়া",
-     "gloss": "to reduce sugar syrup by simmering"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে ডিম ফেটাচ্ছেন?",
-    "কোন ছবিতে ভাতের মাড় ঝরাচ্ছেন?",
-    "নারকেল কুরিয়ে আপনি কী বানাতে দেখেছেন?",
-    "আলু চটকানোর জন্য কী কী লাগবে?",
-    "মরিচ বাটা আর আলু চটকানোর পর কী তফাত দেখা যায়?",
-    "একই মসলা বেটে আর আস্ত দিয়ে রান্না করলে খাবারটা কেমন বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "texture-of-food",
-   "number": 157,
-   "title": "খাবারের ছোঁয়া আর কামড়",
-   "front": "pages/157-front.jpg",
-   "back": "pages/157-back.jpg",
-   "items": [
-    {
-     "id": "crispy-texture",
-     "label": "মচমচে",
-     "gloss": "crispy food texture"
-    },
-    {
-     "id": "sticky-food-texture",
-     "label": "আঠালো",
-     "gloss": "sticky food texture"
-    },
-    {
-     "id": "juicy-fruit-texture",
-     "label": "রসালো",
-     "gloss": "juicy food texture"
-    },
-    {
-     "id": "fluffy-separate-grains",
-     "label": "ঝুরঝুরে",
-     "gloss": "fluffy loose rice grains"
-    },
-    {
-     "id": "thick-gloopy-food",
-     "label": "থকথকে",
-     "gloss": "thick gloopy food texture"
-    },
-    {
-     "id": "hollow-puffed-food",
-     "label": "ফাঁপা",
-     "gloss": "hollow interior of puffed food"
-    }
-   ],
-   "questions": [
-    "কোন খাবারটা ভেতরে ফাঁপা?",
-    "কোন ছবিতে ভাতের দানাগুলো আলাদা দেখা যাচ্ছে?",
-    "আপনি কী মচমচে খাবার ভালোবাসেন?",
-    "ভাত আঠালো হয়েছে, এটা কাউকে কীভাবে বলবেন?",
-    "থকথকে খাবার আর রসালো খাবার মুখে কীভাবে আলাদা লাগে?",
-    "একই পদ একটু বেশি বা কম রান্না করলে তার গড়ন কীভাবে বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "flatbread-and-serving-tools",
-   "number": 158,
-   "title": "রুটি বেলা আর খাবার তোলা",
-   "front": "pages/158-front.jpg",
-   "back": "pages/158-back.jpg",
-   "items": [
-    {
-     "id": "flatbread-griddle",
-     "label": "তাওয়া",
-     "gloss": "tawa griddle for flatbread"
-    },
-    {
-     "id": "wooden-rolling-pin-local",
-     "label": "বেলন",
-     "gloss": "South Asian wooden rolling pin"
-    },
-    {
-     "id": "rolling-board-round",
-     "label": "রুটি বেলার পিঁড়ি",
-     "gloss": "low round board for rolling flatbread"
-    },
-    {
-     "id": "coconut-scraper-tool",
-     "label": "নারকেল কোরানি",
-     "gloss": "fixed Bengali coconut grater"
-    },
-    {
-     "id": "deep-serving-ladle",
-     "label": "রান্নার হাতা",
-     "gloss": "deep metal cooking ladle"
-    },
-    {
-     "id": "flat-skimmer",
-     "label": "ঝাঁঝরি",
-     "gloss": "flat perforated frying skimmer"
-    }
-   ],
-   "questions": [
-    "তাওয়াটা কোনটা?",
-    "কোনটার মাথায় ছিদ্র আছে?",
-    "আপনি কখনও বেলন দিয়ে কিছু বেলেছেন?",
-    "ডাল তুলে দিতে কোনটা হাতে নেবেন?",
-    "ভাজা খাবার তুললে ঝাঁঝরির ছিদ্র দিয়ে কী বের হয়ে যায়?",
-    "রান্নার সরঞ্জাম বেছে নেওয়ার সময় দেখতে একই রকম হলেও কী কী তফাত দেখবেন?"
-   ]
-  },
-  {
-   "id": "door-and-window-fittings",
-   "number": 159,
-   "title": "দরজা জানালার ছোট অংশ",
-   "front": "pages/159-front.jpg",
-   "back": "pages/159-back.jpg",
-   "items": [
-    {
-     "id": "window-fixed-bars",
-     "label": "জানালার শিক",
-     "gloss": "fixed metal window bars"
-    },
-    {
-     "id": "door-pull-handle",
-     "label": "দরজার হাতল",
-     "gloss": "door pull handle"
-    },
-    {
-     "id": "door-butt-hinge",
-     "label": "কবজা",
-     "gloss": "door butt hinge"
-    },
-    {
-     "id": "door-ring-knocker",
-     "label": "দোরের কড়া",
-     "gloss": "door ring knocker"
-    },
-    {
-     "id": "door-entire-frame",
-     "label": "চৌকাঠ",
-     "gloss": "complete wooden door frame"
-    },
-    {
-     "id": "door-lock-keyhole",
-     "label": "তালার ছিদ্র",
-     "gloss": "door lock keyhole"
-    }
-   ],
-   "questions": [
-    "দরজার হাতল কোনটা?",
-    "কোন ছবিতে চাবি ঢোকানোর ছিদ্র আছে?",
-    "আপনার বাড়ির জানালায় শিক আছে?",
-    "দরজার কবজা ঢিলা হলে মিস্ত্রিকে কী বলবেন?",
-    "কড়া নাড়ার পরে বাড়ির লোক সাড়া না দিলে কী করবেন?",
-    "ঘরে আলো আর বাতাস রাখার সঙ্গে নিরাপত্তাও রাখতে হলে জানালা কেমন হওয়া ভালো?"
-   ]
-  },
-  {
-   "id": "hands-on-small-repairs",
-   "number": 160,
-   "title": "মেরামতের সময় যা করি",
-   "front": "pages/160-front.jpg",
-   "back": "pages/160-back.jpg",
-   "items": [
-    {
-     "id": "hammer-a-nail",
-     "label": "পেরেক ঠোকা",
-     "gloss": "to hammer a nail into wood"
-    },
-    {
-     "id": "saw-along-wood",
-     "label": "করাত দিয়ে চেরা",
-     "gloss": "to saw along wood"
-    },
-    {
-     "id": "tighten-a-screw",
-     "label": "প্যাঁচ কষা",
-     "gloss": "to tighten a screw"
-    },
-    {
-     "id": "bore-a-hole",
-     "label": "ফুটো করা",
-     "gloss": "to drill a neat hole"
-    },
-    {
-     "id": "whitewash-a-wall",
-     "label": "চুনকাম করা",
-     "gloss": "to apply lime whitewash"
-    },
-    {
-     "id": "glue-two-pieces",
-     "label": "জোড়া লাগানো",
-     "gloss": "to join broken pieces back together"
-    }
-   ],
-   "questions": [
-    "কে পেরেক ঠুকছেন?",
-    "কোন ছবিতে আঠা দিয়ে দুই টুকরা জোড়া লাগাচ্ছেন?",
-    "আপনি বাড়িতে কী মেরামত করেছেন?",
-    "কাঠে ফুটো করতে হলে আগে কী দেখে নেবেন?",
-    "পেঁচ আর পেরেক লাগানোর জন্য আলাদা কী লাগবে?",
-    "কখন কোনো জিনিস জোড়া লাগিয়ে ব্যবহার করা ভালো আর কখন নতুনটা নেওয়া ভালো?"
-   ]
-  },
-  {
-   "id": "more-clothes-to-wear",
-   "number": 161,
-   "title": "বের হওয়ার সময় যে জামাকাপড় পরি",
-   "front": "pages/161-front.jpg",
-   "back": "pages/161-back.jpg",
-   "items": [
-    {
-     "id": "casual-fatua-top",
-     "label": "ফতুয়া",
-     "gloss": "short cotton Bangladeshi fatua tunic"
-    },
-    {
-     "id": "pajama-trousers",
-     "label": "পায়জামা",
-     "gloss": "men's narrow drawstring pajama trousers"
-    },
-    {
-     "id": "sleeveless-shirt",
-     "label": "হাতা কাটা জামা",
-     "gloss": "sleeveless shirt"
-    },
-    {
-     "id": "winter-shawl",
-     "label": "শাল",
-     "gloss": "woven shoulder shawl"
-    },
-    {
-     "id": "head-turban",
-     "label": "পাগড়ি",
-     "gloss": "wrapped head turban"
-    },
-    {
-     "id": "long-borka",
-     "label": "বোরকা",
-     "gloss": "long Bangladeshi outer borka garment"
-    }
-   ],
-   "questions": [
-    "পাগড়িটা কে পরেছেন?",
-    "কোন জামাটার হাতা নেই?",
-    "ফতুয়া আর পায়জামা আপনি একসঙ্গে কাকে পরতে দেখেছেন?",
-    "শাল কিনতে গেলে কী রং চাইবেন?",
-    "শাল আর বোরকা শরীরের কোন কোন অংশ ঢাকে?",
-    "একই মানুষ কাজের সময় আর দাওয়াতে আলাদা জামাকাপড় কেন বেছে নিতে পারেন?"
-   ]
-  },
-  {
-   "id": "footwear-and-its-parts",
-   "number": 162,
-   "title": "পায়ে পরি আর জুতায় লাগাই",
-   "front": "pages/162-front.jpg",
-   "back": "pages/162-back.jpg",
-   "items": [
-    {
-     "id": "everyday-open-sandal",
-     "label": "চটি",
-     "gloss": "simple open-backed everyday sandal"
-    },
-    {
-     "id": "wooden-kharam-sandal",
-     "label": "খড়ম",
-     "gloss": "traditional wooden kharam toe-knob sandals"
-    },
-    {
-     "id": "embroidered-nagra-shoe",
-     "label": "নাগরা",
-     "gloss": "traditional embroidered nagra shoes"
-    },
-    {
-     "id": "shoelace",
-     "label": "জুতার ফিতা",
-     "gloss": "shoelace"
-    },
-    {
-     "id": "shoe-outsole",
-     "label": "জুতার তলা",
-     "gloss": "outer bottom sole of a shoe"
-    },
-    {
-     "id": "foot-anklet-bells",
-     "label": "নূপুর",
-     "gloss": "decorative anklet with tiny bells"
-    }
-   ],
-   "questions": [
-    "খড়ম কোনটা?",
-    "কোন ছবিতে জুতার তলার দাগ দেখা যায়?",
-    "বাড়িতে আপনি সাধারণত কী পায়ে দেন?",
-    "জুতার ফিতা ছিঁড়লে দোকানে কী চাইবেন?",
-    "চটি আর নাগরা কোনটা কখন পরতে ভালো লাগবে?",
-    "একই জুতা দেখতে সুন্দর হলেও অনেকক্ষণ হাঁটার জন্য আর কী দেখবেন?"
-   ]
-  },
-  {
-   "id": "hair-on-head-and-face",
-   "number": 163,
-   "title": "মাথায় আর মুখে চুল",
-   "front": "pages/163-front.jpg",
-   "back": "pages/163-back.jpg",
-   "items": [
-    {
-     "id": "head-hair",
-     "label": "চুল",
-     "gloss": "hair on the head"
-    },
-    {
-     "id": "beard-hair",
-     "label": "দাড়ি",
-     "gloss": "beard on chin and cheeks"
-    },
-    {
-     "id": "moustache-hair",
-     "label": "গোঁফ",
-     "gloss": "moustache on upper lip"
-    },
-    {
-     "id": "sideburn-hair",
-     "label": "জুলফি",
-     "gloss": "sideburns of hair in front of ear"
-    },
-    {
-     "id": "bald-head",
-     "label": "টাক",
-     "gloss": "bald area on crown of head"
-    },
-    {
-     "id": "part-in-hair",
-     "label": "সিঁথি",
-     "gloss": "line parting hair on the scalp"
-    }
-   ],
-   "questions": [
-    "কার গোঁফ আছে?",
-    "কোন ছবিতে মাথার ওপর চুল নেই?",
-    "ঘরে বা আশপাশে কার দাড়ি আছে?",
-    "চুলের সিঁথি কোন দিকে করবেন, সেটা কীভাবে বলবেন?",
-    "দাড়ি আর জুলফি মুখের কোন কোন দিকে থাকে?",
-    "চুল দাড়ি বদলালে একই মানুষকে চিনতে কখন কষ্ট হতে পারে?"
-   ]
-  },
-  {
-   "id": "small-skin-marks",
-   "number": 164,
-   "title": "গায়ে ছোট দাগ আর গুটি",
-   "front": "pages/164-front.jpg",
-   "back": "pages/164-back.jpg",
-   "items": [
-    {
-     "id": "small-flat-mole",
-     "label": "তিল",
-     "gloss": "small flat dark skin mole"
-    },
-    {
-     "id": "raised-wart",
-     "label": "আঁচিল",
-     "gloss": "small rough raised wart"
-    },
-    {
-     "id": "old-cut-scar",
-     "label": "পুরোনো কাটা দাগ",
-     "gloss": "fully healed linear cut scar"
-    },
-    {
-     "id": "face-wrinkles",
-     "label": "বলিরেখা",
-     "gloss": "multiple facial wrinkles"
-    },
-    {
-     "id": "cheek-melasma",
-     "label": "মেছতা",
-     "gloss": "brown melasma patches on cheeks"
-    },
-    {
-     "id": "tiny-skin-rash",
-     "label": "ফুসকুড়ি",
-     "gloss": "group of small rash bumps"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে তিল আছে?",
-    "কোনটায় একসঙ্গে অনেক ছোট গুটি আছে?",
-    "পুরোনো কাটা দাগ কারও হাতে দেখেছেন?",
-    "মুখে নতুন দাগ দেখলে কোথায় হয়েছে কীভাবে বলবেন?",
-    "তিল আর আঁচিল দেখে বা ছুঁয়ে কী তফাত বুঝবেন?",
-    "কোনো দাগ অনেক দিন একই রকম থাকলে আর হঠাৎ বদলালে মানুষ কেন আলাদাভাবে ভাবে?"
-   ]
-  },
-  {
-   "id": "food-laundry-and-garden-workers",
-   "number": 165,
-   "title": "খাবার কাপড় আর গাছের কাজ",
-   "front": "pages/165-front.jpg",
-   "back": "pages/165-back.jpg",
-   "items": [
-    {
-     "id": "professional-cook-local",
-     "label": "রাঁধুনি",
-     "gloss": "cook preparing meals for a group"
-    },
-    {
-     "id": "laundry-worker-local",
-     "label": "ধোপা",
-     "gloss": "washerperson who washes clothes for a living"
-    },
-    {
-     "id": "garden-worker-local",
-     "label": "মালি",
-     "gloss": "gardener who tends plants"
-    },
-    {
-     "id": "butcher-local",
-     "label": "কসাই",
-     "gloss": "market butcher selling cuts of meat"
-    },
-    {
-     "id": "fish-seller-local",
-     "label": "মাছওয়ালা",
-     "gloss": "fishmonger at a local market"
-    },
-    {
-     "id": "milk-seller-local",
-     "label": "দুধওয়ালা",
-     "gloss": "street milk seller carrying fresh milk"
-    }
-   ],
-   "questions": [
-    "কে মাছ বেচছেন?",
-    "কার সামনে রান্নার হাঁড়ি আর কার সামনে দুধের পাত্র আছে?",
-    "আপনার পাড়ায় মালি বা ধোপা কোথায় পাবেন?",
-    "রাঁধুনিকে কম ঝাল দিতে বলতে হলে কী বলবেন?",
-    "কসাই আর মাছওয়ালার কাছে কীভাবে আলাদা করে জিনিস চাইবেন?",
-    "এই কাজগুলোর মধ্যে কোনো কাজ একদিন বন্ধ থাকলে পাড়ার কার কী অসুবিধা হতে পারে?"
-   ]
-  },
-  {
-   "id": "things-that-move-or-change",
-   "number": 166,
-   "title": "জিনিস নিজের মতো নড়ে বদলায়",
-   "front": "pages/166-front.jpg",
-   "back": "pages/166-back.jpg",
-   "items": [
-    {
-     "id": "swaying-object",
-     "label": "দুলতে থাকা",
-     "gloss": "object swaying from side to side"
-    },
-    {
-     "id": "spinning-object",
-     "label": "ঘুরতে থাকা",
-     "gloss": "an object spinning around its axis"
-    },
-    {
-     "id": "floating-object",
-     "label": "ভেসে থাকা",
-     "gloss": "an object floating at water surface"
-    },
-    {
-     "id": "sinking-object",
-     "label": "ডুবে যাওয়া",
-     "gloss": "an object sinking below water surface"
-    },
-    {
-     "id": "bursting-object",
-     "label": "ফেটে যাওয়া",
-     "gloss": "an object bursting from internal pressure"
-    },
-    {
-     "id": "flame-going-out",
-     "label": "নিভে যাওয়া",
-     "gloss": "a flame going out"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে জিনিসটা পানির ওপরে আছে?",
-    "কোনটা ঘুরছে আর কোনটা দুলছে?",
-    "আপনি কখনও কোনো জিনিস পানিতে ডুবে যেতে দেখেছেন?",
-    "বাতি নিভে গেলে কাউকে কীভাবে জানাবেন?",
-    "একই জিনিস ভাসছে না ডুবছে, ছবিতে কী দেখে বুঝলেন?",
-    "একই পানিতে একটা জিনিস ভাসে আর আরেকটা ডুবে যায় কেন?"
-   ]
-  },
-  {
-   "id": "full-empty-fit-and-thickness",
-   "number": 167,
-   "title": "ভরা ফাঁকা আর আঁট ঢিল",
-   "front": "pages/167-front.jpg",
-   "back": "pages/167-back.jpg",
-   "items": [
-    {
-     "id": "container-full",
-     "label": "ভরতি",
-     "gloss": "completely full container"
-    },
-    {
-     "id": "container-empty",
-     "label": "ফাঁকা",
-     "gloss": "completely empty container"
-    },
-    {
-     "id": "tight-fitting-sleeve",
-     "label": "আঁটসাঁট",
-     "gloss": "tight fitting garment"
-    },
-    {
-     "id": "loose-fitting-sleeve",
-     "label": "ঢিলেঢালা",
-     "gloss": "loose fitting garment"
-    },
-    {
-     "id": "thick-fabric",
-     "label": "পুরু",
-     "gloss": "thick material in cross section"
-    },
-    {
-     "id": "thin-fabric",
-     "label": "পাতলা",
-     "gloss": "thin material in cross section"
-    }
-   ],
-   "questions": [
-    "ফাঁকা বয়ামটা কোনটা?",
-    "কোন ছবিতে হাতাটা খুব ঢিলা?",
-    "গরমের দিনে আপনি পাতলা কাপড় পরেন?",
-    "জামাটা আঁটসাঁট হলে দর্জিকে কী বলবেন?",
-    "পুরু কাপড় আর পাতলা কাপড় ছুঁয়ে কীভাবে বুঝবেন?",
-    "একই কাজের জন্য কখনও আঁটসাঁট আর কখনও ঢিলেঢালা জামা কেন সুবিধা দেয়?"
-   ]
-  },
-  {
-   "id": "small-everyday-measures",
-   "number": 168,
-   "title": "অল্প জিনিস কীভাবে বলি",
-   "front": "pages/168-front.jpg",
-   "back": "pages/168-back.jpg",
-   "items": [
-    {
-     "id": "single-tied-bundle",
-     "label": "এক আঁটি",
-     "gloss": "one tied bunch of greens"
-    },
-    {
-     "id": "one-handful",
-     "label": "এক মুঠো",
-     "gloss": "one handful of dry food"
-    },
-    {
-     "id": "one-pinch",
-     "label": "এক চিমটি",
-     "gloss": "one pinch of a powder"
-    },
-    {
-     "id": "one-sip",
-     "label": "এক চুমুক",
-     "gloss": "one sip of a drink"
-    },
-    {
-     "id": "one-mouthful",
-     "label": "এক লোকমা",
-     "gloss": "one small mouthful of food"
-    },
-    {
-     "id": "one-liquid-drop",
-     "label": "এক ফোঁটা",
-     "gloss": "one single liquid drop"
-    }
-   ],
-   "questions": [
-    "এক চিমটি মসলা কোন ছবিতে আছে?",
-    "কোন ছবিতে মুখে খাবার তুলছেন আর কোনটায় পানি খাচ্ছেন?",
-    "বাজার থেকে আপনি কখনও এক আঁটি শাক কিনেছেন?",
-    "এক মুঠো ছোলা দিতে কাউকে কী বলবেন?",
-    "এক ফোঁটা আর এক চুমুক, কোনটায় পানি বেশি?",
-    "মাপার যন্ত্র না থাকলে হাত দিয়ে নেওয়া মাপ সব মানুষের জন্য কি একই হবে? কেন?"
-   ]
-  },
-  {
-   "id": "roadside-and-homestead-trees",
-   "number": 169,
-   "title": "পথে আর বাড়ির কাছে চেনা গাছ",
-   "front": "pages/169-front.jpg",
-   "back": "pages/169-back.jpg",
-   "items": [
-    {
-     "id": "mango-tree-local",
-     "label": "আমগাছ",
-     "gloss": "mango tree as landmark"
-    },
-    {
-     "id": "jackfruit-tree-local",
-     "label": "কাঁঠালগাছ",
-     "gloss": "jackfruit tree as landmark"
-    },
-    {
-     "id": "neem-tree-local",
-     "label": "নিমগাছ",
-     "gloss": "neem tree as landmark"
-    },
-    {
-     "id": "tamarind-tree-local",
-     "label": "তেঁতুলগাছ",
-     "gloss": "tamarind tree as landmark"
-    },
-    {
-     "id": "red-silk-cotton-tree",
-     "label": "শিমুলগাছ",
-     "gloss": "red silk cotton Bombax tree"
-    },
-    {
-     "id": "kadam-tree-local",
-     "label": "কদমগাছ",
-     "gloss": "kadam burflower tree"
-    }
-   ],
-   "questions": [
-    "কোন গাছটার গুঁড়িতে কাঁঠাল আছে?",
-    "কোন গাছের ফুল লাল আর কোনটার ফুল গোল?",
-    "আপনার বাড়ির কাছাকাছি এর মধ্যে কোন গাছ দেখেছেন?",
-    "কদমগাছের পাশ দিয়ে যেতে হবে, এটা পথ জিজ্ঞেস করলে কীভাবে বলবেন?",
-    "তেঁতুলগাছ আর নিমগাছ চিনতে পাতায় কী দেখবেন?",
-    "গরমের দিনে রাস্তার পাশে বড় গাছ থাকলে মানুষের কী সুবিধা হয়?"
-   ]
-  },
-  {
-   "id": "tart-and-fragrant-local-fruits",
-   "number": 170,
-   "title": "টক আর ঘ্রাণওয়ালা দেশি ফল",
-   "front": "pages/170-front.jpg",
-   "back": "pages/170-back.jpg",
-   "items": [
-    {
-     "id": "wood-apple-bael",
-     "label": "বেল",
-     "gloss": "hard-shelled bael fruit"
-    },
-    {
-     "id": "tamarind-pods",
-     "label": "তেঁতুল",
-     "gloss": "tamarind pods as fruit"
-    },
-    {
-     "id": "starfruit",
-     "label": "কামরাঙা",
-     "gloss": "five-ridged star fruit"
-    },
-    {
-     "id": "latkan-fruit",
-     "label": "লটকন",
-     "gloss": "Burmese grape fruit cluster sold in Bangladesh"
-    },
-    {
-     "id": "deua-fruit",
-     "label": "ডেউয়া",
-     "gloss": "monkey jack deua fruit"
-    },
-    {
-     "id": "amla-fruit",
-     "label": "আমলকী",
-     "gloss": "Indian gooseberry amla fruit"
-    }
-   ],
-   "questions": [
-    "কোন ফলটা কাটলে তারার মতো দেখায়?",
-    "কোন ফলের ভেতরে সাদা কোয়া দেখা যাচ্ছে?",
-    "আপনি এর মধ্যে কোন ফল খেয়েছেন?",
-    "একটু তেঁতুল কিনতে চাইলে দোকানিকে কী বলবেন?",
-    "বেল আর আমলকী খাওয়ার আগে কীভাবে আলাদা করে তৈরি করবেন?",
-    "একই টক স্বাদের ফল কেউ সরাসরি খায় আর কেউ রান্নায় দেয় কেন?"
-   ]
-  },
-  {
-   "id": "more-familiar-local-birds",
-   "number": 171,
-   "title": "ভোরে আর পানির ধারে যে পাখি দেখি",
-   "front": "pages/171-front.jpg",
-   "back": "pages/171-back.jpg",
-   "items": [
-    {
-     "id": "oriental-magpie-robin",
-     "label": "দোয়েল",
-     "gloss": "Oriental magpie robin"
-    },
-    {
-     "id": "white-throated-kingfisher",
-     "label": "মাছরাঙা",
-     "gloss": "white-throated kingfisher"
-    },
-    {
-     "id": "black-drongo",
-     "label": "ফিঙে",
-     "gloss": "black drongo"
-    },
-    {
-     "id": "asian-koel",
-     "label": "কোকিল",
-     "gloss": "Asian koel"
-    },
-    {
-     "id": "baya-weaver",
-     "label": "বাবুই",
-     "gloss": "Baya weaver bird"
-    },
-    {
-     "id": "rose-ringed-parakeet",
-     "label": "টিয়া",
-     "gloss": "rose-ringed parakeet"
-    }
-   ],
-   "questions": [
-    "মাছরাঙাটা কোনটা?",
-    "কোন দুই পাখির ঠোঁটে লাল রং আছে?",
-    "আপনি দোয়েল কোথায় দেখেছেন?",
-    "বাবুই দেখলে পাশে কী দেখে পাখিটা চেনা সহজ হবে?",
-    "ফিঙে আর কোকিল কালো হলেও লেজ আর চোখ দেখে কী তফাত পাবেন?",
-    "একই পাখি সারা বছর একই জায়গায় দেখা যাবে বলে কি মনে হয়? কেন?"
-   ]
-  },
-  {
-   "id": "small-pests-and-pollinators",
-   "number": 172,
-   "title": "ঘরে আর ফুলের কাছে ছোট পোকা",
-   "front": "pages/172-front.jpg",
-   "back": "pages/172-back.jpg",
-   "items": [
-    {
-     "id": "termite-local",
-     "label": "উইপোকা",
-     "gloss": "wood-eating termite"
-    },
-    {
-     "id": "bedbug-local",
-     "label": "ছারপোকা",
-     "gloss": "bed bug"
-    },
-    {
-     "id": "head-louse-local",
-     "label": "উকুন",
-     "gloss": "head louse"
-    },
-    {
-     "id": "house-spider-local",
-     "label": "মাকড়সা",
-     "gloss": "house spider"
-    },
-    {
-     "id": "asian-honey-bee",
-     "label": "মৌমাছি",
-     "gloss": "Asian honey bee"
-    },
-    {
-     "id": "paper-wasp-local",
-     "label": "বোলতা",
-     "gloss": "paper wasp"
-    }
-   ],
-   "questions": [
-    "মৌমাছিটা কোনটা?",
-    "কোন ছবিতে পোকাটা চুল ধরে আছে?",
-    "আপনার বাড়ির আশপাশে কোনটা দেখেছেন?",
-    "বিছানার ধারে ছারপোকা দেখলে বাড়ির কাউকে কী বলবেন?",
-    "মৌমাছি আর বোলতার গড়নে কী তফাত দেখছেন?",
-    "সব ছোট পোকাকে একইভাবে তাড়ানো ঠিক হবে কি? কী ভেবে ঠিক করবেন?"
-   ]
-  },
-  {
-   "id": "caring-for-babies-and-elders",
-   "number": 173,
-   "title": "ছোট বড়দের যত্ন নিতে যা করি",
-   "front": "pages/173-front.jpg",
-   "back": "pages/173-back.jpg",
-   "items": [
-    {
-     "id": "stroke-hair-caring",
-     "label": "মাথায় হাত বুলানো",
-     "gloss": "to gently stroke someone's hair"
-    },
-    {
-     "id": "lift-into-lap",
-     "label": "কোলে নেওয়া",
-     "gloss": "to take a child onto one's lap"
-    },
-    {
-     "id": "feed-someone-mouthful",
-     "label": "খাইয়ে দেওয়া",
-     "gloss": "to give someone a bite of food"
-    },
-    {
-     "id": "lay-someone-down",
-     "label": "শুইয়ে দেওয়া",
-     "gloss": "to help someone lie down"
-    },
-    {
-     "id": "wrap-shawl-around-someone",
-     "label": "গায়ে চাদর দেওয়া",
-     "gloss": "to put a blanket or shawl over someone"
-    },
-    {
-     "id": "walk-with-hand-support",
-     "label": "হাত ধরে হাঁটানো",
-     "gloss": "to help someone walk by the hand"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে বাচ্চাকে কোলে নিচ্ছেন?",
-    "কোন ছবিতে একজন আরেকজনকে খাওয়াচ্ছেন?",
-    "আপনাকে ছোটবেলায় কে খাইয়ে দিতেন?",
-    "কেউ উঠতে বা হাঁটতে চাইলে সাহায্য করার আগে কী বলবেন?",
-    "শুইয়ে দেওয়া আর গায়ে চাদর দেওয়ার সময় আগে কী করে দেখবেন যে তাঁর আরাম হচ্ছে?",
-    "কোনো মানুষ নিজে কিছু করতে চান কিন্তু কষ্ট হচ্ছে, তখন কীভাবে সাহায্য করা ভালো?"
-   ]
-  },
-  {
-   "id": "places-for-work-learning-and-trade",
-   "number": 174,
-   "title": "পাড়ায় আর হাটে কাজের জায়গা",
-   "front": "pages/174-front.jpg",
-   "back": "pages/174-back.jpg",
-   "items": [
-    {
-     "id": "cattle-market",
-     "label": "গরুর হাট",
-     "gloss": "open-air cattle market"
-    },
-    {
-     "id": "fish-wholesale-market",
-     "label": "মাছের আড়ত",
-     "gloss": "wholesale fish market auction shed"
-    },
-    {
-     "id": "rice-mill-site",
-     "label": "ধানকল",
-     "gloss": "local rice hulling mill"
-    },
-    {
-     "id": "local-madrasa-site",
-     "label": "মাদরাসা",
-     "gloss": "Bangladeshi madrasa school"
-    },
-    {
-     "id": "sewing-workshop",
-     "label": "সেলাইঘর",
-     "gloss": "neighborhood sewing workshop"
-    },
-    {
-     "id": "dairy-farm-site",
-     "label": "দুধের খামার",
-     "gloss": "local dairy farm"
-    }
-   ],
-   "questions": [
-    "মাছের আড়তটা কোনটা?",
-    "কোন দুই ছবিতে গরু আছে?",
-    "আপনি কাছাকাছি ধানকল বা সেলাইঘর দেখেছেন?",
-    "জামা ছোট করতে পাড়ার সেলাইঘর কোথায়, সেটা কীভাবে জিজ্ঞেস করবেন?",
-    "গরুর হাট আর দুধের খামারে মানুষ কী আলাদা কাজে যায়?",
-    "এলাকার মানুষ কী কাজ করেন, তা বদলে গেলে পাড়ার কোন জায়গাগুলো বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "common-wordless-notices",
-   "number": 175,
-   "title": "ছবি দেখে নিয়ম বুঝি",
-   "front": "pages/175-front.jpg",
-   "back": "pages/175-back.jpg",
-   "items": [
-    {
-     "id": "no-entry-notice",
-     "label": "ঢোকা মানা",
-     "gloss": "no entry for pedestrians notice"
-    },
-    {
-     "id": "shoes-off-entry",
-     "label": "জুতা খুলে ঢোকা",
-     "gloss": "removing footwear before entering"
-    },
-    {
-     "id": "handwash-station",
-     "label": "হাত ধোয়ার জায়গা",
-     "gloss": "handwashing station"
-    },
-    {
-     "id": "waiting-seat-area",
-     "label": "বসার জায়গা",
-     "gloss": "public seating space"
-    },
-    {
-     "id": "road-closed-barrier",
-     "label": "পথ বন্ধ",
-     "gloss": "path closed by barrier"
-    },
-    {
-     "id": "no-litter-notice",
-     "label": "ময়লা ফেলা মানা",
-     "gloss": "no littering notice"
-    }
-   ],
-   "questions": [
-    "কোন চিহ্নটা বলছে এখানে ঢোকা যাবে না?",
-    "কোন ছবিতে জুতা খুলছেন?",
-    "আপনি কোথায় হাত ধোয়ার জায়গা দেখেছেন?",
-    "পথ বন্ধ পেলে অন্য পথ কীভাবে জিজ্ঞেস করবেন?",
-    "ময়লা ফেলতে মানা, কিন্তু কাছে পাত্র নেই। কী করবেন?",
-    "কোনো জায়গায় সবাই যেন কথা না পড়েও নিয়ম বুঝতে পারেন, সে জন্য কী ধরনের ছবি ভালো কাজ করে?"
-   ]
-  },
-  {
-   "id": "lights-fans-and-power",
-   "number": 176,
-   "title": "বাতি পাখা আর বিদ্যুৎ",
-   "front": "pages/176-front.jpg",
-   "back": "pages/176-back.jpg",
-   "items": [
-    {
-     "id": "turn-room-light-on",
-     "label": "বাতি জ্বালানো",
-     "gloss": "turning an electric room light on"
-    },
-    {
-     "id": "turn-room-light-off",
-     "label": "বাতি নেভানো",
-     "gloss": "turning an electric room light off"
-    },
-    {
-     "id": "speed-up-fan",
-     "label": "পাখার গতি বাড়ানো",
-     "gloss": "increasing the speed of an electric fan"
-    },
-    {
-     "id": "connect-power-cord",
-     "label": "বিদ্যুতের তার লাগানো",
-     "gloss": "plugging an appliance into mains power"
-    },
-    {
-     "id": "disconnect-power-cord",
-     "label": "বিদ্যুতের তার খুলে রাখা",
-     "gloss": "unplugging an appliance"
-    },
-    {
-     "id": "blackout-at-home",
-     "label": "বিদ্যুৎ চলে যাওয়া",
-     "gloss": "electricity outage at home"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে বাতি জ্বলছে?",
-    "কোন ছবিতে তারটা দেয়াল থেকে খুলে রেখেছেন?",
-    "আপনার ঘরে পাখা চালাতে কোনটা ঘোরাতে হয়?",
-    "বাতি জ্বালাতে কাউকে কী বলবেন?",
-    "বিদ্যুৎ চলে গেলে হাতবাতিটা কোথায় পাবেন কীভাবে জিজ্ঞেস করবেন?",
-    "কোন কাজগুলো বিদ্যুৎ না থাকলেও সহজে করা যায় আর কোনগুলো করা কঠিন? কেন?"
-   ]
-  },
-  {
-   "id": "bags-and-cases-for-carrying",
-   "number": 177,
-   "title": "জিনিস রাখি আর নিয়ে যাই",
-   "front": "pages/177-front.jpg",
-   "back": "pages/177-back.jpg",
-   "items": [
-    {
-     "id": "jute-sack-storage",
-     "label": "বস্তা",
-     "gloss": "full jute sack for bulk goods"
-    },
-    {
-     "id": "paper-snack-cone",
-     "label": "ঠোঙা",
-     "gloss": "empty folded paper cone"
-    },
-    {
-     "id": "knotted-cloth-bundle",
-     "label": "পুঁটলি",
-     "gloss": "small bundle tied in a cloth"
-    },
-    {
-     "id": "wooden-box-storage",
-     "label": "বাক্স",
-     "gloss": "small ordinary rectangular wooden box"
-    },
-    {
-     "id": "metal-trunk-storage",
-     "label": "তোরঙ্গ",
-     "gloss": "large metal storage trunk"
-    },
-    {
-     "id": "long-strap-shoulder-bag",
-     "label": "ঝোলা",
-     "gloss": "soft long-strap shoulder bag"
-    }
-   ],
-   "questions": [
-    "কোনটার লম্বা ফিতা আছে?",
-    "কোনটা কাগজের তৈরি?",
-    "আপনার বাসায় শীতের কাপড় কোথায় রাখেন?",
-    "চাল রাখার জন্য একটা বস্তা চাইতে কী বলবেন?",
-    "পুঁটলি আর তোরঙ্গের মধ্যে কোনটা নিয়ে হাঁটা সহজ হবে?",
-    "একই জিনিস বাইরে নিয়ে যেতে আর অনেক দিন ঘরে রাখতে কী আলাদা পাত্র বেছে নেবেন? কেন?"
-   ]
-  },
-  {
-   "id": "mending-clothes-by-hand",
-   "number": 178,
-   "title": "সেলাই দিয়ে জামা ঠিক করি",
-   "front": "pages/178-front.jpg",
-   "back": "pages/178-back.jpg",
-   "items": [
-    {
-     "id": "sew-a-button-on",
-     "label": "বোতাম লাগানো",
-     "gloss": "sewing a button onto clothing"
-    },
-    {
-     "id": "patch-a-hole-in-clothes",
-     "label": "তালি লাগানো",
-     "gloss": "sewing a patch on torn cloth"
-    },
-    {
-     "id": "thread-a-needle",
-     "label": "সুঁইয়ে সুতা পরানো",
-     "gloss": "threading a needle"
-    },
-    {
-     "id": "tie-thread-knot",
-     "label": "সুতায় গিঁট দেওয়া",
-     "gloss": "tying a knot in sewing thread"
-    },
-    {
-     "id": "unpick-a-seam",
-     "label": "সেলাই খুলে ফেলা",
-     "gloss": "unpick a stitched seam"
-    },
-    {
-     "id": "shorten-a-sleeve",
-     "label": "হাতা ছোট করা",
-     "gloss": "shortening a garment sleeve"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে বোতাম লাগাচ্ছেন?",
-    "কোন ছবিতে কাপড়ের ছেঁড়া জায়গা ঢাকছেন?",
-    "কখনও সুঁইয়ে সুতা পরিয়ে দেখেছেন?",
-    "হাতা একটু ছোট করতে দর্জিকে কী বলবেন?",
-    "বোতাম লাগানোর আগে সুতায় গিঁট দেন কেন?",
-    "প্রিয় জামা ছিঁড়ে গেলে তালি দেখা গেলেও সেটা মেরামত করতে চাইবেন কি? কেন?"
-   ]
-  },
-  {
-   "id": "more-actions-at-the-stove",
-   "number": 179,
-   "title": "চুলার পাশে আরও কাজ",
-   "front": "pages/179-front.jpg",
-   "back": "pages/179-back.jpg",
-   "items": [
-    {
-     "id": "fill-dough-pocket",
-     "label": "পুর ভরা",
-     "gloss": "filling a pastry dough pocket"
-    },
-    {
-     "id": "shape-lentil-fritter",
-     "label": "বড়া বানানো",
-     "gloss": "shaping a lentil fritter"
-    },
-    {
-     "id": "temper-in-hot-oil",
-     "label": "তেলে ফোড়ন দেওয়া",
-     "gloss": "tempering whole spices in hot oil"
-    },
-    {
-     "id": "fry-spice-masala",
-     "label": "মসলা কষানো",
-     "gloss": "frying down a wet spice paste"
-    },
-    {
-     "id": "lower-stove-heat",
-     "label": "আঁচ কমানো",
-     "gloss": "lowering a stove flame"
-    },
-    {
-     "id": "descale-a-fish",
-     "label": "মাছের আঁশ ছাড়ানো",
-     "gloss": "descaling a whole fish"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে মাছের আঁশ ছাড়াচ্ছেন?",
-    "কোনটায় পুর দিচ্ছেন?",
-    "বাড়িতে কী দিয়ে ফোড়ন দিতে দেখেছেন?",
-    "ঝোল খুব জোরে ফুটলে আঁচ কমাতে কী বলবেন?",
-    "পুর ভরা আর বড়া বানানোর সময় হাতের কাজ কীভাবে আলাদা?",
-    "একই মসলা কখনও আগে ফোড়নে দেন আর কখনও পরে ভেজে নেন কেন?"
-   ]
-  },
-  {
-   "id": "small-seeds-for-cooking",
-   "number": 180,
-   "title": "রান্নায় দিই ছোট ছোট দানা",
-   "front": "pages/180-front.jpg",
-   "back": "pages/180-back.jpg",
-   "items": [
-    {
-     "id": "bengali-five-spice-blend",
-     "label": "পাঁচফোড়ন",
-     "gloss": "Bengali five whole seed spice blend"
-    },
-    {
-     "id": "nigella-seed-local",
-     "label": "কালোজিরা",
-     "gloss": "whole black nigella seeds"
-    },
-    {
-     "id": "fenugreek-seeds-local",
-     "label": "মেথি",
-     "gloss": "whole fenugreek seeds"
-    },
-    {
-     "id": "fennel-seeds-local",
-     "label": "মৌরি",
-     "gloss": "whole fennel seeds"
-    },
-    {
-     "id": "poppy-seeds-local",
-     "label": "পোস্তদানা",
-     "gloss": "whole white poppy seeds"
-    },
-    {
-     "id": "sesame-seeds-local",
-     "label": "তিলের দানা",
-     "gloss": "whole white sesame seeds"
-    }
-   ],
-   "questions": [
-    "কোন বাটিতে কয়েক রকমের দানা মেশানো?",
-    "কালো দানাগুলো কোন ছবিতে?",
-    "আপনি রান্নায় কখনও মৌরি দিয়েছেন?",
-    "দোকানে একটু মেথি চাইলে কী বলবেন?",
-    "পোস্তদানা আর তিলের দানা পাশাপাশি রাখলে কী দেখে আলাদা করবেন?",
-    "একই সবজি রান্নায় ফোড়নের দানা বদলালে ঘ্রাণ আর স্বাদ কীভাবে বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "edible-stems-blossoms-and-seeds",
-   "number": 181,
-   "title": "ডাঁটা ফুল আর বিচির তরকারি",
-   "front": "pages/181-front.jpg",
-   "back": "pages/181-back.jpg",
-   "items": [
-    {
-     "id": "taro-stolon-local",
-     "label": "কচুর লতি",
-     "gloss": "edible taro stolons"
-    },
-    {
-     "id": "small-taro-corms",
-     "label": "কচুর মুখি",
-     "gloss": "small edible taro cormels"
-    },
-    {
-     "id": "banana-blossom-local",
-     "label": "কলার মোচা",
-     "gloss": "banana blossom"
-    },
-    {
-     "id": "turnip-root-local",
-     "label": "শালগম",
-     "gloss": "turnip root"
-    },
-    {
-     "id": "jackfruit-seeds",
-     "label": "কাঁঠালের বিচি",
-     "gloss": "edible jackfruit seeds"
-    },
-    {
-     "id": "pumpkin-blossom-local",
-     "label": "কুমড়ার ফুল",
-     "gloss": "pumpkin blossom used as food"
-    }
-   ],
-   "questions": [
-    "কলার মোচা কোনটা?",
-    "কোন ছবিতে কাঁঠালের বিচি আছে?",
-    "আপনি কুমড়ার ফুল ভেজে খেয়েছেন?",
-    "কচুর লতি কিনতে কেমন লতি চাইবেন?",
-    "কচুর মুখি আর শালগম দেখতে আলাদা কীভাবে?",
-    "সবজির যে অংশ একটা বাড়িতে ফেলে দেয় সেটা অন্য বাড়িতে রান্না হয় কেন?"
-   ]
-  },
-  {
-   "id": "mouth-and-ear-gestures",
-   "number": 182,
-   "title": "চোখ কান মুখের ভঙ্গি",
-   "front": "pages/182-front.jpg",
-   "back": "pages/182-back.jpg",
-   "items": [
-    {
-     "id": "open-mouth-wide",
-     "label": "মুখ হাঁ করা",
-     "gloss": "opening the mouth wide"
-    },
-    {
-     "id": "finger-to-lips",
-     "label": "ঠোঁটে আঙুল দেওয়া",
-     "gloss": "putting a finger to the lips to signal quiet"
-    },
-    {
-     "id": "expose-teeth",
-     "label": "দাঁত বের করা",
-     "gloss": "baring the teeth rather than opening the jaw wide"
-    },
-    {
-     "id": "stick-tongue-out",
-     "label": "জিব বের করা",
-     "gloss": "sticking the tongue out"
-    },
-    {
-     "id": "cup-ear-to-listen",
-     "label": "কান পাতা",
-     "gloss": "cupping one ear to hear better"
-    },
-    {
-     "id": "press-both-ears-closed",
-     "label": "কানে হাত চাপা",
-     "gloss": "covering both ears with the hands"
-    }
-   ],
-   "questions": [
-    "কে মুখ হাঁ করেছেন?",
-    "কে দুই কানে হাত চেপে রেখেছেন?",
-    "দূর থেকে কারও কথা শুনতে কখনও কান পেতেছেন?",
-    "চুপ থাকার ইশারা কীভাবে দেখাবেন?",
-    "মুখ হাঁ করা আর দাঁত বের করার মধ্যে কী তফাত?",
-    "একটা ইশারা সব জায়গায় একই মানে বোঝায় বলে মনে করেন? কেন?"
-   ]
-  },
-  {
-   "id": "putting-clothes-on-and-off",
-   "number": 183,
-   "title": "জামা গায়ে যা করি",
-   "front": "pages/183-front.jpg",
-   "back": "pages/183-back.jpg",
-   "items": [
-    {
-     "id": "put-jacket-on",
-     "label": "জামা পরা",
-     "gloss": "putting on a shirt or jacket"
-    },
-    {
-     "id": "take-shirt-off",
-     "label": "জামা খোলা",
-     "gloss": "taking off a shirt"
-    },
-    {
-     "id": "roll-up-sleeves",
-     "label": "হাতা গোটানো",
-     "gloss": "rolling up a sleeve"
-    },
-    {
-     "id": "wrap-scarf-at-neck",
-     "label": "গলায় পেঁচানো",
-     "gloss": "looping fabric around the neck"
-    },
-    {
-     "id": "cover-head-with-orna",
-     "label": "মাথা ঢাকা",
-     "gloss": "covering one's head with fabric"
-    },
-    {
-     "id": "tuck-in-cloth",
-     "label": "কোমরে গোঁজা",
-     "gloss": "tucking cloth into a waist band"
-    }
-   ],
-   "questions": [
-    "কে হাতা গোটাচ্ছেন?",
-    "কে মাথা ঢাকছেন আর কে গলায় কাপড় পেঁচাচ্ছেন?",
-    "কাজ করতে গেলে কখনও হাতা গোটান?",
-    "জামা পরে নিতে কাউকে কী বলবেন?",
-    "জামা পরা আর জামা খোলা ছবিতে হাতের কোন দিকে কাপড় আছে?",
-    "একই কাপড় মানুষ আবহাওয়া আর কাজের ধরন দেখে আলাদা করে পরেন কেন?"
-   ]
-  },
-  {
-   "id": "foods-served-alongside-rice",
-   "number": 184,
-   "title": "ভাতের পাশে যা খাই",
-   "front": "pages/184-front.jpg",
-   "back": "pages/184-back.jpg",
-   "items": [
-    {
-     "id": "fried-egg-local",
-     "label": "ভাজা ডিম",
-     "gloss": "fried egg served whole"
-    },
-    {
-     "id": "fish-curry-broth",
-     "label": "মাছের ঝোল",
-     "gloss": "fish in a thin Bengali curry broth"
-    },
-    {
-     "id": "egg-curry-broth",
-     "label": "ডিমের ঝোল",
-     "gloss": "boiled egg in Bengali curry broth"
-    },
-    {
-     "id": "stir-fried-vegetable-bhaji",
-     "label": "সবজি ভাজি",
-     "gloss": "Bangladeshi lightly fried vegetable side dish"
-    },
-    {
-     "id": "bengali-mashed-side",
-     "label": "ভর্তা",
-     "gloss": "Bangladeshi seasoned mashed side dish"
-    },
-    {
-     "id": "bangla-condiment-pickle",
-     "label": "আচার",
-     "gloss": "Bangladeshi fruit pickle condiment"
-    }
-   ],
-   "questions": [
-    "আচার কোনটা?",
-    "কোন দুই ছবিতে ডিম আছে?",
-    "ভাতের সঙ্গে আপনি কোনটা খান?",
-    "মাছের ঝোল একটু কম ঝাল করে দিতে কী বলবেন?",
-    "সবজি ভাজি আর ভর্তা খেলে কী তফাত পাবেন?",
-    "একই ভাতের সঙ্গে একেক বাড়িতে একেক রকম পদ থাকে কেন?"
-   ]
-  },
-  {
-   "id": "features-for-giving-directions",
-   "number": 185,
-   "title": "রাস্তার যে জায়গাগুলো বলি",
-   "front": "pages/185-front.jpg",
-   "back": "pages/185-back.jpg",
-   "items": [
-    {
-     "id": "four-way-crossroads",
-     "label": "চৌরাস্তা",
-     "gloss": "intersection with four distinct road branches"
-    },
-    {
-     "id": "three-way-junction",
-     "label": "তিন রাস্তার মোড়",
-     "gloss": "road junction with exactly three arms"
-    },
-    {
-     "id": "roundabout-junction",
-     "label": "গোলচত্বর",
-     "gloss": "roundabout with circular central island"
-    },
-    {
-     "id": "alley-mouth",
-     "label": "গলির মুখ",
-     "gloss": "entrance of a narrow residential alley"
-    },
-    {
-     "id": "road-dead-end",
-     "label": "রাস্তার শেষ",
-     "gloss": "the end of a dead-end road"
-    },
-    {
-     "id": "urban-flyover",
-     "label": "উড়ালপুল",
-     "gloss": "urban road flyover"
-    }
-   ],
-   "questions": [
-    "গোলচত্বর কোনটা?",
-    "কোন মোড়ে চার দিকে রাস্তা আছে?",
-    "আপনার বাসার কাছে উড়ালপুল আছে?",
-    "গলির মুখ থেকে কোন দিকে যেতে হবে, কীভাবে বলবেন?",
-    "তিন রাস্তার মোড় আর রাস্তার শেষ কী দেখে আলাদা করবেন?",
-    "রাস্তার নাম জানা না থাকলে কাউকে পথ বুঝিয়ে দিতে কোন কোন চেনা জায়গার কথা বলবেন? কেন?"
-   ]
-  },
-  {
-   "id": "types-of-river-boats",
-   "number": 186,
-   "title": "পানিতে চলার নৌকা",
-   "front": "pages/186-front.jpg",
-   "back": "pages/186-back.jpg",
-   "items": [
-    {
-     "id": "bengal-sailboat",
-     "label": "পালতোলা নৌকা",
-     "gloss": "Bengali sailboat with its sail raised"
-    },
-    {
-     "id": "dugout-dinghy-local",
-     "label": "ডিঙি",
-     "gloss": "small open Bangladeshi dinghy"
-    },
-    {
-     "id": "boat-for-crossing-river",
-     "label": "খেয়ানৌকা",
-     "gloss": "passenger boat shuttling across a river"
-    },
-    {
-     "id": "traditional-fishing-boat",
-     "label": "মাছ ধরার নৌকা",
-     "gloss": "traditional open fishing boat with a fishing net"
-    },
-    {
-     "id": "river-cargo-boat",
-     "label": "মালবাহী নৌকা",
-     "gloss": "large cargo-carrying riverboat"
-    },
-    {
-     "id": "hood-roofed-riverboat",
-     "label": "ছইওয়ালা নৌকা",
-     "gloss": "wooden riverboat with an arched bamboo roof cover"
-    }
-   ],
-   "questions": [
-    "কোন নৌকায় পাল আছে?",
-    "কোন নৌকা যাত্রী নিয়ে পার হয়?",
-    "আপনি কোথায় ডিঙি দেখেছেন?",
-    "নদী পার হতে খেয়ানৌকা কোথায় পাবেন, কীভাবে জিজ্ঞেস করবেন?",
-    "ছইওয়ালা নৌকা আর মালবাহী নৌকায় ছাদের জায়গা কীভাবে আলাদা?",
-    "একই নৌকা সব কাজে সমান সুবিধার হবে কি? কেন?"
-   ]
-  },
-  {
-   "id": "small-parts-of-the-face",
-   "number": 187,
-   "title": "চোখ কান আর গালের অংশ",
-   "front": "pages/187-front.jpg",
-   "back": "pages/187-back.jpg",
-   "items": [
-    {
-     "id": "upper-eyelid",
-     "label": "চোখের পাতা",
-     "gloss": "upper eyelid"
-    },
-    {
-     "id": "upper-eyelashes",
-     "label": "চোখের পাপড়ি",
-     "gloss": "eyelashes along the upper lid"
-    },
-    {
-     "id": "dark-eye-pupil",
-     "label": "চোখের মণি",
-     "gloss": "pupil at the center of the eye"
-    },
-    {
-     "id": "earlobe-detail",
-     "label": "কানের লতি",
-     "gloss": "soft lobe at bottom of ear"
-    },
-    {
-     "id": "nostril-detail",
-     "label": "নাকের ফুটো",
-     "gloss": "nostrils at the base of the nose"
-    },
-    {
-     "id": "cheek-dimple",
-     "label": "গালের টোল",
-     "gloss": "a dimple in the cheek"
-    }
-   ],
-   "questions": [
-    "গালে টোল আছে কার?",
-    "কোনটায় কানের নিচের অংশ দেখা যাচ্ছে?",
-    "আপনার পরিচিত কারও হাসলে গালে টোল পড়ে?",
-    "চোখের পাতা ফুলেছে, কাউকে কীভাবে জানাবেন?",
-    "চোখের মণি আর চোখের পাপড়ি কোথায় থাকে?",
-    "কারও মুখ খুব অল্প সময় দেখে পরে মনে করতে হলে কোন কোন ছোট দিক মনে রাখতে পারেন?"
-   ]
-  },
-  {
-   "id": "small-parts-of-hands-and-feet",
-   "number": 188,
-   "title": "হাত পায়ের ছোট অংশ",
-   "front": "pages/188-front.jpg",
-   "back": "pages/188-back.jpg",
-   "items": [
-    {
-     "id": "palm-of-hand",
-     "label": "তালু",
-     "gloss": "palm side of the hand"
-    },
-    {
-     "id": "back-of-hand-detail",
-     "label": "হাতের পিঠ",
-     "gloss": "back side of the hand"
-    },
-    {
-     "id": "fingers-of-hand",
-     "label": "আঙুল",
-     "gloss": "the fingers of a hand as a group"
-    },
-    {
-     "id": "thumb-detail",
-     "label": "বুড়ো আঙুল",
-     "gloss": "the thumb of a hand"
-    },
-    {
-     "id": "toes-detail",
-     "label": "পায়ের আঙুল",
-     "gloss": "toes of a foot"
-    },
-    {
-     "id": "sole-of-foot",
-     "label": "পায়ের তলা",
-     "gloss": "sole of a bare foot"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে হাতের তালু দেখা যাচ্ছে?",
-    "কোন ছবিতে বুড়ো আঙুলটা আলাদা করে ধরেছেন?",
-    "খালি পায়ে হেঁটে কখনও পায়ের তলায় কাদা লেগেছে?",
-    "হাতের পিঠে ব্যথা করছে, কোথায় ব্যথা সেটা কীভাবে বলবেন?",
-    "পাঁচটা আঙুলের মধ্যে বুড়ো আঙুল কীভাবে আলাদা?",
-    "আঙুলে অল্প নড়াচড়া কমে গেলে কোন কাজগুলো কঠিন হয়ে যেতে পারে?"
+    "কে সালামের জবাব দিচ্ছেন?",
+    "কেমন আছেন জিজ্ঞেস করা আর ভালো আছি বলার মধ্যে কী তফাত?",
+    "নতুন কারও সঙ্গে দেখা হলে আপনি প্রথমে কী বলেন?",
+    "পাশের বাসার কারও নাম জানতে কী বলবেন?",
+    "আপনি বাংলা শিখছেন, কথাটা কীভাবে বলবেন?",
+    "নতুন এলাকায় প্রথম দেখা হলে পাশের লোকের সঙ্গে কীভাবে কথা শুরু করবেন, আর কেন?"
    ]
   },
   {
@@ -8885,3904 +96,50 @@ window.PTB_DECK = {
    ]
   },
   {
-   "id": "more-people-at-local-jobs",
-   "number": 190,
-   "title": "পাড়ায় নানা কাজ করেন যাঁরা",
-   "front": "pages/190-front.jpg",
-   "back": "pages/190-back.jpg",
+   "id": "simple-replies-when-listening",
+   "number": 285,
+   "title": "বুঝি না বুঝলে যা বলি",
+   "front": "pages/285-front.jpg",
+   "back": "pages/285-back.jpg",
    "items": [
     {
-     "id": "barber-local-person",
-     "label": "নাপিত",
-     "gloss": "barber cutting hair"
+     "id": "say-that-a-demonstration-made-sense",
+     "label": "বুঝতে পেরেছি",
+     "gloss": "say you understood after a demonstration"
     },
     {
-     "id": "private-tutor-home",
-     "label": "গৃহশিক্ষক",
-     "gloss": "private tutor who teaches in someone's home"
+     "id": "say-that-you-did-not-understand",
+     "label": "বুঝতে পারি নাই",
+     "gloss": "say you did not understand the words just spoken"
     },
     {
-     "id": "newspaper-seller-local",
-     "label": "খবরের কাগজওয়ালা",
-     "gloss": "street newspaper vendor"
+     "id": "say-that-you-do-not-know",
+     "label": "জানি না",
+     "gloss": "say you do not know the answer to a question"
     },
     {
-     "id": "building-painter-local",
-     "label": "রংমিস্ত্রি",
-     "gloss": "painter who paints a building"
+     "id": "say-that-you-remember",
+     "label": "মনে আছে",
+     "gloss": "say you remember recognizable information"
     },
     {
-     "id": "muezzin-local",
-     "label": "মোয়াজ্জিন",
-     "gloss": "muezzin calling the azan"
+     "id": "unable-to-recall-a-known-word",
+     "label": "মনে পড়ছে না",
+     "gloss": "say a word is familiar but you cannot recall it"
     },
     {
-     "id": "roti-vendor-local",
-     "label": "রুটিওয়ালা",
-     "gloss": "street bread seller"
+     "id": "ask-to-have-a-look-first",
+     "label": "দেখি তো",
+     "gloss": "ask to have a look before answering"
     }
    ],
    "questions": [
-    "কে চুল কাটছেন?",
-    "কার সামনে রুটির ঝুড়ি আছে?",
-    "কখনও গৃহশিক্ষকের কাছে পড়েছেন?",
-    "একটা খবরের কাগজ চাইতে কী বলবেন?",
-    "রংমিস্ত্রিকে দেয়ালের কোন অংশে রং করতে হবে কীভাবে দেখাবেন?",
-    "পাড়ার কোন সেবাগুলো মানুষ বদলালেও একইভাবে দরকার হয় বলে মনে করেন? কেন?"
-   ]
-  },
-  {
-   "id": "aunts-uncles-and-nephews",
-   "number": 191,
-   "title": "আব্বা আম্মার ভাইবোনের ঘর",
-   "front": "pages/191-front.jpg",
-   "back": "pages/191-back.jpg",
-   "items": [
-    {
-     "id": "fufu-fathers-sister",
-     "label": "ফুফু",
-     "gloss": "father's sister"
-    },
-    {
-     "id": "fufa-fathers-sisters-husband",
-     "label": "ফুফা",
-     "gloss": "husband of father's sister"
-    },
-    {
-     "id": "khala-mothers-sister",
-     "label": "খালা",
-     "gloss": "mother's sister"
-    },
-    {
-     "id": "khalu-mothers-sisters-husband",
-     "label": "খালু",
-     "gloss": "husband of mother's sister"
-    },
-    {
-     "id": "nephew-brothers-son",
-     "label": "ভাতিজা",
-     "gloss": "brother's son relative to the parent sibling"
-    },
-    {
-     "id": "nephew-sisters-son",
-     "label": "ভাগ্নে",
-     "gloss": "sister's son relative to the parent sibling"
-    }
-   ],
-   "questions": [
-    "নীল জামার লোকের পাশে কে আছেন?",
-    "কোন দুই ছবিতে ছোট ছেলে আছে?",
-    "আপনি আপনার খালাকে কী বলে ডাকেন?",
-    "নিজের ভাইয়ের ছেলেকে অন্যের সঙ্গে কীভাবে পরিচয় করাবেন?",
-    "ফুফা আর খালু, কোনটা আব্বার দিকের আর কোনটা আম্মার দিকের?",
-    "একই মানুষ একজনের ছেলে আর অন্যজনের ভাগ্নে হতে পারেন কীভাবে?"
-   ]
-  },
-  {
-   "id": "features-around-a-mosque",
-   "number": 192,
-   "title": "মসজিদের চারপাশে যা দেখি",
-   "front": "pages/192-front.jpg",
-   "back": "pages/192-back.jpg",
-   "items": [
-    {
-     "id": "mosque-minaret-local",
-     "label": "মিনার",
-     "gloss": "minaret tower of a mosque"
-    },
-    {
-     "id": "mosque-dome-local",
-     "label": "গম্বুজ",
-     "gloss": "main architectural dome atop a mosque"
-    },
-    {
-     "id": "mosque-prayer-niche",
-     "label": "মেহরাব",
-     "gloss": "prayer niche in the wall facing Mecca"
-    },
-    {
-     "id": "mosque-minbar-pulpit",
-     "label": "মিম্বর",
-     "gloss": "raised stepped mosque pulpit"
-    },
-    {
-     "id": "ablution-installation-local",
-     "label": "অজুখানা",
-     "gloss": "mosque ablution area"
-    },
-    {
-     "id": "mosque-shoe-rack",
-     "label": "জুতার তাক",
-     "gloss": "shoe shelves at mosque entrance"
-    }
-   ],
-   "questions": [
-    "মিনার কোনটা?",
-    "কোন ছবিতে জুতা রাখা আছে?",
-    "আপনার পাড়ার মসজিদে গম্বুজ আছে?",
-    "অজুখানাটা কোথায়, কাউকে কীভাবে জিজ্ঞেস করবেন?",
-    "মেহরাব আর মিম্বর পাশাপাশি থাকলে কীভাবে আলাদা চিনবেন?",
-    "মসজিদে প্রথমবার এলে কেউ জায়গা চিনতে পারছেন না, তাঁকে কী কী দেখিয়ে দিতে পারেন?"
-   ]
-  },
-  {
-   "id": "riverbanks-and-water-movement",
-   "number": 193,
-   "title": "নদীর পানিতে যা বদলায়",
-   "front": "pages/193-front.jpg",
-   "back": "pages/193-back.jpg",
-   "items": [
-    {
-     "id": "riverbank-local",
-     "label": "নদীর পাড়",
-     "gloss": "riverbank between water and dry land"
-    },
-    {
-     "id": "river-current-local",
-     "label": "স্রোত",
-     "gloss": "one-direction water current"
-    },
-    {
-     "id": "water-wave-local",
-     "label": "ঢেউ",
-     "gloss": "cresting surface wave on water"
-    },
-    {
-     "id": "high-tide-local",
-     "label": "জোয়ার",
-     "gloss": "high or rising tide against a river landing"
-    },
-    {
-     "id": "low-tide-local",
-     "label": "ভাটা",
-     "gloss": "low or receding tide at a river landing"
-    },
-    {
-     "id": "river-eddy-local",
-     "label": "ঘূর্ণি",
-     "gloss": "an eddy swirling in river water"
-    }
-   ],
-   "questions": [
-    "ঘূর্ণি কোন ছবিতে?",
-    "কোন দুই ছবিতে ঘাটের ধাপ আছে?",
-    "আপনি আগে কোথায় নদীর পাড়ে গেছেন?",
-    "গ্রামের কেউ জোয়ার কখন হবে জানেন কি না কীভাবে জিজ্ঞেস করবেন?",
-    "স্রোত আর ঢেউ দেখে কী পার্থক্য বুঝবেন?",
-    "জোয়ার আর ভাটা বুঝে চললে নদীর পাড়ের মানুষের কোন কাজে সুবিধা হয়?"
-   ]
-  },
-  {
-   "id": "brightness-and-clear-vision",
-   "number": 194,
-   "title": "আলো আর অন্ধকারে যা দেখি",
-   "front": "pages/194-front.jpg",
-   "back": "pages/194-back.jpg",
-   "items": [
-    {
-     "id": "ordinary-room-light",
-     "label": "আলো",
-     "gloss": "ordinary light falling in a room"
-    },
-    {
-     "id": "deep-room-darkness",
-     "label": "অন্ধকার",
-     "gloss": "very dark interior with almost nothing lit"
-    },
-    {
-     "id": "faint-flickering-light",
-     "label": "মিটমিটে",
-     "gloss": "dim faint flickering light"
-    },
-    {
-     "id": "intense-light-source",
-     "label": "তীব্র আলো",
-     "gloss": "very bright dazzling light"
-    },
-    {
-     "id": "blurry-view",
-     "label": "ঝাপসা",
-     "gloss": "blurred unfocused visual detail"
-    },
-    {
-     "id": "sharp-clear-view",
-     "label": "স্পষ্ট",
-     "gloss": "clearly defined sharp visual detail"
-    }
-   ],
-   "questions": [
-    "কোন ঘরটা অন্ধকার?",
-    "কোন ফুলটা স্পষ্ট আর কোনটা ঝাপসা?",
-    "বিদ্যুৎ না থাকলে আপনি কোথায় মিটমিটে আলো দেখেছেন?",
-    "আলোতে চোখে লাগছে, আলোটা অন্য দিকে নিতে কী বলবেন?",
-    "খুব কম আলো আর খুব তীব্র আলোতে দেখতে কী রকম অসুবিধা হয়?",
-    "দিনের কাজ আর ঘুমানোর আগে একই রকম আলো চাইবেন কি? কেন?"
-   ]
-  },
-  {
-   "id": "getting-around-in-the-rain",
-   "number": 195,
-   "title": "বৃষ্টিতে বাইরে যা হয়",
-   "front": "pages/195-front.jpg",
-   "back": "pages/195-back.jpg",
-   "items": [
-    {
-     "id": "heavy-tropical-rain",
-     "label": "ঝুম বৃষ্টি",
-     "gloss": "heavy pouring rain"
-    },
-    {
-     "id": "fine-intermittent-drizzle",
-     "label": "গুঁড়ি গুঁড়ি বৃষ্টি",
-     "gloss": "fine light drizzle"
-    },
-    {
-     "id": "street-waterlogging",
-     "label": "রাস্তায় পানি জমা",
-     "gloss": "standing water covering a street"
-    },
-    {
-     "id": "spread-open-umbrella",
-     "label": "ছাতা মেলা",
-     "gloss": "opening an umbrella"
-    },
-    {
-     "id": "get-wet-in-rain",
-     "label": "বৃষ্টিতে ভেজা",
-     "gloss": "getting soaked in the rain"
-    },
-    {
-     "id": "foot-stuck-in-mud",
-     "label": "কাদায় পা আটকে যাওয়া",
-     "gloss": "one foot stuck in mud"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে খুব জোরে বৃষ্টি পড়ছে?",
-    "কোনটায় ছাতা খুলছেন?",
-    "আপনার এলাকায় বৃষ্টির পরে কোথায় পানি জমে?",
-    "রাস্তা ভেজা আর পিচ্ছিল, কাউকে কীভাবে সাবধানে যেতে বলবেন?",
-    "গুঁড়ি গুঁড়ি আর ঝুম বৃষ্টির মধ্যে কী দেখে তফাত বুঝবেন?",
-    "বৃষ্টি হচ্ছে, বাইরে বের হওয়ার আগে কী কী ভেবে দেখবেন?"
-   ]
-  },
-  {
-   "id": "ways-to-keep-food",
-   "number": 196,
-   "title": "খাবার ভালো রাখতে যা করি",
-   "front": "pages/196-front.jpg",
-   "back": "pages/196-back.jpg",
-   "items": [
-    {
-     "id": "dry-fish-in-sun",
-     "label": "মাছ রোদে শুকানো",
-     "gloss": "sun-drying fresh fish"
-    },
-    {
-     "id": "dried-fish-product",
-     "label": "শুঁটকি",
-     "gloss": "fully dried fish as a food"
-    },
-    {
-     "id": "keep-fish-on-ice",
-     "label": "বরফে মাছ রাখা",
-     "gloss": "putting fish on ice"
-    },
-    {
-     "id": "cover-prepared-food",
-     "label": "খাবার ঢেকে রাখা",
-     "gloss": "covering food with a protective dome"
-    },
-    {
-     "id": "keep-with-salt",
-     "label": "লবণ মাখিয়ে রাখা",
-     "gloss": "covering food with salt to keep it"
-    },
-    {
-     "id": "keep-immersed-in-oil",
-     "label": "তেলে ডুবিয়ে রাখা",
-     "gloss": "keeping pieces of food submerged in oil"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে মাছের ওপর বরফ দিচ্ছেন?",
-    "কোন খাবারটা পুরো শুকনা?",
-    "আপনি কখনও শুঁটকি রান্না হতে দেখেছেন?",
-    "খাবারটা ঢেকে রাখতে কাউকে কী বলবেন?",
-    "মাছ রোদে শুকানো আর শুঁটকির ছবিতে মাছ কী রকম আলাদা দেখাচ্ছে?",
-    "আবহাওয়া বদলালে রান্না করা খাবার ভালো রাখার অভ্যাস কীভাবে বদলায়?"
-   ]
-  },
-  {
-   "id": "small-wear-and-breakage",
-   "number": 197,
-   "title": "জিনিসে যে ঝামেলা দেখা যায়",
-   "front": "pages/197-front.jpg",
-   "back": "pages/197-back.jpg",
-   "items": [
-    {
-     "id": "rust-forming-on-metal",
-     "label": "জং ধরা",
-     "gloss": "metal becoming rusty"
-    },
-    {
-     "id": "wall-plaster-flaking",
-     "label": "পলেস্তারা খসে পড়া",
-     "gloss": "wall plaster falling off"
-    },
-    {
-     "id": "loose-pull-handle",
-     "label": "হাতল ঢিলা হওয়া",
-     "gloss": "a fitted handle becoming loose"
-    },
-    {
-     "id": "rope-snapping",
-     "label": "দড়ি ছিঁড়ে যাওয়া",
-     "gloss": "a rope snapping into two loose ends"
-    },
-    {
-     "id": "knot-coming-loose",
-     "label": "গিঁট খুলে যাওয়া",
-     "gloss": "a knot slipping open"
-    },
-    {
-     "id": "water-overflowing",
-     "label": "পানি উপচে পড়া",
-     "gloss": "water overflowing a filled container"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে জং ধরেছে?",
-    "কোনটায় দড়ি ছিঁড়েছে আর কোনটায় শুধু গিঁট খুলছে?",
-    "আপনার বাসায় কোনো কিছু উপচে পড়েছিল?",
-    "হাতলটা ঢিলা হয়েছে, মিস্ত্রিকে কীভাবে দেখাবেন?",
-    "জং ধরা আর পলেস্তারা খসে পড়ার মধ্যে কী তফাত দেখতে পাচ্ছেন?",
-    "ছোট একটা সমস্যা কখন ঠিক করলেই চলে আর কখন পরে বড় ঝামেলা হতে পারে?"
-   ]
-  },
-  {
-   "id": "simple-stretching-and-footwork",
-   "number": 198,
-   "title": "শরীর যেভাবে নড়াই",
-   "front": "pages/198-front.jpg",
-   "back": "pages/198-back.jpg",
-   "items": [
-    {
-     "id": "stretch-arms-to-sides",
-     "label": "হাত ছড়ানো",
-     "gloss": "stretching both arms out sideways"
-    },
-    {
-     "id": "raise-both-hands",
-     "label": "হাত তুলে ধরা",
-     "gloss": "raising both arms overhead"
-    },
-    {
-     "id": "sit-legs-extended",
-     "label": "পা মেলে বসা",
-     "gloss": "sitting with legs stretched out forward"
-    },
-    {
-     "id": "sit-cross-legged",
-     "label": "পা ভাঁজ করে বসা",
-     "gloss": "sitting cross-legged"
-    },
-    {
-     "id": "stand-on-toes",
-     "label": "আঙুলে ভর দিয়ে দাঁড়ানো",
-     "gloss": "standing on the balls of both feet"
-    },
-    {
-     "id": "tiptoe-quietly",
-     "label": "পা টিপে হাঁটা",
-     "gloss": "walking quietly on one's toes"
-    }
-   ],
-   "questions": [
-    "কে দুই হাত ওপরে তুলেছেন?",
-    "কে পা ভাঁজ করে বসেছেন?",
-    "আপনি কখন পা মেলে বসেন?",
-    "কাউকে পায়ের আঙুলে ভর দিয়ে দাঁড়াতে কী বলবেন?",
-    "পা টিপে হাঁটা আর শুধু আঙুলে ভর দিয়ে দাঁড়ানোর মধ্যে কী তফাত?",
-    "কারও হাঁটুতে অস্বস্তি হলে বসার ভঙ্গি নিজের মতো করে কীভাবে বদলাতে পারেন?"
-   ]
-  },
-  {
-   "id": "tree-and-stem-details",
-   "number": 199,
-   "title": "গাছের ছোট বড় অংশ",
-   "front": "pages/199-front.jpg",
-   "back": "pages/199-back.jpg",
-   "items": [
-    {
-     "id": "old-tree-stump",
-     "label": "গাছের গুঁড়ি",
-     "gloss": "thick tree stump after cutting"
-    },
-    {
-     "id": "bark-of-tree-local",
-     "label": "বাকল",
-     "gloss": "bark of a tree"
-    },
-    {
-     "id": "soft-growing-tip",
-     "label": "ডগা",
-     "gloss": "tip of a growing twig or shoot"
-    },
-    {
-     "id": "plant-trunk-and-stem",
-     "label": "কাণ্ড",
-     "gloss": "upright supporting stem of a plant"
-    },
-    {
-     "id": "tender-new-leaf",
-     "label": "কচি পাতা",
-     "gloss": "tender newly emerging leaf"
-    },
-    {
-     "id": "woody-plant-thorn",
-     "label": "কাঁটা",
-     "gloss": "sharp plant thorn"
-    }
-   ],
-   "questions": [
-    "কচি পাতাটা কোনটা?",
-    "কোন ছবিতে ধারালো কাঁটা আছে?",
-    "আপনি কোথায় পুরোনো গাছের গুঁড়ি দেখেছেন?",
-    "কচি পাতাটা দেখাতে কাউকে কী বলবেন?",
-    "গাছের বাকল আর কাণ্ড ছুঁলে কী রকম আলাদা লাগতে পারে?",
-    "একটা গাছ চিনতে শুধু পাতাই যথেষ্ট, নাকি অন্য অংশও কাজে লাগে? কেন?"
-   ]
-  },
-  {
-   "id": "materials-from-plants-and-animals",
-   "number": 200,
-   "title": "চারপাশে দেখি এমন উপকরণ",
-   "front": "pages/200-front.jpg",
-   "back": "pages/200-back.jpg",
-   "items": [
-    {
-     "id": "natural-rattan-material",
-     "label": "বেত",
-     "gloss": "raw flexible rattan cane"
-    },
-    {
-     "id": "coir-fiber-material",
-     "label": "নারকেলের আঁশ",
-     "gloss": "loose fibers separated from coconut husk"
-    },
-    {
-     "id": "raw-wool-material",
-     "label": "পশম",
-     "gloss": "raw sheep's wool"
-    },
-    {
-     "id": "feather-material",
-     "label": "পালক",
-     "gloss": "bird feather"
-    },
-    {
-     "id": "mollusk-shell-material",
-     "label": "ঝিনুকের খোল",
-     "gloss": "empty bivalve shell"
-    },
-    {
-     "id": "beeswax-material",
-     "label": "মোম",
-     "gloss": "solid natural beeswax"
-    }
-   ],
-   "questions": [
-    "পালকটা কোনটা?",
-    "কোন ছবিতে নারকেলের আঁশ আছে?",
-    "বেতের তৈরি কী কী জিনিস আপনি দেখেছেন?",
-    "ঝিনুকের খোল কোথায় পেয়েছেন, কাউকে কীভাবে বলবেন?",
-    "পশম আর নারকেলের আঁশ ছুঁয়ে কী তফাত বুঝবেন?",
-    "একটা জিনিস বানাতে কোন উপকরণ ভালো হবে, সেটা কীভাবে ঠিক করবেন?"
-   ]
-  },
-  {
-   "id": "sweet-breakfast-and-pitha",
-   "number": 201,
-   "title": "পিঠা আর মিষ্টি নাশতা",
-   "front": "pages/201-front.jpg",
-   "back": "pages/201-back.jpg",
-   "items": [
-    {
-     "id": "sweet-semolina-suji",
-     "label": "সুজি",
-     "gloss": "cooked sweet semolina breakfast"
-    },
-    {
-     "id": "sweet-semai-vermicelli",
-     "label": "সেমাই",
-     "gloss": "milk vermicelli pudding"
-    },
-    {
-     "id": "popped-rice-khoi",
-     "label": "খই",
-     "gloss": "popped paddy flakes"
-    },
-    {
-     "id": "jaggery-coated-murki",
-     "label": "মুড়কি",
-     "gloss": "jaggery-coated puffed rice grains"
-    },
-    {
-     "id": "plain-chitoi-pitha",
-     "label": "চিতই পিঠা",
-     "gloss": "plain round steamed rice pitha"
-    },
-    {
-     "id": "rolled-patishapta-pitha",
-     "label": "পাটিসাপটা",
-     "gloss": "rolled filled pitha"
-    }
-   ],
-   "questions": [
-    "খই কোনটা?",
-    "চিতই আর পাটিসাপটার আকারে কী তফাত?",
-    "আপনি কখন সেমাই খান?",
-    "সুজি রান্না করতে কী দেন?",
-    "মুড়কি আর পাটিসাপটার স্বাদে গুড় কী করে বোঝা যায়?",
-    "শীতের সকালে অতিথি এলে কোনটা খাওয়াবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "parts-of-a-market-fish",
-   "number": 202,
-   "title": "মাছের গায়ে আর ভেতরে",
-   "front": "pages/202-front.jpg",
-   "back": "pages/202-back.jpg",
-   "items": [
-    {
-     "id": "fish-scale-piece",
-     "label": "আঁশ",
-     "gloss": "overlapping scales from a fish"
-    },
-    {
-     "id": "fish-bone-spine",
-     "label": "মাছের কাঁটা",
-     "gloss": "fish spine and bones"
-    },
-    {
-     "id": "fish-red-gills",
-     "label": "ফুলকা",
-     "gloss": "fish gills"
-    },
-    {
-     "id": "fish-side-fin",
-     "label": "পাখনা",
-     "gloss": "fish side fin"
-    },
-    {
-     "id": "fish-head-cut",
-     "label": "মাছের মাথা",
-     "gloss": "fish head portion"
-    },
-    {
-     "id": "fish-tail-cut",
-     "label": "মাছের লেজ",
-     "gloss": "fish tail portion"
-    }
-   ],
-   "questions": [
-    "মাছের লেজ কোন ছবিতে?",
-    "আঁশ আর পাখনা দেখতে কীভাবে আলাদা?",
-    "আপনি মাছের কোন অংশ দিয়ে ঝোল করেন?",
-    "মাছ খাওয়ার সময় কাঁটা কী করে বাছেন?",
-    "ফুলকা দেখতে হলে মাছের কোন পাশে তাকাবেন?",
-    "মাছ পরিষ্কার করতে না জানলে দোকানিকে কী বলবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "six-market-pulses",
-   "number": 203,
-   "title": "বাজারে ছয় রকম ডাল",
-   "front": "pages/203-front.jpg",
-   "back": "pages/203-back.jpg",
-   "items": [
-    {
-     "id": "split-red-masoor",
-     "label": "মসুর ডাল",
-     "gloss": "orange split red lentils"
-    },
-    {
-     "id": "split-yellow-moong",
-     "label": "মুগ ডাল",
-     "gloss": "yellow split mung beans"
-    },
-    {
-     "id": "split-black-mashkalai",
-     "label": "মাষকলাই ডাল",
-     "gloss": "split black gram"
-    },
-    {
-     "id": "split-dried-pea-dal",
-     "label": "মটর ডাল",
-     "gloss": "split yellow peas"
-    },
-    {
-     "id": "split-grass-pea-dal",
-     "label": "খেসারি ডাল",
-     "gloss": "split grass peas"
-    },
-    {
-     "id": "split-chana-dal",
-     "label": "ছোলার ডাল",
-     "gloss": "split Bengal gram"
-    }
-   ],
-   "questions": [
-    "কমলা রঙের ডাল কোনটা?",
-    "মুগ আর ছোলার ডালের দানা কোনটা বড়?",
-    "আপনার বাসায় বেশি কোন ডাল রান্না হয়?",
-    "ডাল ভিজিয়ে রাখলে পরে কী করেন?",
-    "দোকানি ডাল দেখালে চিনতে কী কী দেখবেন?",
-    "একই দামে দুই রকম ডাল পেলে কিসের ওপর ভরসা করে বাছবেন?"
-   ]
-  },
-  {
-   "id": "sending-post-and-parcels",
-   "number": 204,
-   "title": "ডাকে জিনিস পাঠাই",
-   "front": "pages/204-front.jpg",
-   "back": "pages/204-back.jpg",
-   "items": [
-    {
-     "id": "red-post-letter-box",
-     "label": "ডাকবাক্স",
-     "gloss": "street posting box"
-    },
-    {
-     "id": "bangla-postmark",
-     "label": "ডাকের ছাপ",
-     "gloss": "postmark on an envelope"
-    },
-    {
-     "id": "brown-paper-parcel",
-     "label": "কাগজে মোড়ানো জিনিস",
-     "gloss": "wrapped parcel for posting"
-    },
-    {
-     "id": "postal-canvas-sack",
-     "label": "ডাকের থলে",
-     "gloss": "postal delivery sack"
-    },
-    {
-     "id": "sender-address-on-letter",
-     "label": "নিজের ঠিকানা",
-     "gloss": "return address on an envelope"
-    },
-    {
-     "id": "receiver-address-on-letter",
-     "label": "পাঠানোর ঠিকানা",
-     "gloss": "recipient address on an envelope"
-    }
-   ],
-   "questions": [
-    "ডাকবাক্সটা কোথায়?",
-    "দুটো খামে লেখার জায়গা কীভাবে আলাদা?",
-    "আপনি কখনও ডাকে কিছু পাঠিয়েছেন?",
-    "পাঠানোর আগে খামে কী কী লাগাবেন?",
-    "ঠিকানা ভুল হলে কী করে ঠিক করবেন?",
-    "কাউকে চিঠি পাঠানো আর হাতে চিঠি দেওয়ার মধ্যে কখন কোনটা বেছে নেবেন?"
-   ]
-  },
-  {
-   "id": "counting-thirteen-to-eighteen",
-   "number": 205,
-   "title": "তেরো থেকে আঠারো",
-   "front": "pages/205-front.jpg",
-   "back": "pages/205-back.jpg",
-   "items": [
-    {
-     "id": "thirteen-count",
-     "label": "তেরো",
-     "gloss": "thirteen"
-    },
-    {
-     "id": "fourteen-count",
-     "label": "চৌদ্দ",
-     "gloss": "fourteen"
-    },
-    {
-     "id": "fifteen-count",
-     "label": "পনেরো",
-     "gloss": "fifteen"
-    },
-    {
-     "id": "sixteen-count",
-     "label": "ষোলো",
-     "gloss": "sixteen"
-    },
-    {
-     "id": "seventeen-count",
-     "label": "সতেরো",
-     "gloss": "seventeen"
-    },
-    {
-     "id": "eighteen-count",
-     "label": "আঠারো",
-     "gloss": "eighteen"
-    }
-   ],
-   "questions": [
-    "তেরোটা কোথায়?",
-    "পনেরো আর ষোলোর মধ্যে কোনটা বেশি?",
-    "আপনি দোকানে কোনো জিনিস সতেরোটা চেয়েছেন?",
-    "চৌদ্দ থেকে আঠারো পর্যন্ত কীভাবে গুনবেন?",
-    "আঠারোটা থেকে দুইটা সরালে কোন ছবির সঙ্গে মিলবে?",
-    "আঠারোটা জিনিস দ্রুত গুনতে কীভাবে সাজাবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "baby-play-and-feeding-things",
-   "number": 206,
-   "title": "ছোট বাচ্চার হাতে আর মুখে",
-   "front": "pages/206-front.jpg",
-   "back": "pages/206-back.jpg",
-   "items": [
-    {
-     "id": "baby-hand-rattle",
-     "label": "ঝুনঝুনি",
-     "gloss": "handheld baby rattle"
-    },
-    {
-     "id": "cloth-baby-doll",
-     "label": "পুতুল",
-     "gloss": "whole cloth doll"
-    },
-    {
-     "id": "wooden-toy-motor-car",
-     "label": "খেলনা গাড়ি",
-     "gloss": "small wooden toy car"
-    },
-    {
-     "id": "small-wooden-toy-horse",
-     "label": "কাঠের ঘোড়া",
-     "gloss": "wooden horse toy"
-    },
-    {
-     "id": "infant-milk-feeding-bottle",
-     "label": "দুধ খাওয়ানোর বোতল",
-     "gloss": "infant milk feeding bottle"
-    },
-    {
-     "id": "baby-feeding-bib-cloth",
-     "label": "বাচ্চার বুকঢাকা কাপড়",
-     "gloss": "cloth bib for feeding"
-    }
-   ],
-   "questions": [
-    "ঝুনঝুনি কোনটা?",
-    "খেলনা গাড়ি আর কাঠের ঘোড়া কীভাবে নড়ে?",
-    "ছোটবেলায় আপনার কী খেলনা ছিল?",
-    "বাচ্চাকে খাওয়ানোর আগে বাচ্চার বুকঢাকা কাপড় কীভাবে পরাবেন?",
-    "পুতুল আর ঝুনঝুনির মধ্যে শব্দ হবে কোনটায়?",
-    "বাচ্চাকে শান্ত করতে কোন খেলনাটা আগে দেবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "tree-fruit-and-sap-treats",
-   "number": 207,
-   "title": "গাছের ফল আর রস",
-   "front": "pages/207-front.jpg",
-   "back": "pages/207-back.jpg",
-   "items": [
-    {
-     "id": "mature-brown-coconut",
-     "label": "নারকেল",
-     "gloss": "mature brown coconut"
-    },
-    {
-     "id": "fresh-green-tender-coconut",
-     "label": "ডাব",
-     "gloss": "young green coconut"
-    },
-    {
-     "id": "ripe-black-palmyra-fruit",
-     "label": "তাল",
-     "gloss": "ripe palmyra palm fruit"
-    },
-    {
-     "id": "areca-betel-nut",
-     "label": "সুপারি",
-     "gloss": "areca nut"
-    },
-    {
-     "id": "palmyra-jelly-kernel",
-     "label": "তালের শাঁস",
-     "gloss": "tender palmyra jelly kernel"
-    },
-    {
-     "id": "fresh-date-palm-sap",
-     "label": "খেজুরের রস",
-     "gloss": "fresh date palm sap collected in a pot"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে ডাব আছে?",
-    "তাল আর তালের শাঁসের রং কীভাবে আলাদা?",
-    "আপনি ডাব না নারকেল বেশি কেনেন?",
-    "ডাব কাটতে দোকানিকে কী বলবেন?",
-    "নারকেল আর তালের কোন অংশ খাই?",
-    "শীতে গাছ থেকে কী কী সংগ্রহ করেন, আর সেগুলো কী কাজে লাগে?"
-   ]
-  },
-  {
-   "id": "wetland-animals-around-bangladesh",
-   "number": 208,
-   "title": "পানি আর পাড়ের প্রাণী",
-   "front": "pages/208-front.jpg",
-   "back": "pages/208-back.jpg",
-   "items": [
-    {
-     "id": "freshwater-paddy-crab",
-     "label": "কাঁকড়া",
-     "gloss": "small freshwater ricefield crab"
-    },
-    {
-     "id": "round-pond-snail",
-     "label": "শামুক",
-     "gloss": "pond apple snail"
-    },
-    {
-     "id": "live-river-mussel",
-     "label": "ঝিনুক",
-     "gloss": "live freshwater mussel"
-    },
-    {
-     "id": "freshwater-crocodile",
-     "label": "কুমির",
-     "gloss": "crocodile"
-    },
-    {
-     "id": "gangetic-river-dolphin",
-     "label": "শুশুক",
-     "gloss": "Ganges river dolphin"
-    },
-    {
-     "id": "wetland-leech",
-     "label": "জোঁক",
-     "gloss": "freshwater leech"
-    }
-   ],
-   "questions": [
-    "কাঁকড়া কোন ছবিতে?",
-    "কুমির আর শুশুকের শরীর দেখতে কীভাবে আলাদা?",
-    "আপনি কোথায় শামুক দেখেছেন?",
-    "শুশুক পানির ওপর উঠলে কীভাবে চিনবেন?",
-    "শামুক আর ঝিনুকের খোলস হাতে পেলে তফাত কী দেখবেন?",
-    "পুকুরের পাড়ে অনেক গাছ থাকলে এসব প্রাণীর কী সুবিধা হতে পারে?"
-   ]
-  },
-  {
-   "id": "undoing-and-gathering-actions",
-   "number": 209,
-   "title": "হাত দিয়ে আলাদা আর এক করি",
-   "front": "pages/209-front.jpg",
-   "back": "pages/209-back.jpg",
-   "items": [
-    {
-     "id": "loosening-a-knot",
-     "label": "গিঁট খোলা",
-     "gloss": "untying a knot by hand"
-    },
-    {
-     "id": "tearing-paper-in-two",
-     "label": "ছিঁড়ে ফেলা",
-     "gloss": "tearing paper into two pieces"
-    },
-    {
-     "id": "spreading-grains-out",
-     "label": "ছড়িয়ে দেওয়া",
-     "gloss": "spreading objects out from a pile"
-    },
-    {
-     "id": "rolling-up-loose-mat",
-     "label": "গুটিয়ে নেওয়া",
-     "gloss": "rolling up a laid-out mat"
-    },
-    {
-     "id": "shaking-up-small-bottle",
-     "label": "ঝাঁকিয়ে নেওয়া",
-     "gloss": "shaking a sealed container"
-    },
-    {
-     "id": "shaking-dust-off-cloth",
-     "label": "ঝেড়ে ফেলা",
-     "gloss": "shaking dust off a cloth"
-    }
-   ],
-   "questions": [
-    "কে কাগজ ছিঁড়ছেন?",
-    "ছড়িয়ে দেওয়া আর গুটিয়ে নেওয়া দেখতে কীভাবে আলাদা?",
-    "আপনি বাসায় কোন জিনিস গুটিয়ে রাখেন?",
-    "গিঁট শক্ত হলে কীভাবে খুলবেন?",
-    "বোতল ঝাঁকানোর আগে কী দেখে নেবেন?",
-    "ধুলো ঝাড়তে ঘরের ভেতর নাকি বাইরে যাবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "rice-varieties-at-the-market",
-   "number": 210,
-   "title": "চালের রকম চিনে নিই",
-   "front": "pages/210-front.jpg",
-   "back": "pages/210-back.jpg",
-   "items": [
-    {
-     "id": "raw-white-atop-rice",
-     "label": "আতপ চাল",
-     "gloss": "raw non-parboiled white rice"
-    },
-    {
-     "id": "cream-parboiled-rice",
-     "label": "সেদ্ধ চাল",
-     "gloss": "dry Bangladeshi parboiled rice"
-    },
-    {
-     "id": "tiny-scented-pilaf-rice",
-     "label": "পোলাওয়ের চাল",
-     "gloss": "fine scented short grain pilaf rice"
-    },
-    {
-     "id": "red-bran-rice",
-     "label": "লাল চাল",
-     "gloss": "whole red bran rice"
-    },
-    {
-     "id": "broken-rice-khud",
-     "label": "খুদ",
-     "gloss": "small broken rice kernels"
-    },
-    {
-     "id": "white-rice-flour",
-     "label": "চালের গুঁড়া",
-     "gloss": "white rice flour"
-    }
-   ],
-   "questions": [
-    "লাল চাল কোনটা?",
-    "খুদ আর চালের গুঁড়ার মধ্যে কোনটা বেশি মিহি?",
-    "আপনি বাসায় কোন চাল দিয়ে ভাত খান?",
-    "পোলাও রান্নার আগে চাল কীভাবে তৈরি করেন?",
-    "আতপ চাল আর সেদ্ধ চাল না চেখে কীভাবে আলাদা করবেন?",
-    "প্রথমবার নতুন চাল কিনতে গেলে দোকানির কাছে কী জানতে চাইবেন?"
-   ]
-  },
-  {
-   "id": "more-neighborhood-specialty-shops",
-   "number": 211,
-   "title": "পাড়ায় জিনিস কিনি যেসব দোকানে",
-   "front": "pages/211-front.jpg",
-   "back": "pages/211-back.jpg",
-   "items": [
-    {
-     "id": "local-book-shop",
-     "label": "বইয়ের দোকান",
-     "gloss": "book shop storefront"
-    },
-    {
-     "id": "local-cloth-shop",
-     "label": "কাপড়ের দোকান",
-     "gloss": "fabric shop storefront"
-    },
-    {
-     "id": "local-shoe-shop",
-     "label": "জুতার দোকান",
-     "gloss": "shoe shop storefront"
-    },
-    {
-     "id": "local-fruit-shop",
-     "label": "ফলের দোকান",
-     "gloss": "fruit shop storefront"
-    },
-    {
-     "id": "local-flower-shop",
-     "label": "ফুলের দোকান",
-     "gloss": "flower shop storefront"
-    },
-    {
-     "id": "local-fish-shop",
-     "label": "মাছের দোকান",
-     "gloss": "fish shop storefront"
-    }
-   ],
-   "questions": [
-    "মাছের দোকানটা কোথায়?",
-    "কাপড়ের দোকান আর জুতার দোকানে কী তফাত?",
-    "আপনার বাসার কাছে কোন দোকান আছে?",
-    "বই দরকার হলে দোকান খুঁজে কাউকে কী বলবেন?",
-    "দোকানে ফল আর মাছ টাটকা কি না কী দেখে বুঝবেন?",
-    "নতুন পাড়ায় দোকান চিনতে দোকানের নাম না পড়ে কী করতে পারেন?"
-   ]
-  },
-  {
-   "id": "small-places-around-the-room",
-   "number": 212,
-   "title": "ঘরের যে জায়গায় জিনিস থাকে",
-   "front": "pages/212-front.jpg",
-   "back": "pages/212-back.jpg",
-   "items": [
-    {
-     "id": "space-under-the-bed",
-     "label": "খাটের তলা",
-     "gloss": "space underneath a bed"
-    },
-    {
-     "id": "top-of-the-cupboard",
-     "label": "আলমারির ওপর",
-     "gloss": "top of a cupboard"
-    },
-    {
-     "id": "inside-window-ledge",
-     "label": "জানালার ধার",
-     "gloss": "ledge at the bottom of a window"
-    },
-    {
-     "id": "concealed-behind-the-door",
-     "label": "দরজার আড়াল",
-     "gloss": "concealed space behind a door"
-    },
-    {
-     "id": "edge-of-the-rooftop",
-     "label": "ছাদের কিনারা",
-     "gloss": "outer edge of a flat roof"
-    },
-    {
-     "id": "wall-storage-niche",
-     "label": "দেয়ালের কুলুঙ্গি",
-     "gloss": "small recessed wall niche"
-    }
-   ],
-   "questions": [
-    "খাটের তলা কোনটা?",
-    "দরজার আড়াল আর দেয়ালের কুলুঙ্গিতে কী তফাত?",
-    "আপনার ঘরে কোথায় চাবি রাখেন?",
-    "জানালার ধারে রাখা জিনিসটা কীভাবে নামাবেন?",
-    "আলমারির ওপর রাখা জিনিস খুঁজতে কাউকে কী বলবেন?",
-    "খেলনা এমন কোথায় রাখবেন যাতে ছোট বাচ্চা সহজে পায়, আর কেন?"
-   ]
-  },
-  {
-   "id": "at-a-bangladeshi-fair",
-   "number": 213,
-   "title": "মেলায় যা দেখি আর করি",
-   "front": "pages/213-front.jpg",
-   "back": "pages/213-back.jpg",
-   "items": [
-    {
-     "id": "bangladesh-village-fair",
-     "label": "মেলা",
-     "gloss": "Bangladesh village fair miniature"
-    },
-    {
-     "id": "traditional-ferris-wheel",
-     "label": "নাগরদোলা",
-     "gloss": "traditional fair Ferris wheel"
-    },
-    {
-     "id": "bangladeshi-string-puppet-show",
-     "label": "পুতুলনাচ",
-     "gloss": "traditional Bangla puppet performance"
-    },
-    {
-     "id": "bengali-horse-drawn-carriage",
-     "label": "ঘোড়ার গাড়ি",
-     "gloss": "Bangladesh horse-drawn passenger carriage"
-    },
-    {
-     "id": "bengali-fair-toy-stall",
-     "label": "খেলনার দোকান",
-     "gloss": "toy shop stall at a fair"
-    },
-    {
-     "id": "bangladeshi-clay-toy-set",
-     "label": "মাটির খেলনা",
-     "gloss": "hand-painted clay fair toys"
-    }
-   ],
-   "questions": [
-    "নাগরদোলা কোন ছবিতে?",
-    "নাগরদোলা আর ঘোড়ার গাড়ি কীভাবে চলে?",
-    "আপনি কোথাও মেলায় গিয়েছেন?",
-    "পুতুল কীভাবে নড়ছে?",
-    "দোকানে মাটির খেলনা চাইলে কী বলবেন?",
-    "অচেনা কাউকে মেলায় নিয়ে গেলে আগে কী দেখাবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "making-a-clay-pot",
-   "number": 214,
-   "title": "মাটির পাত্র বানানোর ধাপ",
-   "front": "pages/214-front.jpg",
-   "back": "pages/214-back.jpg",
-   "items": [
-    {
-     "id": "kneading-potters-clay",
-     "label": "মাটি মাখা",
-     "gloss": "kneading potter's clay"
-    },
-    {
-     "id": "clay-set-on-wheel",
-     "label": "চাকে মাটি বসানো",
-     "gloss": "setting clay on a potter wheel"
-    },
-    {
-     "id": "widening-a-pot-mouth",
-     "label": "পাত্রের মুখ চওড়া করা",
-     "gloss": "widening the mouth of a clay pot"
-    },
-    {
-     "id": "lifting-wet-clay-pot",
-     "label": "ভেজা পাত্র তুলে নেওয়া",
-     "gloss": "lifting formed wet clay pot"
-    },
-    {
-     "id": "air-drying-clay-pots",
-     "label": "মাটির পাত্র শুকানো",
-     "gloss": "air drying clay pots"
-    },
-    {
-     "id": "firing-clay-pots",
-     "label": "মাটির পাত্র পোড়ানো",
-     "gloss": "firing clay pots"
-    }
-   ],
-   "questions": [
-    "চাক কোথায়?",
-    "শুকানো আর পোড়ানোর ছবিতে কী তফাত?",
-    "আপনি মাটির কোন পাত্র ব্যবহার করেন?",
-    "চাকে মাটি বসানোর পরে কী করেন?",
-    "ভেজা পাত্র কীভাবে ধরলে মুখটা নষ্ট হবে না?",
-    "হাঁড়ি পোড়ানোর আগে শুকিয়ে নেওয়া দরকার কেন?"
-   ]
-  },
-  {
-   "id": "plants-by-ponds-and-fields",
-   "number": 215,
-   "title": "পুকুরপাড় আর মাঠের গাছ",
-   "front": "pages/215-front.jpg",
-   "back": "pages/215-back.jpg",
-   "items": [
-    {
-     "id": "water-hyacinth-rosette",
-     "label": "কচুরিপানা",
-     "gloss": "floating water hyacinth"
-    },
-    {
-     "id": "pond-algae-mat",
-     "label": "শেওলা",
-     "gloss": "pond algae covering a surface"
-    },
-    {
-     "id": "bengali-kash-grass-plumes",
-     "label": "কাশফুল",
-     "gloss": "white kash grass plumes"
-    },
-    {
-     "id": "tall-marsh-reed-bundle",
-     "label": "নলখাগড়া",
-     "gloss": "tall wetland reed clump"
-    },
-    {
-     "id": "low-durba-grass",
-     "label": "দূর্বা ঘাস",
-     "gloss": "low Bermuda grass sprig"
-    },
-    {
-     "id": "shola-wetland-plant",
-     "label": "শোলাগাছ",
-     "gloss": "Indian cork shola aquatic plant"
-    }
-   ],
-   "questions": [
-    "কচুরিপানা কোনটা?",
-    "কাশফুল আর নলখাগড়ার মাথায় কী তফাত?",
-    "আপনি কোথায় শেওলা দেখেছেন?",
-    "মাঠে দূর্বা ঘাস থাকলে কী দেখে চিনবেন?",
-    "শোলাগাছের ডাঁটা কেটে ভেতরে কী দেখা যায়?",
-    "পুকুরের চারদিকে গাছ কমে গেলে কী কী বদলাতে পারে?"
-   ]
-  },
-  {
-   "id": "preparing-and-ordering-tea",
-   "number": 216,
-   "title": "চা বানাই আর চায়ের রকম বলি",
-   "front": "pages/216-front.jpg",
-   "back": "pages/216-back.jpg",
-   "items": [
-    {
-     "id": "bengali-tea-kettle",
-     "label": "চায়ের পাত্র",
-     "gloss": "Bangladeshi tea kettle"
-    },
-    {
-     "id": "loose-bangla-black-tea-leaves",
-     "label": "চা পাতা",
-     "gloss": "dried black tea leaves"
-    },
-    {
-     "id": "milk-tea-glass",
-     "label": "দুধ চা",
-     "gloss": "Bangladeshi milk tea"
-    },
-    {
-     "id": "plain-black-tea-glass",
-     "label": "লাল চা",
-     "gloss": "red plain black tea without milk"
-    },
-    {
-     "id": "ginger-tea-glass",
-     "label": "আদা চা",
-     "gloss": "ginger tea"
-    },
-    {
-     "id": "lemon-tea-glass",
-     "label": "লেবু চা",
-     "gloss": "lemon tea"
-    }
-   ],
-   "questions": [
-    "চায়ের পাত্র কোনটা?",
-    "দুধ চা আর লাল চায়ের রং কেমন?",
-    "আপনি সাধারণত কোন চা খান?",
-    "আদা চা বানাতে আদা কখন দেবেন?",
-    "দোকানে চিনি ছাড়া লেবু চা চাইলে কী বলবেন?",
-    "বাড়িতে অতিথি এলে তাঁর পছন্দের চা কীভাবে জেনে নেবেন?"
-   ]
-  },
-  {
-   "id": "local-fabric-and-cloth-types",
-   "number": 217,
-   "title": "কাপড়ের রকম চিনে কিনি",
-   "front": "pages/217-front.jpg",
-   "back": "pages/217-back.jpg",
-   "items": [
-    {
-     "id": "plain-cotton-fabric",
-     "label": "সুতি কাপড়",
-     "gloss": "plain woven cotton cloth"
-    },
-    {
-     "id": "smooth-silk-fabric",
-     "label": "রেশমি কাপড়",
-     "gloss": "lustrous silk cloth"
-    },
-    {
-     "id": "fine-bengali-muslin",
-     "label": "মসলিন",
-     "gloss": "ultrafine translucent muslin"
-    },
-    {
-     "id": "woven-jamdani-sample",
-     "label": "জামদানি",
-     "gloss": "patterned Bangladeshi jamdani"
-    },
-    {
-     "id": "bengali-nakshi-kantha",
-     "label": "নকশিকাঁথা",
-     "gloss": "embroidered nakshi kantha quilt"
-    },
-    {
-     "id": "local-handspun-khadi",
-     "label": "খাদি কাপড়",
-     "gloss": "handspun khadi cotton cloth"
-    }
-   ],
-   "questions": [
-    "কোন কাপড়টায় বড় ফুলের নকশা আছে?",
-    "সুতি আর রেশমি কাপড়ের ওপর আলো পড়লে কী তফাত দেখেন?",
-    "গরমে আপনি কী রকম কাপড় পরেন?",
-    "কাপড় কেনার আগে হাতে ছুঁয়ে কী দেখবেন?",
-    "নকশিকাঁথার ফোঁড় আর জামদানির নকশা কীভাবে আলাদা?",
-    "দাম একই হলে গরমের জামার জন্য কোন কাপড় বাছবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "working-with-fresh-milk",
-   "number": 218,
-   "title": "দুধ ঘরে এলে যা করি",
-   "front": "pages/218-front.jpg",
-   "back": "pages/218-back.jpg",
-   "items": [
-    {
-     "id": "milking-dairy-cow",
-     "label": "দুধ দোয়ানো",
-     "gloss": "milking a dairy cow by hand"
-    },
-    {
-     "id": "filtering-fresh-milk",
-     "label": "দুধ ছেঁকে নেওয়া",
-     "gloss": "straining fresh milk through cloth"
-    },
-    {
-     "id": "heating-up-milk",
-     "label": "দুধ জ্বাল দেওয়া",
-     "gloss": "heating milk in a pot"
-    },
-    {
-     "id": "setting-yogurt-in-clay",
-     "label": "দই পাতা",
-     "gloss": "adding starter to set yoghurt"
-    },
-    {
-     "id": "taking-butter-from-churn",
-     "label": "মাখন তুলে নেওয়া",
-     "gloss": "lifting butter from churned milk"
-    },
-    {
-     "id": "clarifying-butter-as-ghee",
-     "label": "ঘি জ্বাল দেওয়া",
-     "gloss": "heating butter to make ghee"
-    }
-   ],
-   "questions": [
-    "কে দুধ দোয়াচ্ছেন?",
-    "দুধ ছাঁকার আর দই পাতার ছবিতে কী তফাত?",
-    "আপনার বাসায় দই পাতেন?",
-    "দুধে কিছু ভাসলে সেটা কীভাবে সরাবেন?",
-    "মাখন আর ঘির রং কীভাবে আলাদা?",
-    "কম খরচে দই কিনবেন নাকি ঘরে পাতবেন, কী দেখে ঠিক করবেন?"
-   ]
-  },
-  {
-   "id": "helping-plants-grow",
-   "number": 219,
-   "title": "গাছের বাড়তি যত্ন",
-   "front": "pages/219-front.jpg",
-   "back": "pages/219-back.jpg",
-   "items": [
-    {
-     "id": "trimming-a-plant-branch",
-     "label": "ডাল ছাঁটা",
-     "gloss": "pruning a plant branch"
-    },
-    {
-     "id": "grafting-a-plant-cutting",
-     "label": "গাছে কলম করা",
-     "gloss": "grafting a live sapling"
-    },
-    {
-     "id": "staking-young-plant",
-     "label": "চারাকে খুঁটিতে বাঁধা",
-     "gloss": "tying a sapling to a stake"
-    },
-    {
-     "id": "picking-one-flower-by-hand",
-     "label": "ফুল তোলা",
-     "gloss": "picking one flower by hand"
-    },
-    {
-     "id": "removing-dry-leaves",
-     "label": "শুকনা পাতা সরানো",
-     "gloss": "removing dry fallen leaves from a plant pot"
-    },
-    {
-     "id": "moving-plant-to-larger-pot",
-     "label": "চারার টব বদলানো",
-     "gloss": "repotting a small plant"
-    }
-   ],
-   "questions": [
-    "কে ফুল তুলছেন?",
-    "ছাঁটা আর কলম করার কাজ দেখতে কীভাবে আলাদা?",
-    "আপনার বাসায় টবে কী গাছ আছে?",
-    "ঢলে পড়া চারাকে খুঁটিতে বাঁধতে কী লাগবে?",
-    "একটা চারা বড় টবে নিতে হলে আগে কী করবেন?",
-    "কোন গাছ কাটাছেঁড়া ছাড়াই ভালো থাকবে কী করে বুঝবেন?"
-   ]
-  },
-  {
-   "id": "after-meal-dishwashing",
-   "number": 220,
-   "title": "খাওয়ার পর বাসন গুছাই",
-   "front": "pages/220-front.jpg",
-   "back": "pages/220-back.jpg",
-   "items": [
-    {
-     "id": "soaking-dirty-cooking-pot",
-     "label": "হাঁড়ি ভিজিয়ে রাখা",
-     "gloss": "soaking a used cooking pot"
-    },
-    {
-     "id": "scrubbing-pot-bottom",
-     "label": "হাঁড়ির তলা ঘষা",
-     "gloss": "scrubbing the underside of a pot"
-    },
-    {
-     "id": "rinsing-a-washed-plate",
-     "label": "থালা ধুয়ে নেওয়া",
-     "gloss": "rinsing a plate under clean water"
-    },
-    {
-     "id": "draining-water-from-bowl",
-     "label": "বাটির পানি ঝরানো",
-     "gloss": "draining rinse water from a bowl"
-    },
-    {
-     "id": "drying-dishes-on-rack",
-     "label": "জালিতে বাসন শুকানো",
-     "gloss": "air drying dishes in a rack"
-    },
-    {
-     "id": "stacking-clean-plates",
-     "label": "থালা একটার ওপর আরেকটা রাখা",
-     "gloss": "stacking clean plates flat"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে থালা ধুচ্ছেন?",
-    "পানি ঝরানো আর জালিতে শুকানোর ছবিতে কী তফাত?",
-    "বাসায় বাসন শুকাতে কোথায় রাখেন?",
-    "হাঁড়িতে ভাত লেগে থাকলে আগে কী করবেন?",
-    "ভেজা আর শুকনা থালা কীভাবে আলাদা করে রাখবেন?",
-    "পানি কম থাকলে কীভাবে কম পানি দিয়ে বাসন ধুবেন?"
-   ]
-  },
-  {
-   "id": "plants-and-seeds-for-oil",
-   "number": 221,
-   "title": "তেল হয় যে গাছ আর দানা থেকে",
-   "front": "pages/221-front.jpg",
-   "back": "pages/221-back.jpg",
-   "items": [
-    {
-     "id": "yellow-mustard-flower-plant",
-     "label": "সরিষার ফুল",
-     "gloss": "yellow mustard blossom"
-    },
-    {
-     "id": "sesame-plant-with-pods",
-     "label": "তিলের গাছ",
-     "gloss": "sesame plant with seed pods"
-    },
-    {
-     "id": "single-sunflower-head",
-     "label": "সূর্যমুখী",
-     "gloss": "sunflower head"
-    },
-    {
-     "id": "uprooted-groundnut-plant",
-     "label": "চিনাবাদামের গাছ",
-     "gloss": "peanut plant with roots"
-    },
-    {
-     "id": "brown-flaxseed-pile",
-     "label": "তিসির দানা",
-     "gloss": "flaxseed grains"
-    },
-    {
-     "id": "fine-rice-bran-pile",
-     "label": "চালের কুঁড়া",
-     "gloss": "rice bran"
-    }
-   ],
-   "questions": [
-    "সূর্যমুখীটা কোথায়?",
-    "তিসির দানা আর চালের কুঁড়ার আকারে কী তফাত?",
-    "আপনার এলাকায় সরিষা ফুল দেখেছেন?",
-    "চিনাবাদাম তুলতে গাছের কোন দিকে হাত দেবেন?",
-    "তিলের গাছ আর সরিষার ফুল দেখলে কীভাবে আলাদা করবেন?",
-    "বাড়ির জন্য তেল বাছার সময় দামের সঙ্গে আর কী মিলিয়ে দেখেন?"
-   ]
-  },
-  {
-   "id": "colorful-local-garden-flowers",
-   "number": 222,
-   "title": "ফুলের গন্ধ আর রং",
-   "front": "pages/222-front.jpg",
-   "back": "pages/222-back.jpg",
-   "items": [
-    {
-     "id": "bengali-red-rose",
-     "label": "গোলাপ",
-     "gloss": "red garden rose"
-    },
-    {
-     "id": "local-beli-jasmine",
-     "label": "বেলি ফুল",
-     "gloss": "Arabian jasmine blossom"
-    },
-    {
-     "id": "bangladesh-tuberose-spike",
-     "label": "রজনীগন্ধা",
-     "gloss": "tuberose flower spike"
-    },
-    {
-     "id": "red-flame-tree-blossom",
-     "label": "কৃষ্ণচূড়া",
-     "gloss": "royal poinciana flowers"
-    },
-    {
-     "id": "pink-periwinkle-bloom",
-     "label": "নয়নতারা",
-     "gloss": "pink Madagascar periwinkle"
-    },
-    {
-     "id": "blue-butterfly-pea-flower",
-     "label": "অপরাজিতা",
-     "gloss": "blue butterfly pea blossom"
-    }
-   ],
-   "questions": [
-    "নীল ফুল কোনটা?",
-    "বেলি আর রজনীগন্ধার আকারে কী তফাত?",
-    "আপনি গোলাপ কোথায় দেখেছেন?",
-    "ফুল কিনলে কোনগুলো বেশি গন্ধ দেয় জিজ্ঞেস করবেন কীভাবে?",
-    "কৃষ্ণচূড়া আর অপরাজিতা কীভাবে আলাদা করে চিনবেন?",
-    "আপনার জানালার কাছে কোন ফুল লাগাবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "common-clinic-and-care-tools",
-   "number": 223,
-   "title": "অসুখ দেখাতে যে জিনিস লাগে",
-   "front": "pages/223-front.jpg",
-   "back": "pages/223-back.jpg",
-   "items": [
-    {
-     "id": "clinic-temperature-tool",
-     "label": "জ্বর মাপার যন্ত্র",
-     "gloss": "clinical thermometer object"
-    },
-    {
-     "id": "clinic-listening-tool",
-     "label": "বুক শোনার যন্ত্র",
-     "gloss": "stethoscope"
-    },
-    {
-     "id": "clinic-pressure-cuff",
-     "label": "রক্তচাপ মাপার যন্ত্র",
-     "gloss": "blood pressure cuff"
-    },
-    {
-     "id": "eye-medicine-dropper",
-     "label": "চোখের ওষুধ",
-     "gloss": "eye medicine dropper bottle"
-    },
-    {
-     "id": "underarm-crutch-support",
-     "label": "বগলে ভর দেওয়ার লাঠি",
-     "gloss": "underarm crutch"
-    },
-    {
-     "id": "clinic-tooth-mirror",
-     "label": "দাঁত দেখার আয়না",
-     "gloss": "dental hand mirror"
-    }
-   ],
-   "questions": [
-    "জ্বর মাপার যন্ত্র কোনটা?",
-    "দাঁত দেখার আয়না আর বুক শোনার যন্ত্র কীভাবে আলাদা দেখায়?",
-    "এগুলোর কোনটা আগে দেখেছেন?",
-    "রক্তচাপ মাপাতে কাউকে কী বলবেন?",
-    "চোখের ওষুধ আর মুখে খাওয়ার ওষুধ চিনতে কী দেখবেন?",
-    "চিকিৎসার সময় কোনো যন্ত্র চিনতে না পারলে কীভাবে জিজ্ঞেস করবেন?"
-   ]
-  },
-  {
-   "id": "close-family-relationships",
-   "number": 224,
-   "title": "নিজের ঘরের আপনজন",
-   "front": "pages/224-front.jpg",
-   "back": "pages/224-back.jpg",
-   "items": [
-    {
-     "id": "family-husband-reference",
-     "label": "স্বামী",
-     "gloss": "husband in a married pair"
-    },
-    {
-     "id": "family-wife-reference",
-     "label": "বউ",
-     "gloss": "wife in a married pair"
-    },
-    {
-     "id": "family-son-reference",
-     "label": "ছেলে",
-     "gloss": "son of a parent"
-    },
-    {
-     "id": "family-daughter-reference",
-     "label": "মেয়ে",
-     "gloss": "daughter of a parent"
-    },
-    {
-     "id": "family-grandson-reference",
-     "label": "নাতি",
-     "gloss": "grandson with an elder"
-    },
-    {
-     "id": "family-granddaughter-reference",
-     "label": "নাতনি",
-     "gloss": "granddaughter with an elder"
-    }
-   ],
-   "questions": [
-    "দাদির পাশে কে আছে?",
-    "ছেলে আর নাতির ছবিতে বড় মানুষ দুজন কীভাবে আলাদা?",
-    "আপনার বাড়িতে কে কে থাকেন?",
-    "নিজের মেয়েকে কারও সঙ্গে পরিচয় করিয়ে দিলে কী বলবেন?",
-    "নাতি আর ছেলে বললে সম্পর্কের কী তফাত হয়?",
-    "নিজের পরিবারের ছবি দেখিয়ে নতুন কাউকে পরিচয় করাতে কীভাবে শুরু করবেন?"
-   ]
-  },
-  {
-   "id": "working-parts-of-a-boat",
-   "number": 225,
-   "title": "নৌকার যে অংশগুলো কাজে লাগে",
-   "front": "pages/225-front.jpg",
-   "back": "pages/225-back.jpg",
-   "items": [
-    {
-     "id": "small-river-boat-anchor",
-     "label": "নোঙর",
-     "gloss": "steel boat anchor"
-    },
-    {
-     "id": "wooden-boat-rudder",
-     "label": "হাল",
-     "gloss": "wooden boat rudder assembly"
-    },
-    {
-     "id": "plain-cloth-on-a-boat-sail",
-     "label": "পাল",
-     "gloss": "cloth sail of a river boat"
-    },
-    {
-     "id": "boat-sail-mast",
-     "label": "মাস্তুল",
-     "gloss": "vertical wooden mast of a boat"
-    },
-    {
-     "id": "river-boat-walking-deck",
-     "label": "নৌকার পাটাতন",
-     "gloss": "planked deck of a boat"
-    },
-    {
-     "id": "upturned-bow-of-a-boat",
-     "label": "নৌকার গলুই",
-     "gloss": "upturned bow of a boat"
-    }
-   ],
-   "questions": [
-    "নোঙর কোনটা?",
-    "পাল আর মাস্তুল দেখতে কীভাবে আলাদা?",
-    "আপনি কোনো পালতোলা নৌকা দেখেছেন?",
-    "নৌকা এক জায়গায় রাখতে কোনটা ব্যবহার করেন?",
-    "নৌকার দিক ঘোরাতে মাঝি কী ধরেন?",
-    "নৌকায় ওঠার আগে বসার জায়গা আর আবহাওয়া দেখে কীভাবে ঠিক করবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "washroom-fixtures-and-tools",
-   "number": 226,
-   "title": "গোসলখানার চেনা জিনিস",
-   "front": "pages/226-front.jpg",
-   "back": "pages/226-back.jpg",
-   "items": [
-    {
-     "id": "washroom-handwashing-basin",
-     "label": "হাত ধোয়ার পাত্র",
-     "gloss": "washbasin fixture"
-    },
-    {
-     "id": "bathroom-showerhead",
-     "label": "গোসলের ঝরনা",
-     "gloss": "showerhead fixture"
-    },
-    {
-     "id": "bengali-squat-toilet-pan",
-     "label": "পায়খানা",
-     "gloss": "ceramic squat toilet pan"
-    },
-    {
-     "id": "toilet-bowl-brush",
-     "label": "পায়খানার ঝাড়নি",
-     "gloss": "toilet bowl brush"
-    },
-    {
-     "id": "bathroom-soap-rest",
-     "label": "সাবান রাখার পাত্র",
-     "gloss": "soap dish"
-    },
-    {
-     "id": "washroom-hand-towel",
-     "label": "মুখ মোছার কাপড়",
-     "gloss": "small terry face towel"
-    }
-   ],
-   "questions": [
-    "গোসলের ঝরনা কোনটা?",
-    "পায়খানা আর হাত ধোয়ার পাত্রে কী তফাত?",
-    "আপনি মুখ মোছার কাপড় কোথায় রাখেন?",
-    "সাবান ভিজে গেলে কোথায় রেখে শুকাবেন?",
-    "ঝরনার পানি বন্ধ করতে না পারলে কী বলবেন?",
-    "নতুন বাসায় গোসলখানা দেখার সময় কোন জিনিসগুলো আগে খুঁজবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "familiar-parts-of-a-car",
-   "number": 227,
-   "title": "গাড়ির চেনা অংশ",
-   "front": "pages/227-front.jpg",
-   "back": "pages/227-back.jpg",
-   "items": [
-    {
-     "id": "car-road-wheel",
-     "label": "গাড়ির চাকা",
-     "gloss": "car road wheel and tyre"
-    },
-    {
-     "id": "car-steering-wheel",
-     "label": "গাড়ি ঘোরানোর চাকা",
-     "gloss": "car steering wheel"
-    },
-    {
-     "id": "side-mirror-of-car",
-     "label": "পাশের আয়না",
-     "gloss": "car side-view mirror"
-    },
-    {
-     "id": "red-rear-car-light",
-     "label": "পেছনের বাতি",
-     "gloss": "rear car tail light"
-    },
-    {
-     "id": "car-driver-seat",
-     "label": "চালকের আসন",
-     "gloss": "car driver's seat"
-    },
-    {
-     "id": "front-car-windscreen",
-     "label": "গাড়ির সামনের কাচ",
-     "gloss": "car windscreen"
-    }
-   ],
-   "questions": [
-    "চালকের আসন কোনটা?",
-    "গাড়ির চাকা আর গাড়ি ঘোরানোর চাকা কীভাবে আলাদা?",
-    "আপনি গাড়ির কোন আসনে বসেন?",
-    "সামনের কাচে ধুলো থাকলে কীভাবে মুছবেন?",
-    "চাকা নরম মনে হলে চালককে কী বলবেন?",
-    "রাতে বের হওয়ার আগে গাড়ির কোন অংশগুলো দেখে নেবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "parts-of-a-reading-book",
-   "number": 228,
-   "title": "বই খুলে ভেতরটা চিনি",
-   "front": "pages/228-front.jpg",
-   "back": "pages/228-back.jpg",
-   "items": [
-    {
-     "id": "hard-cover-of-book",
-     "label": "বইয়ের মলাট",
-     "gloss": "book cover"
-    },
-    {
-     "id": "book-binding-spine",
-     "label": "বইয়ের পিঠ",
-     "gloss": "bound spine of a book"
-    },
-    {
-     "id": "open-reading-page",
-     "label": "বইয়ের পাতা",
-     "gloss": "open leaf of a book"
-    },
-    {
-     "id": "illustrated-book-endpaper",
-     "label": "বইয়ের ছবি",
-     "gloss": "illustration printed in a book"
-    },
-    {
-     "id": "reading-bookmark",
-     "label": "পাতা চেনার দাগ",
-     "gloss": "bookmark marking a page"
-    },
-    {
-     "id": "book-contents-page",
-     "label": "সূচিপত্র",
-     "gloss": "table of contents in a book"
-    }
-   ],
-   "questions": [
-    "বইয়ের মলাট কোনটা?",
-    "বইয়ের ছবি আর সূচিপত্র দেখতে কীভাবে আলাদা?",
-    "আপনি কী রকম বই পড়েন?",
-    "পড়া থামালে পাতা কীভাবে চিনে রাখবেন?",
-    "ছবিওয়ালা গল্প খুঁজতে বইয়ের কোথায় তাকাবেন?",
-    "একটা নতুন বই বাছতে মলাট দেখবেন নাকি ভেতরের পাতা, আর কেন?"
-   ]
-  },
-  {
-   "id": "everyday-groups-and-pairs",
-   "number": 229,
-   "title": "দল আর জোড়া করে বলি",
-   "front": "pages/229-front.jpg",
-   "back": "pages/229-back.jpg",
-   "items": [
-    {
-     "id": "pair-of-sandals",
-     "label": "এক জোড়া",
-     "gloss": "one pair of matching objects"
-    },
-    {
-     "id": "bunch-of-keys",
-     "label": "এক গোছা",
-     "gloss": "one bunch held together"
-    },
-    {
-     "id": "pile-of-empty-bags",
-     "label": "এক গাদা",
-     "gloss": "one heap"
-    },
-    {
-     "id": "one-bundle-load",
-     "label": "এক বোঝা",
-     "gloss": "one tied load"
-    },
-    {
-     "id": "flock-of-flying-birds",
-     "label": "এক ঝাঁক",
-     "gloss": "one flock of birds"
-    },
-    {
-     "id": "group-of-local-people",
-     "label": "এক দল",
-     "gloss": "one group of people"
-    }
-   ],
-   "questions": [
-    "এক জোড়া চটি কোথায়?",
-    "এক গাদা আর এক বোঝা দেখতে কীভাবে আলাদা?",
-    "আপনার কাছে এক গোছা চাবি থাকে?",
-    "দুইটা চটি একই জোড়ার কি না কী করে দেখবেন?",
-    "পাখি অনেকগুলো একসঙ্গে উড়লে কী বলবেন?",
-    "মাল সরাতে গাদা করে রাখবেন নাকি বোঝা বেঁধে নেবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "hair-care-at-home",
-   "number": 230,
-   "title": "চুল ধুয়ে গুছিয়ে নিই",
-   "front": "pages/230-front.jpg",
-   "back": "pages/230-back.jpg",
-   "items": [
-    {
-     "id": "hair-drying-tool",
-     "label": "চুল শুকানোর যন্ত্র",
-     "gloss": "hair dryer"
-    },
-    {
-     "id": "wide-brush-for-hair",
-     "label": "চুলের ঝাড়নি",
-     "gloss": "hairbrush"
-    },
-    {
-     "id": "hair-washing-liquid",
-     "label": "চুল ধোয়ার সাবান",
-     "gloss": "liquid soap used for washing hair"
-    },
-    {
-     "id": "bengali-hair-oil-bottle",
-     "label": "চুলের তেল",
-     "gloss": "hair oil"
-    },
-    {
-     "id": "elastic-tie-for-hair",
-     "label": "চুলের বাঁধনি",
-     "gloss": "elastic hair tie"
-    },
-    {
-     "id": "small-claw-hair-grip",
-     "label": "চুলের চিমটি",
-     "gloss": "claw hair clip"
-    }
-   ],
-   "questions": [
-    "চুলের বাঁধনি কোনটা?",
-    "চুলের চিমটি আর বাঁধনি দেখতে কীভাবে আলাদা?",
-    "আপনি চুলে তেল দেন?",
-    "চুল ধোয়ার পরে কীভাবে শুকান?",
-    "চুলে তেল দিতে আর চুল ধুতে কোন জিনিসগুলো নেবেন?",
-    "বাইরে বের হওয়ার আগে চুল গুছাতে কোনটা বেশি কাজে লাগবে, আর কেন?"
-   ]
-  },
-  {
-   "id": "reading-a-bangla-newspaper",
-   "number": 231,
-   "title": "খবরের কাগজে কোথায় কী দেখি",
-   "front": "pages/231-front.jpg",
-   "back": "pages/231-back.jpg",
-   "items": [
-    {
-     "id": "newspaper-front-page",
-     "label": "খবরের কাগজের প্রথম পাতা",
-     "gloss": "newspaper front page"
-    },
-    {
-     "id": "newspaper-large-headline",
-     "label": "খবরের বড় শিরোনাম",
-     "gloss": "large news headline"
-    },
-    {
-     "id": "newspaper-picture-with-caption",
-     "label": "ছবির নিচের লেখা",
-     "gloss": "caption beneath a newspaper photo"
-    },
-    {
-     "id": "newspaper-weather-section",
-     "label": "আবহাওয়ার খবর",
-     "gloss": "newspaper weather panel"
-    },
-    {
-     "id": "newspaper-classified-section",
-     "label": "ছোট বিজ্ঞাপন",
-     "gloss": "newspaper classifieds"
-    },
-    {
-     "id": "newspaper-sports-page",
-     "label": "খেলার খবর",
-     "gloss": "newspaper sports reporting panel"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে বৃষ্টির খবর আছে?",
-    "বড় শিরোনাম আর ছবির নিচের লেখা দেখতে কীভাবে আলাদা?",
-    "আপনি কোন ধরনের খবর পড়েন?",
-    "খেলার খবর খুঁজতে কোন ছবির মতো পাতা দেখবেন?",
-    "বাসা খুঁজতে খবরের কাগজের কোন অংশ দেখবেন?",
-    "সময় কম থাকলে আগে কোন অংশ পড়বেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "holding-food-for-an-outing",
-   "number": 232,
-   "title": "খাবার নিয়ে যাই আর ঠান্ডা রাখি",
-   "front": "pages/232-front.jpg",
-   "back": "pages/232-back.jpg",
-   "items": [
-    {
-     "id": "tiffin-stack-for-carrying",
-     "label": "খাবার নেওয়ার পাত্র",
-     "gloss": "stacked steel meal carrier"
-    },
-    {
-     "id": "reusable-drinking-bottle",
-     "label": "পানির বোতল",
-     "gloss": "reusable drinking-water bottle"
-    },
-    {
-     "id": "lidded-picnic-basket",
-     "label": "খাবারের ঝুড়ি",
-     "gloss": "lidded picnic basket"
-    },
-    {
-     "id": "insulated-hot-drink-flask",
-     "label": "গরম রাখার বোতল",
-     "gloss": "insulated flask for hot drinks"
-    },
-    {
-     "id": "portable-cold-food-box",
-     "label": "ঠান্ডা রাখার বাক্স",
-     "gloss": "insulated lidded cold-food box"
-    },
-    {
-     "id": "water-freezing-tray",
-     "label": "বরফ জমানোর ছাঁচ",
-     "gloss": "ice cube tray"
-    }
-   ],
-   "questions": [
-    "বরফ জমানোর ছাঁচ কোনটা?",
-    "দুটো বোতলের কাজ কীভাবে আলাদা?",
-    "বাইরে গেলে আপনি কীসে পানি নেন?",
-    "চা গরম রাখতে কোন জিনিসটা নেবেন?",
-    "খাবার ঠান্ডা রাখতে বাক্সে আর কী দিতে পারেন?",
-    "অনেক দূরে খাবার নিয়ে গেলে কীভাবে ঠিক করবেন কোন পাত্র নেবেন?"
-   ]
-  },
-  {
-   "id": "getting-through-a-crowded-place",
-   "number": 233,
-   "title": "ভিড়ের মধ্যে চলি",
-   "front": "pages/233-front.jpg",
-   "back": "pages/233-back.jpg",
-   "items": [
-    {
-     "id": "joining-the-back-of-a-line",
-     "label": "সারির শেষে দাঁড়ানো",
-     "gloss": "joining a queue at the back"
-    },
-    {
-     "id": "cutting-in-front-of-a-line",
-     "label": "আগে ঢুকে পড়া",
-     "gloss": "cutting into a queue"
-    },
-    {
-     "id": "blocking-a-narrow-passage",
-     "label": "পথ আটকে দাঁড়ানো",
-     "gloss": "standing across a passage"
-    },
-    {
-     "id": "walking-through-a-gap",
-     "label": "ফাঁক দিয়ে যাওয়া",
-     "gloss": "walking through a narrow gap"
-    },
-    {
-     "id": "coming-nearer-to-someone",
-     "label": "কাছে এগিয়ে আসা",
-     "gloss": "walking nearer to a caller"
-    },
-    {
-     "id": "moving-sideways-for-someone",
-     "label": "এক পাশে সরে যাওয়া",
-     "gloss": "stepping to one side"
-    }
-   ],
-   "questions": [
-    "কে সারির শেষে দাঁড়াচ্ছেন?",
-    "আগে ঢুকে পড়া আর শেষে দাঁড়ানো কীভাবে আলাদা?",
-    "আপনি কোথায় লম্বা সারিতে দাঁড়িয়েছেন?",
-    "সামনে যেতে হলে পাশে দাঁড়ানো মানুষকে কী বলবেন?",
-    "কাউকে আপনার কাছে আসতে হাত দিয়ে কীভাবে দেখাবেন?",
-    "খুব ভিড় হলে সবাইকে সহজে যেতে দিতে কী করা যায়?"
-   ]
-  },
-  {
-   "id": "welcoming-guests-at-home",
-   "number": 234,
-   "title": "বাসায় মেহমান এলে",
-   "front": "pages/234-front.jpg",
-   "back": "pages/234-back.jpg",
-   "items": [
-    {
-     "id": "holding-door-open-for-guest",
-     "label": "দরজা ধরে রাখা",
-     "gloss": "holding a door open for a guest"
-    },
-    {
-     "id": "setting-out-a-mat-for-guests",
-     "label": "মেহমানের জন্য পাটি পাতা",
-     "gloss": "laying out a mat for guests"
-    },
-    {
-     "id": "sliding-a-seat-toward-a-guest",
-     "label": "বসার আসন এগিয়ে দেওয়া",
-     "gloss": "offering a seat by bringing it closer"
-    },
-    {
-     "id": "offering-filled-water-glass",
-     "label": "পানি এগিয়ে দেওয়া",
-     "gloss": "offering someone a glass of water"
-    },
-    {
-     "id": "uncovering-the-served-food",
-     "label": "খাবারের ঢাকনা সরানো",
-     "gloss": "uncovering already served food"
-    },
-    {
-     "id": "pouring-tea-for-a-guest",
-     "label": "মেহমানকে চা ঢেলে দেওয়া",
-     "gloss": "pouring tea for a house guest"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে চা ঢালা হচ্ছে?",
-    "আসন এগিয়ে দেওয়া আর পাটি পাতার মধ্যে কী তফাত?",
-    "মেহমান এলে আপনি কী দিয়ে শুরু করেন?",
-    "খাবার দেওয়ার আগে কী কী গুছিয়ে রাখবেন?",
-    "অতিথিকে পানি দিতে গিয়ে কী বলবেন?",
-    "অচেনা কাউকে বাসায় বসালে কী করলে তিনি স্বচ্ছন্দ বোধ করবেন?"
-   ]
-  },
-  {
-   "id": "counting-nineteen-to-twenty-four",
-   "number": 235,
-   "title": "উনিশ থেকে চব্বিশ",
-   "front": "pages/235-front.jpg",
-   "back": "pages/235-back.jpg",
-   "items": [
-    {
-     "id": "nineteen-count",
-     "label": "উনিশ",
-     "gloss": "nineteen"
-    },
-    {
-     "id": "twenty-count",
-     "label": "বিশ",
-     "gloss": "twenty"
-    },
-    {
-     "id": "twenty-one-count",
-     "label": "একুশ",
-     "gloss": "twenty-one"
-    },
-    {
-     "id": "twenty-two-count",
-     "label": "বাইশ",
-     "gloss": "twenty-two"
-    },
-    {
-     "id": "twenty-three-count",
-     "label": "তেইশ",
-     "gloss": "twenty-three"
-    },
-    {
-     "id": "twenty-four-count",
-     "label": "চব্বিশ",
-     "gloss": "twenty-four"
-    }
-   ],
-   "questions": [
-    "বিশটা বল কোন ছবিতে?",
-    "তেইশ আর চব্বিশের নিচের সারিতে কী তফাত?",
-    "আপনি শেষ কবে বিশটার বেশি জিনিস গুনেছেন?",
-    "উনিশ থেকে চব্বিশ পর্যন্ত কীভাবে গুনবেন?",
-    "একুশটা থেকে দুইটা সরালে কোন ছবির সঙ্গে মিলবে?",
-    "চব্বিশটা জিনিস অন্য কাউকে তাড়াতাড়ি গুনতে দিলে কীভাবে সাজাবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "everyday-medicine-shop-terms",
-   "number": 236,
-   "title": "ওষুধের দোকানে যা চাই",
-   "front": "pages/236-front.jpg",
-   "back": "pages/236-back.jpg",
-   "items": [
-    {
-     "id": "medicine-pill-tablet",
-     "label": "বড়ি",
-     "gloss": "medicine tablet pill"
-    },
-    {
-     "id": "pill-storage-bottle",
-     "label": "বড়ির বোতল",
-     "gloss": "lidded pill bottle"
-    },
-    {
-     "id": "plain-medication-carton",
-     "label": "ওষুধের বাক্স",
-     "gloss": "medicine carton box"
-    },
-    {
-     "id": "medication-measuring-spoon",
-     "label": "ওষুধ মাপার চামচ",
-     "gloss": "medicine measuring spoon"
-    },
-    {
-     "id": "oral-liquid-medication",
-     "label": "খাওয়ার তরল ওষুধ",
-     "gloss": "liquid oral medicine"
-    },
-    {
-     "id": "doctor-written-medicine-paper",
-     "label": "ওষুধের কাগজ",
-     "gloss": "prescription sheet for medicine"
-    }
-   ],
-   "questions": [
-    "বড়ি কোন ছবিতে?",
-    "বড়ির বোতল আর তরল ওষুধ দেখতে কেমন আলাদা?",
-    "আপনি কখনও ওষুধের কাগজ নিয়ে দোকানে গিয়েছেন?",
-    "ওষুধ মাপতে কী লাগবে, তা দোকানিকে কীভাবে জিজ্ঞেস করবেন?",
-    "কোনটা আপনার ওষুধ বুঝতে না পারলে কাকে কী বলবেন?",
-    "একইরকম দুইটা বাক্স দেখলে কোনটা নিতে হবে তা কীভাবে জানবেন?"
-   ]
-  },
-  {
-   "id": "ground-and-crushed-kitchen-spices",
-   "number": 237,
-   "title": "গুঁড়া আর বাটা মসলা",
-   "front": "pages/237-front.jpg",
-   "back": "pages/237-back.jpg",
-   "items": [
-    {
-     "id": "whole-dried-chillies",
-     "label": "শুকনা মরিচ",
-     "gloss": "whole dried red chillies"
-    },
-    {
-     "id": "turmeric-ground-powder",
-     "label": "হলুদের গুঁড়া",
-     "gloss": "ground turmeric powder"
-    },
-    {
-     "id": "red-chilli-powder",
-     "label": "মরিচের গুঁড়া",
-     "gloss": "ground red chilli powder"
-    },
-    {
-     "id": "ground-coriander-seeds",
-     "label": "ধনে গুঁড়া",
-     "gloss": "ground coriander seed powder"
-    },
-    {
-     "id": "mustard-seed-paste",
-     "label": "সরিষা বাটা",
-     "gloss": "prepared mustard seed paste"
-    },
-    {
-     "id": "crushed-fresh-ginger-paste",
-     "label": "আদা বাটা",
-     "gloss": "fresh crushed ginger paste"
-    }
-   ],
-   "questions": [
-    "আস্ত শুকনা মরিচ কোনটা?",
-    "হলুদের গুঁড়া আর আদা বাটার ছোঁয়ায় কী তফাত হতে পারে?",
-    "আপনি কোন রান্নায় সরিষা বাটা দেন?",
-    "আস্ত মরিচ থেকে গুঁড়া করতে কী করবেন?",
-    "মরিচের গুঁড়া আর ধনে গুঁড়া চিনতে কী দেখবেন?",
-    "ঝাল কমাতে চাইলে কোন মসলা কতটা দেবেন কীভাবে ঠিক করবেন?"
-   ]
-  },
-  {
-   "id": "sewing-room-tools",
-   "number": 238,
-   "title": "দর্জির পাশে যে জিনিসগুলো থাকে",
-   "front": "pages/238-front.jpg",
-   "back": "pages/238-back.jpg",
-   "items": [
-    {
-     "id": "tailors-sewing-machine",
-     "label": "সেলাইকল",
-     "gloss": "sewing machine"
-    },
-    {
-     "id": "sewing-thread-spool",
-     "label": "সুতা পেঁচানোর নলি",
-     "gloss": "spool for winding thread"
-    },
-    {
-     "id": "sewing-finger-thimble",
-     "label": "সেলাইয়ের আঙুলঢাকনি",
-     "gloss": "metal sewing thimble"
-    },
-    {
-     "id": "sewing-pin-cushion",
-     "label": "সুঁই রাখার গদি",
-     "gloss": "cushion for holding needles"
-    },
-    {
-     "id": "sewing-supplies-box",
-     "label": "সেলাইয়ের বাক্স",
-     "gloss": "box for sewing tools"
-    },
-    {
-     "id": "paper-clothing-pattern",
-     "label": "জামা কাটার ছাঁদ",
-     "gloss": "paper clothing pattern for cutting fabric"
-    }
-   ],
-   "questions": [
-    "সেলাইকল কোনটা?",
-    "সুঁই রাখার গদি আর আঙুলঢাকনি দেখতে কীভাবে আলাদা?",
-    "আপনি ঘরে সেলাই করেন?",
-    "সুতা শেষ হলে কীতে নতুন সুতা পেঁচাবেন?",
-    "জামার হাতা কাটার আগে ছাঁদ কীভাবে রাখবেন?",
-    "সেলাইয়ের ছোট জিনিস হারানো আটকাতে কীভাবে গুছিয়ে রাখবেন?"
-   ]
-  },
-  {
-   "id": "equipment-at-the-playground",
-   "number": 239,
-   "title": "খেলার মাঠে যা কাজে লাগে",
-   "front": "pages/239-front.jpg",
-   "back": "pages/239-back.jpg",
-   "items": [
-    {
-     "id": "sliding-playground-ramp",
-     "label": "পিছলে নামার সিঁড়ি",
-     "gloss": "playground slide"
-    },
-    {
-     "id": "seesaw-playground-seat",
-     "label": "ওঠানামার দোলনা",
-     "gloss": "playground seesaw"
-    },
-    {
-     "id": "ball-for-foot-play",
-     "label": "খেলার বল",
-     "gloss": "football for play"
-    },
-    {
-     "id": "round-throwing-disc",
-     "label": "ছোড়ার চাকতি",
-     "gloss": "flying disc for play"
-    },
-    {
-     "id": "raised-net-for-play",
-     "label": "খেলার জাল",
-     "gloss": "standing net for court games"
-    },
-    {
-     "id": "referee-hand-whistle",
-     "label": "খেলার বাঁশি",
-     "gloss": "handheld referee whistle"
-    }
-   ],
-   "questions": [
-    "ছোড়ার চাকতি কোনটা?",
-    "দোলনা আর পিছলে নামার সিঁড়িতে কী তফাত?",
-    "ছোটবেলায় মাঠে কী খেলতেন?",
-    "খেলার জাল কীভাবে দাঁড় করাবেন?",
-    "খেলা থামাতে হলে কোন জিনিসটা কাজে লাগবে?",
-    "মাঠ ছোট হলে কোন খেলাটা করা সহজ হবে, আর কেন?"
-   ]
-  },
-  {
-   "id": "things-on-a-performance-stage",
-   "number": 240,
-   "title": "মঞ্চে সাজ আর সরঞ্জাম",
-   "front": "pages/240-front.jpg",
-   "back": "pages/240-back.jpg",
-   "items": [
-    {
-     "id": "theater-stage-curtain",
-     "label": "মঞ্চের পর্দা",
-     "gloss": "stage curtain"
-    },
-    {
-     "id": "light-for-a-stage",
-     "label": "মঞ্চের আলো",
-     "gloss": "stage spotlight"
-    },
-    {
-     "id": "theater-face-mask",
-     "label": "মুখোশ",
-     "gloss": "theatrical face mask"
-    },
-    {
-     "id": "prop-royal-crown",
-     "label": "মুকুট",
-     "gloss": "theatrical crown prop"
-    },
-    {
-     "id": "megaphone-amplifier",
-     "label": "আওয়াজ বড় করার যন্ত্র",
-     "gloss": "handheld megaphone"
-    },
-    {
-     "id": "small-podium-stage-stairs",
-     "label": "মঞ্চে ওঠার সিঁড়ি",
-     "gloss": "portable stage stairs"
-    }
-   ],
-   "questions": [
-    "মুকুট কোনটা?",
-    "মুখোশ আর মুকুট শরীরের কোন আলাদা জায়গায় পরি?",
-    "আপনি কোনো নাটক দেখতে গিয়েছেন?",
-    "মঞ্চে উঠতে কোনটা ব্যবহার করবেন?",
-    "দূরের মানুষ শুনতে না পেলে কী করতে পারেন?",
-    "মঞ্চে নতুন কাউকে গান গাইতে বললে কোন জিনিসগুলো আগে দেখাবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "things-to-take-on-a-trip",
-   "number": 241,
-   "title": "দূরে গেলে সঙ্গে নিই",
-   "front": "pages/241-front.jpg",
-   "back": "pages/241-back.jpg",
-   "items": [
-    {
-     "id": "backpack-for-travel",
-     "label": "পিঠের থলে",
-     "gloss": "travel backpack"
-    },
-    {
-     "id": "travel-pillow-around-neck",
-     "label": "ঘাড়ের বালিশ",
-     "gloss": "neck travel pillow"
-    },
-    {
-     "id": "travel-mask-over-eyes",
-     "label": "চোখ ঢাকার কাপড়",
-     "gloss": "sleep eye mask"
-    },
-    {
-     "id": "label-tag-on-luggage",
-     "label": "মালে নাম লেখার চিহ্ন",
-     "gloss": "luggage identification tag"
-    },
-    {
-     "id": "hand-scale-to-weigh-luggage",
-     "label": "মাল মাপার যন্ত্র",
-     "gloss": "handheld luggage scale"
-    },
-    {
-     "id": "water-canteen-with-strap",
-     "label": "কাঁধে ঝোলানো পানির পাত্র",
-     "gloss": "strap-mounted travel canteen"
-    }
-   ],
-   "questions": [
-    "ঘাড়ের বালিশ কোনটা?",
-    "পিঠের থলে আর পানির পাত্র কীভাবে বহন করেন?",
-    "দূরে গেলে আপনি কী কী সঙ্গে নেন?",
-    "মাল চিনে রাখতে নামটা কোথায় লিখবেন?",
-    "থলে ভারী হয়ে গেলে কোন যন্ত্র দিয়ে ওজন দেখবেন?",
-    "অল্প জায়গায় মালপত্র নিতে হলে কোন জিনিসটা রেখে যাবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "bed-linens-and-nightwear",
-   "number": 242,
-   "title": "বিছানায় আর ঘুমের সময়",
-   "front": "pages/242-front.jpg",
-   "back": "pages/242-back.jpg",
-   "items": [
-    {
-     "id": "quilted-winter-bed-cover",
-     "label": "লেপ",
-     "gloss": "thick traditional winter quilt"
-    },
-    {
-     "id": "plain-bed-sheet",
-     "label": "বিছানার চাদর",
-     "gloss": "flat bed sheet"
-    },
-    {
-     "id": "removable-pillowcase",
-     "label": "বালিশের ওয়াড়",
-     "gloss": "removable pillowcase"
-    },
-    {
-     "id": "long-bolster-pillow",
-     "label": "কোলবালিশ",
-     "gloss": "long cylindrical hugging pillow"
-    },
-    {
-     "id": "cotton-sleepwear-set",
-     "label": "ঘুমানোর পোশাক",
-     "gloss": "light cotton sleepwear"
-    },
-    {
-     "id": "bedside-bednet-post",
-     "label": "মশারির খুঁটি",
-     "gloss": "bed mosquito net support post"
-    }
-   ],
-   "questions": [
-    "কোলবালিশ কোনটা?",
-    "চাদর আর লেপের পুরুত্বে কী তফাত?",
-    "আপনি শীতে গায়ে কী দেন?",
-    "বালিশের ওয়াড় কীভাবে বদলাবেন?",
-    "মশারি টানাতে কী কী লাগবে?",
-    "বাড়িতে একজন মেহমান থাকলে ঘুমানোর আগে কী কী গুছিয়ে দেবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "taking-and-keeping-photos",
-   "number": 243,
-   "title": "ছবি তুলি আর রেখে দিই",
-   "front": "pages/243-front.jpg",
-   "back": "pages/243-back.jpg",
-   "items": [
-    {
-     "id": "handheld-picture-taking-device",
-     "label": "ছবি তোলার যন্ত্র",
-     "gloss": "photographic camera"
-    },
-    {
-     "id": "camera-lens-focusing-glass",
-     "label": "ছবি তোলার কাচ",
-     "gloss": "detached photographic lens"
-    },
-    {
-     "id": "three-legged-camera-support",
-     "label": "যন্ত্র রাখার তিনপায়া",
-     "gloss": "photography tripod"
-    },
-    {
-     "id": "photography-flash-unit",
-     "label": "ঝলক দেওয়ার বাতি",
-     "gloss": "camera flash unit"
-    },
-    {
-     "id": "book-for-loose-photographs",
-     "label": "ছবি রাখার বই",
-     "gloss": "photo album"
-    },
-    {
-     "id": "standing-wood-photo-frame",
-     "label": "ছবি বাঁধানোর কাঠ",
-     "gloss": "wooden photo frame"
-    }
-   ],
-   "questions": [
-    "ছবি রাখার বই কোনটা?",
-    "তিনপায়া আর ঝলক দেওয়ার বাতির কাজ কীভাবে আলাদা?",
-    "আপনি কোন ছবি রেখে দিতে চান?",
-    "যন্ত্র নড়ে গেলে কোথায় দাঁড় করাবেন?",
-    "একটা ছবি ঘরে সাজিয়ে রাখতে কোনটা লাগবে?",
-    "একটা অনুষ্ঠান থেকে মাত্র একটা ছবি রাখতে পারলে কী দেখে বাছবেন?"
-   ]
-  },
-  {
-   "id": "parts-of-common-containers",
-   "number": 244,
-   "title": "পাত্রের কোন অংশটা",
-   "front": "pages/244-front.jpg",
-   "back": "pages/244-back.jpg",
-   "items": [
-    {
-     "id": "open-mouth-of-a-bottle",
-     "label": "বোতলের মুখ",
-     "gloss": "opening at the mouth of a bottle"
-    },
-    {
-     "id": "separate-screw-cap-for-bottle",
-     "label": "বোতলের ছিপি",
-     "gloss": "detached bottle screw cap"
-    },
-    {
-     "id": "handle-of-a-teacup",
-     "label": "পেয়ালার হাতল",
-     "gloss": "looped handle of a teacup"
-    },
-    {
-     "id": "handle-of-a-cooking-pot",
-     "label": "হাঁড়ির হাতল",
-     "gloss": "handle on a cooking pot"
-    },
-    {
-     "id": "underside-foot-of-a-bowl",
-     "label": "পাত্রের তলা",
-     "gloss": "underside of a bowl"
-    },
-    {
-     "id": "edge-rim-of-a-plate",
-     "label": "থালার কিনারা",
-     "gloss": "outer rim of a plate"
-    }
-   ],
-   "questions": [
-    "বোতলের ছিপি কোনটা?",
-    "পেয়ালার হাতল আর হাঁড়ির হাতল কীভাবে আলাদা?",
-    "আপনার বাসায় কোন পাত্রে হাতল নেই?",
-    "বোতলের মুখ বন্ধ করতে কী লাগাবেন?",
-    "থালা তুলতে হলে কোন অংশটা ধরবেন?",
-    "গরম পাত্র তুলতে হাতল বা কিনারা ধরার আগে কী দেখবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "buying-fabric-cut-to-size",
-   "number": 245,
-   "title": "দোকানে কাপড় বেছে কাটি",
-   "front": "pages/245-front.jpg",
-   "back": "pages/245-back.jpg",
-   "items": [
-    {
-     "id": "opening-out-a-fabric-piece",
-     "label": "কাপড় মেলে ধরা",
-     "gloss": "holding a piece of fabric spread up"
-    },
-    {
-     "id": "unfolding-a-folded-fabric",
-     "label": "কাপড়ের ভাঁজ খুলে দেখা",
-     "gloss": "unfolding cloth to inspect it"
-    },
-    {
-     "id": "matching-two-coloured-fabrics",
-     "label": "কাপড়ের রং মিলিয়ে দেখা",
-     "gloss": "holding two fabrics side by side to match colors"
-    },
-    {
-     "id": "marking-the-fabric-edge",
-     "label": "কাপড়ে দাগ দেওয়া",
-     "gloss": "marking a cloth edge with chalk"
-    },
-    {
-     "id": "measuring-fabric-by-the-yard",
-     "label": "গজে কাপড় মাপা",
-     "gloss": "measuring cloth with a yardstick"
-    },
-    {
-     "id": "cutting-cloth-from-the-bolt",
-     "label": "থান থেকে কাপড় কাটা",
-     "gloss": "cutting cloth from the bolt"
-    }
-   ],
-   "questions": [
-    "কে কাপড় মেলে ধরেছেন?",
-    "ভাঁজ খোলা আর রং মেলানোর ছবিতে কী তফাত?",
-    "আপনি কখন কাপড় মেপে কিনেছেন?",
-    "দুই গজ চাইলে দোকানিকে কী বলবেন?",
-    "কাপড় কাটার আগে দাগ কোথায় দেবেন?",
-    "একই রঙের দুই রকম কাপড় পেলে কোনটা নেবেন কীভাবে ঠিক করবেন?"
-   ]
-  },
-  {
-   "id": "wet-cleaning-supplies",
-   "number": 246,
-   "title": "মেঝে কাচ আর বাসন পরিষ্কার করি",
-   "front": "pages/246-front.jpg",
-   "back": "pages/246-back.jpg",
-   "items": [
-    {
-     "id": "wet-floor-mop",
-     "label": "মেঝে মোছার ঝাড়ু",
-     "gloss": "wet floor mop"
-    },
-    {
-     "id": "rubber-glass-squeegee",
-     "label": "কাচ মোছার পাত",
-     "gloss": "handheld glass squeegee"
-    },
-    {
-     "id": "soapy-liquid-for-dishes",
-     "label": "বাসন ধোয়ার সাবান",
-     "gloss": "dishwashing liquid soap"
-    },
-    {
-     "id": "cloth-to-wipe-clean-dishes",
-     "label": "বাসন মোছার কাপড়",
-     "gloss": "dish towel"
-    },
-    {
-     "id": "cleaning-water-mist-bottle",
-     "label": "পানি ছিটানোর বোতল",
-     "gloss": "water spray bottle"
-    },
-    {
-     "id": "washproof-rubber-gloves",
-     "label": "পানি আটকানোর হাতমোজা",
-     "gloss": "waterproof cleaning gloves"
-    }
-   ],
-   "questions": [
-    "পানি ছিটানোর বোতল কোনটা?",
-    "কাচ মোছার পাত আর মেঝে মোছার ঝাড়ু দেখতে কীভাবে আলাদা?",
-    "আপনার বাসায় মেঝে কী দিয়ে মোছেন?",
-    "ভেজা থালা শুকনা করতে কোনটা নেবেন?",
-    "কাচে সাবান লেগে থাকলে কী দিয়ে সরাতে পারেন?",
-    "হাতে পানি না লাগিয়ে কোন কোন কাজ করা যায়, আর কীভাবে?"
-   ]
-  },
-  {
-   "id": "animals-and-shells-of-the-sea",
-   "number": 247,
-   "title": "সাগরে যে প্রাণীগুলো দেখি",
-   "front": "pages/247-front.jpg",
-   "back": "pages/247-back.jpg",
-   "items": [
-    {
-     "id": "marine-shark",
-     "label": "হাঙর",
-     "gloss": "shark"
-    },
-    {
-     "id": "seahorse-vertebrate",
-     "label": "সামুদ্রিক ঘোড়া",
-     "gloss": "seahorse"
-    },
-    {
-     "id": "umbrella-shaped-jelly-creature",
-     "label": "ছাতামাছ",
-     "gloss": "jellyfish"
-    },
-    {
-     "id": "five-rayed-marine-seastar",
-     "label": "তারামাছ",
-     "gloss": "sea star"
-    },
-    {
-     "id": "marine-branch-coral",
-     "label": "প্রবাল",
-     "gloss": "branch coral"
-    },
-    {
-     "id": "marine-conch-shell",
-     "label": "শঙ্খ",
-     "gloss": "large spiral marine conch shell"
-    }
-   ],
-   "questions": [
-    "তারামাছ কোনটা?",
-    "হাঙর আর সামুদ্রিক ঘোড়ার লেজ কেমন আলাদা?",
-    "আপনি উপকূলে কী রকম খোলস দেখেছেন?",
-    "ছাতামাছ চিনতে গায়ের কোন অংশ দেখবেন?",
-    "প্রবাল আর শঙ্খের আকারে কী তফাত দেখবেন?",
-    "সাগরের প্রাণী কাছ থেকে দেখার সুযোগ হলে কোনটা দেখতে চাইবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "small-child-care-gear",
-   "number": 248,
-   "title": "বাচ্চাকে বসাই আর সঙ্গে নিই",
-   "front": "pages/248-front.jpg",
-   "back": "pages/248-back.jpg",
-   "items": [
-    {
-     "id": "pushchair-for-a-child",
-     "label": "বাচ্চার ঠেলাগাড়ি",
-     "gloss": "baby stroller pushchair"
-    },
-    {
-     "id": "raised-infant-meal-seat",
-     "label": "বাচ্চার উঁচু আসন",
-     "gloss": "baby high chair"
-    },
-    {
-     "id": "infant-comfort-pacifier",
-     "label": "চুষনি",
-     "gloss": "baby pacifier"
-    },
-    {
-     "id": "washable-cloth-diaper",
-     "label": "কাপড়ের নেংটি",
-     "gloss": "reusable cloth baby diaper"
-    },
-    {
-     "id": "child-body-wrap",
-     "label": "বাচ্চার গা মোড়ানোর কাপড়",
-     "gloss": "soft baby swaddle wrap"
-    },
-    {
-     "id": "baby-carrying-cloth-sling",
-     "label": "কোলে বাঁধার কাপড়",
-     "gloss": "soft fabric child carrier sling"
-    }
-   ],
-   "questions": [
-    "চুষনি কোনটা?",
-    "বাচ্চার আসন আর ঠেলাগাড়িতে কী তফাত?",
-    "বাড়িতে ছোট বাচ্চাকে কোথায় বসান?",
-    "ধোয়ার পরে নেংটিটা কোথায় রাখবেন?",
-    "কোলে বাঁধার কাপড় আর গা মোড়ানোর কাপড় চিনতে কী দেখবেন?",
-    "বাচ্চাকে নিয়ে দূরে গেলে কোন জিনিসগুলো আগে নেবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "ways-of-carrying-things",
-   "number": 249,
-   "title": "জিনিস একা আর মিলে বয়ে নিই",
-   "front": "pages/249-front.jpg",
-   "back": "pages/249-back.jpg",
-   "items": [
-    {
-     "id": "carrying-a-load-in-one-hand",
-     "label": "এক হাতে নেওয়া",
-     "gloss": "carrying a load in one hand"
-    },
-    {
-     "id": "carrying-a-load-in-both-hands",
-     "label": "দুই হাতে নেওয়া",
-     "gloss": "carrying an object with both hands"
-    },
-    {
-     "id": "lifting-an-object-off-the-floor",
-     "label": "নিচ থেকে তুলে ধরা",
-     "gloss": "lifting an object from the floor"
-    },
-    {
-     "id": "balancing-a-load-on-the-head",
-     "label": "মাথায় নিয়ে যাওয়া",
-     "gloss": "carrying a load on the head"
-    },
-    {
-     "id": "carrying-a-load-on-the-back",
-     "label": "পিঠে বওয়া",
-     "gloss": "carrying a load on the back"
-    },
-    {
-     "id": "lifting-a-load-together",
-     "label": "দুজনে ধরে নেওয়া",
-     "gloss": "two people carrying one object together"
-    }
-   ],
-   "questions": [
-    "কে এক হাতে জিনিস নিয়েছেন?",
-    "মাথায় আর পিঠে নেওয়ার ছবিতে কী তফাত?",
-    "বাজার থেকে মাল কীভাবে নিয়ে আসেন?",
-    "নিচে রাখা বাক্স তুলতে কাউকে কী বলবেন?",
-    "দুজন মিলে মাল ধরলে কে কোন পাশে দাঁড়াবেন?",
-    "একটা ভারী বাক্স একা নেবেন নাকি কাউকে ডাকবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "bhorta-served-with-rice",
-   "number": 250,
-   "title": "ভাতের সঙ্গে ছয় রকম ভর্তা",
-   "front": "pages/250-front.jpg",
-   "back": "pages/250-back.jpg",
-   "items": [
-    {
-     "id": "mashed-potato-bhorta",
-     "label": "আলু ভর্তা",
-     "gloss": "Bangladeshi mashed potato bhorta"
-    },
-    {
-     "id": "smoky-eggplant-bhorta",
-     "label": "বেগুন ভর্তা",
-     "gloss": "smoked eggplant bhorta"
-    },
-    {
-     "id": "dried-fish-bhorta",
-     "label": "শুঁটকি ভর্তা",
-     "gloss": "dried fish bhorta"
-    },
-    {
-     "id": "mashed-lentil-bhorta",
-     "label": "ডাল ভর্তা",
-     "gloss": "mashed lentil bhorta"
-    },
-    {
-     "id": "fresh-coriander-bhorta",
-     "label": "ধনেপাতা ভর্তা",
-     "gloss": "fresh coriander leaf bhorta"
-    },
-    {
-     "id": "mustard-seed-bhorta",
-     "label": "সরিষা ভর্তা",
-     "gloss": "prepared mustard seed bhorta"
-    }
-   ],
-   "questions": [
-    "আলু ভর্তা কোনটা?",
-    "ধনেপাতা আর শুঁটকি ভর্তার রং কীভাবে আলাদা?",
-    "আপনি ভাতের সঙ্গে কী ভর্তা খান?",
-    "দোকানে কম ঝালের ভর্তা চাইলে কী বলবেন?",
-    "ডাল ভর্তা আর আলু ভর্তা দেখতে কী দেখে চিনবেন?",
-    "ভর্তায় কী আছে বোঝা না গেলে খাওয়ার আগে কীভাবে জানতে চাইবেন?"
-   ]
-  },
-  {
-   "id": "ways-of-handling-money",
-   "number": 251,
-   "title": "টাকা দিই নিই আর পাঠাই",
-   "front": "pages/251-front.jpg",
-   "back": "pages/251-back.jpg",
-   "items": [
-    {
-     "id": "depositing-cash-at-bank",
-     "label": "জমা দেওয়া",
-     "gloss": "deposit cash at a bank counter"
-    },
-    {
-     "id": "taking-money-from-cashpoint",
-     "label": "টাকা তোলা",
-     "gloss": "withdraw cash from a cash machine"
-    },
-    {
-     "id": "transferring-money-at-distance",
-     "label": "টাকা পাঠানো",
-     "gloss": "send money to a distant recipient"
-    },
-    {
-     "id": "borrowing-cash-from-a-person",
-     "label": "টাকা ধার নেওয়া",
-     "gloss": "borrow money from another person"
-    },
-    {
-     "id": "repaying-money-borrowed",
-     "label": "ধার শোধ করা",
-     "gloss": "repay money borrowed earlier"
-    },
-    {
-     "id": "checking-the-money-total",
-     "label": "হিসাব মেলানো",
-     "gloss": "reconcile a written total against cash"
-    }
-   ],
-   "questions": [
-    "কে টাকা তুলছেন?",
-    "জমা দেওয়া আর টাকা তোলা কীভাবে আলাদা?",
-    "আপনি কাকে টাকা পাঠান?",
-    "কারও কাছে টাকা ধার চাইতে কী বলবেন?",
-    "ধার শোধ হলে কীভাবে হিসাব মিলিয়ে দেখবেন?",
-    "সঙ্গে নগদ না থাকলে দূরে থাকা কাউকে টাকা পাঠাতে কী করবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "organizing-paper-at-a-desk",
-   "number": 252,
-   "title": "কাগজ গুছিয়ে রাখি",
-   "front": "pages/252-front.jpg",
-   "back": "pages/252-back.jpg",
-   "items": [
-    {
-     "id": "desk-paper-stapler",
-     "label": "কাগজ আটকানোর যন্ত্র",
-     "gloss": "desk stapler for binding paper corners"
-    },
-    {
-     "id": "folded-document-jacket",
-     "label": "কাগজের খাপ",
-     "gloss": "tabbed document folder"
-    },
-    {
-     "id": "two-hole-paper-punch",
-     "label": "কাগজ ফুটো করার যন্ত্র",
-     "gloss": "two-hole paper punch"
-    },
-    {
-     "id": "metal-paper-gripper",
-     "label": "কাগজ ধরার চিমটি",
-     "gloss": "foldback paper binder clip"
-    },
-    {
-     "id": "desk-paper-shredder",
-     "label": "কাগজ কুচি করার যন্ত্র",
-     "gloss": "desktop paper shredder"
-    },
-    {
-     "id": "stacked-incoming-paper-trays",
-     "label": "কাগজ রাখার তাক",
-     "gloss": "stacked desk letter trays for papers"
-    }
-   ],
-   "questions": [
-    "কাগজের খাপ কোনটা?",
-    "চিমটি আর কাগজ আটকানোর যন্ত্রের কাজ কীভাবে আলাদা?",
-    "আপনি দরকারি কাগজ কোথায় রাখেন?",
-    "এক পাশে দুটো ফুটো করতে কোনটা নেবেন?",
-    "ভুল কাগজ কুচি করে ফেলার আগে কী দেখে নেবেন?",
-    "অন্য কেউ যাতে সহজে দরকারি কাগজ পায়, টেবিলটা কীভাবে গুছাবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "parts-and-problems-of-teeth",
-   "number": 253,
-   "title": "দাঁতের কোন জায়গায়",
-   "front": "pages/253-front.jpg",
-   "back": "pages/253-back.jpg",
-   "items": [
-    {
-     "id": "gum-line-of-teeth",
-     "label": "মাড়ি",
-     "gloss": "pink gum tissue along visible teeth"
-    },
-    {
-     "id": "front-incisor-teeth",
-     "label": "সামনের দাঁত",
-     "gloss": "human front incisor teeth"
-    },
-    {
-     "id": "back-molar-teeth",
-     "label": "পেছনের দাঁত",
-     "gloss": "human back molar teeth"
-    },
-    {
-     "id": "visible-space-between-teeth",
-     "label": "দাঁতের ফাঁক",
-     "gloss": "visible gap between two front teeth"
-    },
-    {
-     "id": "visible-tooth-cavity",
-     "label": "দাঁতে গর্ত",
-     "gloss": "visible tooth cavity as a dark pit"
-    },
-    {
-     "id": "removable-set-of-false-teeth",
-     "label": "বাঁধানো দাঁত",
-     "gloss": "removable complete dentures"
-    }
-   ],
-   "questions": [
-    "মাড়ি কোন ছবিতে দেখানো হয়েছে?",
-    "সামনের আর পেছনের দাঁতের আকারে কী তফাত?",
-    "আপনি খাবার চিবাতে মুখের কোন পাশ বেশি ব্যবহার করেন?",
-    "কোথায় খাবার আটকে আছে, সেটা কীভাবে দেখাবেন?",
-    "দাঁতের ফাঁক আর দাঁতের গর্তের মধ্যে কী তফাত দেখছেন?",
-    "মুখে কোন জায়গায় কষ্ট হচ্ছে বুঝিয়ে বলতে না পারলে কীভাবে সাহায্য চাইবেন?"
-   ]
-  },
-  {
-   "id": "cuts-at-a-bangladeshi-meat-shop",
-   "number": 254,
-   "title": "মাংস কিনতে যে অংশ চিনি",
-   "front": "pages/254-front.jpg",
-   "back": "pages/254-back.jpg",
-   "items": [
-    {
-     "id": "chicken-drumsticks-raw",
-     "label": "মুরগির রান",
-     "gloss": "raw chicken drumstick cuts"
-    },
-    {
-     "id": "chicken-wing-cut",
-     "label": "মুরগির ডানা",
-     "gloss": "whole raw three-section chicken wing cut"
-    },
-    {
-     "id": "chicken-liver-cut",
-     "label": "মুরগির কলিজা",
-     "gloss": "raw chicken livers at a meat counter"
-    },
-    {
-     "id": "beef-rib-cut",
-     "label": "গরুর পাঁজর",
-     "gloss": "raw beef rib section"
-    },
-    {
-     "id": "minced-beef-cut",
-     "label": "গরুর কিমা",
-     "gloss": "freshly minced beef meat"
-    },
-    {
-     "id": "beef-marrow-bone-crosscut",
-     "label": "মজ্জাওয়ালা হাড়",
-     "gloss": "beef soup marrow bones showing round crosscuts"
-    }
-   ],
-   "questions": [
-    "মুরগির ডানা কোনটা?",
-    "রান আর ডানার আকারে কী তফাত?",
-    "আপনি রান্নার জন্য কোন অংশটা বেশি কেনেন?",
-    "কলিজাটা আলাদা করে চাইতে কী বলবেন?",
-    "হাড় আর কিমা কী দেখে আলাদা করবেন?",
-    "একই রান্নার জন্য দুই রকম মাংস দেখালে কোনটা নেবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "street-service-vehicles",
-   "number": 255,
-   "title": "রাস্তায় কাজের গাড়ি",
-   "front": "pages/255-front.jpg",
-   "back": "pages/255-back.jpg",
-   "items": [
-    {
-     "id": "garbage-collection-truck",
-     "label": "ময়লা নেওয়ার গাড়ি",
-     "gloss": "Dhaka pedal tricycle for neighborhood waste collection"
-    },
-    {
-     "id": "bangladesh-fire-engine",
-     "label": "দমকলের গাড়ি",
-     "gloss": "fire service engine truck"
-    },
-    {
-     "id": "medical-transport-van",
-     "label": "রোগী নেওয়ার গাড়ি",
-     "gloss": "ambulance patient transport van"
-    },
-    {
-     "id": "bangladeshi-police-pickup",
-     "label": "থানার গাড়ি",
-     "gloss": "Bangladesh police pickup with covered rear seats"
-    },
-    {
-     "id": "road-sprayer-water-truck",
-     "label": "পানি ছিটানোর গাড়ি",
-     "gloss": "municipal road-watering truck with visible spray"
-    },
-    {
-     "id": "flatbed-truck-for-goods",
-     "label": "মালবাহী গাড়ি",
-     "gloss": "Bangladeshi flatbed goods truck with tied sacks"
-    }
-   ],
-   "questions": [
-    "দমকলের গাড়ি কোনটা?",
-    "ময়লা নেওয়ার গাড়ি আর মালবাহী গাড়ি দেখতে কীভাবে আলাদা?",
-    "আপনার রাস্তায় কোন গাড়িটা বেশি দেখেন?",
-    "রোগী নেওয়ার গাড়িকে রাস্তা ছেড়ে দিতে কাউকে কী বলবেন?",
-    "পানি ছিটানোর গাড়িটা কী দেখে চিনবেন?",
-    "সরু গলিতে মালবাহী গাড়ি ঢুকতে না পারলে মাল ভেতরে আনার কী উপায় ভাববেন?"
-   ]
-  },
-  {
-   "id": "fire-safety-tools-around-buildings",
-   "number": 256,
-   "title": "আগুনের সময় কাজে লাগে",
-   "front": "pages/256-front.jpg",
-   "back": "pages/256-back.jpg",
-   "items": [
-    {
-     "id": "handheld-fire-extinguisher",
-     "label": "আগুন নেভানোর যন্ত্র",
-     "gloss": "portable fire extinguisher"
-    },
-    {
-     "id": "coiled-hose-for-firefighters",
-     "label": "দমকলের নল",
-     "gloss": "coiled fire-fighting water hose"
-    },
-    {
-     "id": "electric-fire-alarm-bell",
-     "label": "আগুনের ঘণ্টা",
-     "gloss": "electric fire alarm bell"
-    },
-    {
-     "id": "wall-fire-alarm-call-switch",
-     "label": "আগুনের খবর দেওয়ার বোতাম",
-     "gloss": "manual fire alarm call point"
-    },
-    {
-     "id": "firefighter-helmet-shell",
-     "label": "দমকলের টুপি",
-     "gloss": "fire-service helmet with visor"
-    },
-    {
-     "id": "fire-smothering-blanket",
-     "label": "আগুন ঢাকার চাদর",
-     "gloss": "unfolded fire blanket and its wall pouch"
-    }
-   ],
-   "questions": [
-    "আগুনের ঘণ্টা কোনটা?",
-    "খবর দেওয়ার বোতাম আর ঘণ্টাটা দেখতে কীভাবে আলাদা?",
-    "আপনার বাসায় আগুন নেভানোর যন্ত্র কোথায় দেখেছেন?",
-    "নতুন বাসায় উঠে আগুনের সময় বের হওয়ার পথ কীভাবে জেনে নেবেন?",
-    "আগুনের খবর দিতে হলে কী কী কথা আগে বলবেন?",
-    "রাতে আগুনের ঘণ্টা শুনে পাশের ঘরে কেউ ঘুমিয়ে থাকলে তাকে কীভাবে জানাবেন?"
-   ]
-  },
-  {
-   "id": "parts-of-an-everyday-umbrella",
-   "number": 257,
-   "title": "ছাতার কোন অংশটা",
-   "front": "pages/257-front.jpg",
-   "back": "pages/257-back.jpg",
-   "items": [
-    {
-     "id": "rain-umbrella-canopy-fabric",
-     "label": "ছাতার কাপড়",
-     "gloss": "canopy fabric on an open umbrella"
-    },
-    {
-     "id": "umbrella-internal-rib",
-     "label": "ছাতার শিক",
-     "gloss": "metal canopy rib of an umbrella"
-    },
-    {
-     "id": "curved-umbrella-grip",
-     "label": "ছাতার বাঁট",
-     "gloss": "curved grip of an umbrella"
-    },
-    {
-     "id": "umbrella-central-pole",
-     "label": "ছাতার ডাঁট",
-     "gloss": "long center shaft of an umbrella"
-    },
-    {
-     "id": "umbrella-tip-cap",
-     "label": "ছাতার মাথা",
-     "gloss": "tip cap at the top of an umbrella"
-    },
-    {
-     "id": "umbrella-wrap-fastener-strap",
-     "label": "ছাতা বাঁধার ফিতা",
-     "gloss": "wraparound fastener strap of an umbrella"
-    }
-   ],
-   "questions": [
-    "ছাতা বাঁধার ফিতা কোনটা?",
-    "শিক আর ডাঁট দেখতে কীভাবে আলাদা?",
-    "আপনার ছাতার বাঁটটা কী রকম?",
-    "ছাতার কাপড়ে ছোট ফুটো দেখলে কোথায় দেখিয়ে বলবেন?",
-    "ছাতা বন্ধ করার পর কোন অংশ দিয়ে কাপড়টা আটকে রাখবেন?",
-    "একটা পুরোনো ছাতা মেরামত করতে দিলে আগে কোন অংশটা দেখতে বলবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "ways-of-resting-and-sleeping",
-   "number": 258,
-   "title": "কীভাবে শুই আর ঘুমাই",
-   "front": "pages/258-front.jpg",
-   "back": "pages/258-back.jpg",
-   "items": [
-    {
-     "id": "resting-face-up-on-back",
-     "label": "চিত হয়ে শোয়া",
-     "gloss": "lying flat on the back face up"
-    },
-    {
-     "id": "resting-face-down-on-stomach",
-     "label": "উপুড় হয়ে শোয়া",
-     "gloss": "lying on the stomach face down"
-    },
-    {
-     "id": "resting-turned-to-one-side",
-     "label": "কাত হয়ে শোয়া",
-     "gloss": "lying on one side with knees slightly bent"
-    },
-    {
-     "id": "snoring-while-asleep",
-     "label": "নাক ডাকা",
-     "gloss": "snoring while asleep"
-    },
-    {
-     "id": "dozing-off-in-a-chair",
-     "label": "ঢুলে পড়া",
-     "gloss": "dozing off while seated"
-    },
-    {
-     "id": "talking-during-sleep",
-     "label": "ঘুমের মধ্যে কথা বলা",
-     "gloss": "sleeptalking with eyes closed"
-    }
-   ],
-   "questions": [
-    "কে কাত হয়ে শুয়ে আছেন?",
-    "চিত আর উপুড় হয়ে শোয়ার মধ্যে কী তফাত?",
-    "বসে থাকতে থাকতে আপনি কখনও ঢুলে পড়েছেন?",
-    "পাশের ঘরে কেউ নাক ডাকলে কীভাবে বুঝবেন?",
-    "কেউ ঘুমের মধ্যে কথা বলছেন, ছবিতে কী দেখে বুঝবেন?",
-    "একই ঘরে একজন ঘুমাচ্ছেন আর আরেকজন জেগে আছেন। ঘুমের ব্যাঘাত কমাতে কী করা যায়?"
-   ]
-  },
-  {
-   "id": "familiar-home-and-personal-scents",
-   "number": 259,
-   "title": "ঘরে আর গায়ে সুগন্ধ",
-   "front": "pages/259-front.jpg",
-   "back": "pages/259-back.jpg",
-   "items": [
-    {
-     "id": "attar-roll-on-scent-oil",
-     "label": "আতর",
-     "gloss": "concentrated attar perfume oil in a vial"
-    },
-    {
-     "id": "rose-water-for-fragrance",
-     "label": "গোলাপজল",
-     "gloss": "rose water bottle beside a rose"
-    },
-    {
-     "id": "aromatic-burning-incense-sticks",
-     "label": "আগরবাতি",
-     "gloss": "burning incense sticks"
-    },
-    {
-     "id": "covered-incense-burner",
-     "label": "ধূপদানি",
-     "gloss": "small covered incense burner vessel"
-    },
-    {
-     "id": "solid-camphor-pieces",
-     "label": "কর্পূর",
-     "gloss": "small white pieces of household camphor"
-    },
-    {
-     "id": "body-perfume-atomizer",
-     "label": "সুগন্ধি",
-     "gloss": "atomizer bottle of body fragrance"
-    }
-   ],
-   "questions": [
-    "আগরবাতি কোনটা?",
-    "আতরের শিশি আর সুগন্ধির বোতলের মধ্যে কী তফাত?",
-    "আপনার কোন গন্ধটা ভালো লাগে?",
-    "গোলাপজলের গন্ধ কেমন, কাউকে কীভাবে বলবেন?",
-    "ধূপদানি আর আগরবাতি দেখে কীভাবে আলাদা করবেন?",
-    "সবার গন্ধের পছন্দ এক রকম না হলে ঘরে কী করবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "nuts-and-dried-fruit-at-the-market",
-   "number": 260,
-   "title": "বাদাম আর শুকনা ফল কিনি",
-   "front": "pages/260-front.jpg",
-   "back": "pages/260-back.jpg",
-   "items": [
-    {
-     "id": "shelled-almond-kernels",
-     "label": "কাঠবাদাম",
-     "gloss": "shelled elongated almond kernels"
-    },
-    {
-     "id": "whole-cashews-for-cooking",
-     "label": "কাজুবাদাম",
-     "gloss": "whole cream cashew nuts"
-    },
-    {
-     "id": "open-shell-pistachios",
-     "label": "পেস্তা",
-     "gloss": "green pistachio kernels in split shells"
-    },
-    {
-     "id": "whole-and-open-walnuts",
-     "label": "আখরোট",
-     "gloss": "whole walnuts and exposed crinkly kernels"
-    },
-    {
-     "id": "small-dark-dried-raisins",
-     "label": "কিশমিশ",
-     "gloss": "small dark dried raisins"
-    },
-    {
-     "id": "dried-sour-alu-bokhara",
-     "label": "আলুবোখারা",
-     "gloss": "dried alu bukhara sour plums"
-    }
-   ],
-   "questions": [
-    "কাজুবাদাম কোনটা?",
-    "আখরোট আর পেস্তার খোল দেখতে কীভাবে আলাদা?",
-    "আপনি নাশতায় কী বাদাম খান?",
-    "দোকানে অল্প কাঠবাদাম চাইতে কী বলবেন?",
-    "শুকনা কিশমিশ আর আলুবোখারা আকার দেখে কীভাবে আলাদা করবেন?",
-    "কারও জন্য নাশতা সাজাতে হলে বাদাম আর শুকনা ফলের কোনটা বাছবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "objects-for-everyday-exercise",
-   "number": 261,
-   "title": "ঘরে বা বাইরে ব্যায়াম করি",
-   "front": "pages/261-front.jpg",
-   "back": "pages/261-back.jpg",
-   "items": [
-    {
-     "id": "handheld-dumbbell-weights",
-     "label": "হাতে তোলার ওজন",
-     "gloss": "dumbbell with fixed weights at both ends"
-    },
-    {
-     "id": "single-handle-kettlebell-weight",
-     "label": "হাতলওয়ালা ওজন",
-     "gloss": "kettlebell with broad loop handle"
-    },
-    {
-     "id": "powered-walking-treadmill",
-     "label": "হাঁটার যন্ত্র",
-     "gloss": "powered treadmill with a flat walking belt"
-    },
-    {
-     "id": "unrolled-floor-exercise-mat",
-     "label": "ব্যায়ামের পাটি",
-     "gloss": "foam mat for floor exercises"
-    },
-    {
-     "id": "stationary-pedal-exerciser",
-     "label": "পা চালানোর যন্ত্র",
-     "gloss": "stationary exercise bike"
-    },
-    {
-     "id": "elastic-exercise-pull-band",
-     "label": "ব্যায়ামের টানফিতা",
-     "gloss": "elastic resistance band for exercise"
-    }
-   ],
-   "questions": [
-    "ব্যায়ামের পাটি কোনটা?",
-    "দুই রকম ওজনের ধরার জায়গায় কী তফাত?",
-    "আপনি কোথায় হাঁটেন বা ব্যায়াম করেন?",
-    "পা চালানোর যন্ত্রে কোথায় বসবেন?",
-    "টানফিতা আর ওজনের মধ্যে কোনটা হাতে টানতে হয়?",
-    "বাসায় খুব কম জায়গা থাকলে কোন জিনিসটা রাখবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "parts-inside-common-fruits",
-   "number": 262,
-   "title": "ফল কাটলে ভেতরে কী দেখি",
-   "front": "pages/262-front.jpg",
-   "back": "pages/262-back.jpg",
-   "items": [
-    {
-     "id": "flesh-inside-a-ripe-papaya",
-     "label": "ফলের শাঁস",
-     "gloss": "orange flesh inside a ripe papaya"
-    },
-    {
-     "id": "removed-stone-of-a-mango",
-     "label": "আমের আঁটি",
-     "gloss": "large flat mango stone after flesh removal"
-    },
-    {
-     "id": "seeds-taken-from-a-grape",
-     "label": "আঙুরের বিচি",
-     "gloss": "tiny brown seeds inside a halved grape"
-    },
-    {
-     "id": "peeled-segment-of-a-lemon",
-     "label": "লেবুর কোয়া",
-     "gloss": "individual lime or lemon pulp segment"
-    },
-    {
-     "id": "apple-center-core-after-cut",
-     "label": "আপেলের মাঝখান",
-     "gloss": "removed firm central apple core"
-    },
-    {
-     "id": "white-part-under-watermelon-peel",
-     "label": "তরমুজের সাদা অংশ",
-     "gloss": "white layer beneath the watermelon skin"
-    }
-   ],
-   "questions": [
-    "আমের আঁটি কোনটা?",
-    "আমের আঁটি আর আঙুরের বিচির আকারে কী তফাত?",
-    "আপনি আঙুরের বিচি ফেলেন?",
-    "আপেলের মাঝখানটা কীভাবে বাদ দেবেন?",
-    "তরমুজে সাদা অংশটা কোথায় আছে?",
-    "কাউকে ফল কেটে দিলে কোন অংশগুলো রেখে দেবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "tools-for-serving-a-meal-out",
-   "number": 263,
-   "title": "খাবারের দোকানে যা দেখি",
-   "front": "pages/263-front.jpg",
-   "back": "pages/263-back.jpg",
-   "items": [
-    {
-     "id": "restaurant-dish-list",
-     "label": "খাবারের তালিকা",
-     "gloss": "restaurant dining menu folder"
-    },
-    {
-     "id": "meal-serving-carry-tray",
-     "label": "খাবার আনার থালা",
-     "gloss": "broad carry tray for meal service"
-    },
-    {
-     "id": "pepper-grinding-mill",
-     "label": "মরিচ পেষার কল",
-     "gloss": "table pepper mill grinder"
-    },
-    {
-     "id": "sauce-boat-pouring-bowl",
-     "label": "চাটনির বাটি",
-     "gloss": "small Bangladeshi chutney serving bowl"
-    },
-    {
-     "id": "covered-soup-serving-tureen",
-     "label": "ঝোল রাখার পাত্র",
-     "gloss": "lidded soup tureen for serving at table"
-    },
-    {
-     "id": "heat-resistant-plate-mitt",
-     "label": "গরম ধরার হাতমোজা",
-     "gloss": "heat-resistant mitt for holding a hot serving dish"
-    }
-   ],
-   "questions": [
-    "খাবারের তালিকাটা কোনটা?",
-    "চাটনির বাটি আর ঝোলের পাত্রের মুখ দেখতে কীভাবে আলাদা?",
-    "খাবারের দোকানে আপনি আগে কী দেখতে চান?",
-    "থালাটা গরম হলে কোন জিনিসটা দিয়ে ধরবেন?",
-    "মরিচ পেষার কলটা চিনতে কোন অংশ দেখবেন?",
-    "তালিকায় খাবারের নাম বুঝতে না পারলে দোকানের লোককে কীভাবে জিজ্ঞেস করবেন?"
-   ]
-  },
-  {
-   "id": "writing-and-correcting-on-paper",
-   "number": 264,
-   "title": "লিখে দেখে ঠিক করি",
-   "front": "pages/264-front.jpg",
-   "back": "pages/264-back.jpg",
-   "items": [
-    {
-     "id": "crossing-out-a-written-word",
-     "label": "লেখা কেটে দেওয়া",
-     "gloss": "cross out an already written word"
-    },
-    {
-     "id": "fixing-a-misspelled-word",
-     "label": "বানান ঠিক করা",
-     "gloss": "correct a misspelling by replacing one letter"
-    },
-    {
-     "id": "copying-a-line-to-a-new-page",
-     "label": "দেখে দেখে লেখা",
-     "gloss": "copy text by looking at a model"
-    },
-    {
-     "id": "underlining-a-line-of-writing",
-     "label": "লেখার নিচে দাগ দেওয়া",
-     "gloss": "underline important writing"
-    },
-    {
-     "id": "filling-an-empty-form-box",
-     "label": "খালি ঘর ভরা",
-     "gloss": "fill in a blank box in a form"
-    },
-    {
-     "id": "writing-a-note-in-the-margin",
-     "label": "পাতার পাশে লেখা",
-     "gloss": "write a short note in the page margin"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে লেখার নিচে দাগ দিচ্ছেন?",
-    "লেখা কেটে দেওয়া আর নিচে দাগ দেওয়া দেখতে কীভাবে আলাদা?",
-    "আপনি নতুন শব্দ দেখে দেখে লেখেন?",
-    "খালি ঘরে নাম লিখতে হলে কী দেখে শুরু করবেন?",
-    "বানান ভুল হলে ভুলটা আর ঠিক শব্দটা কীভাবে দেখাবেন?",
-    "লেখা পড়ে পরে দরকারি কথা খুঁজে পেতে কীভাবে দাগ দেবেন বা কথা লিখে রাখবেন?"
-   ]
-  },
-  {
-   "id": "everyday-actions-at-the-front-door",
-   "number": 265,
-   "title": "বাসার দরজায় যা করি",
-   "front": "pages/265-front.jpg",
-   "back": "pages/265-back.jpg",
-   "items": [
-    {
-     "id": "ringing-a-home-doorbell",
-     "label": "দরজার ঘণ্টা বাজানো",
-     "gloss": "ring the electric bell beside an entrance"
-    },
-    {
-     "id": "looking-through-a-door-viewer",
-     "label": "দরজার ফুটো দিয়ে দেখা",
-     "gloss": "look out through a front door peephole"
-    },
-    {
-     "id": "unlocking-a-fitted-door-lock",
-     "label": "চাবি দিয়ে তালা খোলা",
-     "gloss": "turn a key to unlock a door cylinder"
-    },
-    {
-     "id": "leaving-a-door-slightly-ajar",
-     "label": "দরজা ভেজিয়ে রাখা",
-     "gloss": "leave a door slightly ajar without latching"
-    },
-    {
-     "id": "propping-an-open-door-with-wedge",
-     "label": "দরজা ঠেস দিয়ে রাখা",
-     "gloss": "hold a door wide open with a wedge"
-    },
-    {
-     "id": "wiping-soles-on-an-entry-mat",
-     "label": "দরজায় পা মুছে নেওয়া",
-     "gloss": "wipe shoe soles on a mat before entering"
-    }
-   ],
-   "questions": [
-    "দরজার ঘণ্টা কে বাজাচ্ছেন?",
-    "দরজা ভেজিয়ে রাখা আর ঠেস দিয়ে খোলা রাখার মধ্যে কী তফাত?",
-    "আপনার বাসায় ঢোকার আগে দরজায় কী করেন?",
-    "তালাটা খুলতে চাবি কোথায় ঢোকাবেন?",
-    "বাইরে কে এসেছেন, দরজা পুরো না খুলে কীভাবে দেখবেন?",
-    "দুই হাতে জিনিস নিয়ে ঢুকতে হলে দরজাটা আগে কীভাবে রাখবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "fittings-for-a-water-line",
-   "number": 266,
-   "title": "কল আর নল ঠিক করার জিনিস",
-   "front": "pages/266-front.jpg",
-   "back": "pages/266-back.jpg",
-   "items": [
-    {
-     "id": "threaded-pipe-joining-coupler",
-     "label": "নল জোড়ার প্যাঁচ",
-     "gloss": "short internally threaded pipe coupler"
-    },
-    {
-     "id": "right-angle-pipe-elbow",
-     "label": "নলের বাঁক",
-     "gloss": "right-angle water pipe elbow"
-    },
-    {
-     "id": "tap-spout-aerator-mesh",
-     "label": "কলের মাথার জালি",
-     "gloss": "removable mesh aerator on a faucet tip"
-    },
-    {
-     "id": "tap-rubber-washer-disc",
-     "label": "কলের চাকতি",
-     "gloss": "flat rubber washer disc in a faucet mechanism"
-    },
-    {
-     "id": "water-supply-shutoff-valve",
-     "label": "পানি বন্ধ করার চাবি",
-     "gloss": "main water supply shutoff valve with lever"
-    },
-    {
-     "id": "plumber-thread-seal-tape",
-     "label": "নলের প্যাঁচের ফিতা",
-     "gloss": "spool of white pipe-thread sealing tape"
-    }
-   ],
-   "questions": [
-    "নলের বাঁক কোনটা?",
-    "নল জোড়ার প্যাঁচ আর নলের বাঁক দেখতে কীভাবে আলাদা?",
-    "আপনার বাসায় পানি বন্ধ করার চাবি কোথায়?",
-    "কলের জালিতে ময়লা দেখলে মিস্ত্রিকে কী বলে দেখাবেন?",
-    "নলে কোন দিকে পানি যাচ্ছে, সেটা বোঝাতে কোথায় দেখাবেন?",
-    "একই কল বারবার চুইয়ে পড়লে যে ঠিক করতে আসবেন তাঁকে আগে কী কী জানাবেন?"
-   ]
-  },
-  {
-   "id": "making-and-looking-at-loaf-bread",
-   "number": 267,
-   "title": "পাউরুটি বানাতে যা লাগে",
-   "front": "pages/267-front.jpg",
-   "back": "pages/267-back.jpg",
-   "items": [
-    {
-     "id": "dry-yeast-granules-for-dough",
-     "label": "খামিরের দানা",
-     "gloss": "small granules of dry baker's yeast"
-    },
-    {
-     "id": "dough-after-rising",
-     "label": "ফুলে ওঠা খামির",
-     "gloss": "risen bread dough with rounded bubbly top"
-    },
-    {
-     "id": "rectangular-bread-baking-tin",
-     "label": "পাউরুটির ছাঁচ",
-     "gloss": "open rectangular loaf baking tin"
-    },
-    {
-     "id": "bread-oven-transfer-board",
-     "label": "চুল্লির তক্তা",
-     "gloss": "long-handled wooden bakery oven peel"
-    },
-    {
-     "id": "firm-outer-crust-of-bread",
-     "label": "পাউরুটির শক্ত ধার",
-     "gloss": "firm browned bread crust shown at edge of a slice"
-    },
-    {
-     "id": "soft-inner-crumb-of-bread",
-     "label": "পাউরুটির নরম ভেতর",
-     "gloss": "soft porous inner crumb of sliced loaf bread"
-    }
-   ],
-   "questions": [
-    "পাউরুটির ছাঁচ কোনটা?",
-    "পাউরুটির ধার আর ভেতর দেখতে কীভাবে আলাদা?",
-    "আপনি কী রকম পাউরুটি খান?",
-    "খামির ফুলেছে কি না কী দেখে বুঝবেন?",
-    "চুল্লি থেকে রুটি বের করতে কোন জিনিসটা চিনবেন?",
-    "দোকানে রুটি নরম আছে কি না বুঝতে কী দেখবেন বা কী জিজ্ঞেস করবেন?"
-   ]
-  },
-  {
-   "id": "signs-around-roads-and-buildings",
-   "number": 268,
-   "title": "রাস্তায় আর ঘরে যে দাগ দেখি",
-   "front": "pages/268-front.jpg",
-   "back": "pages/268-back.jpg",
-   "items": [
-    {
-     "id": "no-smoking-picture-notice",
-     "label": "ধূমপান মানা",
-     "gloss": "no smoking pictogram"
-    },
-    {
-     "id": "drinking-water-not-safe-notice",
-     "label": "এই পানি খাওয়া যাবে না",
-     "gloss": "pictogram showing non-potable water"
-    },
-    {
-     "id": "no-parking-car-pictogram",
-     "label": "গাড়ি রাখা মানা",
-     "gloss": "pictogram of car parking prohibited"
-    },
-    {
-     "id": "roadworks-ahead-warning-sign",
-     "label": "সামনে রাস্তার কাজ চলছে",
-     "gloss": "wordless Bangladeshi road works warning sign"
-    },
-    {
-     "id": "stairs-going-down-arrow-notice",
-     "label": "নিচে নামার পথ",
-     "gloss": "downstairs arrow with figure on stairs"
-    },
-    {
-     "id": "caution-slippery-floor-marker",
-     "label": "পিছলে পড়ার ভয়",
-     "gloss": "wet-floor warning with slipping figure"
-    }
-   ],
-   "questions": [
-    "পানি খাওয়া যাবে না, কোন ছবিটা তা বলছে?",
-    "নিচে নামার দাগ আর পিছলে পড়ার ছবিতে লোকটির পা কীভাবে আলাদা?",
-    "এই ছবির মতো কোন দাগটা আপনি রাস্তায় দেখেছেন?",
-    "গাড়ি রাখা মানা দেখলে চালককে কী বলবেন?",
-    "সামনে রাস্তার কাজ চললে সঙ্গের লোককে কীভাবে জানাবেন?",
-    "লেখা পড়তে না পারলেও একটা সাবধানের দাগ বুঝতে কোন ছবি বা রং কাজে আসে, আর কেন?"
-   ]
-  },
-  {
-   "id": "taking-a-ride-around-town",
-   "number": 269,
-   "title": "গাড়িতে উঠে নামি",
-   "front": "pages/269-front.jpg",
-   "back": "pages/269-back.jpg",
-   "items": [
-    {
-     "id": "raising-hand-to-hail-a-ride",
-     "label": "গাড়ি থামাতে হাত তোলা",
-     "gloss": "raise a hand to hail a moving ride"
-    },
-    {
-     "id": "stepping-into-a-local-bus",
-     "label": "গাড়িতে পা রাখা",
-     "gloss": "place one foot on a vehicle entry step to board"
-    },
-    {
-     "id": "holding-an-overhead-rail-while-standing",
-     "label": "হাতল ধরে দাঁড়ানো",
-     "gloss": "stand inside a bus holding an overhead strap"
-    },
-    {
-     "id": "looking-out-a-bus-window",
-     "label": "জানালা দিয়ে বাইরে দেখা",
-     "gloss": "look out of a vehicle window from inside"
-    },
-    {
-     "id": "offering-seated-place-to-another-rider",
-     "label": "বসার জায়গা ছেড়ে দেওয়া",
-     "gloss": "vacate a seat and offer it to another passenger"
-    },
-    {
-     "id": "calling-out-your-stop-to-driver",
-     "label": "নামার জন্য ডাকা",
-     "gloss": "call out to the driver to stop so you can get off"
-    }
-   ],
-   "questions": [
-    "কে হাত তুলে গাড়ি থামাতে বলছেন?",
-    "গাড়িতে পা রাখা আর হাতল ধরে দাঁড়ানোর মধ্যে কী তফাত?",
-    "গাড়িতে উঠলে আপনি কোথায় বসতে চান?",
-    "একজন দাঁড়িয়ে থাকলে তাঁকে কীভাবে আপনার জায়গাটা দেবেন?",
-    "সামনের মোড়ে নামতে হলে চালককে কী বলবেন?",
-    "গাড়িতে খুব ভিড় হলে নামার জায়গায় পৌঁছানোর আগে কী কী করবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "care-and-fit-of-everyday-shoes",
-   "number": 270,
-   "title": "জুতা পরিষ্কার আর ঠিকঠাক করি",
-   "front": "pages/270-front.jpg",
-   "back": "pages/270-back.jpg",
-   "items": [
-    {
-     "id": "polishing-leather-shoes-by-hand",
-     "label": "জুতা চকচকে করা",
-     "gloss": "polish a leather shoe with a cloth"
-    },
-    {
-     "id": "shoe-polish-in-open-tin",
-     "label": "জুতার কালি",
-     "gloss": "wax shoe polish in an open tin"
-    },
-    {
-     "id": "shoe-polishing-brush",
-     "label": "জুতা পরিষ্কারের ঝাড়নি",
-     "gloss": "short broad shoe-cleaning brush"
-    },
-    {
-     "id": "curved-shoe-fitting-horn",
-     "label": "জুতায় পা ঢোকানোর পাত",
-     "gloss": "long curved shoehorn"
-    },
-    {
-     "id": "removable-shoe-insole",
-     "label": "জুতার ভেতরের তলা",
-     "gloss": "detached removable insole of a shoe"
-    },
-    {
-     "id": "heel-block-of-a-shoe",
-     "label": "জুতার গোড়া",
-     "gloss": "raised heel block at the back of a shoe"
-    }
-   ],
-   "questions": [
-    "জুতার কালি কোনটা?",
-    "জুতার গোড়া আর ভেতরের তলাটা কীভাবে আলাদা?",
-    "আপনি জুতা কী দিয়ে পরিষ্কার করেন?",
-    "জুতা পায়ে ঢুকতে না চাইলে কোন জিনিসটা নেবেন?",
-    "ধুলো সরাতে আর চকচকে করতে কোন আলাদা জিনিস লাগতে পারে?",
-    "এক জোড়া জুতা অস্বস্তি দিলে মুচিকে কী কী দেখাতে পারেন?"
-   ]
-  },
-  {
-   "id": "people-who-service-a-home",
-   "number": 271,
-   "title": "বাসায় যাঁদের ডাকি",
-   "front": "pages/271-front.jpg",
-   "back": "pages/271-back.jpg",
-   "items": [
-    {
-     "id": "person-repairing-pipes-at-home",
-     "label": "পানির মিস্ত্রি",
-     "gloss": "plumber repairing a household water pipe"
-    },
-    {
-     "id": "household-wiring-repair-worker",
-     "label": "বিদ্যুতের মিস্ত্রি",
-     "gloss": "household electrician examining a disconnected wall fitting"
-    },
-    {
-     "id": "neighborhood-waste-collector",
-     "label": "ময়লা নেওয়ার লোক",
-     "gloss": "household waste collection worker with waste bag"
-    },
-    {
-     "id": "worker-treating-household-pests",
-     "label": "পোকা মারার লোক",
-     "gloss": "pest-control worker carrying sprayer"
-    },
-    {
-     "id": "house-cleaner-working-indoors",
-     "label": "বাসা পরিষ্কারের লোক",
-     "gloss": "home cleaner wiping a low table"
-    },
-    {
-     "id": "household-removal-worker",
-     "label": "বাসা বদলের লোক",
-     "gloss": "home removal worker handling furniture"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে পানির মিস্ত্রি আছেন?",
-    "পানির আর বিদ্যুতের মিস্ত্রির হাতে কী তফাত?",
-    "বাসায় কোন কাজের জন্য কাউকে ডেকেছেন?",
-    "ময়লা নেওয়ার লোককে কোন জায়গাটা দেখিয়ে দেবেন?",
-    "বাসা বদলের লোককে কোন মাল আগে নিতে বলবেন?",
-    "বাসায় পানি আর বিদ্যুৎ দুটোতেই সমস্যা হলে কার সঙ্গে কীভাবে কথা বলবেন?"
-   ]
-  },
-  {
-   "id": "eyeglass-parts-and-eye-shop-objects",
-   "number": 272,
-   "title": "চশমায় কী দেখি আর ধরি",
-   "front": "pages/272-front.jpg",
-   "back": "pages/272-back.jpg",
-   "items": [
-    {
-     "id": "eyeglass-optical-lens",
-     "label": "চশমার কাচ",
-     "gloss": "transparent prescription lens on a pair of eyeglasses"
-    },
-    {
-     "id": "eyeglass-earpiece-arm",
-     "label": "চশমার ডাঁটি",
-     "gloss": "folding temple arm of eyeglass frame"
-    },
-    {
-     "id": "eyeglass-adjustable-nose-pad",
-     "label": "নাকে ঠেকার পাটি",
-     "gloss": "adjustable nose pad on an eyeglass bridge"
-    },
-    {
-     "id": "eyeglass-lens-cleaning-cloth",
-     "label": "চশমা মোছার কাপড়",
-     "gloss": "small microfiber cloth for cleaning eyeglasses"
-    },
-    {
-     "id": "dark-glasses-for-sunlight",
-     "label": "রোদচশমা",
-     "gloss": "dark-tinted sunglasses"
-    },
-    {
-     "id": "eye-test-picture-chart",
-     "label": "চোখ মাপার ছক",
-     "gloss": "eye test chart in a row of descending sizes"
-    }
-   ],
-   "questions": [
-    "রোদচশমা কোনটা?",
-    "চশমার ডাঁটি আর নাকে ঠেকার পাটি কোথায় থাকে?",
-    "আপনি চশমা কী দিয়ে মোছেন?",
-    "কাচে আঁচড় পড়লে দোকানে কী বলে দেখাবেন?",
-    "চোখ মাপার ছকে কোন দাগটা সবচেয়ে বড়?",
-    "দূরের লেখা ঠিকমতো দেখা না গেলে কীভাবে বুঝিয়ে বলবেন, আর কী উদাহরণ দেবেন?"
+    "কে বুঝতে পারি নাই বলছেন?",
+    "মনে আছে আর মনে পড়ছে না বলার মধ্যে কী তফাত?",
+    "কখন আপনি জানি না বলেন?",
+    "কথাটা এবার বুঝেছেন, কী বলবেন?",
+    "কাউকে ছবি একটু কাছে আনতে কী বলে দেখবেন?",
+    "কথাটা না বোঝা আর উত্তর না জানা আলাদা হলে, কোন সময় কী বলবেন?"
    ]
   },
   {
@@ -12833,144 +190,50 @@ window.PTB_DECK = {
    ]
   },
   {
-   "id": "heights-and-reach-relative-to-the-body",
-   "number": 274,
-   "title": "শরীর দেখে উঁচু নিচু বলি",
-   "front": "pages/274-front.jpg",
-   "back": "pages/274-back.jpg",
+   "id": "people-we-mean-when-we-speak",
+   "number": 298,
+   "title": "আমি আপনি উনি আর আমরা",
+   "front": "pages/298-front.jpg",
+   "back": "pages/298-back.jpg",
    "items": [
     {
-     "id": "within-easy-arm-reach",
-     "label": "হাতের নাগালে",
-     "gloss": "within easy arm reach"
+     "id": "speaker-refers-to-self",
+     "label": "আমি",
+     "gloss": "first person singular I"
     },
     {
-     "id": "beyond-arm-reach-overhead",
-     "label": "হাতের নাগালের বাইরে",
-     "gloss": "just beyond arm reach"
+     "id": "speaker-addresses-one-listener-politely",
+     "label": "আপনি",
+     "gloss": "polite singular second person you"
     },
     {
-     "id": "level-with-a-persons-eyes",
-     "label": "চোখের সমান",
-     "gloss": "at the same height as the eyes"
+     "id": "speaker-refers-to-one-other-adult-politely",
+     "label": "উনি",
+     "gloss": "polite singular third person he or she"
     },
     {
-     "id": "passing-an-object-over-a-head",
-     "label": "মাথার ওপর দিয়ে",
-     "gloss": "pass directly above someone's head"
+     "id": "speaker-refers-to-their-own-group",
+     "label": "আমরা",
+     "gloss": "first person plural we"
     },
     {
-     "id": "standing-in-knee-deep-water",
-     "label": "হাঁটুপানি",
-     "gloss": "water coming up exactly to the knees"
+     "id": "speaker-addresses-multiple-listeners-politely",
+     "label": "আপনারা",
+     "gloss": "polite plural second person you"
     },
     {
-     "id": "standing-in-waist-deep-water",
-     "label": "কোমরপানি",
-     "gloss": "water coming up exactly to the waist"
+     "id": "speaker-refers-to-another-group-politely",
+     "label": "ওনারা",
+     "gloss": "polite plural third person they"
     }
    ],
    "questions": [
-    "হাঁটুপানি কোন ছবিতে?",
-    "হাঁটুপানি আর কোমরপানির মধ্যে কী তফাত?",
-    "আপনি কোন জিনিস হাতের নাগালে রাখেন?",
-    "পাশের কাউকে চোখের সমান করে ছবি রাখতে কী বলবেন?",
-    "বাক্সটা নাগালের বাইরে গেলে কাকে কী বলে ডাকবেন?",
-    "কাউকে রাস্তার পানির গভীরতা বোঝাতে শরীরের কোন অংশ দিয়ে তুলনা করবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "street-repair-equipment",
-   "number": 275,
-   "title": "রাস্তায় কাজের সময় যা দেখি",
-   "front": "pages/275-front.jpg",
-   "back": "pages/275-back.jpg",
-   "items": [
-    {
-     "id": "roadwork-digging-excavator",
-     "label": "মাটি কাটার গাড়ি",
-     "gloss": "road excavation vehicle with digging bucket"
-    },
-    {
-     "id": "mixing-drum-for-concrete-work",
-     "label": "ঢালাই মেশানোর যন্ত্র",
-     "gloss": "portable rotating drum used to mix concrete"
-    },
-    {
-     "id": "worker-hard-hat-for-roadwork",
-     "label": "কাজের শক্ত টুপি",
-     "gloss": "construction hard hat with short protective brim"
-    },
-    {
-     "id": "portable-road-work-cone",
-     "label": "রাস্তার কমলা চিহ্ন",
-     "gloss": "temporary bright orange traffic cone"
-    },
-    {
-     "id": "high-visibility-work-waistcoat",
-     "label": "কাজের উজ্জ্বল জামা",
-     "gloss": "high-visibility vest with reflective stripes"
-    },
-    {
-     "id": "asphalt-compacting-road-roller",
-     "label": "রাস্তা চাপার গাড়ি",
-     "gloss": "road roller with heavy smooth steel drum"
-    }
-   ],
-   "questions": [
-    "কোনটা মাটি কাটার গাড়ি?",
-    "মাটি কাটার গাড়ি আর রাস্তা চাপার গাড়ির সামনে কী তফাত?",
-    "আপনি কোথায় রাস্তার কাজ দেখেছেন?",
-    "কমলা চিহ্নগুলো দেখলে সঙ্গের লোককে কী বলবেন?",
-    "রাস্তার কাজ করছেন কে, দূর থেকে কী দেখে বুঝবেন?",
-    "যে রাস্তা দিয়ে রোজ যান সেখানে কাজ চললে অন্য রাস্তা বাছার সময় কী ভাববেন?"
-   ]
-  },
-  {
-   "id": "first-conversations-with-neighbors",
-   "number": 276,
-   "title": "প্রথম আলাপে যা বলি",
-   "front": "pages/276-front.jpg",
-   "back": "pages/276-back.jpg",
-   "items": [
-    {
-     "id": "reply-to-a-salaam",
-     "label": "ওয়ালাইকুম আসসালাম",
-     "gloss": "return a salaam already offered by another person"
-    },
-    {
-     "id": "ask-how-someone-is",
-     "label": "কেমন আছেন?",
-     "gloss": "ask how the other person is doing"
-    },
-    {
-     "id": "say-you-are-well",
-     "label": "ভালো আছি",
-     "gloss": "say that you are well in reply to a greeting"
-    },
-    {
-     "id": "ask-a-new-person-their-name",
-     "label": "আপনার নাম কী?",
-     "gloss": "politely ask someone their name"
-    },
-    {
-     "id": "say-you-are-new-here",
-     "label": "আমি এখানে নতুন",
-     "gloss": "introduce yourself as a newcomer to this area"
-    },
-    {
-     "id": "say-you-are-learning-bangla",
-     "label": "বাংলা শিখছি",
-     "gloss": "say that you are learning Bangla"
-    }
-   ],
-   "questions": [
-    "কে সালামের জবাব দিচ্ছেন?",
-    "কেমন আছেন জিজ্ঞেস করা আর ভালো আছি বলার মধ্যে কী তফাত?",
-    "নতুন কারও সঙ্গে দেখা হলে আপনি প্রথমে কী বলেন?",
-    "পাশের বাসার কারও নাম জানতে কী বলবেন?",
-    "আপনি বাংলা শিখছেন, কথাটা কীভাবে বলবেন?",
-    "নতুন এলাকায় প্রথম দেখা হলে পাশের লোকের সঙ্গে কীভাবে কথা শুরু করবেন, আর কেন?"
+    "কোন ছবিতে একজন নিজের কথা বলছেন?",
+    "আপনি আর আপনারা বলার সময় কয়জনকে বলা হচ্ছে?",
+    "আপনি কখন আমরা বলেন?",
+    "দুজনকে একসঙ্গে বসতে ডাকলে কী বলবেন?",
+    "আপনার পাশের একজনের কথা অন্য কাউকে বলতে উনি কীভাবে ব্যবহার করবেন?",
+    "এক ঘরে কয়েকজন থাকলে আমরা আর ওনারা বলে কাদের বোঝাচ্ছেন, সেটা কীভাবে পরিষ্কার করবেন?"
    ]
   },
   {
@@ -13021,50 +284,285 @@ window.PTB_DECK = {
    ]
   },
   {
-   "id": "first-questions-and-requests-at-a-shop",
-   "number": 278,
-   "title": "দোকানে জিনিস চাই",
-   "front": "pages/278-front.jpg",
-   "back": "pages/278-back.jpg",
+   "id": "counting-one-to-six",
+   "number": 50,
+   "title": "এক থেকে ছয়",
+   "front": "pages/050-front.jpg",
+   "back": "pages/050-back.jpg",
    "items": [
     {
-     "id": "ask-price-per-unit",
-     "label": "কত করে?",
-     "gloss": "ask the store price per unit"
+     "id": "one",
+     "label": "এক",
+     "gloss": "one"
     },
     {
-     "id": "check-if-goods-are-in-stock",
-     "label": "এটা আছে?",
-     "gloss": "ask whether a shown item is available"
+     "id": "two",
+     "label": "দুই",
+     "gloss": "two"
     },
     {
-     "id": "sold-out-in-a-market-stall",
-     "label": "শেষ হয়ে গেছে",
-     "gloss": "say that the stock has sold out"
+     "id": "three",
+     "label": "তিন",
+     "gloss": "three"
     },
     {
-     "id": "request-only-a-small-amount",
-     "label": "অল্প করে দেন",
-     "gloss": "ask for only a small amount at a market stall"
+     "id": "four",
+     "label": "চার",
+     "gloss": "four"
     },
     {
-     "id": "request-one-more-item",
-     "label": "আরেকটা দেন",
-     "gloss": "ask the seller for one additional item"
+     "id": "five",
+     "label": "পাঁচ",
+     "gloss": "five"
     },
     {
-     "id": "ask-to-bag-a-purchase",
-     "label": "থলেতে দেন",
-     "gloss": "ask a shopkeeper to put a purchase into a bag"
+     "id": "six",
+     "label": "ছয়",
+     "gloss": "six"
     }
    ],
    "questions": [
-    "কে থলেতে দিতে বলছেন?",
-    "অল্প করে আর আরেকটা চাইলে কী তফাত হয়?",
-    "দোকানে কোন জিনিস আপনি অল্প করে কেনেন?",
-    "কোনো জিনিসের দাম জানতে কী বলবেন?",
-    "চাইছেন যে জিনিসটা, সেটা শেষ হয়ে গেলে কী বলবেন?",
-    "দোকানদারের কাছে জিনিসের নাম মনে না পড়লে কীভাবে কিনবেন?"
+    "একটা ফল কোন ছবিতে?",
+    "কোন ছবিতে তিনটা ফল আছে?",
+    "আপনি বাজার থেকে একবারে কয়টা ফল নেন?",
+    "ছয়টা ফল দুজনকে সমান করে দিলে কে কয়টা পাবেন?",
+    "অনেক জিনিস ভুল না করে গুনতে কী করেন?",
+    "একটা জিনিসের দাম বা গুরুত্ব কি সবার কাছে একই হয়? কেন?"
+   ]
+  },
+  {
+   "id": "everyday-likes-and-needs",
+   "number": 290,
+   "title": "লাগবে কি ভালো লাগে কি",
+   "front": "pages/290-front.jpg",
+   "back": "pages/290-back.jpg",
+   "items": [
+    {
+     "id": "like-a-food-or-object",
+     "label": "ভালো লাগে",
+     "gloss": "say you like something"
+    },
+    {
+     "id": "not-like-the-option",
+     "label": "ভালো লাগে না",
+     "gloss": "say you do not like something"
+    },
+    {
+     "id": "need-the-missing-object",
+     "label": "দরকার আছে",
+     "gloss": "say that something is needed"
+    },
+    {
+     "id": "say-that-an-extra-is-unneeded",
+     "label": "দরকার নাই",
+     "gloss": "say there is no need for one more"
+    },
+    {
+     "id": "choose-that-particular-one",
+     "label": "এটাই চাই",
+     "gloss": "say this is the specific one you want"
+    },
+    {
+     "id": "decide-to-leave-something-for-now",
+     "label": "থাক, পরে দেখব",
+     "gloss": "decide to leave it for now and look later"
+    }
+   ],
+   "questions": [
+    "কার আম ভালো লাগছে?",
+    "দরকার আছে আর দরকার নাই ছবিতে কী তফাত?",
+    "দোকানে কী দেখলে আপনার ভালো লাগে?",
+    "যে জিনিসটা চান, সেটাই চাই বলে কীভাবে দেখাবেন?",
+    "বাড়তি ছাতা নিতে হবে না, কী বলে জানাবেন?",
+    "অন্য কেউ যা পছন্দ করেন সেটা আপনার ভালো না লাগলে কীভাবে বলবেন?"
+   ]
+  },
+  {
+   "id": "everyday-bodily-needs",
+   "number": 144,
+   "title": "খিদে তেষ্টা আর ঘুম",
+   "front": "pages/144-front.jpg",
+   "back": "pages/144-back.jpg",
+   "items": [
+    {
+     "id": "hungry-person",
+     "label": "খিদে লাগা",
+     "gloss": "to feel hungry"
+    },
+    {
+     "id": "full-person",
+     "label": "পেট ভরা",
+     "gloss": "full after eating"
+    },
+    {
+     "id": "thirsty-person",
+     "label": "তেষ্টা পাওয়া",
+     "gloss": "to feel thirsty"
+    },
+    {
+     "id": "sleepy-person",
+     "label": "ঘুম পাওয়া",
+     "gloss": "to feel sleepy"
+    },
+    {
+     "id": "feeling-hot",
+     "label": "গরম লাগা",
+     "gloss": "to feel too warm"
+    },
+    {
+     "id": "feeling-chilly",
+     "label": "শীত করা",
+     "gloss": "to feel chilly"
+    }
+   ],
+   "questions": [
+    "কার খিদে লেগেছে?",
+    "কার গরম লাগছে আর কার শীত করছে?",
+    "আপনার সাধারণত কখন তেষ্টা পায়?",
+    "খাওয়ার মাঝখানে পেট ভরে গেলে কী বলবেন?",
+    "ঘুম পেলে কাজের ফাঁকে আপনি কী করেন?",
+    "কেউ নিজের কী দরকার তা বলতে না পারলে তাঁর কোন আচরণ দেখে বুঝতে পারেন?"
+   ]
+  },
+  {
+   "id": "daily-actions",
+   "number": 16,
+   "title": "সকালের কাজ",
+   "front": "pages/016-front.jpg",
+   "back": "pages/016-back.jpg",
+   "items": [
+    {
+     "id": "eat",
+     "label": "খাওয়া",
+     "gloss": "to eat"
+    },
+    {
+     "id": "drink",
+     "label": "পানি খাওয়া",
+     "gloss": "to drink water"
+    },
+    {
+     "id": "sit",
+     "label": "বসা",
+     "gloss": "to sit"
+    },
+    {
+     "id": "stand",
+     "label": "দাঁড়ানো",
+     "gloss": "to stand"
+    },
+    {
+     "id": "sleep",
+     "label": "ঘুমানো",
+     "gloss": "to sleep"
+    },
+    {
+     "id": "wake",
+     "label": "ঘুম থেকে ওঠা",
+     "gloss": "to wake up"
+    }
+   ],
+   "questions": [
+    "কে বসে আছেন?",
+    "কে পানি খাচ্ছেন?",
+    "আপনি কখন ঘুম থেকে ওঠেন?",
+    "ঘুম থেকে উঠে আগে কী করেন?",
+    "সকালে আপনি আর কী করেন?",
+    "কাল সকালে আজকের চেয়ে আগে উঠলে কী করবেন?"
+   ]
+  },
+  {
+   "id": "finding-basic-facilities-in-a-new-place",
+   "number": 295,
+   "title": "নতুন জায়গায় কী কোথায়",
+   "front": "pages/295-front.jpg",
+   "back": "pages/295-back.jpg",
+   "items": [
+    {
+     "id": "ask-where-the-restroom-is",
+     "label": "টয়লেট কোথায়?",
+     "gloss": "ask where the restroom is"
+    },
+    {
+     "id": "ask-where-drinking-water-is",
+     "label": "খাওয়ার পানি কোথায়?",
+     "gloss": "ask where to get drinking water"
+    },
+    {
+     "id": "ask-where-to-wash-hands",
+     "label": "হাত ধোয়ার জায়গা কোথায়?",
+     "gloss": "ask where you can wash your hands"
+    },
+    {
+     "id": "ask-if-you-may-sit-here",
+     "label": "এখানে বসতে পারি?",
+     "gloss": "ask permission to sit in this location"
+    },
+    {
+     "id": "ask-which-way-to-leave",
+     "label": "বের হব কোন দিক দিয়ে?",
+     "gloss": "ask which way you can leave a building"
+    },
+    {
+     "id": "ask-where-to-leave-shoes",
+     "label": "জুতা কোথায় রাখব?",
+     "gloss": "ask where to leave your shoes"
+    }
+   ],
+   "questions": [
+    "কে খাওয়ার পানি খুঁজছেন?",
+    "হাত ধোয়ার আর পানি খাওয়ার ছবিতে কী তফাত?",
+    "নতুন জায়গায় গেলে আপনি আগে কোনটা জিজ্ঞেস করেন?",
+    "কারও পাশে বসতে চাইলে কী বলবেন?",
+    "দুইটা দরজা দেখলে কোনটা দিয়ে বের হবেন কীভাবে জানতে চাইবেন?",
+    "কারও বাসায় গেলে কোথায় জুতা রাখবেন বুঝতে না পারলে কী দেখে বা বলে ঠিক করবেন?"
+   ]
+  },
+  {
+   "id": "lunch",
+   "number": 6,
+   "title": "দুপুরের খাবার",
+   "front": "pages/006-front.jpg",
+   "back": "pages/006-back.jpg",
+   "items": [
+    {
+     "id": "cooked-rice",
+     "label": "ভাত",
+     "gloss": "cooked rice"
+    },
+    {
+     "id": "roti",
+     "label": "রুটি",
+     "gloss": "roti"
+    },
+    {
+     "id": "cooked-dal",
+     "label": "ডাল",
+     "gloss": "cooked lentils"
+    },
+    {
+     "id": "fried-egg",
+     "label": "ডিম",
+     "gloss": "fried egg"
+    },
+    {
+     "id": "fried-fish",
+     "label": "মাছ",
+     "gloss": "whole fried fish"
+    },
+    {
+     "id": "chicken-curry",
+     "label": "মাংস",
+     "gloss": "chicken meat"
+    }
+   ],
+   "questions": [
+    "ভাতটা কোনটা?",
+    "কোন দুটো ভাজা?",
+    "দুপুরে আপনি কী খান?",
+    "ভাতের সঙ্গে কী খেতে ভালো লাগে?",
+    "এখানে খাবারের সঙ্গে আর কী দেয়?",
+    "দুপুরে বাইরে খেলে কী নেবেন?"
    ]
   },
   {
@@ -13115,97 +613,285 @@ window.PTB_DECK = {
    ]
   },
   {
-   "id": "counting-twenty-five-to-thirty",
-   "number": 280,
-   "title": "পঁচিশ থেকে ত্রিশ",
-   "front": "pages/280-front.jpg",
-   "back": "pages/280-back.jpg",
+   "id": "first-questions-and-requests-at-a-shop",
+   "number": 278,
+   "title": "দোকানে জিনিস চাই",
+   "front": "pages/278-front.jpg",
+   "back": "pages/278-back.jpg",
    "items": [
     {
-     "id": "twenty-five-count",
-     "label": "পঁচিশ",
-     "gloss": "twenty-five"
+     "id": "ask-price-per-unit",
+     "label": "কত করে?",
+     "gloss": "ask the store price per unit"
     },
     {
-     "id": "twenty-six-count",
-     "label": "ছাব্বিশ",
-     "gloss": "twenty-six"
+     "id": "check-if-goods-are-in-stock",
+     "label": "এটা আছে?",
+     "gloss": "ask whether a shown item is available"
     },
     {
-     "id": "twenty-seven-count",
-     "label": "সাতাশ",
-     "gloss": "twenty-seven"
+     "id": "sold-out-in-a-market-stall",
+     "label": "শেষ হয়ে গেছে",
+     "gloss": "say that the stock has sold out"
     },
     {
-     "id": "twenty-eight-count",
-     "label": "আটাশ",
-     "gloss": "twenty-eight"
+     "id": "request-only-a-small-amount",
+     "label": "অল্প করে দেন",
+     "gloss": "ask for only a small amount at a market stall"
     },
     {
-     "id": "twenty-nine-count",
-     "label": "উনত্রিশ",
-     "gloss": "twenty-nine"
+     "id": "request-one-more-item",
+     "label": "আরেকটা দেন",
+     "gloss": "ask the seller for one additional item"
     },
     {
-     "id": "thirty-count",
-     "label": "ত্রিশ",
-     "gloss": "thirty"
+     "id": "ask-to-bag-a-purchase",
+     "label": "থলেতে দেন",
+     "gloss": "ask a shopkeeper to put a purchase into a bag"
     }
    ],
    "questions": [
-    "কোন ছবিতে ত্রিশটা বল আছে?",
-    "আটাশ আর উনত্রিশের শেষ সারিতে কী তফাত?",
-    "আপনি কখন পঁচিশের বেশি জিনিস গুনেছেন?",
-    "ছাব্বিশ থেকে ত্রিশ পর্যন্ত কীভাবে গুনবেন?",
-    "সাতাশটার সঙ্গে দুটো যোগ করলে কোন ছবি পাবেন?",
-    "অনেকগুলো জিনিস অন্য কাউকে গুনে দিতে হলে কীভাবে সাজাবেন, আর কেন?"
+    "কে থলেতে দিতে বলছেন?",
+    "অল্প করে আর আরেকটা চাইলে কী তফাত হয়?",
+    "দোকানে কোন জিনিস আপনি অল্প করে কেনেন?",
+    "কোনো জিনিসের দাম জানতে কী বলবেন?",
+    "চাইছেন যে জিনিসটা, সেটা শেষ হয়ে গেলে কী বলবেন?",
+    "দোকানদারের কাছে জিনিসের নাম মনে না পড়লে কীভাবে কিনবেন?"
    ]
   },
   {
-   "id": "finding-a-home-by-its-address",
-   "number": 281,
-   "title": "বাসা খুঁজতে ঠিকানা বলি",
-   "front": "pages/281-front.jpg",
-   "back": "pages/281-back.jpg",
+   "id": "counting-seven-to-twelve",
+   "number": 123,
+   "title": "সাত থেকে বারো",
+   "front": "pages/123-front.jpg",
+   "back": "pages/123-back.jpg",
    "items": [
     {
-     "id": "address-for-a-home-entrance",
-     "label": "বাসার ঠিকানা",
-     "gloss": "home address written as location information"
+     "id": "seven",
+     "label": "সাত",
+     "gloss": "seven"
     },
     {
-     "id": "name-plate-for-a-street",
-     "label": "রাস্তার নাম",
-     "gloss": "street name on a neighborhood road sign"
+     "id": "eight",
+     "label": "আট",
+     "gloss": "eight"
     },
     {
-     "id": "local-neighborhood-block",
-     "label": "মহল্লা",
-     "gloss": "a local residential neighborhood block"
+     "id": "nine",
+     "label": "নয়",
+     "gloss": "nine"
     },
     {
-     "id": "ground-floor-in-a-building",
-     "label": "নিচতলা",
-     "gloss": "ground floor of a Bangladeshi building"
+     "id": "ten",
+     "label": "দশ",
+     "gloss": "ten"
     },
     {
-     "id": "third-floor-home-in-a-building",
-     "label": "তিনতলার বাসা",
-     "gloss": "third floor apartment above the first and second floors"
+     "id": "eleven",
+     "label": "এগারো",
+     "gloss": "eleven"
     },
     {
-     "id": "directly-next-door-home",
-     "label": "পাশের বাসা",
-     "gloss": "neighboring home immediately next door"
+     "id": "twelve",
+     "label": "বারো",
+     "gloss": "twelve"
     }
    ],
    "questions": [
-    "নিচতলা কোন ছবিতে দেখানো হয়েছে?",
-    "নিচতলা আর তিনতলার অবস্থানে কী তফাত?",
-    "আপনার বাসা কোন তলায়?",
-    "রাস্তার নাম আর বাসার ঠিকানাটা কাউকে কীভাবে জানাবেন?",
-    "পাশের বাসা চিনতে ফটক বা দরজায় কী দেখে বলবেন?",
-    "ঠিকানা শুনেও কেউ বাসা খুঁজে না পেলে আর কী জানাবেন, আর কেন?"
+    "আটটা বল কোথায়?",
+    "কোন ছবিতে এগারোটার চেয়ে একটা বেশি আছে?",
+    "কোন জিনিস কেনার সময় আপনি গুনে নেন?",
+    "দশটা বল দুইজনকে সমান দিতে হলে কীভাবে দেবেন?",
+    "মুখে মনে রাখা কঠিন হলে কী দিয়ে গুনে দেখাবেন?",
+    "অনেক জিনিস গুনতে গেলে দল করে গোনা কখন সহজ হয়, আর কেন?"
+   ]
+  },
+  {
+   "id": "reading-common-prices-in-taka",
+   "number": 291,
+   "title": "দোকানের দামে টাকার অঙ্ক",
+   "front": "pages/291-front.jpg",
+   "back": "pages/291-back.jpg",
+   "items": [
+    {
+     "id": "price-fifty-taka",
+     "label": "পঞ্চাশ টাকা",
+     "gloss": "fifty taka as a price or fare"
+    },
+    {
+     "id": "price-one-hundred-taka",
+     "label": "একশ টাকা",
+     "gloss": "one hundred taka as a price or fare"
+    },
+    {
+     "id": "price-two-hundred-taka",
+     "label": "দুইশ টাকা",
+     "gloss": "two hundred taka as a price or fare"
+    },
+    {
+     "id": "price-five-hundred-taka",
+     "label": "পাঁচশ টাকা",
+     "gloss": "five hundred taka as a price or fare"
+    },
+    {
+     "id": "price-one-thousand-taka",
+     "label": "এক হাজার টাকা",
+     "gloss": "one thousand taka as a price or fee"
+    },
+    {
+     "id": "price-two-thousand-taka",
+     "label": "দুই হাজার টাকা",
+     "gloss": "two thousand taka as a price or fee"
+    }
+   ],
+   "questions": [
+    "পঞ্চাশ টাকা কোন ছবিতে লেখা?",
+    "একশ আর এক হাজার লেখায় কতটা তফাত দেখছেন?",
+    "আপনি পঞ্চাশ টাকায় কী কিনেছেন?",
+    "দুইশ টাকার মধ্যে কিছু চাইলে দোকানে কী বলবেন?",
+    "দুইটা পাঁচশ টাকা মিলে কত হয়?",
+    "দাম শুনে একশ না এক হাজার বুঝতে না পারলে কীভাবে মিলিয়ে নেবেন?"
+   ]
+  },
+  {
+   "id": "checking-what-to-pay-and-what-comes-back",
+   "number": 300,
+   "title": "দাম মিটিয়ে যা বলি",
+   "front": "pages/300-front.jpg",
+   "back": "pages/300-back.jpg",
+   "items": [
+    {
+     "id": "asking-what-the-final-total-is",
+     "label": "মোট কত হলো?",
+     "gloss": "ask for the final total before paying"
+    },
+    {
+     "id": "asking-if-a-price-can-go-lower",
+     "label": "কিছু কম হবে?",
+     "gloss": "ask if the listed price can go lower"
+    },
+    {
+     "id": "ask-how-much-remains-to-be-paid",
+     "label": "বাকি কত?",
+     "gloss": "ask how much payment is still owed"
+    },
+    {
+     "id": "getting-cash-change-back",
+     "label": "ফেরত টাকা",
+     "gloss": "money returned as cash change after buying"
+    },
+    {
+     "id": "ask-to-whom-payment-goes",
+     "label": "কাকে টাকা দেব?",
+     "gloss": "ask which person should receive payment"
+    },
+    {
+     "id": "confirm-paying-the-full-amount",
+     "label": "পুরোটা দিয়েছি",
+     "gloss": "confirm you have paid the full amount"
+    }
+   ],
+   "questions": [
+    "কে ফেরত টাকা নিচ্ছেন?",
+    "মোট কত আর বাকি কত, দুই প্রশ্নে কী তফাত?",
+    "দাম শুনে বেশি মনে হলে আপনি কী বলেন?",
+    "ভিড়ে কাকে টাকা দিতে হবে বুঝতে না পারলে কী জিজ্ঞেস করবেন?",
+    "পুরো টাকা দেওয়া হয়েছে সেটা কী দিয়ে দেখাতে পারেন?",
+    "ফেরত টাকা কম মনে হলে ঝগড়া না করে কীভাবে হিসাব মিলিয়ে দেখবেন?"
+   ]
+  },
+  {
+   "id": "shopping-things",
+   "number": 23,
+   "title": "কেনাকাটার জিনিস",
+   "front": "pages/023-front.jpg",
+   "back": "pages/023-back.jpg",
+   "items": [
+    {
+     "id": "taka",
+     "label": "টাকা",
+     "gloss": "paper taka"
+    },
+    {
+     "id": "change",
+     "label": "খুচরা",
+     "gloss": "loose change"
+    },
+    {
+     "id": "scale",
+     "label": "দাঁড়িপাল্লা",
+     "gloss": "balance scale"
+    },
+    {
+     "id": "receipt",
+     "label": "রসিদ",
+     "gloss": "receipt"
+    },
+    {
+     "id": "market-bag",
+     "label": "থলে",
+     "gloss": "shopping bag"
+    },
+    {
+     "id": "basket",
+     "label": "ঝুড়ি",
+     "gloss": "basket"
+    }
+   ],
+   "questions": [
+    "রসিদটা কোথায়?",
+    "কোন দুটোয় বাজারের জিনিস আনা যায়?",
+    "আপনি বাজারে জিনিস কীসে আনেন?",
+    "টাকা ভাঙালে কী পাবেন?",
+    "বাজার করতে গেলে আর কী লাগে?",
+    "দাম জানতে দোকানিকে কী বলবেন?"
+   ]
+  },
+  {
+   "id": "orientation",
+   "number": 48,
+   "title": "দিকের নাম",
+   "front": "pages/048-front.jpg",
+   "back": "pages/048-back.jpg",
+   "items": [
+    {
+     "id": "north",
+     "label": "উত্তর",
+     "gloss": "north"
+    },
+    {
+     "id": "south",
+     "label": "দক্ষিণ",
+     "gloss": "south"
+    },
+    {
+     "id": "east",
+     "label": "পূর্ব",
+     "gloss": "east"
+    },
+    {
+     "id": "west",
+     "label": "পশ্চিম",
+     "gloss": "west"
+    },
+    {
+     "id": "right",
+     "label": "ডানে",
+     "gloss": "to the right"
+    },
+    {
+     "id": "left",
+     "label": "বামে",
+     "gloss": "to the left"
+    }
+   ],
+   "questions": [
+    "কোনটা ডানে যাচ্ছে?",
+    "সূর্য কোন দিকে ওঠে?",
+    "বাসা থেকে বেরিয়ে আগে কোন দিকে যান?",
+    "চেনা একটা মোড়ে পৌঁছাতে কী বলবেন?",
+    "কেউ জায়গা না চিনলে তাকে পথ বোঝাতে আর কী কাজে লাগতে পারে?",
+    "দিক ভুল বুঝলে একই পথ দুই মানুষের কাছে কেন আলাদা মনে হতে পারে?"
    ]
   },
   {
@@ -13303,6 +989,53 @@ window.PTB_DECK = {
    ]
   },
   {
+   "id": "finding-a-home-by-its-address",
+   "number": 281,
+   "title": "বাসা খুঁজতে ঠিকানা বলি",
+   "front": "pages/281-front.jpg",
+   "back": "pages/281-back.jpg",
+   "items": [
+    {
+     "id": "address-for-a-home-entrance",
+     "label": "বাসার ঠিকানা",
+     "gloss": "home address written as location information"
+    },
+    {
+     "id": "name-plate-for-a-street",
+     "label": "রাস্তার নাম",
+     "gloss": "street name on a neighborhood road sign"
+    },
+    {
+     "id": "local-neighborhood-block",
+     "label": "মহল্লা",
+     "gloss": "a local residential neighborhood block"
+    },
+    {
+     "id": "ground-floor-in-a-building",
+     "label": "নিচতলা",
+     "gloss": "ground floor of a Bangladeshi building"
+    },
+    {
+     "id": "third-floor-home-in-a-building",
+     "label": "তিনতলার বাসা",
+     "gloss": "third floor apartment above the first and second floors"
+    },
+    {
+     "id": "directly-next-door-home",
+     "label": "পাশের বাসা",
+     "gloss": "neighboring home immediately next door"
+    }
+   ],
+   "questions": [
+    "নিচতলা কোন ছবিতে দেখানো হয়েছে?",
+    "নিচতলা আর তিনতলার অবস্থানে কী তফাত?",
+    "আপনার বাসা কোন তলায়?",
+    "রাস্তার নাম আর বাসার ঠিকানাটা কাউকে কীভাবে জানাবেন?",
+    "পাশের বাসা চিনতে ফটক বা দরজায় কী দেখে বলবেন?",
+    "ঠিকানা শুনেও কেউ বাসা খুঁজে না পেলে আর কী জানাবেন, আর কেন?"
+   ]
+  },
+  {
    "id": "setting-a-day-and-a-time",
    "number": 284,
    "title": "আজ কাল আর কখন",
@@ -13350,661 +1083,97 @@ window.PTB_DECK = {
    ]
   },
   {
-   "id": "simple-replies-when-listening",
-   "number": 285,
-   "title": "বুঝি না বুঝলে যা বলি",
-   "front": "pages/285-front.jpg",
-   "back": "pages/285-back.jpg",
+   "id": "family",
+   "number": 18,
+   "title": "পরিবারের মানুষ",
+   "front": "pages/018-front.jpg",
+   "back": "pages/018-back.jpg",
    "items": [
     {
-     "id": "say-that-a-demonstration-made-sense",
-     "label": "বুঝতে পেরেছি",
-     "gloss": "say you understood after a demonstration"
+     "id": "abba",
+     "label": "আব্বা",
+     "gloss": "father"
     },
     {
-     "id": "say-that-you-did-not-understand",
-     "label": "বুঝতে পারি নাই",
-     "gloss": "say you did not understand the words just spoken"
+     "id": "amma",
+     "label": "আম্মা",
+     "gloss": "mother"
     },
     {
-     "id": "say-that-you-do-not-know",
-     "label": "জানি না",
-     "gloss": "say you do not know the answer to a question"
+     "id": "bhai",
+     "label": "ভাইয়া",
+     "gloss": "older brother"
     },
     {
-     "id": "say-that-you-remember",
-     "label": "মনে আছে",
-     "gloss": "say you remember recognizable information"
+     "id": "apu",
+     "label": "আপু",
+     "gloss": "older sister"
     },
     {
-     "id": "unable-to-recall-a-known-word",
-     "label": "মনে পড়ছে না",
-     "gloss": "say a word is familiar but you cannot recall it"
+     "id": "nana",
+     "label": "নানা",
+     "gloss": "maternal grandfather"
     },
     {
-     "id": "ask-to-have-a-look-first",
-     "label": "দেখি তো",
-     "gloss": "ask to have a look before answering"
+     "id": "nani",
+     "label": "নানি",
+     "gloss": "maternal grandmother"
     }
    ],
    "questions": [
-    "কে বুঝতে পারি নাই বলছেন?",
-    "মনে আছে আর মনে পড়ছে না বলার মধ্যে কী তফাত?",
-    "কখন আপনি জানি না বলেন?",
-    "কথাটা এবার বুঝেছেন, কী বলবেন?",
-    "কাউকে ছবি একটু কাছে আনতে কী বলে দেখবেন?",
-    "কথাটা না বোঝা আর উত্তর না জানা আলাদা হলে, কোন সময় কী বলবেন?"
+    "ছেলেটার আব্বা কোন ছবিতে?",
+    "কারা ছেলেটার বড় ভাইবোন?",
+    "আপনার পরিবারে কাকে কী নামে ডাকেন?",
+    "বন্ধুকে আপনার আম্মার সঙ্গে কীভাবে পরিচয় করিয়ে দেবেন?",
+    "আব্বার মা আর আব্বাকে কী বলে?",
+    "পরিবারের একজনকে নিয়ে কী গল্প বলতে পারেন?"
    ]
   },
   {
-   "id": "ordinary-meals-through-the-day",
-   "number": 286,
-   "title": "দিনে কখন কী খাই",
-   "front": "pages/286-front.jpg",
-   "back": "pages/286-back.jpg",
+   "id": "greeting-and-helping",
+   "number": 127,
+   "title": "দেখা হলে যা করি",
+   "front": "pages/127-front.jpg",
+   "back": "pages/127-back.jpg",
    "items": [
     {
-     "id": "first-meal-in-the-morning",
-     "label": "সকালের নাশতা",
-     "gloss": "breakfast meal served in the morning"
+     "id": "give-salaam",
+     "label": "সালাম দেওয়া",
+     "gloss": "to give a salaam greeting"
     },
     {
-     "id": "midday-rice-meal",
-     "label": "দুপুরের খাবার",
-     "gloss": "lunch in the middle of the day"
+     "id": "shake-hands",
+     "label": "হাত মেলানো",
+     "gloss": "to shake hands"
     },
     {
-     "id": "late-afternoon-tea-snack-meal",
-     "label": "বিকেলের নাশতা",
-     "gloss": "afternoon tea and snack"
+     "id": "hug-person",
+     "label": "জড়িয়ে ধরা",
+     "gloss": "to hug someone"
     },
     {
-     "id": "evening-family-dinner-meal",
-     "label": "রাতের খাবার",
-     "gloss": "dinner served at night"
+     "id": "say-goodbye",
+     "label": "বিদায় নেওয়া",
+     "gloss": "to take leave"
     },
     {
-     "id": "everyday-vegetable-curry-serving",
-     "label": "তরকারি",
-     "gloss": "a cooked side dish served with rice or roti"
+     "id": "welcome-guest",
+     "label": "স্বাগত জানানো",
+     "gloss": "to welcome someone"
     },
     {
-     "id": "several-dishes-on-a-shared-table",
-     "label": "একসঙ্গে খাওয়া",
-     "gloss": "eat a shared meal together"
+     "id": "help-someone",
+     "label": "সাহায্য করা",
+     "gloss": "to help someone"
     }
    ],
    "questions": [
-    "সকালের নাশতা কোনটা?",
-    "দুপুরের খাবার আর বিকেলের নাশতায় কী তফাত দেখছেন?",
-    "আপনি রাতের খাবার কখন খান?",
-    "ভাতের সঙ্গে একটু তরকারি চাইলে কী বলবেন?",
-    "তিনজনকে একসঙ্গে খেতে ডাকবেন কীভাবে?",
-    "কেউ আপনার চেয়ে আগে খেয়ে ফেললে পরের বার একসঙ্গে খাওয়ার সময় কীভাবে ঠিক করবেন?"
-   ]
-  },
-  {
-   "id": "noticing-when-someone-is-free",
-   "number": 287,
-   "title": "কাজের মধ্যে সময় বের করি",
-   "front": "pages/287-front.jpg",
-   "back": "pages/287-back.jpg",
-   "items": [
-    {
-     "id": "person-busy-with-several-tasks",
-     "label": "ব্যস্ত",
-     "gloss": "busy at the moment with several things"
-    },
-    {
-     "id": "available-to-talk-now",
-     "label": "সময় আছে",
-     "gloss": "have time and be available now"
-    },
-    {
-     "id": "beginning-a-task-at-home",
-     "label": "কাজ শুরু করা",
-     "gloss": "begin a task at the first step"
-    },
-    {
-     "id": "work-partway-done",
-     "label": "কাজ চলছে",
-     "gloss": "say a task is still in progress"
-    },
-    {
-     "id": "finishing-an-everyday-task",
-     "label": "কাজ শেষ",
-     "gloss": "say you have finished the task"
-    },
-    {
-     "id": "taking-a-short-rest-break",
-     "label": "একটু বিরতি",
-     "gloss": "take a short pause in the work"
-    }
-   ],
-   "questions": [
-    "কার কাজ পুরো শেষ?",
-    "কাজ শুরু করা আর কাজ চলার ছবিতে কী তফাত?",
-    "আপনি দিনের কোন সময়ে বেশি ব্যস্ত থাকেন?",
-    "কথা বলার সময় আছে কি না জানতে কী বলবেন?",
-    "কাজের মধ্যে একটু দাঁড়াতে চাইলে কীভাবে জানাবেন?",
-    "কারও সঙ্গে কথা দরকার কিন্তু তিনি ব্যস্ত। কখন কথা বলবেন তা কীভাবে ঠিক করবেন?"
-   ]
-  },
-  {
-   "id": "pointing-out-common-pains",
-   "number": 288,
-   "title": "কোথায় ব্যথা বলে দেখাই",
-   "front": "pages/288-front.jpg",
-   "back": "pages/288-back.jpg",
-   "items": [
-    {
-     "id": "pain-when-touching-throat",
-     "label": "গলা ব্যথা",
-     "gloss": "sore throat at the front of the neck"
-    },
-    {
-     "id": "pain-at-outer-ear",
-     "label": "কান ব্যথা",
-     "gloss": "earache felt on one side"
-    },
-    {
-     "id": "burning-or-stinging-eyes",
-     "label": "চোখ জ্বালা",
-     "gloss": "stinging or burning eyes"
-    },
-    {
-     "id": "discomfort-in-the-chest",
-     "label": "বুক ব্যথা",
-     "gloss": "pain in the chest"
-    },
-    {
-     "id": "pain-in-hand-below-wrist",
-     "label": "হাতে ব্যথা",
-     "gloss": "pain in the hand rather than elbow or arm"
-    },
-    {
-     "id": "pain-in-one-foot",
-     "label": "পায়ে ব্যথা",
-     "gloss": "pain in one foot while seated"
-    }
-   ],
-   "questions": [
-    "কার কানে ব্যথা?",
-    "গলা আর বুকের ব্যথার জায়গায় কী তফাত?",
-    "আপনার কখন পায়ে ব্যথা হয়?",
-    "চোখ জ্বালা করলে কী বলে জানাবেন?",
-    "এক হাতে ব্যথা, কোন হাত তা কীভাবে দেখাবেন?",
-    "কথা কম জানা থাকলে ব্যথার জায়গা আর কতদিন ধরে হচ্ছে কীভাবে বোঝাবেন?"
-   ]
-  },
-  {
-   "id": "short-requests-to-move-an-object",
-   "number": 289,
-   "title": "জিনিস আনতে নিতে বলি",
-   "front": "pages/289-front.jpg",
-   "back": "pages/289-back.jpg",
-   "items": [
-    {
-     "id": "ask-to-bring-it-here",
-     "label": "এটা নিয়ে আসেন",
-     "gloss": "ask someone to bring a thing toward the speaker"
-    },
-    {
-     "id": "ask-to-take-it-away",
-     "label": "ওটা নিয়ে যান",
-     "gloss": "ask someone to take a thing away from the speaker"
-    },
-    {
-     "id": "ask-to-leave-it-here",
-     "label": "এখানে রেখে যান",
-     "gloss": "ask someone to leave an object here before departing"
-    },
-    {
-     "id": "ask-to-return-the-borrowed-object",
-     "label": "ফিরিয়ে দেন",
-     "gloss": "ask somebody to give back something lent"
-    },
-    {
-     "id": "ask-to-shift-it-a-little",
-     "label": "একটু সরান",
-     "gloss": "ask somebody to shift the object a short distance aside"
-    },
-    {
-     "id": "ask-to-hold-it-steady",
-     "label": "একটু ধরে রাখেন",
-     "gloss": "ask someone to keep an object steady in one position"
-    }
-   ],
-   "questions": [
-    "কে জিনিসটা ধরে রেখেছেন?",
-    "নিয়ে আসা আর নিয়ে যাওয়ার দিক কীভাবে আলাদা?",
-    "বাসায় কাউকে কোন জিনিস আনতে বলেন?",
-    "কারও কাছের বইটা নিজের কাছে ফেরত চাইলে কী বলবেন?",
-    "চাবি রাখার জায়গাটা কীভাবে দেখিয়ে দেবেন?",
-    "এক হাতে অন্য কাজ থাকলে কোনটা কাউকে ধরে রাখতে বলবেন, আর কেন?"
-   ]
-  },
-  {
-   "id": "everyday-likes-and-needs",
-   "number": 290,
-   "title": "লাগবে কি ভালো লাগে কি",
-   "front": "pages/290-front.jpg",
-   "back": "pages/290-back.jpg",
-   "items": [
-    {
-     "id": "like-a-food-or-object",
-     "label": "ভালো লাগে",
-     "gloss": "say you like something"
-    },
-    {
-     "id": "not-like-the-option",
-     "label": "ভালো লাগে না",
-     "gloss": "say you do not like something"
-    },
-    {
-     "id": "need-the-missing-object",
-     "label": "দরকার আছে",
-     "gloss": "say that something is needed"
-    },
-    {
-     "id": "say-that-an-extra-is-unneeded",
-     "label": "দরকার নাই",
-     "gloss": "say there is no need for one more"
-    },
-    {
-     "id": "choose-that-particular-one",
-     "label": "এটাই চাই",
-     "gloss": "say this is the specific one you want"
-    },
-    {
-     "id": "decide-to-leave-something-for-now",
-     "label": "থাক, পরে দেখব",
-     "gloss": "decide to leave it for now and look later"
-    }
-   ],
-   "questions": [
-    "কার আম ভালো লাগছে?",
-    "দরকার আছে আর দরকার নাই ছবিতে কী তফাত?",
-    "দোকানে কী দেখলে আপনার ভালো লাগে?",
-    "যে জিনিসটা চান, সেটাই চাই বলে কীভাবে দেখাবেন?",
-    "বাড়তি ছাতা নিতে হবে না, কী বলে জানাবেন?",
-    "অন্য কেউ যা পছন্দ করেন সেটা আপনার ভালো না লাগলে কীভাবে বলবেন?"
-   ]
-  },
-  {
-   "id": "reading-common-prices-in-taka",
-   "number": 291,
-   "title": "দোকানের দামে টাকার অঙ্ক",
-   "front": "pages/291-front.jpg",
-   "back": "pages/291-back.jpg",
-   "items": [
-    {
-     "id": "price-fifty-taka",
-     "label": "পঞ্চাশ টাকা",
-     "gloss": "fifty taka as a price or fare"
-    },
-    {
-     "id": "price-one-hundred-taka",
-     "label": "একশ টাকা",
-     "gloss": "one hundred taka as a price or fare"
-    },
-    {
-     "id": "price-two-hundred-taka",
-     "label": "দুইশ টাকা",
-     "gloss": "two hundred taka as a price or fare"
-    },
-    {
-     "id": "price-five-hundred-taka",
-     "label": "পাঁচশ টাকা",
-     "gloss": "five hundred taka as a price or fare"
-    },
-    {
-     "id": "price-one-thousand-taka",
-     "label": "এক হাজার টাকা",
-     "gloss": "one thousand taka as a price or fee"
-    },
-    {
-     "id": "price-two-thousand-taka",
-     "label": "দুই হাজার টাকা",
-     "gloss": "two thousand taka as a price or fee"
-    }
-   ],
-   "questions": [
-    "পঞ্চাশ টাকা কোন ছবিতে লেখা?",
-    "একশ আর এক হাজার লেখায় কতটা তফাত দেখছেন?",
-    "আপনি পঞ্চাশ টাকায় কী কিনেছেন?",
-    "দুইশ টাকার মধ্যে কিছু চাইলে দোকানে কী বলবেন?",
-    "দুইটা পাঁচশ টাকা মিলে কত হয়?",
-    "দাম শুনে একশ না এক হাজার বুঝতে না পারলে কীভাবে মিলিয়ে নেবেন?"
-   ]
-  },
-  {
-   "id": "reading-hours-and-minutes",
-   "number": 292,
-   "title": "ঘড়ি দেখে সময় বলি",
-   "front": "pages/292-front.jpg",
-   "back": "pages/292-back.jpg",
-   "items": [
-    {
-     "id": "clock-one-on-the-hour",
-     "label": "একটা বাজে",
-     "gloss": "one o'clock on an analog clock"
-    },
-    {
-     "id": "clock-half-past-one",
-     "label": "সাড়ে একটা",
-     "gloss": "half past one on an analog clock"
-    },
-    {
-     "id": "clock-quarter-past-two",
-     "label": "সোয়া দুইটা",
-     "gloss": "quarter past two on an analog clock"
-    },
-    {
-     "id": "clock-quarter-to-three",
-     "label": "পৌনে তিনটা",
-     "gloss": "quarter to three on an analog clock"
-    },
-    {
-     "id": "clock-ten-minutes-after-four",
-     "label": "চারটা দশ",
-     "gloss": "ten minutes past four on an analog clock"
-    },
-    {
-     "id": "clock-ten-minutes-before-five",
-     "label": "পাঁচটা বাজতে দশ",
-     "gloss": "ten minutes before five on an analog clock"
-    }
-   ],
-   "questions": [
-    "একটা বাজে কোন ঘড়িতে?",
-    "সোয়া আর পৌনে বললে বড় কাঁটাটা কোথায় থাকে?",
-    "আপনি সাধারণত কয়টার সময় খেতে বসেন?",
-    "কাউকে সাড়ে একটায় আসতে কী বলবেন?",
-    "চারটা দশ আর পাঁচটা বাজতে দশ, কোনটা পরে?",
-    "কেউ শুধু পৌনে বললে দেখা করার সময় ভুল না করতে কী জিজ্ঞেস করবেন?"
-   ]
-  },
-  {
-   "id": "asking-when-and-how-long",
-   "number": 293,
-   "title": "দিন আর সময় জেনে নিই",
-   "front": "pages/293-front.jpg",
-   "back": "pages/293-back.jpg",
-   "items": [
-    {
-     "id": "ask-the-day-of-the-week",
-     "label": "আজ কী বার?",
-     "gloss": "ask what day of the week it is"
-    },
-    {
-     "id": "ask-the-calendar-date",
-     "label": "আজ কত তারিখ?",
-     "gloss": "ask for today's calendar date"
-    },
-    {
-     "id": "ask-what-time-to-meet",
-     "label": "কয়টার সময়?",
-     "gloss": "ask what time is suitable for a meeting"
-    },
-    {
-     "id": "ask-how-long-a-task-takes",
-     "label": "কতক্ষণ লাগবে?",
-     "gloss": "ask how long a process takes"
-    },
-    {
-     "id": "warn-that-you-may-be-late",
-     "label": "দেরি হবে",
-     "gloss": "warn someone that you will be late"
-    },
-    {
-     "id": "arrive-at-the-agreed-time",
-     "label": "সময়মতো",
-     "gloss": "at the agreed time or on time"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে আজ কী বার জানতে চাচ্ছেন?",
-    "তারিখ আর বার জিজ্ঞেস করা কীভাবে আলাদা?",
-    "কারও সঙ্গে দেখা করতে হলে আপনি আগে কী জেনে নেন?",
-    "কোনো জায়গায় যেতে কতক্ষণ লাগবে জানতে কী বলবেন?",
-    "যেতে দেরি হবে বুঝলে কীভাবে জানাবেন?",
-    "দুইজনের সুবিধার সময় আলাদা হলে কখন দেখা করবেন, তা কীভাবে ঠিক করবেন?"
-   ]
-  },
-  {
-   "id": "asking-for-urgent-everyday-help",
-   "number": 294,
-   "title": "দরকার হলে সাহায্য চাই",
-   "front": "pages/294-front.jpg",
-   "back": "pages/294-back.jpg",
-   "items": [
-    {
-     "id": "asking-a-person-nearby-for-help",
-     "label": "একটু সাহায্য করেন",
-     "gloss": "ask somebody nearby to help you"
-    },
-    {
-     "id": "request-getting-a-doctor",
-     "label": "চিকিৎসা দরকার",
-     "gloss": "tell others that someone needs medical attention"
-    },
-    {
-     "id": "ask-someone-to-tell-the-police",
-     "label": "থানায় খবর দেন",
-     "gloss": "ask a companion to inform the police"
-    },
-    {
-     "id": "ask-someone-to-inform-your-family",
-     "label": "বাসায় খবর দেন",
-     "gloss": "ask that someone inform your household"
-    },
-    {
-     "id": "ask-to-be-allowed-to-sit",
-     "label": "একটু বসতে দেন",
-     "gloss": "ask for a chance to sit down"
-    },
-    {
-     "id": "ask-a-person-to-stay-near-you",
-     "label": "আমার সঙ্গে থাকেন",
-     "gloss": "ask someone to stay with you for the moment"
-    }
-   ],
-   "questions": [
-    "কে একটু বসতে চাচ্ছেন?",
-    "থানায় খবর দেওয়া আর বাসায় খবর দেওয়ার ছবিতে কী তফাত?",
-    "রাস্তায় সাহায্য দরকার হলে কার কাছে যাবেন?",
-    "কেউ অসুস্থ হলে তার চিকিৎসা দরকার, কীভাবে জানাবেন?",
-    "একজনকে আপনার কাছে থাকতে কীভাবে বলবেন?",
-    "একসঙ্গে কয়েকজন পাশে থাকলে কে কোন কাজ করবেন, তা কীভাবে বলবেন?"
-   ]
-  },
-  {
-   "id": "finding-basic-facilities-in-a-new-place",
-   "number": 295,
-   "title": "নতুন জায়গায় কী কোথায়",
-   "front": "pages/295-front.jpg",
-   "back": "pages/295-back.jpg",
-   "items": [
-    {
-     "id": "ask-where-the-restroom-is",
-     "label": "টয়লেট কোথায়?",
-     "gloss": "ask where the restroom is"
-    },
-    {
-     "id": "ask-where-drinking-water-is",
-     "label": "খাওয়ার পানি কোথায়?",
-     "gloss": "ask where to get drinking water"
-    },
-    {
-     "id": "ask-where-to-wash-hands",
-     "label": "হাত ধোয়ার জায়গা কোথায়?",
-     "gloss": "ask where you can wash your hands"
-    },
-    {
-     "id": "ask-if-you-may-sit-here",
-     "label": "এখানে বসতে পারি?",
-     "gloss": "ask permission to sit in this location"
-    },
-    {
-     "id": "ask-which-way-to-leave",
-     "label": "বের হব কোন দিক দিয়ে?",
-     "gloss": "ask which way you can leave a building"
-    },
-    {
-     "id": "ask-where-to-leave-shoes",
-     "label": "জুতা কোথায় রাখব?",
-     "gloss": "ask where to leave your shoes"
-    }
-   ],
-   "questions": [
-    "কে খাওয়ার পানি খুঁজছেন?",
-    "হাত ধোয়ার আর পানি খাওয়ার ছবিতে কী তফাত?",
-    "নতুন জায়গায় গেলে আপনি আগে কোনটা জিজ্ঞেস করেন?",
-    "কারও পাশে বসতে চাইলে কী বলবেন?",
-    "দুইটা দরজা দেখলে কোনটা দিয়ে বের হবেন কীভাবে জানতে চাইবেন?",
-    "কারও বাসায় গেলে কোথায় জুতা রাখবেন বুঝতে না পারলে কী দেখে বা বলে ঠিক করবেন?"
-   ]
-  },
-  {
-   "id": "exchanging-simple-messages",
-   "number": 296,
-   "title": "দূরে থাকলে খবর দিই",
-   "front": "pages/296-front.jpg",
-   "back": "pages/296-back.jpg",
-   "items": [
-    {
-     "id": "send-a-short-message-to-someone",
-     "label": "খবর পাঠান",
-     "gloss": "ask for a short message to be sent"
-    },
-    {
-     "id": "ask-someone-to-send-a-photo",
-     "label": "ছবি পাঠান",
-     "gloss": "ask someone to send a picture"
-    },
-    {
-     "id": "ask-someone-to-send-an-address",
-     "label": "ঠিকানা পাঠান",
-     "gloss": "ask someone to send a street address"
-    },
-    {
-     "id": "ask-if-the-other-person-can-hear",
-     "label": "কথা শুনছেন?",
-     "gloss": "ask whether someone can hear you remotely"
-    },
-    {
-     "id": "tell-someone-that-call-was-interrupted",
-     "label": "কথা কেটে গেল",
-     "gloss": "say that a remote conversation was cut off"
-    },
-    {
-     "id": "respond-after-checking-a-message",
-     "label": "দেখে জানাব",
-     "gloss": "say you will check and let the other person know"
-    }
-   ],
-   "questions": [
-    "কে ছবি পাঠাতে বলছেন?",
-    "ছবি আর ঠিকানা পাঠানোর দাগে কী তফাত?",
-    "দূরে গেলে আপনি কাকে খবর দেন?",
-    "বাসার ঠিকানা দরকার হলে কী বলে চাইবেন?",
-    "কথা মাঝখানে কেটে গেলে আবার কথা শুরু করে কী বলবেন?",
-    "কোনো খবর যাচাই করে জানাতে হলে কী দেখবেন, আর কতক্ষণ পর জানাবেন?"
-   ]
-  },
-  {
-   "id": "reporting-first-week-home-problems",
-   "number": 297,
-   "title": "বাসায় কিছু ঠিক নেই",
-   "front": "pages/297-front.jpg",
-   "back": "pages/297-back.jpg",
-   "items": [
-    {
-     "id": "tap-open-but-water-isnt-coming",
-     "label": "পানি আসছে না",
-     "gloss": "report that a tap is dry although opened"
-    },
-    {
-     "id": "ask-whether-hot-water-is-available",
-     "label": "গরম পানি আছে?",
-     "gloss": "ask whether hot water is available at home"
-    },
-    {
-     "id": "ceiling-fan-does-not-turn",
-     "label": "পাখা চলছে না",
-     "gloss": "report that a ceiling fan will not run"
-    },
-    {
-     "id": "key-does-not-turn-in-a-lock",
-     "label": "চাবি ঘুরছে না",
-     "gloss": "report that you cannot turn a key in its lock"
-    },
-    {
-     "id": "mosquitoes-are-coming-inside",
-     "label": "মশা ঢুকছে",
-     "gloss": "report mosquitoes entering a room"
-    },
-    {
-     "id": "stove-not-lighting",
-     "label": "চুলা জ্বলছে না",
-     "gloss": "report a kitchen burner not lighting"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে পানি আসছে না?",
-    "চাবি ঘুরছে না আর পাখা চলছে না, দুই ছবিতে কী তফাত?",
-    "বাসায় কোন জিনিসটা ঠিক না থাকলে আগে খবর দেন?",
-    "গরম পানি দরকার হলে কী জিজ্ঞেস করবেন?",
-    "জানালা দিয়ে মশা ঢুকলে কোন জায়গাটা দেখাবেন?",
-    "চুলা আর পানিতে একসঙ্গে সমস্যা হলে বাসার লোককে কীভাবে জানাবেন?"
-   ]
-  },
-  {
-   "id": "people-we-mean-when-we-speak",
-   "number": 298,
-   "title": "আমি আপনি উনি আর আমরা",
-   "front": "pages/298-front.jpg",
-   "back": "pages/298-back.jpg",
-   "items": [
-    {
-     "id": "speaker-refers-to-self",
-     "label": "আমি",
-     "gloss": "first person singular I"
-    },
-    {
-     "id": "speaker-addresses-one-listener-politely",
-     "label": "আপনি",
-     "gloss": "polite singular second person you"
-    },
-    {
-     "id": "speaker-refers-to-one-other-adult-politely",
-     "label": "উনি",
-     "gloss": "polite singular third person he or she"
-    },
-    {
-     "id": "speaker-refers-to-their-own-group",
-     "label": "আমরা",
-     "gloss": "first person plural we"
-    },
-    {
-     "id": "speaker-addresses-multiple-listeners-politely",
-     "label": "আপনারা",
-     "gloss": "polite plural second person you"
-    },
-    {
-     "id": "speaker-refers-to-another-group-politely",
-     "label": "ওনারা",
-     "gloss": "polite plural third person they"
-    }
-   ],
-   "questions": [
-    "কোন ছবিতে একজন নিজের কথা বলছেন?",
-    "আপনি আর আপনারা বলার সময় কয়জনকে বলা হচ্ছে?",
-    "আপনি কখন আমরা বলেন?",
-    "দুজনকে একসঙ্গে বসতে ডাকলে কী বলবেন?",
-    "আপনার পাশের একজনের কথা অন্য কাউকে বলতে উনি কীভাবে ব্যবহার করবেন?",
-    "এক ঘরে কয়েকজন থাকলে আমরা আর ওনারা বলে কাদের বোঝাচ্ছেন, সেটা কীভাবে পরিষ্কার করবেন?"
+    "কে হাত মেলাচ্ছেন?",
+    "কোন ছবিতে অতিথিকে ঘরে ডাকছেন?",
+    "নতুন কারও সঙ্গে দেখা হলে আপনি কী বলেন?",
+    "বিদায় নেওয়ার সময় কী বলে বের হবেন?",
+    "কেউ কিছু ফেলে দিলে সাহায্য করতে কী বলবেন?",
+    "একে অন্যকে আপন মনে করানোর জন্য আলাদা জায়গায় মানুষ কী কী ভিন্ন কাজ করেন?"
    ]
   },
   {
@@ -14055,50 +1224,12881 @@ window.PTB_DECK = {
    ]
   },
   {
-   "id": "checking-what-to-pay-and-what-comes-back",
-   "number": 300,
-   "title": "দাম মিটিয়ে যা বলি",
-   "front": "pages/300-front.jpg",
-   "back": "pages/300-back.jpg",
+   "id": "body",
+   "number": 21,
+   "title": "শরীরের অংশ",
+   "front": "pages/021-front.jpg",
+   "back": "pages/021-back.jpg",
    "items": [
     {
-     "id": "asking-what-the-final-total-is",
-     "label": "মোট কত হলো?",
-     "gloss": "ask for the final total before paying"
+     "id": "eye",
+     "label": "চোখ",
+     "gloss": "eye"
     },
     {
-     "id": "asking-if-a-price-can-go-lower",
-     "label": "কিছু কম হবে?",
-     "gloss": "ask if the listed price can go lower"
+     "id": "ear",
+     "label": "কান",
+     "gloss": "ear"
     },
     {
-     "id": "ask-how-much-remains-to-be-paid",
-     "label": "বাকি কত?",
-     "gloss": "ask how much payment is still owed"
+     "id": "nose",
+     "label": "নাক",
+     "gloss": "nose"
     },
     {
-     "id": "getting-cash-change-back",
-     "label": "ফেরত টাকা",
-     "gloss": "money returned as cash change after buying"
+     "id": "mouth",
+     "label": "মুখ",
+     "gloss": "mouth"
     },
     {
-     "id": "ask-to-whom-payment-goes",
-     "label": "কাকে টাকা দেব?",
-     "gloss": "ask which person should receive payment"
+     "id": "hand",
+     "label": "হাত",
+     "gloss": "hand"
     },
     {
-     "id": "confirm-paying-the-full-amount",
-     "label": "পুরোটা দিয়েছি",
-     "gloss": "confirm you have paid the full amount"
+     "id": "foot",
+     "label": "পা",
+     "gloss": "foot"
     }
    ],
    "questions": [
-    "কে ফেরত টাকা নিচ্ছেন?",
-    "মোট কত আর বাকি কত, দুই প্রশ্নে কী তফাত?",
-    "দাম শুনে বেশি মনে হলে আপনি কী বলেন?",
-    "ভিড়ে কাকে টাকা দিতে হবে বুঝতে না পারলে কী জিজ্ঞেস করবেন?",
-    "পুরো টাকা দেওয়া হয়েছে সেটা কী দিয়ে দেখাতে পারেন?",
-    "ফেরত টাকা কম মনে হলে ঝগড়া না করে কীভাবে হিসাব মিলিয়ে দেখবেন?"
+    "চোখটা কোনটা?",
+    "কোন দুটোয় আঙুল আছে?",
+    "আপনি কোন হাত দিয়ে লেখেন?",
+    "কিছু শুনতে শরীরের কোন অংশ লাগে?",
+    "ছবিতে নেই, এমন আর কোন অংশের নাম জানেন?",
+    "পায়ে ব্যথা হলে সেটা কীভাবে বলবেন?"
+   ]
+  },
+  {
+   "id": "pointing-out-common-pains",
+   "number": 288,
+   "title": "কোথায় ব্যথা বলে দেখাই",
+   "front": "pages/288-front.jpg",
+   "back": "pages/288-back.jpg",
+   "items": [
+    {
+     "id": "pain-when-touching-throat",
+     "label": "গলা ব্যথা",
+     "gloss": "sore throat at the front of the neck"
+    },
+    {
+     "id": "pain-at-outer-ear",
+     "label": "কান ব্যথা",
+     "gloss": "earache felt on one side"
+    },
+    {
+     "id": "burning-or-stinging-eyes",
+     "label": "চোখ জ্বালা",
+     "gloss": "stinging or burning eyes"
+    },
+    {
+     "id": "discomfort-in-the-chest",
+     "label": "বুক ব্যথা",
+     "gloss": "pain in the chest"
+    },
+    {
+     "id": "pain-in-hand-below-wrist",
+     "label": "হাতে ব্যথা",
+     "gloss": "pain in the hand rather than elbow or arm"
+    },
+    {
+     "id": "pain-in-one-foot",
+     "label": "পায়ে ব্যথা",
+     "gloss": "pain in one foot while seated"
+    }
+   ],
+   "questions": [
+    "কার কানে ব্যথা?",
+    "গলা আর বুকের ব্যথার জায়গায় কী তফাত?",
+    "আপনার কখন পায়ে ব্যথা হয়?",
+    "চোখ জ্বালা করলে কী বলে জানাবেন?",
+    "এক হাতে ব্যথা, কোন হাত তা কীভাবে দেখাবেন?",
+    "কথা কম জানা থাকলে ব্যথার জায়গা আর কতদিন ধরে হচ্ছে কীভাবে বোঝাবেন?"
+   ]
+  },
+  {
+   "id": "feeling-unwell",
+   "number": 20,
+   "title": "শরীর খারাপ",
+   "front": "pages/020-front.jpg",
+   "back": "pages/020-back.jpg",
+   "items": [
+    {
+     "id": "fever",
+     "label": "জ্বর",
+     "gloss": "fever"
+    },
+    {
+     "id": "cough",
+     "label": "কাশি",
+     "gloss": "cough"
+    },
+    {
+     "id": "sneeze",
+     "label": "হাঁচি",
+     "gloss": "sneeze"
+    },
+    {
+     "id": "toothache",
+     "label": "দাঁতে ব্যথা",
+     "gloss": "toothache"
+    },
+    {
+     "id": "stomachache",
+     "label": "পেটে ব্যথা",
+     "gloss": "stomachache"
+    },
+    {
+     "id": "itch",
+     "label": "চুলকানি",
+     "gloss": "itch"
+    }
+   ],
+   "questions": [
+    "কার জ্বর হয়েছে?",
+    "কে পেটে হাত দিয়েছেন?",
+    "আপনার শরীর খারাপ হলে কাকে বলেন?",
+    "দাঁতে ব্যথা হলে কোথায় যাবেন?",
+    "শরীর খারাপের আর কী কী লক্ষণ হয়?",
+    "আপনার কী হয়েছে, সেটা কী করে বলবেন?"
+   ]
+  },
+  {
+   "id": "asking-for-urgent-everyday-help",
+   "number": 294,
+   "title": "দরকার হলে সাহায্য চাই",
+   "front": "pages/294-front.jpg",
+   "back": "pages/294-back.jpg",
+   "items": [
+    {
+     "id": "asking-a-person-nearby-for-help",
+     "label": "একটু সাহায্য করেন",
+     "gloss": "ask somebody nearby to help you"
+    },
+    {
+     "id": "request-getting-a-doctor",
+     "label": "চিকিৎসা দরকার",
+     "gloss": "tell others that someone needs medical attention"
+    },
+    {
+     "id": "ask-someone-to-tell-the-police",
+     "label": "থানায় খবর দেন",
+     "gloss": "ask a companion to inform the police"
+    },
+    {
+     "id": "ask-someone-to-inform-your-family",
+     "label": "বাসায় খবর দেন",
+     "gloss": "ask that someone inform your household"
+    },
+    {
+     "id": "ask-to-be-allowed-to-sit",
+     "label": "একটু বসতে দেন",
+     "gloss": "ask for a chance to sit down"
+    },
+    {
+     "id": "ask-a-person-to-stay-near-you",
+     "label": "আমার সঙ্গে থাকেন",
+     "gloss": "ask someone to stay with you for the moment"
+    }
+   ],
+   "questions": [
+    "কে একটু বসতে চাচ্ছেন?",
+    "থানায় খবর দেওয়া আর বাসায় খবর দেওয়ার ছবিতে কী তফাত?",
+    "রাস্তায় সাহায্য দরকার হলে কার কাছে যাবেন?",
+    "কেউ অসুস্থ হলে তার চিকিৎসা দরকার, কীভাবে জানাবেন?",
+    "একজনকে আপনার কাছে থাকতে কীভাবে বলবেন?",
+    "একসঙ্গে কয়েকজন পাশে থাকলে কে কোন কাজ করবেন, তা কীভাবে বলবেন?"
+   ]
+  },
+  {
+   "id": "short-requests-to-move-an-object",
+   "number": 289,
+   "title": "জিনিস আনতে নিতে বলি",
+   "front": "pages/289-front.jpg",
+   "back": "pages/289-back.jpg",
+   "items": [
+    {
+     "id": "ask-to-bring-it-here",
+     "label": "এটা নিয়ে আসেন",
+     "gloss": "ask someone to bring a thing toward the speaker"
+    },
+    {
+     "id": "ask-to-take-it-away",
+     "label": "ওটা নিয়ে যান",
+     "gloss": "ask someone to take a thing away from the speaker"
+    },
+    {
+     "id": "ask-to-leave-it-here",
+     "label": "এখানে রেখে যান",
+     "gloss": "ask someone to leave an object here before departing"
+    },
+    {
+     "id": "ask-to-return-the-borrowed-object",
+     "label": "ফিরিয়ে দেন",
+     "gloss": "ask somebody to give back something lent"
+    },
+    {
+     "id": "ask-to-shift-it-a-little",
+     "label": "একটু সরান",
+     "gloss": "ask somebody to shift the object a short distance aside"
+    },
+    {
+     "id": "ask-to-hold-it-steady",
+     "label": "একটু ধরে রাখেন",
+     "gloss": "ask someone to keep an object steady in one position"
+    }
+   ],
+   "questions": [
+    "কে জিনিসটা ধরে রেখেছেন?",
+    "নিয়ে আসা আর নিয়ে যাওয়ার দিক কীভাবে আলাদা?",
+    "বাসায় কাউকে কোন জিনিস আনতে বলেন?",
+    "কারও কাছের বইটা নিজের কাছে ফেরত চাইলে কী বলবেন?",
+    "চাবি রাখার জায়গাটা কীভাবে দেখিয়ে দেবেন?",
+    "এক হাতে অন্য কাজ থাকলে কোনটা কাউকে ধরে রাখতে বলবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "reporting-first-week-home-problems",
+   "number": 297,
+   "title": "বাসায় কিছু ঠিক নেই",
+   "front": "pages/297-front.jpg",
+   "back": "pages/297-back.jpg",
+   "items": [
+    {
+     "id": "tap-open-but-water-isnt-coming",
+     "label": "পানি আসছে না",
+     "gloss": "report that a tap is dry although opened"
+    },
+    {
+     "id": "ask-whether-hot-water-is-available",
+     "label": "গরম পানি আছে?",
+     "gloss": "ask whether hot water is available at home"
+    },
+    {
+     "id": "ceiling-fan-does-not-turn",
+     "label": "পাখা চলছে না",
+     "gloss": "report that a ceiling fan will not run"
+    },
+    {
+     "id": "key-does-not-turn-in-a-lock",
+     "label": "চাবি ঘুরছে না",
+     "gloss": "report that you cannot turn a key in its lock"
+    },
+    {
+     "id": "mosquitoes-are-coming-inside",
+     "label": "মশা ঢুকছে",
+     "gloss": "report mosquitoes entering a room"
+    },
+    {
+     "id": "stove-not-lighting",
+     "label": "চুলা জ্বলছে না",
+     "gloss": "report a kitchen burner not lighting"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে পানি আসছে না?",
+    "চাবি ঘুরছে না আর পাখা চলছে না, দুই ছবিতে কী তফাত?",
+    "বাসায় কোন জিনিসটা ঠিক না থাকলে আগে খবর দেন?",
+    "গরম পানি দরকার হলে কী জিজ্ঞেস করবেন?",
+    "জানালা দিয়ে মশা ঢুকলে কোন জায়গাটা দেখাবেন?",
+    "চুলা আর পানিতে একসঙ্গে সমস্যা হলে বাসার লোককে কীভাবে জানাবেন?"
+   ]
+  },
+  {
+   "id": "where-things-are",
+   "number": 13,
+   "title": "জিনিস কোথায়",
+   "front": "pages/013-front.jpg",
+   "back": "pages/013-back.jpg",
+   "items": [
+    {
+     "id": "above",
+     "label": "ওপরে",
+     "gloss": "above"
+    },
+    {
+     "id": "below",
+     "label": "নিচে",
+     "gloss": "below"
+    },
+    {
+     "id": "inside",
+     "label": "ভেতরে",
+     "gloss": "inside"
+    },
+    {
+     "id": "outside",
+     "label": "বাইরে",
+     "gloss": "outside"
+    },
+    {
+     "id": "between",
+     "label": "মাঝে",
+     "gloss": "between"
+    },
+    {
+     "id": "behind",
+     "label": "পেছনে",
+     "gloss": "behind"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে বলটা ভেতরে আছে?",
+    "কোন দুটো ছবিতে বলের কিছুটা ঢাকা?",
+    "আপনার চাবিটা কোথায় থাকে?",
+    "বলটা দুই বাক্সের মাঝে রাখলে কোন ছবির মতো হবে?",
+    "আপনার পাশে কী আছে?",
+    "আমাকে বলটা কোথায় রাখতে বলবেন?"
+   ]
+  },
+  {
+   "id": "home-things",
+   "number": 1,
+   "title": "ঘরের জিনিস",
+   "front": "pages/001-front.jpg",
+   "back": "pages/001-back.jpg",
+   "items": [
+    {
+     "id": "bed",
+     "label": "খাট",
+     "gloss": "bed"
+    },
+    {
+     "id": "pillow",
+     "label": "বালিশ",
+     "gloss": "pillow"
+    },
+    {
+     "id": "stool",
+     "label": "মোড়া",
+     "gloss": "low woven stool"
+    },
+    {
+     "id": "cupboard",
+     "label": "আলমারি",
+     "gloss": "cupboard"
+    },
+    {
+     "id": "fan",
+     "label": "পাখা",
+     "gloss": "ceiling fan"
+    },
+    {
+     "id": "bulb",
+     "label": "বাতি",
+     "gloss": "light bulb"
+    }
+   ],
+   "questions": [
+    "বালিশটা কোথায়?",
+    "কোনটা খাটের পাশে রাখবেন?",
+    "ঘরে কোনটা বেশি কাজে লাগে?",
+    "গরম লাগলে কী চালাবেন?",
+    "আপনার ঘরে আর কী আছে?",
+    "ঘরে বসার জন্য কী রাখবেন?"
+   ]
+  },
+  {
+   "id": "colours",
+   "number": 14,
+   "title": "রং",
+   "front": "pages/014-front.jpg",
+   "back": "pages/014-back.jpg",
+   "items": [
+    {
+     "id": "red",
+     "label": "লাল",
+     "gloss": "red"
+    },
+    {
+     "id": "blue",
+     "label": "নীল",
+     "gloss": "blue"
+    },
+    {
+     "id": "green",
+     "label": "সবুজ",
+     "gloss": "green"
+    },
+    {
+     "id": "yellow",
+     "label": "হলুদ",
+     "gloss": "yellow"
+    },
+    {
+     "id": "black",
+     "label": "কালো",
+     "gloss": "black"
+    },
+    {
+     "id": "white",
+     "label": "সাদা",
+     "gloss": "white"
+    }
+   ],
+   "questions": [
+    "লালটা কোনটা?",
+    "বাংলাদেশের পতাকায় কোন দুটো রং আছে?",
+    "আপনি কী রঙের জামা বেশি পরেন?",
+    "লেখার জন্য কোন রঙের কালি নেন?",
+    "আপনার ঘরে আর কী কী রং আছে?",
+    "দেয়ালে একটা রং দিলে কোনটা দেবেন?"
+   ]
+  },
+  {
+   "id": "tableware",
+   "number": 3,
+   "title": "খাওয়ার বাসন",
+   "front": "pages/003-front.jpg",
+   "back": "pages/003-back.jpg",
+   "items": [
+    {
+     "id": "plate",
+     "label": "থালা",
+     "gloss": "dinner plate"
+    },
+    {
+     "id": "bowl",
+     "label": "বাটি",
+     "gloss": "bowl"
+    },
+    {
+     "id": "spoon",
+     "label": "চামচ",
+     "gloss": "spoon"
+    },
+    {
+     "id": "fork",
+     "label": "কাঁটাচামচ",
+     "gloss": "fork"
+    },
+    {
+     "id": "saucer",
+     "label": "পিরিচ",
+     "gloss": "saucer"
+    },
+    {
+     "id": "cup",
+     "label": "পেয়ালা",
+     "gloss": "small tea cup"
+    }
+   ],
+   "questions": [
+    "বাটিটা দেখাবেন?",
+    "কোন দুটো দিয়ে খাবার মুখে তুলি?",
+    "ভাত খেতে কী নেন?",
+    "পিরিচের ওপর কী রাখেন?",
+    "খাওয়ার সময় আর কী লাগে?",
+    "দুজন খাবে। কী কী দেবেন?"
+   ]
+  },
+  {
+   "id": "tea-things",
+   "number": 7,
+   "title": "চা আর শরবত",
+   "front": "pages/007-front.jpg",
+   "back": "pages/007-back.jpg",
+   "items": [
+    {
+     "id": "water",
+     "label": "পানি",
+     "gloss": "water"
+    },
+    {
+     "id": "tea",
+     "label": "চা",
+     "gloss": "tea"
+    },
+    {
+     "id": "milk",
+     "label": "দুধ",
+     "gloss": "milk"
+    },
+    {
+     "id": "lemon",
+     "label": "লেবু",
+     "gloss": "lime"
+    },
+    {
+     "id": "honey",
+     "label": "মধু",
+     "gloss": "honey"
+    },
+    {
+     "id": "jaggery",
+     "label": "গুড়",
+     "gloss": "jaggery"
+    }
+   ],
+   "questions": [
+    "পানিটা কোনটা?",
+    "কোনটার রং সাদা?",
+    "আপনি চায়ে দুধ দেন?",
+    "লেবুপানি বানাতে কী কী লাগে?",
+    "চায়ে আর কী দিতে পারেন?",
+    "আপনার জন্য কীভাবে চা বানাব?"
+   ]
+  },
+  {
+   "id": "times-of-day",
+   "number": 42,
+   "title": "দিনের ভাগ",
+   "front": "pages/042-front.jpg",
+   "back": "pages/042-back.jpg",
+   "items": [
+    {
+     "id": "dawn",
+     "label": "ভোর",
+     "gloss": "dawn"
+    },
+    {
+     "id": "morning",
+     "label": "সকাল",
+     "gloss": "morning"
+    },
+    {
+     "id": "noon",
+     "label": "দুপুর",
+     "gloss": "noon"
+    },
+    {
+     "id": "afternoon",
+     "label": "বিকেল",
+     "gloss": "late afternoon"
+    },
+    {
+     "id": "dusk",
+     "label": "সন্ধ্যা",
+     "gloss": "dusk"
+    },
+    {
+     "id": "night",
+     "label": "রাত",
+     "gloss": "night"
+    }
+   ],
+   "questions": [
+    "রাতের ছবিটা কোনটা?",
+    "কোন দুটো ছবিতে ছায়া দেখা যায়?",
+    "আপনি সাধারণত কখন বাইরে যান?",
+    "সকাল আর বিকেল আলাদা করে বুঝবেন কীভাবে?",
+    "গরমের দিনে কাজের সময় কীভাবে বদলান?",
+    "সবাই একই সময়ে কাজ করলে পাড়ার জীবন কেমন হতো?"
+   ]
+  },
+  {
+   "id": "rooms-and-courtyard",
+   "number": 62,
+   "title": "বাসার ঘর আর উঠান",
+   "front": "pages/062-front.jpg",
+   "back": "pages/062-back.jpg",
+   "items": [
+    {
+     "id": "kitchen",
+     "label": "রান্নাঘর",
+     "gloss": "kitchen room"
+    },
+    {
+     "id": "bedroom",
+     "label": "শোবার ঘর",
+     "gloss": "bedroom"
+    },
+    {
+     "id": "living-room",
+     "label": "বসার ঘর",
+     "gloss": "sitting room"
+    },
+    {
+     "id": "dining-room",
+     "label": "খাবার ঘর",
+     "gloss": "dining room"
+    },
+    {
+     "id": "bathing-room",
+     "label": "গোসলখানা",
+     "gloss": "bathing room"
+    },
+    {
+     "id": "courtyard",
+     "label": "উঠান",
+     "gloss": "household courtyard"
+    }
+   ],
+   "questions": [
+    "রান্নাঘরটা কোনটা?",
+    "কোন ঘরে বসে খায়?",
+    "আপনি বাসায় কোথায় বেশি সময় কাটান?",
+    "কেউ এলে তাকে কোথায় বসতে বলবেন?",
+    "একটা ছোট বাসায় একই ঘর কী কী কাজে লাগে?",
+    "ঘরের ভাগ বদলালে পরিবারের লোকজনের একসঙ্গে সময় কাটানো কীভাবে বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "market-fruit",
+   "number": 5,
+   "title": "বাজারের ফল",
+   "front": "pages/005-front.jpg",
+   "back": "pages/005-back.jpg",
+   "items": [
+    {
+     "id": "mango",
+     "label": "আম",
+     "gloss": "mango"
+    },
+    {
+     "id": "banana",
+     "label": "কলা",
+     "gloss": "banana"
+    },
+    {
+     "id": "papaya",
+     "label": "পেঁপে",
+     "gloss": "papaya"
+    },
+    {
+     "id": "pineapple",
+     "label": "আনারস",
+     "gloss": "pineapple"
+    },
+    {
+     "id": "jackfruit",
+     "label": "কাঁঠাল",
+     "gloss": "jackfruit"
+    },
+    {
+     "id": "grapes",
+     "label": "আঙুর",
+     "gloss": "grapes"
+    }
+   ],
+   "questions": [
+    "আমটা দেখাতে পারবেন?",
+    "কোন দুটো গুচ্ছ ধরে থাকে?",
+    "আপনি কোন ফলটা বেশি খান?",
+    "কাঁচা পেঁপে দিয়ে কী বানানো যায়?",
+    "এখানে আর কী ফল পাওয়া যায়?",
+    "কারও বাসায় গেলে কোন ফল নিয়ে যাবেন?"
+   ]
+  },
+  {
+   "id": "everyday-qualities",
+   "number": 34,
+   "title": "জিনিস কেমন আছে",
+   "front": "pages/034-front.jpg",
+   "back": "pages/034-back.jpg",
+   "items": [
+    {
+     "id": "clean",
+     "label": "পরিষ্কার",
+     "gloss": "clean"
+    },
+    {
+     "id": "dirty",
+     "label": "নোংরা",
+     "gloss": "dirty"
+    },
+    {
+     "id": "hot",
+     "label": "গরম",
+     "gloss": "hot"
+    },
+    {
+     "id": "cold",
+     "label": "ঠান্ডা",
+     "gloss": "cold"
+    },
+    {
+     "id": "heavy",
+     "label": "ভারী",
+     "gloss": "heavy"
+    },
+    {
+     "id": "lightweight",
+     "label": "হালকা",
+     "gloss": "light in weight"
+    }
+   ],
+   "questions": [
+    "গরমটা কোনটা?",
+    "কোন জুতাটা পরিষ্কার?",
+    "আপনি সাধারণত গরম না ঠান্ডা পানি খান?",
+    "ভারী কিছু থাকলে কীভাবে সরান?",
+    "কোন জিনিসের জন্য হালকা হওয়াই ভালো?",
+    "পরিষ্কার বলতে কি সব মানুষ একই জিনিস বোঝে?"
+   ]
+  },
+  {
+   "id": "close-family-relationships",
+   "number": 224,
+   "title": "নিজের ঘরের আপনজন",
+   "front": "pages/224-front.jpg",
+   "back": "pages/224-back.jpg",
+   "items": [
+    {
+     "id": "family-husband-reference",
+     "label": "স্বামী",
+     "gloss": "husband in a married pair"
+    },
+    {
+     "id": "family-wife-reference",
+     "label": "বউ",
+     "gloss": "wife in a married pair"
+    },
+    {
+     "id": "family-son-reference",
+     "label": "ছেলে",
+     "gloss": "son of a parent"
+    },
+    {
+     "id": "family-daughter-reference",
+     "label": "মেয়ে",
+     "gloss": "daughter of a parent"
+    },
+    {
+     "id": "family-grandson-reference",
+     "label": "নাতি",
+     "gloss": "grandson with an elder"
+    },
+    {
+     "id": "family-granddaughter-reference",
+     "label": "নাতনি",
+     "gloss": "granddaughter with an elder"
+    }
+   ],
+   "questions": [
+    "দাদির পাশে কে আছে?",
+    "ছেলে আর নাতির ছবিতে বড় মানুষ দুজন কীভাবে আলাদা?",
+    "আপনার বাড়িতে কে কে থাকেন?",
+    "নিজের মেয়েকে কারও সঙ্গে পরিচয় করিয়ে দিলে কী বলবেন?",
+    "নাতি আর ছেলে বললে সম্পর্কের কী তফাত হয়?",
+    "নিজের পরিবারের ছবি দেখিয়ে নতুন কাউকে পরিচয় করাতে কীভাবে শুরু করবেন?"
+   ]
+  },
+  {
+   "id": "telling-time-and-dates",
+   "number": 106,
+   "title": "দিন আর সময়ের হিসাব",
+   "front": "pages/106-front.jpg",
+   "back": "pages/106-back.jpg",
+   "items": [
+    {
+     "id": "wall-clock",
+     "label": "দেয়ালঘড়ি",
+     "gloss": "wall-mounted clock"
+    },
+    {
+     "id": "wristwatch",
+     "label": "হাতঘড়ি",
+     "gloss": "wristwatch"
+    },
+    {
+     "id": "hourglass",
+     "label": "বালুঘড়ি",
+     "gloss": "sand hourglass"
+    },
+    {
+     "id": "calendar-date",
+     "label": "তারিখ",
+     "gloss": "single calendar date"
+    },
+    {
+     "id": "calendar-week",
+     "label": "সপ্তাহ",
+     "gloss": "seven-day week"
+    },
+    {
+     "id": "calendar-month",
+     "label": "মাস",
+     "gloss": "calendar month"
+    }
+   ],
+   "questions": [
+    "হাতঘড়িটা কোনটা?",
+    "কোন ছবিতে পুরো মাসের ঘরগুলো আছে?",
+    "আপনি কখন সময় দেখে বের হন?",
+    "কাউকে দেখা করার দিন বলতে তারিখটা কীভাবে বলবেন?",
+    "এক সপ্তাহের কাজ গুছিয়ে রাখতে কী করেন?",
+    "সবার কাজের সময় এক রকম না হলে একসঙ্গে সময় বের করতে কীভাবে কথা বলবেন?"
+   ]
+  },
+  {
+   "id": "washing-things",
+   "number": 11,
+   "title": "গোসলের জিনিস",
+   "front": "pages/011-front.jpg",
+   "back": "pages/011-back.jpg",
+   "items": [
+    {
+     "id": "balti",
+     "label": "বালতি",
+     "gloss": "bucket"
+    },
+    {
+     "id": "bodna",
+     "label": "বদনা",
+     "gloss": "water vessel with spout"
+    },
+    {
+     "id": "gamcha",
+     "label": "গামছা",
+     "gloss": "gamcha towel"
+    },
+    {
+     "id": "soap",
+     "label": "সাবান",
+     "gloss": "bar of soap"
+    },
+    {
+     "id": "comb",
+     "label": "চিরুনি",
+     "gloss": "comb"
+    },
+    {
+     "id": "mirror",
+     "label": "আয়না",
+     "gloss": "mirror"
+    }
+   ],
+   "questions": [
+    "গামছাটা কোথায়?",
+    "কোন দুটোয় পানি রাখা যায়?",
+    "আপনি কী দিয়ে গা মোছেন?",
+    "চুল আঁচড়াতে কী লাগে?",
+    "গোসলের জন্য আর কী রাখেন?",
+    "কোথাও থাকতে গেলে এর কোনগুলো নিয়ে যাবেন?"
+   ]
+  },
+  {
+   "id": "market-vegetables",
+   "number": 4,
+   "title": "বাজারের সবজি",
+   "front": "pages/004-front.jpg",
+   "back": "pages/004-back.jpg",
+   "items": [
+    {
+     "id": "potato",
+     "label": "আলু",
+     "gloss": "potato"
+    },
+    {
+     "id": "onion",
+     "label": "পেঁয়াজ",
+     "gloss": "red onion"
+    },
+    {
+     "id": "eggplant",
+     "label": "বেগুন",
+     "gloss": "eggplant"
+    },
+    {
+     "id": "cauliflower",
+     "label": "ফুলকপি",
+     "gloss": "cauliflower"
+    },
+    {
+     "id": "cucumber",
+     "label": "শসা",
+     "gloss": "cucumber"
+    },
+    {
+     "id": "greens",
+     "label": "শাক",
+     "gloss": "leafy greens"
+    }
+   ],
+   "questions": [
+    "শসাটা কোনটা?",
+    "কোন দুটো বেগুনি?",
+    "আপনি কোন সবজিটা বেশি খান?",
+    "কোনটা ভর্তা করে খেতে ভালো লাগে?",
+    "আপনার কাছে আর কী সবজি পাওয়া যায়?",
+    "তিনটা সবজি কিনলে কোনগুলো নেবেন?"
+   ]
+  },
+  {
+   "id": "size-and-width",
+   "number": 32,
+   "title": "মাপ দেখে বলি",
+   "front": "pages/032-front.jpg",
+   "back": "pages/032-back.jpg",
+   "items": [
+    {
+     "id": "big",
+     "label": "বড়",
+     "gloss": "big"
+    },
+    {
+     "id": "small",
+     "label": "ছোট",
+     "gloss": "small"
+    },
+    {
+     "id": "tall",
+     "label": "লম্বা",
+     "gloss": "tall or long"
+    },
+    {
+     "id": "short",
+     "label": "খাটো",
+     "gloss": "short in height"
+    },
+    {
+     "id": "wide",
+     "label": "চওড়া",
+     "gloss": "wide"
+    },
+    {
+     "id": "narrow",
+     "label": "সরু",
+     "gloss": "narrow"
+    }
+   ],
+   "questions": [
+    "লাল বাক্সটা কোথায় ছোট?",
+    "কোন দরজাটা বেশি চওড়া?",
+    "বাইরে গেলে বড় বাক্স নেন, নাকি ছোটটা?",
+    "সরু দরজা দিয়ে বড় জিনিস কী করে ঢোকাবেন?",
+    "কোন কাজে লম্বা জিনিসের চেয়ে খাটো জিনিস ভালো?",
+    "জায়গার মাপ বদলালে মানুষ সেখানে কীভাবে অন্যভাবে চলাফেরা করবে?"
+   ]
+  },
+  {
+   "id": "care-things",
+   "number": 22,
+   "title": "অসুখে কাজে লাগে",
+   "front": "pages/022-front.jpg",
+   "back": "pages/022-back.jpg",
+   "items": [
+    {
+     "id": "medicine",
+     "label": "ওষুধ",
+     "gloss": "medicine"
+    },
+    {
+     "id": "ointment",
+     "label": "মলম",
+     "gloss": "ointment"
+    },
+    {
+     "id": "cotton",
+     "label": "তুলা",
+     "gloss": "cotton wool"
+    },
+    {
+     "id": "bandage",
+     "label": "পট্টি",
+     "gloss": "bandage strip"
+    },
+    {
+     "id": "ice",
+     "label": "বরফ",
+     "gloss": "ice"
+    },
+    {
+     "id": "hot-water-bag",
+     "label": "গরম পানির থলি",
+     "gloss": "hot-water bag"
+    }
+   ],
+   "questions": [
+    "তুলাটা কোথায়?",
+    "কোন দুটো সেঁক দিতে কাজে লাগে?",
+    "এই জিনিসগুলোর মধ্যে কোনটা আপনি চেনেন?",
+    "মলম কীভাবে লাগায়?",
+    "বাসায় আর কী কী জিনিস রাখেন?",
+    "কোনো একটা জিনিস চেয়ে কী বলবেন?"
+   ]
+  },
+  {
+   "id": "ordinary-meals-through-the-day",
+   "number": 286,
+   "title": "দিনে কখন কী খাই",
+   "front": "pages/286-front.jpg",
+   "back": "pages/286-back.jpg",
+   "items": [
+    {
+     "id": "first-meal-in-the-morning",
+     "label": "সকালের নাশতা",
+     "gloss": "breakfast meal served in the morning"
+    },
+    {
+     "id": "midday-rice-meal",
+     "label": "দুপুরের খাবার",
+     "gloss": "lunch in the middle of the day"
+    },
+    {
+     "id": "late-afternoon-tea-snack-meal",
+     "label": "বিকেলের নাশতা",
+     "gloss": "afternoon tea and snack"
+    },
+    {
+     "id": "evening-family-dinner-meal",
+     "label": "রাতের খাবার",
+     "gloss": "dinner served at night"
+    },
+    {
+     "id": "everyday-vegetable-curry-serving",
+     "label": "তরকারি",
+     "gloss": "a cooked side dish served with rice or roti"
+    },
+    {
+     "id": "several-dishes-on-a-shared-table",
+     "label": "একসঙ্গে খাওয়া",
+     "gloss": "eat a shared meal together"
+    }
+   ],
+   "questions": [
+    "সকালের নাশতা কোনটা?",
+    "দুপুরের খাবার আর বিকেলের নাশতায় কী তফাত দেখছেন?",
+    "আপনি রাতের খাবার কখন খান?",
+    "ভাতের সঙ্গে একটু তরকারি চাইলে কী বলবেন?",
+    "তিনজনকে একসঙ্গে খেতে ডাকবেন কীভাবে?",
+    "কেউ আপনার চেয়ে আগে খেয়ে ফেললে পরের বার একসঙ্গে খাওয়ার সময় কীভাবে ঠিক করবেন?"
+   ]
+  },
+  {
+   "id": "reading-hours-and-minutes",
+   "number": 292,
+   "title": "ঘড়ি দেখে সময় বলি",
+   "front": "pages/292-front.jpg",
+   "back": "pages/292-back.jpg",
+   "items": [
+    {
+     "id": "clock-one-on-the-hour",
+     "label": "একটা বাজে",
+     "gloss": "one o'clock on an analog clock"
+    },
+    {
+     "id": "clock-half-past-one",
+     "label": "সাড়ে একটা",
+     "gloss": "half past one on an analog clock"
+    },
+    {
+     "id": "clock-quarter-past-two",
+     "label": "সোয়া দুইটা",
+     "gloss": "quarter past two on an analog clock"
+    },
+    {
+     "id": "clock-quarter-to-three",
+     "label": "পৌনে তিনটা",
+     "gloss": "quarter to three on an analog clock"
+    },
+    {
+     "id": "clock-ten-minutes-after-four",
+     "label": "চারটা দশ",
+     "gloss": "ten minutes past four on an analog clock"
+    },
+    {
+     "id": "clock-ten-minutes-before-five",
+     "label": "পাঁচটা বাজতে দশ",
+     "gloss": "ten minutes before five on an analog clock"
+    }
+   ],
+   "questions": [
+    "একটা বাজে কোন ঘড়িতে?",
+    "সোয়া আর পৌনে বললে বড় কাঁটাটা কোথায় থাকে?",
+    "আপনি সাধারণত কয়টার সময় খেতে বসেন?",
+    "কাউকে সাড়ে একটায় আসতে কী বলবেন?",
+    "চারটা দশ আর পাঁচটা বাজতে দশ, কোনটা পরে?",
+    "কেউ শুধু পৌনে বললে দেখা করার সময় ভুল না করতে কী জিজ্ঞেস করবেন?"
+   ]
+  },
+  {
+   "id": "coming-and-going",
+   "number": 51,
+   "title": "আসা যাওয়ার কাজ",
+   "front": "pages/051-front.jpg",
+   "back": "pages/051-back.jpg",
+   "items": [
+    {
+     "id": "come",
+     "label": "আসা",
+     "gloss": "to come toward here"
+    },
+    {
+     "id": "go",
+     "label": "যাওয়া",
+     "gloss": "to go away from here"
+    },
+    {
+     "id": "enter",
+     "label": "ঢোকা",
+     "gloss": "to enter"
+    },
+    {
+     "id": "exit",
+     "label": "বের হওয়া",
+     "gloss": "to exit"
+    },
+    {
+     "id": "cross",
+     "label": "পার হওয়া",
+     "gloss": "to cross"
+    },
+    {
+     "id": "stop",
+     "label": "থামা",
+     "gloss": "to stop"
+    }
+   ],
+   "questions": [
+    "কে দরজা দিয়ে ঢুকছেন?",
+    "কে এদিকে আসছেন?",
+    "আজ আপনি কোথা থেকে এসেছেন?",
+    "রাস্তা পার হওয়ার আগে কখন থামেন?",
+    "নতুন কাউকে ঘরে ঢুকতে আর বের হতে কী বলে দেখাবেন?",
+    "কাকে নিয়ে চলছেন তার ওপর আপনার চলার গতি আর পথ কীভাবে বদলায়?"
+   ]
+  },
+  {
+   "id": "washroom-fixtures-and-tools",
+   "number": 226,
+   "title": "গোসলখানার চেনা জিনিস",
+   "front": "pages/226-front.jpg",
+   "back": "pages/226-back.jpg",
+   "items": [
+    {
+     "id": "washroom-handwashing-basin",
+     "label": "হাত ধোয়ার পাত্র",
+     "gloss": "washbasin fixture"
+    },
+    {
+     "id": "bathroom-showerhead",
+     "label": "গোসলের ঝরনা",
+     "gloss": "showerhead fixture"
+    },
+    {
+     "id": "bengali-squat-toilet-pan",
+     "label": "পায়খানা",
+     "gloss": "ceramic squat toilet pan"
+    },
+    {
+     "id": "toilet-bowl-brush",
+     "label": "পায়খানার ঝাড়নি",
+     "gloss": "toilet bowl brush"
+    },
+    {
+     "id": "bathroom-soap-rest",
+     "label": "সাবান রাখার পাত্র",
+     "gloss": "soap dish"
+    },
+    {
+     "id": "washroom-hand-towel",
+     "label": "মুখ মোছার কাপড়",
+     "gloss": "small terry face towel"
+    }
+   ],
+   "questions": [
+    "গোসলের ঝরনা কোনটা?",
+    "পায়খানা আর হাত ধোয়ার পাত্রে কী তফাত?",
+    "আপনি মুখ মোছার কাপড় কোথায় রাখেন?",
+    "সাবান ভিজে গেলে কোথায় রেখে শুকাবেন?",
+    "ঝরনার পানি বন্ধ করতে না পারলে কী বলবেন?",
+    "নতুন বাসায় গোসলখানা দেখার সময় কোন জিনিসগুলো আগে খুঁজবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "buying-and-selling",
+   "number": 52,
+   "title": "কেনাবেচার কাজ",
+   "front": "pages/052-front.jpg",
+   "back": "pages/052-back.jpg",
+   "items": [
+    {
+     "id": "buy",
+     "label": "কেনা",
+     "gloss": "to buy"
+    },
+    {
+     "id": "sell",
+     "label": "বেচা",
+     "gloss": "to sell"
+    },
+    {
+     "id": "pay",
+     "label": "দাম মেটানো",
+     "gloss": "to pay the price"
+    },
+    {
+     "id": "exchange-item",
+     "label": "বদলে নেওয়া",
+     "gloss": "to exchange a purchase"
+    },
+    {
+     "id": "weigh",
+     "label": "ওজন করা",
+     "gloss": "to weigh"
+    },
+    {
+     "id": "select",
+     "label": "বেছে নেওয়া",
+     "gloss": "to choose one"
+    }
+   ],
+   "questions": [
+    "কে ফল ওজন করছেন?",
+    "কে অন্য জামা নিচ্ছেন?",
+    "শেষবার বাজারে কী কিনেছেন?",
+    "ফল বেছে নেওয়ার পরে দোকানি কী করেন?",
+    "কেনা জিনিস বদলাতে দোকানিকে কীভাবে বলবেন?",
+    "একই জিনিসের জন্য দুই দোকানে আলাদা দাম চাইলে কোনটা ন্যায্য বুঝবেন কীভাবে?"
+   ]
+  },
+  {
+   "id": "feelings-and-reactions",
+   "number": 54,
+   "title": "মন কেমন",
+   "front": "pages/054-front.jpg",
+   "back": "pages/054-back.jpg",
+   "items": [
+    {
+     "id": "happy",
+     "label": "খুশি",
+     "gloss": "happy"
+    },
+    {
+     "id": "sad",
+     "label": "মন খারাপ",
+     "gloss": "sad"
+    },
+    {
+     "id": "afraid",
+     "label": "ভয় পাওয়া",
+     "gloss": "to be afraid"
+    },
+    {
+     "id": "surprised",
+     "label": "অবাক হওয়া",
+     "gloss": "to be surprised"
+    },
+    {
+     "id": "angry",
+     "label": "রাগ",
+     "gloss": "anger"
+    },
+    {
+     "id": "tired",
+     "label": "ক্লান্ত",
+     "gloss": "tired"
+    }
+   ],
+   "questions": [
+    "কে খুশি?",
+    "কার মন খারাপ?",
+    "কখন আপনার ক্লান্ত লাগে?",
+    "কেউ ভয় পেলে তাকে কী বলে শান্ত করেন?",
+    "কখন অবাক হলেও সেটা মুখে বোঝা যায় না?",
+    "মানুষের মনের অবস্থা বুঝতে মুখের ভঙ্গি ছাড়া আর কী জানা দরকার?"
+   ]
+  },
+  {
+   "id": "preparing-and-ordering-tea",
+   "number": 216,
+   "title": "চা বানাই আর চায়ের রকম বলি",
+   "front": "pages/216-front.jpg",
+   "back": "pages/216-back.jpg",
+   "items": [
+    {
+     "id": "bengali-tea-kettle",
+     "label": "চায়ের পাত্র",
+     "gloss": "Bangladeshi tea kettle"
+    },
+    {
+     "id": "loose-bangla-black-tea-leaves",
+     "label": "চা পাতা",
+     "gloss": "dried black tea leaves"
+    },
+    {
+     "id": "milk-tea-glass",
+     "label": "দুধ চা",
+     "gloss": "Bangladeshi milk tea"
+    },
+    {
+     "id": "plain-black-tea-glass",
+     "label": "লাল চা",
+     "gloss": "red plain black tea without milk"
+    },
+    {
+     "id": "ginger-tea-glass",
+     "label": "আদা চা",
+     "gloss": "ginger tea"
+    },
+    {
+     "id": "lemon-tea-glass",
+     "label": "লেবু চা",
+     "gloss": "lemon tea"
+    }
+   ],
+   "questions": [
+    "চায়ের পাত্র কোনটা?",
+    "দুধ চা আর লাল চায়ের রং কেমন?",
+    "আপনি সাধারণত কোন চা খান?",
+    "আদা চা বানাতে আদা কখন দেবেন?",
+    "দোকানে চিনি ছাড়া লেবু চা চাইলে কী বলবেন?",
+    "বাড়িতে অতিথি এলে তাঁর পছন্দের চা কীভাবে জেনে নেবেন?"
+   ]
+  },
+  {
+   "id": "with-your-hands",
+   "number": 17,
+   "title": "হাতের কাজ",
+   "front": "pages/017-front.jpg",
+   "back": "pages/017-back.jpg",
+   "items": [
+    {
+     "id": "open",
+     "label": "খোলা",
+     "gloss": "to open"
+    },
+    {
+     "id": "close",
+     "label": "বন্ধ করা",
+     "gloss": "to close"
+    },
+    {
+     "id": "wash",
+     "label": "ধোয়া",
+     "gloss": "to wash"
+    },
+    {
+     "id": "wipe",
+     "label": "মোছা",
+     "gloss": "to wipe"
+    },
+    {
+     "id": "read",
+     "label": "পড়া",
+     "gloss": "to read"
+    },
+    {
+     "id": "write",
+     "label": "লেখা",
+     "gloss": "to write"
+    }
+   ],
+   "questions": [
+    "কে থালা ধুচ্ছেন?",
+    "কোন দুটো ছবিতে কৌটা দেখছেন?",
+    "বাসায় আপনি কী কী ধোন?",
+    "থালাটা ধোয়ার পর কী করেন?",
+    "ছবির বাইরে আর কী খুলতে পারেন?",
+    "কাউকে কৌটা খুলতে বললে কী বলবেন?"
+   ]
+  },
+  {
+   "id": "everyday-medicine-shop-terms",
+   "number": 236,
+   "title": "ওষুধের দোকানে যা চাই",
+   "front": "pages/236-front.jpg",
+   "back": "pages/236-back.jpg",
+   "items": [
+    {
+     "id": "medicine-pill-tablet",
+     "label": "বড়ি",
+     "gloss": "medicine tablet pill"
+    },
+    {
+     "id": "pill-storage-bottle",
+     "label": "বড়ির বোতল",
+     "gloss": "lidded pill bottle"
+    },
+    {
+     "id": "plain-medication-carton",
+     "label": "ওষুধের বাক্স",
+     "gloss": "medicine carton box"
+    },
+    {
+     "id": "medication-measuring-spoon",
+     "label": "ওষুধ মাপার চামচ",
+     "gloss": "medicine measuring spoon"
+    },
+    {
+     "id": "oral-liquid-medication",
+     "label": "খাওয়ার তরল ওষুধ",
+     "gloss": "liquid oral medicine"
+    },
+    {
+     "id": "doctor-written-medicine-paper",
+     "label": "ওষুধের কাগজ",
+     "gloss": "prescription sheet for medicine"
+    }
+   ],
+   "questions": [
+    "বড়ি কোন ছবিতে?",
+    "বড়ির বোতল আর তরল ওষুধ দেখতে কেমন আলাদা?",
+    "আপনি কখনও ওষুধের কাগজ নিয়ে দোকানে গিয়েছেন?",
+    "ওষুধ মাপতে কী লাগবে, তা দোকানিকে কীভাবে জিজ্ঞেস করবেন?",
+    "কোনটা আপনার ওষুধ বুঝতে না পারলে কাকে কী বলবেন?",
+    "একইরকম দুইটা বাক্স দেখলে কোনটা নিতে হবে তা কীভাবে জানবেন?"
+   ]
+  },
+  {
+   "id": "people-we-know-daily",
+   "number": 140,
+   "title": "রোজ দেখা হয় যাঁদের সঙ্গে",
+   "front": "pages/140-front.jpg",
+   "back": "pages/140-back.jpg",
+   "items": [
+    {
+     "id": "neighbor-role",
+     "label": "প্রতিবেশী",
+     "gloss": "neighbor"
+    },
+    {
+     "id": "playmate-role",
+     "label": "খেলার সাথি",
+     "gloss": "playmate"
+    },
+    {
+     "id": "classmate-role",
+     "label": "সহপাঠী",
+     "gloss": "classmate"
+    },
+    {
+     "id": "coworker-role",
+     "label": "সহকর্মী",
+     "gloss": "coworker"
+    },
+    {
+     "id": "landlord-role",
+     "label": "বাড়িওয়ালা",
+     "gloss": "landlord or landlady"
+    },
+    {
+     "id": "tenant-role",
+     "label": "ভাড়াটে",
+     "gloss": "tenant"
+    }
+   ],
+   "questions": [
+    "কোন দুজন একসঙ্গে পড়ছেন?",
+    "কোন ছবিতে পাশের বাসার মানুষ দেখা যাচ্ছে?",
+    "আপনি পরিচিত কার সঙ্গে সবচেয়ে বেশি দেখা করেন?",
+    "পাশের বাসায় নতুন কেউ এলে কীভাবে কথা শুরু করবেন?",
+    "সহকর্মীর কাছে সাহায্য চাইলে কী বলবেন?",
+    "একে অন্যকে চেনার সুযোগ কম হলে পাড়ার সম্পর্ক কীভাবে বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "amounts-and-parts",
+   "number": 55,
+   "title": "কম বেশি কতটা",
+   "front": "pages/055-front.jpg",
+   "back": "pages/055-back.jpg",
+   "items": [
+    {
+     "id": "more",
+     "label": "বেশি",
+     "gloss": "more"
+    },
+    {
+     "id": "less",
+     "label": "কম",
+     "gloss": "less"
+    },
+    {
+     "id": "half",
+     "label": "অর্ধেক",
+     "gloss": "half"
+    },
+    {
+     "id": "double",
+     "label": "দুই গুণ",
+     "gloss": "twice as much"
+    },
+    {
+     "id": "all",
+     "label": "সব",
+     "gloss": "all of the group"
+    },
+    {
+     "id": "none",
+     "label": "একটাও নেই",
+     "gloss": "none at all"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে একটাও নেই?",
+    "কোন ছবিতে লাল তীরটা বেশি দানার দিকে?",
+    "আপনি চায়ে বেশি চিনি দেন, নাকি কম?",
+    "অর্ধেক খাবার থাকলে দুজনের মধ্যে কীভাবে ভাগ করবেন?",
+    "কতটা যথেষ্ট, সেটা কীভাবে ঠিক করেন?",
+    "সমান ভাগ আর ন্যায্য ভাগ কি সব সময় এক হয়? কেন?"
+   ]
+  },
+  {
+   "id": "asking-when-and-how-long",
+   "number": 293,
+   "title": "দিন আর সময় জেনে নিই",
+   "front": "pages/293-front.jpg",
+   "back": "pages/293-back.jpg",
+   "items": [
+    {
+     "id": "ask-the-day-of-the-week",
+     "label": "আজ কী বার?",
+     "gloss": "ask what day of the week it is"
+    },
+    {
+     "id": "ask-the-calendar-date",
+     "label": "আজ কত তারিখ?",
+     "gloss": "ask for today's calendar date"
+    },
+    {
+     "id": "ask-what-time-to-meet",
+     "label": "কয়টার সময়?",
+     "gloss": "ask what time is suitable for a meeting"
+    },
+    {
+     "id": "ask-how-long-a-task-takes",
+     "label": "কতক্ষণ লাগবে?",
+     "gloss": "ask how long a process takes"
+    },
+    {
+     "id": "warn-that-you-may-be-late",
+     "label": "দেরি হবে",
+     "gloss": "warn someone that you will be late"
+    },
+    {
+     "id": "arrive-at-the-agreed-time",
+     "label": "সময়মতো",
+     "gloss": "at the agreed time or on time"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে আজ কী বার জানতে চাচ্ছেন?",
+    "তারিখ আর বার জিজ্ঞেস করা কীভাবে আলাদা?",
+    "কারও সঙ্গে দেখা করতে হলে আপনি আগে কী জেনে নেন?",
+    "কোনো জায়গায় যেতে কতক্ষণ লাগবে জানতে কী বলবেন?",
+    "যেতে দেরি হবে বুঝলে কীভাবে জানাবেন?",
+    "দুইজনের সুবিধার সময় আলাদা হলে কখন দেখা করবেন, তা কীভাবে ঠিক করবেন?"
+   ]
+  },
+  {
+   "id": "describing-common-symptoms",
+   "number": 134,
+   "title": "শরীরের অসুবিধা বোঝাই",
+   "front": "pages/134-front.jpg",
+   "back": "pages/134-back.jpg",
+   "items": [
+    {
+     "id": "headache",
+     "label": "মাথা ব্যথা",
+     "gloss": "headache"
+    },
+    {
+     "id": "backache",
+     "label": "পিঠে ব্যথা",
+     "gloss": "backache"
+    },
+    {
+     "id": "sore-throat",
+     "label": "গিলতে কষ্ট",
+     "gloss": "difficulty swallowing"
+    },
+    {
+     "id": "vomiting",
+     "label": "বমি",
+     "gloss": "vomiting"
+    },
+    {
+     "id": "stuffy-nose",
+     "label": "নাক বন্ধ",
+     "gloss": "blocked nose"
+    },
+    {
+     "id": "breathing-hard",
+     "label": "শ্বাসকষ্ট",
+     "gloss": "difficulty breathing"
+    }
+   ],
+   "questions": [
+    "কার পিঠে ব্যথা?",
+    "গিলতে কষ্ট হচ্ছে এমন ছবিটা দেখাবেন?",
+    "শরীরের কী লাগছে, সেটা বলতে কোন শব্দগুলো কাজে লাগে?",
+    "মাথায় ব্যথা কোথায় হচ্ছে, সেটা দেখিয়ে কী বলবেন?",
+    "কাউকে সাহায্য চাইতে নিজের অসুবিধা এক কথায় কীভাবে বলবেন?",
+    "একই অসুবিধা দুইজন মানুষ আলাদা শব্দে বললে অন্যজন কীভাবে তাদের বুঝতে পারেন?"
+   ]
+  },
+  {
+   "id": "taking-a-ride-around-town",
+   "number": 269,
+   "title": "গাড়িতে উঠে নামি",
+   "front": "pages/269-front.jpg",
+   "back": "pages/269-back.jpg",
+   "items": [
+    {
+     "id": "raising-hand-to-hail-a-ride",
+     "label": "গাড়ি থামাতে হাত তোলা",
+     "gloss": "raise a hand to hail a moving ride"
+    },
+    {
+     "id": "stepping-into-a-local-bus",
+     "label": "গাড়িতে পা রাখা",
+     "gloss": "place one foot on a vehicle entry step to board"
+    },
+    {
+     "id": "holding-an-overhead-rail-while-standing",
+     "label": "হাতল ধরে দাঁড়ানো",
+     "gloss": "stand inside a bus holding an overhead strap"
+    },
+    {
+     "id": "looking-out-a-bus-window",
+     "label": "জানালা দিয়ে বাইরে দেখা",
+     "gloss": "look out of a vehicle window from inside"
+    },
+    {
+     "id": "offering-seated-place-to-another-rider",
+     "label": "বসার জায়গা ছেড়ে দেওয়া",
+     "gloss": "vacate a seat and offer it to another passenger"
+    },
+    {
+     "id": "calling-out-your-stop-to-driver",
+     "label": "নামার জন্য ডাকা",
+     "gloss": "call out to the driver to stop so you can get off"
+    }
+   ],
+   "questions": [
+    "কে হাত তুলে গাড়ি থামাতে বলছেন?",
+    "গাড়িতে পা রাখা আর হাতল ধরে দাঁড়ানোর মধ্যে কী তফাত?",
+    "গাড়িতে উঠলে আপনি কোথায় বসতে চান?",
+    "একজন দাঁড়িয়ে থাকলে তাঁকে কীভাবে আপনার জায়গাটা দেবেন?",
+    "সামনের মোড়ে নামতে হলে চালককে কী বলবেন?",
+    "গাড়িতে খুব ভিড় হলে নামার জায়গায় পৌঁছানোর আগে কী কী করবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "counting-thirteen-to-eighteen",
+   "number": 205,
+   "title": "তেরো থেকে আঠারো",
+   "front": "pages/205-front.jpg",
+   "back": "pages/205-back.jpg",
+   "items": [
+    {
+     "id": "thirteen-count",
+     "label": "তেরো",
+     "gloss": "thirteen"
+    },
+    {
+     "id": "fourteen-count",
+     "label": "চৌদ্দ",
+     "gloss": "fourteen"
+    },
+    {
+     "id": "fifteen-count",
+     "label": "পনেরো",
+     "gloss": "fifteen"
+    },
+    {
+     "id": "sixteen-count",
+     "label": "ষোলো",
+     "gloss": "sixteen"
+    },
+    {
+     "id": "seventeen-count",
+     "label": "সতেরো",
+     "gloss": "seventeen"
+    },
+    {
+     "id": "eighteen-count",
+     "label": "আঠারো",
+     "gloss": "eighteen"
+    }
+   ],
+   "questions": [
+    "তেরোটা কোথায়?",
+    "পনেরো আর ষোলোর মধ্যে কোনটা বেশি?",
+    "আপনি দোকানে কোনো জিনিস সতেরোটা চেয়েছেন?",
+    "চৌদ্দ থেকে আঠারো পর্যন্ত কীভাবে গুনবেন?",
+    "আঠারোটা থেকে দুইটা সরালে কোন ছবির সঙ্গে মিলবে?",
+    "আঠারোটা জিনিস দ্রুত গুনতে কীভাবে সাজাবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "noticing-when-someone-is-free",
+   "number": 287,
+   "title": "কাজের মধ্যে সময় বের করি",
+   "front": "pages/287-front.jpg",
+   "back": "pages/287-back.jpg",
+   "items": [
+    {
+     "id": "person-busy-with-several-tasks",
+     "label": "ব্যস্ত",
+     "gloss": "busy at the moment with several things"
+    },
+    {
+     "id": "available-to-talk-now",
+     "label": "সময় আছে",
+     "gloss": "have time and be available now"
+    },
+    {
+     "id": "beginning-a-task-at-home",
+     "label": "কাজ শুরু করা",
+     "gloss": "begin a task at the first step"
+    },
+    {
+     "id": "work-partway-done",
+     "label": "কাজ চলছে",
+     "gloss": "say a task is still in progress"
+    },
+    {
+     "id": "finishing-an-everyday-task",
+     "label": "কাজ শেষ",
+     "gloss": "say you have finished the task"
+    },
+    {
+     "id": "taking-a-short-rest-break",
+     "label": "একটু বিরতি",
+     "gloss": "take a short pause in the work"
+    }
+   ],
+   "questions": [
+    "কার কাজ পুরো শেষ?",
+    "কাজ শুরু করা আর কাজ চলার ছবিতে কী তফাত?",
+    "আপনি দিনের কোন সময়ে বেশি ব্যস্ত থাকেন?",
+    "কথা বলার সময় আছে কি না জানতে কী বলবেন?",
+    "কাজের মধ্যে একটু দাঁড়াতে চাইলে কীভাবে জানাবেন?",
+    "কারও সঙ্গে কথা দরকার কিন্তু তিনি ব্যস্ত। কখন কথা বলবেন তা কীভাবে ঠিক করবেন?"
+   ]
+  },
+  {
+   "id": "talking-prices-and-money",
+   "number": 126,
+   "title": "দাম আর টাকার হিসাব",
+   "front": "pages/126-front.jpg",
+   "back": "pages/126-back.jpg",
+   "items": [
+    {
+     "id": "bargain",
+     "label": "দরদাম করা",
+     "gloss": "to bargain over a price"
+    },
+    {
+     "id": "cash-count",
+     "label": "টাকা গোনা",
+     "gloss": "to count money"
+    },
+    {
+     "id": "cash-save",
+     "label": "টাকা জমানো",
+     "gloss": "to put money aside"
+    },
+    {
+     "id": "discount-price",
+     "label": "দাম কমানো",
+     "gloss": "to reduce a price"
+    },
+    {
+     "id": "record-credit",
+     "label": "বাকি লেখা",
+     "gloss": "to record a sale to be paid later"
+    },
+    {
+     "id": "make-change",
+     "label": "ভাঙতি করা",
+     "gloss": "to break a note into smaller money"
+    }
+   ],
+   "questions": [
+    "কে টাকা গুনছেন?",
+    "কোন ছবিতে বড় টাকা ভাঙাচ্ছেন?",
+    "আপনি কোথায় দরদাম করেছেন?",
+    "দোকানিকে দাম একটু কমাতে কী বলবেন?",
+    "কিছু কেনার জন্য আগে থেকে টাকা জমাতে হলে কীভাবে শুরু করবেন?",
+    "কারও কাছে দামটা ন্যায্য আর অন্যজনের কাছে বেশি মনে হতে পারে কেন?"
+   ]
+  },
+  {
+   "id": "lights-fans-and-power",
+   "number": 176,
+   "title": "বাতি পাখা আর বিদ্যুৎ",
+   "front": "pages/176-front.jpg",
+   "back": "pages/176-back.jpg",
+   "items": [
+    {
+     "id": "turn-room-light-on",
+     "label": "বাতি জ্বালানো",
+     "gloss": "turning an electric room light on"
+    },
+    {
+     "id": "turn-room-light-off",
+     "label": "বাতি নেভানো",
+     "gloss": "turning an electric room light off"
+    },
+    {
+     "id": "speed-up-fan",
+     "label": "পাখার গতি বাড়ানো",
+     "gloss": "increasing the speed of an electric fan"
+    },
+    {
+     "id": "connect-power-cord",
+     "label": "বিদ্যুতের তার লাগানো",
+     "gloss": "plugging an appliance into mains power"
+    },
+    {
+     "id": "disconnect-power-cord",
+     "label": "বিদ্যুতের তার খুলে রাখা",
+     "gloss": "unplugging an appliance"
+    },
+    {
+     "id": "blackout-at-home",
+     "label": "বিদ্যুৎ চলে যাওয়া",
+     "gloss": "electricity outage at home"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে বাতি জ্বলছে?",
+    "কোন ছবিতে তারটা দেয়াল থেকে খুলে রেখেছেন?",
+    "আপনার ঘরে পাখা চালাতে কোনটা ঘোরাতে হয়?",
+    "বাতি জ্বালাতে কাউকে কী বলবেন?",
+    "বিদ্যুৎ চলে গেলে হাতবাতিটা কোথায় পাবেন কীভাবে জিজ্ঞেস করবেন?",
+    "কোন কাজগুলো বিদ্যুৎ না থাকলেও সহজে করা যায় আর কোনগুলো করা কঠিন? কেন?"
+   ]
+  },
+  {
+   "id": "neighborhood-places",
+   "number": 40,
+   "title": "পাড়ার দরকারি জায়গা",
+   "front": "pages/040-front.jpg",
+   "back": "pages/040-back.jpg",
+   "items": [
+    {
+     "id": "shop",
+     "label": "দোকান",
+     "gloss": "neighborhood shop"
+    },
+    {
+     "id": "marketplace",
+     "label": "বাজার",
+     "gloss": "market"
+    },
+    {
+     "id": "police-station",
+     "label": "থানা",
+     "gloss": "police station"
+    },
+    {
+     "id": "hospital",
+     "label": "স্বাস্থ্যকেন্দ্র",
+     "gloss": "community health center"
+    },
+    {
+     "id": "post-office",
+     "label": "ডাকঘর",
+     "gloss": "post office"
+    },
+    {
+     "id": "reading-room",
+     "label": "পাঠাগার",
+     "gloss": "library"
+    }
+   ],
+   "questions": [
+    "বাজারটা কোথায়?",
+    "কোন দুটো জায়গায় জিনিস কিনতে পারেন?",
+    "আপনার বাসার কাছে এমন কোন জায়গা আছে?",
+    "চিঠি পাঠাতে হলে কোথায় যাবেন?",
+    "এলাকায় নতুন কাউকে কোন জায়গাটা আগে চিনিয়ে দেবেন?",
+    "পাড়ায় একটা দরকারি জায়গা বন্ধ হলে কারা সবচেয়ে বেশি অসুবিধায় পড়বে?"
+   ]
+  },
+  {
+   "id": "neighborhood-shop-types",
+   "number": 149,
+   "title": "কোন জিনিসের কোন দোকান",
+   "front": "pages/149-front.jpg",
+   "back": "pages/149-back.jpg",
+   "items": [
+    {
+     "id": "tea-stall",
+     "label": "চায়ের দোকান",
+     "gloss": "tea stall"
+    },
+    {
+     "id": "meal-shop",
+     "label": "ভাতের দোকান",
+     "gloss": "small rice-meal eatery"
+    },
+    {
+     "id": "medicine-shop",
+     "label": "ওষুধের দোকান",
+     "gloss": "medicine shop"
+    },
+    {
+     "id": "barber-shop",
+     "label": "নাপিতের দোকান",
+     "gloss": "barbershop"
+    },
+    {
+     "id": "grocery-shop",
+     "label": "মুদিদোকান",
+     "gloss": "small dry-goods grocery"
+    },
+    {
+     "id": "sweet-shop",
+     "label": "মিষ্টির দোকান",
+     "gloss": "sweet shop"
+    }
+   ],
+   "questions": [
+    "চায়ের দোকান কোনটা?",
+    "কোন দোকানে চুল কাটতে যান?",
+    "আপনার বাসার কাছে কোন ধরনের দোকান আছে?",
+    "ডাল কোথায় পাবেন জানতে কী বলবেন?",
+    "চেনা কাউকে মিষ্টি নিতে হলে কোন দোকানের পথ দেখাবেন?",
+    "পাড়ায় দোকানের ধরন বদলে গেলে কারা কীভাবে কেনাকাটার অভ্যাস বদলাতে পারেন?"
+   ]
+  },
+  {
+   "id": "exchanging-simple-messages",
+   "number": 296,
+   "title": "দূরে থাকলে খবর দিই",
+   "front": "pages/296-front.jpg",
+   "back": "pages/296-back.jpg",
+   "items": [
+    {
+     "id": "send-a-short-message-to-someone",
+     "label": "খবর পাঠান",
+     "gloss": "ask for a short message to be sent"
+    },
+    {
+     "id": "ask-someone-to-send-a-photo",
+     "label": "ছবি পাঠান",
+     "gloss": "ask someone to send a picture"
+    },
+    {
+     "id": "ask-someone-to-send-an-address",
+     "label": "ঠিকানা পাঠান",
+     "gloss": "ask someone to send a street address"
+    },
+    {
+     "id": "ask-if-the-other-person-can-hear",
+     "label": "কথা শুনছেন?",
+     "gloss": "ask whether someone can hear you remotely"
+    },
+    {
+     "id": "tell-someone-that-call-was-interrupted",
+     "label": "কথা কেটে গেল",
+     "gloss": "say that a remote conversation was cut off"
+    },
+    {
+     "id": "respond-after-checking-a-message",
+     "label": "দেখে জানাব",
+     "gloss": "say you will check and let the other person know"
+    }
+   ],
+   "questions": [
+    "কে ছবি পাঠাতে বলছেন?",
+    "ছবি আর ঠিকানা পাঠানোর দাগে কী তফাত?",
+    "দূরে গেলে আপনি কাকে খবর দেন?",
+    "বাসার ঠিকানা দরকার হলে কী বলে চাইবেন?",
+    "কথা মাঝখানে কেটে গেলে আবার কথা শুরু করে কী বলবেন?",
+    "কোনো খবর যাচাই করে জানাতে হলে কী দেখবেন, আর কতক্ষণ পর জানাবেন?"
+   ]
+  },
+  {
+   "id": "getting-through-a-crowded-place",
+   "number": 233,
+   "title": "ভিড়ের মধ্যে চলি",
+   "front": "pages/233-front.jpg",
+   "back": "pages/233-back.jpg",
+   "items": [
+    {
+     "id": "joining-the-back-of-a-line",
+     "label": "সারির শেষে দাঁড়ানো",
+     "gloss": "joining a queue at the back"
+    },
+    {
+     "id": "cutting-in-front-of-a-line",
+     "label": "আগে ঢুকে পড়া",
+     "gloss": "cutting into a queue"
+    },
+    {
+     "id": "blocking-a-narrow-passage",
+     "label": "পথ আটকে দাঁড়ানো",
+     "gloss": "standing across a passage"
+    },
+    {
+     "id": "walking-through-a-gap",
+     "label": "ফাঁক দিয়ে যাওয়া",
+     "gloss": "walking through a narrow gap"
+    },
+    {
+     "id": "coming-nearer-to-someone",
+     "label": "কাছে এগিয়ে আসা",
+     "gloss": "walking nearer to a caller"
+    },
+    {
+     "id": "moving-sideways-for-someone",
+     "label": "এক পাশে সরে যাওয়া",
+     "gloss": "stepping to one side"
+    }
+   ],
+   "questions": [
+    "কে সারির শেষে দাঁড়াচ্ছেন?",
+    "আগে ঢুকে পড়া আর শেষে দাঁড়ানো কীভাবে আলাদা?",
+    "আপনি কোথায় লম্বা সারিতে দাঁড়িয়েছেন?",
+    "সামনে যেতে হলে পাশে দাঁড়ানো মানুষকে কী বলবেন?",
+    "কাউকে আপনার কাছে আসতে হাত দিয়ে কীভাবে দেখাবেন?",
+    "খুব ভিড় হলে সবাইকে সহজে যেতে দিতে কী করা যায়?"
+   ]
+  },
+  {
+   "id": "counting-nineteen-to-twenty-four",
+   "number": 235,
+   "title": "উনিশ থেকে চব্বিশ",
+   "front": "pages/235-front.jpg",
+   "back": "pages/235-back.jpg",
+   "items": [
+    {
+     "id": "nineteen-count",
+     "label": "উনিশ",
+     "gloss": "nineteen"
+    },
+    {
+     "id": "twenty-count",
+     "label": "বিশ",
+     "gloss": "twenty"
+    },
+    {
+     "id": "twenty-one-count",
+     "label": "একুশ",
+     "gloss": "twenty-one"
+    },
+    {
+     "id": "twenty-two-count",
+     "label": "বাইশ",
+     "gloss": "twenty-two"
+    },
+    {
+     "id": "twenty-three-count",
+     "label": "তেইশ",
+     "gloss": "twenty-three"
+    },
+    {
+     "id": "twenty-four-count",
+     "label": "চব্বিশ",
+     "gloss": "twenty-four"
+    }
+   ],
+   "questions": [
+    "বিশটা বল কোন ছবিতে?",
+    "তেইশ আর চব্বিশের নিচের সারিতে কী তফাত?",
+    "আপনি শেষ কবে বিশটার বেশি জিনিস গুনেছেন?",
+    "উনিশ থেকে চব্বিশ পর্যন্ত কীভাবে গুনবেন?",
+    "একুশটা থেকে দুইটা সরালে কোন ছবির সঙ্গে মিলবে?",
+    "চব্বিশটা জিনিস অন্য কাউকে তাড়াতাড়ি গুনতে দিলে কীভাবে সাজাবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "renting-and-moving-home",
+   "number": 147,
+   "title": "বাসা ভাড়ার কথাবার্তা",
+   "front": "pages/147-front.jpg",
+   "back": "pages/147-back.jpg",
+   "items": [
+    {
+     "id": "view-rental",
+     "label": "বাসা দেখতে আসা",
+     "gloss": "to come to view a rental"
+    },
+    {
+     "id": "vacant-home",
+     "label": "খালি বাসা",
+     "gloss": "empty rental home"
+    },
+    {
+     "id": "pay-rent",
+     "label": "ভাড়ার টাকা দেওয়া",
+     "gloss": "to pay rent"
+    },
+    {
+     "id": "security-deposit",
+     "label": "জামানত",
+     "gloss": "refundable security deposit"
+    },
+    {
+     "id": "rental-agreement",
+     "label": "ভাড়ার চুক্তি",
+     "gloss": "rental agreement"
+    },
+    {
+     "id": "move-home",
+     "label": "বাসা বদলানো",
+     "gloss": "to move to a different home"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে ঘর খালি আর কেউ নেই?",
+    "কোন ছবিতে মালপত্র নিয়ে যাচ্ছেন?",
+    "বাসা দেখতে গেলে আপনি আগে কী দেখেন?",
+    "ভাড়া কত আর কবে দিতে হয়, কীভাবে জিজ্ঞেস করবেন?",
+    "চুক্তি করার আগে কোন কথা পরিষ্কার করে নেবেন?",
+    "নানা মানুষের বাসার দরকার আলাদা হয় কেন, আর কোন জিনিসের জন্য তাঁরা আপস করতে পারেন?"
+   ]
+  },
+  {
+   "id": "prayer-time",
+   "number": 31,
+   "title": "নামাজের সময়",
+   "front": "pages/031-front.jpg",
+   "back": "pages/031-back.jpg",
+   "items": [
+    {
+     "id": "mosque",
+     "label": "মসজিদ",
+     "gloss": "mosque"
+    },
+    {
+     "id": "prayer-mat",
+     "label": "জায়নামাজ",
+     "gloss": "prayer mat"
+    },
+    {
+     "id": "pray",
+     "label": "নামাজ পড়া",
+     "gloss": "to pray salah"
+    },
+    {
+     "id": "ablution",
+     "label": "অজু করা",
+     "gloss": "to perform wudu"
+    },
+    {
+     "id": "prayer-cap",
+     "label": "টুপি",
+     "gloss": "prayer cap"
+    },
+    {
+     "id": "prayer-beads",
+     "label": "তসবিহ",
+     "gloss": "prayer beads"
+    }
+   ],
+   "questions": [
+    "মসজিদটা কোনটা?",
+    "কোন ছবিতে সেজদা করছেন?",
+    "এলাকায় এমন মসজিদ কোথায় দেখেছেন?",
+    "অজু করার পর কী করতে দেখেছেন?",
+    "এলাকায় নামাজের সময়টা কীভাবে বোঝা যায়?",
+    "নতুন কেউ মসজিদের পাশ দিয়ে গেলে তাকে এখানকার কী রীতি বুঝিয়ে বলবেন?"
+   ]
+  },
+  {
+   "id": "counting-twenty-five-to-thirty",
+   "number": 280,
+   "title": "পঁচিশ থেকে ত্রিশ",
+   "front": "pages/280-front.jpg",
+   "back": "pages/280-back.jpg",
+   "items": [
+    {
+     "id": "twenty-five-count",
+     "label": "পঁচিশ",
+     "gloss": "twenty-five"
+    },
+    {
+     "id": "twenty-six-count",
+     "label": "ছাব্বিশ",
+     "gloss": "twenty-six"
+    },
+    {
+     "id": "twenty-seven-count",
+     "label": "সাতাশ",
+     "gloss": "twenty-seven"
+    },
+    {
+     "id": "twenty-eight-count",
+     "label": "আটাশ",
+     "gloss": "twenty-eight"
+    },
+    {
+     "id": "twenty-nine-count",
+     "label": "উনত্রিশ",
+     "gloss": "twenty-nine"
+    },
+    {
+     "id": "thirty-count",
+     "label": "ত্রিশ",
+     "gloss": "thirty"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে ত্রিশটা বল আছে?",
+    "আটাশ আর উনত্রিশের শেষ সারিতে কী তফাত?",
+    "আপনি কখন পঁচিশের বেশি জিনিস গুনেছেন?",
+    "ছাব্বিশ থেকে ত্রিশ পর্যন্ত কীভাবে গুনবেন?",
+    "সাতাশটার সঙ্গে দুটো যোগ করলে কোন ছবি পাবেন?",
+    "অনেকগুলো জিনিস অন্য কাউকে গুনে দিতে হলে কীভাবে সাজাবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "home-parts",
+   "number": 12,
+   "title": "বাসার অংশ",
+   "front": "pages/012-front.jpg",
+   "back": "pages/012-back.jpg",
+   "items": [
+    {
+     "id": "door",
+     "label": "দরজা",
+     "gloss": "door"
+    },
+    {
+     "id": "window",
+     "label": "জানালা",
+     "gloss": "window"
+    },
+    {
+     "id": "stairs",
+     "label": "সিঁড়ি",
+     "gloss": "stairs"
+    },
+    {
+     "id": "roof",
+     "label": "ছাদ",
+     "gloss": "flat roof"
+    },
+    {
+     "id": "balcony",
+     "label": "বারান্দা",
+     "gloss": "balcony"
+    },
+    {
+     "id": "wall",
+     "label": "দেয়াল",
+     "gloss": "wall"
+    }
+   ],
+   "questions": [
+    "জানালাটা কোনটা?",
+    "কোন দুটো খুলতে পারি?",
+    "আপনার বাসায় বারান্দা আছে?",
+    "ছাদে কী দিয়ে উঠবেন?",
+    "বাসার আর কোন কোন অংশ আছে?",
+    "বিকেলে একটু হাওয়া খেতে কোথায় বসবেন?"
+   ]
+  },
+  {
+   "id": "clothing",
+   "number": 10,
+   "title": "পরনের কাপড়",
+   "front": "pages/010-front.jpg",
+   "back": "pages/010-back.jpg",
+   "items": [
+    {
+     "id": "orna",
+     "label": "ওড়না",
+     "gloss": "orna scarf"
+    },
+    {
+     "id": "sari",
+     "label": "শাড়ি",
+     "gloss": "sari"
+    },
+    {
+     "id": "lungi",
+     "label": "লুঙ্গি",
+     "gloss": "lungi"
+    },
+    {
+     "id": "panjabi",
+     "label": "পাঞ্জাবি",
+     "gloss": "panjabi kurta"
+    },
+    {
+     "id": "salwar",
+     "label": "সালোয়ার",
+     "gloss": "salwar trousers"
+    },
+    {
+     "id": "kameez",
+     "label": "কামিজ",
+     "gloss": "kameez tunic"
+    }
+   ],
+   "questions": [
+    "ওড়নাটা কোনটা?",
+    "কোন দুটো লম্বা জামা?",
+    "কোনটা আপনি দোকানে দেখেছেন?",
+    "কামিজের সঙ্গে কী পরেন?",
+    "গরমে আর কী পরা যায়?",
+    "দাওয়াতে গেলে কী পরবেন?"
+   ]
+  },
+  {
+   "id": "pantry",
+   "number": 9,
+   "title": "মসলা আর তেল",
+   "front": "pages/009-front.jpg",
+   "back": "pages/009-back.jpg",
+   "items": [
+    {
+     "id": "salt",
+     "label": "লবণ",
+     "gloss": "salt"
+    },
+    {
+     "id": "sugar",
+     "label": "চিনি",
+     "gloss": "sugar"
+    },
+    {
+     "id": "mustard",
+     "label": "সরিষা",
+     "gloss": "mustard seed"
+    },
+    {
+     "id": "cumin",
+     "label": "জিরা",
+     "gloss": "cumin seed"
+    },
+    {
+     "id": "oil",
+     "label": "তেল",
+     "gloss": "cooking oil"
+    },
+    {
+     "id": "ghee",
+     "label": "ঘি",
+     "gloss": "ghee"
+    }
+   ],
+   "questions": [
+    "জিরাটা কোনটা?",
+    "কোন দুটো সাদা?",
+    "আপনি রান্নায় কোন তেল দেন?",
+    "ডালে কী মসলা দেন?",
+    "ঝাল করতে আর কী দেবেন?",
+    "আজ রান্না করলে এই ছয়টার মধ্যে কী কী লাগবে?"
+   ]
+  },
+  {
+   "id": "getting-around",
+   "number": 19,
+   "title": "পথেঘাটে",
+   "front": "pages/019-front.jpg",
+   "back": "pages/019-back.jpg",
+   "items": [
+    {
+     "id": "road",
+     "label": "রাস্তা",
+     "gloss": "road"
+    },
+    {
+     "id": "alley",
+     "label": "গলি",
+     "gloss": "narrow lane"
+    },
+    {
+     "id": "turn",
+     "label": "মোড়",
+     "gloss": "street corner"
+    },
+    {
+     "id": "bridge",
+     "label": "পুল",
+     "gloss": "bridge"
+    },
+    {
+     "id": "wharf",
+     "label": "ঘাট",
+     "gloss": "river landing"
+    },
+    {
+     "id": "boat",
+     "label": "নৌকা",
+     "gloss": "wooden boat"
+    }
+   ],
+   "questions": [
+    "ঘাটটা কোথায়?",
+    "কোনটা রাস্তার মোড়?",
+    "আপনি এখানে কীভাবে চলাফেরা করেন?",
+    "নৌকায় উঠতে কোথায় যাবেন?",
+    "বাসা থেকে বাজারের পথে আর কী দেখেন?",
+    "কাউকে গলিটা চিনিয়ে দিতে কী বলবেন?"
+   ]
+  },
+  {
+   "id": "study-things",
+   "number": 2,
+   "title": "লেখাপড়ার জিনিস",
+   "front": "pages/002-front.jpg",
+   "back": "pages/002-back.jpg",
+   "items": [
+    {
+     "id": "book",
+     "label": "বই",
+     "gloss": "book"
+    },
+    {
+     "id": "notebook",
+     "label": "খাতা",
+     "gloss": "notebook"
+    },
+    {
+     "id": "pen",
+     "label": "কলম",
+     "gloss": "pen"
+    },
+    {
+     "id": "scissors",
+     "label": "কাঁচি",
+     "gloss": "scissors"
+    },
+    {
+     "id": "glue",
+     "label": "আঠা",
+     "gloss": "glue"
+    },
+    {
+     "id": "envelope",
+     "label": "খাম",
+     "gloss": "envelope"
+    }
+   ],
+   "questions": [
+    "খাতাটা কোনটা?",
+    "কোন দুটোর পাতা আছে?",
+    "আপনি কী দিয়ে লেখেন?",
+    "খামের ভেতর কী রাখেন?",
+    "পড়ার জন্য আর কী লাগে?",
+    "কাউকে কিছু লিখে পাঠালে কী লাগবে?"
+   ]
+  },
+  {
+   "id": "familiar-animals",
+   "number": 24,
+   "title": "বাড়ির আশপাশের প্রাণী",
+   "front": "pages/024-front.jpg",
+   "back": "pages/024-back.jpg",
+   "items": [
+    {
+     "id": "cow",
+     "label": "গরু",
+     "gloss": "cow"
+    },
+    {
+     "id": "goat",
+     "label": "ছাগল",
+     "gloss": "goat"
+    },
+    {
+     "id": "hen",
+     "label": "মুরগি",
+     "gloss": "hen"
+    },
+    {
+     "id": "duck",
+     "label": "হাঁস",
+     "gloss": "duck"
+    },
+    {
+     "id": "cat",
+     "label": "বিড়াল",
+     "gloss": "cat"
+    },
+    {
+     "id": "dog",
+     "label": "কুকুর",
+     "gloss": "dog"
+    }
+   ],
+   "questions": [
+    "হাঁসটা কোথায়?",
+    "কোন দুটো প্রাণী ডিম পাড়ে?",
+    "আপনি আপনার পাড়ায় কোনটা দেখেন?",
+    "কার দুধ আমরা খাই?",
+    "এখানে আর কী কী প্রাণী দেখা যায়?",
+    "বন্ধুকে কোন প্রাণীটার কথা বলবেন?"
+   ]
+  },
+  {
+   "id": "weather",
+   "number": 15,
+   "title": "রোদ আর বৃষ্টি",
+   "front": "pages/015-front.jpg",
+   "back": "pages/015-back.jpg",
+   "items": [
+    {
+     "id": "sunshine",
+     "label": "রোদ",
+     "gloss": "sunshine"
+    },
+    {
+     "id": "shade",
+     "label": "ছায়া",
+     "gloss": "shade"
+    },
+    {
+     "id": "rain",
+     "label": "বৃষ্টি",
+     "gloss": "rain"
+    },
+    {
+     "id": "storm",
+     "label": "ঝড়",
+     "gloss": "storm"
+    },
+    {
+     "id": "cloud",
+     "label": "মেঘ",
+     "gloss": "cloud"
+    },
+    {
+     "id": "fog",
+     "label": "কুয়াশা",
+     "gloss": "fog"
+    }
+   ],
+   "questions": [
+    "বৃষ্টি হচ্ছে কোন ছবিতে?",
+    "কোনটায় কম দেখা যায়?",
+    "রোদে বের হলে আপনি কী করেন?",
+    "ঝড় শুরু হলে কোথায় যাবেন?",
+    "এই সময় এখানে আর কী রকম আবহাওয়া হয়?",
+    "বাইরে বসতে হলে কোন জায়গাটা বেছে নেবেন?"
+   ]
+  },
+  {
+   "id": "cooking-things",
+   "number": 8,
+   "title": "রান্নার জিনিস",
+   "front": "pages/008-front.jpg",
+   "back": "pages/008-back.jpg",
+   "items": [
+    {
+     "id": "pot",
+     "label": "হাঁড়ি",
+     "gloss": "cooking pot"
+    },
+    {
+     "id": "lid",
+     "label": "ঢাকনা",
+     "gloss": "pot lid"
+    },
+    {
+     "id": "knife",
+     "label": "ছুরি",
+     "gloss": "kitchen knife"
+    },
+    {
+     "id": "board",
+     "label": "কাটার তক্তা",
+     "gloss": "cutting board"
+    },
+    {
+     "id": "pan",
+     "label": "কড়াই",
+     "gloss": "wok-like frying pan"
+    },
+    {
+     "id": "turner",
+     "label": "খুন্তি",
+     "gloss": "cooking turner"
+    }
+   ],
+   "questions": [
+    "হাঁড়িটা কোথায়?",
+    "কোনটা দিয়ে কাটবেন?",
+    "বাসায় কোনটা বেশি কাজে লাগে?",
+    "হাঁড়ির মুখ কী দিয়ে ঢাকবেন?",
+    "রান্নায় আর কী জিনিস লাগে?",
+    "মাছ ভাজতে কী কী নেবেন?"
+   ]
+  },
+  {
+   "id": "body-movement",
+   "number": 26,
+   "title": "শরীর নাড়ানো",
+   "front": "pages/026-front.jpg",
+   "back": "pages/026-back.jpg",
+   "items": [
+    {
+     "id": "walk",
+     "label": "হাঁটা",
+     "gloss": "to walk"
+    },
+    {
+     "id": "run",
+     "label": "দৌড়ানো",
+     "gloss": "to run"
+    },
+    {
+     "id": "jump",
+     "label": "লাফানো",
+     "gloss": "to jump"
+    },
+    {
+     "id": "climb",
+     "label": "বেয়ে ওঠা",
+     "gloss": "to climb up"
+    },
+    {
+     "id": "bend",
+     "label": "ঝোঁকা",
+     "gloss": "to bend forward"
+    },
+    {
+     "id": "crawl",
+     "label": "হামাগুড়ি দেওয়া",
+     "gloss": "to crawl"
+    }
+   ],
+   "questions": [
+    "কে দৌড়াচ্ছেন?",
+    "কোন দুটো ছবিতে ওপরে উঠছে?",
+    "আপনি বেশি হাঁটেন, নাকি দৌড়ান?",
+    "মই বেয়ে উঠতে হাত কোথায় রাখেন?",
+    "ঘরে আর বাইরে কীভাবে আলাদা করে চলাফেরা করেন?",
+    "চলাফেরা করতে কষ্ট হয় এমন কারও জন্য একটা জায়গা কীভাবে বদলাবেন?"
+   ]
+  },
+  {
+   "id": "going-out-gear",
+   "number": 38,
+   "title": "বাইরে বের হওয়ার জিনিস",
+   "front": "pages/038-front.jpg",
+   "back": "pages/038-back.jpg",
+   "items": [
+    {
+     "id": "shoe",
+     "label": "জুতা",
+     "gloss": "closed shoe"
+    },
+    {
+     "id": "sock",
+     "label": "মোজা",
+     "gloss": "sock"
+    },
+    {
+     "id": "eyeglasses",
+     "label": "চশমা",
+     "gloss": "eyeglasses"
+    },
+    {
+     "id": "glasses-case",
+     "label": "চশমার খাপ",
+     "gloss": "eyeglasses case"
+    },
+    {
+     "id": "umbrella",
+     "label": "ছাতা",
+     "gloss": "umbrella"
+    },
+    {
+     "id": "raincoat",
+     "label": "বর্ষাতি",
+     "gloss": "raincoat"
+    }
+   ],
+   "questions": [
+    "ছাতাটা কোনটা?",
+    "কোন দুটো পায়ে পরবেন?",
+    "বৃষ্টি হলে আপনি কী নিয়ে বের হন?",
+    "ব্যবহারের পরে চশমাটা কোথায় রাখবেন?",
+    "বের হওয়ার আগে আর কী কী দেখে নেন?",
+    "সবার কাছে সমান জিনিস না থাকলে ভারী বৃষ্টিতে চলাফেরা কার জন্য বেশি কঠিন হয়?"
+   ]
+  },
+  {
+   "id": "face-details",
+   "number": 85,
+   "title": "মুখের ছোট ছোট অংশ",
+   "front": "pages/085-front.jpg",
+   "back": "pages/085-back.jpg",
+   "items": [
+    {
+     "id": "lips",
+     "label": "ঠোঁট",
+     "gloss": "lips"
+    },
+    {
+     "id": "teeth",
+     "label": "দাঁত",
+     "gloss": "teeth"
+    },
+    {
+     "id": "tongue",
+     "label": "জিব",
+     "gloss": "tongue"
+    },
+    {
+     "id": "cheek",
+     "label": "গাল",
+     "gloss": "cheek"
+    },
+    {
+     "id": "chin",
+     "label": "থুতনি",
+     "gloss": "chin"
+    },
+    {
+     "id": "forehead",
+     "label": "কপাল",
+     "gloss": "forehead"
+    }
+   ],
+   "questions": [
+    "দাঁত কোন ছবিতে?",
+    "কোনটা চোখের ওপরে?",
+    "মুখ ধোয়ার সময় কোন জায়গায় আগে পানি দেন?",
+    "গরম খাবার খেলে মুখের কোন অংশে আগে টের পান?",
+    "শুধু মুখের ভঙ্গি দিয়ে কীভাবে খুশি বোঝান?",
+    "মানুষের মুখের ভঙ্গি দেখেই তার মন বোঝা কখন ভুল হতে পারে?"
+   ]
+  },
+  {
+   "id": "dry-groceries",
+   "number": 43,
+   "title": "শুকনো বাজার",
+   "front": "pages/043-front.jpg",
+   "back": "pages/043-back.jpg",
+   "items": [
+    {
+     "id": "raw-rice",
+     "label": "চাল",
+     "gloss": "uncooked rice"
+    },
+    {
+     "id": "flour",
+     "label": "আটা",
+     "gloss": "wheat flour"
+    },
+    {
+     "id": "chickpeas",
+     "label": "ছোলা",
+     "gloss": "dried chickpeas"
+    },
+    {
+     "id": "dry-peas",
+     "label": "শুকনা মটর",
+     "gloss": "dried peas"
+    },
+    {
+     "id": "peanuts",
+     "label": "চিনাবাদাম",
+     "gloss": "peanuts"
+    },
+    {
+     "id": "maize",
+     "label": "ভুট্টা",
+     "gloss": "corn cob"
+    }
+   ],
+   "questions": [
+    "চালটা কোনটা?",
+    "কোন দুটো দানা দেখতে প্রায় গোল?",
+    "আপনি কোনটা বাজার থেকে কিনেছেন?",
+    "আটা দিয়ে কী বানানো যায়?",
+    "ভাতের চাল বেছে নেওয়ার সময় কী দেখেন?",
+    "একটা খাবারের দাম বাড়লে মানুষ কেন খাওয়ার অভ্যাস বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "finding-and-showing",
+   "number": 53,
+   "title": "খুঁজি আর দেখাই",
+   "front": "pages/053-front.jpg",
+   "back": "pages/053-back.jpg",
+   "items": [
+    {
+     "id": "look-for",
+     "label": "খোঁজা",
+     "gloss": "to look for"
+    },
+    {
+     "id": "find",
+     "label": "খুঁজে পাওয়া",
+     "gloss": "to find by searching"
+    },
+    {
+     "id": "hide",
+     "label": "লুকানো",
+     "gloss": "to hide"
+    },
+    {
+     "id": "take-out",
+     "label": "বের করা",
+     "gloss": "to take something out"
+    },
+    {
+     "id": "look-at",
+     "label": "দেখা",
+     "gloss": "to look at"
+    },
+    {
+     "id": "show",
+     "label": "দেখানো",
+     "gloss": "to show"
+    }
+   ],
+   "questions": [
+    "কে চাবি পেয়েছেন?",
+    "কোন দুটো ছবিতে ঝুড়ি আছে?",
+    "আপনি কোন জিনিসটা প্রায়ই খোঁজেন?",
+    "জিনিস খুঁজে না পেলে কোথায় আগে দেখেন?",
+    "যে জিনিসটা আপনি দেখতে পাচ্ছেন সেটা অন্যজনকে কীভাবে বোঝাবেন?",
+    "একই ঘটনা দেখে দুজন মানুষ কেন আলাদা কথা বলতে পারেন?"
+   ]
+  },
+  {
+   "id": "getting-water",
+   "number": 64,
+   "title": "পানির জোগান",
+   "front": "pages/064-front.jpg",
+   "back": "pages/064-back.jpg",
+   "items": [
+    {
+     "id": "tap",
+     "label": "কল",
+     "gloss": "water tap"
+    },
+    {
+     "id": "pipe",
+     "label": "নল",
+     "gloss": "water pipe"
+    },
+    {
+     "id": "handpump",
+     "label": "নলকূপ",
+     "gloss": "tube well hand pump"
+    },
+    {
+     "id": "well",
+     "label": "কুয়া",
+     "gloss": "draw well"
+    },
+    {
+     "id": "water-jar",
+     "label": "কলসি",
+     "gloss": "earthen water jar"
+    },
+    {
+     "id": "strainer",
+     "label": "ছাঁকনি",
+     "gloss": "fine strainer"
+    }
+   ],
+   "questions": [
+    "কলটা কোনটা?",
+    "কোন দুটো দিয়ে মাটির নিচ থেকে পানি তোলা যায়?",
+    "আপনার বাসায় পানি কোথা থেকে আসে?",
+    "পানি ছাঁকতে কী দিয়ে কীভাবে করবেন?",
+    "এক দিন কল দিয়ে পানি না এলে কোথা থেকে আনবেন?",
+    "দুই এলাকায় পানির জোগান আলাদা হলে মানুষের দিন কীভাবে আলাদা হয়ে যায়?"
+   ]
+  },
+  {
+   "id": "extended-family-on-both-sides",
+   "number": 148,
+   "title": "আব্বা আম্মার দিকের আপনজন",
+   "front": "pages/148-front.jpg",
+   "back": "pages/148-back.jpg",
+   "items": [
+    {
+     "id": "paternal-grandfather",
+     "label": "দাদা",
+     "gloss": "paternal grandfather"
+    },
+    {
+     "id": "paternal-grandmother",
+     "label": "দাদি",
+     "gloss": "paternal grandmother"
+    },
+    {
+     "id": "paternal-uncle",
+     "label": "চাচা",
+     "gloss": "paternal uncle"
+    },
+    {
+     "id": "paternal-aunt",
+     "label": "চাচি",
+     "gloss": "wife of paternal uncle"
+    },
+    {
+     "id": "maternal-uncle",
+     "label": "মামা",
+     "gloss": "maternal uncle"
+    },
+    {
+     "id": "maternal-aunt",
+     "label": "মামি",
+     "gloss": "wife of maternal uncle"
+    }
+   ],
+   "questions": [
+    "আব্বার পাশে সাদা দাড়িওয়ালা দাদা কোন ছবিতে?",
+    "চাচি আর মামি ছবিতে কী রঙের ওড়না পরেছেন?",
+    "আপনার পরিচিত লোকজন আব্বার ভাইকে কী বলে ডাকেন?",
+    "কাউকে নিজের মামার পরিচয় কীভাবে দেবেন?",
+    "পরিবারের বাইরে কাউকে চাচা বা মামা বলে ডাকতে কখন শুনেছেন?",
+    "আত্মীয় না হলেও কাউকে আত্মীয়ের নামে ডাকলে সম্পর্কটা কেমন মনে হয়, আর কখন তা আলাদা বোঝাতে হয়?"
+   ]
+  },
+  {
+   "id": "objects-in-motion",
+   "number": 27,
+   "title": "দেওয়া নেওয়া আর সরানো",
+   "front": "pages/027-front.jpg",
+   "back": "pages/027-back.jpg",
+   "items": [
+    {
+     "id": "give",
+     "label": "দেওয়া",
+     "gloss": "to give"
+    },
+    {
+     "id": "take",
+     "label": "নেওয়া",
+     "gloss": "to take"
+    },
+    {
+     "id": "catch",
+     "label": "ধরা",
+     "gloss": "to catch"
+    },
+    {
+     "id": "throw",
+     "label": "ছোড়া",
+     "gloss": "to throw"
+    },
+    {
+     "id": "push",
+     "label": "ঠেলা",
+     "gloss": "to push"
+    },
+    {
+     "id": "pull",
+     "label": "টানা",
+     "gloss": "to pull"
+    }
+   ],
+   "questions": [
+    "কে বই দিচ্ছেন?",
+    "কোন দুটো ছবিতে চাকা আছে?",
+    "খেলায় আপনি কী ছুড়েছেন বা ধরেছেন?",
+    "ভারী কিছু সরাতে কখন ঠেলেন, কখন টানেন?",
+    "দুজন মিলে কাজ করলে কে কী করতে পারে?",
+    "কাজ ভাগ করে করলে কখন সহজ হয় আর কখন কঠিন হয়?"
+   ]
+  },
+  {
+   "id": "fresh-kitchen-aromatics",
+   "number": 138,
+   "title": "রান্নায় ঘ্রাণ আর ঝাল দিই",
+   "front": "pages/138-front.jpg",
+   "back": "pages/138-back.jpg",
+   "items": [
+    {
+     "id": "ginger-root",
+     "label": "আদা",
+     "gloss": "ginger root"
+    },
+    {
+     "id": "garlic-bulb",
+     "label": "রসুন",
+     "gloss": "garlic bulb"
+    },
+    {
+     "id": "green-chili",
+     "label": "কাঁচামরিচ",
+     "gloss": "green chili"
+    },
+    {
+     "id": "scallion-tops",
+     "label": "পেঁয়াজপাতা",
+     "gloss": "onion greens"
+    },
+    {
+     "id": "coriander-leaves",
+     "label": "ধনেপাতা",
+     "gloss": "fresh coriander leaves"
+    },
+    {
+     "id": "fresh-mint",
+     "label": "পুদিনা",
+     "gloss": "mint leaves"
+    }
+   ],
+   "questions": [
+    "কাঁচামরিচ কোনটা?",
+    "কোন দুটো সবুজ পাতার ধার খাঁজকাটা?",
+    "আপনি কোনটার ঘ্রাণ দ্রুত চিনতে পারেন?",
+    "তরকারি ঝাল করতে দোকান থেকে কী কিনবেন?",
+    "আপনার চেনা একটা খাবারে কোন তাজা পাতা দেয়?",
+    "একই খাবারে মানুষ ভিন্ন ঘ্রাণ পছন্দ করেন কেন?"
+   ]
+  },
+  {
+   "id": "cleaning-tools",
+   "number": 57,
+   "title": "বাসা পরিষ্কার করা",
+   "front": "pages/057-front.jpg",
+   "back": "pages/057-back.jpg",
+   "items": [
+    {
+     "id": "broom",
+     "label": "ঝাড়ু",
+     "gloss": "grass broom"
+    },
+    {
+     "id": "dustpan",
+     "label": "ময়লার বেলচা",
+     "gloss": "dustpan"
+    },
+    {
+     "id": "trash-bin",
+     "label": "ময়লার পাত্র",
+     "gloss": "rubbish bin"
+    },
+    {
+     "id": "scrubbing-fiber",
+     "label": "ছোবড়া",
+     "gloss": "coconut husk scrubber"
+    },
+    {
+     "id": "cleaning-rag",
+     "label": "ন্যাকড়া",
+     "gloss": "cleaning rag"
+    },
+    {
+     "id": "doormat",
+     "label": "পাপোশ",
+     "gloss": "doormat"
+    }
+   ],
+   "questions": [
+    "ঝাড়ুটা কোনটা?",
+    "কোনটা দরজার সামনে রাখেন?",
+    "আপনি কোন জিনিসটা বেশি ব্যবহার করেন?",
+    "ঝাড়ু দেওয়ার পর ময়লা কীভাবে সরান?",
+    "একটা বাসায় সবাই মিলে কীভাবে পরিষ্কার রাখেন?",
+    "পরিষ্কার রাখার কাজ একজনের ঘাড়ে পড়লে বাসার সম্পর্ক কীভাবে বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "talk-and-gesture",
+   "number": 49,
+   "title": "কথা আর ইশারা",
+   "front": "pages/049-front.jpg",
+   "back": "pages/049-back.jpg",
+   "items": [
+    {
+     "id": "speak",
+     "label": "বলা",
+     "gloss": "to speak"
+    },
+    {
+     "id": "listen",
+     "label": "শোনা",
+     "gloss": "to listen"
+    },
+    {
+     "id": "laugh",
+     "label": "হাসা",
+     "gloss": "to laugh"
+    },
+    {
+     "id": "cry",
+     "label": "কাঁদা",
+     "gloss": "to cry"
+    },
+    {
+     "id": "call-out",
+     "label": "ডাকা",
+     "gloss": "to call out"
+    },
+    {
+     "id": "gesture",
+     "label": "ইশারা করা",
+     "gloss": "to gesture"
+    }
+   ],
+   "questions": [
+    "কে হাসছেন?",
+    "কে কথা শুনছেন?",
+    "আপনি কখন কাউকে ইশারা করেন?",
+    "দূরে কাউকে ডাকতে হলে কী করেন?",
+    "কথা না বলেও কী কী বোঝাতে পারেন?",
+    "একই ইশারা দুই জায়গায় আলাদা অর্থ দিতে পারে কেন?"
+   ]
+  },
+  {
+   "id": "food-tastes",
+   "number": 78,
+   "title": "খাবারের স্বাদ",
+   "front": "pages/078-front.jpg",
+   "back": "pages/078-back.jpg",
+   "items": [
+    {
+     "id": "taste-sweet",
+     "label": "মিষ্টি",
+     "gloss": "sweet tasting"
+    },
+    {
+     "id": "taste-sour",
+     "label": "টক",
+     "gloss": "sour tasting"
+    },
+    {
+     "id": "taste-spicy",
+     "label": "ঝাল",
+     "gloss": "chili hot"
+    },
+    {
+     "id": "taste-bitter",
+     "label": "তেতো",
+     "gloss": "bitter tasting"
+    },
+    {
+     "id": "taste-salty",
+     "label": "নোনতা",
+     "gloss": "salty tasting"
+    },
+    {
+     "id": "taste-bland",
+     "label": "পানসে",
+     "gloss": "bland tasting"
+    }
+   ],
+   "questions": [
+    "কোনটা ঝাল?",
+    "কোন ছবির খাবারটা টক আর কোনটা মিষ্টি?",
+    "আপনি কোন স্বাদটা বেশি পছন্দ করেন?",
+    "তরকারি বেশি নোনতা হলে কী করেন?",
+    "আপনার এলাকার কোন খাবারে একসঙ্গে টক আর ঝাল লাগে?",
+    "একই খাবার দুইজনের কাছে আলাদা স্বাদের লাগতে পারে কেন?"
+   ]
+  },
+  {
+   "id": "people-out-on-the-street",
+   "number": 112,
+   "title": "পথে যাঁদের দেখি",
+   "front": "pages/112-front.jpg",
+   "back": "pages/112-back.jpg",
+   "items": [
+    {
+     "id": "passenger-role",
+     "label": "যাত্রী",
+     "gloss": "passenger"
+    },
+    {
+     "id": "driver-role",
+     "label": "চালক",
+     "gloss": "vehicle driver"
+    },
+    {
+     "id": "pedestrian-role",
+     "label": "পথচারী",
+     "gloss": "pedestrian"
+    },
+    {
+     "id": "guard-role",
+     "label": "পাহারাদার",
+     "gloss": "guard"
+    },
+    {
+     "id": "street-hawker-role",
+     "label": "ফেরিওয়ালা",
+     "gloss": "roving street seller"
+    },
+    {
+     "id": "porter-role",
+     "label": "মুটে",
+     "gloss": "market porter"
+    }
+   ],
+   "questions": [
+    "কে গাড়ি চালাচ্ছেন?",
+    "কে মাথায় বোঝা নিয়ে যাচ্ছেন?",
+    "আপনার পথে কাদের বেশি দেখা যায়?",
+    "কোথায় নামাবেন, চালককে কীভাবে বলবেন?",
+    "কারও বাড়ির ফটকে গেলে পাহারাদারকে কী বলবেন?",
+    "একটা রাস্তা দিয়ে যাঁরা চলেন আর যাঁরা সেখানে কাজ করেন, তাঁদের দরকারগুলো কীভাবে আলাদা হয়?"
+   ]
+  },
+  {
+   "id": "putting-things-away",
+   "number": 28,
+   "title": "জিনিস গুছিয়ে রাখা",
+   "front": "pages/028-front.jpg",
+   "back": "pages/028-back.jpg",
+   "items": [
+    {
+     "id": "fold",
+     "label": "ভাঁজ করা",
+     "gloss": "to fold"
+    },
+    {
+     "id": "hang",
+     "label": "ঝোলানো",
+     "gloss": "to hang"
+    },
+    {
+     "id": "tie",
+     "label": "বাঁধা",
+     "gloss": "to tie"
+    },
+    {
+     "id": "wrap",
+     "label": "মোড়ানো",
+     "gloss": "to wrap"
+    },
+    {
+     "id": "put-down",
+     "label": "রাখা",
+     "gloss": "to put down"
+    },
+    {
+     "id": "lift",
+     "label": "তোলা",
+     "gloss": "to lift"
+    }
+   ],
+   "questions": [
+    "কে কাপড় ঝোলাচ্ছেন?",
+    "কোন দুটো ছবিতে একই রঙের কাপড় আছে?",
+    "বাসায় আপনি কোন জিনিসটা ভাঁজ করে রাখেন?",
+    "কাপড় ভেজা থাকলে কোথায় ঝোলাবেন?",
+    "কাউকে উপহার পাঠাতে গেলে কীভাবে তৈরি করবেন?",
+    "ছোট বাসা গুছিয়ে রাখা সহজ করতে কী বদলানো যায়?"
+   ]
+  },
+  {
+   "id": "laying-out-the-home",
+   "number": 71,
+   "title": "বাসায় বিছাই আর ঝোলাই",
+   "front": "pages/071-front.jpg",
+   "back": "pages/071-back.jpg",
+   "items": [
+    {
+     "id": "mosquito-net",
+     "label": "মশারি",
+     "gloss": "mosquito net"
+    },
+    {
+     "id": "curtain",
+     "label": "পর্দা",
+     "gloss": "curtain"
+    },
+    {
+     "id": "floor-mat",
+     "label": "চাটাই",
+     "gloss": "woven floor mat"
+    },
+    {
+     "id": "mattress",
+     "label": "তোশক",
+     "gloss": "mattress"
+    },
+    {
+     "id": "shelf",
+     "label": "তাক",
+     "gloss": "shelf unit"
+    },
+    {
+     "id": "clothing-rack",
+     "label": "আলনা",
+     "gloss": "open clothing rack"
+    }
+   ],
+   "questions": [
+    "মশারিটা কোনটা?",
+    "কোন দুটো বিছানো যায়?",
+    "আপনার ঘরে কোন জিনিসটা আছে?",
+    "পর্দা সাধারণত কোথায় ঝোলান?",
+    "ছোট ঘরে জিনিস রাখার জায়গা কীভাবে বের করেন?",
+    "একটা ঘরের জিনিস সাজানোর ধরন দেখে সেখানে কারা কী করেন, কতটা বোঝা যায়?"
+   ]
+  },
+  {
+   "id": "minor-injuries",
+   "number": 86,
+   "title": "চোট লাগলে যা বলি",
+   "front": "pages/086-front.jpg",
+   "back": "pages/086-back.jpg",
+   "items": [
+    {
+     "id": "minor-cut",
+     "label": "কেটে যাওয়া",
+     "gloss": "to get a minor cut"
+    },
+    {
+     "id": "minor-burn",
+     "label": "পুড়ে যাওয়া",
+     "gloss": "to get a burn"
+    },
+    {
+     "id": "twisted-ankle",
+     "label": "মচকে যাওয়া",
+     "gloss": "to twist a joint"
+    },
+    {
+     "id": "localized-swelling",
+     "label": "ফুলে যাওয়া",
+     "gloss": "to swell up"
+    },
+    {
+     "id": "small-bruise",
+     "label": "কালশিটে",
+     "gloss": "bruise"
+    },
+    {
+     "id": "dizzy",
+     "label": "মাথা ঘোরা",
+     "gloss": "to feel dizzy"
+    }
+   ],
+   "questions": [
+    "কার মাথা ঘুরছে?",
+    "কোথায় হাতটা ফুলে গেছে?",
+    "আপনার কখনও পা মচকেছিল?",
+    "কোথায় ব্যথা হচ্ছে, সেটা অন্য কাউকে কীভাবে বলবেন?",
+    "কেউ মাথা ঘুরছে বললে তার কী দরকার, কীভাবে জিজ্ঞেস করবেন?",
+    "শরীরের কী হয়েছে বোঝাতে ভাষা কম জানা থাকলে আর কী দিয়ে বোঝানো যায়?"
+   ]
+  },
+  {
+   "id": "pace-and-turn-taking",
+   "number": 124,
+   "title": "কাজ কখন আর কতবার",
+   "front": "pages/124-front.jpg",
+   "back": "pages/124-back.jpg",
+   "items": [
+    {
+     "id": "fast-pace",
+     "label": "তাড়াতাড়ি",
+     "gloss": "quickly"
+    },
+    {
+     "id": "slow-pace",
+     "label": "ধীরে",
+     "gloss": "slowly"
+    },
+    {
+     "id": "together-action",
+     "label": "একসঙ্গে",
+     "gloss": "together at the same time"
+    },
+    {
+     "id": "take-turns",
+     "label": "পালা করে",
+     "gloss": "taking turns"
+    },
+    {
+     "id": "once-action",
+     "label": "একবার",
+     "gloss": "once"
+    },
+    {
+     "id": "repeat-action",
+     "label": "বারবার",
+     "gloss": "repeatedly"
+    }
+   ],
+   "questions": [
+    "কোন গাড়িটা তাড়াতাড়ি যাচ্ছে?",
+    "কোথায় দুইজন পালা করে গুটি বসাচ্ছে?",
+    "আপনি কোন কাজটা ধীরে করেন?",
+    "একজনকে ধীরে কথা বলতে হলে কী বলবেন?",
+    "এক কাজ দুইজন করলে কখন পালা করে করা ভালো?",
+    "সব কাজ তাড়াতাড়ি করতে গেলে কোনটা ভালো হয়, আর কোনটা খারাপ হতে পারে?"
+   ]
+  },
+  {
+   "id": "snack-foods",
+   "number": 30,
+   "title": "নাস্তার খাবার",
+   "front": "pages/030-front.jpg",
+   "back": "pages/030-back.jpg",
+   "items": [
+    {
+     "id": "muri",
+     "label": "মুড়ি",
+     "gloss": "puffed rice"
+    },
+    {
+     "id": "chira",
+     "label": "চিড়া",
+     "gloss": "flattened rice"
+    },
+    {
+     "id": "singara",
+     "label": "সিঙ্গারা",
+     "gloss": "puffy fried pastry"
+    },
+    {
+     "id": "samucha",
+     "label": "সমুচা",
+     "gloss": "flat fried pastry"
+    },
+    {
+     "id": "bhapa-pitha",
+     "label": "ভাপা পিঠা",
+     "gloss": "steamed rice cake"
+    },
+    {
+     "id": "jilapi",
+     "label": "জিলাপি",
+     "gloss": "jalebi"
+    }
+   ],
+   "questions": [
+    "জিলাপিটা কোনটা?",
+    "কোন দুটো তেকোনা?",
+    "আপনি কোনটা খেয়ে দেখেছেন?",
+    "মুড়ির সঙ্গে কী মিশিয়ে খাওয়া যায়?",
+    "কোন সময়ে কোন নাস্তা বেশি দেখেন?",
+    "একজন নতুন মানুষকে এখানকার নাস্তা চেনাতে কোনটা আগে দেবেন, কেন?"
+   ]
+  },
+  {
+   "id": "features-of-streets",
+   "number": 94,
+   "title": "চলার পথের জিনিস",
+   "front": "pages/094-front.jpg",
+   "back": "pages/094-back.jpg",
+   "items": [
+    {
+     "id": "road-shelter",
+     "label": "যাত্রীছাউনি",
+     "gloss": "roadside passenger shelter"
+    },
+    {
+     "id": "street-light",
+     "label": "রাস্তার বাতি",
+     "gloss": "streetlight"
+    },
+    {
+     "id": "pedestrian-crossing",
+     "label": "রাস্তা পারাপারের দাগ",
+     "gloss": "zebra crossing marks"
+    },
+    {
+     "id": "sidewalk",
+     "label": "পায়ে চলার পথ",
+     "gloss": "raised sidewalk"
+    },
+    {
+     "id": "parking-area",
+     "label": "গাড়ি রাখার জায়গা",
+     "gloss": "marked parking area"
+    },
+    {
+     "id": "street-drain",
+     "label": "রাস্তার নালা",
+     "gloss": "roadside drainage channel"
+    }
+   ],
+   "questions": [
+    "রাস্তার নালা কোনটা?",
+    "কোথায় রাস্তা পার হওয়ার সাদা দাগ আছে?",
+    "আপনি গাড়ির জন্য কোথায় অপেক্ষা করেন?",
+    "রাস্তা ভিজে গেলে পায়ে চলার কোন অংশ দিয়ে যাবেন?",
+    "আপনার এলাকায় হাঁটতে গেলে কোন জায়গায় বেশি খেয়াল রাখেন?",
+    "শহরে কারও হাঁটা কঠিন হলে রাস্তার কোন বদলটা তার চলাফেরায় সবচেয়ে বেশি কাজে আসবে?"
+   ]
+  },
+  {
+   "id": "grooming-actions",
+   "number": 83,
+   "title": "নিজেকে ধুয়ে গুছাই",
+   "front": "pages/083-front.jpg",
+   "back": "pages/083-back.jpg",
+   "items": [
+    {
+     "id": "brush-teeth",
+     "label": "দাঁত মাজা",
+     "gloss": "to brush teeth"
+    },
+    {
+     "id": "shave-beard",
+     "label": "দাড়ি কামানো",
+     "gloss": "to shave a beard"
+    },
+    {
+     "id": "comb-hair",
+     "label": "চুল আঁচড়ানো",
+     "gloss": "to comb hair"
+    },
+    {
+     "id": "cut-hair",
+     "label": "চুল কাটা",
+     "gloss": "to cut hair"
+    },
+    {
+     "id": "bathe-body",
+     "label": "গোসল করা",
+     "gloss": "to bathe"
+    },
+    {
+     "id": "clip-nails",
+     "label": "নখ কাটা",
+     "gloss": "to clip nails"
+    }
+   ],
+   "questions": [
+    "কে দাঁত মাজছেন?",
+    "কোন দুটো ছবিতে চুল নিয়ে কাজ হচ্ছে?",
+    "আপনি কখন চুল আঁচড়ান?",
+    "দাড়ি কামাতে বা নখ কাটতে কী লাগে?",
+    "বাইরে যাওয়ার আগে আপনার আর কী কী করতে হয়?",
+    "নিজের যত্ন নেওয়ার সময় আর সুযোগ আলাদা হলে মানুষের রোজকার জীবন কীভাবে বদলায়?"
+   ]
+  },
+  {
+   "id": "price-age-and-depth",
+   "number": 141,
+   "title": "দেখে তফাত বলি",
+   "front": "pages/141-front.jpg",
+   "back": "pages/141-back.jpg",
+   "items": [
+    {
+     "id": "new-object",
+     "label": "নতুন",
+     "gloss": "new"
+    },
+    {
+     "id": "old-object",
+     "label": "পুরোনো",
+     "gloss": "old or worn from use"
+    },
+    {
+     "id": "expensive-object",
+     "label": "দামি",
+     "gloss": "expensive"
+    },
+    {
+     "id": "cheap-object",
+     "label": "সস্তা",
+     "gloss": "inexpensive"
+    },
+    {
+     "id": "deep-water",
+     "label": "গভীর",
+     "gloss": "deep"
+    },
+    {
+     "id": "shallow-water",
+     "label": "অগভীর",
+     "gloss": "shallow"
+    }
+   ],
+   "questions": [
+    "নতুন জিনিসটা কোন ছবিতে?",
+    "কোন ছবির পানি অগভীর?",
+    "আপনি কোন জিনিসটা পুরোনো হলেও এখনও ব্যবহার করেন?",
+    "একই রকম জিনিসের মধ্যে কোনটা দামি কীভাবে বুঝবেন?",
+    "কিছু কিনতে গেলে কোন জিনিসে দাম ছাড়াও আর কী দেখেন?",
+    "দামি জিনিস সব সময় সস্তা জিনিসের চেয়ে ভালো ধরে নিলে কোথায় ভুল হতে পারে?"
+   ]
+  },
+  {
+   "id": "doing-housework",
+   "number": 77,
+   "title": "ঘরের কাজ করি",
+   "front": "pages/077-front.jpg",
+   "back": "pages/077-back.jpg",
+   "items": [
+    {
+     "id": "sweep-floor",
+     "label": "ঝাড়ু দেওয়া",
+     "gloss": "to sweep a floor"
+    },
+    {
+     "id": "throw-away-trash",
+     "label": "ময়লা ফেলা",
+     "gloss": "to throw rubbish away"
+    },
+    {
+     "id": "wash-dishes",
+     "label": "বাসন মাজা",
+     "gloss": "to scrub dishes"
+    },
+    {
+     "id": "wash-clothes",
+     "label": "কাপড় কাচা",
+     "gloss": "to wash clothes by hand"
+    },
+    {
+     "id": "dry-clothes",
+     "label": "কাপড় শুকানো",
+     "gloss": "to dry clothes on a line"
+    },
+    {
+     "id": "make-bed",
+     "label": "বিছানা পাতা",
+     "gloss": "to spread out bedding"
+    }
+   ],
+   "questions": [
+    "কে ঝাড়ু দিচ্ছেন?",
+    "কোন দুটো ছবিতে গামলা আছে?",
+    "এই কাজগুলোর মধ্যে কোনটা আপনি বেশি করেন?",
+    "কাপড় কাচার পর কীভাবে শুকাতে দেন?",
+    "আপনার বাসায় ময়লা কোথায় ফেলতে হয়?",
+    "এক বাসায় কয়েকজন থাকলে ঘরের কাজ ভাগ করার ভালো উপায় কী হতে পারে?"
+   ]
+  },
+  {
+   "id": "familiar-bugs",
+   "number": 35,
+   "title": "চেনা পোকামাকড়",
+   "front": "pages/035-front.jpg",
+   "back": "pages/035-back.jpg",
+   "items": [
+    {
+     "id": "mosquito",
+     "label": "মশা",
+     "gloss": "mosquito"
+    },
+    {
+     "id": "ant",
+     "label": "পিঁপড়া",
+     "gloss": "ant"
+    },
+    {
+     "id": "housefly",
+     "label": "মাছি",
+     "gloss": "housefly"
+    },
+    {
+     "id": "cockroach",
+     "label": "তেলাপোকা",
+     "gloss": "cockroach"
+    },
+    {
+     "id": "caterpillar",
+     "label": "শুঁয়োপোকা",
+     "gloss": "caterpillar"
+    },
+    {
+     "id": "butterfly",
+     "label": "প্রজাপতি",
+     "gloss": "butterfly"
+    }
+   ],
+   "questions": [
+    "মশাটা কোনটা?",
+    "কোনটার ডানা রঙিন?",
+    "আপনি ঘরের কাছে কোন পোকাটা বেশি দেখেন?",
+    "খাবারে মাছি বসতে না দিতে কী করেন?",
+    "বর্ষায় কী কী পোকা বেশি দেখা যায়?",
+    "সব পোকাকে তাড়ালে ঘরের বাইরে কী বদলে যেতে পারে?"
+   ]
+  },
+  {
+   "id": "useful-papers",
+   "number": 63,
+   "title": "দরকারি কাগজপত্র",
+   "front": "pages/063-front.jpg",
+   "back": "pages/063-back.jpg",
+   "items": [
+    {
+     "id": "letter",
+     "label": "চিঠি",
+     "gloss": "written letter"
+    },
+    {
+     "id": "small-note",
+     "label": "চিরকুট",
+     "gloss": "small written note"
+    },
+    {
+     "id": "identity-card",
+     "label": "পরিচয়পত্র",
+     "gloss": "identity document card"
+    },
+    {
+     "id": "portrait-photo",
+     "label": "ছবি",
+     "gloss": "printed photograph"
+    },
+    {
+     "id": "signature",
+     "label": "সই",
+     "gloss": "signature"
+    },
+    {
+     "id": "impression",
+     "label": "ছাপ",
+     "gloss": "fingerprint impression"
+    }
+   ],
+   "questions": [
+    "পরিচয়পত্রটা কোনটা?",
+    "কোন দুটোয় মুখ দেখা যায়?",
+    "আপনি শেষ কবে কাউকে চিঠি লিখেছেন?",
+    "জরুরি কথা ছোট করে লিখে রাখতে হলে কী নেবেন?",
+    "কোনো কাগজে সই করার আগে কী কী দেখেন?",
+    "কাগজপত্র ঠিক না থাকলে কারও জন্য রোজকার কাজ কেন কঠিন হয়ে যেতে পারে?"
+   ]
+  },
+  {
+   "id": "food-ripeness-and-condition",
+   "number": 119,
+   "title": "খাবারের অবস্থা বুঝি",
+   "front": "pages/119-front.jpg",
+   "back": "pages/119-back.jpg",
+   "items": [
+    {
+     "id": "unripe-food",
+     "label": "কাঁচা",
+     "gloss": "unripe"
+    },
+    {
+     "id": "ripe-food",
+     "label": "পাকা",
+     "gloss": "ripe"
+    },
+    {
+     "id": "fresh-roti",
+     "label": "টাটকা",
+     "gloss": "freshly made"
+    },
+    {
+     "id": "stale-roti",
+     "label": "বাসি",
+     "gloss": "stale"
+    },
+    {
+     "id": "solid-ghee",
+     "label": "জমাট বাঁধা",
+     "gloss": "to set solid when cool"
+    },
+    {
+     "id": "melting-ghee",
+     "label": "গলে যাওয়া",
+     "gloss": "to melt"
+    }
+   ],
+   "questions": [
+    "পাকা কলাটা কোনটা?",
+    "কোন রুটিটা টাটকা?",
+    "কোন ফলটা পাকার আগে আপনি খান?",
+    "রুটি নরম আছে কি না কীভাবে বোঝেন?",
+    "দোকানিকে “টাটকা আছে?” বলে আর কী জিজ্ঞেস করবেন?",
+    "খাবার ফেলে দেওয়া কমাতে বাসায় কেনা আর রান্নার অভ্যাস কীভাবে বদলাতে পারেন?"
+   ]
+  },
+  {
+   "id": "object-states",
+   "number": 88,
+   "title": "জিনিসের কী হাল",
+   "front": "pages/088-front.jpg",
+   "back": "pages/088-back.jpg",
+   "items": [
+    {
+     "id": "wet-cloth",
+     "label": "ভেজা",
+     "gloss": "wet"
+    },
+    {
+     "id": "dry-cloth",
+     "label": "শুকনা",
+     "gloss": "dry"
+    },
+    {
+     "id": "broken-vessel",
+     "label": "ভাঙা",
+     "gloss": "broken into pieces"
+    },
+    {
+     "id": "punctured-vessel",
+     "label": "ফুটো",
+     "gloss": "having a hole"
+    },
+    {
+     "id": "upside-down",
+     "label": "উল্টানো",
+     "gloss": "turned upside down"
+    },
+    {
+     "id": "flattened",
+     "label": "চ্যাপ্টা",
+     "gloss": "flattened"
+    }
+   ],
+   "questions": [
+    "ভেজা কাপড়টা কোথায়?",
+    "কোন পাত্রে ফুটো আছে?",
+    "আপনার বাসায় কোন জিনিসটা সহজে ভেঙে যায়?",
+    "ভেজা কাপড় শুকাতে কোথায় রাখেন?",
+    "উল্টানো পেয়ালা থেকে পানি কেন বের হয়ে যায়?",
+    "একটা জিনিস সামান্য নষ্ট হলে কখন সেটা সারিয়ে নেওয়া ভালো, আর কখন বদলানো ভালো?"
+   ]
+  },
+  {
+   "id": "putting-clothes-on-and-off",
+   "number": 183,
+   "title": "জামা গায়ে যা করি",
+   "front": "pages/183-front.jpg",
+   "back": "pages/183-back.jpg",
+   "items": [
+    {
+     "id": "put-jacket-on",
+     "label": "জামা পরা",
+     "gloss": "putting on a shirt or jacket"
+    },
+    {
+     "id": "take-shirt-off",
+     "label": "জামা খোলা",
+     "gloss": "taking off a shirt"
+    },
+    {
+     "id": "roll-up-sleeves",
+     "label": "হাতা গোটানো",
+     "gloss": "rolling up a sleeve"
+    },
+    {
+     "id": "wrap-scarf-at-neck",
+     "label": "গলায় পেঁচানো",
+     "gloss": "looping fabric around the neck"
+    },
+    {
+     "id": "cover-head-with-orna",
+     "label": "মাথা ঢাকা",
+     "gloss": "covering one's head with fabric"
+    },
+    {
+     "id": "tuck-in-cloth",
+     "label": "কোমরে গোঁজা",
+     "gloss": "tucking cloth into a waist band"
+    }
+   ],
+   "questions": [
+    "কে হাতা গোটাচ্ছেন?",
+    "কে মাথা ঢাকছেন আর কে গলায় কাপড় পেঁচাচ্ছেন?",
+    "কাজ করতে গেলে কখনও হাতা গোটান?",
+    "জামা পরে নিতে কাউকে কী বলবেন?",
+    "জামা পরা আর জামা খোলা ছবিতে হাতের কোন দিকে কাপড় আছে?",
+    "একই কাপড় মানুষ আবহাওয়া আর কাজের ধরন দেখে আলাদা করে পরেন কেন?"
+   ]
+  },
+  {
+   "id": "winter-warmth",
+   "number": 65,
+   "title": "শীতের জিনিস",
+   "front": "pages/065-front.jpg",
+   "back": "pages/065-back.jpg",
+   "items": [
+    {
+     "id": "shawl",
+     "label": "চাদর",
+     "gloss": "warm shawl"
+    },
+    {
+     "id": "quilt",
+     "label": "কাঁথা",
+     "gloss": "stitched quilt"
+    },
+    {
+     "id": "blanket",
+     "label": "কম্বল",
+     "gloss": "thick blanket"
+    },
+    {
+     "id": "warm-top",
+     "label": "গরম জামা",
+     "gloss": "warm upper garment"
+    },
+    {
+     "id": "gloves",
+     "label": "হাতমোজা",
+     "gloss": "gloves"
+    },
+    {
+     "id": "winter-cap",
+     "label": "পশমি টুপি",
+     "gloss": "knit winter hat"
+    }
+   ],
+   "questions": [
+    "কাঁথাটা কোনটা?",
+    "কোন দুটো কালো?",
+    "শীতের সকালে আপনি কী পরেন?",
+    "ঘুমাতে গিয়ে ঠান্ডা লাগলে কী নেবেন?",
+    "এখানে শীতের জিনিস কোথায় পাওয়া যায়?",
+    "একই ঠান্ডায় দুজন মানুষের আলাদা জিনিসের দরকার হতে পারে কেন?"
+   ]
+  },
+  {
+   "id": "joints-and-neck",
+   "number": 84,
+   "title": "হাত পা আর ঘাড়ের ভাঁজ",
+   "front": "pages/084-front.jpg",
+   "back": "pages/084-back.jpg",
+   "items": [
+    {
+     "id": "neck",
+     "label": "ঘাড়",
+     "gloss": "back of the neck"
+    },
+    {
+     "id": "shoulder",
+     "label": "কাঁধ",
+     "gloss": "shoulder"
+    },
+    {
+     "id": "elbow",
+     "label": "কনুই",
+     "gloss": "elbow"
+    },
+    {
+     "id": "wrist",
+     "label": "কবজি",
+     "gloss": "wrist"
+    },
+    {
+     "id": "knee",
+     "label": "হাঁটু",
+     "gloss": "knee"
+    },
+    {
+     "id": "ankle",
+     "label": "গোড়ালি",
+     "gloss": "ankle"
+    }
+   ],
+   "questions": [
+    "কনুই কোথায়?",
+    "কোন দুটো পায়ের অংশ?",
+    "কোনটা নাড়িয়ে আপনি কারও নজর কাড়তে পারেন?",
+    "কিছু হাতে ধরতে হাতের কোন অংশগুলো ভাঁজ করেন?",
+    "লম্বা সময় বসে থাকলে কোন কোন জায়গা নাড়াতে ভালো লাগে?",
+    "কেউ শরীরের কোনো অংশ নাড়াতে না পারলে কাজটা অন্যভাবে করার কী উপায় বের করতে পারেন?"
+   ]
+  },
+  {
+   "id": "on-the-way-actions",
+   "number": 116,
+   "title": "পথে যেসব কাজ করি",
+   "front": "pages/116-front.jpg",
+   "back": "pages/116-back.jpg",
+   "items": [
+    {
+     "id": "waiting-person",
+     "label": "অপেক্ষা করা",
+     "gloss": "to wait"
+    },
+    {
+     "id": "setting-out",
+     "label": "রওনা হওয়া",
+     "gloss": "to set out for a destination"
+    },
+    {
+     "id": "following-person",
+     "label": "পিছু নেওয়া",
+     "gloss": "to follow someone"
+    },
+    {
+     "id": "make-way",
+     "label": "পথ ছেড়ে দেওয়া",
+     "gloss": "to make way for someone"
+    },
+    {
+     "id": "changing-path",
+     "label": "পথ বদলানো",
+     "gloss": "to change routes"
+    },
+    {
+     "id": "lost-person",
+     "label": "পথ হারানো",
+     "gloss": "to lose one's way"
+    }
+   ],
+   "questions": [
+    "কে বসে অপেক্ষা করছেন?",
+    "কোন ছবিতে দুজনের একজন পথ ছেড়ে দিয়েছেন?",
+    "আপনি কোথায় সবচেয়ে বেশি অপেক্ষা করেন?",
+    "পথ হারালে কাউকে কী জিজ্ঞেস করবেন?",
+    "চেনা পথ বন্ধ থাকলে অন্য পথ কীভাবে খুঁজে নেবেন?",
+    "কারও হাতে সময় কম থাকলে পথ বেছে নেওয়ার সিদ্ধান্ত কীভাবে বদলায়?"
+   ]
+  },
+  {
+   "id": "torso-and-nails",
+   "number": 102,
+   "title": "বুক পিঠ আর পেট",
+   "front": "pages/102-front.jpg",
+   "back": "pages/102-back.jpg",
+   "items": [
+    {
+     "id": "chest",
+     "label": "বুক",
+     "gloss": "chest"
+    },
+    {
+     "id": "back-torso",
+     "label": "পিঠ",
+     "gloss": "back of the torso"
+    },
+    {
+     "id": "waist",
+     "label": "কোমর",
+     "gloss": "waist"
+    },
+    {
+     "id": "belly",
+     "label": "পেট",
+     "gloss": "belly"
+    },
+    {
+     "id": "navel",
+     "label": "নাভি",
+     "gloss": "navel"
+    },
+    {
+     "id": "fingernail",
+     "label": "নখ",
+     "gloss": "fingernail"
+    }
+   ],
+   "questions": [
+    "বুক কোথায়?",
+    "কোন ছবিতে লোকটার পিঠ দেখা যাচ্ছে?",
+    "আপনি “পেটে ব্যথা” বলে কীভাবে দেখাবেন?",
+    "ভারী কিছু তুললে শরীরের কোন দিকটায় বেশি চাপ পড়ে?",
+    "ব্যথার জায়গাটা বোঝাতে কী কী শব্দ কাজে লাগে?",
+    "একই ব্যথা দুজন মানুষ আলাদা করে বললে তাঁদের কথা কীভাবে বুঝতে পারেন?"
+   ]
+  },
+  {
+   "id": "foods-served-alongside-rice",
+   "number": 184,
+   "title": "ভাতের পাশে যা খাই",
+   "front": "pages/184-front.jpg",
+   "back": "pages/184-back.jpg",
+   "items": [
+    {
+     "id": "fried-egg-local",
+     "label": "ভাজা ডিম",
+     "gloss": "fried egg served whole"
+    },
+    {
+     "id": "fish-curry-broth",
+     "label": "মাছের ঝোল",
+     "gloss": "fish in a thin Bengali curry broth"
+    },
+    {
+     "id": "egg-curry-broth",
+     "label": "ডিমের ঝোল",
+     "gloss": "boiled egg in Bengali curry broth"
+    },
+    {
+     "id": "stir-fried-vegetable-bhaji",
+     "label": "সবজি ভাজি",
+     "gloss": "Bangladeshi lightly fried vegetable side dish"
+    },
+    {
+     "id": "bengali-mashed-side",
+     "label": "ভর্তা",
+     "gloss": "Bangladeshi seasoned mashed side dish"
+    },
+    {
+     "id": "bangla-condiment-pickle",
+     "label": "আচার",
+     "gloss": "Bangladeshi fruit pickle condiment"
+    }
+   ],
+   "questions": [
+    "আচার কোনটা?",
+    "কোন দুই ছবিতে ডিম আছে?",
+    "ভাতের সঙ্গে আপনি কোনটা খান?",
+    "মাছের ঝোল একটু কম ঝাল করে দিতে কী বলবেন?",
+    "সবজি ভাজি আর ভর্তা খেলে কী তফাত পাবেন?",
+    "একই ভাতের সঙ্গে একেক বাড়িতে একেক রকম পদ থাকে কেন?"
+   ]
+  },
+  {
+   "id": "household-trouble",
+   "number": 47,
+   "title": "বাসার ঝামেলা",
+   "front": "pages/047-front.jpg",
+   "back": "pages/047-back.jpg",
+   "items": [
+    {
+     "id": "drip",
+     "label": "চুইয়ে পড়া",
+     "gloss": "to leak or drip"
+    },
+    {
+     "id": "clog",
+     "label": "আটকে যাওয়া",
+     "gloss": "to get clogged"
+    },
+    {
+     "id": "stain",
+     "label": "দাগ",
+     "gloss": "stain"
+    },
+    {
+     "id": "mildew",
+     "label": "ছাতা পড়া",
+     "gloss": "to grow mold"
+    },
+    {
+     "id": "crack",
+     "label": "ফাটল",
+     "gloss": "crack"
+    },
+    {
+     "id": "dent",
+     "label": "দেবে যাওয়া",
+     "gloss": "to get dented"
+    }
+   ],
+   "questions": [
+    "কোথায় পানি চুইয়ে পড়ছে?",
+    "কোন ছবিতে ফাটল দেখছেন?",
+    "এমন কোন ঝামেলা আপনার চোখে পড়েছে?",
+    "বাসায় পানি চুইয়ে পড়লে কাকে বলবেন?",
+    "কোন ঝামেলাটা আগে ঠিক করা দরকার বলে মনে হয়?",
+    "ভাড়া বাসায় জিনিস নষ্ট হলে দায়িত্ব কীভাবে ভাগ হওয়া উচিত?"
+   ]
+  },
+  {
+   "id": "small-everyday-measures",
+   "number": 168,
+   "title": "অল্প জিনিস কীভাবে বলি",
+   "front": "pages/168-front.jpg",
+   "back": "pages/168-back.jpg",
+   "items": [
+    {
+     "id": "single-tied-bundle",
+     "label": "এক আঁটি",
+     "gloss": "one tied bunch of greens"
+    },
+    {
+     "id": "one-handful",
+     "label": "এক মুঠো",
+     "gloss": "one handful of dry food"
+    },
+    {
+     "id": "one-pinch",
+     "label": "এক চিমটি",
+     "gloss": "one pinch of a powder"
+    },
+    {
+     "id": "one-sip",
+     "label": "এক চুমুক",
+     "gloss": "one sip of a drink"
+    },
+    {
+     "id": "one-mouthful",
+     "label": "এক লোকমা",
+     "gloss": "one small mouthful of food"
+    },
+    {
+     "id": "one-liquid-drop",
+     "label": "এক ফোঁটা",
+     "gloss": "one single liquid drop"
+    }
+   ],
+   "questions": [
+    "এক চিমটি মসলা কোন ছবিতে আছে?",
+    "কোন ছবিতে মুখে খাবার তুলছেন আর কোনটায় পানি খাচ্ছেন?",
+    "বাজার থেকে আপনি কখনও এক আঁটি শাক কিনেছেন?",
+    "এক মুঠো ছোলা দিতে কাউকে কী বলবেন?",
+    "এক ফোঁটা আর এক চুমুক, কোনটায় পানি বেশি?",
+    "মাপার যন্ত্র না থাকলে হাত দিয়ে নেওয়া মাপ সব মানুষের জন্য কি একই হবে? কেন?"
+   ]
+  },
+  {
+   "id": "electricity-and-light",
+   "number": 107,
+   "title": "বিদ্যুৎ আর আলো",
+   "front": "pages/107-front.jpg",
+   "back": "pages/107-back.jpg",
+   "items": [
+    {
+     "id": "electric-wire",
+     "label": "বিদ্যুতের তার",
+     "gloss": "electric cable"
+    },
+    {
+     "id": "utility-pole",
+     "label": "বিদ্যুতের খুঁটি",
+     "gloss": "utility pole"
+    },
+    {
+     "id": "oil-lamp",
+     "label": "কুপি",
+     "gloss": "wick oil lamp"
+    },
+    {
+     "id": "candle",
+     "label": "মোমবাতি",
+     "gloss": "wax candle"
+    },
+    {
+     "id": "light-switch",
+     "label": "বাতির বোতাম",
+     "gloss": "wall light switch"
+    },
+    {
+     "id": "flashlight",
+     "label": "হাতবাতি",
+     "gloss": "handheld light"
+    }
+   ],
+   "questions": [
+    "মোমবাতি কোথায়?",
+    "কোন দুটোতে আগুনের শিখা দেখা যায়?",
+    "আপনি অন্ধকারে কী দিয়ে আলো করেন?",
+    "ঘরে ঢুকে বাতি জ্বালাতে কাউকে কী বলবেন?",
+    "বিদ্যুৎ চলে গেলে আপনার আশপাশে কী কী বদলে যায়?",
+    "আলো পাওয়ার উপায় আলাদা হলে মানুষ কখন কী কাজ করতে পারে, তাতে কী প্রভাব পড়ে?"
+   ]
+  },
+  {
+   "id": "features-for-giving-directions",
+   "number": 185,
+   "title": "রাস্তার যে জায়গাগুলো বলি",
+   "front": "pages/185-front.jpg",
+   "back": "pages/185-back.jpg",
+   "items": [
+    {
+     "id": "four-way-crossroads",
+     "label": "চৌরাস্তা",
+     "gloss": "intersection with four distinct road branches"
+    },
+    {
+     "id": "three-way-junction",
+     "label": "তিন রাস্তার মোড়",
+     "gloss": "road junction with exactly three arms"
+    },
+    {
+     "id": "roundabout-junction",
+     "label": "গোলচত্বর",
+     "gloss": "roundabout with circular central island"
+    },
+    {
+     "id": "alley-mouth",
+     "label": "গলির মুখ",
+     "gloss": "entrance of a narrow residential alley"
+    },
+    {
+     "id": "road-dead-end",
+     "label": "রাস্তার শেষ",
+     "gloss": "the end of a dead-end road"
+    },
+    {
+     "id": "urban-flyover",
+     "label": "উড়ালপুল",
+     "gloss": "urban road flyover"
+    }
+   ],
+   "questions": [
+    "গোলচত্বর কোনটা?",
+    "কোন মোড়ে চার দিকে রাস্তা আছে?",
+    "আপনার বাসার কাছে উড়ালপুল আছে?",
+    "গলির মুখ থেকে কোন দিকে যেতে হবে, কীভাবে বলবেন?",
+    "তিন রাস্তার মোড় আর রাস্তার শেষ কী দেখে আলাদা করবেন?",
+    "রাস্তার নাম জানা না থাকলে কাউকে পথ বুঝিয়ে দিতে কোন কোন চেনা জায়গার কথা বলবেন? কেন?"
+   ]
+  },
+  {
+   "id": "cooking-actions",
+   "number": 29,
+   "title": "রান্নার ধাপ",
+   "front": "pages/029-front.jpg",
+   "back": "pages/029-back.jpg",
+   "items": [
+    {
+     "id": "slice",
+     "label": "কাটা",
+     "gloss": "to cut into slices"
+    },
+    {
+     "id": "peel",
+     "label": "খোসা ছাড়ানো",
+     "gloss": "to peel"
+    },
+    {
+     "id": "stir",
+     "label": "নাড়া",
+     "gloss": "to stir"
+    },
+    {
+     "id": "pour",
+     "label": "ঢালা",
+     "gloss": "to pour"
+    },
+    {
+     "id": "knead",
+     "label": "মাখা",
+     "gloss": "to knead dough"
+    },
+    {
+     "id": "roll-dough",
+     "label": "বেলা",
+     "gloss": "to roll out dough"
+    }
+   ],
+   "questions": [
+    "কে আলু কাটছেন?",
+    "কোন দুটো ছবিতে হাঁড়ি আছে?",
+    "আপনি কোন কাজটা আগে করেছেন?",
+    "রুটি বানাতে মাখার পরে কী করেন?",
+    "কারও কাছে রান্না শিখতে হলে কী দেখতে চান?",
+    "একটা রান্না কেন দেখে শেখা সহজ হতে পারে?"
+   ]
+  },
+  {
+   "id": "welcoming-guests-at-home",
+   "number": 234,
+   "title": "বাসায় মেহমান এলে",
+   "front": "pages/234-front.jpg",
+   "back": "pages/234-back.jpg",
+   "items": [
+    {
+     "id": "holding-door-open-for-guest",
+     "label": "দরজা ধরে রাখা",
+     "gloss": "holding a door open for a guest"
+    },
+    {
+     "id": "setting-out-a-mat-for-guests",
+     "label": "মেহমানের জন্য পাটি পাতা",
+     "gloss": "laying out a mat for guests"
+    },
+    {
+     "id": "sliding-a-seat-toward-a-guest",
+     "label": "বসার আসন এগিয়ে দেওয়া",
+     "gloss": "offering a seat by bringing it closer"
+    },
+    {
+     "id": "offering-filled-water-glass",
+     "label": "পানি এগিয়ে দেওয়া",
+     "gloss": "offering someone a glass of water"
+    },
+    {
+     "id": "uncovering-the-served-food",
+     "label": "খাবারের ঢাকনা সরানো",
+     "gloss": "uncovering already served food"
+    },
+    {
+     "id": "pouring-tea-for-a-guest",
+     "label": "মেহমানকে চা ঢেলে দেওয়া",
+     "gloss": "pouring tea for a house guest"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে চা ঢালা হচ্ছে?",
+    "আসন এগিয়ে দেওয়া আর পাটি পাতার মধ্যে কী তফাত?",
+    "মেহমান এলে আপনি কী দিয়ে শুরু করেন?",
+    "খাবার দেওয়ার আগে কী কী গুছিয়ে রাখবেন?",
+    "অতিথিকে পানি দিতে গিয়ে কী বলবেন?",
+    "অচেনা কাউকে বাসায় বসালে কী করলে তিনি স্বচ্ছন্দ বোধ করবেন?"
+   ]
+  },
+  {
+   "id": "ramadan-and-eid",
+   "number": 92,
+   "title": "রমজান আর ঈদ",
+   "front": "pages/092-front.jpg",
+   "back": "pages/092-back.jpg",
+   "items": [
+    {
+     "id": "iftar",
+     "label": "ইফতার",
+     "gloss": "meal at sunset to break the fast"
+    },
+    {
+     "id": "sehri",
+     "label": "সেহরি",
+     "gloss": "early meal before the fast"
+    },
+    {
+     "id": "dates-fruit",
+     "label": "খেজুর",
+     "gloss": "date fruit"
+    },
+    {
+     "id": "eid-moon",
+     "label": "ঈদের চাঁদ",
+     "gloss": "new Eid moon crescent"
+    },
+    {
+     "id": "eid-clothes",
+     "label": "ঈদের জামা",
+     "gloss": "new clothes for Eid"
+    },
+    {
+     "id": "eid-money",
+     "label": "ঈদি",
+     "gloss": "Eid gift money"
+    }
+   ],
+   "questions": [
+    "খেজুর কোন ছবিতে?",
+    "কোন ছবির খাবারটা সূর্য ডোবার সময় খায়?",
+    "রমজানে আপনার আশপাশে কী বদল দেখতে পান?",
+    "কাউকে ইফতারে ডাকতে হলে কী বলবেন?",
+    "ঈদের সকালে আপনার আশপাশে লোকজন কী করেন?",
+    "মানুষ অন্য দেশে গিয়ে ঈদ করলে কোন পুরোনো রীতি রাখতে চাইতে পারেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "full-empty-fit-and-thickness",
+   "number": 167,
+   "title": "ভরা ফাঁকা আর আঁট ঢিল",
+   "front": "pages/167-front.jpg",
+   "back": "pages/167-back.jpg",
+   "items": [
+    {
+     "id": "container-full",
+     "label": "ভরতি",
+     "gloss": "completely full container"
+    },
+    {
+     "id": "container-empty",
+     "label": "ফাঁকা",
+     "gloss": "completely empty container"
+    },
+    {
+     "id": "tight-fitting-sleeve",
+     "label": "আঁটসাঁট",
+     "gloss": "tight fitting garment"
+    },
+    {
+     "id": "loose-fitting-sleeve",
+     "label": "ঢিলেঢালা",
+     "gloss": "loose fitting garment"
+    },
+    {
+     "id": "thick-fabric",
+     "label": "পুরু",
+     "gloss": "thick material in cross section"
+    },
+    {
+     "id": "thin-fabric",
+     "label": "পাতলা",
+     "gloss": "thin material in cross section"
+    }
+   ],
+   "questions": [
+    "ফাঁকা বয়ামটা কোনটা?",
+    "কোন ছবিতে হাতাটা খুব ঢিলা?",
+    "গরমের দিনে আপনি পাতলা কাপড় পরেন?",
+    "জামাটা আঁটসাঁট হলে দর্জিকে কী বলবেন?",
+    "পুরু কাপড় আর পাতলা কাপড় ছুঁয়ে কীভাবে বুঝবেন?",
+    "একই কাজের জন্য কখনও আঁটসাঁট আর কখনও ঢিলেঢালা জামা কেন সুবিধা দেয়?"
+   ]
+  },
+  {
+   "id": "small-repairs",
+   "number": 25,
+   "title": "ছোটখাটো মেরামত",
+   "front": "pages/025-front.jpg",
+   "back": "pages/025-back.jpg",
+   "items": [
+    {
+     "id": "hammer",
+     "label": "হাতুড়ি",
+     "gloss": "hammer"
+    },
+    {
+     "id": "nail",
+     "label": "পেরেক",
+     "gloss": "nail"
+    },
+    {
+     "id": "saw",
+     "label": "করাত",
+     "gloss": "handsaw"
+    },
+    {
+     "id": "wood",
+     "label": "কাঠ",
+     "gloss": "wood"
+    },
+    {
+     "id": "lock",
+     "label": "তালা",
+     "gloss": "padlock"
+    },
+    {
+     "id": "key",
+     "label": "চাবি",
+     "gloss": "key"
+    }
+   ],
+   "questions": [
+    "করাতটা কোথায়?",
+    "কোন দুটো দিয়ে দরজা আটকাই আর খুলি?",
+    "আপনার কাছে এর কোনটা আছে?",
+    "পেরেক ঠুকতে কী লাগে?",
+    "কিছু ভেঙে গেলে আর কী লাগে?",
+    "কাউকে তালাটা খুলতে বললে কী বলবেন?"
+   ]
+  },
+  {
+   "id": "getting-around-in-the-rain",
+   "number": 195,
+   "title": "বৃষ্টিতে বাইরে যা হয়",
+   "front": "pages/195-front.jpg",
+   "back": "pages/195-back.jpg",
+   "items": [
+    {
+     "id": "heavy-tropical-rain",
+     "label": "ঝুম বৃষ্টি",
+     "gloss": "heavy pouring rain"
+    },
+    {
+     "id": "fine-intermittent-drizzle",
+     "label": "গুঁড়ি গুঁড়ি বৃষ্টি",
+     "gloss": "fine light drizzle"
+    },
+    {
+     "id": "street-waterlogging",
+     "label": "রাস্তায় পানি জমা",
+     "gloss": "standing water covering a street"
+    },
+    {
+     "id": "spread-open-umbrella",
+     "label": "ছাতা মেলা",
+     "gloss": "opening an umbrella"
+    },
+    {
+     "id": "get-wet-in-rain",
+     "label": "বৃষ্টিতে ভেজা",
+     "gloss": "getting soaked in the rain"
+    },
+    {
+     "id": "foot-stuck-in-mud",
+     "label": "কাদায় পা আটকে যাওয়া",
+     "gloss": "one foot stuck in mud"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে খুব জোরে বৃষ্টি পড়ছে?",
+    "কোনটায় ছাতা খুলছেন?",
+    "আপনার এলাকায় বৃষ্টির পরে কোথায় পানি জমে?",
+    "রাস্তা ভেজা আর পিচ্ছিল, কাউকে কীভাবে সাবধানে যেতে বলবেন?",
+    "গুঁড়ি গুঁড়ি আর ঝুম বৃষ্টির মধ্যে কী দেখে তফাত বুঝবেন?",
+    "বৃষ্টি হচ্ছে, বাইরে বের হওয়ার আগে কী কী ভেবে দেখবেন?"
+   ]
+  },
+  {
+   "id": "market-stall-snacks",
+   "number": 154,
+   "title": "হাটে গরম গরম নাশতা",
+   "front": "pages/154-front.jpg",
+   "back": "pages/154-back.jpg",
+   "items": [
+    {
+     "id": "fuchka-snack",
+     "label": "ফুচকা",
+     "gloss": "fuchka stuffed crisp shells"
+    },
+    {
+     "id": "chotpoti-snack",
+     "label": "চটপটি",
+     "gloss": "chotpoti pea and tamarind snack"
+    },
+    {
+     "id": "jhalmuri-snack",
+     "label": "ঝালমুড়ি",
+     "gloss": "spiced puffed-rice snack"
+    },
+    {
+     "id": "onion-fritters",
+     "label": "পেঁয়াজু",
+     "gloss": "Bangladeshi onion lentil fritter"
+    },
+    {
+     "id": "eggplant-fritters",
+     "label": "বেগুনি",
+     "gloss": "battered Bangladeshi eggplant fritter"
+    },
+    {
+     "id": "lentil-puri-snack",
+     "label": "ডালপুরি",
+     "gloss": "lentil-filled fried flatbread"
+    }
+   ],
+   "questions": [
+    "ফুচকা কোনটা?",
+    "কোন খাবারটা কাগজের ঠোঙায় আছে?",
+    "আপনি কখনও চটপটি খেয়েছেন?",
+    "বেগুনি চাইলে দোকানিকে কী বলবেন?",
+    "কোন খাবারে ঝাল কম দিতে বলবেন, আর কীভাবে বলবেন?",
+    "একই নাশতা নিয়ে কারও ভালো লাগে আর কারও ঝাল বেশি মনে হয় কেন?"
+   ]
+  },
+  {
+   "id": "ways-of-handling-money",
+   "number": 251,
+   "title": "টাকা দিই নিই আর পাঠাই",
+   "front": "pages/251-front.jpg",
+   "back": "pages/251-back.jpg",
+   "items": [
+    {
+     "id": "depositing-cash-at-bank",
+     "label": "জমা দেওয়া",
+     "gloss": "deposit cash at a bank counter"
+    },
+    {
+     "id": "taking-money-from-cashpoint",
+     "label": "টাকা তোলা",
+     "gloss": "withdraw cash from a cash machine"
+    },
+    {
+     "id": "transferring-money-at-distance",
+     "label": "টাকা পাঠানো",
+     "gloss": "send money to a distant recipient"
+    },
+    {
+     "id": "borrowing-cash-from-a-person",
+     "label": "টাকা ধার নেওয়া",
+     "gloss": "borrow money from another person"
+    },
+    {
+     "id": "repaying-money-borrowed",
+     "label": "ধার শোধ করা",
+     "gloss": "repay money borrowed earlier"
+    },
+    {
+     "id": "checking-the-money-total",
+     "label": "হিসাব মেলানো",
+     "gloss": "reconcile a written total against cash"
+    }
+   ],
+   "questions": [
+    "কে টাকা তুলছেন?",
+    "জমা দেওয়া আর টাকা তোলা কীভাবে আলাদা?",
+    "আপনি কাকে টাকা পাঠান?",
+    "কারও কাছে টাকা ধার চাইতে কী বলবেন?",
+    "ধার শোধ হলে কীভাবে হিসাব মিলিয়ে দেখবেন?",
+    "সঙ্গে নগদ না থাকলে দূরে থাকা কাউকে টাকা পাঠাতে কী করবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "everyday-materials",
+   "number": 39,
+   "title": "কী দিয়ে বানানো",
+   "front": "pages/039-front.jpg",
+   "back": "pages/039-back.jpg",
+   "items": [
+    {
+     "id": "paper",
+     "label": "কাগজ",
+     "gloss": "paper"
+    },
+    {
+     "id": "fabric",
+     "label": "কাপড়",
+     "gloss": "fabric"
+    },
+    {
+     "id": "glass-material",
+     "label": "কাচ",
+     "gloss": "glass material"
+    },
+    {
+     "id": "iron-metal",
+     "label": "লোহা",
+     "gloss": "iron"
+    },
+    {
+     "id": "soil",
+     "label": "মাটি",
+     "gloss": "soil"
+    },
+    {
+     "id": "stone",
+     "label": "পাথর",
+     "gloss": "stone"
+    }
+   ],
+   "questions": [
+    "পাথরটা কোনটা?",
+    "কোন দুটো ভাঁজ করা যায়?",
+    "আপনি কোনটা বেশি ব্যবহার করেন?",
+    "কোন জিনিস দিয়ে বানানো হলে জানালার ভেতর দিয়ে দেখা যায়?",
+    "একটা পাত্র বানাতে কোনটা বেছে নেবেন?",
+    "একই জিনিস আলাদা উপকরণ দিয়ে বানালে তার দাম বা ব্যবহার কীভাবে বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "features-of-paths",
+   "number": 66,
+   "title": "পথ কেমন",
+   "front": "pages/066-front.jpg",
+   "back": "pages/066-back.jpg",
+   "items": [
+    {
+     "id": "near",
+     "label": "কাছে",
+     "gloss": "near"
+    },
+    {
+     "id": "far",
+     "label": "দূরে",
+     "gloss": "far"
+    },
+    {
+     "id": "straight",
+     "label": "সোজা",
+     "gloss": "straight"
+    },
+    {
+     "id": "curved",
+     "label": "বাঁকা",
+     "gloss": "curved"
+    },
+    {
+     "id": "steep",
+     "label": "খাড়া",
+     "gloss": "steep incline"
+    },
+    {
+     "id": "sloping",
+     "label": "ঢালু",
+     "gloss": "gently sloping"
+    }
+   ],
+   "questions": [
+    "লাল চিহ্নটা কোন ছবিতে কাছে?",
+    "কোন পথটা বেশি খাড়া?",
+    "আপনার বাসা থেকে বাজার কাছে, নাকি দূরে?",
+    "বৃষ্টি হলে খাড়া পথে উঠতে কী করেন?",
+    "একটা পথ সহজ কি কঠিন, কী দেখে বোঝেন?",
+    "একই জায়গা কারও কাছে কাছে আর কারও কাছে দূরে মনে হতে পারে কেন?"
+   ]
+  },
+  {
+   "id": "hair-on-head-and-face",
+   "number": 163,
+   "title": "মাথায় আর মুখে চুল",
+   "front": "pages/163-front.jpg",
+   "back": "pages/163-back.jpg",
+   "items": [
+    {
+     "id": "head-hair",
+     "label": "চুল",
+     "gloss": "hair on the head"
+    },
+    {
+     "id": "beard-hair",
+     "label": "দাড়ি",
+     "gloss": "beard on chin and cheeks"
+    },
+    {
+     "id": "moustache-hair",
+     "label": "গোঁফ",
+     "gloss": "moustache on upper lip"
+    },
+    {
+     "id": "sideburn-hair",
+     "label": "জুলফি",
+     "gloss": "sideburns of hair in front of ear"
+    },
+    {
+     "id": "bald-head",
+     "label": "টাক",
+     "gloss": "bald area on crown of head"
+    },
+    {
+     "id": "part-in-hair",
+     "label": "সিঁথি",
+     "gloss": "line parting hair on the scalp"
+    }
+   ],
+   "questions": [
+    "কার গোঁফ আছে?",
+    "কোন ছবিতে মাথার ওপর চুল নেই?",
+    "ঘরে বা আশপাশে কার দাড়ি আছে?",
+    "চুলের সিঁথি কোন দিকে করবেন, সেটা কীভাবে বলবেন?",
+    "দাড়ি আর জুলফি মুখের কোন কোন দিকে থাকে?",
+    "চুল দাড়ি বদলালে একই মানুষকে চিনতে কখন কষ্ট হতে পারে?"
+   ]
+  },
+  {
+   "id": "land-and-water",
+   "number": 36,
+   "title": "প্রকৃতির জায়গা",
+   "front": "pages/036-front.jpg",
+   "back": "pages/036-back.jpg",
+   "items": [
+    {
+     "id": "river",
+     "label": "নদী",
+     "gloss": "river"
+    },
+    {
+     "id": "canal",
+     "label": "খাল",
+     "gloss": "canal"
+    },
+    {
+     "id": "pond",
+     "label": "পুকুর",
+     "gloss": "pond"
+    },
+    {
+     "id": "wetland",
+     "label": "বিল",
+     "gloss": "open wetland"
+    },
+    {
+     "id": "hill",
+     "label": "পাহাড়",
+     "gloss": "hill"
+    },
+    {
+     "id": "forest",
+     "label": "বন",
+     "gloss": "forest"
+    }
+   ],
+   "questions": [
+    "পুকুরটা কোনটা?",
+    "কোনটা নদীর চেয়ে সরু?",
+    "আপনি কোন রকম জায়গায় গেছেন?",
+    "পুকুর আর বিল কী দেখে আলাদা করবেন?",
+    "বর্ষায় এখানে কোন জায়গায় পানি বেড়ে যায়?",
+    "নদী বদলে গেলে পাশের মানুষের জীবন কীভাবে বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "vehicles",
+   "number": 61,
+   "title": "চলার বাহন",
+   "front": "pages/061-front.jpg",
+   "back": "pages/061-back.jpg",
+   "items": [
+    {
+     "id": "car",
+     "label": "গাড়ি",
+     "gloss": "passenger car"
+    },
+    {
+     "id": "airplane",
+     "label": "বিমান",
+     "gloss": "airplane"
+    },
+    {
+     "id": "ship",
+     "label": "জাহাজ",
+     "gloss": "ship"
+    },
+    {
+     "id": "raft",
+     "label": "ভেলা",
+     "gloss": "raft"
+    },
+    {
+     "id": "handcart",
+     "label": "ঠেলাগাড়ি",
+     "gloss": "handcart"
+    },
+    {
+     "id": "oxcart",
+     "label": "গরুর গাড়ি",
+     "gloss": "oxcart"
+    }
+   ],
+   "questions": [
+    "বিমানটা কোনটা?",
+    "কোন দুটো পানিতে চলে?",
+    "আপনি এখানে সাধারণত কীসে চড়েন?",
+    "বেশি জিনিস একসঙ্গে নিতে হলে কী বেছে নেবেন?",
+    "শহর আর গ্রামে মানুষ কীভাবে আলাদা করে চলাফেরা করেন?",
+    "কোন বাহন সহজে পাওয়া যায় তার ওপর মানুষের কাজ আর পড়াশোনা কীভাবে বদলায়?"
+   ]
+  },
+  {
+   "id": "fire-and-fuel",
+   "number": 44,
+   "title": "আগুন জ্বালানো",
+   "front": "pages/044-front.jpg",
+   "back": "pages/044-back.jpg",
+   "items": [
+    {
+     "id": "stove",
+     "label": "চুলা",
+     "gloss": "stove"
+    },
+    {
+     "id": "charcoal",
+     "label": "কয়লা",
+     "gloss": "charcoal"
+    },
+    {
+     "id": "matches",
+     "label": "দিয়াশলাই",
+     "gloss": "matches"
+    },
+    {
+     "id": "flame",
+     "label": "আগুন",
+     "gloss": "fire"
+    },
+    {
+     "id": "smoke",
+     "label": "ধোঁয়া",
+     "gloss": "smoke"
+    },
+    {
+     "id": "ash",
+     "label": "ছাই",
+     "gloss": "ash"
+    }
+   ],
+   "questions": [
+    "চুলাটা কোনটা?",
+    "কোন ছবির জিনিসটা ওপরে উঠে যায়?",
+    "আপনি কী রকম চুলা দেখেছেন?",
+    "আগুন নিভে গেলে কী পড়ে থাকে?",
+    "ধোঁয়া বের হতে না পারলে কী অসুবিধা হয়?",
+    "পাড়ায় রান্নার জ্বালানি বদলালে মানুষের খরচ আর ঘরের হাওয়া কীভাবে বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "local-market-fish",
+   "number": 82,
+   "title": "বাজারের মাছ চিনি",
+   "front": "pages/082-front.jpg",
+   "back": "pages/082-back.jpg",
+   "items": [
+    {
+     "id": "ilish",
+     "label": "ইলিশ",
+     "gloss": "hilsa"
+    },
+    {
+     "id": "ruhu",
+     "label": "রুই",
+     "gloss": "rohu carp"
+    },
+    {
+     "id": "stinging-catfish",
+     "label": "শিং মাছ",
+     "gloss": "stinging catfish"
+    },
+    {
+     "id": "climbing-perch",
+     "label": "কই",
+     "gloss": "climbing perch"
+    },
+    {
+     "id": "prawn",
+     "label": "চিংড়ি",
+     "gloss": "freshwater prawn"
+    },
+    {
+     "id": "punti",
+     "label": "পুঁটি",
+     "gloss": "small freshwater barb"
+    }
+   ],
+   "questions": [
+    "চিংড়ি কোনটা?",
+    "কোন মাছগুলো হাতের তালুতে আছে?",
+    "এর মধ্যে কোন মাছটা আপনি বাজারে দেখেছেন?",
+    "মাছ কেনার আগে কী দেখে বাছেন?",
+    "আপনার এলাকায় ছোট মাছ আর বড় মাছ কীভাবে রান্না করে?",
+    "নদী বা পুকুরের অবস্থা বদলালে বাজারে কোন মাছ পাওয়া যায়, তাতে কী বদল আসতে পারে?"
+   ]
+  },
+  {
+   "id": "packing-and-carrying",
+   "number": 95,
+   "title": "মালপত্র গুছিয়ে নিই",
+   "front": "pages/095-front.jpg",
+   "back": "pages/095-back.jpg",
+   "items": [
+    {
+     "id": "pack-organize",
+     "label": "গুছানো",
+     "gloss": "to organize belongings"
+    },
+    {
+     "id": "pack-fill",
+     "label": "ভরা",
+     "gloss": "to fill a bag"
+    },
+    {
+     "id": "pack-empty",
+     "label": "খালি করা",
+     "gloss": "to empty a container"
+    },
+    {
+     "id": "load-cart",
+     "label": "বোঝাই করা",
+     "gloss": "to load goods onto a cart"
+    },
+    {
+     "id": "shoulder-bag",
+     "label": "কাঁধে নেওয়া",
+     "gloss": "to put a load on the shoulder"
+    },
+    {
+     "id": "set-down-bag",
+     "label": "নামানো",
+     "gloss": "to set a carried item down"
+    }
+   ],
+   "questions": [
+    "কে থলে খালি করছেন?",
+    "কোন ছবিতে কাঁধে থলে নিচ্ছেন?",
+    "বাইরে এক রাত থাকলে আপনি কী কী গুছিয়ে নেন?",
+    "ভারি জিনিস কোথায় বসালে ঠেলাগাড়ি সামলানো সহজ হয়?",
+    "কম জায়গায় সব জিনিস কীভাবে ভরবেন?",
+    "যাওয়ার সময় কী সঙ্গে নেবেন, সেটা ঠিক করতে গিয়ে কোন জিনিসকে বেশি দরকারি মনে হয়, আর কেন?"
+   ]
+  },
+  {
+   "id": "roots-and-vines",
+   "number": 60,
+   "title": "সবজির লতা আর শিকড়",
+   "front": "pages/060-front.jpg",
+   "back": "pages/060-back.jpg",
+   "items": [
+    {
+     "id": "carrot",
+     "label": "গাজর",
+     "gloss": "carrot"
+    },
+    {
+     "id": "radish",
+     "label": "মুলা",
+     "gloss": "white radish"
+    },
+    {
+     "id": "pumpkin",
+     "label": "কুমড়া",
+     "gloss": "pumpkin"
+    },
+    {
+     "id": "bottle-gourd",
+     "label": "লাউ",
+     "gloss": "bottle gourd"
+    },
+    {
+     "id": "yardlong-bean",
+     "label": "বরবটি",
+     "gloss": "yardlong bean"
+    },
+    {
+     "id": "hyacinth-bean",
+     "label": "শিম",
+     "gloss": "flat hyacinth bean"
+    }
+   ],
+   "questions": [
+    "লাউটা কোনটা?",
+    "কোন দুটো মাটির নিচে হয়?",
+    "আপনি কোন সবজিটা বেশি দেখেন?",
+    "বরবটি আর শিম কী দেখে আলাদা করবেন?",
+    "নিজের হাতে সবজি লাগাতে হলে কোনটা বেছে নেবেন?",
+    "একটা সবজি হঠাৎ কম পাওয়া গেলে মানুষ কীভাবে রান্না বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "parts-and-cuts-of-food",
+   "number": 89,
+   "title": "খাবার কাটলে যা দেখি",
+   "front": "pages/089-front.jpg",
+   "back": "pages/089-back.jpg",
+   "items": [
+    {
+     "id": "chunks",
+     "label": "টুকরা",
+     "gloss": "irregular chunk of food"
+    },
+    {
+     "id": "food-slice",
+     "label": "ফালি",
+     "gloss": "long thin slice"
+    },
+    {
+     "id": "clove-garlic",
+     "label": "কোয়া",
+     "gloss": "separated clove"
+    },
+    {
+     "id": "tied-bunch",
+     "label": "আঁটি",
+     "gloss": "bundle tied together"
+    },
+    {
+     "id": "peel-skin",
+     "label": "খোসা",
+     "gloss": "detached fruit peel"
+    },
+    {
+     "id": "stalk",
+     "label": "ডাঁটা",
+     "gloss": "detached food stalk"
+    }
+   ],
+   "questions": [
+    "খোসাটা কোন ছবিতে?",
+    "কোনটা কুমড়ার ফালি?",
+    "এর মধ্যে কোন শব্দটা আপনি বাজারে শুনেছেন?",
+    "রসুনের কত কোয়া লাগবে, সেটা কীভাবে বলেন?",
+    "কোন খাবারের খোসা বা ডাঁটা আপনি ফেলে দেন?",
+    "সবজি কেটে বেচলে ক্রেতা আর দোকানির কী কী সুবিধা বা অসুবিধা হয়?"
+   ]
+  },
+  {
+   "id": "things-in-the-sky",
+   "number": 145,
+   "title": "আমাদের মাথার ওপর আকাশ",
+   "front": "pages/145-front.jpg",
+   "back": "pages/145-back.jpg",
+   "items": [
+    {
+     "id": "bright-sun",
+     "label": "সূর্য",
+     "gloss": "sun"
+    },
+    {
+     "id": "full-moon",
+     "label": "পূর্ণিমার চাঁদ",
+     "gloss": "full moon"
+    },
+    {
+     "id": "night-stars",
+     "label": "তারা",
+     "gloss": "stars in the sky"
+    },
+    {
+     "id": "rainbow-arc",
+     "label": "রংধনু",
+     "gloss": "rainbow"
+    },
+    {
+     "id": "hail-fall",
+     "label": "শিলাবৃষ্টি",
+     "gloss": "hail falling"
+    },
+    {
+     "id": "lightning-flash",
+     "label": "বিদ্যুৎ চমক",
+     "gloss": "lightning flash"
+    }
+   ],
+   "questions": [
+    "রংধনু কোন ছবিতে?",
+    "কোন দুটোতে ঝড়ের মেঘ আছে?",
+    "আপনি শেষ কবে আকাশে অনেক তারা দেখেছেন?",
+    "শিলাবৃষ্টি আর সাধারণ বৃষ্টি কী দেখে আলাদা করবেন?",
+    "বিদ্যুৎ চমকালে আকাশটা কী রকম দেখায়?",
+    "একই আকাশের ছবি দেখে দুইজনের আলাদা স্মৃতি মনে পড়তে পারে কেন?"
+   ]
+  },
+  {
+   "id": "everyday-groups-and-pairs",
+   "number": 229,
+   "title": "দল আর জোড়া করে বলি",
+   "front": "pages/229-front.jpg",
+   "back": "pages/229-back.jpg",
+   "items": [
+    {
+     "id": "pair-of-sandals",
+     "label": "এক জোড়া",
+     "gloss": "one pair of matching objects"
+    },
+    {
+     "id": "bunch-of-keys",
+     "label": "এক গোছা",
+     "gloss": "one bunch held together"
+    },
+    {
+     "id": "pile-of-empty-bags",
+     "label": "এক গাদা",
+     "gloss": "one heap"
+    },
+    {
+     "id": "one-bundle-load",
+     "label": "এক বোঝা",
+     "gloss": "one tied load"
+    },
+    {
+     "id": "flock-of-flying-birds",
+     "label": "এক ঝাঁক",
+     "gloss": "one flock of birds"
+    },
+    {
+     "id": "group-of-local-people",
+     "label": "এক দল",
+     "gloss": "one group of people"
+    }
+   ],
+   "questions": [
+    "এক জোড়া চটি কোথায়?",
+    "এক গাদা আর এক বোঝা দেখতে কীভাবে আলাদা?",
+    "আপনার কাছে এক গোছা চাবি থাকে?",
+    "দুইটা চটি একই জোড়ার কি না কী করে দেখবেন?",
+    "পাখি অনেকগুলো একসঙ্গে উড়লে কী বলবেন?",
+    "মাল সরাতে গাদা করে রাখবেন নাকি বোঝা বেঁধে নেবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "dairy-foods",
+   "number": 67,
+   "title": "দুধ থেকে যা হয়",
+   "front": "pages/067-front.jpg",
+   "back": "pages/067-back.jpg",
+   "items": [
+    {
+     "id": "yogurt",
+     "label": "দই",
+     "gloss": "yogurt"
+    },
+    {
+     "id": "rice-pudding",
+     "label": "পায়েস",
+     "gloss": "rice pudding"
+    },
+    {
+     "id": "butter",
+     "label": "মাখন",
+     "gloss": "butter"
+    },
+    {
+     "id": "milk-skin",
+     "label": "দুধের সর",
+     "gloss": "milk skin"
+    },
+    {
+     "id": "paneer",
+     "label": "পনির",
+     "gloss": "paneer cheese"
+    },
+    {
+     "id": "fresh-curds",
+     "label": "ছানা",
+     "gloss": "crumbled fresh milk curds"
+    }
+   ],
+   "questions": [
+    "পায়েসটা কোনটা?",
+    "কোন দুটো বাটিতে আছে?",
+    "এগুলোর মধ্যে কোনটা আপনি খেয়ে দেখেছেন?",
+    "পায়েস বানাতে দুধের সঙ্গে কী লাগে?",
+    "কোন খাবার অতিথিকে দিতে চাইবেন?",
+    "একই দুধ দিয়ে এত রকম জিনিস বানানোর অভ্যাস কেন গড়ে উঠতে পারে?"
+   ]
+  },
+  {
+   "id": "small-parts-of-hands-and-feet",
+   "number": 188,
+   "title": "হাত পায়ের ছোট অংশ",
+   "front": "pages/188-front.jpg",
+   "back": "pages/188-back.jpg",
+   "items": [
+    {
+     "id": "palm-of-hand",
+     "label": "তালু",
+     "gloss": "palm side of the hand"
+    },
+    {
+     "id": "back-of-hand-detail",
+     "label": "হাতের পিঠ",
+     "gloss": "back side of the hand"
+    },
+    {
+     "id": "fingers-of-hand",
+     "label": "আঙুল",
+     "gloss": "the fingers of a hand as a group"
+    },
+    {
+     "id": "thumb-detail",
+     "label": "বুড়ো আঙুল",
+     "gloss": "the thumb of a hand"
+    },
+    {
+     "id": "toes-detail",
+     "label": "পায়ের আঙুল",
+     "gloss": "toes of a foot"
+    },
+    {
+     "id": "sole-of-foot",
+     "label": "পায়ের তলা",
+     "gloss": "sole of a bare foot"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে হাতের তালু দেখা যাচ্ছে?",
+    "কোন ছবিতে বুড়ো আঙুলটা আলাদা করে ধরেছেন?",
+    "খালি পায়ে হেঁটে কখনও পায়ের তলায় কাদা লেগেছে?",
+    "হাতের পিঠে ব্যথা করছে, কোথায় ব্যথা সেটা কীভাবে বলবেন?",
+    "পাঁচটা আঙুলের মধ্যে বুড়ো আঙুল কীভাবে আলাদা?",
+    "আঙুলে অল্প নড়াচড়া কমে গেলে কোন কাজগুলো কঠিন হয়ে যেতে পারে?"
+   ]
+  },
+  {
+   "id": "storage-containers",
+   "number": 87,
+   "title": "যে পাত্রে রাখি",
+   "front": "pages/087-front.jpg",
+   "back": "pages/087-back.jpg",
+   "items": [
+    {
+     "id": "jar",
+     "label": "বয়াম",
+     "gloss": "wide glass storage jar"
+    },
+    {
+     "id": "small-tin",
+     "label": "কৌটা",
+     "gloss": "small lidded tin"
+    },
+    {
+     "id": "earthen-jar",
+     "label": "মটকা",
+     "gloss": "large earthen storage jar"
+    },
+    {
+     "id": "water-barrel",
+     "label": "পানির পিপা",
+     "gloss": "water storage barrel"
+    },
+    {
+     "id": "flower-vase",
+     "label": "ফুলদানি",
+     "gloss": "flower vase"
+    },
+    {
+     "id": "vial",
+     "label": "শিশি",
+     "gloss": "small glass vial"
+    }
+   ],
+   "questions": [
+    "বয়ামটা কোনটা?",
+    "কোন দুটোর গলা সরু?",
+    "আপনি বাড়িতে কোন পাত্রটা বেশি ব্যবহার করেন?",
+    "বেশি পানি ধরে রাখতে কোনটা নেবেন?",
+    "কোন জিনিস পাত্রে রাখলে ঢাকনা লাগানো দরকার?",
+    "বাসায় কী দিয়ে জিনিস রাখেন, সেটা বদলালে অপচয় কীভাবে কমতে পারে?"
+   ]
+  },
+  {
+   "id": "more-cooking-vegetables",
+   "number": 111,
+   "title": "দেশি রান্নায় আরও সবজি",
+   "front": "pages/111-front.jpg",
+   "back": "pages/111-back.jpg",
+   "items": [
+    {
+     "id": "okra",
+     "label": "ঢেঁড়স",
+     "gloss": "okra"
+    },
+    {
+     "id": "pointed-gourd",
+     "label": "পটল",
+     "gloss": "pointed gourd"
+    },
+    {
+     "id": "taro-root",
+     "label": "কচু",
+     "gloss": "taro corm"
+    },
+    {
+     "id": "sweet-potato",
+     "label": "মিষ্টি আলু",
+     "gloss": "sweet potato"
+    },
+    {
+     "id": "cabbage",
+     "label": "বাঁধাকপি",
+     "gloss": "cabbage"
+    },
+    {
+     "id": "ridge-gourd",
+     "label": "ঝিঙে",
+     "gloss": "ridged luffa gourd"
+    }
+   ],
+   "questions": [
+    "পটলটা কোথায়?",
+    "কোন দুটো মাটির নিচে হয়?",
+    "আপনার সবচেয়ে বেশি কোনটা রান্না করতে হয়?",
+    "ঢেঁড়স কেটে কী দেখে চিনবেন?",
+    "বাজারে সবজি তাজা কি না সেটা কীভাবে বুঝবেন?",
+    "চেনা কোনো সবজি কম পাওয়া গেলে মানুষ কী দিয়ে একই রান্না করতে পারেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "footwear-and-its-parts",
+   "number": 162,
+   "title": "পায়ে পরি আর জুতায় লাগাই",
+   "front": "pages/162-front.jpg",
+   "back": "pages/162-back.jpg",
+   "items": [
+    {
+     "id": "everyday-open-sandal",
+     "label": "চটি",
+     "gloss": "simple open-backed everyday sandal"
+    },
+    {
+     "id": "wooden-kharam-sandal",
+     "label": "খড়ম",
+     "gloss": "traditional wooden kharam toe-knob sandals"
+    },
+    {
+     "id": "embroidered-nagra-shoe",
+     "label": "নাগরা",
+     "gloss": "traditional embroidered nagra shoes"
+    },
+    {
+     "id": "shoelace",
+     "label": "জুতার ফিতা",
+     "gloss": "shoelace"
+    },
+    {
+     "id": "shoe-outsole",
+     "label": "জুতার তলা",
+     "gloss": "outer bottom sole of a shoe"
+    },
+    {
+     "id": "foot-anklet-bells",
+     "label": "নূপুর",
+     "gloss": "decorative anklet with tiny bells"
+    }
+   ],
+   "questions": [
+    "খড়ম কোনটা?",
+    "কোন ছবিতে জুতার তলার দাগ দেখা যায়?",
+    "বাড়িতে আপনি সাধারণত কী পায়ে দেন?",
+    "জুতার ফিতা ছিঁড়লে দোকানে কী চাইবেন?",
+    "চটি আর নাগরা কোনটা কখন পরতে ভালো লাগবে?",
+    "একই জুতা দেখতে সুন্দর হলেও অনেকক্ষণ হাঁটার জন্য আর কী দেখবেন?"
+   ]
+  },
+  {
+   "id": "ties-and-fasteners",
+   "number": 128,
+   "title": "বাঁধি আর আটকে রাখি",
+   "front": "pages/128-front.jpg",
+   "back": "pages/128-back.jpg",
+   "items": [
+    {
+     "id": "jute-rope",
+     "label": "দড়ি",
+     "gloss": "jute rope"
+    },
+    {
+     "id": "metal-chain",
+     "label": "শিকল",
+     "gloss": "metal chain"
+    },
+    {
+     "id": "hair-ribbon",
+     "label": "চুলের ফিতা",
+     "gloss": "hair ribbon"
+    },
+    {
+     "id": "metal-ring",
+     "label": "আংটা",
+     "gloss": "plain fastener ring"
+    },
+    {
+     "id": "magnet",
+     "label": "চুম্বক",
+     "gloss": "magnet"
+    },
+    {
+     "id": "cloth-peg",
+     "label": "কাপড়ের চিমটি",
+     "gloss": "clothespin"
+    }
+   ],
+   "questions": [
+    "দড়িটা কোনটা?",
+    "কোনটা লোহা টেনে ধরে?",
+    "আপনি কোথায় শিকল ব্যবহার হতে দেখেন?",
+    "ভেজা কাপড় দড়িতে রাখলে কী দিয়ে আটকাবেন?",
+    "হাতে এসব না থাকলে হালকা জিনিস বেঁধে রাখবেন কী দিয়ে?",
+    "জিনিস বাঁধার ধরন বদলালে সেটি খুলতে বা আবার ব্যবহার করতে কী তফাত হয়?"
+   ]
+  },
+  {
+   "id": "aunts-uncles-and-nephews",
+   "number": 191,
+   "title": "আব্বা আম্মার ভাইবোনের ঘর",
+   "front": "pages/191-front.jpg",
+   "back": "pages/191-back.jpg",
+   "items": [
+    {
+     "id": "fufu-fathers-sister",
+     "label": "ফুফু",
+     "gloss": "father's sister"
+    },
+    {
+     "id": "fufa-fathers-sisters-husband",
+     "label": "ফুফা",
+     "gloss": "husband of father's sister"
+    },
+    {
+     "id": "khala-mothers-sister",
+     "label": "খালা",
+     "gloss": "mother's sister"
+    },
+    {
+     "id": "khalu-mothers-sisters-husband",
+     "label": "খালু",
+     "gloss": "husband of mother's sister"
+    },
+    {
+     "id": "nephew-brothers-son",
+     "label": "ভাতিজা",
+     "gloss": "brother's son relative to the parent sibling"
+    },
+    {
+     "id": "nephew-sisters-son",
+     "label": "ভাগ্নে",
+     "gloss": "sister's son relative to the parent sibling"
+    }
+   ],
+   "questions": [
+    "নীল জামার লোকের পাশে কে আছেন?",
+    "কোন দুই ছবিতে ছোট ছেলে আছে?",
+    "আপনি আপনার খালাকে কী বলে ডাকেন?",
+    "নিজের ভাইয়ের ছেলেকে অন্যের সঙ্গে কীভাবে পরিচয় করাবেন?",
+    "ফুফা আর খালু, কোনটা আব্বার দিকের আর কোনটা আম্মার দিকের?",
+    "একই মানুষ একজনের ছেলে আর অন্যজনের ভাগ্নে হতে পারেন কীভাবে?"
+   ]
+  },
+  {
+   "id": "more-local-fruit",
+   "number": 79,
+   "title": "এই দেশের আরও ফল",
+   "front": "pages/079-front.jpg",
+   "back": "pages/079-back.jpg",
+   "items": [
+    {
+     "id": "guava",
+     "label": "পেয়ারা",
+     "gloss": "guava"
+    },
+    {
+     "id": "java-plum",
+     "label": "জাম",
+     "gloss": "java plum"
+    },
+    {
+     "id": "lychee",
+     "label": "লিচু",
+     "gloss": "lychee"
+    },
+    {
+     "id": "hog-plum",
+     "label": "আমড়া",
+     "gloss": "hog plum"
+    },
+    {
+     "id": "jujube",
+     "label": "বরই",
+     "gloss": "Indian jujube"
+    },
+    {
+     "id": "watermelon",
+     "label": "তরমুজ",
+     "gloss": "watermelon"
+    }
+   ],
+   "questions": [
+    "লিচু কোন ছবিতে?",
+    "কোন ফলের কাটা অংশে কালো বিচি আছে?",
+    "এগুলোর মধ্যে কোন ফলটা আপনি খেয়েছেন?",
+    "খাওয়ার আগে কোন ফলের খোসা ছাড়ান?",
+    "আপনার এলাকায় কোন ফলটা কোন সময় বেশি পাওয়া যায়?",
+    "একটা এলাকার চেনা ফল অন্য জায়গার মানুষকে কীভাবে পরিচয় করিয়ে দেবেন?"
+   ]
+  },
+  {
+   "id": "more-clothes-to-wear",
+   "number": 161,
+   "title": "বের হওয়ার সময় যে জামাকাপড় পরি",
+   "front": "pages/161-front.jpg",
+   "back": "pages/161-back.jpg",
+   "items": [
+    {
+     "id": "casual-fatua-top",
+     "label": "ফতুয়া",
+     "gloss": "short cotton Bangladeshi fatua tunic"
+    },
+    {
+     "id": "pajama-trousers",
+     "label": "পায়জামা",
+     "gloss": "men's narrow drawstring pajama trousers"
+    },
+    {
+     "id": "sleeveless-shirt",
+     "label": "হাতা কাটা জামা",
+     "gloss": "sleeveless shirt"
+    },
+    {
+     "id": "winter-shawl",
+     "label": "শাল",
+     "gloss": "woven shoulder shawl"
+    },
+    {
+     "id": "head-turban",
+     "label": "পাগড়ি",
+     "gloss": "wrapped head turban"
+    },
+    {
+     "id": "long-borka",
+     "label": "বোরকা",
+     "gloss": "long Bangladeshi outer borka garment"
+    }
+   ],
+   "questions": [
+    "পাগড়িটা কে পরেছেন?",
+    "কোন জামাটার হাতা নেই?",
+    "ফতুয়া আর পায়জামা আপনি একসঙ্গে কাকে পরতে দেখেছেন?",
+    "শাল কিনতে গেলে কী রং চাইবেন?",
+    "শাল আর বোরকা শরীরের কোন কোন অংশ ঢাকে?",
+    "একই মানুষ কাজের সময় আর দাওয়াতে আলাদা জামাকাপড় কেন বেছে নিতে পারেন?"
+   ]
+  },
+  {
+   "id": "more-neighborhood-specialty-shops",
+   "number": 211,
+   "title": "পাড়ায় জিনিস কিনি যেসব দোকানে",
+   "front": "pages/211-front.jpg",
+   "back": "pages/211-back.jpg",
+   "items": [
+    {
+     "id": "local-book-shop",
+     "label": "বইয়ের দোকান",
+     "gloss": "book shop storefront"
+    },
+    {
+     "id": "local-cloth-shop",
+     "label": "কাপড়ের দোকান",
+     "gloss": "fabric shop storefront"
+    },
+    {
+     "id": "local-shoe-shop",
+     "label": "জুতার দোকান",
+     "gloss": "shoe shop storefront"
+    },
+    {
+     "id": "local-fruit-shop",
+     "label": "ফলের দোকান",
+     "gloss": "fruit shop storefront"
+    },
+    {
+     "id": "local-flower-shop",
+     "label": "ফুলের দোকান",
+     "gloss": "flower shop storefront"
+    },
+    {
+     "id": "local-fish-shop",
+     "label": "মাছের দোকান",
+     "gloss": "fish shop storefront"
+    }
+   ],
+   "questions": [
+    "মাছের দোকানটা কোথায়?",
+    "কাপড়ের দোকান আর জুতার দোকানে কী তফাত?",
+    "আপনার বাসার কাছে কোন দোকান আছে?",
+    "বই দরকার হলে দোকান খুঁজে কাউকে কী বলবেন?",
+    "দোকানে ফল আর মাছ টাটকা কি না কী দেখে বুঝবেন?",
+    "নতুন পাড়ায় দোকান চিনতে দোকানের নাম না পড়ে কী করতে পারেন?"
+   ]
+  },
+  {
+   "id": "sending-post-and-parcels",
+   "number": 204,
+   "title": "ডাকে জিনিস পাঠাই",
+   "front": "pages/204-front.jpg",
+   "back": "pages/204-back.jpg",
+   "items": [
+    {
+     "id": "red-post-letter-box",
+     "label": "ডাকবাক্স",
+     "gloss": "street posting box"
+    },
+    {
+     "id": "bangla-postmark",
+     "label": "ডাকের ছাপ",
+     "gloss": "postmark on an envelope"
+    },
+    {
+     "id": "brown-paper-parcel",
+     "label": "কাগজে মোড়ানো জিনিস",
+     "gloss": "wrapped parcel for posting"
+    },
+    {
+     "id": "postal-canvas-sack",
+     "label": "ডাকের থলে",
+     "gloss": "postal delivery sack"
+    },
+    {
+     "id": "sender-address-on-letter",
+     "label": "নিজের ঠিকানা",
+     "gloss": "return address on an envelope"
+    },
+    {
+     "id": "receiver-address-on-letter",
+     "label": "পাঠানোর ঠিকানা",
+     "gloss": "recipient address on an envelope"
+    }
+   ],
+   "questions": [
+    "ডাকবাক্সটা কোথায়?",
+    "দুটো খামে লেখার জায়গা কীভাবে আলাদা?",
+    "আপনি কখনও ডাকে কিছু পাঠিয়েছেন?",
+    "পাঠানোর আগে খামে কী কী লাগাবেন?",
+    "ঠিকানা ভুল হলে কী করে ঠিক করবেন?",
+    "কাউকে চিঠি পাঠানো আর হাতে চিঠি দেওয়ার মধ্যে কখন কোনটা বেছে নেবেন?"
+   ]
+  },
+  {
+   "id": "ages-of-people",
+   "number": 91,
+   "title": "মানুষের বয়স",
+   "front": "pages/091-front.jpg",
+   "back": "pages/091-back.jpg",
+   "items": [
+    {
+     "id": "newborn",
+     "label": "নতুন বাচ্চা",
+     "gloss": "newborn baby"
+    },
+    {
+     "id": "young-child",
+     "label": "ছোট বাচ্চা",
+     "gloss": "young child"
+    },
+    {
+     "id": "teenager",
+     "label": "কিশোর",
+     "gloss": "teenager"
+    },
+    {
+     "id": "young-adult",
+     "label": "তরুণী",
+     "gloss": "young adult woman"
+    },
+    {
+     "id": "middle-aged-adult",
+     "label": "মাঝবয়সি",
+     "gloss": "middle-aged adult"
+    },
+    {
+     "id": "older-adult",
+     "label": "বয়স্ক",
+     "gloss": "older adult"
+    }
+   ],
+   "questions": [
+    "কার বয়স সবচেয়ে কম?",
+    "কোন ছবিতে কিশোর দেখা যাচ্ছে?",
+    "ছোটবেলায় আপনি কী খেলতেন?",
+    "কোন বয়সে কারও কী সাহায্য দরকার হতে পারে?",
+    "মানুষ বড় হওয়ার সঙ্গে পরিবারের কাজ কীভাবে ভাগ করে নেয়?",
+    "একজনের কী করতে পারার কথা, শুধু বয়স দেখে ধরে নিলে কী ভুল হতে পারে?"
+   ]
+  },
+  {
+   "id": "food-for-guests",
+   "number": 93,
+   "title": "দাওয়াতের খাবার",
+   "front": "pages/093-front.jpg",
+   "back": "pages/093-back.jpg",
+   "items": [
+    {
+     "id": "biriyani",
+     "label": "বিরিয়ানি",
+     "gloss": "kacchi biriyani"
+    },
+    {
+     "id": "bhuna-khichuri",
+     "label": "ভুনা খিচুড়ি",
+     "gloss": "bhuna khichuri rice and lentils"
+    },
+    {
+     "id": "korma",
+     "label": "কোরমা",
+     "gloss": "chicken korma"
+    },
+    {
+     "id": "kebab",
+     "label": "কাবাব",
+     "gloss": "kebab"
+    },
+    {
+     "id": "jorda",
+     "label": "জর্দা",
+     "gloss": "sweet orange rice"
+    },
+    {
+     "id": "firni",
+     "label": "ফিরনি",
+     "gloss": "set milk dessert with ground rice"
+    }
+   ],
+   "questions": [
+    "কাবাবটা কোনটা?",
+    "কোন দুটো মিষ্টি?",
+    "এর মধ্যে কোনটা আপনি খেয়ে দেখেছেন?",
+    "ঝাল কম আছে কি না জানতে কী বলবেন?",
+    "অতিথিদের খাবারে কী দেবেন, সেটা কী দেখে ঠিক করেন?",
+    "অনেক রকম খাবারের অভ্যাস আছে এমন অতিথিদের একসঙ্গে খাওয়াতে কীভাবে খাবার ঠিক করবেন?"
+   ]
+  },
+  {
+   "id": "bed-linens-and-nightwear",
+   "number": 242,
+   "title": "বিছানায় আর ঘুমের সময়",
+   "front": "pages/242-front.jpg",
+   "back": "pages/242-back.jpg",
+   "items": [
+    {
+     "id": "quilted-winter-bed-cover",
+     "label": "লেপ",
+     "gloss": "thick traditional winter quilt"
+    },
+    {
+     "id": "plain-bed-sheet",
+     "label": "বিছানার চাদর",
+     "gloss": "flat bed sheet"
+    },
+    {
+     "id": "removable-pillowcase",
+     "label": "বালিশের ওয়াড়",
+     "gloss": "removable pillowcase"
+    },
+    {
+     "id": "long-bolster-pillow",
+     "label": "কোলবালিশ",
+     "gloss": "long cylindrical hugging pillow"
+    },
+    {
+     "id": "cotton-sleepwear-set",
+     "label": "ঘুমানোর পোশাক",
+     "gloss": "light cotton sleepwear"
+    },
+    {
+     "id": "bedside-bednet-post",
+     "label": "মশারির খুঁটি",
+     "gloss": "bed mosquito net support post"
+    }
+   ],
+   "questions": [
+    "কোলবালিশ কোনটা?",
+    "চাদর আর লেপের পুরুত্বে কী তফাত?",
+    "আপনি শীতে গায়ে কী দেন?",
+    "বালিশের ওয়াড় কীভাবে বদলাবেন?",
+    "মশারি টানাতে কী কী লাগবে?",
+    "বাড়িতে একজন মেহমান থাকলে ঘুমানোর আগে কী কী গুছিয়ে দেবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "small-everyday-mishaps",
+   "number": 146,
+   "title": "চলার সময় ছোটখাটো ঝামেলা",
+   "front": "pages/146-front.jpg",
+   "back": "pages/146-back.jpg",
+   "items": [
+    {
+     "id": "trip-over",
+     "label": "হোঁচট খাওয়া",
+     "gloss": "to trip over something"
+    },
+    {
+     "id": "foot-slip",
+     "label": "পিছলে যাওয়া",
+     "gloss": "to slip on a surface"
+    },
+    {
+     "id": "bump-into",
+     "label": "ধাক্কা খাওয়া",
+     "gloss": "to bump into someone"
+    },
+    {
+     "id": "knocked-away",
+     "label": "ছিটকে পড়া",
+     "gloss": "to be knocked flying"
+    },
+    {
+     "id": "bend-out-of-shape",
+     "label": "বেঁকে যাওয়া",
+     "gloss": "to become bent out of shape"
+    },
+    {
+     "id": "stuck-to-surface",
+     "label": "লেগে থাকা",
+     "gloss": "to be stuck to a surface"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে পা পিছলে যাচ্ছে?",
+    "কোন জিনিসটা ছিটকে পড়ছে?",
+    "আপনি কখনও ভেজা রাস্তায় পিছলে গেছেন?",
+    "কাউকে কোথায় হোঁচট খেলেন সেটা কীভাবে বলবেন?",
+    "পথে কী দেখে বুঝবেন পা সাবধানে ফেলতে হবে?",
+    "একই পথ একেকজনের জন্য একেক রকম কঠিন হতে পারে কেন?"
+   ]
+  },
+  {
+   "id": "local-cold-drinks",
+   "number": 118,
+   "title": "ঠান্ডা যা খাই",
+   "front": "pages/118-front.jpg",
+   "back": "pages/118-back.jpg",
+   "items": [
+    {
+     "id": "coconut-water",
+     "label": "ডাবের পানি",
+     "gloss": "water from a tender coconut"
+    },
+    {
+     "id": "sugarcane-juice",
+     "label": "আখের রস",
+     "gloss": "pressed sugarcane juice"
+    },
+    {
+     "id": "bael-drink",
+     "label": "বেলের শরবত",
+     "gloss": "bael sharbat"
+    },
+    {
+     "id": "lemon-water",
+     "label": "লেবুপানি",
+     "gloss": "lemon water"
+    },
+    {
+     "id": "ghol-drink",
+     "label": "ঘোল",
+     "gloss": "Bengali diluted yogurt drink"
+    },
+    {
+     "id": "borhani-drink",
+     "label": "বোরহানি",
+     "gloss": "spiced Bangladeshi yogurt drink"
+    }
+   ],
+   "questions": [
+    "ডাবের পানি কোন ছবিতে?",
+    "কোন দুটো দই দিয়ে বানানো হয়?",
+    "গরমে কোনটা খেতে আপনার ভালো লাগে?",
+    "কোনো দোকানে চিনি কম দিতে কী বলবেন?",
+    "অতিথি এলে ঠান্ডা কী খেতে দেবেন?",
+    "এলাকার গরমকাল বা ফলের ধরন সেখানে কী পান করা হয়, তাতে কীভাবে প্রভাব ফেলে?"
+   ]
+  },
+  {
+   "id": "basic-shapes",
+   "number": 33,
+   "title": "জিনিসের আকার",
+   "front": "pages/033-front.jpg",
+   "back": "pages/033-back.jpg",
+   "items": [
+    {
+     "id": "square",
+     "label": "সমান চারকোনা",
+     "gloss": "square"
+    },
+    {
+     "id": "rectangle",
+     "label": "লম্বা চারকোনা",
+     "gloss": "rectangle"
+    },
+    {
+     "id": "circle",
+     "label": "গোল",
+     "gloss": "round or circular"
+    },
+    {
+     "id": "oval",
+     "label": "ডিমের মতো",
+     "gloss": "oval"
+    },
+    {
+     "id": "star",
+     "label": "তারার মতো",
+     "gloss": "star-shaped"
+    },
+    {
+     "id": "pentagon",
+     "label": "পাঁচকোনা",
+     "gloss": "five-sided"
+    }
+   ],
+   "questions": [
+    "গোলটা কোনটা?",
+    "কোন দুটোর ধার বাঁকা?",
+    "আপনার ঘরে কী কী গোল জিনিস আছে?",
+    "চারদিক সমান এমন একটা আকার কীভাবে আঁকবেন?",
+    "দরজা আর জানালার আকার কি সব জায়গায় একই হয়?",
+    "মানুষ কেন কিছু জিনিস গোল আর কিছু জিনিস চারকোনা বানায়?"
+   ]
+  },
+  {
+   "id": "baby-play-and-feeding-things",
+   "number": 206,
+   "title": "ছোট বাচ্চার হাতে আর মুখে",
+   "front": "pages/206-front.jpg",
+   "back": "pages/206-back.jpg",
+   "items": [
+    {
+     "id": "baby-hand-rattle",
+     "label": "ঝুনঝুনি",
+     "gloss": "handheld baby rattle"
+    },
+    {
+     "id": "cloth-baby-doll",
+     "label": "পুতুল",
+     "gloss": "whole cloth doll"
+    },
+    {
+     "id": "wooden-toy-motor-car",
+     "label": "খেলনা গাড়ি",
+     "gloss": "small wooden toy car"
+    },
+    {
+     "id": "small-wooden-toy-horse",
+     "label": "কাঠের ঘোড়া",
+     "gloss": "wooden horse toy"
+    },
+    {
+     "id": "infant-milk-feeding-bottle",
+     "label": "দুধ খাওয়ানোর বোতল",
+     "gloss": "infant milk feeding bottle"
+    },
+    {
+     "id": "baby-feeding-bib-cloth",
+     "label": "বাচ্চার বুকঢাকা কাপড়",
+     "gloss": "cloth bib for feeding"
+    }
+   ],
+   "questions": [
+    "ঝুনঝুনি কোনটা?",
+    "খেলনা গাড়ি আর কাঠের ঘোড়া কীভাবে নড়ে?",
+    "ছোটবেলায় আপনার কী খেলনা ছিল?",
+    "বাচ্চাকে খাওয়ানোর আগে বাচ্চার বুকঢাকা কাপড় কীভাবে পরাবেন?",
+    "পুতুল আর ঝুনঝুনির মধ্যে শব্দ হবে কোনটায়?",
+    "বাচ্চাকে শান্ত করতে কোন খেলনাটা আগে দেবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "ground-and-crushed-kitchen-spices",
+   "number": 237,
+   "title": "গুঁড়া আর বাটা মসলা",
+   "front": "pages/237-front.jpg",
+   "back": "pages/237-back.jpg",
+   "items": [
+    {
+     "id": "whole-dried-chillies",
+     "label": "শুকনা মরিচ",
+     "gloss": "whole dried red chillies"
+    },
+    {
+     "id": "turmeric-ground-powder",
+     "label": "হলুদের গুঁড়া",
+     "gloss": "ground turmeric powder"
+    },
+    {
+     "id": "red-chilli-powder",
+     "label": "মরিচের গুঁড়া",
+     "gloss": "ground red chilli powder"
+    },
+    {
+     "id": "ground-coriander-seeds",
+     "label": "ধনে গুঁড়া",
+     "gloss": "ground coriander seed powder"
+    },
+    {
+     "id": "mustard-seed-paste",
+     "label": "সরিষা বাটা",
+     "gloss": "prepared mustard seed paste"
+    },
+    {
+     "id": "crushed-fresh-ginger-paste",
+     "label": "আদা বাটা",
+     "gloss": "fresh crushed ginger paste"
+    }
+   ],
+   "questions": [
+    "আস্ত শুকনা মরিচ কোনটা?",
+    "হলুদের গুঁড়া আর আদা বাটার ছোঁয়ায় কী তফাত হতে পারে?",
+    "আপনি কোন রান্নায় সরিষা বাটা দেন?",
+    "আস্ত মরিচ থেকে গুঁড়া করতে কী করবেন?",
+    "মরিচের গুঁড়া আর ধনে গুঁড়া চিনতে কী দেখবেন?",
+    "ঝাল কমাতে চাইলে কোন মসলা কতটা দেবেন কীভাবে ঠিক করবেন?"
+   ]
+  },
+  {
+   "id": "aromatic-spices",
+   "number": 80,
+   "title": "রান্নার আরও মসলা",
+   "front": "pages/080-front.jpg",
+   "back": "pages/080-back.jpg",
+   "items": [
+    {
+     "id": "cinnamon",
+     "label": "দারুচিনি",
+     "gloss": "cinnamon stick"
+    },
+    {
+     "id": "cloves",
+     "label": "লবঙ্গ",
+     "gloss": "cloves"
+    },
+    {
+     "id": "cardamom",
+     "label": "এলাচ",
+     "gloss": "cardamom"
+    },
+    {
+     "id": "peppercorn",
+     "label": "গোলমরিচ",
+     "gloss": "black peppercorn"
+    },
+    {
+     "id": "bay-leaf",
+     "label": "তেজপাতা",
+     "gloss": "bay leaf"
+    },
+    {
+     "id": "fresh-turmeric",
+     "label": "কাঁচা হলুদ",
+     "gloss": "fresh turmeric root"
+    }
+   ],
+   "questions": [
+    "তেজপাতা কোনটা?",
+    "কোনটা ছোট ছোট গোল দানার মতো?",
+    "আপনি কোন মসলার ঘ্রাণ সবচেয়ে সহজে চিনতে পারেন?",
+    "পুরো মসলা আর গুঁড়া মসলা কখন দেন?",
+    "আপনার পরিচিত কোনো রান্নায় কী কী মসলা পড়ে?",
+    "একই খাবারে মসলার গন্ধ বদলালে মানুষের খাওয়ার অভ্যাস কীভাবে বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "parts-of-common-containers",
+   "number": 244,
+   "title": "পাত্রের কোন অংশটা",
+   "front": "pages/244-front.jpg",
+   "back": "pages/244-back.jpg",
+   "items": [
+    {
+     "id": "open-mouth-of-a-bottle",
+     "label": "বোতলের মুখ",
+     "gloss": "opening at the mouth of a bottle"
+    },
+    {
+     "id": "separate-screw-cap-for-bottle",
+     "label": "বোতলের ছিপি",
+     "gloss": "detached bottle screw cap"
+    },
+    {
+     "id": "handle-of-a-teacup",
+     "label": "পেয়ালার হাতল",
+     "gloss": "looped handle of a teacup"
+    },
+    {
+     "id": "handle-of-a-cooking-pot",
+     "label": "হাঁড়ির হাতল",
+     "gloss": "handle on a cooking pot"
+    },
+    {
+     "id": "underside-foot-of-a-bowl",
+     "label": "পাত্রের তলা",
+     "gloss": "underside of a bowl"
+    },
+    {
+     "id": "edge-rim-of-a-plate",
+     "label": "থালার কিনারা",
+     "gloss": "outer rim of a plate"
+    }
+   ],
+   "questions": [
+    "বোতলের ছিপি কোনটা?",
+    "পেয়ালার হাতল আর হাঁড়ির হাতল কীভাবে আলাদা?",
+    "আপনার বাসায় কোন পাত্রে হাতল নেই?",
+    "বোতলের মুখ বন্ধ করতে কী লাগাবেন?",
+    "থালা তুলতে হলে কোন অংশটা ধরবেন?",
+    "গরম পাত্র তুলতে হাতল বা কিনারা ধরার আগে কী দেখবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "writing-and-correcting-on-paper",
+   "number": 264,
+   "title": "লিখে দেখে ঠিক করি",
+   "front": "pages/264-front.jpg",
+   "back": "pages/264-back.jpg",
+   "items": [
+    {
+     "id": "crossing-out-a-written-word",
+     "label": "লেখা কেটে দেওয়া",
+     "gloss": "cross out an already written word"
+    },
+    {
+     "id": "fixing-a-misspelled-word",
+     "label": "বানান ঠিক করা",
+     "gloss": "correct a misspelling by replacing one letter"
+    },
+    {
+     "id": "copying-a-line-to-a-new-page",
+     "label": "দেখে দেখে লেখা",
+     "gloss": "copy text by looking at a model"
+    },
+    {
+     "id": "underlining-a-line-of-writing",
+     "label": "লেখার নিচে দাগ দেওয়া",
+     "gloss": "underline important writing"
+    },
+    {
+     "id": "filling-an-empty-form-box",
+     "label": "খালি ঘর ভরা",
+     "gloss": "fill in a blank box in a form"
+    },
+    {
+     "id": "writing-a-note-in-the-margin",
+     "label": "পাতার পাশে লেখা",
+     "gloss": "write a short note in the page margin"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে লেখার নিচে দাগ দিচ্ছেন?",
+    "লেখা কেটে দেওয়া আর নিচে দাগ দেওয়া দেখতে কীভাবে আলাদা?",
+    "আপনি নতুন শব্দ দেখে দেখে লেখেন?",
+    "খালি ঘরে নাম লিখতে হলে কী দেখে শুরু করবেন?",
+    "বানান ভুল হলে ভুলটা আর ঠিক শব্দটা কীভাবে দেখাবেন?",
+    "লেখা পড়ে পরে দরকারি কথা খুঁজে পেতে কীভাবে দাগ দেবেন বা কথা লিখে রাখবেন?"
+   ]
+  },
+  {
+   "id": "common-wordless-notices",
+   "number": 175,
+   "title": "ছবি দেখে নিয়ম বুঝি",
+   "front": "pages/175-front.jpg",
+   "back": "pages/175-back.jpg",
+   "items": [
+    {
+     "id": "no-entry-notice",
+     "label": "ঢোকা মানা",
+     "gloss": "no entry for pedestrians notice"
+    },
+    {
+     "id": "shoes-off-entry",
+     "label": "জুতা খুলে ঢোকা",
+     "gloss": "removing footwear before entering"
+    },
+    {
+     "id": "handwash-station",
+     "label": "হাত ধোয়ার জায়গা",
+     "gloss": "handwashing station"
+    },
+    {
+     "id": "waiting-seat-area",
+     "label": "বসার জায়গা",
+     "gloss": "public seating space"
+    },
+    {
+     "id": "road-closed-barrier",
+     "label": "পথ বন্ধ",
+     "gloss": "path closed by barrier"
+    },
+    {
+     "id": "no-litter-notice",
+     "label": "ময়লা ফেলা মানা",
+     "gloss": "no littering notice"
+    }
+   ],
+   "questions": [
+    "কোন চিহ্নটা বলছে এখানে ঢোকা যাবে না?",
+    "কোন ছবিতে জুতা খুলছেন?",
+    "আপনি কোথায় হাত ধোয়ার জায়গা দেখেছেন?",
+    "পথ বন্ধ পেলে অন্য পথ কীভাবে জিজ্ঞেস করবেন?",
+    "ময়লা ফেলতে মানা, কিন্তু কাছে পাত্র নেই। কী করবেন?",
+    "কোনো জায়গায় সবাই যেন কথা না পড়েও নিয়ম বুঝতে পারেন, সে জন্য কী ধরনের ছবি ভালো কাজ করে?"
+   ]
+  },
+  {
+   "id": "actions-for-care",
+   "number": 117,
+   "title": "অসুখে পাশে থাকি",
+   "front": "pages/117-front.jpg",
+   "back": "pages/117-back.jpg",
+   "items": [
+    {
+     "id": "take-temperature",
+     "label": "জ্বর মাপা",
+     "gloss": "to take a temperature"
+    },
+    {
+     "id": "check-pulse",
+     "label": "নাড়ি দেখা",
+     "gloss": "to feel a pulse"
+    },
+    {
+     "id": "deep-breath",
+     "label": "শ্বাস নেওয়া",
+     "gloss": "to take a breath"
+    },
+    {
+     "id": "wash-scrape",
+     "label": "ক্ষত ধোয়া",
+     "gloss": "to rinse a small scrape"
+    },
+    {
+     "id": "wrap-bandage",
+     "label": "পট্টি বাঁধা",
+     "gloss": "to wrap a bandage"
+    },
+    {
+     "id": "apply-ointment",
+     "label": "মলম লাগানো",
+     "gloss": "to apply ointment"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে জ্বর মাপছেন?",
+    "হাতের কোথায় নাড়ি দেখছেন?",
+    "শরীর খারাপ হলে কাছের কাউকে কী বলেন?",
+    "পট্টি চাইতে হলে কীভাবে বলবেন?",
+    "কেউ খুব আস্তে কথা বললে তাঁর কী দরকার কীভাবে বুঝবেন?",
+    "কাউকে সাহায্য করতে গিয়ে তাঁর কী পছন্দ, সেটা আগে জেনে নেওয়া কেন কাজে লাগে?"
+   ]
+  },
+  {
+   "id": "hands-on-small-repairs",
+   "number": 160,
+   "title": "মেরামতের সময় যা করি",
+   "front": "pages/160-front.jpg",
+   "back": "pages/160-back.jpg",
+   "items": [
+    {
+     "id": "hammer-a-nail",
+     "label": "পেরেক ঠোকা",
+     "gloss": "to hammer a nail into wood"
+    },
+    {
+     "id": "saw-along-wood",
+     "label": "করাত দিয়ে চেরা",
+     "gloss": "to saw along wood"
+    },
+    {
+     "id": "tighten-a-screw",
+     "label": "প্যাঁচ কষা",
+     "gloss": "to tighten a screw"
+    },
+    {
+     "id": "bore-a-hole",
+     "label": "ফুটো করা",
+     "gloss": "to drill a neat hole"
+    },
+    {
+     "id": "whitewash-a-wall",
+     "label": "চুনকাম করা",
+     "gloss": "to apply lime whitewash"
+    },
+    {
+     "id": "glue-two-pieces",
+     "label": "জোড়া লাগানো",
+     "gloss": "to join broken pieces back together"
+    }
+   ],
+   "questions": [
+    "কে পেরেক ঠুকছেন?",
+    "কোন ছবিতে আঠা দিয়ে দুই টুকরা জোড়া লাগাচ্ছেন?",
+    "আপনি বাড়িতে কী মেরামত করেছেন?",
+    "কাঠে ফুটো করতে হলে আগে কী দেখে নেবেন?",
+    "পেঁচ আর পেরেক লাগানোর জন্য আলাদা কী লাগবে?",
+    "কখন কোনো জিনিস জোড়া লাগিয়ে ব্যবহার করা ভালো আর কখন নতুনটা নেওয়া ভালো?"
+   ]
+  },
+  {
+   "id": "hair-care-at-home",
+   "number": 230,
+   "title": "চুল ধুয়ে গুছিয়ে নিই",
+   "front": "pages/230-front.jpg",
+   "back": "pages/230-back.jpg",
+   "items": [
+    {
+     "id": "hair-drying-tool",
+     "label": "চুল শুকানোর যন্ত্র",
+     "gloss": "hair dryer"
+    },
+    {
+     "id": "wide-brush-for-hair",
+     "label": "চুলের ঝাড়নি",
+     "gloss": "hairbrush"
+    },
+    {
+     "id": "hair-washing-liquid",
+     "label": "চুল ধোয়ার সাবান",
+     "gloss": "liquid soap used for washing hair"
+    },
+    {
+     "id": "bengali-hair-oil-bottle",
+     "label": "চুলের তেল",
+     "gloss": "hair oil"
+    },
+    {
+     "id": "elastic-tie-for-hair",
+     "label": "চুলের বাঁধনি",
+     "gloss": "elastic hair tie"
+    },
+    {
+     "id": "small-claw-hair-grip",
+     "label": "চুলের চিমটি",
+     "gloss": "claw hair clip"
+    }
+   ],
+   "questions": [
+    "চুলের বাঁধনি কোনটা?",
+    "চুলের চিমটি আর বাঁধনি দেখতে কীভাবে আলাদা?",
+    "আপনি চুলে তেল দেন?",
+    "চুল ধোয়ার পরে কীভাবে শুকান?",
+    "চুলে তেল দিতে আর চুল ধুতে কোন জিনিসগুলো নেবেন?",
+    "বাইরে বের হওয়ার আগে চুল গুছাতে কোনটা বেশি কাজে লাগবে, আর কেন?"
+   ]
+  },
+  {
+   "id": "posture-and-turning",
+   "number": 104,
+   "title": "শরীর যেভাবে রাখি",
+   "front": "pages/104-front.jpg",
+   "back": "pages/104-back.jpg",
+   "items": [
+    {
+     "id": "body-lean",
+     "label": "হেলান দেওয়া",
+     "gloss": "to lean against support"
+    },
+    {
+     "id": "body-lie",
+     "label": "শোয়া",
+     "gloss": "to lie down"
+    },
+    {
+     "id": "body-roll",
+     "label": "গড়ানো",
+     "gloss": "to roll one's body over"
+    },
+    {
+     "id": "body-turn",
+     "label": "ঘুরে দাঁড়ানো",
+     "gloss": "to turn around on one's feet"
+    },
+    {
+     "id": "body-kneel",
+     "label": "হাঁটু গেড়ে বসা",
+     "gloss": "to kneel on the ground"
+    },
+    {
+     "id": "body-squat",
+     "label": "উবু হয়ে বসা",
+     "gloss": "to squat low"
+    }
+   ],
+   "questions": [
+    "কে শুয়ে আছেন?",
+    "কার হাঁটু মাটিতে লেগেছে?",
+    "আপনি কীভাবে বসলে আরাম পান?",
+    "মাটিতে রাখা কিছু তুলতে শরীর কীভাবে নামান?",
+    "হাঁটু গেড়ে কখন বসতে হয়?",
+    "দুজনের শরীর আলাদাভাবে নড়লে একই কাজ করার উপায় কীভাবে বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "ways-of-carrying-things",
+   "number": 249,
+   "title": "জিনিস একা আর মিলে বয়ে নিই",
+   "front": "pages/249-front.jpg",
+   "back": "pages/249-back.jpg",
+   "items": [
+    {
+     "id": "carrying-a-load-in-one-hand",
+     "label": "এক হাতে নেওয়া",
+     "gloss": "carrying a load in one hand"
+    },
+    {
+     "id": "carrying-a-load-in-both-hands",
+     "label": "দুই হাতে নেওয়া",
+     "gloss": "carrying an object with both hands"
+    },
+    {
+     "id": "lifting-an-object-off-the-floor",
+     "label": "নিচ থেকে তুলে ধরা",
+     "gloss": "lifting an object from the floor"
+    },
+    {
+     "id": "balancing-a-load-on-the-head",
+     "label": "মাথায় নিয়ে যাওয়া",
+     "gloss": "carrying a load on the head"
+    },
+    {
+     "id": "carrying-a-load-on-the-back",
+     "label": "পিঠে বওয়া",
+     "gloss": "carrying a load on the back"
+    },
+    {
+     "id": "lifting-a-load-together",
+     "label": "দুজনে ধরে নেওয়া",
+     "gloss": "two people carrying one object together"
+    }
+   ],
+   "questions": [
+    "কে এক হাতে জিনিস নিয়েছেন?",
+    "মাথায় আর পিঠে নেওয়ার ছবিতে কী তফাত?",
+    "বাজার থেকে মাল কীভাবে নিয়ে আসেন?",
+    "নিচে রাখা বাক্স তুলতে কাউকে কী বলবেন?",
+    "দুজন মিলে মাল ধরলে কে কোন পাশে দাঁড়াবেন?",
+    "একটা ভারী বাক্স একা নেবেন নাকি কাউকে ডাকবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "people-at-work",
+   "number": 41,
+   "title": "কাজে যাদের দেখি",
+   "front": "pages/041-front.jpg",
+   "back": "pages/041-back.jpg",
+   "items": [
+    {
+     "id": "shopkeeper",
+     "label": "দোকানি",
+     "gloss": "shopkeeper"
+    },
+    {
+     "id": "customer",
+     "label": "খদ্দের",
+     "gloss": "customer"
+    },
+    {
+     "id": "tailor",
+     "label": "দর্জি",
+     "gloss": "tailor"
+    },
+    {
+     "id": "weaver",
+     "label": "তাঁতি",
+     "gloss": "weaver"
+    },
+    {
+     "id": "mason",
+     "label": "রাজমিস্ত্রি",
+     "gloss": "mason"
+    },
+    {
+     "id": "carpenter",
+     "label": "কাঠমিস্ত্রি",
+     "gloss": "carpenter"
+    }
+   ],
+   "questions": [
+    "দর্জি কোন ছবিতে?",
+    "কারা কাপড় নিয়ে কাজ করছেন?",
+    "আপনার পাড়ায় কার কাজটা দেখেছেন?",
+    "দরজা ঠিক করতে কাকে ডাকবেন?",
+    "দোকানির সঙ্গে খদ্দের কী কথা বলতে পারেন?",
+    "কোন কাজটা চোখের সামনে কম দেখা যায়, তবু তার ওপর মানুষ বেশি নির্ভর করে?"
+   ]
+  },
+  {
+   "id": "street-service-vehicles",
+   "number": 255,
+   "title": "রাস্তায় কাজের গাড়ি",
+   "front": "pages/255-front.jpg",
+   "back": "pages/255-back.jpg",
+   "items": [
+    {
+     "id": "garbage-collection-truck",
+     "label": "ময়লা নেওয়ার গাড়ি",
+     "gloss": "Dhaka pedal tricycle for neighborhood waste collection"
+    },
+    {
+     "id": "bangladesh-fire-engine",
+     "label": "দমকলের গাড়ি",
+     "gloss": "fire service engine truck"
+    },
+    {
+     "id": "medical-transport-van",
+     "label": "রোগী নেওয়ার গাড়ি",
+     "gloss": "ambulance patient transport van"
+    },
+    {
+     "id": "bangladeshi-police-pickup",
+     "label": "থানার গাড়ি",
+     "gloss": "Bangladesh police pickup with covered rear seats"
+    },
+    {
+     "id": "road-sprayer-water-truck",
+     "label": "পানি ছিটানোর গাড়ি",
+     "gloss": "municipal road-watering truck with visible spray"
+    },
+    {
+     "id": "flatbed-truck-for-goods",
+     "label": "মালবাহী গাড়ি",
+     "gloss": "Bangladeshi flatbed goods truck with tied sacks"
+    }
+   ],
+   "questions": [
+    "দমকলের গাড়ি কোনটা?",
+    "ময়লা নেওয়ার গাড়ি আর মালবাহী গাড়ি দেখতে কীভাবে আলাদা?",
+    "আপনার রাস্তায় কোন গাড়িটা বেশি দেখেন?",
+    "রোগী নেওয়ার গাড়িকে রাস্তা ছেড়ে দিতে কাউকে কী বলবেন?",
+    "পানি ছিটানোর গাড়িটা কী দেখে চিনবেন?",
+    "সরু গলিতে মালবাহী গাড়ি ঢুকতে না পারলে মাল ভেতরে আনার কী উপায় ভাববেন?"
+   ]
+  },
+  {
+   "id": "caring-for-babies-and-elders",
+   "number": 173,
+   "title": "ছোট বড়দের যত্ন নিতে যা করি",
+   "front": "pages/173-front.jpg",
+   "back": "pages/173-back.jpg",
+   "items": [
+    {
+     "id": "stroke-hair-caring",
+     "label": "মাথায় হাত বুলানো",
+     "gloss": "to gently stroke someone's hair"
+    },
+    {
+     "id": "lift-into-lap",
+     "label": "কোলে নেওয়া",
+     "gloss": "to take a child onto one's lap"
+    },
+    {
+     "id": "feed-someone-mouthful",
+     "label": "খাইয়ে দেওয়া",
+     "gloss": "to give someone a bite of food"
+    },
+    {
+     "id": "lay-someone-down",
+     "label": "শুইয়ে দেওয়া",
+     "gloss": "to help someone lie down"
+    },
+    {
+     "id": "wrap-shawl-around-someone",
+     "label": "গায়ে চাদর দেওয়া",
+     "gloss": "to put a blanket or shawl over someone"
+    },
+    {
+     "id": "walk-with-hand-support",
+     "label": "হাত ধরে হাঁটানো",
+     "gloss": "to help someone walk by the hand"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে বাচ্চাকে কোলে নিচ্ছেন?",
+    "কোন ছবিতে একজন আরেকজনকে খাওয়াচ্ছেন?",
+    "আপনাকে ছোটবেলায় কে খাইয়ে দিতেন?",
+    "কেউ উঠতে বা হাঁটতে চাইলে সাহায্য করার আগে কী বলবেন?",
+    "শুইয়ে দেওয়া আর গায়ে চাদর দেওয়ার সময় আগে কী করে দেখবেন যে তাঁর আরাম হচ্ছে?",
+    "কোনো মানুষ নিজে কিছু করতে চান কিন্তু কষ্ট হচ্ছে, তখন কীভাবে সাহায্য করা ভালো?"
+   ]
+  },
+  {
+   "id": "bhorta-served-with-rice",
+   "number": 250,
+   "title": "ভাতের সঙ্গে ছয় রকম ভর্তা",
+   "front": "pages/250-front.jpg",
+   "back": "pages/250-back.jpg",
+   "items": [
+    {
+     "id": "mashed-potato-bhorta",
+     "label": "আলু ভর্তা",
+     "gloss": "Bangladeshi mashed potato bhorta"
+    },
+    {
+     "id": "smoky-eggplant-bhorta",
+     "label": "বেগুন ভর্তা",
+     "gloss": "smoked eggplant bhorta"
+    },
+    {
+     "id": "dried-fish-bhorta",
+     "label": "শুঁটকি ভর্তা",
+     "gloss": "dried fish bhorta"
+    },
+    {
+     "id": "mashed-lentil-bhorta",
+     "label": "ডাল ভর্তা",
+     "gloss": "mashed lentil bhorta"
+    },
+    {
+     "id": "fresh-coriander-bhorta",
+     "label": "ধনেপাতা ভর্তা",
+     "gloss": "fresh coriander leaf bhorta"
+    },
+    {
+     "id": "mustard-seed-bhorta",
+     "label": "সরিষা ভর্তা",
+     "gloss": "prepared mustard seed bhorta"
+    }
+   ],
+   "questions": [
+    "আলু ভর্তা কোনটা?",
+    "ধনেপাতা আর শুঁটকি ভর্তার রং কীভাবে আলাদা?",
+    "আপনি ভাতের সঙ্গে কী ভর্তা খান?",
+    "দোকানে কম ঝালের ভর্তা চাইলে কী বলবেন?",
+    "ডাল ভর্তা আর আলু ভর্তা দেখতে কী দেখে চিনবেন?",
+    "ভর্তায় কী আছে বোঝা না গেলে খাওয়ার আগে কীভাবে জানতে চাইবেন?"
+   ]
+  },
+  {
+   "id": "small-places-around-the-room",
+   "number": 212,
+   "title": "ঘরের যে জায়গায় জিনিস থাকে",
+   "front": "pages/212-front.jpg",
+   "back": "pages/212-back.jpg",
+   "items": [
+    {
+     "id": "space-under-the-bed",
+     "label": "খাটের তলা",
+     "gloss": "space underneath a bed"
+    },
+    {
+     "id": "top-of-the-cupboard",
+     "label": "আলমারির ওপর",
+     "gloss": "top of a cupboard"
+    },
+    {
+     "id": "inside-window-ledge",
+     "label": "জানালার ধার",
+     "gloss": "ledge at the bottom of a window"
+    },
+    {
+     "id": "concealed-behind-the-door",
+     "label": "দরজার আড়াল",
+     "gloss": "concealed space behind a door"
+    },
+    {
+     "id": "edge-of-the-rooftop",
+     "label": "ছাদের কিনারা",
+     "gloss": "outer edge of a flat roof"
+    },
+    {
+     "id": "wall-storage-niche",
+     "label": "দেয়ালের কুলুঙ্গি",
+     "gloss": "small recessed wall niche"
+    }
+   ],
+   "questions": [
+    "খাটের তলা কোনটা?",
+    "দরজার আড়াল আর দেয়ালের কুলুঙ্গিতে কী তফাত?",
+    "আপনার ঘরে কোথায় চাবি রাখেন?",
+    "জানালার ধারে রাখা জিনিসটা কীভাবে নামাবেন?",
+    "আলমারির ওপর রাখা জিনিস খুঁজতে কাউকে কী বলবেন?",
+    "খেলনা এমন কোথায় রাখবেন যাতে ছোট বাচ্চা সহজে পায়, আর কেন?"
+   ]
+  },
+  {
+   "id": "ways-of-resting-and-sleeping",
+   "number": 258,
+   "title": "কীভাবে শুই আর ঘুমাই",
+   "front": "pages/258-front.jpg",
+   "back": "pages/258-back.jpg",
+   "items": [
+    {
+     "id": "resting-face-up-on-back",
+     "label": "চিত হয়ে শোয়া",
+     "gloss": "lying flat on the back face up"
+    },
+    {
+     "id": "resting-face-down-on-stomach",
+     "label": "উপুড় হয়ে শোয়া",
+     "gloss": "lying on the stomach face down"
+    },
+    {
+     "id": "resting-turned-to-one-side",
+     "label": "কাত হয়ে শোয়া",
+     "gloss": "lying on one side with knees slightly bent"
+    },
+    {
+     "id": "snoring-while-asleep",
+     "label": "নাক ডাকা",
+     "gloss": "snoring while asleep"
+    },
+    {
+     "id": "dozing-off-in-a-chair",
+     "label": "ঢুলে পড়া",
+     "gloss": "dozing off while seated"
+    },
+    {
+     "id": "talking-during-sleep",
+     "label": "ঘুমের মধ্যে কথা বলা",
+     "gloss": "sleeptalking with eyes closed"
+    }
+   ],
+   "questions": [
+    "কে কাত হয়ে শুয়ে আছেন?",
+    "চিত আর উপুড় হয়ে শোয়ার মধ্যে কী তফাত?",
+    "বসে থাকতে থাকতে আপনি কখনও ঢুলে পড়েছেন?",
+    "পাশের ঘরে কেউ নাক ডাকলে কীভাবে বুঝবেন?",
+    "কেউ ঘুমের মধ্যে কথা বলছেন, ছবিতে কী দেখে বুঝবেন?",
+    "একই ঘরে একজন ঘুমাচ্ছেন আর আরেকজন জেগে আছেন। ঘুমের ব্যাঘাত কমাতে কী করা যায়?"
+   ]
+  },
+  {
+   "id": "seasons-in-bangladesh",
+   "number": 73,
+   "title": "বাংলার ছয় ঋতু",
+   "front": "pages/073-front.jpg",
+   "back": "pages/073-back.jpg",
+   "items": [
+    {
+     "id": "summer",
+     "label": "গরমকাল",
+     "gloss": "summer season"
+    },
+    {
+     "id": "monsoon",
+     "label": "বর্ষাকাল",
+     "gloss": "monsoon season"
+    },
+    {
+     "id": "autumn",
+     "label": "শরৎকাল",
+     "gloss": "autumn season in Bangladesh"
+    },
+    {
+     "id": "late-autumn",
+     "label": "হেমন্তকাল",
+     "gloss": "late autumn harvest season"
+    },
+    {
+     "id": "winter",
+     "label": "শীতকাল",
+     "gloss": "winter season"
+    },
+    {
+     "id": "spring",
+     "label": "বসন্তকাল",
+     "gloss": "spring season"
+    }
+   ],
+   "questions": [
+    "বর্ষাকালের ছবি কোনটা?",
+    "কোন ছবিতে গাছ ভরে ফুল ফুটেছে?",
+    "এখানে কোন ঋতুতে থাকতে আপনার ভালো লাগে?",
+    "হেমন্তে ধান পেকেছে কী দেখে বুঝবেন?",
+    "ঋতু বদলালে আপনার এলাকার বাজারে কী বদলায়?",
+    "ঋতুর সময় বদলে গেলে কৃষক আর শহরের মানুষের জীবনে কি একই রকম প্রভাব পড়বে? কেন?"
+   ]
+  },
+  {
+   "id": "signs-around-roads-and-buildings",
+   "number": 268,
+   "title": "রাস্তায় আর ঘরে যে দাগ দেখি",
+   "front": "pages/268-front.jpg",
+   "back": "pages/268-back.jpg",
+   "items": [
+    {
+     "id": "no-smoking-picture-notice",
+     "label": "ধূমপান মানা",
+     "gloss": "no smoking pictogram"
+    },
+    {
+     "id": "drinking-water-not-safe-notice",
+     "label": "এই পানি খাওয়া যাবে না",
+     "gloss": "pictogram showing non-potable water"
+    },
+    {
+     "id": "no-parking-car-pictogram",
+     "label": "গাড়ি রাখা মানা",
+     "gloss": "pictogram of car parking prohibited"
+    },
+    {
+     "id": "roadworks-ahead-warning-sign",
+     "label": "সামনে রাস্তার কাজ চলছে",
+     "gloss": "wordless Bangladeshi road works warning sign"
+    },
+    {
+     "id": "stairs-going-down-arrow-notice",
+     "label": "নিচে নামার পথ",
+     "gloss": "downstairs arrow with figure on stairs"
+    },
+    {
+     "id": "caution-slippery-floor-marker",
+     "label": "পিছলে পড়ার ভয়",
+     "gloss": "wet-floor warning with slipping figure"
+    }
+   ],
+   "questions": [
+    "পানি খাওয়া যাবে না, কোন ছবিটা তা বলছে?",
+    "নিচে নামার দাগ আর পিছলে পড়ার ছবিতে লোকটির পা কীভাবে আলাদা?",
+    "এই ছবির মতো কোন দাগটা আপনি রাস্তায় দেখেছেন?",
+    "গাড়ি রাখা মানা দেখলে চালককে কী বলবেন?",
+    "সামনে রাস্তার কাজ চললে সঙ্গের লোককে কীভাবে জানাবেন?",
+    "লেখা পড়তে না পারলেও একটা সাবধানের দাগ বুঝতে কোন ছবি বা রং কাজে আসে, আর কেন?"
+   ]
+  },
+  {
+   "id": "small-child-care-gear",
+   "number": 248,
+   "title": "বাচ্চাকে বসাই আর সঙ্গে নিই",
+   "front": "pages/248-front.jpg",
+   "back": "pages/248-back.jpg",
+   "items": [
+    {
+     "id": "pushchair-for-a-child",
+     "label": "বাচ্চার ঠেলাগাড়ি",
+     "gloss": "baby stroller pushchair"
+    },
+    {
+     "id": "raised-infant-meal-seat",
+     "label": "বাচ্চার উঁচু আসন",
+     "gloss": "baby high chair"
+    },
+    {
+     "id": "infant-comfort-pacifier",
+     "label": "চুষনি",
+     "gloss": "baby pacifier"
+    },
+    {
+     "id": "washable-cloth-diaper",
+     "label": "কাপড়ের নেংটি",
+     "gloss": "reusable cloth baby diaper"
+    },
+    {
+     "id": "child-body-wrap",
+     "label": "বাচ্চার গা মোড়ানোর কাপড়",
+     "gloss": "soft baby swaddle wrap"
+    },
+    {
+     "id": "baby-carrying-cloth-sling",
+     "label": "কোলে বাঁধার কাপড়",
+     "gloss": "soft fabric child carrier sling"
+    }
+   ],
+   "questions": [
+    "চুষনি কোনটা?",
+    "বাচ্চার আসন আর ঠেলাগাড়িতে কী তফাত?",
+    "বাড়িতে ছোট বাচ্চাকে কোথায় বসান?",
+    "ধোয়ার পরে নেংটিটা কোথায় রাখবেন?",
+    "কোলে বাঁধার কাপড় আর গা মোড়ানোর কাপড় চিনতে কী দেখবেন?",
+    "বাচ্চাকে নিয়ে দূরে গেলে কোন জিনিসগুলো আগে নেবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "wet-cleaning-supplies",
+   "number": 246,
+   "title": "মেঝে কাচ আর বাসন পরিষ্কার করি",
+   "front": "pages/246-front.jpg",
+   "back": "pages/246-back.jpg",
+   "items": [
+    {
+     "id": "wet-floor-mop",
+     "label": "মেঝে মোছার ঝাড়ু",
+     "gloss": "wet floor mop"
+    },
+    {
+     "id": "rubber-glass-squeegee",
+     "label": "কাচ মোছার পাত",
+     "gloss": "handheld glass squeegee"
+    },
+    {
+     "id": "soapy-liquid-for-dishes",
+     "label": "বাসন ধোয়ার সাবান",
+     "gloss": "dishwashing liquid soap"
+    },
+    {
+     "id": "cloth-to-wipe-clean-dishes",
+     "label": "বাসন মোছার কাপড়",
+     "gloss": "dish towel"
+    },
+    {
+     "id": "cleaning-water-mist-bottle",
+     "label": "পানি ছিটানোর বোতল",
+     "gloss": "water spray bottle"
+    },
+    {
+     "id": "washproof-rubber-gloves",
+     "label": "পানি আটকানোর হাতমোজা",
+     "gloss": "waterproof cleaning gloves"
+    }
+   ],
+   "questions": [
+    "পানি ছিটানোর বোতল কোনটা?",
+    "কাচ মোছার পাত আর মেঝে মোছার ঝাড়ু দেখতে কীভাবে আলাদা?",
+    "আপনার বাসায় মেঝে কী দিয়ে মোছেন?",
+    "ভেজা থালা শুকনা করতে কোনটা নেবেন?",
+    "কাচে সাবান লেগে থাকলে কী দিয়ে সরাতে পারেন?",
+    "হাতে পানি না লাগিয়ে কোন কোন কাজ করা যায়, আর কীভাবে?"
+   ]
+  },
+  {
+   "id": "after-meal-dishwashing",
+   "number": 220,
+   "title": "খাওয়ার পর বাসন গুছাই",
+   "front": "pages/220-front.jpg",
+   "back": "pages/220-back.jpg",
+   "items": [
+    {
+     "id": "soaking-dirty-cooking-pot",
+     "label": "হাঁড়ি ভিজিয়ে রাখা",
+     "gloss": "soaking a used cooking pot"
+    },
+    {
+     "id": "scrubbing-pot-bottom",
+     "label": "হাঁড়ির তলা ঘষা",
+     "gloss": "scrubbing the underside of a pot"
+    },
+    {
+     "id": "rinsing-a-washed-plate",
+     "label": "থালা ধুয়ে নেওয়া",
+     "gloss": "rinsing a plate under clean water"
+    },
+    {
+     "id": "draining-water-from-bowl",
+     "label": "বাটির পানি ঝরানো",
+     "gloss": "draining rinse water from a bowl"
+    },
+    {
+     "id": "drying-dishes-on-rack",
+     "label": "জালিতে বাসন শুকানো",
+     "gloss": "air drying dishes in a rack"
+    },
+    {
+     "id": "stacking-clean-plates",
+     "label": "থালা একটার ওপর আরেকটা রাখা",
+     "gloss": "stacking clean plates flat"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে থালা ধুচ্ছেন?",
+    "পানি ঝরানো আর জালিতে শুকানোর ছবিতে কী তফাত?",
+    "বাসায় বাসন শুকাতে কোথায় রাখেন?",
+    "হাঁড়িতে ভাত লেগে থাকলে আগে কী করবেন?",
+    "ভেজা আর শুকনা থালা কীভাবে আলাদা করে রাখবেন?",
+    "পানি কম থাকলে কীভাবে কম পানি দিয়ে বাসন ধুবেন?"
+   ]
+  },
+  {
+   "id": "small-wear-and-breakage",
+   "number": 197,
+   "title": "জিনিসে যে ঝামেলা দেখা যায়",
+   "front": "pages/197-front.jpg",
+   "back": "pages/197-back.jpg",
+   "items": [
+    {
+     "id": "rust-forming-on-metal",
+     "label": "জং ধরা",
+     "gloss": "metal becoming rusty"
+    },
+    {
+     "id": "wall-plaster-flaking",
+     "label": "পলেস্তারা খসে পড়া",
+     "gloss": "wall plaster falling off"
+    },
+    {
+     "id": "loose-pull-handle",
+     "label": "হাতল ঢিলা হওয়া",
+     "gloss": "a fitted handle becoming loose"
+    },
+    {
+     "id": "rope-snapping",
+     "label": "দড়ি ছিঁড়ে যাওয়া",
+     "gloss": "a rope snapping into two loose ends"
+    },
+    {
+     "id": "knot-coming-loose",
+     "label": "গিঁট খুলে যাওয়া",
+     "gloss": "a knot slipping open"
+    },
+    {
+     "id": "water-overflowing",
+     "label": "পানি উপচে পড়া",
+     "gloss": "water overflowing a filled container"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে জং ধরেছে?",
+    "কোনটায় দড়ি ছিঁড়েছে আর কোনটায় শুধু গিঁট খুলছে?",
+    "আপনার বাসায় কোনো কিছু উপচে পড়েছিল?",
+    "হাতলটা ঢিলা হয়েছে, মিস্ত্রিকে কীভাবে দেখাবেন?",
+    "জং ধরা আর পলেস্তারা খসে পড়ার মধ্যে কী তফাত দেখতে পাচ্ছেন?",
+    "ছোট একটা সমস্যা কখন ঠিক করলেই চলে আর কখন পরে বড় ঝামেলা হতে পারে?"
+   ]
+  },
+  {
+   "id": "people-who-service-a-home",
+   "number": 271,
+   "title": "বাসায় যাঁদের ডাকি",
+   "front": "pages/271-front.jpg",
+   "back": "pages/271-back.jpg",
+   "items": [
+    {
+     "id": "person-repairing-pipes-at-home",
+     "label": "পানির মিস্ত্রি",
+     "gloss": "plumber repairing a household water pipe"
+    },
+    {
+     "id": "household-wiring-repair-worker",
+     "label": "বিদ্যুতের মিস্ত্রি",
+     "gloss": "household electrician examining a disconnected wall fitting"
+    },
+    {
+     "id": "neighborhood-waste-collector",
+     "label": "ময়লা নেওয়ার লোক",
+     "gloss": "household waste collection worker with waste bag"
+    },
+    {
+     "id": "worker-treating-household-pests",
+     "label": "পোকা মারার লোক",
+     "gloss": "pest-control worker carrying sprayer"
+    },
+    {
+     "id": "house-cleaner-working-indoors",
+     "label": "বাসা পরিষ্কারের লোক",
+     "gloss": "home cleaner wiping a low table"
+    },
+    {
+     "id": "household-removal-worker",
+     "label": "বাসা বদলের লোক",
+     "gloss": "home removal worker handling furniture"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে পানির মিস্ত্রি আছেন?",
+    "পানির আর বিদ্যুতের মিস্ত্রির হাতে কী তফাত?",
+    "বাসায় কোন কাজের জন্য কাউকে ডেকেছেন?",
+    "ময়লা নেওয়ার লোককে কোন জায়গাটা দেখিয়ে দেবেন?",
+    "বাসা বদলের লোককে কোন মাল আগে নিতে বলবেন?",
+    "বাসায় পানি আর বিদ্যুৎ দুটোতেই সমস্যা হলে কার সঙ্গে কীভাবে কথা বলবেন?"
+   ]
+  },
+  {
+   "id": "everyday-actions-at-the-front-door",
+   "number": 265,
+   "title": "বাসার দরজায় যা করি",
+   "front": "pages/265-front.jpg",
+   "back": "pages/265-back.jpg",
+   "items": [
+    {
+     "id": "ringing-a-home-doorbell",
+     "label": "দরজার ঘণ্টা বাজানো",
+     "gloss": "ring the electric bell beside an entrance"
+    },
+    {
+     "id": "looking-through-a-door-viewer",
+     "label": "দরজার ফুটো দিয়ে দেখা",
+     "gloss": "look out through a front door peephole"
+    },
+    {
+     "id": "unlocking-a-fitted-door-lock",
+     "label": "চাবি দিয়ে তালা খোলা",
+     "gloss": "turn a key to unlock a door cylinder"
+    },
+    {
+     "id": "leaving-a-door-slightly-ajar",
+     "label": "দরজা ভেজিয়ে রাখা",
+     "gloss": "leave a door slightly ajar without latching"
+    },
+    {
+     "id": "propping-an-open-door-with-wedge",
+     "label": "দরজা ঠেস দিয়ে রাখা",
+     "gloss": "hold a door wide open with a wedge"
+    },
+    {
+     "id": "wiping-soles-on-an-entry-mat",
+     "label": "দরজায় পা মুছে নেওয়া",
+     "gloss": "wipe shoe soles on a mat before entering"
+    }
+   ],
+   "questions": [
+    "দরজার ঘণ্টা কে বাজাচ্ছেন?",
+    "দরজা ভেজিয়ে রাখা আর ঠেস দিয়ে খোলা রাখার মধ্যে কী তফাত?",
+    "আপনার বাসায় ঢোকার আগে দরজায় কী করেন?",
+    "তালাটা খুলতে চাবি কোথায় ঢোকাবেন?",
+    "বাইরে কে এসেছেন, দরজা পুরো না খুলে কীভাবে দেখবেন?",
+    "দুই হাতে জিনিস নিয়ে ঢুকতে হলে দরজাটা আগে কীভাবে রাখবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "parts-of-plants",
+   "number": 59,
+   "title": "গাছের অংশ",
+   "front": "pages/059-front.jpg",
+   "back": "pages/059-back.jpg",
+   "items": [
+    {
+     "id": "flower",
+     "label": "ফুল",
+     "gloss": "flower"
+    },
+    {
+     "id": "bud",
+     "label": "কুঁড়ি",
+     "gloss": "flower bud"
+    },
+    {
+     "id": "seed",
+     "label": "বীজ",
+     "gloss": "seed"
+    },
+    {
+     "id": "roots",
+     "label": "শিকড়",
+     "gloss": "roots"
+    },
+    {
+     "id": "leaf",
+     "label": "পাতা",
+     "gloss": "leaf"
+    },
+    {
+     "id": "branches",
+     "label": "ডালপালা",
+     "gloss": "branches"
+    }
+   ],
+   "questions": [
+    "ফুলটা কোনটা?",
+    "কোন দুটো মাটির নিচে?",
+    "আপনি কী রকম গাছের পাতা চেনেন?",
+    "কুঁড়ি থেকে ফুল হলে কী বদল দেখা যায়?",
+    "বীজ বুনলে কোন জিনিসটা আগে দেখা যায়?",
+    "গাছের কোনো একটা অংশ ঠিকমতো না বাড়লে পুরো গাছটার কী হতে পারে?"
+   ]
+  },
+  {
+   "id": "local-trades",
+   "number": 105,
+   "title": "যাঁরা হাতে কাজ করেন",
+   "front": "pages/105-front.jpg",
+   "back": "pages/105-back.jpg",
+   "items": [
+    {
+     "id": "rice-farmer",
+     "label": "চাষি",
+     "gloss": "crop farmer"
+    },
+    {
+     "id": "fisherman-role",
+     "label": "জেলে",
+     "gloss": "fisherman"
+    },
+    {
+     "id": "boatman-role",
+     "label": "মাঝি",
+     "gloss": "boatman"
+    },
+    {
+     "id": "cobbler-role",
+     "label": "মুচি",
+     "gloss": "cobbler"
+    },
+    {
+     "id": "smith-role",
+     "label": "কামার",
+     "gloss": "blacksmith"
+    },
+    {
+     "id": "potter-role",
+     "label": "কুমার",
+     "gloss": "potter"
+    }
+   ],
+   "questions": [
+    "কে নৌকা চালাচ্ছেন?",
+    "কোন দুজন মাটি নিয়ে কাজ করেন?",
+    "আপনার আশপাশে এঁদের মধ্যে কাকে দেখেছেন?",
+    "জুতার তলা উঠে গেলে কার কাছে নিয়ে যাবেন?",
+    "মাছ জাল থেকে বাজার পর্যন্ত আসতে কার কার কাজ লাগে?",
+    "এলাকার পুরোনো কোনো কাজ কমে গেলে সেখানকার মানুষের জীবন কীভাবে বদলায়?"
+   ]
+  },
+  {
+   "id": "food-laundry-and-garden-workers",
+   "number": 165,
+   "title": "খাবার কাপড় আর গাছের কাজ",
+   "front": "pages/165-front.jpg",
+   "back": "pages/165-back.jpg",
+   "items": [
+    {
+     "id": "professional-cook-local",
+     "label": "রাঁধুনি",
+     "gloss": "cook preparing meals for a group"
+    },
+    {
+     "id": "laundry-worker-local",
+     "label": "ধোপা",
+     "gloss": "washerperson who washes clothes for a living"
+    },
+    {
+     "id": "garden-worker-local",
+     "label": "মালি",
+     "gloss": "gardener who tends plants"
+    },
+    {
+     "id": "butcher-local",
+     "label": "কসাই",
+     "gloss": "market butcher selling cuts of meat"
+    },
+    {
+     "id": "fish-seller-local",
+     "label": "মাছওয়ালা",
+     "gloss": "fishmonger at a local market"
+    },
+    {
+     "id": "milk-seller-local",
+     "label": "দুধওয়ালা",
+     "gloss": "street milk seller carrying fresh milk"
+    }
+   ],
+   "questions": [
+    "কে মাছ বেচছেন?",
+    "কার সামনে রান্নার হাঁড়ি আর কার সামনে দুধের পাত্র আছে?",
+    "আপনার পাড়ায় মালি বা ধোপা কোথায় পাবেন?",
+    "রাঁধুনিকে কম ঝাল দিতে বলতে হলে কী বলবেন?",
+    "কসাই আর মাছওয়ালার কাছে কীভাবে আলাদা করে জিনিস চাইবেন?",
+    "এই কাজগুলোর মধ্যে কোনো কাজ একদিন বন্ধ থাকলে পাড়ার কার কী অসুবিধা হতে পারে?"
+   ]
+  },
+  {
+   "id": "more-people-at-local-jobs",
+   "number": 190,
+   "title": "পাড়ায় নানা কাজ করেন যাঁরা",
+   "front": "pages/190-front.jpg",
+   "back": "pages/190-back.jpg",
+   "items": [
+    {
+     "id": "barber-local-person",
+     "label": "নাপিত",
+     "gloss": "barber cutting hair"
+    },
+    {
+     "id": "private-tutor-home",
+     "label": "গৃহশিক্ষক",
+     "gloss": "private tutor who teaches in someone's home"
+    },
+    {
+     "id": "newspaper-seller-local",
+     "label": "খবরের কাগজওয়ালা",
+     "gloss": "street newspaper vendor"
+    },
+    {
+     "id": "building-painter-local",
+     "label": "রংমিস্ত্রি",
+     "gloss": "painter who paints a building"
+    },
+    {
+     "id": "muezzin-local",
+     "label": "মোয়াজ্জিন",
+     "gloss": "muezzin calling the azan"
+    },
+    {
+     "id": "roti-vendor-local",
+     "label": "রুটিওয়ালা",
+     "gloss": "street bread seller"
+    }
+   ],
+   "questions": [
+    "কে চুল কাটছেন?",
+    "কার সামনে রুটির ঝুড়ি আছে?",
+    "কখনও গৃহশিক্ষকের কাছে পড়েছেন?",
+    "একটা খবরের কাগজ চাইতে কী বলবেন?",
+    "রংমিস্ত্রিকে দেয়ালের কোন অংশে রং করতে হবে কীভাবে দেখাবেন?",
+    "পাড়ার কোন সেবাগুলো মানুষ বদলালেও একইভাবে দরকার হয় বলে মনে করেন? কেন?"
+   ]
+  },
+  {
+   "id": "sewing-repairs",
+   "number": 45,
+   "title": "সেলাইয়ের জিনিস",
+   "front": "pages/045-front.jpg",
+   "back": "pages/045-back.jpg",
+   "items": [
+    {
+     "id": "needle",
+     "label": "সুঁই",
+     "gloss": "sewing needle"
+    },
+    {
+     "id": "thread",
+     "label": "সুতা",
+     "gloss": "sewing thread"
+    },
+    {
+     "id": "button",
+     "label": "বোতাম",
+     "gloss": "button"
+    },
+    {
+     "id": "cloth-measure",
+     "label": "মাপের ফিতা",
+     "gloss": "tailor measure"
+    },
+    {
+     "id": "seam",
+     "label": "সেলাই",
+     "gloss": "stitched seam"
+    },
+    {
+     "id": "torn",
+     "label": "ছেঁড়া",
+     "gloss": "torn fabric"
+    }
+   ],
+   "questions": [
+    "বোতামটা কোনটা?",
+    "কোন জিনিসে সুতা গাঁথেন?",
+    "জামা ছিঁড়ে গেলে আপনি কী করেন?",
+    "জামা বানাতে দর্জি কী দিয়ে মাপ নেন?",
+    "কোন কাপড় সেলাই করা সহজ বলে মনে হয়?",
+    "কাপড় মেরামত করার অভ্যাস থাকলে পরিবার আর এলাকার ওপর কী প্রভাব পড়তে পারে?"
+   ]
+  },
+  {
+   "id": "small-local-animals",
+   "number": 99,
+   "title": "আরও ছয়টা চেনা প্রাণী",
+   "front": "pages/099-front.jpg",
+   "back": "pages/099-back.jpg",
+   "items": [
+    {
+     "id": "house-gecko",
+     "label": "টিকটিকি",
+     "gloss": "house gecko"
+    },
+    {
+     "id": "frog",
+     "label": "ব্যাঙ",
+     "gloss": "frog"
+    },
+    {
+     "id": "snake",
+     "label": "সাপ",
+     "gloss": "snake"
+    },
+    {
+     "id": "turtle",
+     "label": "কচ্ছপ",
+     "gloss": "turtle"
+    },
+    {
+     "id": "mouse",
+     "label": "ইঁদুর",
+     "gloss": "mouse"
+    },
+    {
+     "id": "bat",
+     "label": "বাদুড়",
+     "gloss": "bat"
+    }
+   ],
+   "questions": [
+    "কোন প্রাণীটা উল্টো হয়ে ঝুলছে?",
+    "কার পিঠে শক্ত খোলস আছে?",
+    "এর মধ্যে কোন প্রাণীটা আপনি কাছ থেকে দেখেছেন?",
+    "রাতে কোন প্রাণীটা সহজে দেখা যায়?",
+    "বাসায় টিকটিকি দেখলে মানুষ কী করেন?",
+    "একই প্রাণী কাউকে ভয় দেখায় আর অন্য কাউকে কৌতূহলী করে, এর কারণ কী হতে পারে?"
+   ]
+  },
+  {
+   "id": "jewelry-and-adornment",
+   "number": 46,
+   "title": "সাজের গয়না",
+   "front": "pages/046-front.jpg",
+   "back": "pages/046-back.jpg",
+   "items": [
+    {
+     "id": "earring",
+     "label": "কানের দুল",
+     "gloss": "earring"
+    },
+    {
+     "id": "nose-stud",
+     "label": "নাকফুল",
+     "gloss": "nose stud"
+    },
+    {
+     "id": "bangle",
+     "label": "চুড়ি",
+     "gloss": "bangle"
+    },
+    {
+     "id": "finger-ring",
+     "label": "আংটি",
+     "gloss": "finger ring"
+    },
+    {
+     "id": "necklace",
+     "label": "হার",
+     "gloss": "necklace"
+    },
+    {
+     "id": "hairpin",
+     "label": "চুলের কাঁটা",
+     "gloss": "hair pin"
+    }
+   ],
+   "questions": [
+    "চুড়িটা কোনটা?",
+    "কোনটা নাকে পরা হয়?",
+    "আপনি কোন গয়নাটা এখানে বেশি দেখেন?",
+    "কোন গয়না কীভাবে খুলে রাখবেন?",
+    "দাওয়াতে কেউ কোন গয়না বেছে নিতে পারেন?",
+    "গয়না পরার রীতি সময়ের সঙ্গে কেন বদলায় বলে মনে হয়?"
+   ]
+  },
+  {
+   "id": "more-domestic-animals",
+   "number": 136,
+   "title": "বাড়িতে পালা আরও প্রাণী",
+   "front": "pages/136-front.jpg",
+   "back": "pages/136-back.jpg",
+   "items": [
+    {
+     "id": "water-buffalo",
+     "label": "মহিষ",
+     "gloss": "domestic water buffalo"
+    },
+    {
+     "id": "domestic-sheep",
+     "label": "ভেড়া",
+     "gloss": "domestic sheep"
+    },
+    {
+     "id": "domestic-horse",
+     "label": "ঘোড়া",
+     "gloss": "domestic horse"
+    },
+    {
+     "id": "domestic-donkey",
+     "label": "গাধা",
+     "gloss": "domestic donkey"
+    },
+    {
+     "id": "domestic-rabbit",
+     "label": "খরগোশ",
+     "gloss": "domestic rabbit"
+    },
+    {
+     "id": "domestic-goose",
+     "label": "রাজহাঁস",
+     "gloss": "domestic goose"
+    }
+   ],
+   "questions": [
+    "মহিষটা কোনটা?",
+    "কোন দুটোর কান লম্বা?",
+    "এদের মধ্যে কোন প্রাণীটা আপনি কাছে থেকে দেখেছেন?",
+    "ঘোড়া আর গাধা দেখতে এক হলেও কী দেখে আলাদা করবেন?",
+    "আপনার এলাকায় মানুষ কোন প্রাণীগুলো পালে?",
+    "মানুষের কাজ বদলে গেলে বাড়িতে কোন প্রাণী পালা হয়, তাতেও কি বদল আসে? কেন?"
+   ]
+  },
+  {
+   "id": "wedding-and-invitation",
+   "number": 69,
+   "title": "বিয়ে আর দাওয়াত",
+   "front": "pages/069-front.jpg",
+   "back": "pages/069-back.jpg",
+   "items": [
+    {
+     "id": "groom",
+     "label": "বর",
+     "gloss": "groom"
+    },
+    {
+     "id": "bride",
+     "label": "কনে",
+     "gloss": "bride"
+    },
+    {
+     "id": "guest",
+     "label": "অতিথি",
+     "gloss": "guest"
+    },
+    {
+     "id": "invitation",
+     "label": "দাওয়াত",
+     "gloss": "written invitation"
+    },
+    {
+     "id": "bouquet",
+     "label": "ফুলের তোড়া",
+     "gloss": "flower bouquet"
+    },
+    {
+     "id": "flower-garland",
+     "label": "ফুলের মালা",
+     "gloss": "flower garland"
+    }
+   ],
+   "questions": [
+    "বর কোথায়?",
+    "কোন দুটো ফুল দিয়ে বানানো?",
+    "আপনি এখানে কোনো বিয়ের আয়োজন দেখেছেন?",
+    "কাউকে দাওয়াত দিতে হলে কী বলে শুরু করবেন?",
+    "অতিথিরা এলে তাদের কীভাবে স্বাগত জানানো হয়?",
+    "একটা বিয়ের রীতি বদলালে কেউ কেন খুশি হয়, আবার কেউ কেন মন খারাপ করে?"
+   ]
+  },
+  {
+   "id": "house-edges-and-fittings",
+   "number": 108,
+   "title": "বাড়ির কোন দিকটা",
+   "front": "pages/108-front.jpg",
+   "back": "pages/108-back.jpg",
+   "items": [
+    {
+     "id": "flooring",
+     "label": "মেঝে",
+     "gloss": "room floor"
+    },
+    {
+     "id": "room-corner",
+     "label": "কোণা",
+     "gloss": "inside corner of a room"
+    },
+    {
+     "id": "threshold",
+     "label": "দোরগোড়া",
+     "gloss": "raised doorway threshold"
+    },
+    {
+     "id": "slide-bolt",
+     "label": "ছিটকিনি",
+     "gloss": "sliding door bolt"
+    },
+    {
+     "id": "compound-gate",
+     "label": "ফটক",
+     "gloss": "compound gate"
+    },
+    {
+     "id": "fence",
+     "label": "বেড়া",
+     "gloss": "fence"
+    }
+   ],
+   "questions": [
+    "বেড়াটা কোনটা?",
+    "কোনটায় বলটা কোণায় রাখা?",
+    "আপনার বাসার ফটক কী রকম?",
+    "বাতাসে দরজা খুলে গেলে কী দিয়ে আটকাবেন?",
+    "বাড়িতে ঢোকার আগে অতিথিকে কোথায় দাঁড়াতে বলবেন?",
+    "বাড়ির সীমানা কীভাবে বানানো হয়, তাতে পাড়ার মানুষের আসা-যাওয়া কীভাবে বদলায়?"
+   ]
+  },
+  {
+   "id": "metals-and-natural-materials",
+   "number": 109,
+   "title": "ধাতু পাট আর চামড়া",
+   "front": "pages/109-front.jpg",
+   "back": "pages/109-back.jpg",
+   "items": [
+    {
+     "id": "gold-material",
+     "label": "সোনা",
+     "gloss": "gold metal"
+    },
+    {
+     "id": "silver-material",
+     "label": "রুপা",
+     "gloss": "silver metal"
+    },
+    {
+     "id": "copper-material",
+     "label": "তামা",
+     "gloss": "copper metal"
+    },
+    {
+     "id": "brass-material",
+     "label": "পিতল",
+     "gloss": "brass metal"
+    },
+    {
+     "id": "jute-material",
+     "label": "পাট",
+     "gloss": "jute fiber"
+    },
+    {
+     "id": "leather-material",
+     "label": "চামড়া",
+     "gloss": "leather"
+    }
+   ],
+   "questions": [
+    "পাট কোন ছবিতে?",
+    "কোন দুটো ধাতু পাতের মতো?",
+    "আপনি চামড়ার তৈরি কী কী জিনিস ব্যবহার করেন?",
+    "সোনা আর রুপার রং কী দেখে আলাদা করেন?",
+    "এগুলোর কোনটা দিয়ে আপনার এলাকায় বাসন বানায়?",
+    "কোন জিনিস কী দিয়ে তৈরি হবে, সেটা বদলালে ব্যবহার আর দাম কীভাবে বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "hands-on-learning-actions",
+   "number": 101,
+   "title": "শেখার সময় যা করি",
+   "front": "pages/101-front.jpg",
+   "back": "pages/101-back.jpg",
+   "items": [
+    {
+     "id": "learn-draw",
+     "label": "আঁকা",
+     "gloss": "to draw"
+    },
+    {
+     "id": "learn-erase",
+     "label": "মুছে ফেলা",
+     "gloss": "to erase a mark"
+    },
+    {
+     "id": "learn-count",
+     "label": "গোনা",
+     "gloss": "to count objects"
+    },
+    {
+     "id": "learn-measure",
+     "label": "মাপা",
+     "gloss": "to measure length or size"
+    },
+    {
+     "id": "learn-match",
+     "label": "মেলানো",
+     "gloss": "to match like things"
+    },
+    {
+     "id": "learn-separate",
+     "label": "আলাদা করা",
+     "gloss": "to sort things out"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে আঁকছেন?",
+    "কোথায় একই রঙের গুটি জোড়া হচ্ছে?",
+    "আপনি রোজ কী কী গোনেন?",
+    "কাঠের টুকরাটা কত লম্বা, কীভাবে দেখবেন?",
+    "কাউকে নতুন কিছু শেখাতে কী দিয়ে শুরু করবেন?",
+    "একটা কাজ শুধু শুনে শেখা আর হাতে করে শেখার মধ্যে কী তফাত হয়?"
+   ]
+  },
+  {
+   "id": "parts-of-a-market-fish",
+   "number": 202,
+   "title": "মাছের গায়ে আর ভেতরে",
+   "front": "pages/202-front.jpg",
+   "back": "pages/202-back.jpg",
+   "items": [
+    {
+     "id": "fish-scale-piece",
+     "label": "আঁশ",
+     "gloss": "overlapping scales from a fish"
+    },
+    {
+     "id": "fish-bone-spine",
+     "label": "মাছের কাঁটা",
+     "gloss": "fish spine and bones"
+    },
+    {
+     "id": "fish-red-gills",
+     "label": "ফুলকা",
+     "gloss": "fish gills"
+    },
+    {
+     "id": "fish-side-fin",
+     "label": "পাখনা",
+     "gloss": "fish side fin"
+    },
+    {
+     "id": "fish-head-cut",
+     "label": "মাছের মাথা",
+     "gloss": "fish head portion"
+    },
+    {
+     "id": "fish-tail-cut",
+     "label": "মাছের লেজ",
+     "gloss": "fish tail portion"
+    }
+   ],
+   "questions": [
+    "মাছের লেজ কোন ছবিতে?",
+    "আঁশ আর পাখনা দেখতে কীভাবে আলাদা?",
+    "আপনি মাছের কোন অংশ দিয়ে ঝোল করেন?",
+    "মাছ খাওয়ার সময় কাঁটা কী করে বাছেন?",
+    "ফুলকা দেখতে হলে মাছের কোন পাশে তাকাবেন?",
+    "মাছ পরিষ্কার করতে না জানলে দোকানিকে কী বলবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "building-materials",
+   "number": 58,
+   "title": "বাড়ি বানানোর জিনিস",
+   "front": "pages/058-front.jpg",
+   "back": "pages/058-back.jpg",
+   "items": [
+    {
+     "id": "bricks",
+     "label": "ইট",
+     "gloss": "brick"
+    },
+    {
+     "id": "sand",
+     "label": "বালু",
+     "gloss": "sand"
+    },
+    {
+     "id": "gravel",
+     "label": "কাঁকর",
+     "gloss": "gravel"
+    },
+    {
+     "id": "bamboo",
+     "label": "বাঁশ",
+     "gloss": "bamboo"
+    },
+    {
+     "id": "ladder",
+     "label": "মই",
+     "gloss": "ladder"
+    },
+    {
+     "id": "post",
+     "label": "খুঁটি",
+     "gloss": "upright post"
+    }
+   ],
+   "questions": [
+    "মইটা কোনটা?",
+    "কোন দুটো ছোট ছোট দানার মতো?",
+    "আপনার আশপাশে ইটের কাজ কোথায় হয়?",
+    "মই দাঁড় করাতে কোথায় ভর দেবেন?",
+    "একই কাজের জন্য বাঁশ না কাঠ বেছে নিতে কী দেখবেন?",
+    "সহজে পাওয়া উপকরণ বদলে গেলে এলাকার ঘরবাড়ি কীভাবে বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "parts-of-clothing",
+   "number": 143,
+   "title": "জামাকাপড়ের কোন দিক",
+   "front": "pages/143-front.jpg",
+   "back": "pages/143-back.jpg",
+   "items": [
+    {
+     "id": "shirt-sleeve",
+     "label": "হাতা",
+     "gloss": "garment sleeve"
+    },
+    {
+     "id": "collar-opening",
+     "label": "জামার গলা",
+     "gloss": "neck opening of a garment"
+    },
+    {
+     "id": "cloth-fringe",
+     "label": "ঝালর",
+     "gloss": "cloth fringe"
+    },
+    {
+     "id": "garment-lining",
+     "label": "আস্তর",
+     "gloss": "garment lining"
+    },
+    {
+     "id": "sari-border",
+     "label": "পাড়",
+     "gloss": "woven garment border"
+    },
+    {
+     "id": "sari-pallu",
+     "label": "আঁচল",
+     "gloss": "loose decorative sari end"
+    }
+   ],
+   "questions": [
+    "জামার হাতাটা কোন ছবিতে?",
+    "কোন ছবিতে মহিলা আঁচল ধরে আছেন?",
+    "কোন ধরনের জামার গলা আপনার আরাম লাগে?",
+    "হাতা ছোট করতে দর্জিকে কী বলবেন?",
+    "জামায় আস্তর আছে কি না কীভাবে দেখবেন?",
+    "কোনো জামার ছোট একটা অংশ বদলালে মানুষ সেটি কোথায় বা কখন পরবেন, তা কীভাবে বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "surface-and-feel",
+   "number": 56,
+   "title": "হাত দিয়ে ছুঁয়ে দেখি",
+   "front": "pages/056-front.jpg",
+   "back": "pages/056-back.jpg",
+   "items": [
+    {
+     "id": "smooth",
+     "label": "মসৃণ",
+     "gloss": "smooth surface"
+    },
+    {
+     "id": "rough",
+     "label": "খসখসে",
+     "gloss": "rough surface"
+    },
+    {
+     "id": "soft",
+     "label": "নরম",
+     "gloss": "soft to the touch"
+    },
+    {
+     "id": "hard",
+     "label": "শক্ত",
+     "gloss": "hard to the touch"
+    },
+    {
+     "id": "sharp",
+     "label": "ধারালো",
+     "gloss": "sharp edged"
+    },
+    {
+     "id": "blunt",
+     "label": "ভোঁতা",
+     "gloss": "blunt edged"
+    }
+   ],
+   "questions": [
+    "নরমটা কোনটা?",
+    "কোন কাঠটা খসখসে?",
+    "আপনার কোনটা ছুঁতে ভালো লাগে?",
+    "কিছু কাটার জন্য কোন ধারটা বেছে নেবেন?",
+    "কোন কোন জিনিস মসৃণ হওয়া দরকার?",
+    "জিনিসটা কী দিয়ে তৈরি তার চেয়ে কখন হাতে কেমন লাগে, সেটাই বেশি গুরুত্বপূর্ণ হয়?"
+   ]
+  },
+  {
+   "id": "marks-and-things-on-the-ground",
+   "number": 150,
+   "title": "মাটিতে তাকালে যা দেখি",
+   "front": "pages/150-front.jpg",
+   "back": "pages/150-back.jpg",
+   "items": [
+    {
+     "id": "mud",
+     "label": "কাদা",
+     "gloss": "wet mud"
+    },
+    {
+     "id": "dust",
+     "label": "ধুলো",
+     "gloss": "dry loose dust"
+    },
+    {
+     "id": "footprint",
+     "label": "পায়ের ছাপ",
+     "gloss": "bare human footprint"
+    },
+    {
+     "id": "tire-track-mark",
+     "label": "চাকার দাগ",
+     "gloss": "tire tread impression in dirt"
+    },
+    {
+     "id": "ground-hole",
+     "label": "গর্ত",
+     "gloss": "hole in the ground"
+    },
+    {
+     "id": "earthworm",
+     "label": "কেঁচো",
+     "gloss": "earthworm"
+    }
+   ],
+   "questions": [
+    "পায়ের ছাপ কোন ছবিতে?",
+    "কোন ছবিতে মাটি ভিজে কাদা হয়েছে?",
+    "বৃষ্টি হলে আপনার বাড়ির কাছে কোথায় কাদা হয়?",
+    "ধুলো উড়লে জিনিস রাখার জায়গা কীভাবে বদলান?",
+    "একটা দাগ দেখে কীভাবে বুঝবেন সেটা নতুন না পুরোনো?",
+    "একই জায়গার মাটি বদলে গেলে আশপাশের মানুষ আর প্রাণীর চলাফেরা কীভাবে বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "arranging-objects",
+   "number": 76,
+   "title": "জিনিস সাজানোর দিক",
+   "front": "pages/076-front.jpg",
+   "back": "pages/076-back.jpg",
+   "items": [
+    {
+     "id": "in-front",
+     "label": "সামনে",
+     "gloss": "in front of"
+    },
+    {
+     "id": "beside",
+     "label": "পাশে",
+     "gloss": "beside"
+    },
+    {
+     "id": "around",
+     "label": "চারপাশে",
+     "gloss": "all around"
+    },
+    {
+     "id": "in-a-row",
+     "label": "সারিতে",
+     "gloss": "in a row"
+    },
+    {
+     "id": "crosswise",
+     "label": "আড়াআড়ি",
+     "gloss": "crosswise"
+    },
+    {
+     "id": "lengthwise",
+     "label": "লম্বালম্বি",
+     "gloss": "lengthwise"
+    }
+   ],
+   "questions": [
+    "বলটা বাক্সের পাশে কোন ছবিতে?",
+    "কোন ছবিতে বলগুলো সারিতে আছে?",
+    "আপনি নিজের জিনিসগুলো কোথায় রাখেন?",
+    "একটা কাঠি লম্বালম্বি রাখতে হলে কীভাবে রাখবেন?",
+    "ঘরে অনেক জিনিস রাখতে হলে কীভাবে সাজাবেন?",
+    "একই ঘরে কয়েকজনের চলাফেরা সহজ করতে জিনিসগুলো কীভাবে সাজানো যায়?"
+   ]
+  },
+  {
+   "id": "more-market-fruit",
+   "number": 137,
+   "title": "খোসার ভেতরে যে ফল",
+   "front": "pages/137-front.jpg",
+   "back": "pages/137-back.jpg",
+   "items": [
+    {
+     "id": "orange-fruit",
+     "label": "কমলা",
+     "gloss": "orange fruit"
+    },
+    {
+     "id": "pomelo",
+     "label": "জাম্বুরা",
+     "gloss": "pomelo"
+    },
+    {
+     "id": "pomegranate",
+     "label": "ডালিম",
+     "gloss": "pomegranate"
+    },
+    {
+     "id": "custard-apple",
+     "label": "আতা",
+     "gloss": "custard apple"
+    },
+    {
+     "id": "sapodilla",
+     "label": "সফেদা",
+     "gloss": "sapodilla"
+    },
+    {
+     "id": "indian-olive",
+     "label": "জলপাই",
+     "gloss": "Bangladeshi Indian olive"
+    }
+   ],
+   "questions": [
+    "ডালিম কোনটা?",
+    "কোন দুটো ফলের ভেতরে কোয়ার মতো ভাগ দেখা যায়?",
+    "এই ফলগুলোর মধ্যে কোনটা আপনি খেয়েছেন?",
+    "কমলা আর জাম্বুরার খোসা কীভাবে আলাদা চিনবেন?",
+    "ফলের ভেতরটা দেখতে চাইলে দোকানিকে কী বলবেন?",
+    "এক দেশের চেনা ফল আরেক দেশে অপরিচিত হলে সেটা খাওয়ার উপায় কীভাবে বোঝাবেন?"
+   ]
+  },
+  {
+   "id": "common-birds",
+   "number": 70,
+   "title": "পাড়ার পাখি",
+   "front": "pages/070-front.jpg",
+   "back": "pages/070-back.jpg",
+   "items": [
+    {
+     "id": "crow",
+     "label": "কাক",
+     "gloss": "house crow"
+    },
+    {
+     "id": "pigeon",
+     "label": "কবুতর",
+     "gloss": "domestic pigeon"
+    },
+    {
+     "id": "sparrow",
+     "label": "চড়ুই",
+     "gloss": "house sparrow"
+    },
+    {
+     "id": "myna",
+     "label": "শালিক",
+     "gloss": "common myna"
+    },
+    {
+     "id": "egret",
+     "label": "বক",
+     "gloss": "egret"
+    },
+    {
+     "id": "owl",
+     "label": "পেঁচা",
+     "gloss": "owl"
+    }
+   ],
+   "questions": [
+    "কাকটা কোনটা?",
+    "কোন দুটো সাদা?",
+    "আপনার বাড়ির কাছে কোন পাখি দেখেন?",
+    "বক কোথায় দাঁড়িয়ে থাকে?",
+    "সকালে কোন পাখির ডাক শুনতে পান?",
+    "এলাকায় গাছ আর পানি কমে গেলে পাখিদের থাকার জায়গা কীভাবে বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "bags-and-cases-for-carrying",
+   "number": 177,
+   "title": "জিনিস রাখি আর নিয়ে যাই",
+   "front": "pages/177-front.jpg",
+   "back": "pages/177-back.jpg",
+   "items": [
+    {
+     "id": "jute-sack-storage",
+     "label": "বস্তা",
+     "gloss": "full jute sack for bulk goods"
+    },
+    {
+     "id": "paper-snack-cone",
+     "label": "ঠোঙা",
+     "gloss": "empty folded paper cone"
+    },
+    {
+     "id": "knotted-cloth-bundle",
+     "label": "পুঁটলি",
+     "gloss": "small bundle tied in a cloth"
+    },
+    {
+     "id": "wooden-box-storage",
+     "label": "বাক্স",
+     "gloss": "small ordinary rectangular wooden box"
+    },
+    {
+     "id": "metal-trunk-storage",
+     "label": "তোরঙ্গ",
+     "gloss": "large metal storage trunk"
+    },
+    {
+     "id": "long-strap-shoulder-bag",
+     "label": "ঝোলা",
+     "gloss": "soft long-strap shoulder bag"
+    }
+   ],
+   "questions": [
+    "কোনটার লম্বা ফিতা আছে?",
+    "কোনটা কাগজের তৈরি?",
+    "আপনার বাসায় শীতের কাপড় কোথায় রাখেন?",
+    "চাল রাখার জন্য একটা বস্তা চাইতে কী বলবেন?",
+    "পুঁটলি আর তোরঙ্গের মধ্যে কোনটা নিয়ে হাঁটা সহজ হবে?",
+    "একই জিনিস বাইরে নিয়ে যেতে আর অনেক দিন ঘরে রাখতে কী আলাদা পাত্র বেছে নেবেন? কেন?"
+   ]
+  },
+  {
+   "id": "tree-fruit-and-sap-treats",
+   "number": 207,
+   "title": "গাছের ফল আর রস",
+   "front": "pages/207-front.jpg",
+   "back": "pages/207-back.jpg",
+   "items": [
+    {
+     "id": "mature-brown-coconut",
+     "label": "নারকেল",
+     "gloss": "mature brown coconut"
+    },
+    {
+     "id": "fresh-green-tender-coconut",
+     "label": "ডাব",
+     "gloss": "young green coconut"
+    },
+    {
+     "id": "ripe-black-palmyra-fruit",
+     "label": "তাল",
+     "gloss": "ripe palmyra palm fruit"
+    },
+    {
+     "id": "areca-betel-nut",
+     "label": "সুপারি",
+     "gloss": "areca nut"
+    },
+    {
+     "id": "palmyra-jelly-kernel",
+     "label": "তালের শাঁস",
+     "gloss": "tender palmyra jelly kernel"
+    },
+    {
+     "id": "fresh-date-palm-sap",
+     "label": "খেজুরের রস",
+     "gloss": "fresh date palm sap collected in a pot"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে ডাব আছে?",
+    "তাল আর তালের শাঁসের রং কীভাবে আলাদা?",
+    "আপনি ডাব না নারকেল বেশি কেনেন?",
+    "ডাব কাটতে দোকানিকে কী বলবেন?",
+    "নারকেল আর তালের কোন অংশ খাই?",
+    "শীতে গাছ থেকে কী কী সংগ্রহ করেন, আর সেগুলো কী কাজে লাগে?"
+   ]
+  },
+  {
+   "id": "drawing-materials",
+   "number": 74,
+   "title": "ছবি আঁকার জিনিস",
+   "front": "pages/074-front.jpg",
+   "back": "pages/074-back.jpg",
+   "items": [
+    {
+     "id": "paintbrush",
+     "label": "তুলি",
+     "gloss": "artist brush"
+    },
+    {
+     "id": "ink",
+     "label": "কালি",
+     "gloss": "drawing ink"
+    },
+    {
+     "id": "chalk",
+     "label": "খড়ি",
+     "gloss": "writing chalk"
+    },
+    {
+     "id": "wax-crayon",
+     "label": "মোমরং",
+     "gloss": "wax drawing crayon"
+    },
+    {
+     "id": "palette",
+     "label": "রং মেশানোর থালা",
+     "gloss": "paint-mixing palette"
+    },
+    {
+     "id": "paint-box",
+     "label": "রঙের বাক্স",
+     "gloss": "small paint box"
+    }
+   ],
+   "questions": [
+    "তুলিটা কোনটা?",
+    "কোন দুটো শুকনা অবস্থায় দাগ ফেলে?",
+    "আপনি কী দিয়ে আঁকতে পছন্দ করেন?",
+    "দুই রং মেশাতে কী ব্যবহার করবেন?",
+    "একটা ছবি দেখে কেউ কীভাবে কথা শুরু করতে পারে?",
+    "একই ছবি দেখে আলাদা মানুষ কেন আলাদা গল্প বলতে পারে?"
+   ]
+  },
+  {
+   "id": "play-things",
+   "number": 37,
+   "title": "খেলার জিনিস",
+   "front": "pages/037-front.jpg",
+   "back": "pages/037-back.jpg",
+   "items": [
+    {
+     "id": "kite",
+     "label": "ঘুড়ি",
+     "gloss": "kite"
+    },
+    {
+     "id": "spinning-top",
+     "label": "লাটিম",
+     "gloss": "spinning top"
+    },
+    {
+     "id": "cards",
+     "label": "তাস",
+     "gloss": "playing cards"
+    },
+    {
+     "id": "chess-piece",
+     "label": "দাবার গুটি",
+     "gloss": "chess piece"
+    },
+    {
+     "id": "swing",
+     "label": "দোলনা",
+     "gloss": "swing"
+    },
+    {
+     "id": "skipping-rope",
+     "label": "লাফের দড়ি",
+     "gloss": "jump rope"
+    }
+   ],
+   "questions": [
+    "ঘুড়িটা কোনটা?",
+    "কোন দুটোর সঙ্গে সুতা আছে?",
+    "আপনি ছোটবেলায় কোনটা দিয়ে খেলেছেন?",
+    "লাটিম কী করে ঘোরায়?",
+    "এখানে বাচ্চারা কোথায় খেলতে যায়?",
+    "খেলার জায়গা কমে গেলে পাড়ার বাচ্চাদের জীবন কীভাবে বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "small-parts-of-the-face",
+   "number": 187,
+   "title": "চোখ কান আর গালের অংশ",
+   "front": "pages/187-front.jpg",
+   "back": "pages/187-back.jpg",
+   "items": [
+    {
+     "id": "upper-eyelid",
+     "label": "চোখের পাতা",
+     "gloss": "upper eyelid"
+    },
+    {
+     "id": "upper-eyelashes",
+     "label": "চোখের পাপড়ি",
+     "gloss": "eyelashes along the upper lid"
+    },
+    {
+     "id": "dark-eye-pupil",
+     "label": "চোখের মণি",
+     "gloss": "pupil at the center of the eye"
+    },
+    {
+     "id": "earlobe-detail",
+     "label": "কানের লতি",
+     "gloss": "soft lobe at bottom of ear"
+    },
+    {
+     "id": "nostril-detail",
+     "label": "নাকের ফুটো",
+     "gloss": "nostrils at the base of the nose"
+    },
+    {
+     "id": "cheek-dimple",
+     "label": "গালের টোল",
+     "gloss": "a dimple in the cheek"
+    }
+   ],
+   "questions": [
+    "গালে টোল আছে কার?",
+    "কোনটায় কানের নিচের অংশ দেখা যাচ্ছে?",
+    "আপনার পরিচিত কারও হাসলে গালে টোল পড়ে?",
+    "চোখের পাতা ফুলেছে, কাউকে কীভাবে জানাবেন?",
+    "চোখের মণি আর চোখের পাপড়ি কোথায় থাকে?",
+    "কারও মুখ খুব অল্প সময় দেখে পরে মনে করতে হলে কোন কোন ছোট দিক মনে রাখতে পারেন?"
+   ]
+  },
+  {
+   "id": "small-pests-and-pollinators",
+   "number": 172,
+   "title": "ঘরে আর ফুলের কাছে ছোট পোকা",
+   "front": "pages/172-front.jpg",
+   "back": "pages/172-back.jpg",
+   "items": [
+    {
+     "id": "termite-local",
+     "label": "উইপোকা",
+     "gloss": "wood-eating termite"
+    },
+    {
+     "id": "bedbug-local",
+     "label": "ছারপোকা",
+     "gloss": "bed bug"
+    },
+    {
+     "id": "head-louse-local",
+     "label": "উকুন",
+     "gloss": "head louse"
+    },
+    {
+     "id": "house-spider-local",
+     "label": "মাকড়সা",
+     "gloss": "house spider"
+    },
+    {
+     "id": "asian-honey-bee",
+     "label": "মৌমাছি",
+     "gloss": "Asian honey bee"
+    },
+    {
+     "id": "paper-wasp-local",
+     "label": "বোলতা",
+     "gloss": "paper wasp"
+    }
+   ],
+   "questions": [
+    "মৌমাছিটা কোনটা?",
+    "কোন ছবিতে পোকাটা চুল ধরে আছে?",
+    "আপনার বাড়ির আশপাশে কোনটা দেখেছেন?",
+    "বিছানার ধারে ছারপোকা দেখলে বাড়ির কাউকে কী বলবেন?",
+    "মৌমাছি আর বোলতার গড়নে কী তফাত দেখছেন?",
+    "সব ছোট পোকাকে একইভাবে তাড়ানো ঠিক হবে কি? কী ভেবে ঠিক করবেন?"
+   ]
+  },
+  {
+   "id": "local-open-and-work-sites",
+   "number": 90,
+   "title": "এলাকার বড় খোলা জায়গা",
+   "front": "pages/090-front.jpg",
+   "back": "pages/090-back.jpg",
+   "items": [
+    {
+     "id": "playfield",
+     "label": "খেলার মাঠ",
+     "gloss": "playing field"
+    },
+    {
+     "id": "fruit-orchard",
+     "label": "ফলের বাগান",
+     "gloss": "fruit orchard"
+    },
+    {
+     "id": "cemetery",
+     "label": "কবরস্থান",
+     "gloss": "cemetery"
+    },
+    {
+     "id": "eid-ground",
+     "label": "ঈদগাহ",
+     "gloss": "open Eid prayer ground"
+    },
+    {
+     "id": "brick-kiln",
+     "label": "ইটভাটা",
+     "gloss": "brick kiln"
+    },
+    {
+     "id": "factory",
+     "label": "কারখানা",
+     "gloss": "factory"
+    }
+   ],
+   "questions": [
+    "কারখানা কোন ছবিতে?",
+    "কোন জায়গায় ফল ধরে?",
+    "এর মধ্যে কোন জায়গাটা আপনার বাসার কাছে?",
+    "কাউকে খেলার মাঠে যেতে হলে কীভাবে পথ বলবেন?",
+    "আপনার এলাকায় মানুষ বাইরে একসঙ্গে কোথায় জড়ো হয়?",
+    "খোলা জায়গা কমে গেলে এলাকার লোকের রোজকার কাজকর্ম কীভাবে বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "repair-and-garden-tools",
+   "number": 131,
+   "title": "কাঠ মাটি আর মেরামতের সরঞ্জাম",
+   "front": "pages/131-front.jpg",
+   "back": "pages/131-back.jpg",
+   "items": [
+    {
+     "id": "screwdriver-tool",
+     "label": "পেঁচকস",
+     "gloss": "screwdriver"
+    },
+    {
+     "id": "pliers-tool",
+     "label": "সাঁড়াশি",
+     "gloss": "pliers"
+    },
+    {
+     "id": "chisel-tool",
+     "label": "ছেনি",
+     "gloss": "woodworking chisel"
+    },
+    {
+     "id": "sandpaper-tool",
+     "label": "শিরীষ কাগজ",
+     "gloss": "sandpaper"
+    },
+    {
+     "id": "spade-tool",
+     "label": "কোদাল",
+     "gloss": "long-handled spade"
+    },
+    {
+     "id": "hand-hoe-tool",
+     "label": "খুরপি",
+     "gloss": "short hand hoe"
+    }
+   ],
+   "questions": [
+    "কোদালটা কোনটা?",
+    "কোনটা দিয়ে কাঠ ঘষে মসৃণ করা যায়?",
+    "আপনি এর মধ্যে কোনটা ব্যবহার করেছেন?",
+    "টবের মাটি আলগা করতে কোনটা নেবেন?",
+    "কোন কাজটা নিজে করবেন আর কোনটার জন্য কারিগর ডাকবেন?",
+    "দুই এলাকার মানুষ একই কাজ আলাদা হাতিয়ার দিয়ে করলে তার কারণ কী হতে পারে?"
+   ]
+  },
+  {
+   "id": "parts-and-problems-of-teeth",
+   "number": 253,
+   "title": "দাঁতের কোন জায়গায়",
+   "front": "pages/253-front.jpg",
+   "back": "pages/253-back.jpg",
+   "items": [
+    {
+     "id": "gum-line-of-teeth",
+     "label": "মাড়ি",
+     "gloss": "pink gum tissue along visible teeth"
+    },
+    {
+     "id": "front-incisor-teeth",
+     "label": "সামনের দাঁত",
+     "gloss": "human front incisor teeth"
+    },
+    {
+     "id": "back-molar-teeth",
+     "label": "পেছনের দাঁত",
+     "gloss": "human back molar teeth"
+    },
+    {
+     "id": "visible-space-between-teeth",
+     "label": "দাঁতের ফাঁক",
+     "gloss": "visible gap between two front teeth"
+    },
+    {
+     "id": "visible-tooth-cavity",
+     "label": "দাঁতে গর্ত",
+     "gloss": "visible tooth cavity as a dark pit"
+    },
+    {
+     "id": "removable-set-of-false-teeth",
+     "label": "বাঁধানো দাঁত",
+     "gloss": "removable complete dentures"
+    }
+   ],
+   "questions": [
+    "মাড়ি কোন ছবিতে দেখানো হয়েছে?",
+    "সামনের আর পেছনের দাঁতের আকারে কী তফাত?",
+    "আপনি খাবার চিবাতে মুখের কোন পাশ বেশি ব্যবহার করেন?",
+    "কোথায় খাবার আটকে আছে, সেটা কীভাবে দেখাবেন?",
+    "দাঁতের ফাঁক আর দাঁতের গর্তের মধ্যে কী তফাত দেখছেন?",
+    "মুখে কোন জায়গায় কষ্ট হচ্ছে বুঝিয়ে বলতে না পারলে কীভাবে সাহায্য চাইবেন?"
+   ]
+  },
+  {
+   "id": "brightness-and-clear-vision",
+   "number": 194,
+   "title": "আলো আর অন্ধকারে যা দেখি",
+   "front": "pages/194-front.jpg",
+   "back": "pages/194-back.jpg",
+   "items": [
+    {
+     "id": "ordinary-room-light",
+     "label": "আলো",
+     "gloss": "ordinary light falling in a room"
+    },
+    {
+     "id": "deep-room-darkness",
+     "label": "অন্ধকার",
+     "gloss": "very dark interior with almost nothing lit"
+    },
+    {
+     "id": "faint-flickering-light",
+     "label": "মিটমিটে",
+     "gloss": "dim faint flickering light"
+    },
+    {
+     "id": "intense-light-source",
+     "label": "তীব্র আলো",
+     "gloss": "very bright dazzling light"
+    },
+    {
+     "id": "blurry-view",
+     "label": "ঝাপসা",
+     "gloss": "blurred unfocused visual detail"
+    },
+    {
+     "id": "sharp-clear-view",
+     "label": "স্পষ্ট",
+     "gloss": "clearly defined sharp visual detail"
+    }
+   ],
+   "questions": [
+    "কোন ঘরটা অন্ধকার?",
+    "কোন ফুলটা স্পষ্ট আর কোনটা ঝাপসা?",
+    "বিদ্যুৎ না থাকলে আপনি কোথায় মিটমিটে আলো দেখেছেন?",
+    "আলোতে চোখে লাগছে, আলোটা অন্য দিকে নিতে কী বলবেন?",
+    "খুব কম আলো আর খুব তীব্র আলোতে দেখতে কী রকম অসুবিধা হয়?",
+    "দিনের কাজ আর ঘুমানোর আগে একই রকম আলো চাইবেন কি? কেন?"
+   ]
+  },
+  {
+   "id": "types-of-homes",
+   "number": 115,
+   "title": "নানা রকম বাড়ি",
+   "front": "pages/115-front.jpg",
+   "back": "pages/115-back.jpg",
+   "items": [
+    {
+     "id": "straw-hut",
+     "label": "কুঁড়েঘর",
+     "gloss": "small straw hut"
+    },
+    {
+     "id": "mud-home",
+     "label": "মাটির ঘর",
+     "gloss": "earthen-walled home"
+    },
+    {
+     "id": "bamboo-home",
+     "label": "বাঁশের ঘর",
+     "gloss": "bamboo-walled home"
+    },
+    {
+     "id": "single-story-home",
+     "label": "একতলা বাড়ি",
+     "gloss": "single-storey home"
+    },
+    {
+     "id": "two-story-home",
+     "label": "দোতলা বাড়ি",
+     "gloss": "two-storey home"
+    },
+    {
+     "id": "tall-building",
+     "label": "উঁচু দালান",
+     "gloss": "tall multi-storey building"
+    }
+   ],
+   "questions": [
+    "দোতলা বাড়িটা কোনটা?",
+    "কোনটায় বাঁশের দেয়াল আছে?",
+    "আপনি কী রকম বাড়িতে থেকেছেন?",
+    "বৃষ্টি হলে মাটির ঘর টিকিয়ে রাখতে কী করা যায়?",
+    "এলাকার বাড়ি দেখে কাউকে ঠিকানা কীভাবে বলবেন?",
+    "জায়গার দাম বা আবহাওয়া বদলালে মানুষ কী রকম বাড়ি বানাতে পারে?"
+   ]
+  },
+  {
+   "id": "sweet-breakfast-and-pitha",
+   "number": 201,
+   "title": "পিঠা আর মিষ্টি নাশতা",
+   "front": "pages/201-front.jpg",
+   "back": "pages/201-back.jpg",
+   "items": [
+    {
+     "id": "sweet-semolina-suji",
+     "label": "সুজি",
+     "gloss": "cooked sweet semolina breakfast"
+    },
+    {
+     "id": "sweet-semai-vermicelli",
+     "label": "সেমাই",
+     "gloss": "milk vermicelli pudding"
+    },
+    {
+     "id": "popped-rice-khoi",
+     "label": "খই",
+     "gloss": "popped paddy flakes"
+    },
+    {
+     "id": "jaggery-coated-murki",
+     "label": "মুড়কি",
+     "gloss": "jaggery-coated puffed rice grains"
+    },
+    {
+     "id": "plain-chitoi-pitha",
+     "label": "চিতই পিঠা",
+     "gloss": "plain round steamed rice pitha"
+    },
+    {
+     "id": "rolled-patishapta-pitha",
+     "label": "পাটিসাপটা",
+     "gloss": "rolled filled pitha"
+    }
+   ],
+   "questions": [
+    "খই কোনটা?",
+    "চিতই আর পাটিসাপটার আকারে কী তফাত?",
+    "আপনি কখন সেমাই খান?",
+    "সুজি রান্না করতে কী দেন?",
+    "মুড়কি আর পাটিসাপটার স্বাদে গুড় কী করে বোঝা যায়?",
+    "শীতের সকালে অতিথি এলে কোনটা খাওয়াবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "features-around-a-mosque",
+   "number": 192,
+   "title": "মসজিদের চারপাশে যা দেখি",
+   "front": "pages/192-front.jpg",
+   "back": "pages/192-back.jpg",
+   "items": [
+    {
+     "id": "mosque-minaret-local",
+     "label": "মিনার",
+     "gloss": "minaret tower of a mosque"
+    },
+    {
+     "id": "mosque-dome-local",
+     "label": "গম্বুজ",
+     "gloss": "main architectural dome atop a mosque"
+    },
+    {
+     "id": "mosque-prayer-niche",
+     "label": "মেহরাব",
+     "gloss": "prayer niche in the wall facing Mecca"
+    },
+    {
+     "id": "mosque-minbar-pulpit",
+     "label": "মিম্বর",
+     "gloss": "raised stepped mosque pulpit"
+    },
+    {
+     "id": "ablution-installation-local",
+     "label": "অজুখানা",
+     "gloss": "mosque ablution area"
+    },
+    {
+     "id": "mosque-shoe-rack",
+     "label": "জুতার তাক",
+     "gloss": "shoe shelves at mosque entrance"
+    }
+   ],
+   "questions": [
+    "মিনার কোনটা?",
+    "কোন ছবিতে জুতা রাখা আছে?",
+    "আপনার পাড়ার মসজিদে গম্বুজ আছে?",
+    "অজুখানাটা কোথায়, কাউকে কীভাবে জিজ্ঞেস করবেন?",
+    "মেহরাব আর মিম্বর পাশাপাশি থাকলে কীভাবে আলাদা চিনবেন?",
+    "মসজিদে প্রথমবার এলে কেউ জায়গা চিনতে পারছেন না, তাঁকে কী কী দেখিয়ে দিতে পারেন?"
+   ]
+  },
+  {
+   "id": "mouth-and-nose-actions",
+   "number": 96,
+   "title": "মুখ আর নাক দিয়ে যা করি",
+   "front": "pages/096-front.jpg",
+   "back": "pages/096-back.jpg",
+   "items": [
+    {
+     "id": "sniff",
+     "label": "শোঁকা",
+     "gloss": "to sniff"
+    },
+    {
+     "id": "taste-a-bite",
+     "label": "চেখে দেখা",
+     "gloss": "to taste a little to find out the flavor"
+    },
+    {
+     "id": "bite",
+     "label": "কামড়ানো",
+     "gloss": "to take a bite"
+    },
+    {
+     "id": "chew",
+     "label": "চিবানো",
+     "gloss": "to chew"
+    },
+    {
+     "id": "swallow",
+     "label": "গেলা",
+     "gloss": "to swallow"
+    },
+    {
+     "id": "blow",
+     "label": "ফুঁ দেওয়া",
+     "gloss": "to blow air out"
+    }
+   ],
+   "questions": [
+    "কে ফুঁ দিচ্ছেন?",
+    "কোন দুটো ছবিতে চামচ আছে?",
+    "কোন খাবার আগে একটু চেখে দেখেন?",
+    "খুব গরম খাবার মুখে দেওয়ার আগে কী করেন?",
+    "ঘ্রাণ থেকে কীভাবে বোঝেন খাবারটা কী?",
+    "একসঙ্গে খাওয়ার সময় মানুষের শব্দ বা খাবারের গন্ধ নিয়ে আলাদা ধারণা কেন থাকতে পারে?"
+   ]
+  },
+  {
+   "id": "ways-of-heating-food",
+   "number": 81,
+   "title": "আঁচে রান্না করি",
+   "front": "pages/081-front.jpg",
+   "back": "pages/081-back.jpg",
+   "items": [
+    {
+     "id": "shallow-fry",
+     "label": "ভাজা",
+     "gloss": "to fry in oil"
+    },
+    {
+     "id": "boil-food",
+     "label": "সেদ্ধ করা",
+     "gloss": "to boil solid food"
+    },
+    {
+     "id": "steam-food",
+     "label": "ভাপ দেওয়া",
+     "gloss": "to steam food"
+    },
+    {
+     "id": "boil-water",
+     "label": "পানি ফুটানো",
+     "gloss": "to bring water to a boil"
+    },
+    {
+     "id": "dry-toast",
+     "label": "সেঁকা",
+     "gloss": "to toast on dry heat"
+    },
+    {
+     "id": "slow-steam-pot",
+     "label": "দম দেওয়া",
+     "gloss": "to finish cooking on low heat under a sealed lid"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে মাছ ভাজা হচ্ছে?",
+    "কোথায় পানি ফুটছে, অথচ কোনো খাবার নেই?",
+    "আপনি কোন খাবারটা সেদ্ধ করে খান?",
+    "রুটি সেঁকতে কী ধরনের পাত্র লাগে?",
+    "একই খাবার ভেজে আর ভাপে দিলে কী বদলায়?",
+    "একটা খাবার রান্নার উপায় বদলালে সেটা খাওয়ার অভ্যাস কীভাবে বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "preparing-food-to-serve",
+   "number": 114,
+   "title": "খাবার দেওয়ার আগে",
+   "front": "pages/114-front.jpg",
+   "back": "pages/114-back.jpg",
+   "items": [
+    {
+     "id": "serve-food",
+     "label": "খাবার বেড়ে দেওয়া",
+     "gloss": "to serve food"
+    },
+    {
+     "id": "divide-food",
+     "label": "ভাগ করা",
+     "gloss": "to divide into shares"
+    },
+    {
+     "id": "sprinkle",
+     "label": "ছিটানো",
+     "gloss": "to sprinkle over food"
+    },
+    {
+     "id": "squeeze-juice",
+     "label": "চিপে রস বের করা",
+     "gloss": "to squeeze juice by hand"
+    },
+    {
+     "id": "strain-food",
+     "label": "ছেঁকে নেওয়া",
+     "gloss": "to strain food"
+    },
+    {
+     "id": "grind-food",
+     "label": "গুঁড়া করা",
+     "gloss": "to grind into powder"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে ভাত বেড়ে দিচ্ছেন?",
+    "কোথায় লেবু চিপে রস বের করছেন?",
+    "আপনি কী খাবার দুইজনের মধ্যে ভাগ করেন?",
+    "ছাঁকনি দিয়ে কী কী ছেঁকে নেওয়া যায়?",
+    "অতিথি এলে খাবার বেড়ে দিতে কী বলেন?",
+    "অল্প খাবার অনেকের মধ্যে ভাগ করতে হলে কী কী ভেবে ভাগ করবেন?"
+   ]
+  },
+  {
+   "id": "fabric-care-actions",
+   "number": 133,
+   "title": "কাপড় নিয়ে যে কাজ করি",
+   "front": "pages/133-front.jpg",
+   "back": "pages/133-back.jpg",
+   "items": [
+    {
+     "id": "iron-cloth",
+     "label": "ইস্ত্রি করা",
+     "gloss": "to iron cloth"
+    },
+    {
+     "id": "pleat-cloth",
+     "label": "কুঁচি দেওয়া",
+     "gloss": "to make pleats"
+    },
+    {
+     "id": "soak-fabric",
+     "label": "ভিজিয়ে রাখা",
+     "gloss": "to leave fabric soaking"
+    },
+    {
+     "id": "wring-cloth",
+     "label": "নিংড়ানো",
+     "gloss": "to wring out cloth"
+    },
+    {
+     "id": "remove-stain",
+     "label": "দাগ তোলা",
+     "gloss": "to remove a stain"
+    },
+    {
+     "id": "dye-cloth",
+     "label": "রং করা",
+     "gloss": "to dye cloth"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে ইস্ত্রি করছেন?",
+    "কোন ছবিতে কাপড় থেকে পানি বের হচ্ছে?",
+    "কোন কাপড় আপনি ইস্ত্রি করেন?",
+    "ভেজা কাপড় মেলার আগে নিংড়ান কীভাবে?",
+    "কাপড়ের রং উঠে গেলে কীভাবে বুঝবেন?",
+    "কাপড় সামলানোর অভ্যাস বদলালে একই জামা কত দিন ব্যবহার করা যায়, তাতে কী তফাত হতে পারে?"
+   ]
+  },
+  {
+   "id": "familiar-home-and-personal-scents",
+   "number": 259,
+   "title": "ঘরে আর গায়ে সুগন্ধ",
+   "front": "pages/259-front.jpg",
+   "back": "pages/259-back.jpg",
+   "items": [
+    {
+     "id": "attar-roll-on-scent-oil",
+     "label": "আতর",
+     "gloss": "concentrated attar perfume oil in a vial"
+    },
+    {
+     "id": "rose-water-for-fragrance",
+     "label": "গোলাপজল",
+     "gloss": "rose water bottle beside a rose"
+    },
+    {
+     "id": "aromatic-burning-incense-sticks",
+     "label": "আগরবাতি",
+     "gloss": "burning incense sticks"
+    },
+    {
+     "id": "covered-incense-burner",
+     "label": "ধূপদানি",
+     "gloss": "small covered incense burner vessel"
+    },
+    {
+     "id": "solid-camphor-pieces",
+     "label": "কর্পূর",
+     "gloss": "small white pieces of household camphor"
+    },
+    {
+     "id": "body-perfume-atomizer",
+     "label": "সুগন্ধি",
+     "gloss": "atomizer bottle of body fragrance"
+    }
+   ],
+   "questions": [
+    "আগরবাতি কোনটা?",
+    "আতরের শিশি আর সুগন্ধির বোতলের মধ্যে কী তফাত?",
+    "আপনার কোন গন্ধটা ভালো লাগে?",
+    "গোলাপজলের গন্ধ কেমন, কাউকে কীভাবে বলবেন?",
+    "ধূপদানি আর আগরবাতি দেখে কীভাবে আলাদা করবেন?",
+    "সবার গন্ধের পছন্দ এক রকম না হলে ঘরে কী করবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "bangladesh-flour-snacks",
+   "number": 155,
+   "title": "ময়দা দিয়ে বানানো খাবার",
+   "front": "pages/155-front.jpg",
+   "back": "pages/155-back.jpg",
+   "items": [
+    {
+     "id": "plain-paratha",
+     "label": "পরোটা",
+     "gloss": "layered plain Bangladeshi paratha"
+    },
+    {
+     "id": "luchi-fried-bread",
+     "label": "লুচি",
+     "gloss": "puffed white flour luchi"
+    },
+    {
+     "id": "bakarkhani-bread",
+     "label": "বাখরখানি",
+     "gloss": "Dhaka flaky baked bakarkhani"
+    },
+    {
+     "id": "nimki-savory-cracker",
+     "label": "নিমকি",
+     "gloss": "small diamond Bengali nimki cracker"
+    },
+    {
+     "id": "stuffed-mughlai-paratha",
+     "label": "মোগলাই পরোটা",
+     "gloss": "egg-stuffed Mughlai paratha"
+    },
+    {
+     "id": "sliced-bread-loaf",
+     "label": "পাউরুটি",
+     "gloss": "loaf of sliced sandwich bread"
+    }
+   ],
+   "questions": [
+    "পাউরুটি কোনটা?",
+    "কোন দুটো খাবার গোল দেখাচ্ছে?",
+    "নাশতায় এর মধ্যে কোনটা আপনি খান?",
+    "পাউরুটি আর বাখরখানি কীভাবে চিনবেন?",
+    "চারটা লুচি চাইতে দোকানিকে কী বলবেন?",
+    "একই ময়দা দিয়ে বানালেও খাবারগুলো দেখতে আর খেতে এত আলাদা হয় কেন?"
+   ]
+  },
+  {
+   "id": "making-sounds",
+   "number": 97,
+   "title": "শব্দ করি যেভাবে",
+   "front": "pages/097-front.jpg",
+   "back": "pages/097-back.jpg",
+   "items": [
+    {
+     "id": "clap",
+     "label": "হাততালি দেওয়া",
+     "gloss": "to clap hands"
+    },
+    {
+     "id": "knock",
+     "label": "টোকা দেওয়া",
+     "gloss": "to knock lightly"
+    },
+    {
+     "id": "hum",
+     "label": "গুনগুন করা",
+     "gloss": "to hum"
+    },
+    {
+     "id": "play-flute",
+     "label": "বাঁশি বাজানো",
+     "gloss": "to play a flute"
+    },
+    {
+     "id": "shout",
+     "label": "চেঁচানো",
+     "gloss": "to shout"
+    },
+    {
+     "id": "whisper",
+     "label": "ফিসফিস করা",
+     "gloss": "to whisper"
+    }
+   ],
+   "questions": [
+    "কে হাততালি দিচ্ছেন?",
+    "কে চেঁচাচ্ছেন আর কে ফিসফিস করছেন?",
+    "আপনি কখন দরজায় টোকা দেন?",
+    "কাউকে আস্তে কথা বলতে হলে কী বলবেন?",
+    "কোন জায়গায় জোরে কথা বললে লোকজনের অসুবিধা হয়?",
+    "একই কথা জোরে বললে আর ফিসফিস করে বললে শুনতে কেমন আলাদা লাগে, আর কেন?"
+   ]
+  },
+  {
+   "id": "door-and-window-fittings",
+   "number": 159,
+   "title": "দরজা জানালার ছোট অংশ",
+   "front": "pages/159-front.jpg",
+   "back": "pages/159-back.jpg",
+   "items": [
+    {
+     "id": "window-fixed-bars",
+     "label": "জানালার শিক",
+     "gloss": "fixed metal window bars"
+    },
+    {
+     "id": "door-pull-handle",
+     "label": "দরজার হাতল",
+     "gloss": "door pull handle"
+    },
+    {
+     "id": "door-butt-hinge",
+     "label": "কবজা",
+     "gloss": "door butt hinge"
+    },
+    {
+     "id": "door-ring-knocker",
+     "label": "দোরের কড়া",
+     "gloss": "door ring knocker"
+    },
+    {
+     "id": "door-entire-frame",
+     "label": "চৌকাঠ",
+     "gloss": "complete wooden door frame"
+    },
+    {
+     "id": "door-lock-keyhole",
+     "label": "তালার ছিদ্র",
+     "gloss": "door lock keyhole"
+    }
+   ],
+   "questions": [
+    "দরজার হাতল কোনটা?",
+    "কোন ছবিতে চাবি ঢোকানোর ছিদ্র আছে?",
+    "আপনার বাড়ির জানালায় শিক আছে?",
+    "দরজার কবজা ঢিলা হলে মিস্ত্রিকে কী বলবেন?",
+    "কড়া নাড়ার পরে বাড়ির লোক সাড়া না দিলে কী করবেন?",
+    "ঘরে আলো আর বাতাস রাখার সঙ্গে নিরাপত্তাও রাখতে হলে জানালা কেমন হওয়া ভালো?"
+   ]
+  },
+  {
+   "id": "appearance-contrasts",
+   "number": 100,
+   "title": "দেখতে কেমন লাগে",
+   "front": "pages/100-front.jpg",
+   "back": "pages/100-back.jpg",
+   "items": [
+    {
+     "id": "glossy",
+     "label": "চকচকে",
+     "gloss": "glossy and reflective"
+    },
+    {
+     "id": "dull",
+     "label": "মলিন",
+     "gloss": "dull from wear"
+    },
+    {
+     "id": "dark-shade",
+     "label": "গাঢ়",
+     "gloss": "deep shade of a color"
+    },
+    {
+     "id": "pale-shade",
+     "label": "ফিকে",
+     "gloss": "pale shade of a color"
+    },
+    {
+     "id": "transparent-water",
+     "label": "স্বচ্ছ",
+     "gloss": "transparent"
+    },
+    {
+     "id": "turbid-water",
+     "label": "ঘোলা",
+     "gloss": "murky liquid"
+    }
+   ],
+   "questions": [
+    "চকচকে থালাটা কোনটা?",
+    "কোনটা ঘোলা পানি?",
+    "আপনি গাঢ় রং বেশি পছন্দ করেন, নাকি ফিকে রং?",
+    "আলো কম হলে কাপড়ের রং কেমন দেখায়?",
+    "দোকানে জিনিস দেখে পুরোনো কি নতুন কীভাবে বোঝেন?",
+    "কোনো জিনিস দেখতে ভালো হলেই সেটা ভালো মানের বলে ধরে নেওয়া কখন ভুল হতে পারে?"
+   ]
+  },
+  {
+   "id": "things-that-move-or-change",
+   "number": 166,
+   "title": "জিনিস নিজের মতো নড়ে বদলায়",
+   "front": "pages/166-front.jpg",
+   "back": "pages/166-back.jpg",
+   "items": [
+    {
+     "id": "swaying-object",
+     "label": "দুলতে থাকা",
+     "gloss": "object swaying from side to side"
+    },
+    {
+     "id": "spinning-object",
+     "label": "ঘুরতে থাকা",
+     "gloss": "an object spinning around its axis"
+    },
+    {
+     "id": "floating-object",
+     "label": "ভেসে থাকা",
+     "gloss": "an object floating at water surface"
+    },
+    {
+     "id": "sinking-object",
+     "label": "ডুবে যাওয়া",
+     "gloss": "an object sinking below water surface"
+    },
+    {
+     "id": "bursting-object",
+     "label": "ফেটে যাওয়া",
+     "gloss": "an object bursting from internal pressure"
+    },
+    {
+     "id": "flame-going-out",
+     "label": "নিভে যাওয়া",
+     "gloss": "a flame going out"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে জিনিসটা পানির ওপরে আছে?",
+    "কোনটা ঘুরছে আর কোনটা দুলছে?",
+    "আপনি কখনও কোনো জিনিস পানিতে ডুবে যেতে দেখেছেন?",
+    "বাতি নিভে গেলে কাউকে কীভাবে জানাবেন?",
+    "একই জিনিস ভাসছে না ডুবছে, ছবিতে কী দেখে বুঝলেন?",
+    "একই পানিতে একটা জিনিস ভাসে আর আরেকটা ডুবে যায় কেন?"
+   ]
+  },
+  {
+   "id": "local-kitchen-implements",
+   "number": 135,
+   "title": "রান্নাঘরের হাতিয়ার",
+   "front": "pages/135-front.jpg",
+   "back": "pages/135-back.jpg",
+   "items": [
+    {
+     "id": "kitchen-tongs",
+     "label": "চিমটা",
+     "gloss": "kitchen tongs"
+    },
+    {
+     "id": "curved-kitchen-blade",
+     "label": "বঁটি",
+     "gloss": "Bengali upright kitchen cutter"
+    },
+    {
+     "id": "stone-grinder",
+     "label": "শিলপাটা",
+     "gloss": "flat stone grinder"
+    },
+    {
+     "id": "mortar-pestle",
+     "label": "হামানদিস্তা",
+     "gloss": "brass mortar and pestle"
+    },
+    {
+     "id": "rice-cooking-pot",
+     "label": "ডেকচি",
+     "gloss": "broad lidded cooking pot"
+    },
+    {
+     "id": "stove-grate",
+     "label": "চুলার জালি",
+     "gloss": "stove pot support grate"
+    }
+   ],
+   "questions": [
+    "বঁটিটা কোনটা?",
+    "কোন দুটো দিয়ে মসলা বাটা যায়?",
+    "বাড়িতে আপনি মসলা কী দিয়ে বাটেন?",
+    "গরম কিছু তুলে নিতে কোনটা নেবেন?",
+    "রান্নার কোনো জিনিস হাতের কাছে না থাকলে তার বদলে কী ব্যবহার করবেন?",
+    "একই খাবার পুরোনো আর নতুন হাতিয়ার দিয়ে বানালে কাজের সময় বা স্বাদ কীভাবে বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "personal-care-objects",
+   "number": 68,
+   "title": "নিজের যত্নের জিনিস",
+   "front": "pages/068-front.jpg",
+   "back": "pages/068-back.jpg",
+   "items": [
+    {
+     "id": "handkerchief",
+     "label": "রুমাল",
+     "gloss": "handkerchief"
+    },
+    {
+     "id": "miswak",
+     "label": "মিসওয়াক",
+     "gloss": "tooth-cleaning twig"
+    },
+    {
+     "id": "kohl",
+     "label": "সুরমা",
+     "gloss": "kohl powder"
+    },
+    {
+     "id": "henna",
+     "label": "মেহেদি",
+     "gloss": "henna dye"
+    },
+    {
+     "id": "nail-clipper",
+     "label": "নখ কাটার যন্ত্র",
+     "gloss": "nail clipper"
+    },
+    {
+     "id": "barber-razor",
+     "label": "ক্ষুর",
+     "gloss": "traditional barber razor"
+    }
+   ],
+   "questions": [
+    "রুমালটা কোনটা?",
+    "কোনটা হাতে লাগানো আছে?",
+    "আপনি কোন জিনিসটা আগে দেখেছেন?",
+    "মেহেদি লাগাতে কী করেন?",
+    "নিজের যত্নে আপনার এলাকার আর কী রীতি আছে?",
+    "একই জিনিস কারও কাছে সাজ আর কারও কাছে রোজকার অভ্যাস হতে পারে কেন?"
+   ]
+  },
+  {
+   "id": "small-facial-actions",
+   "number": 122,
+   "title": "মুখে যা করে দেখাই",
+   "front": "pages/122-front.jpg",
+   "back": "pages/122-back.jpg",
+   "items": [
+    {
+     "id": "wink",
+     "label": "চোখ টেপা",
+     "gloss": "to wink with one eye"
+    },
+    {
+     "id": "blink",
+     "label": "পলক ফেলা",
+     "gloss": "to blink"
+    },
+    {
+     "id": "yawn",
+     "label": "হাই তোলা",
+     "gloss": "to yawn"
+    },
+    {
+     "id": "mouth-grimace",
+     "label": "মুখ বাঁকানো",
+     "gloss": "to twist one's lips"
+    },
+    {
+     "id": "furrow-brows",
+     "label": "ভুরু কুঁচকানো",
+     "gloss": "to furrow the brows"
+    },
+    {
+     "id": "shake-head",
+     "label": "মাথা ঝাঁকানো",
+     "gloss": "to shake the head sideways"
+    }
+   ],
+   "questions": [
+    "কে চোখ টিপছেন?",
+    "কার মুখ হাই তোলার সময় খোলা আছে?",
+    "ক্লান্ত হলে আপনি কখন হাই তোলেন?",
+    "কথা না বলে “না” বোঝাতে কী করেন?",
+    "ভুরু কুঁচকালে অন্যজন কী ভাবতে পারেন?",
+    "এক দেশে মুখের যে ইশারা একভাবে বোঝে, অন্য দেশে সেটা অন্যভাবে বোঝে কেন?"
+   ]
+  },
+  {
+   "id": "rice-varieties-at-the-market",
+   "number": 210,
+   "title": "চালের রকম চিনে নিই",
+   "front": "pages/210-front.jpg",
+   "back": "pages/210-back.jpg",
+   "items": [
+    {
+     "id": "raw-white-atop-rice",
+     "label": "আতপ চাল",
+     "gloss": "raw non-parboiled white rice"
+    },
+    {
+     "id": "cream-parboiled-rice",
+     "label": "সেদ্ধ চাল",
+     "gloss": "dry Bangladeshi parboiled rice"
+    },
+    {
+     "id": "tiny-scented-pilaf-rice",
+     "label": "পোলাওয়ের চাল",
+     "gloss": "fine scented short grain pilaf rice"
+    },
+    {
+     "id": "red-bran-rice",
+     "label": "লাল চাল",
+     "gloss": "whole red bran rice"
+    },
+    {
+     "id": "broken-rice-khud",
+     "label": "খুদ",
+     "gloss": "small broken rice kernels"
+    },
+    {
+     "id": "white-rice-flour",
+     "label": "চালের গুঁড়া",
+     "gloss": "white rice flour"
+    }
+   ],
+   "questions": [
+    "লাল চাল কোনটা?",
+    "খুদ আর চালের গুঁড়ার মধ্যে কোনটা বেশি মিহি?",
+    "আপনি বাসায় কোন চাল দিয়ে ভাত খান?",
+    "পোলাও রান্নার আগে চাল কীভাবে তৈরি করেন?",
+    "আতপ চাল আর সেদ্ধ চাল না চেখে কীভাবে আলাদা করবেন?",
+    "প্রথমবার নতুন চাল কিনতে গেলে দোকানির কাছে কী জানতে চাইবেন?"
+   ]
+  },
+  {
+   "id": "familiar-bangladesh-trees",
+   "number": 98,
+   "title": "এখানকার চেনা গাছ",
+   "front": "pages/098-front.jpg",
+   "back": "pages/098-back.jpg",
+   "items": [
+    {
+     "id": "coconut-palm",
+     "label": "নারকেলগাছ",
+     "gloss": "coconut palm"
+    },
+    {
+     "id": "areca-palm",
+     "label": "সুপারিগাছ",
+     "gloss": "areca palm"
+    },
+    {
+     "id": "banana-tree",
+     "label": "কলাগাছ",
+     "gloss": "banana plant"
+    },
+    {
+     "id": "palmyra-palm",
+     "label": "তালগাছ",
+     "gloss": "palmyra palm"
+    },
+    {
+     "id": "banyan-tree",
+     "label": "বটগাছ",
+     "gloss": "banyan tree"
+    },
+    {
+     "id": "bamboo-grove",
+     "label": "বাঁশঝাড়",
+     "gloss": "clump of growing bamboo"
+    }
+   ],
+   "questions": [
+    "কলাগাছটা কোনটা?",
+    "কোন গাছের ডাল থেকে ঝুরি নেমেছে?",
+    "এগুলোর মধ্যে কোন গাছটা আপনার আশপাশে আছে?",
+    "নারকেলগাছ আর সুপারিগাছ কী দেখে আলাদা করেন?",
+    "কাউকে গাছ দেখিয়ে পথ চেনাতে কী বলবেন?",
+    "মানুষের কাজে লাগে এমন গাছ আর ছায়া দেয় এমন গাছের মধ্যে বেছে লাগাতে হলে কীভাবে ঠিক করবেন?"
+   ]
+  },
+  {
+   "id": "finger-and-palm-actions",
+   "number": 129,
+   "title": "আঙুল আর তালু দিয়ে",
+   "front": "pages/129-front.jpg",
+   "back": "pages/129-back.jpg",
+   "items": [
+    {
+     "id": "poke-object",
+     "label": "খোঁচানো",
+     "gloss": "to poke with the tip"
+    },
+    {
+     "id": "press-button",
+     "label": "বোতাম টেপা",
+     "gloss": "to press a button"
+    },
+    {
+     "id": "pinch-skin",
+     "label": "চিমটি কাটা",
+     "gloss": "to pinch"
+    },
+    {
+     "id": "scratch-surface",
+     "label": "খামচানো",
+     "gloss": "to scratch with fingernails"
+    },
+    {
+     "id": "rub-surface",
+     "label": "ঘষা",
+     "gloss": "to rub back and forth"
+    },
+    {
+     "id": "press-down",
+     "label": "চাপ দেওয়া",
+     "gloss": "to press down with a palm"
+    }
+   ],
+   "questions": [
+    "কে বোতাম টিপছেন?",
+    "কোন ছবিতে আঙুলের নখ দিয়ে দাগ করছেন?",
+    "রোজ আপনি কী কী বোতাম টেপেন?",
+    "মাটি একটু চ্যাপ্টা করতে হাতে কী করবেন?",
+    "কোন জিনিস ঘষলে দাগ চলে যায়, আর কোনটায় নতুন দাগ পড়তে পারে?",
+    "দুইজন একই জিনিসে আলাদা জোর দিলে ফল কীভাবে বদলে যায়?"
+   ]
+  },
+  {
+   "id": "bangladesh-sweets",
+   "number": 139,
+   "title": "মিষ্টির দোকানে যা খাই",
+   "front": "pages/139-front.jpg",
+   "back": "pages/139-back.jpg",
+   "items": [
+    {
+     "id": "rasmalai",
+     "label": "রসমালাই",
+     "gloss": "rasmalai sweet in thick milk"
+    },
+    {
+     "id": "sandesh",
+     "label": "সন্দেশ",
+     "gloss": "molded sandesh sweet"
+    },
+    {
+     "id": "chomchom",
+     "label": "চমচম",
+     "gloss": "chomchom sweet"
+    },
+    {
+     "id": "laddu",
+     "label": "লাড্ডু",
+     "gloss": "boondi laddu sweet"
+    },
+    {
+     "id": "barfi",
+     "label": "বরফি",
+     "gloss": "square barfi sweet"
+    },
+    {
+     "id": "batasha",
+     "label": "বাতাসা",
+     "gloss": "airy batasha sugar sweet"
+    }
+   ],
+   "questions": [
+    "লাড্ডু কোনটা?",
+    "কোনটা মিষ্টি দুধের মধ্যে আছে?",
+    "এই মিষ্টিগুলোর মধ্যে আগে কোনটা খেয়েছেন?",
+    "চার রকম মিষ্টি একটু করে চাইলে দোকানে কী বলবেন?",
+    "দাওয়াতে আপনি কোন মিষ্টিটা নিয়ে যাবেন, আর কেন?",
+    "মিষ্টি শুধু খাবার হলেও কোনো কোনো দিনে এর বিশেষ মানে হয় কেন?"
+   ]
+  },
+  {
+   "id": "garden-planting-actions",
+   "number": 130,
+   "title": "গাছ লাগানো থেকে তোলা",
+   "front": "pages/130-front.jpg",
+   "back": "pages/130-back.jpg",
+   "items": [
+    {
+     "id": "dig-soil",
+     "label": "মাটি খোঁড়া",
+     "gloss": "to dig soil"
+    },
+    {
+     "id": "sow-seeds",
+     "label": "বীজ বোনা",
+     "gloss": "to sow seeds"
+    },
+    {
+     "id": "water-plant",
+     "label": "পানি দেওয়া",
+     "gloss": "to water a plant"
+    },
+    {
+     "id": "transplant-seedling",
+     "label": "চারা লাগানো",
+     "gloss": "to plant a seedling"
+    },
+    {
+     "id": "pull-weeds",
+     "label": "আগাছা তোলা",
+     "gloss": "to pull weeds"
+    },
+    {
+     "id": "pick-vegetables",
+     "label": "সবজি পাড়া",
+     "gloss": "to pick a vegetable from its plant"
+    }
+   ],
+   "questions": [
+    "কে গাছে পানি দিচ্ছেন?",
+    "কোথায় বীজ বুনছেন আর কোথায় চারা লাগাচ্ছেন?",
+    "আপনি কি কখনও টবে কিছু লাগিয়েছেন?",
+    "মাটিতে চারা দেওয়ার পরে কী করেন?",
+    "একই টবে সবজি আর আগাছা উঠলে কোনটা রাখবেন কীভাবে বুঝবেন?",
+    "কারও হাতে খুব অল্প জায়গা থাকলে তিনি কীভাবে নিজের খাবারের জন্য কিছু লাগাতে পারেন?"
+   ]
+  },
+  {
+   "id": "mouth-and-ear-gestures",
+   "number": 182,
+   "title": "চোখ কান মুখের ভঙ্গি",
+   "front": "pages/182-front.jpg",
+   "back": "pages/182-back.jpg",
+   "items": [
+    {
+     "id": "open-mouth-wide",
+     "label": "মুখ হাঁ করা",
+     "gloss": "opening the mouth wide"
+    },
+    {
+     "id": "finger-to-lips",
+     "label": "ঠোঁটে আঙুল দেওয়া",
+     "gloss": "putting a finger to the lips to signal quiet"
+    },
+    {
+     "id": "expose-teeth",
+     "label": "দাঁত বের করা",
+     "gloss": "baring the teeth rather than opening the jaw wide"
+    },
+    {
+     "id": "stick-tongue-out",
+     "label": "জিব বের করা",
+     "gloss": "sticking the tongue out"
+    },
+    {
+     "id": "cup-ear-to-listen",
+     "label": "কান পাতা",
+     "gloss": "cupping one ear to hear better"
+    },
+    {
+     "id": "press-both-ears-closed",
+     "label": "কানে হাত চাপা",
+     "gloss": "covering both ears with the hands"
+    }
+   ],
+   "questions": [
+    "কে মুখ হাঁ করেছেন?",
+    "কে দুই কানে হাত চেপে রেখেছেন?",
+    "দূর থেকে কারও কথা শুনতে কখনও কান পেতেছেন?",
+    "চুপ থাকার ইশারা কীভাবে দেখাবেন?",
+    "মুখ হাঁ করা আর দাঁত বের করার মধ্যে কী তফাত?",
+    "একটা ইশারা সব জায়গায় একই মানে বোঝায় বলে মনে করেন? কেন?"
+   ]
+  },
+  {
+   "id": "nuts-and-dried-fruit-at-the-market",
+   "number": 260,
+   "title": "বাদাম আর শুকনা ফল কিনি",
+   "front": "pages/260-front.jpg",
+   "back": "pages/260-back.jpg",
+   "items": [
+    {
+     "id": "shelled-almond-kernels",
+     "label": "কাঠবাদাম",
+     "gloss": "shelled elongated almond kernels"
+    },
+    {
+     "id": "whole-cashews-for-cooking",
+     "label": "কাজুবাদাম",
+     "gloss": "whole cream cashew nuts"
+    },
+    {
+     "id": "open-shell-pistachios",
+     "label": "পেস্তা",
+     "gloss": "green pistachio kernels in split shells"
+    },
+    {
+     "id": "whole-and-open-walnuts",
+     "label": "আখরোট",
+     "gloss": "whole walnuts and exposed crinkly kernels"
+    },
+    {
+     "id": "small-dark-dried-raisins",
+     "label": "কিশমিশ",
+     "gloss": "small dark dried raisins"
+    },
+    {
+     "id": "dried-sour-alu-bokhara",
+     "label": "আলুবোখারা",
+     "gloss": "dried alu bukhara sour plums"
+    }
+   ],
+   "questions": [
+    "কাজুবাদাম কোনটা?",
+    "আখরোট আর পেস্তার খোল দেখতে কীভাবে আলাদা?",
+    "আপনি নাশতায় কী বাদাম খান?",
+    "দোকানে অল্প কাঠবাদাম চাইতে কী বলবেন?",
+    "শুকনা কিশমিশ আর আলুবোখারা আকার দেখে কীভাবে আলাদা করবেন?",
+    "কারও জন্য নাশতা সাজাতে হলে বাদাম আর শুকনা ফলের কোনটা বাছবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "equipment-at-the-playground",
+   "number": 239,
+   "title": "খেলার মাঠে যা কাজে লাগে",
+   "front": "pages/239-front.jpg",
+   "back": "pages/239-back.jpg",
+   "items": [
+    {
+     "id": "sliding-playground-ramp",
+     "label": "পিছলে নামার সিঁড়ি",
+     "gloss": "playground slide"
+    },
+    {
+     "id": "seesaw-playground-seat",
+     "label": "ওঠানামার দোলনা",
+     "gloss": "playground seesaw"
+    },
+    {
+     "id": "ball-for-foot-play",
+     "label": "খেলার বল",
+     "gloss": "football for play"
+    },
+    {
+     "id": "round-throwing-disc",
+     "label": "ছোড়ার চাকতি",
+     "gloss": "flying disc for play"
+    },
+    {
+     "id": "raised-net-for-play",
+     "label": "খেলার জাল",
+     "gloss": "standing net for court games"
+    },
+    {
+     "id": "referee-hand-whistle",
+     "label": "খেলার বাঁশি",
+     "gloss": "handheld referee whistle"
+    }
+   ],
+   "questions": [
+    "ছোড়ার চাকতি কোনটা?",
+    "দোলনা আর পিছলে নামার সিঁড়িতে কী তফাত?",
+    "ছোটবেলায় মাঠে কী খেলতেন?",
+    "খেলার জাল কীভাবে দাঁড় করাবেন?",
+    "খেলা থামাতে হলে কোন জিনিসটা কাজে লাগবে?",
+    "মাঠ ছোট হলে কোন খেলাটা করা সহজ হবে, আর কেন?"
+   ]
+  },
+  {
+   "id": "cuts-at-a-bangladeshi-meat-shop",
+   "number": 254,
+   "title": "মাংস কিনতে যে অংশ চিনি",
+   "front": "pages/254-front.jpg",
+   "back": "pages/254-back.jpg",
+   "items": [
+    {
+     "id": "chicken-drumsticks-raw",
+     "label": "মুরগির রান",
+     "gloss": "raw chicken drumstick cuts"
+    },
+    {
+     "id": "chicken-wing-cut",
+     "label": "মুরগির ডানা",
+     "gloss": "whole raw three-section chicken wing cut"
+    },
+    {
+     "id": "chicken-liver-cut",
+     "label": "মুরগির কলিজা",
+     "gloss": "raw chicken livers at a meat counter"
+    },
+    {
+     "id": "beef-rib-cut",
+     "label": "গরুর পাঁজর",
+     "gloss": "raw beef rib section"
+    },
+    {
+     "id": "minced-beef-cut",
+     "label": "গরুর কিমা",
+     "gloss": "freshly minced beef meat"
+    },
+    {
+     "id": "beef-marrow-bone-crosscut",
+     "label": "মজ্জাওয়ালা হাড়",
+     "gloss": "beef soup marrow bones showing round crosscuts"
+    }
+   ],
+   "questions": [
+    "মুরগির ডানা কোনটা?",
+    "রান আর ডানার আকারে কী তফাত?",
+    "আপনি রান্নার জন্য কোন অংশটা বেশি কেনেন?",
+    "কলিজাটা আলাদা করে চাইতে কী বলবেন?",
+    "হাড় আর কিমা কী দেখে আলাদা করবেন?",
+    "একই রান্নার জন্য দুই রকম মাংস দেখালে কোনটা নেবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "undoing-and-gathering-actions",
+   "number": 209,
+   "title": "হাত দিয়ে আলাদা আর এক করি",
+   "front": "pages/209-front.jpg",
+   "back": "pages/209-back.jpg",
+   "items": [
+    {
+     "id": "loosening-a-knot",
+     "label": "গিঁট খোলা",
+     "gloss": "untying a knot by hand"
+    },
+    {
+     "id": "tearing-paper-in-two",
+     "label": "ছিঁড়ে ফেলা",
+     "gloss": "tearing paper into two pieces"
+    },
+    {
+     "id": "spreading-grains-out",
+     "label": "ছড়িয়ে দেওয়া",
+     "gloss": "spreading objects out from a pile"
+    },
+    {
+     "id": "rolling-up-loose-mat",
+     "label": "গুটিয়ে নেওয়া",
+     "gloss": "rolling up a laid-out mat"
+    },
+    {
+     "id": "shaking-up-small-bottle",
+     "label": "ঝাঁকিয়ে নেওয়া",
+     "gloss": "shaking a sealed container"
+    },
+    {
+     "id": "shaking-dust-off-cloth",
+     "label": "ঝেড়ে ফেলা",
+     "gloss": "shaking dust off a cloth"
+    }
+   ],
+   "questions": [
+    "কে কাগজ ছিঁড়ছেন?",
+    "ছড়িয়ে দেওয়া আর গুটিয়ে নেওয়া দেখতে কীভাবে আলাদা?",
+    "আপনি বাসায় কোন জিনিস গুটিয়ে রাখেন?",
+    "গিঁট শক্ত হলে কীভাবে খুলবেন?",
+    "বোতল ঝাঁকানোর আগে কী দেখে নেবেন?",
+    "ধুলো ঝাড়তে ঘরের ভেতর নাকি বাইরে যাবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "parts-of-a-reading-book",
+   "number": 228,
+   "title": "বই খুলে ভেতরটা চিনি",
+   "front": "pages/228-front.jpg",
+   "back": "pages/228-back.jpg",
+   "items": [
+    {
+     "id": "hard-cover-of-book",
+     "label": "বইয়ের মলাট",
+     "gloss": "book cover"
+    },
+    {
+     "id": "book-binding-spine",
+     "label": "বইয়ের পিঠ",
+     "gloss": "bound spine of a book"
+    },
+    {
+     "id": "open-reading-page",
+     "label": "বইয়ের পাতা",
+     "gloss": "open leaf of a book"
+    },
+    {
+     "id": "illustrated-book-endpaper",
+     "label": "বইয়ের ছবি",
+     "gloss": "illustration printed in a book"
+    },
+    {
+     "id": "reading-bookmark",
+     "label": "পাতা চেনার দাগ",
+     "gloss": "bookmark marking a page"
+    },
+    {
+     "id": "book-contents-page",
+     "label": "সূচিপত্র",
+     "gloss": "table of contents in a book"
+    }
+   ],
+   "questions": [
+    "বইয়ের মলাট কোনটা?",
+    "বইয়ের ছবি আর সূচিপত্র দেখতে কীভাবে আলাদা?",
+    "আপনি কী রকম বই পড়েন?",
+    "পড়া থামালে পাতা কীভাবে চিনে রাখবেন?",
+    "ছবিওয়ালা গল্প খুঁজতে বইয়ের কোথায় তাকাবেন?",
+    "একটা নতুন বই বাছতে মলাট দেখবেন নাকি ভেতরের পাতা, আর কেন?"
+   ]
+  },
+  {
+   "id": "vegetables-for-curry-and-bhaji",
+   "number": 151,
+   "title": "ঝোল আর ভাজির সবজি",
+   "front": "pages/151-front.jpg",
+   "back": "pages/151-back.jpg",
+   "items": [
+    {
+     "id": "bitter-gourd",
+     "label": "করলা",
+     "gloss": "bitter gourd"
+    },
+    {
+     "id": "snake-gourd",
+     "label": "চিচিঙ্গা",
+     "gloss": "snake gourd"
+    },
+    {
+     "id": "green-papaya",
+     "label": "কাঁচা পেঁপে",
+     "gloss": "unripe papaya for cooking"
+    },
+    {
+     "id": "ash-gourd",
+     "label": "চালকুমড়া",
+     "gloss": "ash gourd"
+    },
+    {
+     "id": "green-cooking-banana",
+     "label": "কাঁচকলা",
+     "gloss": "green cooking banana"
+    },
+    {
+     "id": "moringa-pods",
+     "label": "সজনে ডাঁটা",
+     "gloss": "moringa pods eaten as a vegetable"
+    }
+   ],
+   "questions": [
+    "করলাটা কোনটা?",
+    "কোনটা কলার মতো দেখতে?",
+    "এই সবজিগুলোর মধ্যে কোনটা আপনি খেয়েছেন?",
+    "চিচিঙ্গা কিনতে গেলে দোকানিকে কী বলবেন?",
+    "সজনে ডাঁটা আর চালকুমড়া কাটলে কী তফাত দেখবেন?",
+    "অচেনা সবজি কিনলে কীভাবে বুঝবেন সেটা ঝোলে ভালো হবে, নাকি ভাজিতে?"
+   ]
+  },
+  {
+   "id": "leafy-greens-at-market",
+   "number": 152,
+   "title": "হাটে যে শাক পাই",
+   "front": "pages/152-front.jpg",
+   "back": "pages/152-back.jpg",
+   "items": [
+    {
+     "id": "spinach-greens",
+     "label": "পালংশাক",
+     "gloss": "spinach leaves sold in bundles"
+    },
+    {
+     "id": "red-amaranth-greens",
+     "label": "লালশাক",
+     "gloss": "red amaranth greens"
+    },
+    {
+     "id": "malabar-spinach-greens",
+     "label": "পুঁইশাক",
+     "gloss": "Malabar spinach vine greens"
+    },
+    {
+     "id": "water-spinach-greens",
+     "label": "কলমিশাক",
+     "gloss": "water spinach greens"
+    },
+    {
+     "id": "amaranth-stem-greens",
+     "label": "ডাঁটাশাক",
+     "gloss": "amaranth grown for edible thick stalks"
+    },
+    {
+     "id": "bottle-gourd-leaves",
+     "label": "লাউশাক",
+     "gloss": "bottle gourd vine tips and leaves eaten as greens"
+    }
+   ],
+   "questions": [
+    "লালশাক কোনটা?",
+    "কোন শাকের পাতাগুলো সবচেয়ে সরু?",
+    "আপনি বাড়িতে কোন শাক রান্না হতে দেখেছেন?",
+    "এক আঁটি পুঁইশাক চাইতে কী বলবেন?",
+    "শাকটা ভালো আছে কি না, কিনতে গেলে কী দেখে বুঝবেন?",
+    "একই শাক কেউ ডাঁটাসহ খায় আর কেউ শুধু পাতা নেয়, এর কারণ কী হতে পারে?"
+   ]
+  },
+  {
+   "id": "familiar-parts-of-a-car",
+   "number": 227,
+   "title": "গাড়ির চেনা অংশ",
+   "front": "pages/227-front.jpg",
+   "back": "pages/227-back.jpg",
+   "items": [
+    {
+     "id": "car-road-wheel",
+     "label": "গাড়ির চাকা",
+     "gloss": "car road wheel and tyre"
+    },
+    {
+     "id": "car-steering-wheel",
+     "label": "গাড়ি ঘোরানোর চাকা",
+     "gloss": "car steering wheel"
+    },
+    {
+     "id": "side-mirror-of-car",
+     "label": "পাশের আয়না",
+     "gloss": "car side-view mirror"
+    },
+    {
+     "id": "red-rear-car-light",
+     "label": "পেছনের বাতি",
+     "gloss": "rear car tail light"
+    },
+    {
+     "id": "car-driver-seat",
+     "label": "চালকের আসন",
+     "gloss": "car driver's seat"
+    },
+    {
+     "id": "front-car-windscreen",
+     "label": "গাড়ির সামনের কাচ",
+     "gloss": "car windscreen"
+    }
+   ],
+   "questions": [
+    "চালকের আসন কোনটা?",
+    "গাড়ির চাকা আর গাড়ি ঘোরানোর চাকা কীভাবে আলাদা?",
+    "আপনি গাড়ির কোন আসনে বসেন?",
+    "সামনের কাচে ধুলো থাকলে কীভাবে মুছবেন?",
+    "চাকা নরম মনে হলে চালককে কী বলবেন?",
+    "রাতে বের হওয়ার আগে গাড়ির কোন অংশগুলো দেখে নেবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "small-seeds-for-cooking",
+   "number": 180,
+   "title": "রান্নায় দিই ছোট ছোট দানা",
+   "front": "pages/180-front.jpg",
+   "back": "pages/180-back.jpg",
+   "items": [
+    {
+     "id": "bengali-five-spice-blend",
+     "label": "পাঁচফোড়ন",
+     "gloss": "Bengali five whole seed spice blend"
+    },
+    {
+     "id": "nigella-seed-local",
+     "label": "কালোজিরা",
+     "gloss": "whole black nigella seeds"
+    },
+    {
+     "id": "fenugreek-seeds-local",
+     "label": "মেথি",
+     "gloss": "whole fenugreek seeds"
+    },
+    {
+     "id": "fennel-seeds-local",
+     "label": "মৌরি",
+     "gloss": "whole fennel seeds"
+    },
+    {
+     "id": "poppy-seeds-local",
+     "label": "পোস্তদানা",
+     "gloss": "whole white poppy seeds"
+    },
+    {
+     "id": "sesame-seeds-local",
+     "label": "তিলের দানা",
+     "gloss": "whole white sesame seeds"
+    }
+   ],
+   "questions": [
+    "কোন বাটিতে কয়েক রকমের দানা মেশানো?",
+    "কালো দানাগুলো কোন ছবিতে?",
+    "আপনি রান্নায় কখনও মৌরি দিয়েছেন?",
+    "দোকানে একটু মেথি চাইলে কী বলবেন?",
+    "পোস্তদানা আর তিলের দানা পাশাপাশি রাখলে কী দেখে আলাদা করবেন?",
+    "একই সবজি রান্নায় ফোড়নের দানা বদলালে ঘ্রাণ আর স্বাদ কীভাবে বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "texture-of-food",
+   "number": 157,
+   "title": "খাবারের ছোঁয়া আর কামড়",
+   "front": "pages/157-front.jpg",
+   "back": "pages/157-back.jpg",
+   "items": [
+    {
+     "id": "crispy-texture",
+     "label": "মচমচে",
+     "gloss": "crispy food texture"
+    },
+    {
+     "id": "sticky-food-texture",
+     "label": "আঠালো",
+     "gloss": "sticky food texture"
+    },
+    {
+     "id": "juicy-fruit-texture",
+     "label": "রসালো",
+     "gloss": "juicy food texture"
+    },
+    {
+     "id": "fluffy-separate-grains",
+     "label": "ঝুরঝুরে",
+     "gloss": "fluffy loose rice grains"
+    },
+    {
+     "id": "thick-gloopy-food",
+     "label": "থকথকে",
+     "gloss": "thick gloopy food texture"
+    },
+    {
+     "id": "hollow-puffed-food",
+     "label": "ফাঁপা",
+     "gloss": "hollow interior of puffed food"
+    }
+   ],
+   "questions": [
+    "কোন খাবারটা ভেতরে ফাঁপা?",
+    "কোন ছবিতে ভাতের দানাগুলো আলাদা দেখা যাচ্ছে?",
+    "আপনি কী মচমচে খাবার ভালোবাসেন?",
+    "ভাত আঠালো হয়েছে, এটা কাউকে কীভাবে বলবেন?",
+    "থকথকে খাবার আর রসালো খাবার মুখে কীভাবে আলাদা লাগে?",
+    "একই পদ একটু বেশি বা কম রান্না করলে তার গড়ন কীভাবে বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "roadside-and-homestead-trees",
+   "number": 169,
+   "title": "পথে আর বাড়ির কাছে চেনা গাছ",
+   "front": "pages/169-front.jpg",
+   "back": "pages/169-back.jpg",
+   "items": [
+    {
+     "id": "mango-tree-local",
+     "label": "আমগাছ",
+     "gloss": "mango tree as landmark"
+    },
+    {
+     "id": "jackfruit-tree-local",
+     "label": "কাঁঠালগাছ",
+     "gloss": "jackfruit tree as landmark"
+    },
+    {
+     "id": "neem-tree-local",
+     "label": "নিমগাছ",
+     "gloss": "neem tree as landmark"
+    },
+    {
+     "id": "tamarind-tree-local",
+     "label": "তেঁতুলগাছ",
+     "gloss": "tamarind tree as landmark"
+    },
+    {
+     "id": "red-silk-cotton-tree",
+     "label": "শিমুলগাছ",
+     "gloss": "red silk cotton Bombax tree"
+    },
+    {
+     "id": "kadam-tree-local",
+     "label": "কদমগাছ",
+     "gloss": "kadam burflower tree"
+    }
+   ],
+   "questions": [
+    "কোন গাছটার গুঁড়িতে কাঁঠাল আছে?",
+    "কোন গাছের ফুল লাল আর কোনটার ফুল গোল?",
+    "আপনার বাড়ির কাছাকাছি এর মধ্যে কোন গাছ দেখেছেন?",
+    "কদমগাছের পাশ দিয়ে যেতে হবে, এটা পথ জিজ্ঞেস করলে কীভাবে বলবেন?",
+    "তেঁতুলগাছ আর নিমগাছ চিনতে পাতায় কী দেখবেন?",
+    "গরমের দিনে রাস্তার পাশে বড় গাছ থাকলে মানুষের কী সুবিধা হয়?"
+   ]
+  },
+  {
+   "id": "simple-stretching-and-footwork",
+   "number": 198,
+   "title": "শরীর যেভাবে নড়াই",
+   "front": "pages/198-front.jpg",
+   "back": "pages/198-back.jpg",
+   "items": [
+    {
+     "id": "stretch-arms-to-sides",
+     "label": "হাত ছড়ানো",
+     "gloss": "stretching both arms out sideways"
+    },
+    {
+     "id": "raise-both-hands",
+     "label": "হাত তুলে ধরা",
+     "gloss": "raising both arms overhead"
+    },
+    {
+     "id": "sit-legs-extended",
+     "label": "পা মেলে বসা",
+     "gloss": "sitting with legs stretched out forward"
+    },
+    {
+     "id": "sit-cross-legged",
+     "label": "পা ভাঁজ করে বসা",
+     "gloss": "sitting cross-legged"
+    },
+    {
+     "id": "stand-on-toes",
+     "label": "আঙুলে ভর দিয়ে দাঁড়ানো",
+     "gloss": "standing on the balls of both feet"
+    },
+    {
+     "id": "tiptoe-quietly",
+     "label": "পা টিপে হাঁটা",
+     "gloss": "walking quietly on one's toes"
+    }
+   ],
+   "questions": [
+    "কে দুই হাত ওপরে তুলেছেন?",
+    "কে পা ভাঁজ করে বসেছেন?",
+    "আপনি কখন পা মেলে বসেন?",
+    "কাউকে পায়ের আঙুলে ভর দিয়ে দাঁড়াতে কী বলবেন?",
+    "পা টিপে হাঁটা আর শুধু আঙুলে ভর দিয়ে দাঁড়ানোর মধ্যে কী তফাত?",
+    "কারও হাঁটুতে অস্বস্তি হলে বসার ভঙ্গি নিজের মতো করে কীভাবে বদলাতে পারেন?"
+   ]
+  },
+  {
+   "id": "mending-clothes-by-hand",
+   "number": 178,
+   "title": "সেলাই দিয়ে জামা ঠিক করি",
+   "front": "pages/178-front.jpg",
+   "back": "pages/178-back.jpg",
+   "items": [
+    {
+     "id": "sew-a-button-on",
+     "label": "বোতাম লাগানো",
+     "gloss": "sewing a button onto clothing"
+    },
+    {
+     "id": "patch-a-hole-in-clothes",
+     "label": "তালি লাগানো",
+     "gloss": "sewing a patch on torn cloth"
+    },
+    {
+     "id": "thread-a-needle",
+     "label": "সুঁইয়ে সুতা পরানো",
+     "gloss": "threading a needle"
+    },
+    {
+     "id": "tie-thread-knot",
+     "label": "সুতায় গিঁট দেওয়া",
+     "gloss": "tying a knot in sewing thread"
+    },
+    {
+     "id": "unpick-a-seam",
+     "label": "সেলাই খুলে ফেলা",
+     "gloss": "unpick a stitched seam"
+    },
+    {
+     "id": "shorten-a-sleeve",
+     "label": "হাতা ছোট করা",
+     "gloss": "shortening a garment sleeve"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে বোতাম লাগাচ্ছেন?",
+    "কোন ছবিতে কাপড়ের ছেঁড়া জায়গা ঢাকছেন?",
+    "কখনও সুঁইয়ে সুতা পরিয়ে দেখেছেন?",
+    "হাতা একটু ছোট করতে দর্জিকে কী বলবেন?",
+    "বোতাম লাগানোর আগে সুতায় গিঁট দেন কেন?",
+    "প্রিয় জামা ছিঁড়ে গেলে তালি দেখা গেলেও সেটা মেরামত করতে চাইবেন কি? কেন?"
+   ]
+  },
+  {
+   "id": "six-market-pulses",
+   "number": 203,
+   "title": "বাজারে ছয় রকম ডাল",
+   "front": "pages/203-front.jpg",
+   "back": "pages/203-back.jpg",
+   "items": [
+    {
+     "id": "split-red-masoor",
+     "label": "মসুর ডাল",
+     "gloss": "orange split red lentils"
+    },
+    {
+     "id": "split-yellow-moong",
+     "label": "মুগ ডাল",
+     "gloss": "yellow split mung beans"
+    },
+    {
+     "id": "split-black-mashkalai",
+     "label": "মাষকলাই ডাল",
+     "gloss": "split black gram"
+    },
+    {
+     "id": "split-dried-pea-dal",
+     "label": "মটর ডাল",
+     "gloss": "split yellow peas"
+    },
+    {
+     "id": "split-grass-pea-dal",
+     "label": "খেসারি ডাল",
+     "gloss": "split grass peas"
+    },
+    {
+     "id": "split-chana-dal",
+     "label": "ছোলার ডাল",
+     "gloss": "split Bengal gram"
+    }
+   ],
+   "questions": [
+    "কমলা রঙের ডাল কোনটা?",
+    "মুগ আর ছোলার ডালের দানা কোনটা বড়?",
+    "আপনার বাসায় বেশি কোন ডাল রান্না হয়?",
+    "ডাল ভিজিয়ে রাখলে পরে কী করেন?",
+    "দোকানি ডাল দেখালে চিনতে কী কী দেখবেন?",
+    "একই দামে দুই রকম ডাল পেলে কিসের ওপর ভরসা করে বাছবেন?"
+   ]
+  },
+  {
+   "id": "heights-and-reach-relative-to-the-body",
+   "number": 274,
+   "title": "শরীর দেখে উঁচু নিচু বলি",
+   "front": "pages/274-front.jpg",
+   "back": "pages/274-back.jpg",
+   "items": [
+    {
+     "id": "within-easy-arm-reach",
+     "label": "হাতের নাগালে",
+     "gloss": "within easy arm reach"
+    },
+    {
+     "id": "beyond-arm-reach-overhead",
+     "label": "হাতের নাগালের বাইরে",
+     "gloss": "just beyond arm reach"
+    },
+    {
+     "id": "level-with-a-persons-eyes",
+     "label": "চোখের সমান",
+     "gloss": "at the same height as the eyes"
+    },
+    {
+     "id": "passing-an-object-over-a-head",
+     "label": "মাথার ওপর দিয়ে",
+     "gloss": "pass directly above someone's head"
+    },
+    {
+     "id": "standing-in-knee-deep-water",
+     "label": "হাঁটুপানি",
+     "gloss": "water coming up exactly to the knees"
+    },
+    {
+     "id": "standing-in-waist-deep-water",
+     "label": "কোমরপানি",
+     "gloss": "water coming up exactly to the waist"
+    }
+   ],
+   "questions": [
+    "হাঁটুপানি কোন ছবিতে?",
+    "হাঁটুপানি আর কোমরপানির মধ্যে কী তফাত?",
+    "আপনি কোন জিনিস হাতের নাগালে রাখেন?",
+    "পাশের কাউকে চোখের সমান করে ছবি রাখতে কী বলবেন?",
+    "বাক্সটা নাগালের বাইরে গেলে কাকে কী বলে ডাকবেন?",
+    "কাউকে রাস্তার পানির গভীরতা বোঝাতে শরীরের কোন অংশ দিয়ে তুলনা করবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "flatbread-and-serving-tools",
+   "number": 158,
+   "title": "রুটি বেলা আর খাবার তোলা",
+   "front": "pages/158-front.jpg",
+   "back": "pages/158-back.jpg",
+   "items": [
+    {
+     "id": "flatbread-griddle",
+     "label": "তাওয়া",
+     "gloss": "tawa griddle for flatbread"
+    },
+    {
+     "id": "wooden-rolling-pin-local",
+     "label": "বেলন",
+     "gloss": "South Asian wooden rolling pin"
+    },
+    {
+     "id": "rolling-board-round",
+     "label": "রুটি বেলার পিঁড়ি",
+     "gloss": "low round board for rolling flatbread"
+    },
+    {
+     "id": "coconut-scraper-tool",
+     "label": "নারকেল কোরানি",
+     "gloss": "fixed Bengali coconut grater"
+    },
+    {
+     "id": "deep-serving-ladle",
+     "label": "রান্নার হাতা",
+     "gloss": "deep metal cooking ladle"
+    },
+    {
+     "id": "flat-skimmer",
+     "label": "ঝাঁঝরি",
+     "gloss": "flat perforated frying skimmer"
+    }
+   ],
+   "questions": [
+    "তাওয়াটা কোনটা?",
+    "কোনটার মাথায় ছিদ্র আছে?",
+    "আপনি কখনও বেলন দিয়ে কিছু বেলেছেন?",
+    "ডাল তুলে দিতে কোনটা হাতে নেবেন?",
+    "ভাজা খাবার তুললে ঝাঁঝরির ছিদ্র দিয়ে কী বের হয়ে যায়?",
+    "রান্নার সরঞ্জাম বেছে নেওয়ার সময় দেখতে একই রকম হলেও কী কী তফাত দেখবেন?"
+   ]
+  },
+  {
+   "id": "eyeglass-parts-and-eye-shop-objects",
+   "number": 272,
+   "title": "চশমায় কী দেখি আর ধরি",
+   "front": "pages/272-front.jpg",
+   "back": "pages/272-back.jpg",
+   "items": [
+    {
+     "id": "eyeglass-optical-lens",
+     "label": "চশমার কাচ",
+     "gloss": "transparent prescription lens on a pair of eyeglasses"
+    },
+    {
+     "id": "eyeglass-earpiece-arm",
+     "label": "চশমার ডাঁটি",
+     "gloss": "folding temple arm of eyeglass frame"
+    },
+    {
+     "id": "eyeglass-adjustable-nose-pad",
+     "label": "নাকে ঠেকার পাটি",
+     "gloss": "adjustable nose pad on an eyeglass bridge"
+    },
+    {
+     "id": "eyeglass-lens-cleaning-cloth",
+     "label": "চশমা মোছার কাপড়",
+     "gloss": "small microfiber cloth for cleaning eyeglasses"
+    },
+    {
+     "id": "dark-glasses-for-sunlight",
+     "label": "রোদচশমা",
+     "gloss": "dark-tinted sunglasses"
+    },
+    {
+     "id": "eye-test-picture-chart",
+     "label": "চোখ মাপার ছক",
+     "gloss": "eye test chart in a row of descending sizes"
+    }
+   ],
+   "questions": [
+    "রোদচশমা কোনটা?",
+    "চশমার ডাঁটি আর নাকে ঠেকার পাটি কোথায় থাকে?",
+    "আপনি চশমা কী দিয়ে মোছেন?",
+    "কাচে আঁচড় পড়লে দোকানে কী বলে দেখাবেন?",
+    "চোখ মাপার ছকে কোন দাগটা সবচেয়ে বড়?",
+    "দূরের লেখা ঠিকমতো দেখা না গেলে কীভাবে বুঝিয়ে বলবেন, আর কী উদাহরণ দেবেন?"
+   ]
+  },
+  {
+   "id": "clothing-patterns",
+   "number": 121,
+   "title": "কাপড়ের গায়ে যে ছাপ",
+   "front": "pages/121-front.jpg",
+   "back": "pages/121-back.jpg",
+   "items": [
+    {
+     "id": "cloth-stripes",
+     "label": "ডোরাকাটা",
+     "gloss": "striped cloth"
+    },
+    {
+     "id": "cloth-checks",
+     "label": "ঘরকাটা",
+     "gloss": "checked cloth"
+    },
+    {
+     "id": "cloth-dots",
+     "label": "ফোঁটাওয়ালা",
+     "gloss": "polka-dotted cloth"
+    },
+    {
+     "id": "cloth-flowers",
+     "label": "ফুলের ছাপ",
+     "gloss": "floral print"
+    },
+    {
+     "id": "cloth-embroidered",
+     "label": "সুতার নকশা",
+     "gloss": "embroidered design"
+    },
+    {
+     "id": "cloth-solid",
+     "label": "একরঙা",
+     "gloss": "plain solid-colored cloth"
+    }
+   ],
+   "questions": [
+    "ডোরাকাটা কাপড় কোনটা?",
+    "কোনটায় ফুলের ছাপ আছে?",
+    "আপনি একরঙা কাপড় পছন্দ করেন, নাকি নকশা আছে এমন কাপড়?",
+    "সুতার কাজ আছে কি না কী দেখে বুঝবেন?",
+    "দোকানিকে আপনার পছন্দের নকশা কীভাবে বোঝাবেন?",
+    "কাপড়ের নকশা দেখে এলাকার মানুষের পছন্দ কতটা বোঝা যায়, আর কোথায় ভুল হতে পারে?"
+   ]
+  },
+  {
+   "id": "working-ingredients-while-cooking",
+   "number": 156,
+   "title": "রান্নার আগে আর রান্নার মাঝে",
+   "front": "pages/156-front.jpg",
+   "back": "pages/156-back.jpg",
+   "items": [
+    {
+     "id": "grind-to-paste",
+     "label": "বাটা",
+     "gloss": "to grind ingredients into a paste"
+    },
+    {
+     "id": "grate-coconut",
+     "label": "নারকেল কোরা",
+     "gloss": "to grate a coconut"
+    },
+    {
+     "id": "whisk-eggs",
+     "label": "ডিম ফেটানো",
+     "gloss": "to whisk eggs"
+    },
+    {
+     "id": "mash-potato",
+     "label": "আলু চটকানো",
+     "gloss": "to mash a potato"
+    },
+    {
+     "id": "drain-rice-water",
+     "label": "মাড় ঝরানো",
+     "gloss": "to drain starchy cooking water from cooked rice"
+    },
+    {
+     "id": "reduce-syrup",
+     "label": "রস জ্বাল দেওয়া",
+     "gloss": "to reduce sugar syrup by simmering"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে ডিম ফেটাচ্ছেন?",
+    "কোন ছবিতে ভাতের মাড় ঝরাচ্ছেন?",
+    "নারকেল কুরিয়ে আপনি কী বানাতে দেখেছেন?",
+    "আলু চটকানোর জন্য কী কী লাগবে?",
+    "মরিচ বাটা আর আলু চটকানোর পর কী তফাত দেখা যায়?",
+    "একই মসলা বেটে আর আস্ত দিয়ে রান্না করলে খাবারটা কেমন বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "care-and-fit-of-everyday-shoes",
+   "number": 270,
+   "title": "জুতা পরিষ্কার আর ঠিকঠাক করি",
+   "front": "pages/270-front.jpg",
+   "back": "pages/270-back.jpg",
+   "items": [
+    {
+     "id": "polishing-leather-shoes-by-hand",
+     "label": "জুতা চকচকে করা",
+     "gloss": "polish a leather shoe with a cloth"
+    },
+    {
+     "id": "shoe-polish-in-open-tin",
+     "label": "জুতার কালি",
+     "gloss": "wax shoe polish in an open tin"
+    },
+    {
+     "id": "shoe-polishing-brush",
+     "label": "জুতা পরিষ্কারের ঝাড়নি",
+     "gloss": "short broad shoe-cleaning brush"
+    },
+    {
+     "id": "curved-shoe-fitting-horn",
+     "label": "জুতায় পা ঢোকানোর পাত",
+     "gloss": "long curved shoehorn"
+    },
+    {
+     "id": "removable-shoe-insole",
+     "label": "জুতার ভেতরের তলা",
+     "gloss": "detached removable insole of a shoe"
+    },
+    {
+     "id": "heel-block-of-a-shoe",
+     "label": "জুতার গোড়া",
+     "gloss": "raised heel block at the back of a shoe"
+    }
+   ],
+   "questions": [
+    "জুতার কালি কোনটা?",
+    "জুতার গোড়া আর ভেতরের তলাটা কীভাবে আলাদা?",
+    "আপনি জুতা কী দিয়ে পরিষ্কার করেন?",
+    "জুতা পায়ে ঢুকতে না চাইলে কোন জিনিসটা নেবেন?",
+    "ধুলো সরাতে আর চকচকে করতে কোন আলাদা জিনিস লাগতে পারে?",
+    "এক জোড়া জুতা অস্বস্তি দিলে মুচিকে কী কী দেখাতে পারেন?"
+   ]
+  },
+  {
+   "id": "places-for-work-learning-and-trade",
+   "number": 174,
+   "title": "পাড়ায় আর হাটে কাজের জায়গা",
+   "front": "pages/174-front.jpg",
+   "back": "pages/174-back.jpg",
+   "items": [
+    {
+     "id": "cattle-market",
+     "label": "গরুর হাট",
+     "gloss": "open-air cattle market"
+    },
+    {
+     "id": "fish-wholesale-market",
+     "label": "মাছের আড়ত",
+     "gloss": "wholesale fish market auction shed"
+    },
+    {
+     "id": "rice-mill-site",
+     "label": "ধানকল",
+     "gloss": "local rice hulling mill"
+    },
+    {
+     "id": "local-madrasa-site",
+     "label": "মাদরাসা",
+     "gloss": "Bangladeshi madrasa school"
+    },
+    {
+     "id": "sewing-workshop",
+     "label": "সেলাইঘর",
+     "gloss": "neighborhood sewing workshop"
+    },
+    {
+     "id": "dairy-farm-site",
+     "label": "দুধের খামার",
+     "gloss": "local dairy farm"
+    }
+   ],
+   "questions": [
+    "মাছের আড়তটা কোনটা?",
+    "কোন দুই ছবিতে গরু আছে?",
+    "আপনি কাছাকাছি ধানকল বা সেলাইঘর দেখেছেন?",
+    "জামা ছোট করতে পাড়ার সেলাইঘর কোথায়, সেটা কীভাবে জিজ্ঞেস করবেন?",
+    "গরুর হাট আর দুধের খামারে মানুষ কী আলাদা কাজে যায়?",
+    "এলাকার মানুষ কী কাজ করেন, তা বদলে গেলে পাড়ার কোন জায়গাগুলো বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "parts-inside-common-fruits",
+   "number": 262,
+   "title": "ফল কাটলে ভেতরে কী দেখি",
+   "front": "pages/262-front.jpg",
+   "back": "pages/262-back.jpg",
+   "items": [
+    {
+     "id": "flesh-inside-a-ripe-papaya",
+     "label": "ফলের শাঁস",
+     "gloss": "orange flesh inside a ripe papaya"
+    },
+    {
+     "id": "removed-stone-of-a-mango",
+     "label": "আমের আঁটি",
+     "gloss": "large flat mango stone after flesh removal"
+    },
+    {
+     "id": "seeds-taken-from-a-grape",
+     "label": "আঙুরের বিচি",
+     "gloss": "tiny brown seeds inside a halved grape"
+    },
+    {
+     "id": "peeled-segment-of-a-lemon",
+     "label": "লেবুর কোয়া",
+     "gloss": "individual lime or lemon pulp segment"
+    },
+    {
+     "id": "apple-center-core-after-cut",
+     "label": "আপেলের মাঝখান",
+     "gloss": "removed firm central apple core"
+    },
+    {
+     "id": "white-part-under-watermelon-peel",
+     "label": "তরমুজের সাদা অংশ",
+     "gloss": "white layer beneath the watermelon skin"
+    }
+   ],
+   "questions": [
+    "আমের আঁটি কোনটা?",
+    "আমের আঁটি আর আঙুরের বিচির আকারে কী তফাত?",
+    "আপনি আঙুরের বিচি ফেলেন?",
+    "আপেলের মাঝখানটা কীভাবে বাদ দেবেন?",
+    "তরমুজে সাদা অংশটা কোথায় আছে?",
+    "কাউকে ফল কেটে দিলে কোন অংশগুলো রেখে দেবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "fire-safety-tools-around-buildings",
+   "number": 256,
+   "title": "আগুনের সময় কাজে লাগে",
+   "front": "pages/256-front.jpg",
+   "back": "pages/256-back.jpg",
+   "items": [
+    {
+     "id": "handheld-fire-extinguisher",
+     "label": "আগুন নেভানোর যন্ত্র",
+     "gloss": "portable fire extinguisher"
+    },
+    {
+     "id": "coiled-hose-for-firefighters",
+     "label": "দমকলের নল",
+     "gloss": "coiled fire-fighting water hose"
+    },
+    {
+     "id": "electric-fire-alarm-bell",
+     "label": "আগুনের ঘণ্টা",
+     "gloss": "electric fire alarm bell"
+    },
+    {
+     "id": "wall-fire-alarm-call-switch",
+     "label": "আগুনের খবর দেওয়ার বোতাম",
+     "gloss": "manual fire alarm call point"
+    },
+    {
+     "id": "firefighter-helmet-shell",
+     "label": "দমকলের টুপি",
+     "gloss": "fire-service helmet with visor"
+    },
+    {
+     "id": "fire-smothering-blanket",
+     "label": "আগুন ঢাকার চাদর",
+     "gloss": "unfolded fire blanket and its wall pouch"
+    }
+   ],
+   "questions": [
+    "আগুনের ঘণ্টা কোনটা?",
+    "খবর দেওয়ার বোতাম আর ঘণ্টাটা দেখতে কীভাবে আলাদা?",
+    "আপনার বাসায় আগুন নেভানোর যন্ত্র কোথায় দেখেছেন?",
+    "নতুন বাসায় উঠে আগুনের সময় বের হওয়ার পথ কীভাবে জেনে নেবেন?",
+    "আগুনের খবর দিতে হলে কী কী কথা আগে বলবেন?",
+    "রাতে আগুনের ঘণ্টা শুনে পাশের ঘরে কেউ ঘুমিয়ে থাকলে তাকে কীভাবে জানাবেন?"
+   ]
+  },
+  {
+   "id": "objects-for-everyday-exercise",
+   "number": 261,
+   "title": "ঘরে বা বাইরে ব্যায়াম করি",
+   "front": "pages/261-front.jpg",
+   "back": "pages/261-back.jpg",
+   "items": [
+    {
+     "id": "handheld-dumbbell-weights",
+     "label": "হাতে তোলার ওজন",
+     "gloss": "dumbbell with fixed weights at both ends"
+    },
+    {
+     "id": "single-handle-kettlebell-weight",
+     "label": "হাতলওয়ালা ওজন",
+     "gloss": "kettlebell with broad loop handle"
+    },
+    {
+     "id": "powered-walking-treadmill",
+     "label": "হাঁটার যন্ত্র",
+     "gloss": "powered treadmill with a flat walking belt"
+    },
+    {
+     "id": "unrolled-floor-exercise-mat",
+     "label": "ব্যায়ামের পাটি",
+     "gloss": "foam mat for floor exercises"
+    },
+    {
+     "id": "stationary-pedal-exerciser",
+     "label": "পা চালানোর যন্ত্র",
+     "gloss": "stationary exercise bike"
+    },
+    {
+     "id": "elastic-exercise-pull-band",
+     "label": "ব্যায়ামের টানফিতা",
+     "gloss": "elastic resistance band for exercise"
+    }
+   ],
+   "questions": [
+    "ব্যায়ামের পাটি কোনটা?",
+    "দুই রকম ওজনের ধরার জায়গায় কী তফাত?",
+    "আপনি কোথায় হাঁটেন বা ব্যায়াম করেন?",
+    "পা চালানোর যন্ত্রে কোথায় বসবেন?",
+    "টানফিতা আর ওজনের মধ্যে কোনটা হাতে টানতে হয়?",
+    "বাসায় খুব কম জায়গা থাকলে কোন জিনিসটা রাখবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "tools-for-serving-a-meal-out",
+   "number": 263,
+   "title": "খাবারের দোকানে যা দেখি",
+   "front": "pages/263-front.jpg",
+   "back": "pages/263-back.jpg",
+   "items": [
+    {
+     "id": "restaurant-dish-list",
+     "label": "খাবারের তালিকা",
+     "gloss": "restaurant dining menu folder"
+    },
+    {
+     "id": "meal-serving-carry-tray",
+     "label": "খাবার আনার থালা",
+     "gloss": "broad carry tray for meal service"
+    },
+    {
+     "id": "pepper-grinding-mill",
+     "label": "মরিচ পেষার কল",
+     "gloss": "table pepper mill grinder"
+    },
+    {
+     "id": "sauce-boat-pouring-bowl",
+     "label": "চাটনির বাটি",
+     "gloss": "small Bangladeshi chutney serving bowl"
+    },
+    {
+     "id": "covered-soup-serving-tureen",
+     "label": "ঝোল রাখার পাত্র",
+     "gloss": "lidded soup tureen for serving at table"
+    },
+    {
+     "id": "heat-resistant-plate-mitt",
+     "label": "গরম ধরার হাতমোজা",
+     "gloss": "heat-resistant mitt for holding a hot serving dish"
+    }
+   ],
+   "questions": [
+    "খাবারের তালিকাটা কোনটা?",
+    "চাটনির বাটি আর ঝোলের পাত্রের মুখ দেখতে কীভাবে আলাদা?",
+    "খাবারের দোকানে আপনি আগে কী দেখতে চান?",
+    "থালাটা গরম হলে কোন জিনিসটা দিয়ে ধরবেন?",
+    "মরিচ পেষার কলটা চিনতে কোন অংশ দেখবেন?",
+    "তালিকায় খাবারের নাম বুঝতে না পারলে দোকানের লোককে কীভাবে জিজ্ঞেস করবেন?"
+   ]
+  },
+  {
+   "id": "holding-food-for-an-outing",
+   "number": 232,
+   "title": "খাবার নিয়ে যাই আর ঠান্ডা রাখি",
+   "front": "pages/232-front.jpg",
+   "back": "pages/232-back.jpg",
+   "items": [
+    {
+     "id": "tiffin-stack-for-carrying",
+     "label": "খাবার নেওয়ার পাত্র",
+     "gloss": "stacked steel meal carrier"
+    },
+    {
+     "id": "reusable-drinking-bottle",
+     "label": "পানির বোতল",
+     "gloss": "reusable drinking-water bottle"
+    },
+    {
+     "id": "lidded-picnic-basket",
+     "label": "খাবারের ঝুড়ি",
+     "gloss": "lidded picnic basket"
+    },
+    {
+     "id": "insulated-hot-drink-flask",
+     "label": "গরম রাখার বোতল",
+     "gloss": "insulated flask for hot drinks"
+    },
+    {
+     "id": "portable-cold-food-box",
+     "label": "ঠান্ডা রাখার বাক্স",
+     "gloss": "insulated lidded cold-food box"
+    },
+    {
+     "id": "water-freezing-tray",
+     "label": "বরফ জমানোর ছাঁচ",
+     "gloss": "ice cube tray"
+    }
+   ],
+   "questions": [
+    "বরফ জমানোর ছাঁচ কোনটা?",
+    "দুটো বোতলের কাজ কীভাবে আলাদা?",
+    "বাইরে গেলে আপনি কীসে পানি নেন?",
+    "চা গরম রাখতে কোন জিনিসটা নেবেন?",
+    "খাবার ঠান্ডা রাখতে বাক্সে আর কী দিতে পারেন?",
+    "অনেক দূরে খাবার নিয়ে গেলে কীভাবে ঠিক করবেন কোন পাত্র নেবেন?"
+   ]
+  },
+  {
+   "id": "things-to-take-on-a-trip",
+   "number": 241,
+   "title": "দূরে গেলে সঙ্গে নিই",
+   "front": "pages/241-front.jpg",
+   "back": "pages/241-back.jpg",
+   "items": [
+    {
+     "id": "backpack-for-travel",
+     "label": "পিঠের থলে",
+     "gloss": "travel backpack"
+    },
+    {
+     "id": "travel-pillow-around-neck",
+     "label": "ঘাড়ের বালিশ",
+     "gloss": "neck travel pillow"
+    },
+    {
+     "id": "travel-mask-over-eyes",
+     "label": "চোখ ঢাকার কাপড়",
+     "gloss": "sleep eye mask"
+    },
+    {
+     "id": "label-tag-on-luggage",
+     "label": "মালে নাম লেখার চিহ্ন",
+     "gloss": "luggage identification tag"
+    },
+    {
+     "id": "hand-scale-to-weigh-luggage",
+     "label": "মাল মাপার যন্ত্র",
+     "gloss": "handheld luggage scale"
+    },
+    {
+     "id": "water-canteen-with-strap",
+     "label": "কাঁধে ঝোলানো পানির পাত্র",
+     "gloss": "strap-mounted travel canteen"
+    }
+   ],
+   "questions": [
+    "ঘাড়ের বালিশ কোনটা?",
+    "পিঠের থলে আর পানির পাত্র কীভাবে বহন করেন?",
+    "দূরে গেলে আপনি কী কী সঙ্গে নেন?",
+    "মাল চিনে রাখতে নামটা কোথায় লিখবেন?",
+    "থলে ভারী হয়ে গেলে কোন যন্ত্র দিয়ে ওজন দেখবেন?",
+    "অল্প জায়গায় মালপত্র নিতে হলে কোন জিনিসটা রেখে যাবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "common-clinic-and-care-tools",
+   "number": 223,
+   "title": "অসুখ দেখাতে যে জিনিস লাগে",
+   "front": "pages/223-front.jpg",
+   "back": "pages/223-back.jpg",
+   "items": [
+    {
+     "id": "clinic-temperature-tool",
+     "label": "জ্বর মাপার যন্ত্র",
+     "gloss": "clinical thermometer object"
+    },
+    {
+     "id": "clinic-listening-tool",
+     "label": "বুক শোনার যন্ত্র",
+     "gloss": "stethoscope"
+    },
+    {
+     "id": "clinic-pressure-cuff",
+     "label": "রক্তচাপ মাপার যন্ত্র",
+     "gloss": "blood pressure cuff"
+    },
+    {
+     "id": "eye-medicine-dropper",
+     "label": "চোখের ওষুধ",
+     "gloss": "eye medicine dropper bottle"
+    },
+    {
+     "id": "underarm-crutch-support",
+     "label": "বগলে ভর দেওয়ার লাঠি",
+     "gloss": "underarm crutch"
+    },
+    {
+     "id": "clinic-tooth-mirror",
+     "label": "দাঁত দেখার আয়না",
+     "gloss": "dental hand mirror"
+    }
+   ],
+   "questions": [
+    "জ্বর মাপার যন্ত্র কোনটা?",
+    "দাঁত দেখার আয়না আর বুক শোনার যন্ত্র কীভাবে আলাদা দেখায়?",
+    "এগুলোর কোনটা আগে দেখেছেন?",
+    "রক্তচাপ মাপাতে কাউকে কী বলবেন?",
+    "চোখের ওষুধ আর মুখে খাওয়ার ওষুধ চিনতে কী দেখবেন?",
+    "চিকিৎসার সময় কোনো যন্ত্র চিনতে না পারলে কীভাবে জিজ্ঞেস করবেন?"
+   ]
+  },
+  {
+   "id": "ways-to-keep-food",
+   "number": 196,
+   "title": "খাবার ভালো রাখতে যা করি",
+   "front": "pages/196-front.jpg",
+   "back": "pages/196-back.jpg",
+   "items": [
+    {
+     "id": "dry-fish-in-sun",
+     "label": "মাছ রোদে শুকানো",
+     "gloss": "sun-drying fresh fish"
+    },
+    {
+     "id": "dried-fish-product",
+     "label": "শুঁটকি",
+     "gloss": "fully dried fish as a food"
+    },
+    {
+     "id": "keep-fish-on-ice",
+     "label": "বরফে মাছ রাখা",
+     "gloss": "putting fish on ice"
+    },
+    {
+     "id": "cover-prepared-food",
+     "label": "খাবার ঢেকে রাখা",
+     "gloss": "covering food with a protective dome"
+    },
+    {
+     "id": "keep-with-salt",
+     "label": "লবণ মাখিয়ে রাখা",
+     "gloss": "covering food with salt to keep it"
+    },
+    {
+     "id": "keep-immersed-in-oil",
+     "label": "তেলে ডুবিয়ে রাখা",
+     "gloss": "keeping pieces of food submerged in oil"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে মাছের ওপর বরফ দিচ্ছেন?",
+    "কোন খাবারটা পুরো শুকনা?",
+    "আপনি কখনও শুঁটকি রান্না হতে দেখেছেন?",
+    "খাবারটা ঢেকে রাখতে কাউকে কী বলবেন?",
+    "মাছ রোদে শুকানো আর শুঁটকির ছবিতে মাছ কী রকম আলাদা দেখাচ্ছে?",
+    "আবহাওয়া বদলালে রান্না করা খাবার ভালো রাখার অভ্যাস কীভাবে বদলায়?"
+   ]
+  },
+  {
+   "id": "buying-fabric-cut-to-size",
+   "number": 245,
+   "title": "দোকানে কাপড় বেছে কাটি",
+   "front": "pages/245-front.jpg",
+   "back": "pages/245-back.jpg",
+   "items": [
+    {
+     "id": "opening-out-a-fabric-piece",
+     "label": "কাপড় মেলে ধরা",
+     "gloss": "holding a piece of fabric spread up"
+    },
+    {
+     "id": "unfolding-a-folded-fabric",
+     "label": "কাপড়ের ভাঁজ খুলে দেখা",
+     "gloss": "unfolding cloth to inspect it"
+    },
+    {
+     "id": "matching-two-coloured-fabrics",
+     "label": "কাপড়ের রং মিলিয়ে দেখা",
+     "gloss": "holding two fabrics side by side to match colors"
+    },
+    {
+     "id": "marking-the-fabric-edge",
+     "label": "কাপড়ে দাগ দেওয়া",
+     "gloss": "marking a cloth edge with chalk"
+    },
+    {
+     "id": "measuring-fabric-by-the-yard",
+     "label": "গজে কাপড় মাপা",
+     "gloss": "measuring cloth with a yardstick"
+    },
+    {
+     "id": "cutting-cloth-from-the-bolt",
+     "label": "থান থেকে কাপড় কাটা",
+     "gloss": "cutting cloth from the bolt"
+    }
+   ],
+   "questions": [
+    "কে কাপড় মেলে ধরেছেন?",
+    "ভাঁজ খোলা আর রং মেলানোর ছবিতে কী তফাত?",
+    "আপনি কখন কাপড় মেপে কিনেছেন?",
+    "দুই গজ চাইলে দোকানিকে কী বলবেন?",
+    "কাপড় কাটার আগে দাগ কোথায় দেবেন?",
+    "একই রঙের দুই রকম কাপড় পেলে কোনটা নেবেন কীভাবে ঠিক করবেন?"
+   ]
+  },
+  {
+   "id": "more-actions-at-the-stove",
+   "number": 179,
+   "title": "চুলার পাশে আরও কাজ",
+   "front": "pages/179-front.jpg",
+   "back": "pages/179-back.jpg",
+   "items": [
+    {
+     "id": "fill-dough-pocket",
+     "label": "পুর ভরা",
+     "gloss": "filling a pastry dough pocket"
+    },
+    {
+     "id": "shape-lentil-fritter",
+     "label": "বড়া বানানো",
+     "gloss": "shaping a lentil fritter"
+    },
+    {
+     "id": "temper-in-hot-oil",
+     "label": "তেলে ফোড়ন দেওয়া",
+     "gloss": "tempering whole spices in hot oil"
+    },
+    {
+     "id": "fry-spice-masala",
+     "label": "মসলা কষানো",
+     "gloss": "frying down a wet spice paste"
+    },
+    {
+     "id": "lower-stove-heat",
+     "label": "আঁচ কমানো",
+     "gloss": "lowering a stove flame"
+    },
+    {
+     "id": "descale-a-fish",
+     "label": "মাছের আঁশ ছাড়ানো",
+     "gloss": "descaling a whole fish"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে মাছের আঁশ ছাড়াচ্ছেন?",
+    "কোনটায় পুর দিচ্ছেন?",
+    "বাড়িতে কী দিয়ে ফোড়ন দিতে দেখেছেন?",
+    "ঝোল খুব জোরে ফুটলে আঁচ কমাতে কী বলবেন?",
+    "পুর ভরা আর বড়া বানানোর সময় হাতের কাজ কীভাবে আলাদা?",
+    "একই মসলা কখনও আগে ফোড়নে দেন আর কখনও পরে ভেজে নেন কেন?"
+   ]
+  },
+  {
+   "id": "working-with-fresh-milk",
+   "number": 218,
+   "title": "দুধ ঘরে এলে যা করি",
+   "front": "pages/218-front.jpg",
+   "back": "pages/218-back.jpg",
+   "items": [
+    {
+     "id": "milking-dairy-cow",
+     "label": "দুধ দোয়ানো",
+     "gloss": "milking a dairy cow by hand"
+    },
+    {
+     "id": "filtering-fresh-milk",
+     "label": "দুধ ছেঁকে নেওয়া",
+     "gloss": "straining fresh milk through cloth"
+    },
+    {
+     "id": "heating-up-milk",
+     "label": "দুধ জ্বাল দেওয়া",
+     "gloss": "heating milk in a pot"
+    },
+    {
+     "id": "setting-yogurt-in-clay",
+     "label": "দই পাতা",
+     "gloss": "adding starter to set yoghurt"
+    },
+    {
+     "id": "taking-butter-from-churn",
+     "label": "মাখন তুলে নেওয়া",
+     "gloss": "lifting butter from churned milk"
+    },
+    {
+     "id": "clarifying-butter-as-ghee",
+     "label": "ঘি জ্বাল দেওয়া",
+     "gloss": "heating butter to make ghee"
+    }
+   ],
+   "questions": [
+    "কে দুধ দোয়াচ্ছেন?",
+    "দুধ ছাঁকার আর দই পাতার ছবিতে কী তফাত?",
+    "আপনার বাসায় দই পাতেন?",
+    "দুধে কিছু ভাসলে সেটা কীভাবে সরাবেন?",
+    "মাখন আর ঘির রং কীভাবে আলাদা?",
+    "কম খরচে দই কিনবেন নাকি ঘরে পাতবেন, কী দেখে ঠিক করবেন?"
+   ]
+  },
+  {
+   "id": "making-and-looking-at-loaf-bread",
+   "number": 267,
+   "title": "পাউরুটি বানাতে যা লাগে",
+   "front": "pages/267-front.jpg",
+   "back": "pages/267-back.jpg",
+   "items": [
+    {
+     "id": "dry-yeast-granules-for-dough",
+     "label": "খামিরের দানা",
+     "gloss": "small granules of dry baker's yeast"
+    },
+    {
+     "id": "dough-after-rising",
+     "label": "ফুলে ওঠা খামির",
+     "gloss": "risen bread dough with rounded bubbly top"
+    },
+    {
+     "id": "rectangular-bread-baking-tin",
+     "label": "পাউরুটির ছাঁচ",
+     "gloss": "open rectangular loaf baking tin"
+    },
+    {
+     "id": "bread-oven-transfer-board",
+     "label": "চুল্লির তক্তা",
+     "gloss": "long-handled wooden bakery oven peel"
+    },
+    {
+     "id": "firm-outer-crust-of-bread",
+     "label": "পাউরুটির শক্ত ধার",
+     "gloss": "firm browned bread crust shown at edge of a slice"
+    },
+    {
+     "id": "soft-inner-crumb-of-bread",
+     "label": "পাউরুটির নরম ভেতর",
+     "gloss": "soft porous inner crumb of sliced loaf bread"
+    }
+   ],
+   "questions": [
+    "পাউরুটির ছাঁচ কোনটা?",
+    "পাউরুটির ধার আর ভেতর দেখতে কীভাবে আলাদা?",
+    "আপনি কী রকম পাউরুটি খান?",
+    "খামির ফুলেছে কি না কী দেখে বুঝবেন?",
+    "চুল্লি থেকে রুটি বের করতে কোন জিনিসটা চিনবেন?",
+    "দোকানে রুটি নরম আছে কি না বুঝতে কী দেখবেন বা কী জিজ্ঞেস করবেন?"
+   ]
+  },
+  {
+   "id": "wild-bangladesh-animals",
+   "number": 113,
+   "title": "বনের বড় আর ছোট প্রাণী",
+   "front": "pages/113-front.jpg",
+   "back": "pages/113-back.jpg",
+   "items": [
+    {
+     "id": "asian-elephant",
+     "label": "হাতি",
+     "gloss": "Asian elephant"
+    },
+    {
+     "id": "wild-monkey",
+     "label": "বানর",
+     "gloss": "monkey"
+    },
+    {
+     "id": "sloth-bear",
+     "label": "ভালুক",
+     "gloss": "South Asian sloth bear"
+    },
+    {
+     "id": "spotted-deer",
+     "label": "হরিণ",
+     "gloss": "spotted deer"
+    },
+    {
+     "id": "bengal-tiger",
+     "label": "বাঘ",
+     "gloss": "Bengal tiger"
+    },
+    {
+     "id": "golden-jackal",
+     "label": "শিয়াল",
+     "gloss": "golden jackal"
+    }
+   ],
+   "questions": [
+    "বাঘ কোন ছবিতে?",
+    "কোন প্রাণীর শিং আছে?",
+    "এর মধ্যে কোন প্রাণীটা আপনি আগে দেখেছেন?",
+    "হাতি আর বানর কীভাবে খাবার তুলে নেয় বলে মনে হয়?",
+    "এই প্রাণীগুলো কোথায় থাকতে পারে?",
+    "বনের পাশে মানুষের বসতি বাড়লে মানুষ আর বন্য প্রাণী কীভাবে একই এলাকার আশপাশে থাকতে পারে?"
+   ]
+  },
+  {
+   "id": "music-and-rhythm",
+   "number": 72,
+   "title": "সুর আর তালের জিনিস",
+   "front": "pages/072-front.jpg",
+   "back": "pages/072-back.jpg",
+   "items": [
+    {
+     "id": "flute",
+     "label": "বাঁশি",
+     "gloss": "bamboo flute"
+    },
+    {
+     "id": "ektara",
+     "label": "একতারা",
+     "gloss": "one-string lute"
+    },
+    {
+     "id": "dhol",
+     "label": "ঢোল",
+     "gloss": "Bangladeshi barrel drum"
+    },
+    {
+     "id": "tabla",
+     "label": "তবলা",
+     "gloss": "tabla pair"
+    },
+    {
+     "id": "bell",
+     "label": "ঘণ্টা",
+     "gloss": "hand bell"
+    },
+    {
+     "id": "cymbals",
+     "label": "করতাল",
+     "gloss": "hand cymbal pair"
+    }
+   ],
+   "questions": [
+    "বাঁশিটা কোনটা?",
+    "কোন দুটোর মুখে চামড়া আছে?",
+    "আপনি কোনটার আওয়াজ শুনেছেন?",
+    "তবলা বাজাতে হাত কোথায় রাখবেন?",
+    "এখানে কী কী আয়োজনে গান বাজে?",
+    "কোনো এলাকার গান শুনে সেখানকার মানুষ আর জীবন নিয়ে কী বোঝা যায়?"
+   ]
+  },
+  {
+   "id": "working-parts-of-a-boat",
+   "number": 225,
+   "title": "নৌকার যে অংশগুলো কাজে লাগে",
+   "front": "pages/225-front.jpg",
+   "back": "pages/225-back.jpg",
+   "items": [
+    {
+     "id": "small-river-boat-anchor",
+     "label": "নোঙর",
+     "gloss": "steel boat anchor"
+    },
+    {
+     "id": "wooden-boat-rudder",
+     "label": "হাল",
+     "gloss": "wooden boat rudder assembly"
+    },
+    {
+     "id": "plain-cloth-on-a-boat-sail",
+     "label": "পাল",
+     "gloss": "cloth sail of a river boat"
+    },
+    {
+     "id": "boat-sail-mast",
+     "label": "মাস্তুল",
+     "gloss": "vertical wooden mast of a boat"
+    },
+    {
+     "id": "river-boat-walking-deck",
+     "label": "নৌকার পাটাতন",
+     "gloss": "planked deck of a boat"
+    },
+    {
+     "id": "upturned-bow-of-a-boat",
+     "label": "নৌকার গলুই",
+     "gloss": "upturned bow of a boat"
+    }
+   ],
+   "questions": [
+    "নোঙর কোনটা?",
+    "পাল আর মাস্তুল দেখতে কীভাবে আলাদা?",
+    "আপনি কোনো পালতোলা নৌকা দেখেছেন?",
+    "নৌকা এক জায়গায় রাখতে কোনটা ব্যবহার করেন?",
+    "নৌকার দিক ঘোরাতে মাঝি কী ধরেন?",
+    "নৌকায় ওঠার আগে বসার জায়গা আর আবহাওয়া দেখে কীভাবে ঠিক করবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "river-and-coast-landforms",
+   "number": 125,
+   "title": "নদী সাগর আর পাড়",
+   "front": "pages/125-front.jpg",
+   "back": "pages/125-back.jpg",
+   "items": [
+    {
+     "id": "river-char",
+     "label": "চর",
+     "gloss": "river sandbar"
+    },
+    {
+     "id": "island-land",
+     "label": "দ্বীপ",
+     "gloss": "island"
+    },
+    {
+     "id": "embankment",
+     "label": "বাঁধ",
+     "gloss": "raised river embankment"
+    },
+    {
+     "id": "waterfall",
+     "label": "ঝরনা",
+     "gloss": "waterfall"
+    },
+    {
+     "id": "estuary",
+     "label": "মোহনা",
+     "gloss": "estuary at a river mouth"
+    },
+    {
+     "id": "sea-water",
+     "label": "সমুদ্র",
+     "gloss": "sea"
+    }
+   ],
+   "questions": [
+    "ঝরনাটা কোনটা?",
+    "কোন জমির চারপাশে পানি আছে?",
+    "এর মধ্যে কোন ধরনের জায়গায় আপনি গিয়েছেন?",
+    "নদীর বাঁধ কোথায় থাকে, কাউকে কীভাবে বোঝাবেন?",
+    "মোহনার কাছে মানুষ কী কী কাজ করেন?",
+    "নদীর গতিপথ বদলালে পানির ধারে থাকা মানুষের রোজকার চলাফেরা কীভাবে বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "tree-and-stem-details",
+   "number": 199,
+   "title": "গাছের ছোট বড় অংশ",
+   "front": "pages/199-front.jpg",
+   "back": "pages/199-back.jpg",
+   "items": [
+    {
+     "id": "old-tree-stump",
+     "label": "গাছের গুঁড়ি",
+     "gloss": "thick tree stump after cutting"
+    },
+    {
+     "id": "bark-of-tree-local",
+     "label": "বাকল",
+     "gloss": "bark of a tree"
+    },
+    {
+     "id": "soft-growing-tip",
+     "label": "ডগা",
+     "gloss": "tip of a growing twig or shoot"
+    },
+    {
+     "id": "plant-trunk-and-stem",
+     "label": "কাণ্ড",
+     "gloss": "upright supporting stem of a plant"
+    },
+    {
+     "id": "tender-new-leaf",
+     "label": "কচি পাতা",
+     "gloss": "tender newly emerging leaf"
+    },
+    {
+     "id": "woody-plant-thorn",
+     "label": "কাঁটা",
+     "gloss": "sharp plant thorn"
+    }
+   ],
+   "questions": [
+    "কচি পাতাটা কোনটা?",
+    "কোন ছবিতে ধারালো কাঁটা আছে?",
+    "আপনি কোথায় পুরোনো গাছের গুঁড়ি দেখেছেন?",
+    "কচি পাতাটা দেখাতে কাউকে কী বলবেন?",
+    "গাছের বাকল আর কাণ্ড ছুঁলে কী রকম আলাদা লাগতে পারে?",
+    "একটা গাছ চিনতে শুধু পাতাই যথেষ্ট, নাকি অন্য অংশও কাজে লাগে? কেন?"
+   ]
+  },
+  {
+   "id": "wetland-animals-around-bangladesh",
+   "number": 208,
+   "title": "পানি আর পাড়ের প্রাণী",
+   "front": "pages/208-front.jpg",
+   "back": "pages/208-back.jpg",
+   "items": [
+    {
+     "id": "freshwater-paddy-crab",
+     "label": "কাঁকড়া",
+     "gloss": "small freshwater ricefield crab"
+    },
+    {
+     "id": "round-pond-snail",
+     "label": "শামুক",
+     "gloss": "pond apple snail"
+    },
+    {
+     "id": "live-river-mussel",
+     "label": "ঝিনুক",
+     "gloss": "live freshwater mussel"
+    },
+    {
+     "id": "freshwater-crocodile",
+     "label": "কুমির",
+     "gloss": "crocodile"
+    },
+    {
+     "id": "gangetic-river-dolphin",
+     "label": "শুশুক",
+     "gloss": "Ganges river dolphin"
+    },
+    {
+     "id": "wetland-leech",
+     "label": "জোঁক",
+     "gloss": "freshwater leech"
+    }
+   ],
+   "questions": [
+    "কাঁকড়া কোন ছবিতে?",
+    "কুমির আর শুশুকের শরীর দেখতে কীভাবে আলাদা?",
+    "আপনি কোথায় শামুক দেখেছেন?",
+    "শুশুক পানির ওপর উঠলে কীভাবে চিনবেন?",
+    "শামুক আর ঝিনুকের খোলস হাতে পেলে তফাত কী দেখবেন?",
+    "পুকুরের পাড়ে অনেক গাছ থাকলে এসব প্রাণীর কী সুবিধা হতে পারে?"
+   ]
+  },
+  {
+   "id": "tart-and-fragrant-local-fruits",
+   "number": 170,
+   "title": "টক আর ঘ্রাণওয়ালা দেশি ফল",
+   "front": "pages/170-front.jpg",
+   "back": "pages/170-back.jpg",
+   "items": [
+    {
+     "id": "wood-apple-bael",
+     "label": "বেল",
+     "gloss": "hard-shelled bael fruit"
+    },
+    {
+     "id": "tamarind-pods",
+     "label": "তেঁতুল",
+     "gloss": "tamarind pods as fruit"
+    },
+    {
+     "id": "starfruit",
+     "label": "কামরাঙা",
+     "gloss": "five-ridged star fruit"
+    },
+    {
+     "id": "latkan-fruit",
+     "label": "লটকন",
+     "gloss": "Burmese grape fruit cluster sold in Bangladesh"
+    },
+    {
+     "id": "deua-fruit",
+     "label": "ডেউয়া",
+     "gloss": "monkey jack deua fruit"
+    },
+    {
+     "id": "amla-fruit",
+     "label": "আমলকী",
+     "gloss": "Indian gooseberry amla fruit"
+    }
+   ],
+   "questions": [
+    "কোন ফলটা কাটলে তারার মতো দেখায়?",
+    "কোন ফলের ভেতরে সাদা কোয়া দেখা যাচ্ছে?",
+    "আপনি এর মধ্যে কোন ফল খেয়েছেন?",
+    "একটু তেঁতুল কিনতে চাইলে দোকানিকে কী বলবেন?",
+    "বেল আর আমলকী খাওয়ার আগে কীভাবে আলাদা করে তৈরি করবেন?",
+    "একই টক স্বাদের ফল কেউ সরাসরি খায় আর কেউ রান্নায় দেয় কেন?"
+   ]
+  },
+  {
+   "id": "river-work-gear",
+   "number": 120,
+   "title": "মাছ ধরি নৌকা চালাই",
+   "front": "pages/120-front.jpg",
+   "back": "pages/120-back.jpg",
+   "items": [
+    {
+     "id": "cast-net",
+     "label": "জাল",
+     "gloss": "throw fishing net"
+    },
+    {
+     "id": "fish-trap",
+     "label": "পলো",
+     "gloss": "traditional dome-shaped fishing trap"
+    },
+    {
+     "id": "fish-hook",
+     "label": "বড়শি",
+     "gloss": "fishing hook"
+    },
+    {
+     "id": "fishing-rod",
+     "label": "ছিপ",
+     "gloss": "fishing rod"
+    },
+    {
+     "id": "woven-fish-basket",
+     "label": "খালুই",
+     "gloss": "small woven basket that holds fish"
+    },
+    {
+     "id": "wooden-oar",
+     "label": "বৈঠা",
+     "gloss": "boat oar"
+    }
+   ],
+   "questions": [
+    "বৈঠা কোনটা?",
+    "কোনটা গোল করে ছুড়ে ফেলেন?",
+    "এর মধ্যে কোন জিনিসটা আপনি আগে দেখেছেন?",
+    "মাছ ধরার পর কোথায় রাখেন?",
+    "নদীতে মাছ ধরাটা শিখতে হলে কী জিজ্ঞেস করবেন?",
+    "নদীতে মাছ কমে গেলে জেলেদের কাজের উপায় কীভাবে বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "traditional-household-objects",
+   "number": 132,
+   "title": "বাড়ির পুরোনো দিনের জিনিস",
+   "front": "pages/132-front.jpg",
+   "back": "pages/132-back.jpg",
+   "items": [
+    {
+     "id": "low-stool",
+     "label": "পিঁড়ি",
+     "gloss": "traditional low wooden seat"
+    },
+    {
+     "id": "hand-fan",
+     "label": "হাতপাখা",
+     "gloss": "woven manual hand fan"
+    },
+    {
+     "id": "winnowing-tray",
+     "label": "কুলা",
+     "gloss": "traditional winnowing tray"
+    },
+    {
+     "id": "grain-sieve",
+     "label": "চালুনি",
+     "gloss": "wide grain sieve"
+    },
+    {
+     "id": "woven-platter",
+     "label": "ডালা",
+     "gloss": "shallow woven platter"
+    },
+    {
+     "id": "betel-box",
+     "label": "পানের বাটা",
+     "gloss": "betel serving box"
+    }
+   ],
+   "questions": [
+    "হাতপাখাটা কোনটা?",
+    "কোনটার তলায় ছোট ছোট ফুটো আছে?",
+    "এগুলোর মধ্যে কোনটা আপনি কারও বাসায় দেখেছেন?",
+    "কুলা হাতে নিলে কীভাবে নাড়াবেন?",
+    "বাড়িতে বসার জন্য আর কী রাখেন?",
+    "পুরোনো দিনের কোনো জিনিস ব্যবহার কমে গেলে তার সঙ্গে কোন অভ্যাসটা হারিয়ে যেতে পারে?"
+   ]
+  },
+  {
+   "id": "at-a-bangladeshi-fair",
+   "number": 213,
+   "title": "মেলায় যা দেখি আর করি",
+   "front": "pages/213-front.jpg",
+   "back": "pages/213-back.jpg",
+   "items": [
+    {
+     "id": "bangladesh-village-fair",
+     "label": "মেলা",
+     "gloss": "Bangladesh village fair miniature"
+    },
+    {
+     "id": "traditional-ferris-wheel",
+     "label": "নাগরদোলা",
+     "gloss": "traditional fair Ferris wheel"
+    },
+    {
+     "id": "bangladeshi-string-puppet-show",
+     "label": "পুতুলনাচ",
+     "gloss": "traditional Bangla puppet performance"
+    },
+    {
+     "id": "bengali-horse-drawn-carriage",
+     "label": "ঘোড়ার গাড়ি",
+     "gloss": "Bangladesh horse-drawn passenger carriage"
+    },
+    {
+     "id": "bengali-fair-toy-stall",
+     "label": "খেলনার দোকান",
+     "gloss": "toy shop stall at a fair"
+    },
+    {
+     "id": "bangladeshi-clay-toy-set",
+     "label": "মাটির খেলনা",
+     "gloss": "hand-painted clay fair toys"
+    }
+   ],
+   "questions": [
+    "নাগরদোলা কোন ছবিতে?",
+    "নাগরদোলা আর ঘোড়ার গাড়ি কীভাবে চলে?",
+    "আপনি কোথাও মেলায় গিয়েছেন?",
+    "পুতুল কীভাবে নড়ছে?",
+    "দোকানে মাটির খেলনা চাইলে কী বলবেন?",
+    "অচেনা কাউকে মেলায় নিয়ে গেলে আগে কী দেখাবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "farm-and-field",
+   "number": 75,
+   "title": "ক্ষেতখামারের জিনিস",
+   "front": "pages/075-front.jpg",
+   "back": "pages/075-back.jpg",
+   "items": [
+    {
+     "id": "paddy",
+     "label": "ধান",
+     "gloss": "paddy stalk"
+    },
+    {
+     "id": "field",
+     "label": "খেত",
+     "gloss": "cultivated field"
+    },
+    {
+     "id": "straw",
+     "label": "খড়",
+     "gloss": "rice straw"
+    },
+    {
+     "id": "cow-dung",
+     "label": "গোবর",
+     "gloss": "dried cow dung pat"
+    },
+    {
+     "id": "sickle",
+     "label": "কাস্তে",
+     "gloss": "sickle"
+    },
+    {
+     "id": "plow",
+     "label": "লাঙল",
+     "gloss": "plough"
+    }
+   ],
+   "questions": [
+    "কাস্তেটা কোনটা?",
+    "কোন ছবিতে ফসল সারি করে আছে?",
+    "আপনি কোথাও ধান কাটতে দেখেছেন?",
+    "ধান আর খড় কী দেখে আলাদা করবেন?",
+    "একটা খেতে সার দেওয়া থেকে ফসল কাটা পর্যন্ত কী কী হয়?",
+    "খেতে কাজ করার উপায় বদলালে চাষির কাজ আর গ্রামের জীবন কীভাবে বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "more-fish-from-the-market",
+   "number": 153,
+   "title": "মাছের বাজারে আরও মাছ",
+   "front": "pages/153-front.jpg",
+   "back": "pages/153-back.jpg",
+   "items": [
+    {
+     "id": "silver-pomfret-local",
+     "label": "রূপচাঁদা",
+     "gloss": "silver pomfret"
+    },
+    {
+     "id": "catla-carp-local",
+     "label": "কাতলা",
+     "gloss": "catla carp"
+    },
+    {
+     "id": "boal-catfish-local",
+     "label": "বোয়াল",
+     "gloss": "Wallago attu freshwater catfish"
+    },
+    {
+     "id": "pabda-catfish-local",
+     "label": "পাবদা",
+     "gloss": "pabda butter catfish"
+    },
+    {
+     "id": "mola-fish-local",
+     "label": "মলা",
+     "gloss": "mola carplet"
+    },
+    {
+     "id": "tengra-fish-local",
+     "label": "টেংরা",
+     "gloss": "tengra striped freshwater catfish"
+    }
+   ],
+   "questions": [
+    "রূপচাঁদা কোনটা?",
+    "কোন দুই ছবিতে মাছের মাথা বেশ বড়?",
+    "আপনি এর মধ্যে কোন মাছ খেয়েছেন?",
+    "মাছের দোকানিকে আধা কেজি পাবদা দিতে কী বলবেন?",
+    "বোয়াল আর টেংরার গায়ে কী তফাত আছে?",
+    "একই বাজারে কেউ বড় মাছ আর কেউ ছোট মাছ বেছে নেন কেন?"
+   ]
+  },
+  {
+   "id": "types-of-river-boats",
+   "number": 186,
+   "title": "পানিতে চলার নৌকা",
+   "front": "pages/186-front.jpg",
+   "back": "pages/186-back.jpg",
+   "items": [
+    {
+     "id": "bengal-sailboat",
+     "label": "পালতোলা নৌকা",
+     "gloss": "Bengali sailboat with its sail raised"
+    },
+    {
+     "id": "dugout-dinghy-local",
+     "label": "ডিঙি",
+     "gloss": "small open Bangladeshi dinghy"
+    },
+    {
+     "id": "boat-for-crossing-river",
+     "label": "খেয়ানৌকা",
+     "gloss": "passenger boat shuttling across a river"
+    },
+    {
+     "id": "traditional-fishing-boat",
+     "label": "মাছ ধরার নৌকা",
+     "gloss": "traditional open fishing boat with a fishing net"
+    },
+    {
+     "id": "river-cargo-boat",
+     "label": "মালবাহী নৌকা",
+     "gloss": "large cargo-carrying riverboat"
+    },
+    {
+     "id": "hood-roofed-riverboat",
+     "label": "ছইওয়ালা নৌকা",
+     "gloss": "wooden riverboat with an arched bamboo roof cover"
+    }
+   ],
+   "questions": [
+    "কোন নৌকায় পাল আছে?",
+    "কোন নৌকা যাত্রী নিয়ে পার হয়?",
+    "আপনি কোথায় ডিঙি দেখেছেন?",
+    "নদী পার হতে খেয়ানৌকা কোথায় পাবেন, কীভাবে জিজ্ঞেস করবেন?",
+    "ছইওয়ালা নৌকা আর মালবাহী নৌকায় ছাদের জায়গা কীভাবে আলাদা?",
+    "একই নৌকা সব কাজে সমান সুবিধার হবে কি? কেন?"
+   ]
+  },
+  {
+   "id": "materials-from-plants-and-animals",
+   "number": 200,
+   "title": "চারপাশে দেখি এমন উপকরণ",
+   "front": "pages/200-front.jpg",
+   "back": "pages/200-back.jpg",
+   "items": [
+    {
+     "id": "natural-rattan-material",
+     "label": "বেত",
+     "gloss": "raw flexible rattan cane"
+    },
+    {
+     "id": "coir-fiber-material",
+     "label": "নারকেলের আঁশ",
+     "gloss": "loose fibers separated from coconut husk"
+    },
+    {
+     "id": "raw-wool-material",
+     "label": "পশম",
+     "gloss": "raw sheep's wool"
+    },
+    {
+     "id": "feather-material",
+     "label": "পালক",
+     "gloss": "bird feather"
+    },
+    {
+     "id": "mollusk-shell-material",
+     "label": "ঝিনুকের খোল",
+     "gloss": "empty bivalve shell"
+    },
+    {
+     "id": "beeswax-material",
+     "label": "মোম",
+     "gloss": "solid natural beeswax"
+    }
+   ],
+   "questions": [
+    "পালকটা কোনটা?",
+    "কোন ছবিতে নারকেলের আঁশ আছে?",
+    "বেতের তৈরি কী কী জিনিস আপনি দেখেছেন?",
+    "ঝিনুকের খোল কোথায় পেয়েছেন, কাউকে কীভাবে বলবেন?",
+    "পশম আর নারকেলের আঁশ ছুঁয়ে কী তফাত বুঝবেন?",
+    "একটা জিনিস বানাতে কোন উপকরণ ভালো হবে, সেটা কীভাবে ঠিক করবেন?"
+   ]
+  },
+  {
+   "id": "more-familiar-local-birds",
+   "number": 171,
+   "title": "ভোরে আর পানির ধারে যে পাখি দেখি",
+   "front": "pages/171-front.jpg",
+   "back": "pages/171-back.jpg",
+   "items": [
+    {
+     "id": "oriental-magpie-robin",
+     "label": "দোয়েল",
+     "gloss": "Oriental magpie robin"
+    },
+    {
+     "id": "white-throated-kingfisher",
+     "label": "মাছরাঙা",
+     "gloss": "white-throated kingfisher"
+    },
+    {
+     "id": "black-drongo",
+     "label": "ফিঙে",
+     "gloss": "black drongo"
+    },
+    {
+     "id": "asian-koel",
+     "label": "কোকিল",
+     "gloss": "Asian koel"
+    },
+    {
+     "id": "baya-weaver",
+     "label": "বাবুই",
+     "gloss": "Baya weaver bird"
+    },
+    {
+     "id": "rose-ringed-parakeet",
+     "label": "টিয়া",
+     "gloss": "rose-ringed parakeet"
+    }
+   ],
+   "questions": [
+    "মাছরাঙাটা কোনটা?",
+    "কোন দুই পাখির ঠোঁটে লাল রং আছে?",
+    "আপনি দোয়েল কোথায় দেখেছেন?",
+    "বাবুই দেখলে পাশে কী দেখে পাখিটা চেনা সহজ হবে?",
+    "ফিঙে আর কোকিল কালো হলেও লেজ আর চোখ দেখে কী তফাত পাবেন?",
+    "একই পাখি সারা বছর একই জায়গায় দেখা যাবে বলে কি মনে হয়? কেন?"
+   ]
+  },
+  {
+   "id": "familiar-bangladesh-flowers",
+   "number": 110,
+   "title": "বাংলাদেশের চেনা ফুল",
+   "front": "pages/110-front.jpg",
+   "back": "pages/110-back.jpg",
+   "items": [
+    {
+     "id": "water-lily",
+     "label": "শাপলা",
+     "gloss": "Bangladeshi water lily"
+    },
+    {
+     "id": "lotus-flower",
+     "label": "পদ্ম",
+     "gloss": "lotus flower"
+    },
+    {
+     "id": "hibiscus",
+     "label": "জবা",
+     "gloss": "hibiscus bloom"
+    },
+    {
+     "id": "marigold",
+     "label": "গাঁদা",
+     "gloss": "marigold flower"
+    },
+    {
+     "id": "night-jasmine",
+     "label": "শিউলি",
+     "gloss": "night-flowering jasmine"
+    },
+    {
+     "id": "gardenia",
+     "label": "গন্ধরাজ",
+     "gloss": "gardenia blossom"
+    }
+   ],
+   "questions": [
+    "শাপলা কোনটা?",
+    "কোন দুটো পানিতে জন্মায়?",
+    "আপনি এই ফুলগুলোর মধ্যে কোনটা দেখেছেন?",
+    "জবা আর গাঁদা কী দেখে আলাদা করেন?",
+    "আপনার আশপাশে ফুল কী কী কাজে লাগে?",
+    "কোনো জায়গা বা সময়ের কথা একটা ফুলের গন্ধ মনে করিয়ে দিতে পারে কেন?"
+   ]
+  },
+  {
+   "id": "rice-from-field-to-pot",
+   "number": 142,
+   "title": "ধান থেকে ভাত পর্যন্ত",
+   "front": "pages/142-front.jpg",
+   "back": "pages/142-back.jpg",
+   "items": [
+    {
+     "id": "rice-seedling",
+     "label": "চারা",
+     "gloss": "rice seedling"
+    },
+    {
+     "id": "cut-paddy",
+     "label": "ধান কাটা",
+     "gloss": "to cut ripe paddy stalks"
+    },
+    {
+     "id": "thresh-paddy",
+     "label": "মাড়াই করা",
+     "gloss": "to thresh paddy"
+    },
+    {
+     "id": "dry-paddy",
+     "label": "ধান শুকানো",
+     "gloss": "to dry paddy after harvest"
+    },
+    {
+     "id": "winnow-rice",
+     "label": "চাল ঝাড়া",
+     "gloss": "to winnow rice"
+    },
+    {
+     "id": "cook-rice",
+     "label": "ভাত রান্না করা",
+     "gloss": "to cook plain rice"
+    }
+   ],
+   "questions": [
+    "কে ধান কাটছেন?",
+    "কোন ছবিতে ধান উঠানে ছড়ানো?",
+    "আপনি কখনও ধান কাটতে বা শুকাতে দেখেছেন?",
+    "ধান কেটে ঘরে আনার পরে কী কী ধাপ থাকে?",
+    "ধান আর চাল হাতে নিয়ে কী দেখে তফাত বুঝবেন?",
+    "ধানের একটা ধাপ দেরি হলে বাকি কাজ আর যাঁরা করেন তাঁদের ওপর কী প্রভাব পড়তে পারে?"
+   ]
+  },
+  {
+   "id": "parts-of-an-everyday-umbrella",
+   "number": 257,
+   "title": "ছাতার কোন অংশটা",
+   "front": "pages/257-front.jpg",
+   "back": "pages/257-back.jpg",
+   "items": [
+    {
+     "id": "rain-umbrella-canopy-fabric",
+     "label": "ছাতার কাপড়",
+     "gloss": "canopy fabric on an open umbrella"
+    },
+    {
+     "id": "umbrella-internal-rib",
+     "label": "ছাতার শিক",
+     "gloss": "metal canopy rib of an umbrella"
+    },
+    {
+     "id": "curved-umbrella-grip",
+     "label": "ছাতার বাঁট",
+     "gloss": "curved grip of an umbrella"
+    },
+    {
+     "id": "umbrella-central-pole",
+     "label": "ছাতার ডাঁট",
+     "gloss": "long center shaft of an umbrella"
+    },
+    {
+     "id": "umbrella-tip-cap",
+     "label": "ছাতার মাথা",
+     "gloss": "tip cap at the top of an umbrella"
+    },
+    {
+     "id": "umbrella-wrap-fastener-strap",
+     "label": "ছাতা বাঁধার ফিতা",
+     "gloss": "wraparound fastener strap of an umbrella"
+    }
+   ],
+   "questions": [
+    "ছাতা বাঁধার ফিতা কোনটা?",
+    "শিক আর ডাঁট দেখতে কীভাবে আলাদা?",
+    "আপনার ছাতার বাঁটটা কী রকম?",
+    "ছাতার কাপড়ে ছোট ফুটো দেখলে কোথায় দেখিয়ে বলবেন?",
+    "ছাতা বন্ধ করার পর কোন অংশ দিয়ে কাপড়টা আটকে রাখবেন?",
+    "একটা পুরোনো ছাতা মেরামত করতে দিলে আগে কোন অংশটা দেখতে বলবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "animals-and-shells-of-the-sea",
+   "number": 247,
+   "title": "সাগরে যে প্রাণীগুলো দেখি",
+   "front": "pages/247-front.jpg",
+   "back": "pages/247-back.jpg",
+   "items": [
+    {
+     "id": "marine-shark",
+     "label": "হাঙর",
+     "gloss": "shark"
+    },
+    {
+     "id": "seahorse-vertebrate",
+     "label": "সামুদ্রিক ঘোড়া",
+     "gloss": "seahorse"
+    },
+    {
+     "id": "umbrella-shaped-jelly-creature",
+     "label": "ছাতামাছ",
+     "gloss": "jellyfish"
+    },
+    {
+     "id": "five-rayed-marine-seastar",
+     "label": "তারামাছ",
+     "gloss": "sea star"
+    },
+    {
+     "id": "marine-branch-coral",
+     "label": "প্রবাল",
+     "gloss": "branch coral"
+    },
+    {
+     "id": "marine-conch-shell",
+     "label": "শঙ্খ",
+     "gloss": "large spiral marine conch shell"
+    }
+   ],
+   "questions": [
+    "তারামাছ কোনটা?",
+    "হাঙর আর সামুদ্রিক ঘোড়ার লেজ কেমন আলাদা?",
+    "আপনি উপকূলে কী রকম খোলস দেখেছেন?",
+    "ছাতামাছ চিনতে গায়ের কোন অংশ দেখবেন?",
+    "প্রবাল আর শঙ্খের আকারে কী তফাত দেখবেন?",
+    "সাগরের প্রাণী কাছ থেকে দেখার সুযোগ হলে কোনটা দেখতে চাইবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "traditional-yard-games",
+   "number": 103,
+   "title": "মাঠে যে খেলাগুলো খেলি",
+   "front": "pages/103-front.jpg",
+   "back": "pages/103-back.jpg",
+   "items": [
+    {
+     "id": "hopscotch",
+     "label": "এক্কাদোক্কা",
+     "gloss": "hopscotch"
+    },
+    {
+     "id": "blind-tag",
+     "label": "কানামাছি",
+     "gloss": "blind man's buff"
+    },
+    {
+     "id": "hide-and-seek",
+     "label": "লুকোচুরি",
+     "gloss": "hide-and-seek"
+    },
+    {
+     "id": "kabaddi",
+     "label": "কাবাডি",
+     "gloss": "kabaddi"
+    },
+    {
+     "id": "tug-of-war",
+     "label": "দড়ি টানাটানি",
+     "gloss": "tug of war"
+    },
+    {
+     "id": "arm-wrestle",
+     "label": "পাঞ্জা লড়া",
+     "gloss": "arm wrestling"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে দড়ি টানাটানি হচ্ছে?",
+    "কোন খেলায় চোখ বেঁধে রেখেছে?",
+    "আপনি ছোটবেলায় কোন খেলা খেলতেন?",
+    "এক্কাদোক্কা খেলতে মাটিতে কী আঁকবেন?",
+    "আপনার পরিচিত কোনো খেলায় সবাই কীভাবে পালা পায়?",
+    "খেলার নিয়ম বদলালে কীভাবে আরও বেশি মানুষ তাতে যোগ দিতে পারে?"
+   ]
+  },
+  {
+   "id": "plants-and-seeds-for-oil",
+   "number": 221,
+   "title": "তেল হয় যে গাছ আর দানা থেকে",
+   "front": "pages/221-front.jpg",
+   "back": "pages/221-back.jpg",
+   "items": [
+    {
+     "id": "yellow-mustard-flower-plant",
+     "label": "সরিষার ফুল",
+     "gloss": "yellow mustard blossom"
+    },
+    {
+     "id": "sesame-plant-with-pods",
+     "label": "তিলের গাছ",
+     "gloss": "sesame plant with seed pods"
+    },
+    {
+     "id": "single-sunflower-head",
+     "label": "সূর্যমুখী",
+     "gloss": "sunflower head"
+    },
+    {
+     "id": "uprooted-groundnut-plant",
+     "label": "চিনাবাদামের গাছ",
+     "gloss": "peanut plant with roots"
+    },
+    {
+     "id": "brown-flaxseed-pile",
+     "label": "তিসির দানা",
+     "gloss": "flaxseed grains"
+    },
+    {
+     "id": "fine-rice-bran-pile",
+     "label": "চালের কুঁড়া",
+     "gloss": "rice bran"
+    }
+   ],
+   "questions": [
+    "সূর্যমুখীটা কোথায়?",
+    "তিসির দানা আর চালের কুঁড়ার আকারে কী তফাত?",
+    "আপনার এলাকায় সরিষা ফুল দেখেছেন?",
+    "চিনাবাদাম তুলতে গাছের কোন দিকে হাত দেবেন?",
+    "তিলের গাছ আর সরিষার ফুল দেখলে কীভাবে আলাদা করবেন?",
+    "বাড়ির জন্য তেল বাছার সময় দামের সঙ্গে আর কী মিলিয়ে দেখেন?"
+   ]
+  },
+  {
+   "id": "riverbanks-and-water-movement",
+   "number": 193,
+   "title": "নদীর পানিতে যা বদলায়",
+   "front": "pages/193-front.jpg",
+   "back": "pages/193-back.jpg",
+   "items": [
+    {
+     "id": "riverbank-local",
+     "label": "নদীর পাড়",
+     "gloss": "riverbank between water and dry land"
+    },
+    {
+     "id": "river-current-local",
+     "label": "স্রোত",
+     "gloss": "one-direction water current"
+    },
+    {
+     "id": "water-wave-local",
+     "label": "ঢেউ",
+     "gloss": "cresting surface wave on water"
+    },
+    {
+     "id": "high-tide-local",
+     "label": "জোয়ার",
+     "gloss": "high or rising tide against a river landing"
+    },
+    {
+     "id": "low-tide-local",
+     "label": "ভাটা",
+     "gloss": "low or receding tide at a river landing"
+    },
+    {
+     "id": "river-eddy-local",
+     "label": "ঘূর্ণি",
+     "gloss": "an eddy swirling in river water"
+    }
+   ],
+   "questions": [
+    "ঘূর্ণি কোন ছবিতে?",
+    "কোন দুই ছবিতে ঘাটের ধাপ আছে?",
+    "আপনি আগে কোথায় নদীর পাড়ে গেছেন?",
+    "গ্রামের কেউ জোয়ার কখন হবে জানেন কি না কীভাবে জিজ্ঞেস করবেন?",
+    "স্রোত আর ঢেউ দেখে কী পার্থক্য বুঝবেন?",
+    "জোয়ার আর ভাটা বুঝে চললে নদীর পাড়ের মানুষের কোন কাজে সুবিধা হয়?"
+   ]
+  },
+  {
+   "id": "local-fabric-and-cloth-types",
+   "number": 217,
+   "title": "কাপড়ের রকম চিনে কিনি",
+   "front": "pages/217-front.jpg",
+   "back": "pages/217-back.jpg",
+   "items": [
+    {
+     "id": "plain-cotton-fabric",
+     "label": "সুতি কাপড়",
+     "gloss": "plain woven cotton cloth"
+    },
+    {
+     "id": "smooth-silk-fabric",
+     "label": "রেশমি কাপড়",
+     "gloss": "lustrous silk cloth"
+    },
+    {
+     "id": "fine-bengali-muslin",
+     "label": "মসলিন",
+     "gloss": "ultrafine translucent muslin"
+    },
+    {
+     "id": "woven-jamdani-sample",
+     "label": "জামদানি",
+     "gloss": "patterned Bangladeshi jamdani"
+    },
+    {
+     "id": "bengali-nakshi-kantha",
+     "label": "নকশিকাঁথা",
+     "gloss": "embroidered nakshi kantha quilt"
+    },
+    {
+     "id": "local-handspun-khadi",
+     "label": "খাদি কাপড়",
+     "gloss": "handspun khadi cotton cloth"
+    }
+   ],
+   "questions": [
+    "কোন কাপড়টায় বড় ফুলের নকশা আছে?",
+    "সুতি আর রেশমি কাপড়ের ওপর আলো পড়লে কী তফাত দেখেন?",
+    "গরমে আপনি কী রকম কাপড় পরেন?",
+    "কাপড় কেনার আগে হাতে ছুঁয়ে কী দেখবেন?",
+    "নকশিকাঁথার ফোঁড় আর জামদানির নকশা কীভাবে আলাদা?",
+    "দাম একই হলে গরমের জামার জন্য কোন কাপড় বাছবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "edible-stems-blossoms-and-seeds",
+   "number": 181,
+   "title": "ডাঁটা ফুল আর বিচির তরকারি",
+   "front": "pages/181-front.jpg",
+   "back": "pages/181-back.jpg",
+   "items": [
+    {
+     "id": "taro-stolon-local",
+     "label": "কচুর লতি",
+     "gloss": "edible taro stolons"
+    },
+    {
+     "id": "small-taro-corms",
+     "label": "কচুর মুখি",
+     "gloss": "small edible taro cormels"
+    },
+    {
+     "id": "banana-blossom-local",
+     "label": "কলার মোচা",
+     "gloss": "banana blossom"
+    },
+    {
+     "id": "turnip-root-local",
+     "label": "শালগম",
+     "gloss": "turnip root"
+    },
+    {
+     "id": "jackfruit-seeds",
+     "label": "কাঁঠালের বিচি",
+     "gloss": "edible jackfruit seeds"
+    },
+    {
+     "id": "pumpkin-blossom-local",
+     "label": "কুমড়ার ফুল",
+     "gloss": "pumpkin blossom used as food"
+    }
+   ],
+   "questions": [
+    "কলার মোচা কোনটা?",
+    "কোন ছবিতে কাঁঠালের বিচি আছে?",
+    "আপনি কুমড়ার ফুল ভেজে খেয়েছেন?",
+    "কচুর লতি কিনতে কেমন লতি চাইবেন?",
+    "কচুর মুখি আর শালগম দেখতে আলাদা কীভাবে?",
+    "সবজির যে অংশ একটা বাড়িতে ফেলে দেয় সেটা অন্য বাড়িতে রান্না হয় কেন?"
+   ]
+  },
+  {
+   "id": "colorful-local-garden-flowers",
+   "number": 222,
+   "title": "ফুলের গন্ধ আর রং",
+   "front": "pages/222-front.jpg",
+   "back": "pages/222-back.jpg",
+   "items": [
+    {
+     "id": "bengali-red-rose",
+     "label": "গোলাপ",
+     "gloss": "red garden rose"
+    },
+    {
+     "id": "local-beli-jasmine",
+     "label": "বেলি ফুল",
+     "gloss": "Arabian jasmine blossom"
+    },
+    {
+     "id": "bangladesh-tuberose-spike",
+     "label": "রজনীগন্ধা",
+     "gloss": "tuberose flower spike"
+    },
+    {
+     "id": "red-flame-tree-blossom",
+     "label": "কৃষ্ণচূড়া",
+     "gloss": "royal poinciana flowers"
+    },
+    {
+     "id": "pink-periwinkle-bloom",
+     "label": "নয়নতারা",
+     "gloss": "pink Madagascar periwinkle"
+    },
+    {
+     "id": "blue-butterfly-pea-flower",
+     "label": "অপরাজিতা",
+     "gloss": "blue butterfly pea blossom"
+    }
+   ],
+   "questions": [
+    "নীল ফুল কোনটা?",
+    "বেলি আর রজনীগন্ধার আকারে কী তফাত?",
+    "আপনি গোলাপ কোথায় দেখেছেন?",
+    "ফুল কিনলে কোনগুলো বেশি গন্ধ দেয় জিজ্ঞেস করবেন কীভাবে?",
+    "কৃষ্ণচূড়া আর অপরাজিতা কীভাবে আলাদা করে চিনবেন?",
+    "আপনার জানালার কাছে কোন ফুল লাগাবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "things-on-a-performance-stage",
+   "number": 240,
+   "title": "মঞ্চে সাজ আর সরঞ্জাম",
+   "front": "pages/240-front.jpg",
+   "back": "pages/240-back.jpg",
+   "items": [
+    {
+     "id": "theater-stage-curtain",
+     "label": "মঞ্চের পর্দা",
+     "gloss": "stage curtain"
+    },
+    {
+     "id": "light-for-a-stage",
+     "label": "মঞ্চের আলো",
+     "gloss": "stage spotlight"
+    },
+    {
+     "id": "theater-face-mask",
+     "label": "মুখোশ",
+     "gloss": "theatrical face mask"
+    },
+    {
+     "id": "prop-royal-crown",
+     "label": "মুকুট",
+     "gloss": "theatrical crown prop"
+    },
+    {
+     "id": "megaphone-amplifier",
+     "label": "আওয়াজ বড় করার যন্ত্র",
+     "gloss": "handheld megaphone"
+    },
+    {
+     "id": "small-podium-stage-stairs",
+     "label": "মঞ্চে ওঠার সিঁড়ি",
+     "gloss": "portable stage stairs"
+    }
+   ],
+   "questions": [
+    "মুকুট কোনটা?",
+    "মুখোশ আর মুকুট শরীরের কোন আলাদা জায়গায় পরি?",
+    "আপনি কোনো নাটক দেখতে গিয়েছেন?",
+    "মঞ্চে উঠতে কোনটা ব্যবহার করবেন?",
+    "দূরের মানুষ শুনতে না পেলে কী করতে পারেন?",
+    "মঞ্চে নতুন কাউকে গান গাইতে বললে কোন জিনিসগুলো আগে দেখাবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "reading-a-bangla-newspaper",
+   "number": 231,
+   "title": "খবরের কাগজে কোথায় কী দেখি",
+   "front": "pages/231-front.jpg",
+   "back": "pages/231-back.jpg",
+   "items": [
+    {
+     "id": "newspaper-front-page",
+     "label": "খবরের কাগজের প্রথম পাতা",
+     "gloss": "newspaper front page"
+    },
+    {
+     "id": "newspaper-large-headline",
+     "label": "খবরের বড় শিরোনাম",
+     "gloss": "large news headline"
+    },
+    {
+     "id": "newspaper-picture-with-caption",
+     "label": "ছবির নিচের লেখা",
+     "gloss": "caption beneath a newspaper photo"
+    },
+    {
+     "id": "newspaper-weather-section",
+     "label": "আবহাওয়ার খবর",
+     "gloss": "newspaper weather panel"
+    },
+    {
+     "id": "newspaper-classified-section",
+     "label": "ছোট বিজ্ঞাপন",
+     "gloss": "newspaper classifieds"
+    },
+    {
+     "id": "newspaper-sports-page",
+     "label": "খেলার খবর",
+     "gloss": "newspaper sports reporting panel"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে বৃষ্টির খবর আছে?",
+    "বড় শিরোনাম আর ছবির নিচের লেখা দেখতে কীভাবে আলাদা?",
+    "আপনি কোন ধরনের খবর পড়েন?",
+    "খেলার খবর খুঁজতে কোন ছবির মতো পাতা দেখবেন?",
+    "বাসা খুঁজতে খবরের কাগজের কোন অংশ দেখবেন?",
+    "সময় কম থাকলে আগে কোন অংশ পড়বেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "plants-by-ponds-and-fields",
+   "number": 215,
+   "title": "পুকুরপাড় আর মাঠের গাছ",
+   "front": "pages/215-front.jpg",
+   "back": "pages/215-back.jpg",
+   "items": [
+    {
+     "id": "water-hyacinth-rosette",
+     "label": "কচুরিপানা",
+     "gloss": "floating water hyacinth"
+    },
+    {
+     "id": "pond-algae-mat",
+     "label": "শেওলা",
+     "gloss": "pond algae covering a surface"
+    },
+    {
+     "id": "bengali-kash-grass-plumes",
+     "label": "কাশফুল",
+     "gloss": "white kash grass plumes"
+    },
+    {
+     "id": "tall-marsh-reed-bundle",
+     "label": "নলখাগড়া",
+     "gloss": "tall wetland reed clump"
+    },
+    {
+     "id": "low-durba-grass",
+     "label": "দূর্বা ঘাস",
+     "gloss": "low Bermuda grass sprig"
+    },
+    {
+     "id": "shola-wetland-plant",
+     "label": "শোলাগাছ",
+     "gloss": "Indian cork shola aquatic plant"
+    }
+   ],
+   "questions": [
+    "কচুরিপানা কোনটা?",
+    "কাশফুল আর নলখাগড়ার মাথায় কী তফাত?",
+    "আপনি কোথায় শেওলা দেখেছেন?",
+    "মাঠে দূর্বা ঘাস থাকলে কী দেখে চিনবেন?",
+    "শোলাগাছের ডাঁটা কেটে ভেতরে কী দেখা যায়?",
+    "পুকুরের চারদিকে গাছ কমে গেলে কী কী বদলাতে পারে?"
+   ]
+  },
+  {
+   "id": "small-skin-marks",
+   "number": 164,
+   "title": "গায়ে ছোট দাগ আর গুটি",
+   "front": "pages/164-front.jpg",
+   "back": "pages/164-back.jpg",
+   "items": [
+    {
+     "id": "small-flat-mole",
+     "label": "তিল",
+     "gloss": "small flat dark skin mole"
+    },
+    {
+     "id": "raised-wart",
+     "label": "আঁচিল",
+     "gloss": "small rough raised wart"
+    },
+    {
+     "id": "old-cut-scar",
+     "label": "পুরোনো কাটা দাগ",
+     "gloss": "fully healed linear cut scar"
+    },
+    {
+     "id": "face-wrinkles",
+     "label": "বলিরেখা",
+     "gloss": "multiple facial wrinkles"
+    },
+    {
+     "id": "cheek-melasma",
+     "label": "মেছতা",
+     "gloss": "brown melasma patches on cheeks"
+    },
+    {
+     "id": "tiny-skin-rash",
+     "label": "ফুসকুড়ি",
+     "gloss": "group of small rash bumps"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে তিল আছে?",
+    "কোনটায় একসঙ্গে অনেক ছোট গুটি আছে?",
+    "পুরোনো কাটা দাগ কারও হাতে দেখেছেন?",
+    "মুখে নতুন দাগ দেখলে কোথায় হয়েছে কীভাবে বলবেন?",
+    "তিল আর আঁচিল দেখে বা ছুঁয়ে কী তফাত বুঝবেন?",
+    "কোনো দাগ অনেক দিন একই রকম থাকলে আর হঠাৎ বদলালে মানুষ কেন আলাদাভাবে ভাবে?"
+   ]
+  },
+  {
+   "id": "helping-plants-grow",
+   "number": 219,
+   "title": "গাছের বাড়তি যত্ন",
+   "front": "pages/219-front.jpg",
+   "back": "pages/219-back.jpg",
+   "items": [
+    {
+     "id": "trimming-a-plant-branch",
+     "label": "ডাল ছাঁটা",
+     "gloss": "pruning a plant branch"
+    },
+    {
+     "id": "grafting-a-plant-cutting",
+     "label": "গাছে কলম করা",
+     "gloss": "grafting a live sapling"
+    },
+    {
+     "id": "staking-young-plant",
+     "label": "চারাকে খুঁটিতে বাঁধা",
+     "gloss": "tying a sapling to a stake"
+    },
+    {
+     "id": "picking-one-flower-by-hand",
+     "label": "ফুল তোলা",
+     "gloss": "picking one flower by hand"
+    },
+    {
+     "id": "removing-dry-leaves",
+     "label": "শুকনা পাতা সরানো",
+     "gloss": "removing dry fallen leaves from a plant pot"
+    },
+    {
+     "id": "moving-plant-to-larger-pot",
+     "label": "চারার টব বদলানো",
+     "gloss": "repotting a small plant"
+    }
+   ],
+   "questions": [
+    "কে ফুল তুলছেন?",
+    "ছাঁটা আর কলম করার কাজ দেখতে কীভাবে আলাদা?",
+    "আপনার বাসায় টবে কী গাছ আছে?",
+    "ঢলে পড়া চারাকে খুঁটিতে বাঁধতে কী লাগবে?",
+    "একটা চারা বড় টবে নিতে হলে আগে কী করবেন?",
+    "কোন গাছ কাটাছেঁড়া ছাড়াই ভালো থাকবে কী করে বুঝবেন?"
+   ]
+  },
+  {
+   "id": "taking-and-keeping-photos",
+   "number": 243,
+   "title": "ছবি তুলি আর রেখে দিই",
+   "front": "pages/243-front.jpg",
+   "back": "pages/243-back.jpg",
+   "items": [
+    {
+     "id": "handheld-picture-taking-device",
+     "label": "ছবি তোলার যন্ত্র",
+     "gloss": "photographic camera"
+    },
+    {
+     "id": "camera-lens-focusing-glass",
+     "label": "ছবি তোলার কাচ",
+     "gloss": "detached photographic lens"
+    },
+    {
+     "id": "three-legged-camera-support",
+     "label": "যন্ত্র রাখার তিনপায়া",
+     "gloss": "photography tripod"
+    },
+    {
+     "id": "photography-flash-unit",
+     "label": "ঝলক দেওয়ার বাতি",
+     "gloss": "camera flash unit"
+    },
+    {
+     "id": "book-for-loose-photographs",
+     "label": "ছবি রাখার বই",
+     "gloss": "photo album"
+    },
+    {
+     "id": "standing-wood-photo-frame",
+     "label": "ছবি বাঁধানোর কাঠ",
+     "gloss": "wooden photo frame"
+    }
+   ],
+   "questions": [
+    "ছবি রাখার বই কোনটা?",
+    "তিনপায়া আর ঝলক দেওয়ার বাতির কাজ কীভাবে আলাদা?",
+    "আপনি কোন ছবি রেখে দিতে চান?",
+    "যন্ত্র নড়ে গেলে কোথায় দাঁড় করাবেন?",
+    "একটা ছবি ঘরে সাজিয়ে রাখতে কোনটা লাগবে?",
+    "একটা অনুষ্ঠান থেকে মাত্র একটা ছবি রাখতে পারলে কী দেখে বাছবেন?"
+   ]
+  },
+  {
+   "id": "sewing-room-tools",
+   "number": 238,
+   "title": "দর্জির পাশে যে জিনিসগুলো থাকে",
+   "front": "pages/238-front.jpg",
+   "back": "pages/238-back.jpg",
+   "items": [
+    {
+     "id": "tailors-sewing-machine",
+     "label": "সেলাইকল",
+     "gloss": "sewing machine"
+    },
+    {
+     "id": "sewing-thread-spool",
+     "label": "সুতা পেঁচানোর নলি",
+     "gloss": "spool for winding thread"
+    },
+    {
+     "id": "sewing-finger-thimble",
+     "label": "সেলাইয়ের আঙুলঢাকনি",
+     "gloss": "metal sewing thimble"
+    },
+    {
+     "id": "sewing-pin-cushion",
+     "label": "সুঁই রাখার গদি",
+     "gloss": "cushion for holding needles"
+    },
+    {
+     "id": "sewing-supplies-box",
+     "label": "সেলাইয়ের বাক্স",
+     "gloss": "box for sewing tools"
+    },
+    {
+     "id": "paper-clothing-pattern",
+     "label": "জামা কাটার ছাঁদ",
+     "gloss": "paper clothing pattern for cutting fabric"
+    }
+   ],
+   "questions": [
+    "সেলাইকল কোনটা?",
+    "সুঁই রাখার গদি আর আঙুলঢাকনি দেখতে কীভাবে আলাদা?",
+    "আপনি ঘরে সেলাই করেন?",
+    "সুতা শেষ হলে কীতে নতুন সুতা পেঁচাবেন?",
+    "জামার হাতা কাটার আগে ছাঁদ কীভাবে রাখবেন?",
+    "সেলাইয়ের ছোট জিনিস হারানো আটকাতে কীভাবে গুছিয়ে রাখবেন?"
+   ]
+  },
+  {
+   "id": "making-a-clay-pot",
+   "number": 214,
+   "title": "মাটির পাত্র বানানোর ধাপ",
+   "front": "pages/214-front.jpg",
+   "back": "pages/214-back.jpg",
+   "items": [
+    {
+     "id": "kneading-potters-clay",
+     "label": "মাটি মাখা",
+     "gloss": "kneading potter's clay"
+    },
+    {
+     "id": "clay-set-on-wheel",
+     "label": "চাকে মাটি বসানো",
+     "gloss": "setting clay on a potter wheel"
+    },
+    {
+     "id": "widening-a-pot-mouth",
+     "label": "পাত্রের মুখ চওড়া করা",
+     "gloss": "widening the mouth of a clay pot"
+    },
+    {
+     "id": "lifting-wet-clay-pot",
+     "label": "ভেজা পাত্র তুলে নেওয়া",
+     "gloss": "lifting formed wet clay pot"
+    },
+    {
+     "id": "air-drying-clay-pots",
+     "label": "মাটির পাত্র শুকানো",
+     "gloss": "air drying clay pots"
+    },
+    {
+     "id": "firing-clay-pots",
+     "label": "মাটির পাত্র পোড়ানো",
+     "gloss": "firing clay pots"
+    }
+   ],
+   "questions": [
+    "চাক কোথায়?",
+    "শুকানো আর পোড়ানোর ছবিতে কী তফাত?",
+    "আপনি মাটির কোন পাত্র ব্যবহার করেন?",
+    "চাকে মাটি বসানোর পরে কী করেন?",
+    "ভেজা পাত্র কীভাবে ধরলে মুখটা নষ্ট হবে না?",
+    "হাঁড়ি পোড়ানোর আগে শুকিয়ে নেওয়া দরকার কেন?"
+   ]
+  },
+  {
+   "id": "organizing-paper-at-a-desk",
+   "number": 252,
+   "title": "কাগজ গুছিয়ে রাখি",
+   "front": "pages/252-front.jpg",
+   "back": "pages/252-back.jpg",
+   "items": [
+    {
+     "id": "desk-paper-stapler",
+     "label": "কাগজ আটকানোর যন্ত্র",
+     "gloss": "desk stapler for binding paper corners"
+    },
+    {
+     "id": "folded-document-jacket",
+     "label": "কাগজের খাপ",
+     "gloss": "tabbed document folder"
+    },
+    {
+     "id": "two-hole-paper-punch",
+     "label": "কাগজ ফুটো করার যন্ত্র",
+     "gloss": "two-hole paper punch"
+    },
+    {
+     "id": "metal-paper-gripper",
+     "label": "কাগজ ধরার চিমটি",
+     "gloss": "foldback paper binder clip"
+    },
+    {
+     "id": "desk-paper-shredder",
+     "label": "কাগজ কুচি করার যন্ত্র",
+     "gloss": "desktop paper shredder"
+    },
+    {
+     "id": "stacked-incoming-paper-trays",
+     "label": "কাগজ রাখার তাক",
+     "gloss": "stacked desk letter trays for papers"
+    }
+   ],
+   "questions": [
+    "কাগজের খাপ কোনটা?",
+    "চিমটি আর কাগজ আটকানোর যন্ত্রের কাজ কীভাবে আলাদা?",
+    "আপনি দরকারি কাগজ কোথায় রাখেন?",
+    "এক পাশে দুটো ফুটো করতে কোনটা নেবেন?",
+    "ভুল কাগজ কুচি করে ফেলার আগে কী দেখে নেবেন?",
+    "অন্য কেউ যাতে সহজে দরকারি কাগজ পায়, টেবিলটা কীভাবে গুছাবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "fittings-for-a-water-line",
+   "number": 266,
+   "title": "কল আর নল ঠিক করার জিনিস",
+   "front": "pages/266-front.jpg",
+   "back": "pages/266-back.jpg",
+   "items": [
+    {
+     "id": "threaded-pipe-joining-coupler",
+     "label": "নল জোড়ার প্যাঁচ",
+     "gloss": "short internally threaded pipe coupler"
+    },
+    {
+     "id": "right-angle-pipe-elbow",
+     "label": "নলের বাঁক",
+     "gloss": "right-angle water pipe elbow"
+    },
+    {
+     "id": "tap-spout-aerator-mesh",
+     "label": "কলের মাথার জালি",
+     "gloss": "removable mesh aerator on a faucet tip"
+    },
+    {
+     "id": "tap-rubber-washer-disc",
+     "label": "কলের চাকতি",
+     "gloss": "flat rubber washer disc in a faucet mechanism"
+    },
+    {
+     "id": "water-supply-shutoff-valve",
+     "label": "পানি বন্ধ করার চাবি",
+     "gloss": "main water supply shutoff valve with lever"
+    },
+    {
+     "id": "plumber-thread-seal-tape",
+     "label": "নলের প্যাঁচের ফিতা",
+     "gloss": "spool of white pipe-thread sealing tape"
+    }
+   ],
+   "questions": [
+    "নলের বাঁক কোনটা?",
+    "নল জোড়ার প্যাঁচ আর নলের বাঁক দেখতে কীভাবে আলাদা?",
+    "আপনার বাসায় পানি বন্ধ করার চাবি কোথায়?",
+    "কলের জালিতে ময়লা দেখলে মিস্ত্রিকে কী বলে দেখাবেন?",
+    "নলে কোন দিকে পানি যাচ্ছে, সেটা বোঝাতে কোথায় দেখাবেন?",
+    "একই কল বারবার চুইয়ে পড়লে যে ঠিক করতে আসবেন তাঁকে আগে কী কী জানাবেন?"
+   ]
+  },
+  {
+   "id": "street-repair-equipment",
+   "number": 275,
+   "title": "রাস্তায় কাজের সময় যা দেখি",
+   "front": "pages/275-front.jpg",
+   "back": "pages/275-back.jpg",
+   "items": [
+    {
+     "id": "roadwork-digging-excavator",
+     "label": "মাটি কাটার গাড়ি",
+     "gloss": "road excavation vehicle with digging bucket"
+    },
+    {
+     "id": "mixing-drum-for-concrete-work",
+     "label": "ঢালাই মেশানোর যন্ত্র",
+     "gloss": "portable rotating drum used to mix concrete"
+    },
+    {
+     "id": "worker-hard-hat-for-roadwork",
+     "label": "কাজের শক্ত টুপি",
+     "gloss": "construction hard hat with short protective brim"
+    },
+    {
+     "id": "portable-road-work-cone",
+     "label": "রাস্তার কমলা চিহ্ন",
+     "gloss": "temporary bright orange traffic cone"
+    },
+    {
+     "id": "high-visibility-work-waistcoat",
+     "label": "কাজের উজ্জ্বল জামা",
+     "gloss": "high-visibility vest with reflective stripes"
+    },
+    {
+     "id": "asphalt-compacting-road-roller",
+     "label": "রাস্তা চাপার গাড়ি",
+     "gloss": "road roller with heavy smooth steel drum"
+    }
+   ],
+   "questions": [
+    "কোনটা মাটি কাটার গাড়ি?",
+    "মাটি কাটার গাড়ি আর রাস্তা চাপার গাড়ির সামনে কী তফাত?",
+    "আপনি কোথায় রাস্তার কাজ দেখেছেন?",
+    "কমলা চিহ্নগুলো দেখলে সঙ্গের লোককে কী বলবেন?",
+    "রাস্তার কাজ করছেন কে, দূর থেকে কী দেখে বুঝবেন?",
+    "যে রাস্তা দিয়ে রোজ যান সেখানে কাজ চললে অন্য রাস্তা বাছার সময় কী ভাববেন?"
    ]
   }
  ]

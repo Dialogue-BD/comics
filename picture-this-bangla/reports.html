@@ -133,7 +133,7 @@
       return el("article", { class: "report" }, thumbFor(r), el("div", {},
         el("div", { class: "meta" }, el("span", { class: "pill " + r.status }, r.status), `#${r.id} · ${new Date(r.created_at * 1000).toLocaleString()} · `,
           (r.reporter && r.reporter.role === "bangla-speaker") ? "Bangla speaker" : "Learner", r.reporter && r.reporter.name ? ` (${r.reporter.name})` : ""),
-        el("div", { class: "title" }, el("a", { href: `index.html?card=${r.card.number}`, target: "_blank" }, `Card ${r.card.number}`), " · ", el("span", { class: "bn" }, r.card.title)),
+        el("div", { class: "title" }, el("a", { href: `index.html?card=${encodeURIComponent(r.card.slug || r.card.number)}`, target: "_blank" }, `Card ${r.card.number}`), " · ", el("span", { class: "bn" }, r.card.title)),
         el("dl", {},
           el("dt", {}, "Part"), el("dd", { class: "bn" }, what + shown),
           el("dt", {}, "Problem"), el("dd", {}, CATEGORY[r.category] || r.category),
