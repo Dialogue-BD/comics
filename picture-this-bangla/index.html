@@ -12,7 +12,7 @@
   <meta name="theme-color" content="#f8fafc">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <title>Picture This! বাংলা — Bhasha Vai</title>
+  <title>Picture This! বাংলা — Bhasha BhAI</title>
   <style>
     :root {
       color-scheme: light;
@@ -1844,7 +1844,7 @@
           <img class="brand-mark" src="bhasha-vai-logo.png" alt="" width="42" height="42">
         </a>
         <span class="brand-copy">
-          <strong class="brand-name">Bhasha Vai</strong>
+          <strong class="brand-name">Bhasha BhAI</strong>
           <span class="brand-activity">Picture This! <span lang="bn" class="ptb-bn">বাংলা</span></span>
         </span>
       </div>
@@ -3304,7 +3304,7 @@
       applyTransform(0, 0);
       if (gameMode !== "browse") resetGameRound();
       updateSideUI(false);
-      document.title = `${gameMode === "browse" ? current.title : gameModeName()} — Picture This! · Bhasha Vai`;
+      document.title = `${gameMode === "browse" ? current.title : gameModeName()} — Picture This! · Bhasha BhAI`;
       try { localStorage.setItem("picture-this-bangla-last-card-id", cards[index].id); } catch (_) {}
       if (announce) status.textContent = gameMode === "browse" ? `New card: ${current.title}.` : `New ${gameModeName().toLocaleLowerCase()} card: ${current.title}.`;
     }
