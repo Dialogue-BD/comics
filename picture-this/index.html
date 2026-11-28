@@ -1624,6 +1624,14 @@
       .card { transition-duration: .01ms; }
       .deck, .app { transition-duration: .01ms; }
     }
+
+    /* Coach Me! (Tim, 28 Nov): the GPA Nurturer is a coaching mode, not a game, so it has its own
+       one-tap button, no score, autoplay on by default, and it moves on to a fresh card by itself. */
+    body .topbar .view-toggle.coach-button { color: #101812; background: #dbb96e; border-color: #dbb96e; font-weight: 900; }
+    body .topbar .view-toggle.coach-button:hover { color: #101812; background: #e8c97f; border-color: #e8c97f; }
+    body .topbar .view-toggle.coach-button[aria-pressed="true"] { color: #fff9ea; background: rgba(24, 74, 43, .92); border-color: #dbb96e; box-shadow: inset 0 0 0 2px #dbb96e; }
+    .game-score[hidden] { display: none; }
+    .game-option[data-start-game="audio-match"] { grid-column: 1 / -1; }
   </style>
   <link rel="stylesheet" href="../dialogue-brand.css?v=20261108-1">
   </head>
@@ -1632,6 +1640,10 @@
     <header class="topbar">
       <div class="brand"><span class="brand-mark"></span><span>Picture This!</span></div>
       <div class="topbar-right">
+        <button class="view-toggle coach-button" id="coach-button" type="button" aria-pressed="false" aria-label="Coach Me: listen and point with a coach" title="Coach Me!">
+          <span class="icon" aria-hidden="true">🌱</span>
+          <span class="text">Coach Me!</span>
+        </button>
         <button class="view-toggle game-menu-button" id="game-menu-button" type="button" aria-label="Choose a Picture This game">
           <span class="icon">🎯</span>
           <span class="text">Games</span>
@@ -1849,11 +1861,6 @@
             <span class="game-option-icon" aria-hidden="true">?</span>
             <strong>Guess the Category</strong>
             <span>The title is blurred. Students use the six pictures and labels to identify the category.</span>
-          </button>
-          <button class="game-option" type="button" data-start-game="items">
-            <span class="game-option-icon" aria-hidden="true">6</span>
-            <strong>Guess the Items · GPA Nurturer</strong>
-            <span>Listen &amp; Point: the Nurturer asks you to find each picture, affirms with collocations, and gently recasts wrong taps (with optional TTS).</span>
           </button>
           <button class="game-option" type="button" data-start-game="find-pair">
             <span class="game-option-icon" aria-hidden="true">2</span>
@@ -2969,6 +2976,7 @@
     const questionData = window.PICTURE_THIS_QUESTION_DATA || {};
     const nurturerData = window.PICTURE_THIS_NURTURER_DATA || {};
     const gameMenuButton = document.querySelector("#game-menu-button");
+    const coachButton = document.querySelector("#coach-button");
     const hintButton = document.querySelector("#hint-button");
     const itemListenGrid = document.querySelector("#item-listen-grid");
     const itemListenButtons = [...itemListenGrid.querySelectorAll(".item-listen-button")];
@@ -3042,7 +3050,7 @@
     let nurturerTargetIndex = -1;
     let nurturerRecastTimer = 0;
     let nurturerSlowMode = false;
-    let nurturerAutoVoice = false;
+    let nurturerAutoVoice = true;   // Coach Me! speaks by default
     let lastNurturerPromptSpeech = "";
     let lastNurturerFeedbackSpeech = "";
     let linkPuzzle = null;
@@ -3088,7 +3096,7 @@
     function gameModeName() {
       return {
         category: "Guess the category",
-        items: "Guess the items",
+        items: "Coach Me!",
         "find-pair": "Find the pair",
         "name-link": "Name the link",
         "audio-match": "Audio match"
@@ -3514,7 +3522,7 @@
       speakingControl = null;
     }
 
-    function speakText(text, control = null, announcement = "Audio played.", customRate = null) {
+    function speakText(text, control = null, announcement = "Audio played.", customRate = null, onDone = null) {
       const pieces = speechSegments(text);
       if (!pieces.length) return false;
       stopSpeech();
@@ -3531,6 +3539,7 @@
         if (index >= pieces.length) {
           control?.classList.remove("is-speaking");
           if (speakingControl === control) speakingControl = null;
+          onDone?.();
           return;
         }
         const piece = pieces[index++];
@@ -4157,9 +4166,54 @@
       transitionToCard(prev);
     }
 
+    // --- Coach Me! helpers -----------------------------------------------------
+    // Cards seen while coaching are remembered for this browser session, so the
+    // next card is always a fresh one until the whole deck has been seen.
+    const COACH_SEEN_KEY = "picture-this-coach-seen-v1";
+    let coachSeenCards = new Set();
+    try { coachSeenCards = new Set(JSON.parse(sessionStorage.getItem(COACH_SEEN_KEY) || "[]")); } catch (error) { coachSeenCards = new Set(); }
+    let coachAdvanceTimer = 0;
+    function coachMarkSeen(cardId) {
+      coachSeenCards.add(cardId);
+      try { sessionStorage.setItem(COACH_SEEN_KEY, JSON.stringify([...coachSeenCards])); } catch (error) { /* private mode */ }
+    }
+    function coachCardReady(index) {
+      return (gameData[cards[index].id] || []).length === 6;
+    }
+    function nextCoachCardIndex() {
+      let pool = cards.map((_, index) => index).filter(index => index !== cardIndex && coachCardReady(index) && !coachSeenCards.has(cards[index].id));
+      if (!pool.length) {
+        coachSeenCards = new Set([cards[cardIndex].id]);
+        pool = cards.map((_, index) => index).filter(index => index !== cardIndex && coachCardReady(index));
+      }
+      return pool.length ? pool[secureRandomIndex(pool.length)] : cardIndex;
+    }
+    function cancelCoachAdvance() {
+      if (coachAdvanceTimer) window.clearTimeout(coachAdvanceTimer);
+      coachAdvanceTimer = 0;
+    }
+    function scheduleCoachAdvance(delay) {
+      cancelCoachAdvance();
+      const roundCard = cardIndex;
+      coachAdvanceTimer = window.setTimeout(() => {
+        coachAdvanceTimer = 0;
+        if (gameMode === "items" && roundComplete && cardIndex === roundCard) newRandomCard();
+      }, delay);
+    }
+    function syncCoachButton() {
+      const on = gameMode === "items";
+      coachButton.setAttribute("aria-pressed", String(on));
+      coachButton.setAttribute("aria-label", on ? "Stop coaching and browse cards" : "Coach Me: listen and point with a coach");
+      coachButton.querySelector(".text").textContent = on ? "Stop coaching" : "Coach Me!";
+    }
+
     function newRandomCard() {
       if (isLinkMode()) {
         beginRandomLinkRound();
+        return;
+      }
+      if (gameMode === "items") {
+        transitionToCard(nextCoachCardIndex());
         return;
       }
       let next = secureRandomIndex(cards.length - 1);
@@ -4546,9 +4600,11 @@
       gameStripFeedback.classList.toggle("wrong", tone === "wrong");
       gameStripFeedback.classList.toggle("recast", tone === "recast");
       lastNurturerFeedbackSpeech = ttsText || mainText;
+      let spoke = false;
       if (nurturerAutoVoice && autoSpeak && lastNurturerFeedbackSpeech) {
-        speakText(lastNurturerFeedbackSpeech, null, "Nurturer feedback played.");
+        spoke = speakText(lastNurturerFeedbackSpeech, null, "Coach feedback played.", null, payload.advance ? () => scheduleCoachAdvance(1400) : null);
       }
+      if (payload.advance && !spoke) scheduleCoachAdvance(4500);
       requestAnimationFrame(updateGameHeaderReserve);
     }
 
@@ -4561,7 +4617,7 @@
         lastNurturerPromptSpeech = `Wonderful! You found all six pictures in ${current.title}.`;
       } else {
         const entry = nurturerEntryFor(current.id, nurturerTargetIndex, items[nurturerTargetIndex]);
-        gamePrompt.textContent = `👂 Nurturer: “${entry.ask}”`;
+        gamePrompt.textContent = `👂 “${entry.ask}”`;
         lastNurturerPromptSpeech = entry.ask;
       }
       syncGameStripMeta();
@@ -4577,7 +4633,7 @@
     // both into the one badge rather than adding a second piece of chrome.
     function updateScoreChip() {
       gameScoreChip.textContent = gameMode === "items"
-        ? `Score ${gameScoreValue.textContent} · ${foundItems.size}/6`
+        ? `${foundItems.size}/6 found`
         : `Score ${gameScoreValue.textContent}`;
       if (typeof drawerPeekLabel !== "undefined") updateDrawerPeekLabel();
     }
@@ -4620,6 +4676,9 @@
       revealGameAnswerButton.disabled = false;
       newGameCardButton.disabled = false;
       guessForm.hidden = gameMode === "find-pair" || gameMode === "items";
+      gameScore.hidden = gameMode === "items";
+      if (gameMode === "items") coachMarkSeen(current.id);
+      cancelCoachAdvance();
       nurturerTtsBar.hidden = gameMode !== "items";
       stripNurturerTtsBar.hidden = gameMode !== "items";
       gameStrip.classList.toggle("is-nurturer-strip", gameMode === "items");
@@ -4656,7 +4715,7 @@
         setGameFeedback("Correct: +1 point · Incorrect: −1 point");
       } else if (gameMode === "items") {
         gameModeKicker.textContent = `${current.title} · GPA Listen & Point`;
-        gamePanelTitle.textContent = "GPA Nurturer";
+        gamePanelTitle.textContent = "Coach Me!";
         gameProgress.hidden = false;
         revealGameAnswerButton.textContent = "Reveal all items";
         updateItemProgress();
@@ -4680,9 +4739,9 @@
           renderNurturerGameFeedback({
             tone: "",
             badge: "🌱 GPA Listen & Point · No Penalty",
-            mainText: "Tap the picture on the card that matches the Nurturer’s prompt. Correct taps share natural collocations; wrong taps get a gentle recast with no penalty.",
+            mainText: "Tap the picture on the card that matches the coach’s prompt. Correct taps share natural collocations; wrong taps get a gentle recast with no penalty.",
             collocations: [],
-            followUp: "",
+            followUp: "Auto voice is on. When all six are found, a new card comes up by itself.",
             ttsText: firstEntry.ask,
             autoSpeak: false
           });
@@ -4783,7 +4842,7 @@
       drawerPeekLabel.textContent = gameMode === "audio-match"
         ? `Audio Match · ${points}`
         : gameMode === "items"
-          ? `Menu · ${foundItems.size}/6 found · ${points}`
+          ? `Menu · ${foundItems.size}/6 found`
           : `${gameModeName()} · ${points}`;
     }
 
@@ -4989,6 +5048,7 @@
       gameMode = mode;
       sidePill.textContent = gameModeName();
       gamePoints = 0;
+      cancelCoachAdvance();
       gameScoreValue.textContent = "0";
       gamePicker.hidden = true;
       const audioMode = gameMode === "audio-match";
@@ -5006,11 +5066,15 @@
       // "drawer" is the whole game board — so it still opens by default.
       setDrawerCollapsed(!audioMode);
       layoutGameControls();
-      status.textContent = `${gameModeName()} game started.`;
+      syncCoachButton();
+      endGameButton.textContent = gameMode === "items" ? "Stop coaching and browse cards" : "End game and browse cards";
+      status.textContent = gameMode === "items" ? "Coach Me! started." : `${gameModeName()} game started.`;
     }
 
     function endGame() {
+      const wasCoaching = gameMode === "items";
       stopSpeech();
+      cancelCoachAdvance();
       if (nurturerRecastTimer) {
         window.clearTimeout(nurturerRecastTimer);
         nurturerRecastTimer = 0;
@@ -5052,7 +5116,8 @@
         cell.removeAttribute("aria-pressed");
       });
       showCard(cardIndex, false);
-      status.textContent = `Game ended with ${gamePoints} point${gamePoints === 1 ? "" : "s"}.`;
+      syncCoachButton();
+      status.textContent = wasCoaching ? "Coaching ended." : `Game ended with ${gamePoints} point${gamePoints === 1 ? "" : "s"}.`;
     }
 
     function revealGameAnswer() {
@@ -5114,6 +5179,7 @@
         nurturerRecastTimer = 0;
       }
       itemCells.forEach(cell => cell.classList.remove("is-recast"));
+      cancelCoachAdvance();
 
       const tappedEntry = nurturerEntryFor(current.id, index, items[index]);
 
@@ -5128,8 +5194,9 @@
           collocations: tappedEntry.collocations,
           followUp: nextEntry
             ? `Now let’s find the next one: “${nextEntry.ask}”`
-            : "All six pictures found! Tap any picture to review or draw a new card.",
-          ttsText: [tappedEntry.yes, `We often say: ${tappedEntry.collocations.join(", ")}.`]
+            : "All six pictures found! A new card is coming up…",
+          ttsText: [tappedEntry.yes, `We often say: ${tappedEntry.collocations.join(", ")}.`],
+          advance: roundComplete
         });
         return;
       }
@@ -5138,7 +5205,6 @@
         foundItems.add(index);
         itemCells[index].classList.add("is-revealed", "is-correct");
         itemCells[index].setAttribute("aria-label", `${tappedEntry.label}, found`);
-        changeScore(1);
         updateItemProgress();
 
         const nextTarget = nurturerOrder.find(candidate => !foundItems.has(candidate));
@@ -5150,18 +5216,19 @@
           renderNurturerGameFeedback({
             tone: "correct",
             badge: "✓ All 6 Found · Affirmation + Collocations",
-            mainText: `${tappedEntry.yes} (+1 point)`,
+            mainText: tappedEntry.yes,
             collocations: tappedEntry.collocations,
-            followUp: "Round complete! Tap any picture to revisit its collocations, or click “New card →”.",
-            ttsText: [tappedEntry.yes, `We often say: ${tappedEntry.collocations.join(", ")}.`, "Wonderful! You found all six pictures."]
+            followUp: "Round complete! A new card is coming up…",
+            ttsText: [tappedEntry.yes, `We often say: ${tappedEntry.collocations.join(", ")}.`, "Wonderful! You found all six pictures."],
+            advance: true
           });
         } else {
           const nextEntry = nurturerEntryFor(current.id, nurturerTargetIndex, items[nurturerTargetIndex]);
           updateNurturerPrompt(false);
           renderNurturerGameFeedback({
             tone: "correct",
-            badge: "✓ Affirmation + Collocations · +1",
-            mainText: `${tappedEntry.yes} (+1 point)`,
+            badge: "✓ Affirmation + Collocations",
+            mainText: tappedEntry.yes,
             collocations: tappedEntry.collocations,
             followUp: `Next Nurturer prompt: “${nextEntry.ask}”`,
             ttsText: [tappedEntry.yes, `We often say: ${tappedEntry.collocations.join(", ")}.`, "Next:", nextEntry.ask]
@@ -5343,6 +5410,10 @@
     viewToggleButton.addEventListener("click", toggleDualView);
     hintButton.addEventListener("click", toggleListeningHints);
     gameMenuButton.addEventListener("click", openGamePicker);
+    coachButton.addEventListener("click", () => {
+      if (gameMode === "items") endGame();
+      else startGame("items");
+    });
     gamePickerClose.addEventListener("click", closeGamePicker);
     gamePicker.addEventListener("click", event => {
       const option = event.target.closest("[data-start-game]");
