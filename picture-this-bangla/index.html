@@ -91,20 +91,26 @@
     }
 
     .activity-back {
-      display: grid;
+      display: inline-flex;
       flex: 0 0 auto;
+      align-items: center;
+      gap: 10px;
+      color: var(--primary-hover);
+      text-decoration: none;
+    }
+
+    .back-arrow {
+      display: grid;
       place-items: center;
       width: 36px;
       height: 36px;
       border: 1px solid var(--border-soft);
       border-radius: 10px;
-      color: var(--primary-hover);
       background: var(--surface);
       font-size: 1.1rem;
-      text-decoration: none;
     }
 
-    .activity-back:hover { background: var(--sky-soft); }
+    .activity-back:hover .back-arrow { background: var(--sky-soft); }
     .activity-back:focus-visible,
     .topbar .view-toggle:focus-visible {
       outline: 2px solid var(--primary);
@@ -742,6 +748,19 @@
     .game-picker-close { position: absolute; top: 16px; right: 16px; width: 42px; height: 42px; border: 1px solid var(--border); border-radius: 13px; color: var(--ink); background: var(--surface-soft); font-size: 1.3rem; font-weight: 700; cursor: pointer; transition: background .16s ease, color .16s ease, border-color .16s ease; }
     .game-picker-close:hover, .game-picker-close:focus-visible { color: #082f49; background: var(--sky-soft); border-color: var(--sky-soft); }
     .game-options { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+    .theme-options { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; max-height: min(62vh, 640px); overflow-y: auto; padding: 2px; }
+    .theme-option { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 4px 11px; min-height: 64px; padding: 11px 14px; border: 1px solid var(--border); border-radius: 15px; color: var(--ink); background: var(--surface); text-align: left; cursor: pointer; transition: border-color .16s ease, background .16s ease; }
+    .theme-option:hover, .theme-option:focus-visible { border-color: var(--primary); background: #f0f9ff; }
+    .theme-option[aria-pressed="true"] { border-color: var(--primary); background: var(--sky-soft); box-shadow: inset 0 0 0 1px var(--primary); }
+    .theme-option-emoji { grid-row: span 2; font-size: 1.55rem; line-height: 1; }
+    .theme-option strong { font-size: .98rem; font-weight: 750; line-height: 1.2; }
+    .theme-option-bn { grid-column: 2; color: var(--muted); font-size: .9rem; font-weight: 600; }
+    .theme-option-count { grid-row: 1 / span 2; grid-column: 3; min-width: 34px; padding: 3px 8px; border-radius: 999px; color: var(--primary-hover); background: var(--sky-soft); font-size: .8rem; font-weight: 800; text-align: center; }
+    .theme-button[aria-pressed="true"] { border-color: var(--primary); background: var(--sky-soft); color: var(--primary-hover); }
+    .theme-button .text { max-width: 12ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    @media (max-width: 640px) {
+      .theme-options { max-height: calc(100dvh - 250px); grid-template-columns: 1fr; }
+    }
     .game-option { min-height: 154px; padding: 20px; border: 1px solid var(--border); border-radius: 19px; color: var(--ink); background: #f0f9ff; text-align: left; cursor: pointer; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
     .game-option:hover, .game-option:focus-visible { transform: translateY(-2px); border-color: #7dd3fc; background: var(--sky-soft); }
     .game-option-icon { display: grid; place-items: center; width: 43px; height: 43px; margin-bottom: 15px; border-radius: 13px 13px 13px 4px; color: #082f49; background: var(--sky-soft); font-size: 1.2rem; font-weight: 950; line-height: 1; }
@@ -1587,12 +1606,12 @@
        can use its normal browse-mode sizing at all times — so no .app.game-active
        .deck override is needed here any more. */
 
-    @media (max-width: 560px) {
+    @media (max-width: 820px) {
       .topbar { gap: 8px; padding-inline: max(10px, env(safe-area-inset-left)) max(10px, env(safe-area-inset-right)); }
       .topbar-right { gap: 4px; }
       .brand { gap: 6px; }
       .brand-mark { width: 32px; height: 32px; }
-      .activity-back { width: 31px; height: 36px; border-color: transparent; }
+      .back-arrow { display: none; }
       .brand-name { font-size: .81rem; }
       .brand-activity { font-size: .67rem; }
       .view-toggle .text { display: none; }
@@ -1609,8 +1628,8 @@
 
     @media (max-width: 350px) {
       .topbar { gap: 6px; padding-inline: max(8px, env(safe-area-inset-left)) max(8px, env(safe-area-inset-right)); }
-      .activity-back { width: 24px; }
       .brand-mark { width: 22px; height: 22px; }
+      .topbar-right { gap: 2px; }
     }
 
     @media (max-width: 600px) {
@@ -1784,8 +1803,10 @@
   <main class="app" id="app">
     <header class="topbar">
       <div class="brand">
-        <a class="activity-back" href="../index.html" aria-label="Back to Dialogue activities" title="Back to Dialogue activities">←</a>
-        <img class="brand-mark" src="bhasha-vai-logo.png" alt="" width="42" height="42">
+        <a class="activity-back" href="../index.html" aria-label="Back to Dialogue activities" title="Back to Dialogue activities">
+          <span class="back-arrow" aria-hidden="true">←</span>
+          <img class="brand-mark" src="bhasha-vai-logo.png" alt="" width="42" height="42">
+        </a>
         <span class="brand-copy">
           <strong class="brand-name">Bhasha Vai</strong>
           <span class="brand-activity">Picture This! <span lang="bn" class="ptb-bn">বাংলা</span></span>
@@ -1795,6 +1816,10 @@
         <button class="view-toggle coach-button" id="coach-button" type="button" aria-pressed="false" aria-label="Coach Me: listen and point with a coach" title="Coach Me!">
           <span class="icon" aria-hidden="true">🌱</span>
           <span class="text">Coach Me!</span>
+        </button>
+        <button class="view-toggle theme-button" id="theme-button" type="button" aria-pressed="false" aria-label="Choose a theme: all cards" title="Themes (T)">
+          <span class="icon" id="theme-button-icon" aria-hidden="true">🗂️</span>
+          <span class="text" id="theme-button-text">Themes</span>
         </button>
         <button class="view-toggle game-menu-button" id="game-menu-button" type="button" aria-label="Choose a Picture This game" title="Games">
           <span class="icon">🎯</span>
@@ -2024,6 +2049,15 @@
       </div>
     </div>
 
+    <div class="game-picker theme-picker" id="theme-picker" hidden role="dialog" aria-modal="true" aria-labelledby="theme-picker-title">
+      <div class="game-picker-card">
+        <button class="game-picker-close" id="theme-picker-close" type="button" aria-label="Close theme chooser">×</button>
+        <h2 id="theme-picker-title">Themes</h2>
+        <p>Browse only the cards on one theme. Cards keep their deck order, and Coach Me! and the games use the chosen theme too.</p>
+        <div class="theme-options" id="theme-options"></div>
+      </div>
+    </div>
+
     <p class="sr-only" id="status" aria-live="polite"></p>
   </main>
 
@@ -2035,6 +2069,7 @@
     document.write(`<script src="question-data.js?v=${pictureThisDataRevision}"><\/script>`);
     document.write(`<script src="label-boxes.js?v=${pictureThisDataRevision}"><\/script>`);
     document.write(`<script src="title-boxes.js?v=${pictureThisDataRevision}"><\/script>`);
+    document.write(`<script src="card-themes.js?v=${pictureThisDataRevision}"><\/script>`);
     document.write(`<script src="nurturer-data.js?v=${pictureThisDataRevision}"><\/script>`);
     document.write(`<script src="audio-index.js?v=${pictureThisDataRevision}"><\/script>`);
   </script>
@@ -2042,6 +2077,35 @@
     // Cards come from deck-data.js (generated by scripts/build_web.py from the Codex deck).
     // PICTURE_THIS_CARDS_START
     const cards = (window.PTB_DECK?.cards || []).map(({ id, number, title, front, back }) => ({ id, number, title, front, back }));
+    // Themes: `cards` is narrowed in place to the chosen theme, so every mode
+    // (browse, Coach Me!, games, card numbers) works within it unchanged.
+    const allCards = cards.slice();
+    const themeData = window.PTB_THEMES || { themes: [], cards: {} };
+    const themeById = Object.fromEntries((themeData.themes || []).map(theme => [theme.id, theme]));
+    const THEME_KEY = "picture-this-bangla-theme";
+    let activeTheme = "";
+
+    function cardsInTheme(themeId) {
+      return themeId ? allCards.filter(entry => (themeData.cards[entry.id] || []).includes(themeId)) : allCards;
+    }
+
+    function applyTheme(themeId) {
+      if (themeId && !themeById[themeId]) themeId = "";
+      activeTheme = themeId;
+      cards.splice(0, cards.length, ...cardsInTheme(themeId));
+      try { themeId ? localStorage.setItem(THEME_KEY, themeId) : localStorage.removeItem(THEME_KEY); } catch (_) {}
+    }
+
+    (() => {
+      const fromUrl = new URLSearchParams(location.search).get("theme");
+      let saved = "";
+      try { saved = localStorage.getItem(THEME_KEY) || ""; } catch (_) {}
+      applyTheme(fromUrl !== null ? fromUrl : saved);
+      // A shared link to a card outside the saved theme opens the whole deck.
+      const requested = new URLSearchParams(location.search).get("card");
+      if (requested && activeTheme && !cards.some(entry => entry.id === requested || String(entry.number) === requested)
+          && allCards.some(entry => entry.id === requested || String(entry.number) === requested)) applyTheme("");
+    })();
     // PICTURE_THIS_CARDS_END
 
     const app = document.querySelector("#app");
@@ -2613,7 +2677,8 @@
     }
 
     // Used by report-wizard.js
-    window.ptbCurrentCardIndex = () => cardIndex;
+    // Position in the whole deck (report-wizard.js reads PTB_DECK), even when a theme narrows `cards`.
+    window.ptbCurrentCardIndex = () => Math.max(0, allCards.findIndex(entry => entry.id === cards[cardIndex]?.id));
     window.ptbPlayItem = (cardId, index) => playItemAudio(cardId, index);
 
     function audioMatchCropPosition(itemIndex) {
@@ -3896,6 +3961,69 @@
       beginRandomLinkRound();
     }
 
+    const themeButton = document.querySelector("#theme-button");
+    const themePicker = document.querySelector("#theme-picker");
+    const themeOptions = document.querySelector("#theme-options");
+
+    function syncThemeButton() {
+      const theme = themeById[activeTheme];
+      document.querySelector("#theme-button-icon").textContent = theme ? theme.emoji : "🗂️";
+      document.querySelector("#theme-button-text").textContent = theme ? theme.en : "Themes";
+      themeButton.setAttribute("aria-pressed", String(Boolean(theme)));
+      themeButton.setAttribute("aria-label", theme ? `Theme: ${theme.en}, ${cards.length} cards. Choose another theme.` : "Choose a theme: all cards");
+    }
+
+    function renderThemeOptions() {
+      const entries = [{ id: "", emoji: "🗂️", en: "All cards", bn: "সব কার্ড" }, ...(themeData.themes || [])];
+      themeOptions.replaceChildren(...entries.map(theme => {
+        const count = cardsInTheme(theme.id).length;
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "theme-option";
+        button.dataset.theme = theme.id;
+        button.setAttribute("aria-pressed", String(theme.id === activeTheme));
+        button.setAttribute("aria-label", `${theme.en}, ${count} cards`);
+        const emoji = Object.assign(document.createElement("span"), { className: "theme-option-emoji", textContent: theme.emoji });
+        emoji.setAttribute("aria-hidden", "true");
+        const bn = Object.assign(document.createElement("span"), { className: "theme-option-bn", textContent: theme.bn, lang: "bn" });
+        const countChip = Object.assign(document.createElement("span"), { className: "theme-option-count", textContent: String(count) });
+        button.append(emoji, Object.assign(document.createElement("strong"), { textContent: theme.en }), bn, countChip);
+        return button;
+      }));
+    }
+
+    function openThemePicker() {
+      renderThemeOptions();
+      themePicker.hidden = false;
+      (themeOptions.querySelector('[aria-pressed="true"]') || themeOptions.firstElementChild)?.focus();
+    }
+
+    function closeThemePicker() {
+      themePicker.hidden = true;
+      themeButton.focus();
+    }
+
+    function chooseTheme(themeId) {
+      const currentId = cards[cardIndex]?.id;
+      applyTheme(themeId);
+      themePicker.hidden = true;
+      syncThemeButton();
+      const keep = cards.findIndex(entry => entry.id === currentId);
+      stopSpeech();
+      showCard(keep >= 0 ? keep : 0, false);
+      const theme = themeById[activeTheme];
+      status.textContent = theme ? `${theme.en}: ${cards.length} cards.` : `All ${cards.length} cards.`;
+      themeButton.focus();
+    }
+
+    themeButton.addEventListener("click", openThemePicker);
+    document.querySelector("#theme-picker-close").addEventListener("click", closeThemePicker);
+    themePicker.addEventListener("click", event => {
+      const option = event.target.closest(".theme-option");
+      if (option) chooseTheme(option.dataset.theme);
+      else if (event.target === themePicker) closeThemePicker();
+    });
+
     function openGamePicker() {
       gamePicker.hidden = false;
       gamePicker.querySelector("[data-start-game]").focus();
@@ -4630,6 +4758,10 @@
       window.setTimeout(() => { if (!cardJumpForm.contains(document.activeElement)) closeCardJump(); }, 150);
     });
     document.addEventListener("keydown", event => {
+      if (!themePicker.hidden) {
+        if (event.key === "Escape") { event.preventDefault(); closeThemePicker(); }
+        return;
+      }
       if (!gamePicker.hidden && event.key === "Escape") {
         closeGamePicker();
         return;
@@ -4661,6 +4793,9 @@
       } else if (event.key.toLowerCase() === "g") {
         event.preventDefault();
         openCardJump();
+      } else if (event.key.toLowerCase() === "t") {
+        event.preventDefault();
+        openThemePicker();
       }
     });
 
@@ -4674,6 +4809,7 @@
       setDualView(true);
     }
 
+    syncThemeButton();
     showCard(initialCardIndex(), false);
   </script>
   <script src="report-wizard.js?v=20261128-bhasha-vai"></script>

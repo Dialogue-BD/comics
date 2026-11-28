@@ -1,0 +1,1114 @@
+{
+ "about": "Themes for the Bangla Picture This deck's Themes chooser. Each card has one or two theme ids (main theme first). scripts/build_web.py writes card-themes.js from this file and warns about cards with no theme. New cards: add an entry here (see THEMES.md).",
+ "themes": [
+  {
+   "id": "talk",
+   "emoji": "💬",
+   "en": "Talking & phrases",
+   "bn": "কথাবার্তা"
+  },
+  {
+   "id": "people",
+   "emoji": "👪",
+   "en": "People, family & feelings",
+   "bn": "মানুষ আর মন"
+  },
+  {
+   "id": "numbers",
+   "emoji": "🔢",
+   "en": "Numbers & time",
+   "bn": "সংখ্যা আর সময়"
+  },
+  {
+   "id": "shopping",
+   "emoji": "🛍️",
+   "en": "Shopping & money",
+   "bn": "কেনাকাটা আর টাকা"
+  },
+  {
+   "id": "food",
+   "emoji": "🍛",
+   "en": "Food & drink",
+   "bn": "খাবার আর পানীয়"
+  },
+  {
+   "id": "kitchen",
+   "emoji": "🍳",
+   "en": "Cooking & kitchen",
+   "bn": "রান্নাঘর"
+  },
+  {
+   "id": "home",
+   "emoji": "🏠",
+   "en": "Home & housework",
+   "bn": "বাসা আর ঘরের কাজ"
+  },
+  {
+   "id": "body",
+   "emoji": "🩺",
+   "en": "Body & health",
+   "bn": "শরীর আর স্বাস্থ্য"
+  },
+  {
+   "id": "clothes",
+   "emoji": "👕",
+   "en": "Clothes & self-care",
+   "bn": "জামাকাপড় আর সাজ"
+  },
+  {
+   "id": "getting-around",
+   "emoji": "🛺",
+   "en": "Getting around & places",
+   "bn": "পথঘাট আর যাতায়াত"
+  },
+  {
+   "id": "nature",
+   "emoji": "🌳",
+   "en": "Nature & weather",
+   "bn": "প্রকৃতি আর আবহাওয়া"
+  },
+  {
+   "id": "animals",
+   "emoji": "🐄",
+   "en": "Animals",
+   "bn": "প্রাণী"
+  },
+  {
+   "id": "actions",
+   "emoji": "🤲",
+   "en": "Actions & movement",
+   "bn": "কাজ আর নড়াচড়া"
+  },
+  {
+   "id": "describing",
+   "emoji": "🎨",
+   "en": "Describing things",
+   "bn": "কেমন দেখতে"
+  },
+  {
+   "id": "culture",
+   "emoji": "🕌",
+   "en": "Faith, festivals & play",
+   "bn": "ধর্ম, উৎসব আর খেলা"
+  },
+  {
+   "id": "work",
+   "emoji": "🔨",
+   "en": "Jobs & tools",
+   "bn": "পেশা আর সরঞ্জাম"
+  },
+  {
+   "id": "study",
+   "emoji": "✏️",
+   "en": "Reading, writing & paper",
+   "bn": "লেখাপড়া আর কাগজ"
+  }
+ ],
+ "cards": {
+  "first-conversations-with-neighbors": [
+   "talk",
+   "people"
+  ],
+  "polite-responses-and-requests": [
+   "talk"
+  ],
+  "simple-replies-when-listening": [
+   "talk"
+  ],
+  "asking-for-help-during-bangla-practice": [
+   "talk",
+   "study"
+  ],
+  "people-we-mean-when-we-speak": [
+   "talk",
+   "people"
+  ],
+  "pointing-to-things-and-places": [
+   "talk",
+   "describing"
+  ],
+  "counting-one-to-six": [
+   "numbers"
+  ],
+  "everyday-likes-and-needs": [
+   "talk"
+  ],
+  "everyday-bodily-needs": [
+   "body"
+  ],
+  "daily-actions": [
+   "actions"
+  ],
+  "finding-basic-facilities-in-a-new-place": [
+   "talk",
+   "getting-around"
+  ],
+  "lunch": [
+   "food"
+  ],
+  "ordering-simple-food-and-water": [
+   "food",
+   "talk"
+  ],
+  "first-questions-and-requests-at-a-shop": [
+   "shopping",
+   "talk"
+  ],
+  "counting-seven-to-twelve": [
+   "numbers"
+  ],
+  "reading-common-prices-in-taka": [
+   "numbers",
+   "shopping"
+  ],
+  "checking-what-to-pay-and-what-comes-back": [
+   "shopping",
+   "talk"
+  ],
+  "shopping-things": [
+   "shopping"
+  ],
+  "orientation": [
+   "getting-around",
+   "describing"
+  ],
+  "taking-a-neighborhood-rickshaw": [
+   "getting-around",
+   "talk"
+  ],
+  "directions-with-a-bridge-and-a-turn": [
+   "getting-around"
+  ],
+  "finding-a-home-by-its-address": [
+   "getting-around",
+   "home"
+  ],
+  "setting-a-day-and-a-time": [
+   "numbers",
+   "talk"
+  ],
+  "family": [
+   "people"
+  ],
+  "greeting-and-helping": [
+   "talk",
+   "people"
+  ],
+  "short-reactions-and-conversation-replies": [
+   "talk"
+  ],
+  "body": [
+   "body"
+  ],
+  "pointing-out-common-pains": [
+   "body",
+   "talk"
+  ],
+  "feeling-unwell": [
+   "body"
+  ],
+  "asking-for-urgent-everyday-help": [
+   "talk",
+   "body"
+  ],
+  "short-requests-to-move-an-object": [
+   "talk",
+   "actions"
+  ],
+  "reporting-first-week-home-problems": [
+   "home",
+   "talk"
+  ],
+  "where-things-are": [
+   "describing"
+  ],
+  "home-things": [
+   "home"
+  ],
+  "colours": [
+   "describing"
+  ],
+  "tableware": [
+   "kitchen"
+  ],
+  "tea-things": [
+   "food"
+  ],
+  "times-of-day": [
+   "numbers"
+  ],
+  "rooms-and-courtyard": [
+   "home"
+  ],
+  "market-fruit": [
+   "food"
+  ],
+  "everyday-qualities": [
+   "describing"
+  ],
+  "close-family-relationships": [
+   "people"
+  ],
+  "telling-time-and-dates": [
+   "numbers"
+  ],
+  "washing-things": [
+   "home",
+   "clothes"
+  ],
+  "market-vegetables": [
+   "food"
+  ],
+  "size-and-width": [
+   "describing"
+  ],
+  "care-things": [
+   "body"
+  ],
+  "ordinary-meals-through-the-day": [
+   "food"
+  ],
+  "reading-hours-and-minutes": [
+   "numbers"
+  ],
+  "coming-and-going": [
+   "actions",
+   "getting-around"
+  ],
+  "washroom-fixtures-and-tools": [
+   "home"
+  ],
+  "buying-and-selling": [
+   "shopping",
+   "actions"
+  ],
+  "feelings-and-reactions": [
+   "people"
+  ],
+  "preparing-and-ordering-tea": [
+   "food"
+  ],
+  "with-your-hands": [
+   "actions"
+  ],
+  "everyday-medicine-shop-terms": [
+   "body",
+   "shopping"
+  ],
+  "people-we-know-daily": [
+   "people"
+  ],
+  "amounts-and-parts": [
+   "describing",
+   "numbers"
+  ],
+  "asking-when-and-how-long": [
+   "numbers",
+   "talk"
+  ],
+  "describing-common-symptoms": [
+   "body"
+  ],
+  "taking-a-ride-around-town": [
+   "getting-around"
+  ],
+  "counting-thirteen-to-eighteen": [
+   "numbers"
+  ],
+  "noticing-when-someone-is-free": [
+   "actions",
+   "talk"
+  ],
+  "talking-prices-and-money": [
+   "shopping"
+  ],
+  "lights-fans-and-power": [
+   "home"
+  ],
+  "neighborhood-places": [
+   "getting-around"
+  ],
+  "neighborhood-shop-types": [
+   "shopping",
+   "getting-around"
+  ],
+  "exchanging-simple-messages": [
+   "talk"
+  ],
+  "getting-through-a-crowded-place": [
+   "getting-around"
+  ],
+  "counting-nineteen-to-twenty-four": [
+   "numbers"
+  ],
+  "renting-and-moving-home": [
+   "home"
+  ],
+  "prayer-time": [
+   "culture"
+  ],
+  "counting-twenty-five-to-thirty": [
+   "numbers"
+  ],
+  "home-parts": [
+   "home"
+  ],
+  "clothing": [
+   "clothes"
+  ],
+  "pantry": [
+   "food",
+   "kitchen"
+  ],
+  "getting-around": [
+   "getting-around"
+  ],
+  "study-things": [
+   "study"
+  ],
+  "familiar-animals": [
+   "animals"
+  ],
+  "weather": [
+   "nature"
+  ],
+  "cooking-things": [
+   "kitchen"
+  ],
+  "body-movement": [
+   "actions"
+  ],
+  "going-out-gear": [
+   "clothes"
+  ],
+  "face-details": [
+   "body"
+  ],
+  "dry-groceries": [
+   "food"
+  ],
+  "finding-and-showing": [
+   "actions"
+  ],
+  "getting-water": [
+   "home"
+  ],
+  "extended-family-on-both-sides": [
+   "people"
+  ],
+  "objects-in-motion": [
+   "actions"
+  ],
+  "fresh-kitchen-aromatics": [
+   "food",
+   "kitchen"
+  ],
+  "cleaning-tools": [
+   "home"
+  ],
+  "talk-and-gesture": [
+   "actions",
+   "talk"
+  ],
+  "food-tastes": [
+   "food",
+   "describing"
+  ],
+  "people-out-on-the-street": [
+   "people",
+   "getting-around"
+  ],
+  "putting-things-away": [
+   "actions",
+   "home"
+  ],
+  "laying-out-the-home": [
+   "home"
+  ],
+  "minor-injuries": [
+   "body"
+  ],
+  "pace-and-turn-taking": [
+   "actions",
+   "describing"
+  ],
+  "snack-foods": [
+   "food"
+  ],
+  "features-of-streets": [
+   "getting-around"
+  ],
+  "grooming-actions": [
+   "clothes",
+   "actions"
+  ],
+  "price-age-and-depth": [
+   "describing"
+  ],
+  "doing-housework": [
+   "home",
+   "actions"
+  ],
+  "familiar-bugs": [
+   "animals"
+  ],
+  "useful-papers": [
+   "study"
+  ],
+  "food-ripeness-and-condition": [
+   "food",
+   "describing"
+  ],
+  "object-states": [
+   "describing"
+  ],
+  "putting-clothes-on-and-off": [
+   "clothes",
+   "actions"
+  ],
+  "winter-warmth": [
+   "clothes"
+  ],
+  "joints-and-neck": [
+   "body"
+  ],
+  "on-the-way-actions": [
+   "getting-around",
+   "actions"
+  ],
+  "torso-and-nails": [
+   "body"
+  ],
+  "foods-served-alongside-rice": [
+   "food"
+  ],
+  "household-trouble": [
+   "home"
+  ],
+  "small-everyday-measures": [
+   "describing"
+  ],
+  "electricity-and-light": [
+   "home"
+  ],
+  "features-for-giving-directions": [
+   "getting-around"
+  ],
+  "cooking-actions": [
+   "kitchen",
+   "actions"
+  ],
+  "welcoming-guests-at-home": [
+   "home",
+   "culture"
+  ],
+  "ramadan-and-eid": [
+   "culture",
+   "food"
+  ],
+  "full-empty-fit-and-thickness": [
+   "describing"
+  ],
+  "small-repairs": [
+   "work",
+   "home"
+  ],
+  "getting-around-in-the-rain": [
+   "nature",
+   "getting-around"
+  ],
+  "market-stall-snacks": [
+   "food"
+  ],
+  "ways-of-handling-money": [
+   "shopping"
+  ],
+  "everyday-materials": [
+   "describing"
+  ],
+  "features-of-paths": [
+   "describing",
+   "getting-around"
+  ],
+  "hair-on-head-and-face": [
+   "body"
+  ],
+  "land-and-water": [
+   "nature"
+  ],
+  "vehicles": [
+   "getting-around"
+  ],
+  "fire-and-fuel": [
+   "kitchen",
+   "home"
+  ],
+  "local-market-fish": [
+   "food"
+  ],
+  "packing-and-carrying": [
+   "actions"
+  ],
+  "roots-and-vines": [
+   "food"
+  ],
+  "parts-and-cuts-of-food": [
+   "food",
+   "kitchen"
+  ],
+  "things-in-the-sky": [
+   "nature"
+  ],
+  "everyday-groups-and-pairs": [
+   "describing",
+   "numbers"
+  ],
+  "dairy-foods": [
+   "food"
+  ],
+  "small-parts-of-hands-and-feet": [
+   "body"
+  ],
+  "storage-containers": [
+   "kitchen",
+   "home"
+  ],
+  "more-cooking-vegetables": [
+   "food"
+  ],
+  "footwear-and-its-parts": [
+   "clothes"
+  ],
+  "ties-and-fasteners": [
+   "home"
+  ],
+  "aunts-uncles-and-nephews": [
+   "people"
+  ],
+  "more-local-fruit": [
+   "food"
+  ],
+  "more-clothes-to-wear": [
+   "clothes"
+  ],
+  "more-neighborhood-specialty-shops": [
+   "shopping"
+  ],
+  "sending-post-and-parcels": [
+   "study"
+  ],
+  "ages-of-people": [
+   "people"
+  ],
+  "food-for-guests": [
+   "food",
+   "culture"
+  ],
+  "bed-linens-and-nightwear": [
+   "home"
+  ],
+  "small-everyday-mishaps": [
+   "actions"
+  ],
+  "local-cold-drinks": [
+   "food"
+  ],
+  "basic-shapes": [
+   "describing"
+  ],
+  "baby-play-and-feeding-things": [
+   "people"
+  ],
+  "ground-and-crushed-kitchen-spices": [
+   "food",
+   "kitchen"
+  ],
+  "aromatic-spices": [
+   "food",
+   "kitchen"
+  ],
+  "parts-of-common-containers": [
+   "kitchen",
+   "describing"
+  ],
+  "writing-and-correcting-on-paper": [
+   "study"
+  ],
+  "common-wordless-notices": [
+   "getting-around"
+  ],
+  "actions-for-care": [
+   "body",
+   "actions"
+  ],
+  "hands-on-small-repairs": [
+   "work",
+   "actions"
+  ],
+  "hair-care-at-home": [
+   "clothes"
+  ],
+  "posture-and-turning": [
+   "actions",
+   "body"
+  ],
+  "ways-of-carrying-things": [
+   "actions"
+  ],
+  "people-at-work": [
+   "work",
+   "people"
+  ],
+  "street-service-vehicles": [
+   "getting-around",
+   "work"
+  ],
+  "caring-for-babies-and-elders": [
+   "people",
+   "actions"
+  ],
+  "bhorta-served-with-rice": [
+   "food"
+  ],
+  "small-places-around-the-room": [
+   "home",
+   "describing"
+  ],
+  "ways-of-resting-and-sleeping": [
+   "actions",
+   "body"
+  ],
+  "seasons-in-bangladesh": [
+   "nature"
+  ],
+  "signs-around-roads-and-buildings": [
+   "getting-around"
+  ],
+  "small-child-care-gear": [
+   "people",
+   "home"
+  ],
+  "wet-cleaning-supplies": [
+   "home"
+  ],
+  "after-meal-dishwashing": [
+   "home",
+   "kitchen"
+  ],
+  "small-wear-and-breakage": [
+   "home"
+  ],
+  "people-who-service-a-home": [
+   "work",
+   "home"
+  ],
+  "everyday-actions-at-the-front-door": [
+   "home",
+   "actions"
+  ],
+  "parts-of-plants": [
+   "nature"
+  ],
+  "local-trades": [
+   "work",
+   "people"
+  ],
+  "food-laundry-and-garden-workers": [
+   "work",
+   "people"
+  ],
+  "more-people-at-local-jobs": [
+   "work",
+   "people"
+  ],
+  "sewing-repairs": [
+   "clothes"
+  ],
+  "small-local-animals": [
+   "animals"
+  ],
+  "jewelry-and-adornment": [
+   "clothes"
+  ],
+  "more-domestic-animals": [
+   "animals"
+  ],
+  "wedding-and-invitation": [
+   "culture",
+   "people"
+  ],
+  "house-edges-and-fittings": [
+   "home"
+  ],
+  "metals-and-natural-materials": [
+   "describing"
+  ],
+  "hands-on-learning-actions": [
+   "study",
+   "actions"
+  ],
+  "parts-of-a-market-fish": [
+   "food"
+  ],
+  "building-materials": [
+   "work",
+   "home"
+  ],
+  "parts-of-clothing": [
+   "clothes"
+  ],
+  "surface-and-feel": [
+   "describing"
+  ],
+  "marks-and-things-on-the-ground": [
+   "nature"
+  ],
+  "arranging-objects": [
+   "describing"
+  ],
+  "more-market-fruit": [
+   "food"
+  ],
+  "common-birds": [
+   "animals"
+  ],
+  "bags-and-cases-for-carrying": [
+   "home"
+  ],
+  "tree-fruit-and-sap-treats": [
+   "food",
+   "nature"
+  ],
+  "drawing-materials": [
+   "study"
+  ],
+  "play-things": [
+   "culture"
+  ],
+  "small-parts-of-the-face": [
+   "body"
+  ],
+  "small-pests-and-pollinators": [
+   "animals"
+  ],
+  "local-open-and-work-sites": [
+   "getting-around"
+  ],
+  "repair-and-garden-tools": [
+   "work"
+  ],
+  "parts-and-problems-of-teeth": [
+   "body"
+  ],
+  "brightness-and-clear-vision": [
+   "describing"
+  ],
+  "types-of-homes": [
+   "home"
+  ],
+  "sweet-breakfast-and-pitha": [
+   "food"
+  ],
+  "features-around-a-mosque": [
+   "culture"
+  ],
+  "mouth-and-nose-actions": [
+   "actions",
+   "body"
+  ],
+  "ways-of-heating-food": [
+   "kitchen"
+  ],
+  "preparing-food-to-serve": [
+   "kitchen"
+  ],
+  "fabric-care-actions": [
+   "clothes",
+   "home"
+  ],
+  "familiar-home-and-personal-scents": [
+   "home",
+   "clothes"
+  ],
+  "bangladesh-flour-snacks": [
+   "food"
+  ],
+  "making-sounds": [
+   "actions"
+  ],
+  "door-and-window-fittings": [
+   "home"
+  ],
+  "appearance-contrasts": [
+   "describing"
+  ],
+  "things-that-move-or-change": [
+   "describing",
+   "actions"
+  ],
+  "local-kitchen-implements": [
+   "kitchen"
+  ],
+  "personal-care-objects": [
+   "clothes"
+  ],
+  "small-facial-actions": [
+   "body",
+   "actions"
+  ],
+  "rice-varieties-at-the-market": [
+   "food",
+   "shopping"
+  ],
+  "familiar-bangladesh-trees": [
+   "nature"
+  ],
+  "finger-and-palm-actions": [
+   "actions"
+  ],
+  "bangladesh-sweets": [
+   "food"
+  ],
+  "garden-planting-actions": [
+   "nature",
+   "actions"
+  ],
+  "mouth-and-ear-gestures": [
+   "body",
+   "actions"
+  ],
+  "nuts-and-dried-fruit-at-the-market": [
+   "food",
+   "shopping"
+  ],
+  "equipment-at-the-playground": [
+   "culture"
+  ],
+  "cuts-at-a-bangladeshi-meat-shop": [
+   "food",
+   "shopping"
+  ],
+  "undoing-and-gathering-actions": [
+   "actions"
+  ],
+  "parts-of-a-reading-book": [
+   "study"
+  ],
+  "vegetables-for-curry-and-bhaji": [
+   "food"
+  ],
+  "leafy-greens-at-market": [
+   "food"
+  ],
+  "familiar-parts-of-a-car": [
+   "getting-around"
+  ],
+  "small-seeds-for-cooking": [
+   "food",
+   "kitchen"
+  ],
+  "texture-of-food": [
+   "food",
+   "describing"
+  ],
+  "roadside-and-homestead-trees": [
+   "nature"
+  ],
+  "simple-stretching-and-footwork": [
+   "actions",
+   "body"
+  ],
+  "mending-clothes-by-hand": [
+   "clothes",
+   "actions"
+  ],
+  "six-market-pulses": [
+   "food"
+  ],
+  "heights-and-reach-relative-to-the-body": [
+   "describing",
+   "body"
+  ],
+  "flatbread-and-serving-tools": [
+   "kitchen"
+  ],
+  "eyeglass-parts-and-eye-shop-objects": [
+   "clothes"
+  ],
+  "clothing-patterns": [
+   "clothes",
+   "describing"
+  ],
+  "working-ingredients-while-cooking": [
+   "kitchen",
+   "actions"
+  ],
+  "care-and-fit-of-everyday-shoes": [
+   "clothes"
+  ],
+  "places-for-work-learning-and-trade": [
+   "work",
+   "getting-around"
+  ],
+  "parts-inside-common-fruits": [
+   "food"
+  ],
+  "fire-safety-tools-around-buildings": [
+   "home"
+  ],
+  "objects-for-everyday-exercise": [
+   "body"
+  ],
+  "tools-for-serving-a-meal-out": [
+   "food",
+   "kitchen"
+  ],
+  "holding-food-for-an-outing": [
+   "food"
+  ],
+  "things-to-take-on-a-trip": [
+   "getting-around"
+  ],
+  "common-clinic-and-care-tools": [
+   "body"
+  ],
+  "ways-to-keep-food": [
+   "food",
+   "kitchen"
+  ],
+  "buying-fabric-cut-to-size": [
+   "shopping",
+   "clothes"
+  ],
+  "more-actions-at-the-stove": [
+   "kitchen"
+  ],
+  "working-with-fresh-milk": [
+   "food",
+   "kitchen"
+  ],
+  "making-and-looking-at-loaf-bread": [
+   "food",
+   "kitchen"
+  ],
+  "wild-bangladesh-animals": [
+   "animals"
+  ],
+  "music-and-rhythm": [
+   "culture"
+  ],
+  "working-parts-of-a-boat": [
+   "getting-around"
+  ],
+  "river-and-coast-landforms": [
+   "nature"
+  ],
+  "tree-and-stem-details": [
+   "nature"
+  ],
+  "wetland-animals-around-bangladesh": [
+   "animals"
+  ],
+  "tart-and-fragrant-local-fruits": [
+   "food",
+   "nature"
+  ],
+  "river-work-gear": [
+   "work"
+  ],
+  "traditional-household-objects": [
+   "home",
+   "culture"
+  ],
+  "at-a-bangladeshi-fair": [
+   "culture"
+  ],
+  "farm-and-field": [
+   "work",
+   "nature"
+  ],
+  "more-fish-from-the-market": [
+   "food"
+  ],
+  "types-of-river-boats": [
+   "getting-around"
+  ],
+  "materials-from-plants-and-animals": [
+   "describing",
+   "nature"
+  ],
+  "more-familiar-local-birds": [
+   "animals"
+  ],
+  "familiar-bangladesh-flowers": [
+   "nature"
+  ],
+  "rice-from-field-to-pot": [
+   "food",
+   "work"
+  ],
+  "parts-of-an-everyday-umbrella": [
+   "clothes"
+  ],
+  "animals-and-shells-of-the-sea": [
+   "animals"
+  ],
+  "traditional-yard-games": [
+   "culture"
+  ],
+  "plants-and-seeds-for-oil": [
+   "nature",
+   "food"
+  ],
+  "riverbanks-and-water-movement": [
+   "nature"
+  ],
+  "local-fabric-and-cloth-types": [
+   "clothes",
+   "shopping"
+  ],
+  "edible-stems-blossoms-and-seeds": [
+   "food"
+  ],
+  "colorful-local-garden-flowers": [
+   "nature"
+  ],
+  "things-on-a-performance-stage": [
+   "culture"
+  ],
+  "reading-a-bangla-newspaper": [
+   "study"
+  ],
+  "plants-by-ponds-and-fields": [
+   "nature"
+  ],
+  "small-skin-marks": [
+   "body"
+  ],
+  "helping-plants-grow": [
+   "nature"
+  ],
+  "taking-and-keeping-photos": [
+   "study"
+  ],
+  "sewing-room-tools": [
+   "work",
+   "clothes"
+  ],
+  "making-a-clay-pot": [
+   "work",
+   "culture"
+  ],
+  "organizing-paper-at-a-desk": [
+   "study"
+  ],
+  "fittings-for-a-water-line": [
+   "home",
+   "work"
+  ],
+  "street-repair-equipment": [
+   "work",
+   "getting-around"
+  ]
+ }
+}
