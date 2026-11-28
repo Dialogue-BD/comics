@@ -949,12 +949,17 @@
     .audio-match-instructions { margin: 0; color: #e6efe2; font-size: clamp(.78rem, 1.8vw, .96rem); font-weight: 750; line-height: 1.4; }
     .audio-match-tts-bar { margin: 0; }
     .audio-match-grid {
-      flex: 1;
+      /* Never shrink below the tiles (Tim, 28 Nov): with min-height: 0 a long feedback
+         box squeezed the grid and the square tiles overlapped. On laptops the grid is
+         narrowed instead, so the tiles shrink to fit the screen above the feedback. */
+      flex: 1 0 auto;
       display: grid;
       grid-template-columns: repeat(6, minmax(90px, 1fr));
       gap: clamp(8px, 1.2vw, 14px);
       align-content: center;
-      min-height: 0;
+    }
+    @media (min-width: 901px) {
+      .audio-match-grid { width: min(100%, max(540px, calc((100dvh - 440px) * 3))); align-self: center; }
     }
     .audio-match-tile {
       position: relative;
