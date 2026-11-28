@@ -102953,8 +102953,8 @@ window.PTB_NURTURER = {
   "first-conversations-with-neighbors": {
    "reply-to-a-salaam": {
     "word": {
-     "id": "first-conversations-with-neighbors--reply-to-a-salaam--word--67fb3c6bd90d73d6",
-     "text": "ওয়ালাইকুমুস সালাম",
+     "id": "first-conversations-with-neighbors--reply-to-a-salaam--word--7facdde2d2d83661",
+     "text": "ওয়ালাইকুম আসসালাম",
      "fallback": [
       {
        "word": "reply-to-a-salaam"
@@ -102962,8 +102962,8 @@ window.PTB_NURTURER = {
      ]
     },
     "ask": {
-     "id": "first-conversations-with-neighbors--reply-to-a-salaam--ask--ebce97c084dc732a",
-     "text": "মন দিয়ে শুনুন। ওয়ালাইকুমুস সালাম। ছবিটা দেখান।",
+     "id": "first-conversations-with-neighbors--reply-to-a-salaam--ask--83cfecd0ce833b32",
+     "text": "মন দিয়ে শুনুন। ওয়ালাইকুম আসসালাম। ছবিটা দেখান।",
      "fallback": [
       {
        "clip": "5769c5c7eaad60efcad8"
@@ -102978,8 +102978,8 @@ window.PTB_NURTURER = {
      "english": "Listen carefully. Show me the picture for “return a salaam already offered by another person”."
     },
     "yes": {
-     "id": "first-conversations-with-neighbors--reply-to-a-salaam--yes--6fd80db3bbce8db9",
-     "text": "হ্যাঁ, ঠিক হয়েছে। ওয়ালাইকুমুস সালাম।",
+     "id": "first-conversations-with-neighbors--reply-to-a-salaam--yes--e5d9a5f9b1d9c73f",
+     "text": "হ্যাঁ, ঠিক হয়েছে। ওয়ালাইকুম আসসালাম।",
      "fallback": [
       {
        "clip": "dea1369867f34247851b"
@@ -102991,8 +102991,8 @@ window.PTB_NURTURER = {
      "english": "Yes! This is “return a salaam already offered by another person”."
     },
     "recast": {
-     "id": "first-conversations-with-neighbors--reply-to-a-salaam--recast--921931b467598d83",
-     "text": "এই ছবিটা দেখুন। ওয়ালাইকুমুস সালাম।",
+     "id": "first-conversations-with-neighbors--reply-to-a-salaam--recast--a9e2f6bd94cad7bf",
+     "text": "এই ছবিটা দেখুন। ওয়ালাইকুম আসসালাম।",
      "fallback": [
       {
        "clip": "f54f7b8d42940a27814f"
@@ -103005,11 +103005,11 @@ window.PTB_NURTURER = {
     },
     "examples": [
      {
-      "id": "first-conversations-with-neighbors--reply-to-a-salaam--example-1--d9f74d52346f86b7",
-      "text": "ওয়ালাইকুমুস সালাম, আপা",
+      "id": "first-conversations-with-neighbors--reply-to-a-salaam--example-1--987711be3116f01f",
+      "text": "ওয়ালাইকুম আসসালাম, আপা",
       "fallback": [
        {
-        "clip": "d9f74d52346f86b75db3"
+        "clip": "987711be3116f01fe249"
        }
       ]
      }
@@ -110056,8 +110056,8 @@ window.PTB_NURTURER = {
   "finding-basic-facilities-in-a-new-place": {
    "ask-where-the-restroom-is": {
     "word": {
-     "id": "finding-basic-facilities-in-a-new-place--ask-where-the-restroom-is--word--6234c4275f2d8bea",
-     "text": "পায়খানা কোথায়?",
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-the-restroom-is--word--674e28384c090363",
+     "text": "টয়লেট কোথায়?",
      "fallback": [
       {
        "word": "ask-where-the-restroom-is"
@@ -110065,8 +110065,8 @@ window.PTB_NURTURER = {
      ]
     },
     "ask": {
-     "id": "finding-basic-facilities-in-a-new-place--ask-where-the-restroom-is--ask--a7ad8d0f32f2701a",
-     "text": "মন দিয়ে শুনুন। পায়খানা কোথায়?। ছবিটা দেখান।",
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-the-restroom-is--ask--7aec9dc420b9c758",
+     "text": "মন দিয়ে শুনুন। টয়লেট কোথায়?। ছবিটা দেখান।",
      "fallback": [
       {
        "clip": "5769c5c7eaad60efcad8"
@@ -110081,8 +110081,8 @@ window.PTB_NURTURER = {
      "english": "Listen carefully. Show me the picture for “ask where the restroom is”."
     },
     "yes": {
-     "id": "finding-basic-facilities-in-a-new-place--ask-where-the-restroom-is--yes--c661ded55e89810d",
-     "text": "শাবাশ। পায়খানা কোথায়?।",
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-the-restroom-is--yes--672c4c28b1dcf966",
+     "text": "শাবাশ। টয়লেট কোথায়?।",
      "fallback": [
       {
        "clip": "65f148ba29bda45be88a"
@@ -110094,8 +110094,8 @@ window.PTB_NURTURER = {
      "english": "Well done! This is “ask where the restroom is”."
     },
     "recast": {
-     "id": "finding-basic-facilities-in-a-new-place--ask-where-the-restroom-is--recast--819030835e5cf64d",
-     "text": "এই ছবিটা দেখুন। পায়খানা কোথায়?।",
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-the-restroom-is--recast--ed17ad733ec96851",
+     "text": "এই ছবিটা দেখুন। টয়লেট কোথায়?।",
      "fallback": [
       {
        "clip": "f54f7b8d42940a27814f"
@@ -110108,11 +110108,11 @@ window.PTB_NURTURER = {
     },
     "examples": [
      {
-      "id": "finding-basic-facilities-in-a-new-place--ask-where-the-restroom-is--example-1--50aa05fee9e677b0",
-      "text": "ভাই, পায়খানা কোথায়?",
+      "id": "finding-basic-facilities-in-a-new-place--ask-where-the-restroom-is--example-1--15915dac02f79a2a",
+      "text": "ভাই, টয়লেট কোথায়?",
       "fallback": [
        {
-        "clip": "50aa05fee9e677b0780e"
+        "clip": "15915dac02f79a2a7bf5"
        }
       ]
      }
@@ -110184,8 +110184,8 @@ window.PTB_NURTURER = {
    },
    "ask-where-to-wash-hands": {
     "word": {
-     "id": "finding-basic-facilities-in-a-new-place--ask-where-to-wash-hands--word--f9ca4d097fc057a5",
-     "text": "হাত ধোব কোথায়?",
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-to-wash-hands--word--7159e0efe253704f",
+     "text": "হাত ধোয়ার জায়গা কোথায়?",
      "fallback": [
       {
        "word": "ask-where-to-wash-hands"
@@ -110193,8 +110193,8 @@ window.PTB_NURTURER = {
      ]
     },
     "ask": {
-     "id": "finding-basic-facilities-in-a-new-place--ask-where-to-wash-hands--ask--935332ea29b243e3",
-     "text": "খুঁজে দেখুন। হাত ধোব কোথায়?।",
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-to-wash-hands--ask--1f67c96986cc1b86",
+     "text": "খুঁজে দেখুন। হাত ধোয়ার জায়গা কোথায়?।",
      "fallback": [
       {
        "clip": "1c3e995c88536b28997a"
@@ -110206,8 +110206,8 @@ window.PTB_NURTURER = {
      "english": "Find “ask where you can wash your hands”."
     },
     "yes": {
-     "id": "finding-basic-facilities-in-a-new-place--ask-where-to-wash-hands--yes--7ef9742c8f003e6e",
-     "text": "একদম ঠিক। হাত ধোব কোথায়?।",
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-to-wash-hands--yes--0d1ba0a3492ec31d",
+     "text": "একদম ঠিক। হাত ধোয়ার জায়গা কোথায়?।",
      "fallback": [
       {
        "clip": "1ca7acf0ecab1a177511"
@@ -110219,8 +110219,8 @@ window.PTB_NURTURER = {
      "english": "Exactly right! This is “ask where you can wash your hands”."
     },
     "recast": {
-     "id": "finding-basic-facilities-in-a-new-place--ask-where-to-wash-hands--recast--b5b0bbceaded1bb7",
-     "text": "এই ছবিটা দেখুন। হাত ধোব কোথায়?।",
+     "id": "finding-basic-facilities-in-a-new-place--ask-where-to-wash-hands--recast--82f12ddbb79e17be",
+     "text": "এই ছবিটা দেখুন। হাত ধোয়ার জায়গা কোথায়?।",
      "fallback": [
       {
        "clip": "f54f7b8d42940a27814f"
@@ -110233,11 +110233,11 @@ window.PTB_NURTURER = {
     },
     "examples": [
      {
-      "id": "finding-basic-facilities-in-a-new-place--ask-where-to-wash-hands--example-1--c958dad5a17c6d8c",
-      "text": "খাওয়ার আগে হাত ধোব কোথায়?",
+      "id": "finding-basic-facilities-in-a-new-place--ask-where-to-wash-hands--example-1--09b3b02007e8df79",
+      "text": "এখানে হাত ধোয়ার জায়গাটা কোথায়?",
       "fallback": [
        {
-        "clip": "c958dad5a17c6d8c927e"
+        "clip": "09b3b02007e8df7932f2"
        }
       ]
      }
@@ -113973,7 +113973,7 @@ window.PTB_NURTURER = {
   "5041e6f24f0b0b718155": "কমলা চিহ্নটার পাশ দিয়ে হাঁটুন",
   "51550e05ddfcfc37fa27": "উজ্জ্বল জামা পরা লোকটাকে জিজ্ঞেস করুন",
   "eb26b57812a63df0cc90": "রাস্তা চাপার গাড়িটা চলে যাক",
-  "d9f74d52346f86b75db3": "ওয়ালাইকুমুস সালাম, আপা",
+  "987711be3116f01fe249": "ওয়ালাইকুম আসসালাম, আপা",
   "8dea3ca34a4df16207e5": "চাচি, কেমন আছেন?",
   "71d50b51fa11915da17f": "আলহামদুলিল্লাহ, ভালো আছি",
   "b0543a862348522bea30": "ভাই, আপনার নাম কী?",
@@ -114087,9 +114087,9 @@ window.PTB_NURTURER = {
   "2ec1abc4fd15dc161139": "আমার বাসায় একটু খবর দেন",
   "4546805756eed03f4b76": "আমাকে একটু বসতে দেন",
   "2c355c295368c004a407": "একটু আমার সঙ্গে থাকেন",
-  "50aa05fee9e677b0780e": "ভাই, পায়খানা কোথায়?",
+  "15915dac02f79a2a7bf5": "ভাই, টয়লেট কোথায়?",
   "20d2dd29efb22df0d20e": "এখানে খাওয়ার পানি কোথায়?",
-  "c958dad5a17c6d8c927e": "খাওয়ার আগে হাত ধোব কোথায়?",
+  "09b3b02007e8df7932f2": "এখানে হাত ধোয়ার জায়গাটা কোথায়?",
   "8b3e4a80d5368d944182": "আপা, এখানে বসতে পারি?",
   "e2769dadd1f15ee13f3f": "বের হব কোন দিক দিয়ে বলেন",
   "0d0a106a1eda36ed3c64": "জুতা কোথায় রাখব, আপা?",
