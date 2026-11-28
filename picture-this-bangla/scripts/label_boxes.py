@@ -73,7 +73,7 @@ def by_commas(im, labels, order, ymin):
     for psm in (6, 4, 11, 3):
         for scale in (1, 2):
             toks = [t for t in tokens(im, "ben", psm, scale) if t[2] >= ymin]
-            toks.sort(key=lambda t: (round((t[2] + t[4] / 2) / 40), t[1]))
+            # Tesseract already returns words in reading order; keep it.
             groups, cur = [], []
             for t in toks:
                 cur.append(t)
