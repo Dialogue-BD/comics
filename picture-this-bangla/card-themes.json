@@ -1109,6 +1109,103 @@
   "street-repair-equipment": [
    "work",
    "getting-around"
+  ],
+  "taking-a-local-bus": [
+   "getting-around",
+   "talk"
+  ],
+  "asking-where-a-bus-goes": [
+   "getting-around",
+   "talk"
+  ],
+  "paying-a-shop-with-a-phone": [
+   "shopping",
+   "talk"
+  ],
+  "finding-your-way-at-a-clinic": [
+   "body",
+   "getting-around"
+  ],
+  "public-washroom-essentials": [
+   "body",
+   "home"
+  ],
+  "buying-groceries-to-cook": [
+   "shopping",
+   "kitchen"
+  ],
+  "finding-your-way-into-an-apartment": [
+   "home",
+   "talk"
+  ],
+  "asking-about-medicine-instructions": [
+   "body",
+   "talk"
+  ],
+  "taking-an-app-ride": [
+   "getting-around",
+   "talk"
+  ],
+  "checking-food-ingredients-before-ordering": [
+   "food",
+   "body"
+  ],
+  "buying-and-refilling-drinking-water": [
+   "food",
+   "home"
+  ],
+  "crossing-a-busy-street": [
+   "getting-around"
+  ],
+  "making-and-returning-phone-calls": [
+   "talk"
+  ],
+  "checking-what-rent-includes": [
+   "home",
+   "shopping"
+  ],
+  "describing-what-is-wrong-at-a-clinic": [
+   "body",
+   "talk"
+  ],
+  "receiving-a-delivery-at-home": [
+   "home",
+   "talk"
+  ],
+  "trying-on-clothes-at-a-shop": [
+   "clothes",
+   "shopping"
+  ],
+  "knowing-common-city-transport": [
+   "getting-around"
+  ],
+  "giving-your-details-on-a-form": [
+   "talk",
+   "home"
+  ],
+  "recognizing-atm-and-card-payment-terms": [
+   "shopping",
+   "talk"
+  ],
+  "continuing-a-first-conversation": [
+   "talk",
+   "people"
+  ],
+  "checking-a-route-on-foot": [
+   "getting-around",
+   "talk"
+  ],
+  "working-out-whose-things-they-are": [
+   "talk",
+   "people"
+  ],
+  "reporting-repairs-to-a-landlord": [
+   "home",
+   "talk"
+  ],
+  "talking-at-a-meal-as-a-guest": [
+   "food",
+   "talk"
   ]
  }
 }

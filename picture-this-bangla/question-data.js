@@ -13199,5 +13199,1105 @@ window.PICTURE_THIS_QUESTION_DATA = {
    "checking-what-to-pay-and-what-comes-back-q5-e81cfa5c5685",
    "checking-what-to-pay-and-what-comes-back-q6-7d66010e9176"
   ]
+ },
+ "taking-a-local-bus": {
+  "questions": [
+   "বাসের টিকিটটা কোথায়?",
+   "বাস স্টপ আর টিকিট কাউন্টারের মধ্যে কী তফাত?",
+   "আপনি শেষবার কোথায় বাসে উঠেছিলেন?",
+   "জানালার পাশে বসতে চাইলে হেলপারকে কী বলবেন?",
+   "বাস স্টপে গিয়ে কোন বাসে উঠবেন, সেটা কীভাবে জানবেন?",
+   "বাস থেকে নামার আগে টিকিটটা রেখে দেবেন কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 65.45,
+    "y": 13.22
+   },
+   {
+    "x": 48.0,
+    "y": 24.82
+   },
+   {
+    "x": 38.67,
+    "y": 36.63
+   },
+   {
+    "x": 62.18,
+    "y": 48.24
+   },
+   {
+    "x": 62.42,
+    "y": 59.84
+   },
+   {
+    "x": 50.55,
+    "y": 72.0
+   }
+  ],
+  "ids": [
+   "taking-a-local-bus-q1-eb207d727773",
+   "taking-a-local-bus-q2-b6c210578e31",
+   "taking-a-local-bus-q3-ef7678dc9670",
+   "taking-a-local-bus-q4-48e1412f32f1",
+   "taking-a-local-bus-q5-5f3ea815e2fa",
+   "taking-a-local-bus-q6-db31db26818e"
+  ]
+ },
+ "asking-where-a-bus-goes": {
+  "questions": [
+   "কে বলছেন পরের স্টপে নামবেন?",
+   "পরের স্টপ আর এখানেই নামার মধ্যে কী তফাত?",
+   "বাস কোথায় যায় জানতে আপনি কী বলেন?",
+   "বাসে দাঁড়িয়ে থাকলে কী বলে খালি সিটের খবর নেবেন?",
+   "একটা বাসে গিয়ে মাঝপথে বাস বদলাতে হলে কী জিজ্ঞেস করবেন?",
+   "চেনেন না এমন জায়গায় সঠিক স্টপে নামতে কী বলবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 79.76,
+    "y": 13.25
+   },
+   {
+    "x": 36.85,
+    "y": 24.78
+   },
+   {
+    "x": 28.61,
+    "y": 36.9
+   },
+   {
+    "x": 55.03,
+    "y": 48.27
+   },
+   {
+    "x": 84.24,
+    "y": 59.92
+   },
+   {
+    "x": 76.73,
+    "y": 71.76
+   }
+  ],
+  "ids": [
+   "asking-where-a-bus-goes-q1-d824e1d90446",
+   "asking-where-a-bus-goes-q2-6791dd2dc3d1",
+   "asking-where-a-bus-goes-q3-104bf189e310",
+   "asking-where-a-bus-goes-q4-9088143e833a",
+   "asking-where-a-bus-goes-q5-22e8ee30dd7f",
+   "asking-where-a-bus-goes-q6-ea57155732ad"
+  ]
+ },
+ "paying-a-shop-with-a-phone": {
+  "questions": [
+   "কোন ছবিতে কিউআর কোড দেখছেন?",
+   "বিকাশে দেওয়া আর নগদ টাকা দেওয়ার মধ্যে কী তফাত?",
+   "শেষবার দোকানে কীভাবে টাকা দিয়েছিলেন?",
+   "নম্বর না জানলে দোকানিকে কী বলবেন?",
+   "ফোনে দেখাচ্ছে টাকা যায় নাই, দোকানিকে কী বলবেন?",
+   "টাকা দেওয়ার পর দোকানি পেয়েছেন কি না, কেন জিজ্ঞেস করবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 92.12,
+    "y": 13.25
+   },
+   {
+    "x": 65.21,
+    "y": 24.86
+   },
+   {
+    "x": 39.64,
+    "y": 36.63
+   },
+   {
+    "x": 31.64,
+    "y": 48.59
+   },
+   {
+    "x": 62.18,
+    "y": 59.84
+   },
+   {
+    "x": 74.18,
+    "y": 71.8
+   }
+  ],
+  "ids": [
+   "paying-a-shop-with-a-phone-q1-4942e2c45a29",
+   "paying-a-shop-with-a-phone-q2-6b395467df58",
+   "paying-a-shop-with-a-phone-q3-1144d99d9cf9",
+   "paying-a-shop-with-a-phone-q4-85c9e41d5af5",
+   "paying-a-shop-with-a-phone-q5-891bebd3e5a2",
+   "paying-a-shop-with-a-phone-q6-c1c8cf2db1a5"
+  ]
+ },
+ "finding-your-way-at-a-clinic": {
+  "questions": [
+   "ডাক্তার কোন ছবিতে?",
+   "এক ছবিতে নাম লেখান, আর অন্য ছবিতে বসে থাকেন। দুইটা দেখাবেন?",
+   "ডাক্তার দেখাতে গেলে আপনি আগে কোথায় যান?",
+   "নিজের পালা কখন, সেটা জানতে কী বলবেন?",
+   "নার্সকে দরকার হলে কী বলবেন?",
+   "নতুন একটা ক্লিনিকে কোন ঘরে যেতে হবে বুঝতে না পারলে কী করবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 58.18,
+    "y": 13.25
+   },
+   {
+    "x": 88.97,
+    "y": 25.37
+   },
+   {
+    "x": 41.7,
+    "y": 36.94
+   },
+   {
+    "x": 31.64,
+    "y": 48.59
+   },
+   {
+    "x": 80.36,
+    "y": 55.61
+   },
+   {
+    "x": 83.39,
+    "y": 67.8
+   }
+  ],
+  "ids": [
+   "finding-your-way-at-a-clinic-q1-7efcef509ce8",
+   "finding-your-way-at-a-clinic-q2-cc4a69f11e26",
+   "finding-your-way-at-a-clinic-q3-236af64e230f",
+   "finding-your-way-at-a-clinic-q4-ec950d8d94d0",
+   "finding-your-way-at-a-clinic-q5-771f12e543b9",
+   "finding-your-way-at-a-clinic-q6-6eade5a6afa8"
+  ]
+ },
+ "public-washroom-essentials": {
+  "questions": [
+   "হাত ধোয়ার সাবানটা কোন ছবিতে?",
+   "দুইটা দরজার মধ্যে কোনটা খালি, কী দেখে বুঝলেন?",
+   "বাইরে টয়লেটে গেলে কোন জিনিসটা আপনি আগে খোঁজেন?",
+   "পানি ছাড়ার বোতামটা কোথায়, কীভাবে জিজ্ঞেস করবেন?",
+   "ভেতরে লোক আছে দেখে পাশের জনকে কী বলবেন?",
+   "হাত ধোয়ার সাবান না পেলে কী বলবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 86.55,
+    "y": 13.25
+   },
+   {
+    "x": 44.0,
+    "y": 25.76
+   },
+   {
+    "x": 62.55,
+    "y": 36.43
+   },
+   {
+    "x": 65.82,
+    "y": 48.24
+   },
+   {
+    "x": 53.58,
+    "y": 59.84
+   },
+   {
+    "x": 31.64,
+    "y": 71.96
+   }
+  ],
+  "ids": [
+   "public-washroom-essentials-q1-1552abfd4ab7",
+   "public-washroom-essentials-q2-0fac83750c5d",
+   "public-washroom-essentials-q3-1bd4324e4f13",
+   "public-washroom-essentials-q4-c0c096efc1da",
+   "public-washroom-essentials-q5-3468b787dc88",
+   "public-washroom-essentials-q6-e598aebb5f06"
+  ]
+ },
+ "buying-groceries-to-cook": {
+  "questions": [
+   "কে ছোট প্যাকেটটা চাইছেন?",
+   "আধা কেজি আর এক কেজির মধ্যে কোনটা বেশি?",
+   "আপনি কোন জিনিস প্যাকেট ছাড়া কিনেছেন?",
+   "মাছ কিনে কেটে নিতে চাইলে কী বলবেন?",
+   "এক কেজি পেঁয়াজ কিনতে কীভাবে বলবেন?",
+   "একাই রান্না করলে এক কেজি টমেটো নেবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 71.03,
+    "y": 13.25
+   },
+   {
+    "x": 43.03,
+    "y": 24.82
+   },
+   {
+    "x": 35.15,
+    "y": 36.63
+   },
+   {
+    "x": 31.64,
+    "y": 48.59
+   },
+   {
+    "x": 31.64,
+    "y": 60.27
+   },
+   {
+    "x": 52.36,
+    "y": 72.16
+   }
+  ],
+  "ids": [
+   "buying-groceries-to-cook-q1-f8b31e695864",
+   "buying-groceries-to-cook-q2-a18e2765bb67",
+   "buying-groceries-to-cook-q3-a993291d9561",
+   "buying-groceries-to-cook-q4-064b3b7588ed",
+   "buying-groceries-to-cook-q5-6fe2a92e4a11",
+   "buying-groceries-to-cook-q6-5a0929a2e38d"
+  ]
+ },
+ "finding-your-way-into-an-apartment": {
+  "questions": [
+   "ফ্ল্যাট নম্বরটা কোন ছবিতে?",
+   "একতলা ওপরে আর একতলা নিচে কোন দিকে?",
+   "কারও বাসায় যাওয়ার আগে আপনি কী খবর নেন?",
+   "পাহারাদারকে কী বলে জানাবেন আপনি মেহমান?",
+   "দরজা খুললে ভেতরে যাওয়ার আগে কী বলবেন?",
+   "লিফট চলছে না আর ফ্ল্যাট খুঁজে পাচ্ছেন না, কীভাবে সাহায্য চাইবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 69.82,
+    "y": 13.57
+   },
+   {
+    "x": 38.42,
+    "y": 24.82
+   },
+   {
+    "x": 43.27,
+    "y": 36.55
+   },
+   {
+    "x": 49.21,
+    "y": 48.24
+   },
+   {
+    "x": 38.67,
+    "y": 59.84
+   },
+   {
+    "x": 89.58,
+    "y": 71.76
+   }
+  ],
+  "ids": [
+   "finding-your-way-into-an-apartment-q1-cd37cfe7e157",
+   "finding-your-way-into-an-apartment-q2-98a8130b1612",
+   "finding-your-way-into-an-apartment-q3-e567bd3b05dc",
+   "finding-your-way-into-an-apartment-q4-a0142af06aba",
+   "finding-your-way-into-an-apartment-q5-1c19d4a6203c",
+   "finding-your-way-into-an-apartment-q6-6f9618aabc9b"
+  ]
+ },
+ "working-out-whose-things-they-are": {
+  "questions": [
+   "কে জানতে চাইছেন ছাতাটা কার?",
+   "এটা আপনার আর এটা ওনার, কথা দুটো কাকে নিয়ে বলি?",
+   "আপনার বাসায় কোন জিনিসটা সবাই মিলে ব্যবহার করেন?",
+   "টেবিলে রাখা চাবিটা আপনার হলে কী বলবেন?",
+   "পাশের দুইজনের ঝুড়ি চিনিয়ে দিতে কী বলবেন?",
+   "কোনো জিনিস কার বুঝতে না পারলে প্রথমে কীভাবে জিজ্ঞেস করবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 81.7,
+    "y": 13.25
+   },
+   {
+    "x": 59.52,
+    "y": 25.37
+   },
+   {
+    "x": 69.45,
+    "y": 36.59
+   },
+   {
+    "x": 31.64,
+    "y": 48.59
+   },
+   {
+    "x": 38.67,
+    "y": 59.84
+   },
+   {
+    "x": 79.52,
+    "y": 71.61
+   }
+  ],
+  "ids": [
+   "working-out-whose-things-they-are-q1-68f73955a539",
+   "working-out-whose-things-they-are-q2-edbad4109625",
+   "working-out-whose-things-they-are-q3-21edcbb70390",
+   "working-out-whose-things-they-are-q4-a8c5b9e3563e",
+   "working-out-whose-things-they-are-q5-fbee686de924",
+   "working-out-whose-things-they-are-q6-abf767bc7ff8"
+  ]
+ },
+ "asking-about-medicine-instructions": {
+  "questions": [
+   "কোন ছবিতে আগের প্রেসক্রিপশনটা আছে?",
+   "খাওয়ার আগে আর খাওয়ার পরে কোন ছবিতে ওষুধ আগে আসে?",
+   "ওষুধ কিনতে গেলে আপনি কী কী জানতে চান?",
+   "কত দিন ওষুধ খেতে হবে বুঝতে না পারলে কী বলবেন?",
+   "ওষুধে কোনো পার্শ্বপ্রতিক্রিয়া আছে কি না, কীভাবে জিজ্ঞেস করবেন?",
+   "খাওয়ার আগে না পরে মনে না থাকলে কার কাছে আবার জিজ্ঞেস করবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 27.76,
+    "y": 17.92
+   },
+   {
+    "x": 79.39,
+    "y": 29.73
+   },
+   {
+    "x": 40.85,
+    "y": 41.18
+   },
+   {
+    "x": 54.06,
+    "y": 52.55
+   },
+   {
+    "x": 73.82,
+    "y": 64.39
+   },
+   {
+    "x": 54.3,
+    "y": 80.78
+   }
+  ],
+  "ids": [
+   "asking-about-medicine-instructions-q1-03692db356e1",
+   "asking-about-medicine-instructions-q2-321d03b21890",
+   "asking-about-medicine-instructions-q3-f1fc3253ab65",
+   "asking-about-medicine-instructions-q4-c26d2a165bd9",
+   "asking-about-medicine-instructions-q5-f1aa7412f663",
+   "asking-about-medicine-instructions-q6-29e310fe9fe6"
+  ]
+ },
+ "taking-an-app-ride": {
+  "questions": [
+   "গাড়ির নম্বর প্লেটটা কোন ছবিতে?",
+   "লোকেশন পিন দেওয়া আর মুখে জায়গা বলার মধ্যে কী তফাত?",
+   "গাড়ি ডাকার পর আপনি কোথায় দাঁড়ান?",
+   "ড্রাইভারকে ফোন দিলে প্রথমে কী বলবেন?",
+   "পাশে একই রঙের দুইটা গাড়ি থাকলে নিজেরটা কী দেখে চিনবেন?",
+   "পিন ঠিক না থাকলে ড্রাইভারকে কোন চেনা জায়গার নাম বলবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 82.42,
+    "y": 13.33
+   },
+   {
+    "x": 77.21,
+    "y": 24.86
+   },
+   {
+    "x": 29.94,
+    "y": 36.71
+   },
+   {
+    "x": 31.64,
+    "y": 48.59
+   },
+   {
+    "x": 70.91,
+    "y": 59.92
+   },
+   {
+    "x": 25.33,
+    "y": 76.27
+   }
+  ],
+  "ids": [
+   "taking-an-app-ride-q1-386dd76a811b",
+   "taking-an-app-ride-q2-d812d2320b72",
+   "taking-an-app-ride-q3-7af148d6a1d6",
+   "taking-an-app-ride-q4-7d376045566c",
+   "taking-an-app-ride-q5-ec0b33c295ad",
+   "taking-an-app-ride-q6-e0e1b591f098"
+  ]
+ },
+ "checking-food-ingredients-before-ordering": {
+  "questions": [
+   "কোন ছবিতে চিনি দিতে মানা করছেন?",
+   "আলাদা করে দেওয়া আর একেবারেই না দেওয়ার মধ্যে কী তফাত?",
+   "আপনি চা কীভাবে খেতে পছন্দ করেন?",
+   "খাবারে বাদাম আছে কি না জানতে কী বলবেন?",
+   "ঝোল আলাদা চাইলে দোকানিকে কী বলবেন?",
+   "খাবারে কী আছে কেউ বলতে না পারলে আপনি কী করবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 92.36,
+    "y": 13.25
+   },
+   {
+    "x": 71.88,
+    "y": 24.86
+   },
+   {
+    "x": 28.36,
+    "y": 36.98
+   },
+   {
+    "x": 31.64,
+    "y": 48.59
+   },
+   {
+    "x": 31.64,
+    "y": 60.27
+   },
+   {
+    "x": 70.67,
+    "y": 71.61
+   }
+  ],
+  "ids": [
+   "checking-food-ingredients-before-ordering-q1-9dde3ca7757e",
+   "checking-food-ingredients-before-ordering-q2-4e7519a1ec6c",
+   "checking-food-ingredients-before-ordering-q3-1c53341bb987",
+   "checking-food-ingredients-before-ordering-q4-ec5d7bdbff28",
+   "checking-food-ingredients-before-ordering-q5-5b53d385227b",
+   "checking-food-ingredients-before-ordering-q6-927d6d3b0680"
+  ]
+ },
+ "buying-and-refilling-drinking-water": {
+  "questions": [
+   "কোন বোতলের সিল খোলা?",
+   "জার আর বোতলের মধ্যে কোনটায় বেশি পানি ধরে?",
+   "আপনি বাসায় খাওয়ার পানি কীভাবে রাখেন?",
+   "বোতলটা আবার ভরতে চাইলে কী বলবেন?",
+   "পানি দিয়ে গেলে খালি জার নিতে কী বলবেন?",
+   "নতুন বোতলের সিল আগে দেখে নেওয়ার কারণ কী?"
+  ],
+  "endpoints": [
+   {
+    "x": 71.76,
+    "y": 13.22
+   },
+   {
+    "x": 47.76,
+    "y": 24.9
+   },
+   {
+    "x": 29.7,
+    "y": 36.94
+   },
+   {
+    "x": 31.64,
+    "y": 48.59
+   },
+   {
+    "x": 31.64,
+    "y": 60.27
+   },
+   {
+    "x": 53.09,
+    "y": 71.61
+   }
+  ],
+  "ids": [
+   "buying-and-refilling-drinking-water-q1-6032af13ff69",
+   "buying-and-refilling-drinking-water-q2-400a5876321c",
+   "buying-and-refilling-drinking-water-q3-8a05c2ecfa66",
+   "buying-and-refilling-drinking-water-q4-a6de44ac0245",
+   "buying-and-refilling-drinking-water-q5-fa3d058ee509",
+   "buying-and-refilling-drinking-water-q6-24081189c1b4"
+  ]
+ },
+ "crossing-a-busy-street": {
+  "questions": [
+   "ট্রাফিক পুলিশ কোথায়?",
+   "কোথায় ওপর দিয়ে পার হই, আর কোথায় মাঝখানটা উঁচু?",
+   "আপনার এলাকায় কোথায় বেশি জ্যাম হয়?",
+   "গাড়ির সিগন্যাল লাল হলে চালক কী করেন?",
+   "কোন ছবিতে গাড়ি শুধু একদিকে যায়?",
+   "সামনে ওপর দিয়ে পার হওয়ার পথ থাকলে কোন পথে যাবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 62.55,
+    "y": 13.69
+   },
+   {
+    "x": 64.12,
+    "y": 25.25
+   },
+   {
+    "x": 34.79,
+    "y": 36.94
+   },
+   {
+    "x": 28.36,
+    "y": 48.67
+   },
+   {
+    "x": 91.76,
+    "y": 56.16
+   },
+   {
+    "x": 90.91,
+    "y": 67.84
+   }
+  ],
+  "ids": [
+   "crossing-a-busy-street-q1-67375b3621d9",
+   "crossing-a-busy-street-q2-497af0c6de3b",
+   "crossing-a-busy-street-q3-a3099a6172f0",
+   "crossing-a-busy-street-q4-c6c90d165b5d",
+   "crossing-a-busy-street-q5-079438748c71",
+   "crossing-a-busy-street-q6-54af01476d8c"
+  ]
+ },
+ "making-and-returning-phone-calls": {
+  "questions": [
+   "কোন ছবিতে ফোনটা ধরছেন?",
+   "লাইন ব্যস্ত আর ফোন বন্ধ কথার মধ্যে কী তফাত?",
+   "কাজে থাকলে মিসড কল দেখার পর আপনি কী করেন?",
+   "কাউকে একটা নম্বর ডায়াল করতে কীভাবে বলবেন?",
+   "এখন কথা বলা যাবে না, ফোনে কী বলবেন?",
+   "জরুরি কথা থাকলে ফোন বন্ধ পেয়ে আপনি এরপর কী করবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 74.79,
+    "y": 13.25
+   },
+   {
+    "x": 48.0,
+    "y": 24.82
+   },
+   {
+    "x": 52.24,
+    "y": 36.55
+   },
+   {
+    "x": 48.73,
+    "y": 48.16
+   },
+   {
+    "x": 31.64,
+    "y": 60.27
+   },
+   {
+    "x": 70.55,
+    "y": 71.61
+   }
+  ],
+  "ids": [
+   "making-and-returning-phone-calls-q1-82b7e9b89f75",
+   "making-and-returning-phone-calls-q2-b90990a07328",
+   "making-and-returning-phone-calls-q3-5d2adca01666",
+   "making-and-returning-phone-calls-q4-a13b4630e8f1",
+   "making-and-returning-phone-calls-q5-4a8b8b67de27",
+   "making-and-returning-phone-calls-q6-c5c868bd6a0d"
+  ]
+ },
+ "checking-what-rent-includes": {
+  "questions": [
+   "কারেন্ট বিল কোন ছবিতে?",
+   "গ্যাস বিল আর কারেন্ট বিল কী দেখে চিনলেন?",
+   "ভাড়া নেওয়ার আগে আপনি কী কী জিজ্ঞেস করেন?",
+   "ভাড়ার সঙ্গে সার্ভিস চার্জ আছে কি না, কীভাবে জানবেন?",
+   "রাতে দেরি করে ফিরবেন, গেট নিয়ে কী প্রশ্ন করবেন?",
+   "পানির বিল আলাদা হলে মাসের খরচ জানতে আর কী জিজ্ঞেস করবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 67.88,
+    "y": 13.25
+   },
+   {
+    "x": 33.58,
+    "y": 24.82
+   },
+   {
+    "x": 45.7,
+    "y": 36.59
+   },
+   {
+    "x": 59.15,
+    "y": 48.39
+   },
+   {
+    "x": 40.0,
+    "y": 60.31
+   },
+   {
+    "x": 83.27,
+    "y": 71.61
+   }
+  ],
+  "ids": [
+   "checking-what-rent-includes-q1-56b4177ae147",
+   "checking-what-rent-includes-q2-5f5ec9804697",
+   "checking-what-rent-includes-q3-0b90804ee856",
+   "checking-what-rent-includes-q4-1759c469745c",
+   "checking-what-rent-includes-q5-07ba199f0359",
+   "checking-what-rent-includes-q6-fda82bad11f4"
+  ]
+ },
+ "checking-a-route-on-foot": {
+  "questions": [
+   "কোন ছবিতে মানুষটা সোজা যাচ্ছে?",
+   "সোজা যেতে বলা আর সামনে ঘুরতে বলার মধ্যে কী তফাত?",
+   "আপনি কোন জায়গায় হেঁটে যান?",
+   "কেউ উল্টো দিকে গেলে তাকে কী বলবেন?",
+   "বাজার কত দূর বাকি জানতে কী জিজ্ঞেস করবেন?",
+   "নতুন রাস্তায় কেউ বললেন এই রাস্তা না, এরপর ঠিক পথ জানতে কী বলবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 86.55,
+    "y": 13.69
+   },
+   {
+    "x": 61.33,
+    "y": 24.86
+   },
+   {
+    "x": 82.91,
+    "y": 32.27
+   },
+   {
+    "x": 31.64,
+    "y": 44.27
+   },
+   {
+    "x": 48.73,
+    "y": 55.65
+   },
+   {
+    "x": 31.64,
+    "y": 71.96
+   }
+  ],
+  "ids": [
+   "checking-a-route-on-foot-q1-e77311fe72b1",
+   "checking-a-route-on-foot-q2-aca1552c5b36",
+   "checking-a-route-on-foot-q3-3ada35e040c0",
+   "checking-a-route-on-foot-q4-f5018f548f3f",
+   "checking-a-route-on-foot-q5-1d35196a9853",
+   "checking-a-route-on-foot-q6-ee7cf196e55b"
+  ]
+ },
+ "reporting-repairs-to-a-landlord": {
+  "questions": [
+   "কোন ছবিতে কল থেকে পানি পড়ছে?",
+   "কল থেকে পানি পড়া আর পানি না নামার মধ্যে কী তফাত?",
+   "আপনার বাসায় কোন জিনিসটা একবার ঠিক করাতে হয়েছিল?",
+   "জানালা বন্ধ না হলে বাড়িওয়ালাকে কী বলবেন?",
+   "আজই এসে দেখতে বলবেন কীভাবে?",
+   "দেয়াল বারবার ভিজে গেলে ঠিক করার সময় নিয়ে কী কথা বলবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 88.85,
+    "y": 13.33
+   },
+   {
+    "x": 62.55,
+    "y": 24.86
+   },
+   {
+    "x": 75.27,
+    "y": 36.55
+   },
+   {
+    "x": 38.67,
+    "y": 48.16
+   },
+   {
+    "x": 89.7,
+    "y": 55.57
+   },
+   {
+    "x": 72.36,
+    "y": 67.29
+   }
+  ],
+  "ids": [
+   "reporting-repairs-to-a-landlord-q1-605d3361280e",
+   "reporting-repairs-to-a-landlord-q2-10d508c83324",
+   "reporting-repairs-to-a-landlord-q3-6b03c56ef062",
+   "reporting-repairs-to-a-landlord-q4-58c1bdd75ff9",
+   "reporting-repairs-to-a-landlord-q5-4b4ef1d6aee5",
+   "reporting-repairs-to-a-landlord-q6-eb4cb73dbfc2"
+  ]
+ },
+ "describing-what-is-wrong-at-a-clinic": {
+  "questions": [
+   "কার নাক দিয়ে পানি পড়ছে?",
+   "হাঁপানো আর শরীর কাঁপার মধ্যে কী তফাত দেখছেন?",
+   "আপনি অসুস্থ হলে কখন থেকে কষ্ট হচ্ছে, সেটা কীভাবে মনে রাখেন?",
+   "চোখে পানি পড়লে ডাক্তারকে কী বলবেন?",
+   "গত রাত থেকে অসুবিধা হলে কখন থেকে বলবেন?",
+   "ডাক্তারকে কষ্টটা কখন শুরু হয়েছে বলা কেন কাজে লাগে?"
+  ],
+  "endpoints": [
+   {
+    "x": 71.88,
+    "y": 13.33
+   },
+   {
+    "x": 47.76,
+    "y": 25.29
+   },
+   {
+    "x": 80.24,
+    "y": 36.71
+   },
+   {
+    "x": 31.64,
+    "y": 48.59
+   },
+   {
+    "x": 43.76,
+    "y": 60.24
+   },
+   {
+    "x": 60.85,
+    "y": 71.92
+   }
+  ],
+  "ids": [
+   "describing-what-is-wrong-at-a-clinic-q1-0722324b2e6b",
+   "describing-what-is-wrong-at-a-clinic-q2-426f25a61470",
+   "describing-what-is-wrong-at-a-clinic-q3-dcceb2024184",
+   "describing-what-is-wrong-at-a-clinic-q4-f1237b28908a",
+   "describing-what-is-wrong-at-a-clinic-q5-d439a97c6485",
+   "describing-what-is-wrong-at-a-clinic-q6-47b4f64e5c48"
+  ]
+ },
+ "receiving-a-delivery-at-home": {
+  "questions": [
+   "ডেলিভারির লোক কে?",
+   "দরজায় রাখতে বলা আর নিচে আসার মধ্যে কী তফাত?",
+   "আপনি বাসায় পার্সেল কীভাবে নেন?",
+   "প্যাকেট ছেঁড়া দেখলে কী বলবেন?",
+   "অন্য কারও পার্সেল এলে ডেলিভারির লোককে কী বলবেন?",
+   "আপনি তখন বাসায় না থাকলে পার্সেল কোথায় রাখতে বলবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 60.12,
+    "y": 13.22
+   },
+   {
+    "x": 64.36,
+    "y": 24.86
+   },
+   {
+    "x": 89.45,
+    "y": 32.24
+   },
+   {
+    "x": 82.18,
+    "y": 39.73
+   },
+   {
+    "x": 56.61,
+    "y": 51.22
+   },
+   {
+    "x": 25.33,
+    "y": 67.65
+   }
+  ],
+  "ids": [
+   "receiving-a-delivery-at-home-q1-422c2de19843",
+   "receiving-a-delivery-at-home-q2-38c09f8a7f9f",
+   "receiving-a-delivery-at-home-q3-0df10d24a651",
+   "receiving-a-delivery-at-home-q4-8ca7987efcb0",
+   "receiving-a-delivery-at-home-q5-30aa55f649e1",
+   "receiving-a-delivery-at-home-q6-a27d16a40083"
+  ]
+ },
+ "trying-on-clothes-at-a-shop": {
+  "questions": [
+   "ট্রায়াল রুমটা কোন ছবিতে?",
+   "একই মাপের অন্য রং আর বড় সাইজ, কোন দুটো ছবিতে চাইছেন?",
+   "জামা কিনলে আপনি কীভাবে মাপ মিলিয়ে নেন?",
+   "একটা জামা পরে দেখতে চাইলে কী বলবেন?",
+   "জামার মাপ ঠিক হলে দোকানিকে কী বলবেন?",
+   "মাপ ঠিক আছে কিন্তু রং পছন্দ হয় নাই, দোকানিকে কী বলবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 70.55,
+    "y": 13.25
+   },
+   {
+    "x": 69.33,
+    "y": 25.37
+   },
+   {
+    "x": 41.7,
+    "y": 36.59
+   },
+   {
+    "x": 31.64,
+    "y": 48.59
+   },
+   {
+    "x": 31.64,
+    "y": 60.27
+   },
+   {
+    "x": 72.97,
+    "y": 71.76
+   }
+  ],
+  "ids": [
+   "trying-on-clothes-at-a-shop-q1-b6241f3df265",
+   "trying-on-clothes-at-a-shop-q2-c0c6308d10cf",
+   "trying-on-clothes-at-a-shop-q3-955a56f3fa12",
+   "trying-on-clothes-at-a-shop-q4-432a027ab0cc",
+   "trying-on-clothes-at-a-shop-q5-8b5209fae203",
+   "trying-on-clothes-at-a-shop-q6-b85546ccf2d2"
+  ]
+ },
+ "knowing-common-city-transport": {
+  "questions": [
+   "সিএনজিটা দেখাবেন?",
+   "সাইকেল আর হোন্ডার মধ্যে কী তফাত?",
+   "আপনি শেষবার কোন বাহনে করে বাজারে গিয়েছিলেন?",
+   "মেট্রোরেল কোন দিক দিয়ে চলে, কীভাবে বলবেন?",
+   "অটোটা বাজারে যায় কি না, কীভাবে জানবেন?",
+   "রাস্তার জ্যাম থাকলে কোন বাহন বেছে নেবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 59.15,
+    "y": 13.14
+   },
+   {
+    "x": 29.82,
+    "y": 25.18
+   },
+   {
+    "x": 56.85,
+    "y": 36.63
+   },
+   {
+    "x": 48.73,
+    "y": 48.16
+   },
+   {
+    "x": 34.06,
+    "y": 60.24
+   },
+   {
+    "x": 52.36,
+    "y": 72.16
+   }
+  ],
+  "ids": [
+   "knowing-common-city-transport-q1-257ab4baf2b7",
+   "knowing-common-city-transport-q2-be868b935358",
+   "knowing-common-city-transport-q3-8d3c27167a00",
+   "knowing-common-city-transport-q4-dc0414ecea3f",
+   "knowing-common-city-transport-q5-b723cf2ef349",
+   "knowing-common-city-transport-q6-f98b45debf35"
+  ]
+ },
+ "talking-at-a-meal-as-a-guest": {
+  "questions": [
+   "কে হাত ধুতে উঠছেন?",
+   "নিজে খাবার নেওয়া আর কাউকে ভাত তুলে দেওয়ার মধ্যে কী তফাত?",
+   "দাওয়াতে গেলে খাওয়ার আগে আপনি কী করেন?",
+   "কাউকে আরেকটু ভাত নিতে কীভাবে বলবেন?",
+   "পেট ভরে গেলে ভদ্রভাবে কী বলবেন?",
+   "রান্না ভালো লাগলে কোন খাবারের কথা বলে প্রশংসা করবেন, আর কী বলবেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 58.3,
+    "y": 13.73
+   },
+   {
+    "x": 87.03,
+    "y": 25.29
+   },
+   {
+    "x": 35.39,
+    "y": 36.55
+   },
+   {
+    "x": 31.64,
+    "y": 48.59
+   },
+   {
+    "x": 89.33,
+    "y": 55.61
+   },
+   {
+    "x": 31.64,
+    "y": 71.96
+   }
+  ],
+  "ids": [
+   "talking-at-a-meal-as-a-guest-q1-ebe1b2cb83dc",
+   "talking-at-a-meal-as-a-guest-q2-c1187a239a5a",
+   "talking-at-a-meal-as-a-guest-q3-ed537e040868",
+   "talking-at-a-meal-as-a-guest-q4-30df23fe835d",
+   "talking-at-a-meal-as-a-guest-q5-0da64656ce7b",
+   "talking-at-a-meal-as-a-guest-q6-fd1818cb2bd3"
+  ]
+ },
+ "giving-your-details-on-a-form": {
+  "questions": [
+   "ফোন নম্বরের ঘরটা কোন ছবিতে?",
+   "বর্তমান ঠিকানা আর স্থায়ী ঠিকানার মধ্যে কী তফাত?",
+   "কোন কাজে আপনাকে আগে ফরম পূরণ করতে হয়েছে?",
+   "কাউকে ফোন নম্বর লিখতে কী বলবেন?",
+   "জন্মতারিখ জানতে কীভাবে জিজ্ঞেস করবেন?",
+   "দুই ঠিকানা এক হলে ফরমে কী লিখবেন, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 82.55,
+    "y": 13.25
+   },
+   {
+    "x": 48.0,
+    "y": 24.82
+   },
+   {
+    "x": 53.94,
+    "y": 37.45
+   },
+   {
+    "x": 31.64,
+    "y": 48.59
+   },
+   {
+    "x": 31.39,
+    "y": 60.35
+   },
+   {
+    "x": 56.73,
+    "y": 71.8
+   }
+  ],
+  "ids": [
+   "giving-your-details-on-a-form-q1-ca4ec7ea1109",
+   "giving-your-details-on-a-form-q2-4c7f560786b4",
+   "giving-your-details-on-a-form-q3-17133a796cde",
+   "giving-your-details-on-a-form-q4-d08108fd0596",
+   "giving-your-details-on-a-form-q5-2cfd32496f16",
+   "giving-your-details-on-a-form-q6-685222621b46"
+  ]
+ },
+ "recognizing-atm-and-card-payment-terms": {
+  "questions": [
+   "কোন ছবিতে কার্ডটা হাতে ধরা?",
+   "রসিদ আর কার্ড দেখতে কীভাবে আলাদা?",
+   "আপনি টাকা তুলতে কোথায় যান?",
+   "মেশিন থেকে টাকা না এলে কাউকে কী বলে জানাবেন?",
+   "কার্ড মেশিনে আটকে গেলে কী বলবেন?",
+   "রসিদটা রেখে দিলে কখন কাজে লাগতে পারে?"
+  ],
+  "endpoints": [
+   {
+    "x": 77.7,
+    "y": 13.25
+   },
+   {
+    "x": 33.33,
+    "y": 25.18
+   },
+   {
+    "x": 84.85,
+    "y": 32.71
+   },
+   {
+    "x": 45.82,
+    "y": 44.24
+   },
+   {
+    "x": 31.64,
+    "y": 55.96
+   },
+   {
+    "x": 42.18,
+    "y": 67.69
+   }
+  ],
+  "ids": [
+   "recognizing-atm-and-card-payment-terms-q1-a568a20dd588",
+   "recognizing-atm-and-card-payment-terms-q2-00923af431cd",
+   "recognizing-atm-and-card-payment-terms-q3-37b23f6a0e8a",
+   "recognizing-atm-and-card-payment-terms-q4-1c1a9100c489",
+   "recognizing-atm-and-card-payment-terms-q5-b7b238ac1ac6",
+   "recognizing-atm-and-card-payment-terms-q6-bb8d21e62081"
+  ]
+ },
+ "continuing-a-first-conversation": {
+  "questions": [
+   "কে বলছেন পাশেই থাকেন?",
+   "কোথায় থাকেন আর কোথা থেকে এসেছেন, দুটো প্রশ্নে কী তফাত?",
+   "নতুন কাউকে নিজের এলাকার কথা কীভাবে বলেন?",
+   "কেউ কোথা থেকে এসেছেন জানতে কী বলবেন?",
+   "পাশেই পড়াশোনা করেন, সেটা পরিচয়ের সময় কীভাবে বলবেন?",
+   "কারও সঙ্গে প্রথম আলাপে আপনি কোন প্রশ্ন দিয়ে শুরু করতে চান, আর কেন?"
+  ],
+  "endpoints": [
+   {
+    "x": 69.45,
+    "y": 13.25
+   },
+   {
+    "x": 77.82,
+    "y": 25.33
+   },
+   {
+    "x": 45.7,
+    "y": 36.47
+   },
+   {
+    "x": 31.64,
+    "y": 48.59
+   },
+   {
+    "x": 80.73,
+    "y": 59.92
+   },
+   {
+    "x": 25.33,
+    "y": 76.27
+   }
+  ],
+  "ids": [
+   "continuing-a-first-conversation-q1-daa6df120b5f",
+   "continuing-a-first-conversation-q2-b111f06f484d",
+   "continuing-a-first-conversation-q3-12f8cc373a86",
+   "continuing-a-first-conversation-q4-383cb3687ba7",
+   "continuing-a-first-conversation-q5-239684982411",
+   "continuing-a-first-conversation-q6-3ffbc0865b4e"
+  ]
  }
 };

@@ -1506,6 +1506,664 @@ window.PTB_DECK = {
    ]
   },
   {
+   "id": "taking-a-local-bus",
+   "number": 301,
+   "title": "বাসে চলাফেরা",
+   "front": "pages/301-front.jpg",
+   "back": "pages/301-back.jpg",
+   "items": [
+    {
+     "id": "dhaka-local-bus",
+     "label": "বাস এসে গেছে",
+     "gloss": "local city passenger bus"
+    },
+    {
+     "id": "dhaka-bus-stop",
+     "label": "এখানে বাস ধরব",
+     "gloss": "designated place to board a local bus"
+    },
+    {
+     "id": "intercity-bus-ticket-counter",
+     "label": "কোথায় টিকিট কাটব?",
+     "gloss": "bus company ticket sales window"
+    },
+    {
+     "id": "paper-bus-ticket",
+     "label": "টিকিটটা রেখে দেন",
+     "gloss": "paper fare ticket used on a bus"
+    },
+    {
+     "id": "bus-window-seat",
+     "label": "জানালার পাশে বসব",
+     "gloss": "passenger seat next to coach window"
+    },
+    {
+     "id": "bus-fare-helper",
+     "label": "ভাড়াটা নেন",
+     "gloss": "bus attendant who gathers fares and calls stops"
+    }
+   ],
+   "questions": [
+    "বাসের টিকিটটা কোথায়?",
+    "বাস স্টপ আর টিকিট কাউন্টারের মধ্যে কী তফাত?",
+    "আপনি শেষবার কোথায় বাসে উঠেছিলেন?",
+    "জানালার পাশে বসতে চাইলে হেলপারকে কী বলবেন?",
+    "বাস স্টপে গিয়ে কোন বাসে উঠবেন, সেটা কীভাবে জানবেন?",
+    "বাস থেকে নামার আগে টিকিটটা রেখে দেবেন কেন?"
+   ]
+  },
+  {
+   "id": "asking-where-a-bus-goes",
+   "number": 302,
+   "title": "বাসে উঠে যা বলি",
+   "front": "pages/302-front.jpg",
+   "back": "pages/302-back.jpg",
+   "items": [
+    {
+     "id": "bus-ask-destination",
+     "label": "এই বাস কোথায় যায়?",
+     "gloss": "ask for the terminal or destination before boarding"
+    },
+    {
+     "id": "bus-ask-stop-here",
+     "label": "বাসটা এখানে থামে?",
+     "gloss": "ask whether the bus regularly serves this stop"
+    },
+    {
+     "id": "bus-ask-transfer",
+     "label": "বাস বদলাতে হবে?",
+     "gloss": "ask whether the trip requires a change of bus"
+    },
+    {
+     "id": "bus-ask-empty-seat",
+     "label": "কোনো সিট খালি আছে?",
+     "gloss": "ask about an available seat on a bus"
+    },
+    {
+     "id": "bus-get-off-next-stop",
+     "label": "পরের স্টপে নামব",
+     "gloss": "say you want to get off at the next stop"
+    },
+    {
+     "id": "bus-get-off-here",
+     "label": "এখানেই নামিয়ে দেন",
+     "gloss": "tell driver to let you off at this location"
+    }
+   ],
+   "questions": [
+    "কে বলছেন পরের স্টপে নামবেন?",
+    "পরের স্টপ আর এখানেই নামার মধ্যে কী তফাত?",
+    "বাস কোথায় যায় জানতে আপনি কী বলেন?",
+    "বাসে দাঁড়িয়ে থাকলে কী বলে খালি সিটের খবর নেবেন?",
+    "একটা বাসে গিয়ে মাঝপথে বাস বদলাতে হলে কী জিজ্ঞেস করবেন?",
+    "চেনেন না এমন জায়গায় সঠিক স্টপে নামতে কী বলবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "knowing-common-city-transport",
+   "number": 321,
+   "title": "শহরে চলার আরও বাহন",
+   "front": "pages/321-front.jpg",
+   "back": "pages/321-back.jpg",
+   "items": [
+    {
+     "id": "city-bangladesh-train",
+     "label": "ট্রেন ছেড়ে যাচ্ছে",
+     "gloss": "Bangladesh Railway passenger train"
+    },
+    {
+     "id": "city-dhaka-metro",
+     "label": "ওপর দিয়ে চলে",
+     "gloss": "Dhaka elevated metro train"
+    },
+    {
+     "id": "city-cng-auto",
+     "label": "সিএনজি",
+     "gloss": "green enclosed motorized three-wheeler called CNG"
+    },
+    {
+     "id": "city-battery-easy-bike",
+     "label": "অটো",
+     "gloss": "open electric three-wheeler called auto locally"
+    },
+    {
+     "id": "city-bicycle",
+     "label": "পা দিয়ে চালাই",
+     "gloss": "standard pedal bicycle"
+    },
+    {
+     "id": "city-motorcycle",
+     "label": "হোন্ডা",
+     "gloss": "ordinary motorbike for personal city travel, colloquially Honda"
+    }
+   ],
+   "questions": [
+    "সিএনজিটা দেখাবেন?",
+    "সাইকেল আর হোন্ডার মধ্যে কী তফাত?",
+    "আপনি শেষবার কোন বাহনে করে বাজারে গিয়েছিলেন?",
+    "মেট্রোরেল কোন দিক দিয়ে চলে, কীভাবে বলবেন?",
+    "অটোটা বাজারে যায় কি না, কীভাবে জানবেন?",
+    "রাস্তার জ্যাম থাকলে কোন বাহন বেছে নেবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "paying-a-shop-with-a-phone",
+   "number": 303,
+   "title": "দোকানে ফোন দিয়ে টাকা দিই",
+   "front": "pages/303-front.jpg",
+   "back": "pages/303-back.jpg",
+   "items": [
+    {
+     "id": "merchant-bkash-pay",
+     "label": "বিকাশে দেব",
+     "gloss": "say you will pay a bill through bKash"
+    },
+    {
+     "id": "merchant-ask-number",
+     "label": "নম্বরটা বলেন",
+     "gloss": "ask which mobile number to enter for a transaction"
+    },
+    {
+     "id": "merchant-scan-qr",
+     "label": "কিউআর কোড স্ক্যান করেন",
+     "gloss": "request scanning a merchant QR code"
+    },
+    {
+     "id": "merchant-payment-pending",
+     "label": "টাকা যায় নাই",
+     "gloss": "say the mobile payment did not go through"
+    },
+    {
+     "id": "merchant-confirm-received",
+     "label": "টাকা পেয়েছেন?",
+     "gloss": "ask whether the merchant has received a mobile payment"
+    },
+    {
+     "id": "merchant-cash-alternative",
+     "label": "নগদ টাকা দেব",
+     "gloss": "offer banknotes instead of paying electronically"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে কিউআর কোড দেখছেন?",
+    "বিকাশে দেওয়া আর নগদ টাকা দেওয়ার মধ্যে কী তফাত?",
+    "শেষবার দোকানে কীভাবে টাকা দিয়েছিলেন?",
+    "নম্বর না জানলে দোকানিকে কী বলবেন?",
+    "ফোনে দেখাচ্ছে টাকা যায় নাই, দোকানিকে কী বলবেন?",
+    "টাকা দেওয়ার পর দোকানি পেয়েছেন কি না, কেন জিজ্ঞেস করবেন?"
+   ]
+  },
+  {
+   "id": "finding-your-way-at-a-clinic",
+   "number": 304,
+   "title": "ক্লিনিকে গিয়ে যা বলি",
+   "front": "pages/304-front.jpg",
+   "back": "pages/304-back.jpg",
+   "items": [
+    {
+     "id": "clinic-checkin-desk",
+     "label": "আগে কোথায় নাম লিখাব?",
+     "gloss": "clinic front reception desk"
+    },
+    {
+     "id": "clinic-physician",
+     "label": "ডাক্তার দেখাতে এসেছি",
+     "gloss": "physician consulting with a patient"
+    },
+    {
+     "id": "clinic-nurse",
+     "label": "নার্সকে ডাকেন",
+     "gloss": "nurse checking in on a patient"
+    },
+    {
+     "id": "clinic-patient",
+     "label": "রোগী বসে আছেন",
+     "gloss": "patient attending a clinic"
+    },
+    {
+     "id": "clinic-visit-token",
+     "label": "আমার পালা কখন?",
+     "gloss": "token marking order to see the clinician"
+    },
+    {
+     "id": "clinic-waiting-room",
+     "label": "এখানে অপেক্ষা করেন",
+     "gloss": "clinic room where patients sit before being called"
+    }
+   ],
+   "questions": [
+    "ডাক্তার কোন ছবিতে?",
+    "এক ছবিতে নাম লেখান, আর অন্য ছবিতে বসে থাকেন। দুইটা দেখাবেন?",
+    "ডাক্তার দেখাতে গেলে আপনি আগে কোথায় যান?",
+    "নিজের পালা কখন, সেটা জানতে কী বলবেন?",
+    "নার্সকে দরকার হলে কী বলবেন?",
+    "নতুন একটা ক্লিনিকে কোন ঘরে যেতে হবে বুঝতে না পারলে কী করবেন?"
+   ]
+  },
+  {
+   "id": "public-washroom-essentials",
+   "number": 305,
+   "title": "টয়লেটে দরকারি জিনিস",
+   "front": "pages/305-front.jpg",
+   "back": "pages/305-back.jpg",
+   "items": [
+    {
+     "id": "washroom-tissue-roll",
+     "label": "টিস্যুটা দেন",
+     "gloss": "paper roll for toilet use"
+    },
+    {
+     "id": "washroom-liquid-handwash",
+     "label": "হাত ধোয়ার সাবান",
+     "gloss": "liquid soap in a handwashing pump bottle"
+    },
+    {
+     "id": "washroom-flush-control",
+     "label": "পানি ছাড়ার বোতাম",
+     "gloss": "toilet control that releases rinsing water"
+    },
+    {
+     "id": "washroom-spray-hose",
+     "label": "নল দিয়ে ধুই",
+     "gloss": "handheld bidet sprayer beside a toilet"
+    },
+    {
+     "id": "washroom-occupied",
+     "label": "ভেতরে লোক আছে",
+     "gloss": "say a toilet cubicle is occupied"
+    },
+    {
+     "id": "washroom-door-free",
+     "label": "এটা খালি আছে",
+     "gloss": "say a toilet cubicle is unoccupied"
+    }
+   ],
+   "questions": [
+    "হাত ধোয়ার সাবানটা কোন ছবিতে?",
+    "দুইটা দরজার মধ্যে কোনটা খালি, কী দেখে বুঝলেন?",
+    "বাইরে টয়লেটে গেলে কোন জিনিসটা আপনি আগে খোঁজেন?",
+    "পানি ছাড়ার বোতামটা কোথায়, কীভাবে জিজ্ঞেস করবেন?",
+    "ভেতরে লোক আছে দেখে পাশের জনকে কী বলবেন?",
+    "হাত ধোয়ার সাবান না পেলে কী বলবেন?"
+   ]
+  },
+  {
+   "id": "buying-groceries-to-cook",
+   "number": 306,
+   "title": "বাজার থেকে রান্নার জিনিস কিনি",
+   "front": "pages/306-front.jpg",
+   "back": "pages/306-back.jpg",
+   "items": [
+    {
+     "id": "market-half-kilo",
+     "label": "আধা কেজি",
+     "gloss": "a half-kilogram quantity at a market"
+    },
+    {
+     "id": "market-one-kilo",
+     "label": "এক কেজি",
+     "gloss": "a one-kilogram quantity at a market"
+    },
+    {
+     "id": "market-small-packet",
+     "label": "ছোট প্যাকেট",
+     "gloss": "ask for the smallest packaged size"
+    },
+    {
+     "id": "market-buy-loose",
+     "label": "খোলা ডাল আছে?",
+     "gloss": "ask if a dry grocery is sold loose instead of prepacked"
+    },
+    {
+     "id": "market-trim-fish",
+     "label": "মাছটা কেটে দেন",
+     "gloss": "ask the fishmonger to cut a purchased fish"
+    },
+    {
+     "id": "market-separate-fish-head",
+     "label": "মাথাটা আলাদা দেন",
+     "gloss": "ask a fishmonger to bag a purchased fish head separately"
+    }
+   ],
+   "questions": [
+    "কে ছোট প্যাকেটটা চাইছেন?",
+    "আধা কেজি আর এক কেজির মধ্যে কোনটা বেশি?",
+    "আপনি কোন জিনিস প্যাকেট ছাড়া কিনেছেন?",
+    "মাছ কিনে কেটে নিতে চাইলে কী বলবেন?",
+    "এক কেজি পেঁয়াজ কিনতে কীভাবে বলবেন?",
+    "একাই রান্না করলে এক কেজি টমেটো নেবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "finding-your-way-into-an-apartment",
+   "number": 307,
+   "title": "দরজা পেরিয়ে বাসায় যাই",
+   "front": "pages/307-front.jpg",
+   "back": "pages/307-back.jpg",
+   "items": [
+    {
+     "id": "apartment-lift",
+     "label": "লিফট",
+     "gloss": "elevator in an apartment building"
+    },
+    {
+     "id": "apartment-up-one-floor",
+     "label": "একতলা ওপরে",
+     "gloss": "one level up from where you are"
+    },
+    {
+     "id": "apartment-down-one-floor",
+     "label": "একতলা নিচে",
+     "gloss": "one level down from where you are"
+    },
+    {
+     "id": "apartment-flat-number",
+     "label": "ফ্ল্যাট নম্বর",
+     "gloss": "number identifying an individual apartment door"
+    },
+    {
+     "id": "apartment-guest-at-gate",
+     "label": "আমি মেহমান",
+     "gloss": "identify yourself to a guard as someone's guest"
+    },
+    {
+     "id": "apartment-can-i-come-in",
+     "label": "ভেতরে আসব?",
+     "gloss": "ask if you may enter after someone opens the door"
+    }
+   ],
+   "questions": [
+    "ফ্ল্যাট নম্বরটা কোন ছবিতে?",
+    "একতলা ওপরে আর একতলা নিচে কোন দিকে?",
+    "কারও বাসায় যাওয়ার আগে আপনি কী খবর নেন?",
+    "পাহারাদারকে কী বলে জানাবেন আপনি মেহমান?",
+    "দরজা খুললে ভেতরে যাওয়ার আগে কী বলবেন?",
+    "লিফট চলছে না আর ফ্ল্যাট খুঁজে পাচ্ছেন না, কীভাবে সাহায্য চাইবেন?"
+   ]
+  },
+  {
+   "id": "working-out-whose-things-they-are",
+   "number": 308,
+   "title": "কার জিনিস জেনে নিই",
+   "front": "pages/308-front.jpg",
+   "back": "pages/308-back.jpg",
+   "items": [
+    {
+     "id": "own-ask-whose",
+     "label": "এটা কার?",
+     "gloss": "ask who a found everyday object belongs to"
+    },
+    {
+     "id": "own-its-mine",
+     "label": "এটা আমার",
+     "gloss": "identify an object as your own"
+    },
+    {
+     "id": "own-its-yours",
+     "label": "এটা আপনার",
+     "gloss": "tell the person you are speaking to an object belongs to them"
+    },
+    {
+     "id": "own-its-his-or-hers",
+     "label": "এটা ওনার",
+     "gloss": "indicate an object belongs to a third person using the polite possessive"
+    },
+    {
+     "id": "own-its-ours",
+     "label": "এটা আমাদের",
+     "gloss": "say an object belongs to you and your companions"
+    },
+    {
+     "id": "own-its-theirs",
+     "label": "এটা ওনাদের",
+     "gloss": "tell a listener an object belongs to a different group"
+    }
+   ],
+   "questions": [
+    "কে জানতে চাইছেন ছাতাটা কার?",
+    "এটা আপনার আর এটা ওনার, কথা দুটো কাকে নিয়ে বলি?",
+    "আপনার বাসায় কোন জিনিসটা সবাই মিলে ব্যবহার করেন?",
+    "টেবিলে রাখা চাবিটা আপনার হলে কী বলবেন?",
+    "পাশের দুইজনের ঝুড়ি চিনিয়ে দিতে কী বলবেন?",
+    "কোনো জিনিস কার বুঝতে না পারলে প্রথমে কীভাবে জিজ্ঞেস করবেন?"
+   ]
+  },
+  {
+   "id": "checking-food-ingredients-before-ordering",
+   "number": 311,
+   "title": "খাবারে কী আছে জিজ্ঞেস করি",
+   "front": "pages/311-front.jpg",
+   "back": "pages/311-back.jpg",
+   "items": [
+    {
+     "id": "meal-ask-ingredients",
+     "label": "এতে কী কী আছে?",
+     "gloss": "ask what ingredients are in a prepared dish"
+    },
+    {
+     "id": "meal-ask-peanut",
+     "label": "এতে বাদাম আছে?",
+     "gloss": "ask specifically whether a dish contains nuts"
+    },
+    {
+     "id": "meal-food-allergy",
+     "label": "আমার অ্যালার্জি আছে",
+     "gloss": "tell a food server you have an allergy"
+    },
+    {
+     "id": "meal-keep-separate",
+     "label": "আলাদা করে দেন",
+     "gloss": "ask to have an accompaniment served separately"
+    },
+    {
+     "id": "meal-no-sugar-tea",
+     "label": "চিনি ছাড়া দেন",
+     "gloss": "order a drink with no sugar"
+    },
+    {
+     "id": "meal-no-ice-drink",
+     "label": "বরফ ছাড়া দেন",
+     "gloss": "order a drink with no ice"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে চিনি দিতে মানা করছেন?",
+    "আলাদা করে দেওয়া আর একেবারেই না দেওয়ার মধ্যে কী তফাত?",
+    "আপনি চা কীভাবে খেতে পছন্দ করেন?",
+    "খাবারে বাদাম আছে কি না জানতে কী বলবেন?",
+    "ঝোল আলাদা চাইলে দোকানিকে কী বলবেন?",
+    "খাবারে কী আছে কেউ বলতে না পারলে আপনি কী করবেন?"
+   ]
+  },
+  {
+   "id": "buying-and-refilling-drinking-water",
+   "number": 312,
+   "title": "পানি ভরি আর রাখি",
+   "front": "pages/312-front.jpg",
+   "back": "pages/312-back.jpg",
+   "items": [
+    {
+     "id": "water-sealed-bottle",
+     "label": "সিল করা বোতল",
+     "gloss": "sealed bottle before opening"
+    },
+    {
+     "id": "water-broken-seal",
+     "label": "সিল খোলা",
+     "gloss": "bottle tamper seal already broken"
+    },
+    {
+     "id": "water-dispenser",
+     "label": "পানির ডিসপেনসার",
+     "gloss": "dispenser for a large drinking-water jar"
+    },
+    {
+     "id": "water-refill-bottle",
+     "label": "বোতলটা ভরে দেন",
+     "gloss": "request a refill of your bottle"
+    },
+    {
+     "id": "water-jug-delivery",
+     "label": "পানির জার",
+     "gloss": "large exchangeable drinking-water jug"
+    },
+    {
+     "id": "water-jug-exchange",
+     "label": "খালি জারটা নিয়ে যান",
+     "gloss": "ask delivery worker to collect an empty jug"
+    }
+   ],
+   "questions": [
+    "কোন বোতলের সিল খোলা?",
+    "জার আর বোতলের মধ্যে কোনটায় বেশি পানি ধরে?",
+    "আপনি বাসায় খাওয়ার পানি কীভাবে রাখেন?",
+    "বোতলটা আবার ভরতে চাইলে কী বলবেন?",
+    "পানি দিয়ে গেলে খালি জার নিতে কী বলবেন?",
+    "নতুন বোতলের সিল আগে দেখে নেওয়ার কারণ কী?"
+   ]
+  },
+  {
+   "id": "crossing-a-busy-street",
+   "number": 313,
+   "title": "রাস্তা পার হতে যা চিনি",
+   "front": "pages/313-front.jpg",
+   "back": "pages/313-back.jpg",
+   "items": [
+    {
+     "id": "street-traffic-light",
+     "label": "লাল বাতিতে থামি",
+     "gloss": "traffic light controlling road vehicles"
+    },
+    {
+     "id": "street-traffic-police",
+     "label": "পুলিশ থামতে বলছেন",
+     "gloss": "traffic police officer directing road movement"
+    },
+    {
+     "id": "street-footbridge",
+     "label": "ওপর দিয়ে পার হই",
+     "gloss": "pedestrian overpass above a busy roadway"
+    },
+    {
+     "id": "street-median",
+     "label": "রাস্তা দুই ভাগে",
+     "gloss": "raised road divider between opposing lanes"
+    },
+    {
+     "id": "street-traffic-jam",
+     "label": "গাড়ি আটকে আছে",
+     "gloss": "a line of stuck or very slow traffic"
+    },
+    {
+     "id": "street-one-way",
+     "label": "শুধু একদিকে যায়",
+     "gloss": "street where vehicles can travel only one direction"
+    }
+   ],
+   "questions": [
+    "ট্রাফিক পুলিশ কোথায়?",
+    "কোথায় ওপর দিয়ে পার হই, আর কোথায় মাঝখানটা উঁচু?",
+    "আপনার এলাকায় কোথায় বেশি জ্যাম হয়?",
+    "গাড়ির সিগন্যাল লাল হলে চালক কী করেন?",
+    "কোন ছবিতে গাড়ি শুধু একদিকে যায়?",
+    "সামনে ওপর দিয়ে পার হওয়ার পথ থাকলে কোন পথে যাবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "checking-a-route-on-foot",
+   "number": 316,
+   "title": "পথ ঠিক আছে কি না জেনে নিই",
+   "front": "pages/316-front.jpg",
+   "back": "pages/316-back.jpg",
+   "items": [
+    {
+     "id": "walking-keep-straight",
+     "label": "সোজা যেতে থাকেন",
+     "gloss": "tell someone to continue straight ahead on foot"
+    },
+    {
+     "id": "walking-turn-next-corner",
+     "label": "সামনের মোড়ে ঘুরেন",
+     "gloss": "tell someone to turn at the next corner ahead"
+    },
+    {
+     "id": "walking-not-this-lane",
+     "label": "এই রাস্তা না",
+     "gloss": "tell a walker that a lane they indicate is the wrong one"
+    },
+    {
+     "id": "walking-opposite-direction",
+     "label": "উল্টো দিকে যাচ্ছেন",
+     "gloss": "tell a person they are heading the opposite way"
+    },
+    {
+     "id": "walking-can-we-go-on-foot",
+     "label": "হেঁটে যাওয়া যাবে?",
+     "gloss": "ask whether the place is reachable on foot"
+    },
+    {
+     "id": "walking-how-much-farther",
+     "label": "আর কত দূর?",
+     "gloss": "ask how much farther a destination is"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে মানুষটা সোজা যাচ্ছে?",
+    "সোজা যেতে বলা আর সামনে ঘুরতে বলার মধ্যে কী তফাত?",
+    "আপনি কোন জায়গায় হেঁটে যান?",
+    "কেউ উল্টো দিকে গেলে তাকে কী বলবেন?",
+    "বাজার কত দূর বাকি জানতে কী জিজ্ঞেস করবেন?",
+    "নতুন রাস্তায় কেউ বললেন এই রাস্তা না, এরপর ঠিক পথ জানতে কী বলবেন?"
+   ]
+  },
+  {
+   "id": "continuing-a-first-conversation",
+   "number": 325,
+   "title": "পাশের মানুষকে চিনে নিই",
+   "front": "pages/325-front.jpg",
+   "back": "pages/325-back.jpg",
+   "items": [
+    {
+     "id": "neighbor-ask-home-area",
+     "label": "কোথায় থাকেন?",
+     "gloss": "ask where a person currently lives"
+    },
+    {
+     "id": "neighbor-answer-nearby",
+     "label": "এই পাশেই থাকি",
+     "gloss": "say you live close by"
+    },
+    {
+     "id": "neighbor-ask-where-from",
+     "label": "কোথা থেকে এসেছেন?",
+     "gloss": "ask where a new acquaintance has come from"
+    },
+    {
+     "id": "neighbor-answer-from-dhaka",
+     "label": "ঢাকা থেকে এসেছি",
+     "gloss": "say you have come from Dhaka"
+    },
+    {
+     "id": "neighbor-say-i-work-nearby",
+     "label": "কাছেই কাজ করি",
+     "gloss": "say you work nearby"
+    },
+    {
+     "id": "neighbor-say-i-study-nearby",
+     "label": "এখানে পড়াশোনা করি",
+     "gloss": "say you study locally"
+    }
+   ],
+   "questions": [
+    "কে বলছেন পাশেই থাকেন?",
+    "কোথায় থাকেন আর কোথা থেকে এসেছেন, দুটো প্রশ্নে কী তফাত?",
+    "নতুন কাউকে নিজের এলাকার কথা কীভাবে বলেন?",
+    "কেউ কোথা থেকে এসেছেন জানতে কী বলবেন?",
+    "পাশেই পড়াশোনা করেন, সেটা পরিচয়ের সময় কীভাবে বলবেন?",
+    "কারও সঙ্গে প্রথম আলাপে আপনি কোন প্রশ্ন দিয়ে শুরু করতে চান, আর কেন?"
+   ]
+  },
+  {
    "id": "where-things-are",
    "number": 13,
    "title": "জিনিস কোথায়",
@@ -3430,6 +4088,523 @@ window.PTB_DECK = {
     "ছাব্বিশ থেকে ত্রিশ পর্যন্ত কীভাবে গুনবেন?",
     "সাতাশটার সঙ্গে দুটো যোগ করলে কোন ছবি পাবেন?",
     "অনেকগুলো জিনিস অন্য কাউকে গুনে দিতে হলে কীভাবে সাজাবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "asking-about-medicine-instructions",
+   "number": 309,
+   "title": "ওষুধ নেওয়ার কথা",
+   "front": "pages/309-front.jpg",
+   "back": "pages/309-back.jpg",
+   "items": [
+    {
+     "id": "pharmacy-before-eating",
+     "label": "খাওয়ার আগে",
+     "gloss": "the time before eating a meal, as used on medicine instructions"
+    },
+    {
+     "id": "pharmacy-after-eating",
+     "label": "খাওয়ার পরে",
+     "gloss": "the time after eating a meal, as used on medicine instructions"
+    },
+    {
+     "id": "pharmacy-times-per-day",
+     "label": "দিনে কয়বার?",
+     "gloss": "ask how often during one day to use medicine"
+    },
+    {
+     "id": "pharmacy-how-many-days",
+     "label": "কত দিন খাব?",
+     "gloss": "ask how many days to take prescribed medicine"
+    },
+    {
+     "id": "pharmacy-side-effect",
+     "label": "পার্শ্বপ্রতিক্রিয়া আছে?",
+     "gloss": "ask whether medicine has side effects"
+    },
+    {
+     "id": "pharmacy-older-prescription",
+     "label": "আগের প্রেসক্রিপশন",
+     "gloss": "prescription from an earlier clinic visit"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে আগের প্রেসক্রিপশনটা আছে?",
+    "খাওয়ার আগে আর খাওয়ার পরে কোন ছবিতে ওষুধ আগে আসে?",
+    "ওষুধ কিনতে গেলে আপনি কী কী জানতে চান?",
+    "কত দিন ওষুধ খেতে হবে বুঝতে না পারলে কী বলবেন?",
+    "ওষুধে কোনো পার্শ্বপ্রতিক্রিয়া আছে কি না, কীভাবে জিজ্ঞেস করবেন?",
+    "খাওয়ার আগে না পরে মনে না থাকলে কার কাছে আবার জিজ্ঞেস করবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "taking-an-app-ride",
+   "number": 310,
+   "title": "ফোনে গাড়ি ডাকি",
+   "front": "pages/310-front.jpg",
+   "back": "pages/310-back.jpg",
+   "items": [
+    {
+     "id": "ride-app-book",
+     "label": "গাড়ি বুক করেন",
+     "gloss": "request booking a private car in a ride app"
+    },
+    {
+     "id": "ride-pickup-pin",
+     "label": "লোকেশন পিন",
+     "gloss": "map pin specifying where a driver should collect you"
+    },
+    {
+     "id": "ride-car-number-plate",
+     "label": "গাড়ির নম্বর প্লেট",
+     "gloss": "vehicle registration plate used to identify ride"
+    },
+    {
+     "id": "ride-driver-phone",
+     "label": "ড্রাইভারকে ফোন দেন",
+     "gloss": "tell someone to call the assigned driver"
+    },
+    {
+     "id": "ride-where-are-you-standing",
+     "label": "কোথায় দাঁড়িয়ে আছেন?",
+     "gloss": "ask caller where they are standing to coordinate pickup"
+    },
+    {
+     "id": "ride-at-main-gate",
+     "label": "বড় গেটের সামনে আছি",
+     "gloss": "give a main gate as a pickup landmark"
+    }
+   ],
+   "questions": [
+    "গাড়ির নম্বর প্লেটটা কোন ছবিতে?",
+    "লোকেশন পিন দেওয়া আর মুখে জায়গা বলার মধ্যে কী তফাত?",
+    "গাড়ি ডাকার পর আপনি কোথায় দাঁড়ান?",
+    "ড্রাইভারকে ফোন দিলে প্রথমে কী বলবেন?",
+    "পাশে একই রঙের দুইটা গাড়ি থাকলে নিজেরটা কী দেখে চিনবেন?",
+    "পিন ঠিক না থাকলে ড্রাইভারকে কোন চেনা জায়গার নাম বলবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "making-and-returning-phone-calls",
+   "number": 314,
+   "title": "ফোনে কাউকে পেতে চাই",
+   "front": "pages/314-front.jpg",
+   "back": "pages/314-back.jpg",
+   "items": [
+    {
+     "id": "phone-dial-the-number",
+     "label": "নম্বর ডায়াল করেন",
+     "gloss": "tell someone to dial a telephone number"
+    },
+    {
+     "id": "phone-pick-up-incoming",
+     "label": "ফোনটা ধরেন",
+     "gloss": "ask someone to answer an incoming call"
+    },
+    {
+     "id": "phone-busy-line",
+     "label": "লাইন ব্যস্ত",
+     "gloss": "report that a dialed line is busy"
+    },
+    {
+     "id": "phone-off-status",
+     "label": "ফোন বন্ধ",
+     "gloss": "report that a person's phone is switched off"
+    },
+    {
+     "id": "phone-missed-call",
+     "label": "মিসড কল",
+     "gloss": "incoming call that went unanswered"
+    },
+    {
+     "id": "phone-call-back",
+     "label": "পরে ফোন দেব",
+     "gloss": "say you will return a call later"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে ফোনটা ধরছেন?",
+    "লাইন ব্যস্ত আর ফোন বন্ধ কথার মধ্যে কী তফাত?",
+    "কাজে থাকলে মিসড কল দেখার পর আপনি কী করেন?",
+    "কাউকে একটা নম্বর ডায়াল করতে কীভাবে বলবেন?",
+    "এখন কথা বলা যাবে না, ফোনে কী বলবেন?",
+    "জরুরি কথা থাকলে ফোন বন্ধ পেয়ে আপনি এরপর কী করবেন?"
+   ]
+  },
+  {
+   "id": "checking-what-rent-includes",
+   "number": 315,
+   "title": "বাসা ভাড়ার আগে জিজ্ঞেস করি",
+   "front": "pages/315-front.jpg",
+   "back": "pages/315-back.jpg",
+   "items": [
+    {
+     "id": "rent-per-month",
+     "label": "মাসে কত ভাড়া?",
+     "gloss": "ask how much the monthly rent is"
+    },
+    {
+     "id": "rent-gas-bill",
+     "label": "গ্যাস বিল",
+     "gloss": "utility bill for residential gas"
+    },
+    {
+     "id": "rent-electricity-bill",
+     "label": "কারেন্ট বিল",
+     "gloss": "utility bill for electricity, colloquial"
+    },
+    {
+     "id": "rent-service-charge",
+     "label": "সার্ভিস চার্জ",
+     "gloss": "monthly building service fee in addition to rent"
+    },
+    {
+     "id": "rent-water-included",
+     "label": "পানির বিল কি ভাড়ার মধ্যে?",
+     "gloss": "ask whether the water bill is included in rent"
+    },
+    {
+     "id": "rent-gate-closing-time",
+     "label": "গেট কয়টায় বন্ধ হয়?",
+     "gloss": "ask what time the building gate is locked for the night"
+    }
+   ],
+   "questions": [
+    "কারেন্ট বিল কোন ছবিতে?",
+    "গ্যাস বিল আর কারেন্ট বিল কী দেখে চিনলেন?",
+    "ভাড়া নেওয়ার আগে আপনি কী কী জিজ্ঞেস করেন?",
+    "ভাড়ার সঙ্গে সার্ভিস চার্জ আছে কি না, কীভাবে জানবেন?",
+    "রাতে দেরি করে ফিরবেন, গেট নিয়ে কী প্রশ্ন করবেন?",
+    "পানির বিল আলাদা হলে মাসের খরচ জানতে আর কী জিজ্ঞেস করবেন?"
+   ]
+  },
+  {
+   "id": "reporting-repairs-to-a-landlord",
+   "number": 317,
+   "title": "বাসায় কী ঠিক করতে হবে বলি",
+   "front": "pages/317-front.jpg",
+   "back": "pages/317-back.jpg",
+   "items": [
+    {
+     "id": "repair-tap-dripping",
+     "label": "কল থেকে পানি পড়ছে",
+     "gloss": "report a tap that keeps dripping after being turned off"
+    },
+    {
+     "id": "repair-sink-not-draining",
+     "label": "পানি নামছে না",
+     "gloss": "report water standing in a sink because it will not drain"
+    },
+    {
+     "id": "repair-window-wont-close",
+     "label": "জানালা বন্ধ হয় না",
+     "gloss": "report an apartment window unable to close"
+    },
+    {
+     "id": "repair-wall-wet",
+     "label": "দেয়াল ভিজে গেছে",
+     "gloss": "report a damp patch spreading across a wall"
+    },
+    {
+     "id": "repair-come-today",
+     "label": "আজই দেখতে আসবেন?",
+     "gloss": "ask a landlord to come look at a fault today"
+    },
+    {
+     "id": "repair-when-will-it-be-fixed",
+     "label": "কখন ঠিক করে দেবেন?",
+     "gloss": "ask a tradesperson when they will fix something"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে কল থেকে পানি পড়ছে?",
+    "কল থেকে পানি পড়া আর পানি না নামার মধ্যে কী তফাত?",
+    "আপনার বাসায় কোন জিনিসটা একবার ঠিক করাতে হয়েছিল?",
+    "জানালা বন্ধ না হলে বাড়িওয়ালাকে কী বলবেন?",
+    "আজই এসে দেখতে বলবেন কীভাবে?",
+    "দেয়াল বারবার ভিজে গেলে ঠিক করার সময় নিয়ে কী কথা বলবেন?"
+   ]
+  },
+  {
+   "id": "describing-what-is-wrong-at-a-clinic",
+   "number": 318,
+   "title": "ডাক্তারকে শরীরের কথা বলি",
+   "front": "pages/318-front.jpg",
+   "back": "pages/318-back.jpg",
+   "items": [
+    {
+     "id": "symptom-watery-eyes",
+     "label": "চোখে পানি পড়ছে",
+     "gloss": "eyes watering involuntarily"
+    },
+    {
+     "id": "symptom-running-nose",
+     "label": "নাক দিয়ে পানি পড়ছে",
+     "gloss": "runny nose rather than a blocked nose"
+    },
+    {
+     "id": "symptom-breath-catching",
+     "label": "কথা বললেই হাঁপাচ্ছি",
+     "gloss": "say you get winded while talking"
+    },
+    {
+     "id": "symptom-shivering",
+     "label": "শরীর কাঁপছে",
+     "gloss": "body shivering involuntarily"
+    },
+    {
+     "id": "symptom-since-this-morning",
+     "label": "সকাল থেকে",
+     "gloss": "describe onset beginning this morning"
+    },
+    {
+     "id": "symptom-since-last-night",
+     "label": "গত রাত থেকে",
+     "gloss": "describe onset beginning last night"
+    }
+   ],
+   "questions": [
+    "কার নাক দিয়ে পানি পড়ছে?",
+    "হাঁপানো আর শরীর কাঁপার মধ্যে কী তফাত দেখছেন?",
+    "আপনি অসুস্থ হলে কখন থেকে কষ্ট হচ্ছে, সেটা কীভাবে মনে রাখেন?",
+    "চোখে পানি পড়লে ডাক্তারকে কী বলবেন?",
+    "গত রাত থেকে অসুবিধা হলে কখন থেকে বলবেন?",
+    "ডাক্তারকে কষ্টটা কখন শুরু হয়েছে বলা কেন কাজে লাগে?"
+   ]
+  },
+  {
+   "id": "receiving-a-delivery-at-home",
+   "number": 319,
+   "title": "বাসায় পার্সেল নিই",
+   "front": "pages/319-front.jpg",
+   "back": "pages/319-back.jpg",
+   "items": [
+    {
+     "id": "delivery-courier",
+     "label": "ডেলিভারির লোক",
+     "gloss": "courier delivering orders directly to a home"
+    },
+    {
+     "id": "delivery-parcel-got-here",
+     "label": "পার্সেল এসেছে",
+     "gloss": "tell someone a parcel has arrived"
+    },
+    {
+     "id": "delivery-drop-at-door",
+     "label": "দরজার সামনে রাখেন",
+     "gloss": "ask a courier to leave a parcel outside the door"
+    },
+    {
+     "id": "delivery-pick-it-up-below",
+     "label": "আমি নিচে আসছি",
+     "gloss": "tell courier you're coming downstairs to meet them"
+    },
+    {
+     "id": "delivery-package-torn",
+     "label": "প্যাকেটটা ছেঁড়া",
+     "gloss": "report visibly torn packaging"
+    },
+    {
+     "id": "delivery-wrong-parcel",
+     "label": "এটা আমার পার্সেল না",
+     "gloss": "tell a courier they brought someone else's parcel"
+    }
+   ],
+   "questions": [
+    "ডেলিভারির লোক কে?",
+    "দরজায় রাখতে বলা আর নিচে আসার মধ্যে কী তফাত?",
+    "আপনি বাসায় পার্সেল কীভাবে নেন?",
+    "প্যাকেট ছেঁড়া দেখলে কী বলবেন?",
+    "অন্য কারও পার্সেল এলে ডেলিভারির লোককে কী বলবেন?",
+    "আপনি তখন বাসায় না থাকলে পার্সেল কোথায় রাখতে বলবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "trying-on-clothes-at-a-shop",
+   "number": 320,
+   "title": "জামা কিনতে মাপ মিলাই",
+   "front": "pages/320-front.jpg",
+   "back": "pages/320-back.jpg",
+   "items": [
+    {
+     "id": "clothes-size-question",
+     "label": "এটা কী সাইজ?",
+     "gloss": "ask which size a garment is"
+    },
+    {
+     "id": "clothes-ask-bigger",
+     "label": "আরেকটু বড় সাইজ দেন",
+     "gloss": "ask a seller to show the next larger garment size"
+    },
+    {
+     "id": "clothes-try-on-question",
+     "label": "পরে দেখতে পারি?",
+     "gloss": "ask to try a garment on before buying"
+    },
+    {
+     "id": "clothes-fitting-room",
+     "label": "ট্রায়াল রুম",
+     "gloss": "enclosed shop fitting space to try clothes on"
+    },
+    {
+     "id": "clothes-fits-fine",
+     "label": "মাপ ঠিক আছে",
+     "gloss": "say a garment fits as expected"
+    },
+    {
+     "id": "clothes-try-another-color",
+     "label": "অন্য রং দেখান",
+     "gloss": "ask to see the same garment in another color"
+    }
+   ],
+   "questions": [
+    "ট্রায়াল রুমটা কোন ছবিতে?",
+    "একই মাপের অন্য রং আর বড় সাইজ, কোন দুটো ছবিতে চাইছেন?",
+    "জামা কিনলে আপনি কীভাবে মাপ মিলিয়ে নেন?",
+    "একটা জামা পরে দেখতে চাইলে কী বলবেন?",
+    "জামার মাপ ঠিক হলে দোকানিকে কী বলবেন?",
+    "মাপ ঠিক আছে কিন্তু রং পছন্দ হয় নাই, দোকানিকে কী বলবেন?"
+   ]
+  },
+  {
+   "id": "talking-at-a-meal-as-a-guest",
+   "number": 322,
+   "title": "দাওয়াতে খেতে বসে যা বলি",
+   "front": "pages/322-front.jpg",
+   "back": "pages/322-back.jpg",
+   "items": [
+    {
+     "id": "meal-invite-stay-to-eat",
+     "label": "বসে খেয়ে যান",
+     "gloss": "invite a visitor who is standing to stay and eat first"
+    },
+    {
+     "id": "meal-wash-hands-before-eating",
+     "label": "হাত ধুয়ে আসি",
+     "gloss": "say you will go wash your hands before the meal"
+    },
+    {
+     "id": "meal-offer-more-rice",
+     "label": "আরেকটু ভাত নেবেন?",
+     "gloss": "offer a guest a little more rice"
+    },
+    {
+     "id": "meal-serve-yourself",
+     "label": "নিজে নিয়ে নেন",
+     "gloss": "invite a guest to serve themselves"
+    },
+    {
+     "id": "meal-no-room-for-more",
+     "label": "আর খেতে পারব না",
+     "gloss": "politely decline more food because you have eaten enough"
+    },
+    {
+     "id": "meal-compliment-the-food",
+     "label": "খুব মজা হয়েছে",
+     "gloss": "compliment a host on how good the food tasted"
+    }
+   ],
+   "questions": [
+    "কে হাত ধুতে উঠছেন?",
+    "নিজে খাবার নেওয়া আর কাউকে ভাত তুলে দেওয়ার মধ্যে কী তফাত?",
+    "দাওয়াতে গেলে খাওয়ার আগে আপনি কী করেন?",
+    "কাউকে আরেকটু ভাত নিতে কীভাবে বলবেন?",
+    "পেট ভরে গেলে ভদ্রভাবে কী বলবেন?",
+    "রান্না ভালো লাগলে কোন খাবারের কথা বলে প্রশংসা করবেন, আর কী বলবেন?"
+   ]
+  },
+  {
+   "id": "giving-your-details-on-a-form",
+   "number": 323,
+   "title": "ফরমে নিজের তথ্য দিই",
+   "front": "pages/323-front.jpg",
+   "back": "pages/323-back.jpg",
+   "items": [
+    {
+     "id": "form-full-name",
+     "label": "পুরো নাম",
+     "gloss": "full given and family name on a form"
+    },
+    {
+     "id": "form-date-of-birth",
+     "label": "জন্মতারিখ",
+     "gloss": "calendar date on which someone was born"
+    },
+    {
+     "id": "form-phone-number",
+     "label": "ফোন নম্বর",
+     "gloss": "phone number used as a contact detail"
+    },
+    {
+     "id": "form-email-address",
+     "label": "ইমেইল ঠিকানা",
+     "gloss": "email address used as a contact detail"
+    },
+    {
+     "id": "form-present-address",
+     "label": "বর্তমান ঠিকানা",
+     "gloss": "address where you are living now"
+    },
+    {
+     "id": "form-permanent-address",
+     "label": "স্থায়ী ঠিকানা",
+     "gloss": "permanent home address used for official details"
+    }
+   ],
+   "questions": [
+    "ফোন নম্বরের ঘরটা কোন ছবিতে?",
+    "বর্তমান ঠিকানা আর স্থায়ী ঠিকানার মধ্যে কী তফাত?",
+    "কোন কাজে আপনাকে আগে ফরম পূরণ করতে হয়েছে?",
+    "কাউকে ফোন নম্বর লিখতে কী বলবেন?",
+    "জন্মতারিখ জানতে কীভাবে জিজ্ঞেস করবেন?",
+    "দুই ঠিকানা এক হলে ফরমে কী লিখবেন, আর কেন?"
+   ]
+  },
+  {
+   "id": "recognizing-atm-and-card-payment-terms",
+   "number": 324,
+   "title": "মেশিন থেকে টাকা নিই",
+   "front": "pages/324-front.jpg",
+   "back": "pages/324-back.jpg",
+   "items": [
+    {
+     "id": "cash-atm-machine",
+     "label": "এখানে টাকা তুলি",
+     "gloss": "self-service bank cash machine"
+    },
+    {
+     "id": "cash-debit-card",
+     "label": "কার্ডটা সঙ্গে এনেছি",
+     "gloss": "bank debit card used at cash machine"
+    },
+    {
+     "id": "cash-atm-pin",
+     "label": "নম্বর ঢেকে টিপেন",
+     "gloss": "secret ATM number used to authorize access"
+    },
+    {
+     "id": "cash-atm-slip",
+     "label": "রসিদটা সঙ্গে নেন",
+     "gloss": "small paper receipt printed by an ATM"
+    },
+    {
+     "id": "cash-no-cash-out",
+     "label": "টাকা বের হয় নাই",
+     "gloss": "report that an ATM did not dispense any cash"
+    },
+    {
+     "id": "cash-card-stays-inside",
+     "label": "কার্ড আটকে গেছে",
+     "gloss": "report that a machine retained a bank card"
+    }
+   ],
+   "questions": [
+    "কোন ছবিতে কার্ডটা হাতে ধরা?",
+    "রসিদ আর কার্ড দেখতে কীভাবে আলাদা?",
+    "আপনি টাকা তুলতে কোথায় যান?",
+    "মেশিন থেকে টাকা না এলে কাউকে কী বলে জানাবেন?",
+    "কার্ড মেশিনে আটকে গেলে কী বলবেন?",
+    "রসিদটা রেখে দিলে কখন কাজে লাগতে পারে?"
    ]
   },
   {
@@ -14103,4 +15278,4 @@ window.PTB_DECK = {
   }
  ]
 };
-window.PICTURE_THIS_GAME_DATA = {"home-things": ["খাট", "বালিশ", "মোড়া", "আলমারি", "পাখা", "বাতি"], "study-things": ["বই", "খাতা", "কলম", "কাঁচি", "আঠা", "খাম"], "tableware": ["থালা", "বাটি", "চামচ", "কাঁটাচামচ", "পিরিচ", "পেয়ালা"], "market-vegetables": ["আলু", "পেঁয়াজ", "বেগুন", "ফুলকপি", "শসা", "শাক"], "market-fruit": ["আম", "কলা", "পেঁপে", "আনারস", "কাঁঠাল", "আঙুর"], "lunch": ["ভাত", "রুটি", "ডাল", "ডিম", "মাছ", "মাংস"], "tea-things": ["পানি", "চা", "দুধ", "লেবু", "মধু", "গুড়"], "cooking-things": ["হাঁড়ি", "ঢাকনা", "ছুরি", "কাটার তক্তা", "কড়াই", "খুন্তি"], "pantry": ["লবণ", "চিনি", "সরিষা", "জিরা", "তেল", "ঘি"], "clothing": ["ওড়না", "শাড়ি", "লুঙ্গি", "পাঞ্জাবি", "সালোয়ার", "কামিজ"], "washing-things": ["বালতি", "বদনা", "গামছা", "সাবান", "চিরুনি", "আয়না"], "home-parts": ["দরজা", "জানালা", "সিঁড়ি", "ছাদ", "বারান্দা", "দেয়াল"], "where-things-are": ["ওপরে", "নিচে", "ভেতরে", "বাইরে", "মাঝে", "পেছনে"], "colours": ["লাল", "নীল", "সবুজ", "হলুদ", "কালো", "সাদা"], "weather": ["রোদ", "ছায়া", "বৃষ্টি", "ঝড়", "মেঘ", "কুয়াশা"], "daily-actions": ["খাওয়া", "পানি খাওয়া", "বসা", "দাঁড়ানো", "ঘুমানো", "ঘুম থেকে ওঠা"], "with-your-hands": ["খোলা", "বন্ধ করা", "ধোয়া", "মোছা", "পড়া", "লেখা"], "family": ["আব্বা", "আম্মা", "ভাইয়া", "আপু", "নানা", "নানি"], "getting-around": ["রাস্তা", "গলি", "মোড়", "পুল", "ঘাট", "নৌকা"], "feeling-unwell": ["জ্বর", "কাশি", "হাঁচি", "দাঁতে ব্যথা", "পেটে ব্যথা", "চুলকানি"], "body": ["চোখ", "কান", "নাক", "মুখ", "হাত", "পা"], "care-things": ["ওষুধ", "মলম", "তুলা", "পট্টি", "বরফ", "গরম পানির থলি"], "shopping-things": ["টাকা", "খুচরা", "দাঁড়িপাল্লা", "রসিদ", "থলে", "ঝুড়ি"], "familiar-animals": ["গরু", "ছাগল", "মুরগি", "হাঁস", "বিড়াল", "কুকুর"], "small-repairs": ["হাতুড়ি", "পেরেক", "করাত", "কাঠ", "তালা", "চাবি"], "body-movement": ["হাঁটা", "দৌড়ানো", "লাফানো", "বেয়ে ওঠা", "ঝোঁকা", "হামাগুড়ি দেওয়া"], "objects-in-motion": ["দেওয়া", "নেওয়া", "ধরা", "ছোড়া", "ঠেলা", "টানা"], "putting-things-away": ["ভাঁজ করা", "ঝোলানো", "বাঁধা", "মোড়ানো", "রাখা", "তোলা"], "cooking-actions": ["কাটা", "খোসা ছাড়ানো", "নাড়া", "ঢালা", "মাখা", "বেলা"], "snack-foods": ["মুড়ি", "চিড়া", "সিঙ্গারা", "সমুচা", "ভাপা পিঠা", "জিলাপি"], "prayer-time": ["মসজিদ", "জায়নামাজ", "নামাজ পড়া", "অজু করা", "টুপি", "তসবিহ"], "size-and-width": ["বড়", "ছোট", "লম্বা", "খাটো", "চওড়া", "সরু"], "basic-shapes": ["সমান চারকোনা", "লম্বা চারকোনা", "গোল", "ডিমের মতো", "তারার মতো", "পাঁচকোনা"], "everyday-qualities": ["পরিষ্কার", "নোংরা", "গরম", "ঠান্ডা", "ভারী", "হালকা"], "familiar-bugs": ["মশা", "পিঁপড়া", "মাছি", "তেলাপোকা", "শুঁয়োপোকা", "প্রজাপতি"], "land-and-water": ["নদী", "খাল", "পুকুর", "বিল", "পাহাড়", "বন"], "play-things": ["ঘুড়ি", "লাটিম", "তাস", "দাবার গুটি", "দোলনা", "লাফের দড়ি"], "going-out-gear": ["জুতা", "মোজা", "চশমা", "চশমার খাপ", "ছাতা", "বর্ষাতি"], "everyday-materials": ["কাগজ", "কাপড়", "কাচ", "লোহা", "মাটি", "পাথর"], "neighborhood-places": ["দোকান", "বাজার", "থানা", "স্বাস্থ্যকেন্দ্র", "ডাকঘর", "পাঠাগার"], "people-at-work": ["দোকানি", "খদ্দের", "দর্জি", "তাঁতি", "রাজমিস্ত্রি", "কাঠমিস্ত্রি"], "times-of-day": ["ভোর", "সকাল", "দুপুর", "বিকেল", "সন্ধ্যা", "রাত"], "dry-groceries": ["চাল", "আটা", "ছোলা", "শুকনা মটর", "চিনাবাদাম", "ভুট্টা"], "fire-and-fuel": ["চুলা", "কয়লা", "দিয়াশলাই", "আগুন", "ধোঁয়া", "ছাই"], "sewing-repairs": ["সুঁই", "সুতা", "বোতাম", "মাপের ফিতা", "সেলাই", "ছেঁড়া"], "jewelry-and-adornment": ["কানের দুল", "নাকফুল", "চুড়ি", "আংটি", "হার", "চুলের কাঁটা"], "household-trouble": ["চুইয়ে পড়া", "আটকে যাওয়া", "দাগ", "ছাতা পড়া", "ফাটল", "দেবে যাওয়া"], "orientation": ["উত্তর", "দক্ষিণ", "পূর্ব", "পশ্চিম", "ডানে", "বামে"], "talk-and-gesture": ["বলা", "শোনা", "হাসা", "কাঁদা", "ডাকা", "ইশারা করা"], "counting-one-to-six": ["এক", "দুই", "তিন", "চার", "পাঁচ", "ছয়"], "coming-and-going": ["আসা", "যাওয়া", "ঢোকা", "বের হওয়া", "পার হওয়া", "থামা"], "buying-and-selling": ["কেনা", "বেচা", "দাম মেটানো", "বদলে নেওয়া", "ওজন করা", "বেছে নেওয়া"], "finding-and-showing": ["খোঁজা", "খুঁজে পাওয়া", "লুকানো", "বের করা", "দেখা", "দেখানো"], "feelings-and-reactions": ["খুশি", "মন খারাপ", "ভয় পাওয়া", "অবাক হওয়া", "রাগ", "ক্লান্ত"], "amounts-and-parts": ["বেশি", "কম", "অর্ধেক", "দুই গুণ", "সব", "একটাও নেই"], "surface-and-feel": ["মসৃণ", "খসখসে", "নরম", "শক্ত", "ধারালো", "ভোঁতা"], "cleaning-tools": ["ঝাড়ু", "ময়লার বেলচা", "ময়লার পাত্র", "ছোবড়া", "ন্যাকড়া", "পাপোশ"], "building-materials": ["ইট", "বালু", "কাঁকর", "বাঁশ", "মই", "খুঁটি"], "parts-of-plants": ["ফুল", "কুঁড়ি", "বীজ", "শিকড়", "পাতা", "ডালপালা"], "roots-and-vines": ["গাজর", "মুলা", "কুমড়া", "লাউ", "বরবটি", "শিম"], "vehicles": ["গাড়ি", "বিমান", "জাহাজ", "ভেলা", "ঠেলাগাড়ি", "গরুর গাড়ি"], "rooms-and-courtyard": ["রান্নাঘর", "শোবার ঘর", "বসার ঘর", "খাবার ঘর", "গোসলখানা", "উঠান"], "useful-papers": ["চিঠি", "চিরকুট", "পরিচয়পত্র", "ছবি", "সই", "ছাপ"], "getting-water": ["কল", "নল", "নলকূপ", "কুয়া", "কলসি", "ছাঁকনি"], "winter-warmth": ["চাদর", "কাঁথা", "কম্বল", "গরম জামা", "হাতমোজা", "পশমি টুপি"], "features-of-paths": ["কাছে", "দূরে", "সোজা", "বাঁকা", "খাড়া", "ঢালু"], "dairy-foods": ["দই", "পায়েস", "মাখন", "দুধের সর", "পনির", "ছানা"], "personal-care-objects": ["রুমাল", "মিসওয়াক", "সুরমা", "মেহেদি", "নখ কাটার যন্ত্র", "ক্ষুর"], "wedding-and-invitation": ["বর", "কনে", "অতিথি", "দাওয়াত", "ফুলের তোড়া", "ফুলের মালা"], "common-birds": ["কাক", "কবুতর", "চড়ুই", "শালিক", "বক", "পেঁচা"], "laying-out-the-home": ["মশারি", "পর্দা", "চাটাই", "তোশক", "তাক", "আলনা"], "music-and-rhythm": ["বাঁশি", "একতারা", "ঢোল", "তবলা", "ঘণ্টা", "করতাল"], "seasons-in-bangladesh": ["গরমকাল", "বর্ষাকাল", "শরৎকাল", "হেমন্তকাল", "শীতকাল", "বসন্তকাল"], "drawing-materials": ["তুলি", "কালি", "খড়ি", "মোমরং", "রং মেশানোর থালা", "রঙের বাক্স"], "farm-and-field": ["ধান", "খেত", "খড়", "গোবর", "কাস্তে", "লাঙল"], "arranging-objects": ["সামনে", "পাশে", "চারপাশে", "সারিতে", "আড়াআড়ি", "লম্বালম্বি"], "doing-housework": ["ঝাড়ু দেওয়া", "ময়লা ফেলা", "বাসন মাজা", "কাপড় কাচা", "কাপড় শুকানো", "বিছানা পাতা"], "food-tastes": ["মিষ্টি", "টক", "ঝাল", "তেতো", "নোনতা", "পানসে"], "more-local-fruit": ["পেয়ারা", "জাম", "লিচু", "আমড়া", "বরই", "তরমুজ"], "aromatic-spices": ["দারুচিনি", "লবঙ্গ", "এলাচ", "গোলমরিচ", "তেজপাতা", "কাঁচা হলুদ"], "ways-of-heating-food": ["ভাজা", "সেদ্ধ করা", "ভাপ দেওয়া", "পানি ফুটানো", "সেঁকা", "দম দেওয়া"], "local-market-fish": ["ইলিশ", "রুই", "শিং মাছ", "কই", "চিংড়ি", "পুঁটি"], "grooming-actions": ["দাঁত মাজা", "দাড়ি কামানো", "চুল আঁচড়ানো", "চুল কাটা", "গোসল করা", "নখ কাটা"], "joints-and-neck": ["ঘাড়", "কাঁধ", "কনুই", "কবজি", "হাঁটু", "গোড়ালি"], "face-details": ["ঠোঁট", "দাঁত", "জিব", "গাল", "থুতনি", "কপাল"], "minor-injuries": ["কেটে যাওয়া", "পুড়ে যাওয়া", "মচকে যাওয়া", "ফুলে যাওয়া", "কালশিটে", "মাথা ঘোরা"], "storage-containers": ["বয়াম", "কৌটা", "মটকা", "পানির পিপা", "ফুলদানি", "শিশি"], "object-states": ["ভেজা", "শুকনা", "ভাঙা", "ফুটো", "উল্টানো", "চ্যাপ্টা"], "parts-and-cuts-of-food": ["টুকরা", "ফালি", "কোয়া", "আঁটি", "খোসা", "ডাঁটা"], "local-open-and-work-sites": ["খেলার মাঠ", "ফলের বাগান", "কবরস্থান", "ঈদগাহ", "ইটভাটা", "কারখানা"], "ages-of-people": ["নতুন বাচ্চা", "ছোট বাচ্চা", "কিশোর", "তরুণী", "মাঝবয়সি", "বয়স্ক"], "ramadan-and-eid": ["ইফতার", "সেহরি", "খেজুর", "ঈদের চাঁদ", "ঈদের জামা", "ঈদি"], "food-for-guests": ["বিরিয়ানি", "ভুনা খিচুড়ি", "কোরমা", "কাবাব", "জর্দা", "ফিরনি"], "features-of-streets": ["যাত্রীছাউনি", "রাস্তার বাতি", "রাস্তা পারাপারের দাগ", "পায়ে চলার পথ", "গাড়ি রাখার জায়গা", "রাস্তার নালা"], "packing-and-carrying": ["গুছানো", "ভরা", "খালি করা", "বোঝাই করা", "কাঁধে নেওয়া", "নামানো"], "mouth-and-nose-actions": ["শোঁকা", "চেখে দেখা", "কামড়ানো", "চিবানো", "গেলা", "ফুঁ দেওয়া"], "making-sounds": ["হাততালি দেওয়া", "টোকা দেওয়া", "গুনগুন করা", "বাঁশি বাজানো", "চেঁচানো", "ফিসফিস করা"], "familiar-bangladesh-trees": ["নারকেলগাছ", "সুপারিগাছ", "কলাগাছ", "তালগাছ", "বটগাছ", "বাঁশঝাড়"], "small-local-animals": ["টিকটিকি", "ব্যাঙ", "সাপ", "কচ্ছপ", "ইঁদুর", "বাদুড়"], "appearance-contrasts": ["চকচকে", "মলিন", "গাঢ়", "ফিকে", "স্বচ্ছ", "ঘোলা"], "hands-on-learning-actions": ["আঁকা", "মুছে ফেলা", "গোনা", "মাপা", "মেলানো", "আলাদা করা"], "torso-and-nails": ["বুক", "পিঠ", "কোমর", "পেট", "নাভি", "নখ"], "traditional-yard-games": ["এক্কাদোক্কা", "কানামাছি", "লুকোচুরি", "কাবাডি", "দড়ি টানাটানি", "পাঞ্জা লড়া"], "posture-and-turning": ["হেলান দেওয়া", "শোয়া", "গড়ানো", "ঘুরে দাঁড়ানো", "হাঁটু গেড়ে বসা", "উবু হয়ে বসা"], "local-trades": ["চাষি", "জেলে", "মাঝি", "মুচি", "কামার", "কুমার"], "telling-time-and-dates": ["দেয়ালঘড়ি", "হাতঘড়ি", "বালুঘড়ি", "তারিখ", "সপ্তাহ", "মাস"], "electricity-and-light": ["বিদ্যুতের তার", "বিদ্যুতের খুঁটি", "কুপি", "মোমবাতি", "বাতির বোতাম", "হাতবাতি"], "house-edges-and-fittings": ["মেঝে", "কোণা", "দোরগোড়া", "ছিটকিনি", "ফটক", "বেড়া"], "metals-and-natural-materials": ["সোনা", "রুপা", "তামা", "পিতল", "পাট", "চামড়া"], "familiar-bangladesh-flowers": ["শাপলা", "পদ্ম", "জবা", "গাঁদা", "শিউলি", "গন্ধরাজ"], "more-cooking-vegetables": ["ঢেঁড়স", "পটল", "কচু", "মিষ্টি আলু", "বাঁধাকপি", "ঝিঙে"], "people-out-on-the-street": ["যাত্রী", "চালক", "পথচারী", "পাহারাদার", "ফেরিওয়ালা", "মুটে"], "wild-bangladesh-animals": ["হাতি", "বানর", "ভালুক", "হরিণ", "বাঘ", "শিয়াল"], "preparing-food-to-serve": ["খাবার বেড়ে দেওয়া", "ভাগ করা", "ছিটানো", "চিপে রস বের করা", "ছেঁকে নেওয়া", "গুঁড়া করা"], "types-of-homes": ["কুঁড়েঘর", "মাটির ঘর", "বাঁশের ঘর", "একতলা বাড়ি", "দোতলা বাড়ি", "উঁচু দালান"], "on-the-way-actions": ["অপেক্ষা করা", "রওনা হওয়া", "পিছু নেওয়া", "পথ ছেড়ে দেওয়া", "পথ বদলানো", "পথ হারানো"], "actions-for-care": ["জ্বর মাপা", "নাড়ি দেখা", "শ্বাস নেওয়া", "ক্ষত ধোয়া", "পট্টি বাঁধা", "মলম লাগানো"], "local-cold-drinks": ["ডাবের পানি", "আখের রস", "বেলের শরবত", "লেবুপানি", "ঘোল", "বোরহানি"], "food-ripeness-and-condition": ["কাঁচা", "পাকা", "টাটকা", "বাসি", "জমাট বাঁধা", "গলে যাওয়া"], "river-work-gear": ["জাল", "পলো", "বড়শি", "ছিপ", "খালুই", "বৈঠা"], "clothing-patterns": ["ডোরাকাটা", "ঘরকাটা", "ফোঁটাওয়ালা", "ফুলের ছাপ", "সুতার নকশা", "একরঙা"], "small-facial-actions": ["চোখ টেপা", "পলক ফেলা", "হাই তোলা", "মুখ বাঁকানো", "ভুরু কুঁচকানো", "মাথা ঝাঁকানো"], "counting-seven-to-twelve": ["সাত", "আট", "নয়", "দশ", "এগারো", "বারো"], "pace-and-turn-taking": ["তাড়াতাড়ি", "ধীরে", "একসঙ্গে", "পালা করে", "একবার", "বারবার"], "river-and-coast-landforms": ["চর", "দ্বীপ", "বাঁধ", "ঝরনা", "মোহনা", "সমুদ্র"], "talking-prices-and-money": ["দরদাম করা", "টাকা গোনা", "টাকা জমানো", "দাম কমানো", "বাকি লেখা", "ভাঙতি করা"], "greeting-and-helping": ["সালাম দেওয়া", "হাত মেলানো", "জড়িয়ে ধরা", "বিদায় নেওয়া", "স্বাগত জানানো", "সাহায্য করা"], "ties-and-fasteners": ["দড়ি", "শিকল", "চুলের ফিতা", "আংটা", "চুম্বক", "কাপড়ের চিমটি"], "finger-and-palm-actions": ["খোঁচানো", "বোতাম টেপা", "চিমটি কাটা", "খামচানো", "ঘষা", "চাপ দেওয়া"], "garden-planting-actions": ["মাটি খোঁড়া", "বীজ বোনা", "পানি দেওয়া", "চারা লাগানো", "আগাছা তোলা", "সবজি পাড়া"], "repair-and-garden-tools": ["পেঁচকস", "সাঁড়াশি", "ছেনি", "শিরীষ কাগজ", "কোদাল", "খুরপি"], "traditional-household-objects": ["পিঁড়ি", "হাতপাখা", "কুলা", "চালুনি", "ডালা", "পানের বাটা"], "fabric-care-actions": ["ইস্ত্রি করা", "কুঁচি দেওয়া", "ভিজিয়ে রাখা", "নিংড়ানো", "দাগ তোলা", "রং করা"], "describing-common-symptoms": ["মাথা ব্যথা", "পিঠে ব্যথা", "গিলতে কষ্ট", "বমি", "নাক বন্ধ", "শ্বাসকষ্ট"], "local-kitchen-implements": ["চিমটা", "বঁটি", "শিলপাটা", "হামানদিস্তা", "ডেকচি", "চুলার জালি"], "more-domestic-animals": ["মহিষ", "ভেড়া", "ঘোড়া", "গাধা", "খরগোশ", "রাজহাঁস"], "more-market-fruit": ["কমলা", "জাম্বুরা", "ডালিম", "আতা", "সফেদা", "জলপাই"], "fresh-kitchen-aromatics": ["আদা", "রসুন", "কাঁচামরিচ", "পেঁয়াজপাতা", "ধনেপাতা", "পুদিনা"], "bangladesh-sweets": ["রসমালাই", "সন্দেশ", "চমচম", "লাড্ডু", "বরফি", "বাতাসা"], "people-we-know-daily": ["প্রতিবেশী", "খেলার সাথি", "সহপাঠী", "সহকর্মী", "বাড়িওয়ালা", "ভাড়াটে"], "price-age-and-depth": ["নতুন", "পুরোনো", "দামি", "সস্তা", "গভীর", "অগভীর"], "rice-from-field-to-pot": ["চারা", "ধান কাটা", "মাড়াই করা", "ধান শুকানো", "চাল ঝাড়া", "ভাত রান্না করা"], "parts-of-clothing": ["হাতা", "জামার গলা", "ঝালর", "আস্তর", "পাড়", "আঁচল"], "everyday-bodily-needs": ["খিদে লাগা", "পেট ভরা", "তেষ্টা পাওয়া", "ঘুম পাওয়া", "গরম লাগা", "শীত করা"], "things-in-the-sky": ["সূর্য", "পূর্ণিমার চাঁদ", "তারা", "রংধনু", "শিলাবৃষ্টি", "বিদ্যুৎ চমক"], "small-everyday-mishaps": ["হোঁচট খাওয়া", "পিছলে যাওয়া", "ধাক্কা খাওয়া", "ছিটকে পড়া", "বেঁকে যাওয়া", "লেগে থাকা"], "renting-and-moving-home": ["বাসা দেখতে আসা", "খালি বাসা", "ভাড়ার টাকা দেওয়া", "জামানত", "ভাড়ার চুক্তি", "বাসা বদলানো"], "extended-family-on-both-sides": ["দাদা", "দাদি", "চাচা", "চাচি", "মামা", "মামি"], "neighborhood-shop-types": ["চায়ের দোকান", "ভাতের দোকান", "ওষুধের দোকান", "নাপিতের দোকান", "মুদিদোকান", "মিষ্টির দোকান"], "marks-and-things-on-the-ground": ["কাদা", "ধুলো", "পায়ের ছাপ", "চাকার দাগ", "গর্ত", "কেঁচো"], "vegetables-for-curry-and-bhaji": ["করলা", "চিচিঙ্গা", "কাঁচা পেঁপে", "চালকুমড়া", "কাঁচকলা", "সজনে ডাঁটা"], "leafy-greens-at-market": ["পালংশাক", "লালশাক", "পুঁইশাক", "কলমিশাক", "ডাঁটাশাক", "লাউশাক"], "more-fish-from-the-market": ["রূপচাঁদা", "কাতলা", "বোয়াল", "পাবদা", "মলা", "টেংরা"], "market-stall-snacks": ["ফুচকা", "চটপটি", "ঝালমুড়ি", "পেঁয়াজু", "বেগুনি", "ডালপুরি"], "bangladesh-flour-snacks": ["পরোটা", "লুচি", "বাখরখানি", "নিমকি", "মোগলাই পরোটা", "পাউরুটি"], "working-ingredients-while-cooking": ["বাটা", "নারকেল কোরা", "ডিম ফেটানো", "আলু চটকানো", "মাড় ঝরানো", "রস জ্বাল দেওয়া"], "texture-of-food": ["মচমচে", "আঠালো", "রসালো", "ঝুরঝুরে", "থকথকে", "ফাঁপা"], "flatbread-and-serving-tools": ["তাওয়া", "বেলন", "রুটি বেলার পিঁড়ি", "নারকেল কোরানি", "রান্নার হাতা", "ঝাঁঝরি"], "door-and-window-fittings": ["জানালার শিক", "দরজার হাতল", "কবজা", "দোরের কড়া", "চৌকাঠ", "তালার ছিদ্র"], "hands-on-small-repairs": ["পেরেক ঠোকা", "করাত দিয়ে চেরা", "প্যাঁচ কষা", "ফুটো করা", "চুনকাম করা", "জোড়া লাগানো"], "more-clothes-to-wear": ["ফতুয়া", "পায়জামা", "হাতা কাটা জামা", "শাল", "পাগড়ি", "বোরকা"], "footwear-and-its-parts": ["চটি", "খড়ম", "নাগরা", "জুতার ফিতা", "জুতার তলা", "নূপুর"], "hair-on-head-and-face": ["চুল", "দাড়ি", "গোঁফ", "জুলফি", "টাক", "সিঁথি"], "small-skin-marks": ["তিল", "আঁচিল", "পুরোনো কাটা দাগ", "বলিরেখা", "মেছতা", "ফুসকুড়ি"], "food-laundry-and-garden-workers": ["রাঁধুনি", "ধোপা", "মালি", "কসাই", "মাছওয়ালা", "দুধওয়ালা"], "things-that-move-or-change": ["দুলতে থাকা", "ঘুরতে থাকা", "ভেসে থাকা", "ডুবে যাওয়া", "ফেটে যাওয়া", "নিভে যাওয়া"], "full-empty-fit-and-thickness": ["ভরতি", "ফাঁকা", "আঁটসাঁট", "ঢিলেঢালা", "পুরু", "পাতলা"], "small-everyday-measures": ["এক আঁটি", "এক মুঠো", "এক চিমটি", "এক চুমুক", "এক লোকমা", "এক ফোঁটা"], "roadside-and-homestead-trees": ["আমগাছ", "কাঁঠালগাছ", "নিমগাছ", "তেঁতুলগাছ", "শিমুলগাছ", "কদমগাছ"], "tart-and-fragrant-local-fruits": ["বেল", "তেঁতুল", "কামরাঙা", "লটকন", "ডেউয়া", "আমলকী"], "more-familiar-local-birds": ["দোয়েল", "মাছরাঙা", "ফিঙে", "কোকিল", "বাবুই", "টিয়া"], "small-pests-and-pollinators": ["উইপোকা", "ছারপোকা", "উকুন", "মাকড়সা", "মৌমাছি", "বোলতা"], "caring-for-babies-and-elders": ["মাথায় হাত বুলানো", "কোলে নেওয়া", "খাইয়ে দেওয়া", "শুইয়ে দেওয়া", "গায়ে চাদর দেওয়া", "হাত ধরে হাঁটানো"], "places-for-work-learning-and-trade": ["গরুর হাট", "মাছের আড়ত", "ধানকল", "মাদরাসা", "সেলাইঘর", "দুধের খামার"], "common-wordless-notices": ["ঢোকা মানা", "জুতা খুলে ঢোকা", "হাত ধোয়ার জায়গা", "বসার জায়গা", "পথ বন্ধ", "ময়লা ফেলা মানা"], "lights-fans-and-power": ["বাতি জ্বালানো", "বাতি নেভানো", "পাখার গতি বাড়ানো", "বিদ্যুতের তার লাগানো", "বিদ্যুতের তার খুলে রাখা", "বিদ্যুৎ চলে যাওয়া"], "bags-and-cases-for-carrying": ["বস্তা", "ঠোঙা", "পুঁটলি", "বাক্স", "তোরঙ্গ", "ঝোলা"], "mending-clothes-by-hand": ["বোতাম লাগানো", "তালি লাগানো", "সুঁইয়ে সুতা পরানো", "সুতায় গিঁট দেওয়া", "সেলাই খুলে ফেলা", "হাতা ছোট করা"], "more-actions-at-the-stove": ["পুর ভরা", "বড়া বানানো", "তেলে ফোড়ন দেওয়া", "মসলা কষানো", "আঁচ কমানো", "মাছের আঁশ ছাড়ানো"], "small-seeds-for-cooking": ["পাঁচফোড়ন", "কালোজিরা", "মেথি", "মৌরি", "পোস্তদানা", "তিলের দানা"], "edible-stems-blossoms-and-seeds": ["কচুর লতি", "কচুর মুখি", "কলার মোচা", "শালগম", "কাঁঠালের বিচি", "কুমড়ার ফুল"], "mouth-and-ear-gestures": ["মুখ হাঁ করা", "ঠোঁটে আঙুল দেওয়া", "দাঁত বের করা", "জিব বের করা", "কান পাতা", "কানে হাত চাপা"], "putting-clothes-on-and-off": ["জামা পরা", "জামা খোলা", "হাতা গোটানো", "গলায় পেঁচানো", "মাথা ঢাকা", "কোমরে গোঁজা"], "foods-served-alongside-rice": ["ভাজা ডিম", "মাছের ঝোল", "ডিমের ঝোল", "সবজি ভাজি", "ভর্তা", "আচার"], "features-for-giving-directions": ["চৌরাস্তা", "তিন রাস্তার মোড়", "গোলচত্বর", "গলির মুখ", "রাস্তার শেষ", "উড়ালপুল"], "types-of-river-boats": ["পালতোলা নৌকা", "ডিঙি", "খেয়ানৌকা", "মাছ ধরার নৌকা", "মালবাহী নৌকা", "ছইওয়ালা নৌকা"], "small-parts-of-the-face": ["চোখের পাতা", "চোখের পাপড়ি", "চোখের মণি", "কানের লতি", "নাকের ফুটো", "গালের টোল"], "small-parts-of-hands-and-feet": ["তালু", "হাতের পিঠ", "আঙুল", "বুড়ো আঙুল", "পায়ের আঙুল", "পায়ের তলা"], "polite-responses-and-requests": ["মাফ চাওয়া", "ধন্যবাদ দেওয়া", "অনুমতি চাওয়া", "হ্যাঁ বলা", "না বলা", "জোরে বলতে বলা"], "more-people-at-local-jobs": ["নাপিত", "গৃহশিক্ষক", "খবরের কাগজওয়ালা", "রংমিস্ত্রি", "মোয়াজ্জিন", "রুটিওয়ালা"], "aunts-uncles-and-nephews": ["ফুফু", "ফুফা", "খালা", "খালু", "ভাতিজা", "ভাগ্নে"], "features-around-a-mosque": ["মিনার", "গম্বুজ", "মেহরাব", "মিম্বর", "অজুখানা", "জুতার তাক"], "riverbanks-and-water-movement": ["নদীর পাড়", "স্রোত", "ঢেউ", "জোয়ার", "ভাটা", "ঘূর্ণি"], "brightness-and-clear-vision": ["আলো", "অন্ধকার", "মিটমিটে", "তীব্র আলো", "ঝাপসা", "স্পষ্ট"], "getting-around-in-the-rain": ["ঝুম বৃষ্টি", "গুঁড়ি গুঁড়ি বৃষ্টি", "রাস্তায় পানি জমা", "ছাতা মেলা", "বৃষ্টিতে ভেজা", "কাদায় পা আটকে যাওয়া"], "ways-to-keep-food": ["মাছ রোদে শুকানো", "শুঁটকি", "বরফে মাছ রাখা", "খাবার ঢেকে রাখা", "লবণ মাখিয়ে রাখা", "তেলে ডুবিয়ে রাখা"], "small-wear-and-breakage": ["জং ধরা", "পলেস্তারা খসে পড়া", "হাতল ঢিলা হওয়া", "দড়ি ছিঁড়ে যাওয়া", "গিঁট খুলে যাওয়া", "পানি উপচে পড়া"], "simple-stretching-and-footwork": ["হাত ছড়ানো", "হাত তুলে ধরা", "পা মেলে বসা", "পা ভাঁজ করে বসা", "আঙুলে ভর দিয়ে দাঁড়ানো", "পা টিপে হাঁটা"], "tree-and-stem-details": ["গাছের গুঁড়ি", "বাকল", "ডগা", "কাণ্ড", "কচি পাতা", "কাঁটা"], "materials-from-plants-and-animals": ["বেত", "নারকেলের আঁশ", "পশম", "পালক", "ঝিনুকের খোল", "মোম"], "sweet-breakfast-and-pitha": ["সুজি", "সেমাই", "খই", "মুড়কি", "চিতই পিঠা", "পাটিসাপটা"], "parts-of-a-market-fish": ["আঁশ", "মাছের কাঁটা", "ফুলকা", "পাখনা", "মাছের মাথা", "মাছের লেজ"], "six-market-pulses": ["মসুর ডাল", "মুগ ডাল", "মাষকলাই ডাল", "মটর ডাল", "খেসারি ডাল", "ছোলার ডাল"], "sending-post-and-parcels": ["ডাকবাক্স", "ডাকের ছাপ", "কাগজে মোড়ানো জিনিস", "ডাকের থলে", "নিজের ঠিকানা", "পাঠানোর ঠিকানা"], "counting-thirteen-to-eighteen": ["তেরো", "চৌদ্দ", "পনেরো", "ষোলো", "সতেরো", "আঠারো"], "baby-play-and-feeding-things": ["ঝুনঝুনি", "পুতুল", "খেলনা গাড়ি", "কাঠের ঘোড়া", "দুধ খাওয়ানোর বোতল", "বাচ্চার বুকঢাকা কাপড়"], "tree-fruit-and-sap-treats": ["নারকেল", "ডাব", "তাল", "সুপারি", "তালের শাঁস", "খেজুরের রস"], "wetland-animals-around-bangladesh": ["কাঁকড়া", "শামুক", "ঝিনুক", "কুমির", "শুশুক", "জোঁক"], "undoing-and-gathering-actions": ["গিঁট খোলা", "ছিঁড়ে ফেলা", "ছড়িয়ে দেওয়া", "গুটিয়ে নেওয়া", "ঝাঁকিয়ে নেওয়া", "ঝেড়ে ফেলা"], "rice-varieties-at-the-market": ["আতপ চাল", "সেদ্ধ চাল", "পোলাওয়ের চাল", "লাল চাল", "খুদ", "চালের গুঁড়া"], "more-neighborhood-specialty-shops": ["বইয়ের দোকান", "কাপড়ের দোকান", "জুতার দোকান", "ফলের দোকান", "ফুলের দোকান", "মাছের দোকান"], "small-places-around-the-room": ["খাটের তলা", "আলমারির ওপর", "জানালার ধার", "দরজার আড়াল", "ছাদের কিনারা", "দেয়ালের কুলুঙ্গি"], "at-a-bangladeshi-fair": ["মেলা", "নাগরদোলা", "পুতুলনাচ", "ঘোড়ার গাড়ি", "খেলনার দোকান", "মাটির খেলনা"], "making-a-clay-pot": ["মাটি মাখা", "চাকে মাটি বসানো", "পাত্রের মুখ চওড়া করা", "ভেজা পাত্র তুলে নেওয়া", "মাটির পাত্র শুকানো", "মাটির পাত্র পোড়ানো"], "plants-by-ponds-and-fields": ["কচুরিপানা", "শেওলা", "কাশফুল", "নলখাগড়া", "দূর্বা ঘাস", "শোলাগাছ"], "preparing-and-ordering-tea": ["চায়ের পাত্র", "চা পাতা", "দুধ চা", "লাল চা", "আদা চা", "লেবু চা"], "local-fabric-and-cloth-types": ["সুতি কাপড়", "রেশমি কাপড়", "মসলিন", "জামদানি", "নকশিকাঁথা", "খাদি কাপড়"], "working-with-fresh-milk": ["দুধ দোয়ানো", "দুধ ছেঁকে নেওয়া", "দুধ জ্বাল দেওয়া", "দই পাতা", "মাখন তুলে নেওয়া", "ঘি জ্বাল দেওয়া"], "helping-plants-grow": ["ডাল ছাঁটা", "গাছে কলম করা", "চারাকে খুঁটিতে বাঁধা", "ফুল তোলা", "শুকনা পাতা সরানো", "চারার টব বদলানো"], "after-meal-dishwashing": ["হাঁড়ি ভিজিয়ে রাখা", "হাঁড়ির তলা ঘষা", "থালা ধুয়ে নেওয়া", "বাটির পানি ঝরানো", "জালিতে বাসন শুকানো", "থালা একটার ওপর আরেকটা রাখা"], "plants-and-seeds-for-oil": ["সরিষার ফুল", "তিলের গাছ", "সূর্যমুখী", "চিনাবাদামের গাছ", "তিসির দানা", "চালের কুঁড়া"], "colorful-local-garden-flowers": ["গোলাপ", "বেলি ফুল", "রজনীগন্ধা", "কৃষ্ণচূড়া", "নয়নতারা", "অপরাজিতা"], "common-clinic-and-care-tools": ["জ্বর মাপার যন্ত্র", "বুক শোনার যন্ত্র", "রক্তচাপ মাপার যন্ত্র", "চোখের ওষুধ", "বগলে ভর দেওয়ার লাঠি", "দাঁত দেখার আয়না"], "close-family-relationships": ["স্বামী", "বউ", "ছেলে", "মেয়ে", "নাতি", "নাতনি"], "working-parts-of-a-boat": ["নোঙর", "হাল", "পাল", "মাস্তুল", "নৌকার পাটাতন", "নৌকার গলুই"], "washroom-fixtures-and-tools": ["হাত ধোয়ার পাত্র", "গোসলের ঝরনা", "পায়খানা", "পায়খানার ঝাড়নি", "সাবান রাখার পাত্র", "মুখ মোছার কাপড়"], "familiar-parts-of-a-car": ["গাড়ির চাকা", "গাড়ি ঘোরানোর চাকা", "পাশের আয়না", "পেছনের বাতি", "চালকের আসন", "গাড়ির সামনের কাচ"], "parts-of-a-reading-book": ["বইয়ের মলাট", "বইয়ের পিঠ", "বইয়ের পাতা", "বইয়ের ছবি", "পাতা চেনার দাগ", "সূচিপত্র"], "everyday-groups-and-pairs": ["এক জোড়া", "এক গোছা", "এক গাদা", "এক বোঝা", "এক ঝাঁক", "এক দল"], "hair-care-at-home": ["চুল শুকানোর যন্ত্র", "চুলের ঝাড়নি", "চুল ধোয়ার সাবান", "চুলের তেল", "চুলের বাঁধনি", "চুলের চিমটি"], "reading-a-bangla-newspaper": ["খবরের কাগজের প্রথম পাতা", "খবরের বড় শিরোনাম", "ছবির নিচের লেখা", "আবহাওয়ার খবর", "ছোট বিজ্ঞাপন", "খেলার খবর"], "holding-food-for-an-outing": ["খাবার নেওয়ার পাত্র", "পানির বোতল", "খাবারের ঝুড়ি", "গরম রাখার বোতল", "ঠান্ডা রাখার বাক্স", "বরফ জমানোর ছাঁচ"], "getting-through-a-crowded-place": ["সারির শেষে দাঁড়ানো", "আগে ঢুকে পড়া", "পথ আটকে দাঁড়ানো", "ফাঁক দিয়ে যাওয়া", "কাছে এগিয়ে আসা", "এক পাশে সরে যাওয়া"], "welcoming-guests-at-home": ["দরজা ধরে রাখা", "মেহমানের জন্য পাটি পাতা", "বসার আসন এগিয়ে দেওয়া", "পানি এগিয়ে দেওয়া", "খাবারের ঢাকনা সরানো", "মেহমানকে চা ঢেলে দেওয়া"], "counting-nineteen-to-twenty-four": ["উনিশ", "বিশ", "একুশ", "বাইশ", "তেইশ", "চব্বিশ"], "everyday-medicine-shop-terms": ["বড়ি", "বড়ির বোতল", "ওষুধের বাক্স", "ওষুধ মাপার চামচ", "খাওয়ার তরল ওষুধ", "ওষুধের কাগজ"], "ground-and-crushed-kitchen-spices": ["শুকনা মরিচ", "হলুদের গুঁড়া", "মরিচের গুঁড়া", "ধনে গুঁড়া", "সরিষা বাটা", "আদা বাটা"], "sewing-room-tools": ["সেলাইকল", "সুতা পেঁচানোর নলি", "সেলাইয়ের আঙুলঢাকনি", "সুঁই রাখার গদি", "সেলাইয়ের বাক্স", "জামা কাটার ছাঁদ"], "equipment-at-the-playground": ["পিছলে নামার সিঁড়ি", "ওঠানামার দোলনা", "খেলার বল", "ছোড়ার চাকতি", "খেলার জাল", "খেলার বাঁশি"], "things-on-a-performance-stage": ["মঞ্চের পর্দা", "মঞ্চের আলো", "মুখোশ", "মুকুট", "আওয়াজ বড় করার যন্ত্র", "মঞ্চে ওঠার সিঁড়ি"], "things-to-take-on-a-trip": ["পিঠের থলে", "ঘাড়ের বালিশ", "চোখ ঢাকার কাপড়", "মালে নাম লেখার চিহ্ন", "মাল মাপার যন্ত্র", "কাঁধে ঝোলানো পানির পাত্র"], "bed-linens-and-nightwear": ["লেপ", "বিছানার চাদর", "বালিশের ওয়াড়", "কোলবালিশ", "ঘুমানোর পোশাক", "মশারির খুঁটি"], "taking-and-keeping-photos": ["ছবি তোলার যন্ত্র", "ছবি তোলার কাচ", "যন্ত্র রাখার তিনপায়া", "ঝলক দেওয়ার বাতি", "ছবি রাখার বই", "ছবি বাঁধানোর কাঠ"], "parts-of-common-containers": ["বোতলের মুখ", "বোতলের ছিপি", "পেয়ালার হাতল", "হাঁড়ির হাতল", "পাত্রের তলা", "থালার কিনারা"], "buying-fabric-cut-to-size": ["কাপড় মেলে ধরা", "কাপড়ের ভাঁজ খুলে দেখা", "কাপড়ের রং মিলিয়ে দেখা", "কাপড়ে দাগ দেওয়া", "গজে কাপড় মাপা", "থান থেকে কাপড় কাটা"], "wet-cleaning-supplies": ["মেঝে মোছার ঝাড়ু", "কাচ মোছার পাত", "বাসন ধোয়ার সাবান", "বাসন মোছার কাপড়", "পানি ছিটানোর বোতল", "পানি আটকানোর হাতমোজা"], "animals-and-shells-of-the-sea": ["হাঙর", "সামুদ্রিক ঘোড়া", "ছাতামাছ", "তারামাছ", "প্রবাল", "শঙ্খ"], "small-child-care-gear": ["বাচ্চার ঠেলাগাড়ি", "বাচ্চার উঁচু আসন", "চুষনি", "কাপড়ের নেংটি", "বাচ্চার গা মোড়ানোর কাপড়", "কোলে বাঁধার কাপড়"], "ways-of-carrying-things": ["এক হাতে নেওয়া", "দুই হাতে নেওয়া", "নিচ থেকে তুলে ধরা", "মাথায় নিয়ে যাওয়া", "পিঠে বওয়া", "দুজনে ধরে নেওয়া"], "bhorta-served-with-rice": ["আলু ভর্তা", "বেগুন ভর্তা", "শুঁটকি ভর্তা", "ডাল ভর্তা", "ধনেপাতা ভর্তা", "সরিষা ভর্তা"], "ways-of-handling-money": ["জমা দেওয়া", "টাকা তোলা", "টাকা পাঠানো", "টাকা ধার নেওয়া", "ধার শোধ করা", "হিসাব মেলানো"], "organizing-paper-at-a-desk": ["কাগজ আটকানোর যন্ত্র", "কাগজের খাপ", "কাগজ ফুটো করার যন্ত্র", "কাগজ ধরার চিমটি", "কাগজ কুচি করার যন্ত্র", "কাগজ রাখার তাক"], "parts-and-problems-of-teeth": ["মাড়ি", "সামনের দাঁত", "পেছনের দাঁত", "দাঁতের ফাঁক", "দাঁতে গর্ত", "বাঁধানো দাঁত"], "cuts-at-a-bangladeshi-meat-shop": ["মুরগির রান", "মুরগির ডানা", "মুরগির কলিজা", "গরুর পাঁজর", "গরুর কিমা", "মজ্জাওয়ালা হাড়"], "street-service-vehicles": ["ময়লা নেওয়ার গাড়ি", "দমকলের গাড়ি", "রোগী নেওয়ার গাড়ি", "থানার গাড়ি", "পানি ছিটানোর গাড়ি", "মালবাহী গাড়ি"], "fire-safety-tools-around-buildings": ["আগুন নেভানোর যন্ত্র", "দমকলের নল", "আগুনের ঘণ্টা", "আগুনের খবর দেওয়ার বোতাম", "দমকলের টুপি", "আগুন ঢাকার চাদর"], "parts-of-an-everyday-umbrella": ["ছাতার কাপড়", "ছাতার শিক", "ছাতার বাঁট", "ছাতার ডাঁট", "ছাতার মাথা", "ছাতা বাঁধার ফিতা"], "ways-of-resting-and-sleeping": ["চিত হয়ে শোয়া", "উপুড় হয়ে শোয়া", "কাত হয়ে শোয়া", "নাক ডাকা", "ঢুলে পড়া", "ঘুমের মধ্যে কথা বলা"], "familiar-home-and-personal-scents": ["আতর", "গোলাপজল", "আগরবাতি", "ধূপদানি", "কর্পূর", "সুগন্ধি"], "nuts-and-dried-fruit-at-the-market": ["কাঠবাদাম", "কাজুবাদাম", "পেস্তা", "আখরোট", "কিশমিশ", "আলুবোখারা"], "objects-for-everyday-exercise": ["হাতে তোলার ওজন", "হাতলওয়ালা ওজন", "হাঁটার যন্ত্র", "ব্যায়ামের পাটি", "পা চালানোর যন্ত্র", "ব্যায়ামের টানফিতা"], "parts-inside-common-fruits": ["ফলের শাঁস", "আমের আঁটি", "আঙুরের বিচি", "লেবুর কোয়া", "আপেলের মাঝখান", "তরমুজের সাদা অংশ"], "tools-for-serving-a-meal-out": ["খাবারের তালিকা", "খাবার আনার থালা", "মরিচ পেষার কল", "চাটনির বাটি", "ঝোল রাখার পাত্র", "গরম ধরার হাতমোজা"], "writing-and-correcting-on-paper": ["লেখা কেটে দেওয়া", "বানান ঠিক করা", "দেখে দেখে লেখা", "লেখার নিচে দাগ দেওয়া", "খালি ঘর ভরা", "পাতার পাশে লেখা"], "everyday-actions-at-the-front-door": ["দরজার ঘণ্টা বাজানো", "দরজার ফুটো দিয়ে দেখা", "চাবি দিয়ে তালা খোলা", "দরজা ভেজিয়ে রাখা", "দরজা ঠেস দিয়ে রাখা", "দরজায় পা মুছে নেওয়া"], "fittings-for-a-water-line": ["নল জোড়ার প্যাঁচ", "নলের বাঁক", "কলের মাথার জালি", "কলের চাকতি", "পানি বন্ধ করার চাবি", "নলের প্যাঁচের ফিতা"], "making-and-looking-at-loaf-bread": ["খামিরের দানা", "ফুলে ওঠা খামির", "পাউরুটির ছাঁচ", "চুল্লির তক্তা", "পাউরুটির শক্ত ধার", "পাউরুটির নরম ভেতর"], "signs-around-roads-and-buildings": ["ধূমপান মানা", "এই পানি খাওয়া যাবে না", "গাড়ি রাখা মানা", "সামনে রাস্তার কাজ চলছে", "নিচে নামার পথ", "পিছলে পড়ার ভয়"], "taking-a-ride-around-town": ["গাড়ি থামাতে হাত তোলা", "গাড়িতে পা রাখা", "হাতল ধরে দাঁড়ানো", "জানালা দিয়ে বাইরে দেখা", "বসার জায়গা ছেড়ে দেওয়া", "নামার জন্য ডাকা"], "care-and-fit-of-everyday-shoes": ["জুতা চকচকে করা", "জুতার কালি", "জুতা পরিষ্কারের ঝাড়নি", "জুতায় পা ঢোকানোর পাত", "জুতার ভেতরের তলা", "জুতার গোড়া"], "people-who-service-a-home": ["পানির মিস্ত্রি", "বিদ্যুতের মিস্ত্রি", "ময়লা নেওয়ার লোক", "পোকা মারার লোক", "বাসা পরিষ্কারের লোক", "বাসা বদলের লোক"], "eyeglass-parts-and-eye-shop-objects": ["চশমার কাচ", "চশমার ডাঁটি", "নাকে ঠেকার পাটি", "চশমা মোছার কাপড়", "রোদচশমা", "চোখ মাপার ছক"], "asking-for-help-during-bangla-practice": ["আরেকবার বলেন", "একটু আস্তে বলেন", "এটার মানে কী?", "এটাকে কী বলে?", "আমি ঠিক বলেছি?", "একটু লিখে দেন"], "heights-and-reach-relative-to-the-body": ["হাতের নাগালে", "হাতের নাগালের বাইরে", "চোখের সমান", "মাথার ওপর দিয়ে", "হাঁটুপানি", "কোমরপানি"], "street-repair-equipment": ["মাটি কাটার গাড়ি", "ঢালাই মেশানোর যন্ত্র", "কাজের শক্ত টুপি", "রাস্তার কমলা চিহ্ন", "কাজের উজ্জ্বল জামা", "রাস্তা চাপার গাড়ি"], "first-conversations-with-neighbors": ["ওয়ালাইকুম আসসালাম", "কেমন আছেন?", "ভালো আছি", "আপনার নাম কী?", "আমি এখানে নতুন", "বাংলা শিখছি"], "pointing-to-things-and-places": ["এটা", "ওটা", "এগুলো", "ওগুলো", "এখানে", "ওখানে"], "first-questions-and-requests-at-a-shop": ["কত করে?", "এটা আছে?", "শেষ হয়ে গেছে", "অল্প করে দেন", "আরেকটা দেন", "থলেতে দেন"], "ordering-simple-food-and-water": ["এখানে খাব", "সঙ্গে নেব", "ঝাল কম দেন", "মাংস ছাড়া দেন", "একটু পানি দেন", "আর লাগবে না"], "counting-twenty-five-to-thirty": ["পঁচিশ", "ছাব্বিশ", "সাতাশ", "আটাশ", "উনত্রিশ", "ত্রিশ"], "finding-a-home-by-its-address": ["বাসার ঠিকানা", "রাস্তার নাম", "মহল্লা", "নিচতলা", "তিনতলার বাসা", "পাশের বাসা"], "taking-a-neighborhood-rickshaw": ["রিকশা", "রিকশাওয়ালা", "যাবেন ভাই?", "ভাড়া কত?", "দুজন যাব", "ঠিক আছে, চলেন"], "directions-with-a-bridge-and-a-turn": ["পুলের আগে", "মোড়ের পরে", "এপারে", "ওপারে", "এই রাস্তা ধরে যান", "ওই গলি দিয়ে যান"], "setting-a-day-and-a-time": ["গতকাল", "আজ", "কাল আসব", "পরশু যাব", "এখনই", "একটু পরে"], "simple-replies-when-listening": ["বুঝতে পেরেছি", "বুঝতে পারি নাই", "জানি না", "মনে আছে", "মনে পড়ছে না", "দেখি তো"], "ordinary-meals-through-the-day": ["সকালের নাশতা", "দুপুরের খাবার", "বিকেলের নাশতা", "রাতের খাবার", "তরকারি", "একসঙ্গে খাওয়া"], "noticing-when-someone-is-free": ["ব্যস্ত", "সময় আছে", "কাজ শুরু করা", "কাজ চলছে", "কাজ শেষ", "একটু বিরতি"], "pointing-out-common-pains": ["গলা ব্যথা", "কান ব্যথা", "চোখ জ্বালা", "বুক ব্যথা", "হাতে ব্যথা", "পায়ে ব্যথা"], "short-requests-to-move-an-object": ["এটা নিয়ে আসেন", "ওটা নিয়ে যান", "এখানে রেখে যান", "ফিরিয়ে দেন", "একটু সরান", "একটু ধরে রাখেন"], "everyday-likes-and-needs": ["ভালো লাগে", "ভালো লাগে না", "দরকার আছে", "দরকার নাই", "এটাই চাই", "থাক, পরে দেখব"], "reading-common-prices-in-taka": ["পঞ্চাশ টাকা", "একশ টাকা", "দুইশ টাকা", "পাঁচশ টাকা", "এক হাজার টাকা", "দুই হাজার টাকা"], "reading-hours-and-minutes": ["একটা বাজে", "সাড়ে একটা", "সোয়া দুইটা", "পৌনে তিনটা", "চারটা দশ", "পাঁচটা বাজতে দশ"], "asking-when-and-how-long": ["আজ কী বার?", "আজ কত তারিখ?", "কয়টার সময়?", "কতক্ষণ লাগবে?", "দেরি হবে", "সময়মতো"], "asking-for-urgent-everyday-help": ["একটু সাহায্য করেন", "চিকিৎসা দরকার", "থানায় খবর দেন", "বাসায় খবর দেন", "একটু বসতে দেন", "আমার সঙ্গে থাকেন"], "finding-basic-facilities-in-a-new-place": ["টয়লেট কোথায়?", "খাওয়ার পানি কোথায়?", "হাত ধোয়ার জায়গা কোথায়?", "এখানে বসতে পারি?", "বের হব কোন দিক দিয়ে?", "জুতা কোথায় রাখব?"], "exchanging-simple-messages": ["খবর পাঠান", "ছবি পাঠান", "ঠিকানা পাঠান", "কথা শুনছেন?", "কথা কেটে গেল", "দেখে জানাব"], "reporting-first-week-home-problems": ["পানি আসছে না", "গরম পানি আছে?", "পাখা চলছে না", "চাবি ঘুরছে না", "মশা ঢুকছে", "চুলা জ্বলছে না"], "people-we-mean-when-we-speak": ["আমি", "আপনি", "উনি", "আমরা", "আপনারা", "ওনারা"], "short-reactions-and-conversation-replies": ["সমস্যা নাই", "ভুল হয়েছে", "সত্যি?", "একটু দাঁড়ান", "এখন যেতে হবে", "আবার দেখা হবে"], "checking-what-to-pay-and-what-comes-back": ["মোট কত হলো?", "কিছু কম হবে?", "বাকি কত?", "ফেরত টাকা", "কাকে টাকা দেব?", "পুরোটা দিয়েছি"]};
+window.PICTURE_THIS_GAME_DATA = {"home-things": ["খাট", "বালিশ", "মোড়া", "আলমারি", "পাখা", "বাতি"], "study-things": ["বই", "খাতা", "কলম", "কাঁচি", "আঠা", "খাম"], "tableware": ["থালা", "বাটি", "চামচ", "কাঁটাচামচ", "পিরিচ", "পেয়ালা"], "market-vegetables": ["আলু", "পেঁয়াজ", "বেগুন", "ফুলকপি", "শসা", "শাক"], "market-fruit": ["আম", "কলা", "পেঁপে", "আনারস", "কাঁঠাল", "আঙুর"], "lunch": ["ভাত", "রুটি", "ডাল", "ডিম", "মাছ", "মাংস"], "tea-things": ["পানি", "চা", "দুধ", "লেবু", "মধু", "গুড়"], "cooking-things": ["হাঁড়ি", "ঢাকনা", "ছুরি", "কাটার তক্তা", "কড়াই", "খুন্তি"], "pantry": ["লবণ", "চিনি", "সরিষা", "জিরা", "তেল", "ঘি"], "clothing": ["ওড়না", "শাড়ি", "লুঙ্গি", "পাঞ্জাবি", "সালোয়ার", "কামিজ"], "washing-things": ["বালতি", "বদনা", "গামছা", "সাবান", "চিরুনি", "আয়না"], "home-parts": ["দরজা", "জানালা", "সিঁড়ি", "ছাদ", "বারান্দা", "দেয়াল"], "where-things-are": ["ওপরে", "নিচে", "ভেতরে", "বাইরে", "মাঝে", "পেছনে"], "colours": ["লাল", "নীল", "সবুজ", "হলুদ", "কালো", "সাদা"], "weather": ["রোদ", "ছায়া", "বৃষ্টি", "ঝড়", "মেঘ", "কুয়াশা"], "daily-actions": ["খাওয়া", "পানি খাওয়া", "বসা", "দাঁড়ানো", "ঘুমানো", "ঘুম থেকে ওঠা"], "with-your-hands": ["খোলা", "বন্ধ করা", "ধোয়া", "মোছা", "পড়া", "লেখা"], "family": ["আব্বা", "আম্মা", "ভাইয়া", "আপু", "নানা", "নানি"], "getting-around": ["রাস্তা", "গলি", "মোড়", "পুল", "ঘাট", "নৌকা"], "feeling-unwell": ["জ্বর", "কাশি", "হাঁচি", "দাঁতে ব্যথা", "পেটে ব্যথা", "চুলকানি"], "body": ["চোখ", "কান", "নাক", "মুখ", "হাত", "পা"], "care-things": ["ওষুধ", "মলম", "তুলা", "পট্টি", "বরফ", "গরম পানির থলি"], "shopping-things": ["টাকা", "খুচরা", "দাঁড়িপাল্লা", "রসিদ", "থলে", "ঝুড়ি"], "familiar-animals": ["গরু", "ছাগল", "মুরগি", "হাঁস", "বিড়াল", "কুকুর"], "small-repairs": ["হাতুড়ি", "পেরেক", "করাত", "কাঠ", "তালা", "চাবি"], "body-movement": ["হাঁটা", "দৌড়ানো", "লাফানো", "বেয়ে ওঠা", "ঝোঁকা", "হামাগুড়ি দেওয়া"], "objects-in-motion": ["দেওয়া", "নেওয়া", "ধরা", "ছোড়া", "ঠেলা", "টানা"], "putting-things-away": ["ভাঁজ করা", "ঝোলানো", "বাঁধা", "মোড়ানো", "রাখা", "তোলা"], "cooking-actions": ["কাটা", "খোসা ছাড়ানো", "নাড়া", "ঢালা", "মাখা", "বেলা"], "snack-foods": ["মুড়ি", "চিড়া", "সিঙ্গারা", "সমুচা", "ভাপা পিঠা", "জিলাপি"], "prayer-time": ["মসজিদ", "জায়নামাজ", "নামাজ পড়া", "অজু করা", "টুপি", "তসবিহ"], "size-and-width": ["বড়", "ছোট", "লম্বা", "খাটো", "চওড়া", "সরু"], "basic-shapes": ["সমান চারকোনা", "লম্বা চারকোনা", "গোল", "ডিমের মতো", "তারার মতো", "পাঁচকোনা"], "everyday-qualities": ["পরিষ্কার", "নোংরা", "গরম", "ঠান্ডা", "ভারী", "হালকা"], "familiar-bugs": ["মশা", "পিঁপড়া", "মাছি", "তেলাপোকা", "শুঁয়োপোকা", "প্রজাপতি"], "land-and-water": ["নদী", "খাল", "পুকুর", "বিল", "পাহাড়", "বন"], "play-things": ["ঘুড়ি", "লাটিম", "তাস", "দাবার গুটি", "দোলনা", "লাফের দড়ি"], "going-out-gear": ["জুতা", "মোজা", "চশমা", "চশমার খাপ", "ছাতা", "বর্ষাতি"], "everyday-materials": ["কাগজ", "কাপড়", "কাচ", "লোহা", "মাটি", "পাথর"], "neighborhood-places": ["দোকান", "বাজার", "থানা", "স্বাস্থ্যকেন্দ্র", "ডাকঘর", "পাঠাগার"], "people-at-work": ["দোকানি", "খদ্দের", "দর্জি", "তাঁতি", "রাজমিস্ত্রি", "কাঠমিস্ত্রি"], "times-of-day": ["ভোর", "সকাল", "দুপুর", "বিকেল", "সন্ধ্যা", "রাত"], "dry-groceries": ["চাল", "আটা", "ছোলা", "শুকনা মটর", "চিনাবাদাম", "ভুট্টা"], "fire-and-fuel": ["চুলা", "কয়লা", "দিয়াশলাই", "আগুন", "ধোঁয়া", "ছাই"], "sewing-repairs": ["সুঁই", "সুতা", "বোতাম", "মাপের ফিতা", "সেলাই", "ছেঁড়া"], "jewelry-and-adornment": ["কানের দুল", "নাকফুল", "চুড়ি", "আংটি", "হার", "চুলের কাঁটা"], "household-trouble": ["চুইয়ে পড়া", "আটকে যাওয়া", "দাগ", "ছাতা পড়া", "ফাটল", "দেবে যাওয়া"], "orientation": ["উত্তর", "দক্ষিণ", "পূর্ব", "পশ্চিম", "ডানে", "বামে"], "talk-and-gesture": ["বলা", "শোনা", "হাসা", "কাঁদা", "ডাকা", "ইশারা করা"], "counting-one-to-six": ["এক", "দুই", "তিন", "চার", "পাঁচ", "ছয়"], "coming-and-going": ["আসা", "যাওয়া", "ঢোকা", "বের হওয়া", "পার হওয়া", "থামা"], "buying-and-selling": ["কেনা", "বেচা", "দাম মেটানো", "বদলে নেওয়া", "ওজন করা", "বেছে নেওয়া"], "finding-and-showing": ["খোঁজা", "খুঁজে পাওয়া", "লুকানো", "বের করা", "দেখা", "দেখানো"], "feelings-and-reactions": ["খুশি", "মন খারাপ", "ভয় পাওয়া", "অবাক হওয়া", "রাগ", "ক্লান্ত"], "amounts-and-parts": ["বেশি", "কম", "অর্ধেক", "দুই গুণ", "সব", "একটাও নেই"], "surface-and-feel": ["মসৃণ", "খসখসে", "নরম", "শক্ত", "ধারালো", "ভোঁতা"], "cleaning-tools": ["ঝাড়ু", "ময়লার বেলচা", "ময়লার পাত্র", "ছোবড়া", "ন্যাকড়া", "পাপোশ"], "building-materials": ["ইট", "বালু", "কাঁকর", "বাঁশ", "মই", "খুঁটি"], "parts-of-plants": ["ফুল", "কুঁড়ি", "বীজ", "শিকড়", "পাতা", "ডালপালা"], "roots-and-vines": ["গাজর", "মুলা", "কুমড়া", "লাউ", "বরবটি", "শিম"], "vehicles": ["গাড়ি", "বিমান", "জাহাজ", "ভেলা", "ঠেলাগাড়ি", "গরুর গাড়ি"], "rooms-and-courtyard": ["রান্নাঘর", "শোবার ঘর", "বসার ঘর", "খাবার ঘর", "গোসলখানা", "উঠান"], "useful-papers": ["চিঠি", "চিরকুট", "পরিচয়পত্র", "ছবি", "সই", "ছাপ"], "getting-water": ["কল", "নল", "নলকূপ", "কুয়া", "কলসি", "ছাঁকনি"], "winter-warmth": ["চাদর", "কাঁথা", "কম্বল", "গরম জামা", "হাতমোজা", "পশমি টুপি"], "features-of-paths": ["কাছে", "দূরে", "সোজা", "বাঁকা", "খাড়া", "ঢালু"], "dairy-foods": ["দই", "পায়েস", "মাখন", "দুধের সর", "পনির", "ছানা"], "personal-care-objects": ["রুমাল", "মিসওয়াক", "সুরমা", "মেহেদি", "নখ কাটার যন্ত্র", "ক্ষুর"], "wedding-and-invitation": ["বর", "কনে", "অতিথি", "দাওয়াত", "ফুলের তোড়া", "ফুলের মালা"], "common-birds": ["কাক", "কবুতর", "চড়ুই", "শালিক", "বক", "পেঁচা"], "laying-out-the-home": ["মশারি", "পর্দা", "চাটাই", "তোশক", "তাক", "আলনা"], "music-and-rhythm": ["বাঁশি", "একতারা", "ঢোল", "তবলা", "ঘণ্টা", "করতাল"], "seasons-in-bangladesh": ["গরমকাল", "বর্ষাকাল", "শরৎকাল", "হেমন্তকাল", "শীতকাল", "বসন্তকাল"], "drawing-materials": ["তুলি", "কালি", "খড়ি", "মোমরং", "রং মেশানোর থালা", "রঙের বাক্স"], "farm-and-field": ["ধান", "খেত", "খড়", "গোবর", "কাস্তে", "লাঙল"], "arranging-objects": ["সামনে", "পাশে", "চারপাশে", "সারিতে", "আড়াআড়ি", "লম্বালম্বি"], "doing-housework": ["ঝাড়ু দেওয়া", "ময়লা ফেলা", "বাসন মাজা", "কাপড় কাচা", "কাপড় শুকানো", "বিছানা পাতা"], "food-tastes": ["মিষ্টি", "টক", "ঝাল", "তেতো", "নোনতা", "পানসে"], "more-local-fruit": ["পেয়ারা", "জাম", "লিচু", "আমড়া", "বরই", "তরমুজ"], "aromatic-spices": ["দারুচিনি", "লবঙ্গ", "এলাচ", "গোলমরিচ", "তেজপাতা", "কাঁচা হলুদ"], "ways-of-heating-food": ["ভাজা", "সেদ্ধ করা", "ভাপ দেওয়া", "পানি ফুটানো", "সেঁকা", "দম দেওয়া"], "local-market-fish": ["ইলিশ", "রুই", "শিং মাছ", "কই", "চিংড়ি", "পুঁটি"], "grooming-actions": ["দাঁত মাজা", "দাড়ি কামানো", "চুল আঁচড়ানো", "চুল কাটা", "গোসল করা", "নখ কাটা"], "joints-and-neck": ["ঘাড়", "কাঁধ", "কনুই", "কবজি", "হাঁটু", "গোড়ালি"], "face-details": ["ঠোঁট", "দাঁত", "জিব", "গাল", "থুতনি", "কপাল"], "minor-injuries": ["কেটে যাওয়া", "পুড়ে যাওয়া", "মচকে যাওয়া", "ফুলে যাওয়া", "কালশিটে", "মাথা ঘোরা"], "storage-containers": ["বয়াম", "কৌটা", "মটকা", "পানির পিপা", "ফুলদানি", "শিশি"], "object-states": ["ভেজা", "শুকনা", "ভাঙা", "ফুটো", "উল্টানো", "চ্যাপ্টা"], "parts-and-cuts-of-food": ["টুকরা", "ফালি", "কোয়া", "আঁটি", "খোসা", "ডাঁটা"], "local-open-and-work-sites": ["খেলার মাঠ", "ফলের বাগান", "কবরস্থান", "ঈদগাহ", "ইটভাটা", "কারখানা"], "ages-of-people": ["নতুন বাচ্চা", "ছোট বাচ্চা", "কিশোর", "তরুণী", "মাঝবয়সি", "বয়স্ক"], "ramadan-and-eid": ["ইফতার", "সেহরি", "খেজুর", "ঈদের চাঁদ", "ঈদের জামা", "ঈদি"], "food-for-guests": ["বিরিয়ানি", "ভুনা খিচুড়ি", "কোরমা", "কাবাব", "জর্দা", "ফিরনি"], "features-of-streets": ["যাত্রীছাউনি", "রাস্তার বাতি", "রাস্তা পারাপারের দাগ", "পায়ে চলার পথ", "গাড়ি রাখার জায়গা", "রাস্তার নালা"], "packing-and-carrying": ["গুছানো", "ভরা", "খালি করা", "বোঝাই করা", "কাঁধে নেওয়া", "নামানো"], "mouth-and-nose-actions": ["শোঁকা", "চেখে দেখা", "কামড়ানো", "চিবানো", "গেলা", "ফুঁ দেওয়া"], "making-sounds": ["হাততালি দেওয়া", "টোকা দেওয়া", "গুনগুন করা", "বাঁশি বাজানো", "চেঁচানো", "ফিসফিস করা"], "familiar-bangladesh-trees": ["নারকেলগাছ", "সুপারিগাছ", "কলাগাছ", "তালগাছ", "বটগাছ", "বাঁশঝাড়"], "small-local-animals": ["টিকটিকি", "ব্যাঙ", "সাপ", "কচ্ছপ", "ইঁদুর", "বাদুড়"], "appearance-contrasts": ["চকচকে", "মলিন", "গাঢ়", "ফিকে", "স্বচ্ছ", "ঘোলা"], "hands-on-learning-actions": ["আঁকা", "মুছে ফেলা", "গোনা", "মাপা", "মেলানো", "আলাদা করা"], "torso-and-nails": ["বুক", "পিঠ", "কোমর", "পেট", "নাভি", "নখ"], "traditional-yard-games": ["এক্কাদোক্কা", "কানামাছি", "লুকোচুরি", "কাবাডি", "দড়ি টানাটানি", "পাঞ্জা লড়া"], "posture-and-turning": ["হেলান দেওয়া", "শোয়া", "গড়ানো", "ঘুরে দাঁড়ানো", "হাঁটু গেড়ে বসা", "উবু হয়ে বসা"], "local-trades": ["চাষি", "জেলে", "মাঝি", "মুচি", "কামার", "কুমার"], "telling-time-and-dates": ["দেয়ালঘড়ি", "হাতঘড়ি", "বালুঘড়ি", "তারিখ", "সপ্তাহ", "মাস"], "electricity-and-light": ["বিদ্যুতের তার", "বিদ্যুতের খুঁটি", "কুপি", "মোমবাতি", "বাতির বোতাম", "হাতবাতি"], "house-edges-and-fittings": ["মেঝে", "কোণা", "দোরগোড়া", "ছিটকিনি", "ফটক", "বেড়া"], "metals-and-natural-materials": ["সোনা", "রুপা", "তামা", "পিতল", "পাট", "চামড়া"], "familiar-bangladesh-flowers": ["শাপলা", "পদ্ম", "জবা", "গাঁদা", "শিউলি", "গন্ধরাজ"], "more-cooking-vegetables": ["ঢেঁড়স", "পটল", "কচু", "মিষ্টি আলু", "বাঁধাকপি", "ঝিঙে"], "people-out-on-the-street": ["যাত্রী", "চালক", "পথচারী", "পাহারাদার", "ফেরিওয়ালা", "মুটে"], "wild-bangladesh-animals": ["হাতি", "বানর", "ভালুক", "হরিণ", "বাঘ", "শিয়াল"], "preparing-food-to-serve": ["খাবার বেড়ে দেওয়া", "ভাগ করা", "ছিটানো", "চিপে রস বের করা", "ছেঁকে নেওয়া", "গুঁড়া করা"], "types-of-homes": ["কুঁড়েঘর", "মাটির ঘর", "বাঁশের ঘর", "একতলা বাড়ি", "দোতলা বাড়ি", "উঁচু দালান"], "on-the-way-actions": ["অপেক্ষা করা", "রওনা হওয়া", "পিছু নেওয়া", "পথ ছেড়ে দেওয়া", "পথ বদলানো", "পথ হারানো"], "actions-for-care": ["জ্বর মাপা", "নাড়ি দেখা", "শ্বাস নেওয়া", "ক্ষত ধোয়া", "পট্টি বাঁধা", "মলম লাগানো"], "local-cold-drinks": ["ডাবের পানি", "আখের রস", "বেলের শরবত", "লেবুপানি", "ঘোল", "বোরহানি"], "food-ripeness-and-condition": ["কাঁচা", "পাকা", "টাটকা", "বাসি", "জমাট বাঁধা", "গলে যাওয়া"], "river-work-gear": ["জাল", "পলো", "বড়শি", "ছিপ", "খালুই", "বৈঠা"], "clothing-patterns": ["ডোরাকাটা", "ঘরকাটা", "ফোঁটাওয়ালা", "ফুলের ছাপ", "সুতার নকশা", "একরঙা"], "small-facial-actions": ["চোখ টেপা", "পলক ফেলা", "হাই তোলা", "মুখ বাঁকানো", "ভুরু কুঁচকানো", "মাথা ঝাঁকানো"], "counting-seven-to-twelve": ["সাত", "আট", "নয়", "দশ", "এগারো", "বারো"], "pace-and-turn-taking": ["তাড়াতাড়ি", "ধীরে", "একসঙ্গে", "পালা করে", "একবার", "বারবার"], "river-and-coast-landforms": ["চর", "দ্বীপ", "বাঁধ", "ঝরনা", "মোহনা", "সমুদ্র"], "talking-prices-and-money": ["দরদাম করা", "টাকা গোনা", "টাকা জমানো", "দাম কমানো", "বাকি লেখা", "ভাঙতি করা"], "greeting-and-helping": ["সালাম দেওয়া", "হাত মেলানো", "জড়িয়ে ধরা", "বিদায় নেওয়া", "স্বাগত জানানো", "সাহায্য করা"], "ties-and-fasteners": ["দড়ি", "শিকল", "চুলের ফিতা", "আংটা", "চুম্বক", "কাপড়ের চিমটি"], "finger-and-palm-actions": ["খোঁচানো", "বোতাম টেপা", "চিমটি কাটা", "খামচানো", "ঘষা", "চাপ দেওয়া"], "garden-planting-actions": ["মাটি খোঁড়া", "বীজ বোনা", "পানি দেওয়া", "চারা লাগানো", "আগাছা তোলা", "সবজি পাড়া"], "repair-and-garden-tools": ["পেঁচকস", "সাঁড়াশি", "ছেনি", "শিরীষ কাগজ", "কোদাল", "খুরপি"], "traditional-household-objects": ["পিঁড়ি", "হাতপাখা", "কুলা", "চালুনি", "ডালা", "পানের বাটা"], "fabric-care-actions": ["ইস্ত্রি করা", "কুঁচি দেওয়া", "ভিজিয়ে রাখা", "নিংড়ানো", "দাগ তোলা", "রং করা"], "describing-common-symptoms": ["মাথা ব্যথা", "পিঠে ব্যথা", "গিলতে কষ্ট", "বমি", "নাক বন্ধ", "শ্বাসকষ্ট"], "local-kitchen-implements": ["চিমটা", "বঁটি", "শিলপাটা", "হামানদিস্তা", "ডেকচি", "চুলার জালি"], "more-domestic-animals": ["মহিষ", "ভেড়া", "ঘোড়া", "গাধা", "খরগোশ", "রাজহাঁস"], "more-market-fruit": ["কমলা", "জাম্বুরা", "ডালিম", "আতা", "সফেদা", "জলপাই"], "fresh-kitchen-aromatics": ["আদা", "রসুন", "কাঁচামরিচ", "পেঁয়াজপাতা", "ধনেপাতা", "পুদিনা"], "bangladesh-sweets": ["রসমালাই", "সন্দেশ", "চমচম", "লাড্ডু", "বরফি", "বাতাসা"], "people-we-know-daily": ["প্রতিবেশী", "খেলার সাথি", "সহপাঠী", "সহকর্মী", "বাড়িওয়ালা", "ভাড়াটে"], "price-age-and-depth": ["নতুন", "পুরোনো", "দামি", "সস্তা", "গভীর", "অগভীর"], "rice-from-field-to-pot": ["চারা", "ধান কাটা", "মাড়াই করা", "ধান শুকানো", "চাল ঝাড়া", "ভাত রান্না করা"], "parts-of-clothing": ["হাতা", "জামার গলা", "ঝালর", "আস্তর", "পাড়", "আঁচল"], "everyday-bodily-needs": ["খিদে লাগা", "পেট ভরা", "তেষ্টা পাওয়া", "ঘুম পাওয়া", "গরম লাগা", "শীত করা"], "things-in-the-sky": ["সূর্য", "পূর্ণিমার চাঁদ", "তারা", "রংধনু", "শিলাবৃষ্টি", "বিদ্যুৎ চমক"], "small-everyday-mishaps": ["হোঁচট খাওয়া", "পিছলে যাওয়া", "ধাক্কা খাওয়া", "ছিটকে পড়া", "বেঁকে যাওয়া", "লেগে থাকা"], "renting-and-moving-home": ["বাসা দেখতে আসা", "খালি বাসা", "ভাড়ার টাকা দেওয়া", "জামানত", "ভাড়ার চুক্তি", "বাসা বদলানো"], "extended-family-on-both-sides": ["দাদা", "দাদি", "চাচা", "চাচি", "মামা", "মামি"], "neighborhood-shop-types": ["চায়ের দোকান", "ভাতের দোকান", "ওষুধের দোকান", "নাপিতের দোকান", "মুদিদোকান", "মিষ্টির দোকান"], "marks-and-things-on-the-ground": ["কাদা", "ধুলো", "পায়ের ছাপ", "চাকার দাগ", "গর্ত", "কেঁচো"], "vegetables-for-curry-and-bhaji": ["করলা", "চিচিঙ্গা", "কাঁচা পেঁপে", "চালকুমড়া", "কাঁচকলা", "সজনে ডাঁটা"], "leafy-greens-at-market": ["পালংশাক", "লালশাক", "পুঁইশাক", "কলমিশাক", "ডাঁটাশাক", "লাউশাক"], "more-fish-from-the-market": ["রূপচাঁদা", "কাতলা", "বোয়াল", "পাবদা", "মলা", "টেংরা"], "market-stall-snacks": ["ফুচকা", "চটপটি", "ঝালমুড়ি", "পেঁয়াজু", "বেগুনি", "ডালপুরি"], "bangladesh-flour-snacks": ["পরোটা", "লুচি", "বাখরখানি", "নিমকি", "মোগলাই পরোটা", "পাউরুটি"], "working-ingredients-while-cooking": ["বাটা", "নারকেল কোরা", "ডিম ফেটানো", "আলু চটকানো", "মাড় ঝরানো", "রস জ্বাল দেওয়া"], "texture-of-food": ["মচমচে", "আঠালো", "রসালো", "ঝুরঝুরে", "থকথকে", "ফাঁপা"], "flatbread-and-serving-tools": ["তাওয়া", "বেলন", "রুটি বেলার পিঁড়ি", "নারকেল কোরানি", "রান্নার হাতা", "ঝাঁঝরি"], "door-and-window-fittings": ["জানালার শিক", "দরজার হাতল", "কবজা", "দোরের কড়া", "চৌকাঠ", "তালার ছিদ্র"], "hands-on-small-repairs": ["পেরেক ঠোকা", "করাত দিয়ে চেরা", "প্যাঁচ কষা", "ফুটো করা", "চুনকাম করা", "জোড়া লাগানো"], "more-clothes-to-wear": ["ফতুয়া", "পায়জামা", "হাতা কাটা জামা", "শাল", "পাগড়ি", "বোরকা"], "footwear-and-its-parts": ["চটি", "খড়ম", "নাগরা", "জুতার ফিতা", "জুতার তলা", "নূপুর"], "hair-on-head-and-face": ["চুল", "দাড়ি", "গোঁফ", "জুলফি", "টাক", "সিঁথি"], "small-skin-marks": ["তিল", "আঁচিল", "পুরোনো কাটা দাগ", "বলিরেখা", "মেছতা", "ফুসকুড়ি"], "food-laundry-and-garden-workers": ["রাঁধুনি", "ধোপা", "মালি", "কসাই", "মাছওয়ালা", "দুধওয়ালা"], "things-that-move-or-change": ["দুলতে থাকা", "ঘুরতে থাকা", "ভেসে থাকা", "ডুবে যাওয়া", "ফেটে যাওয়া", "নিভে যাওয়া"], "full-empty-fit-and-thickness": ["ভরতি", "ফাঁকা", "আঁটসাঁট", "ঢিলেঢালা", "পুরু", "পাতলা"], "small-everyday-measures": ["এক আঁটি", "এক মুঠো", "এক চিমটি", "এক চুমুক", "এক লোকমা", "এক ফোঁটা"], "roadside-and-homestead-trees": ["আমগাছ", "কাঁঠালগাছ", "নিমগাছ", "তেঁতুলগাছ", "শিমুলগাছ", "কদমগাছ"], "tart-and-fragrant-local-fruits": ["বেল", "তেঁতুল", "কামরাঙা", "লটকন", "ডেউয়া", "আমলকী"], "more-familiar-local-birds": ["দোয়েল", "মাছরাঙা", "ফিঙে", "কোকিল", "বাবুই", "টিয়া"], "small-pests-and-pollinators": ["উইপোকা", "ছারপোকা", "উকুন", "মাকড়সা", "মৌমাছি", "বোলতা"], "caring-for-babies-and-elders": ["মাথায় হাত বুলানো", "কোলে নেওয়া", "খাইয়ে দেওয়া", "শুইয়ে দেওয়া", "গায়ে চাদর দেওয়া", "হাত ধরে হাঁটানো"], "places-for-work-learning-and-trade": ["গরুর হাট", "মাছের আড়ত", "ধানকল", "মাদরাসা", "সেলাইঘর", "দুধের খামার"], "common-wordless-notices": ["ঢোকা মানা", "জুতা খুলে ঢোকা", "হাত ধোয়ার জায়গা", "বসার জায়গা", "পথ বন্ধ", "ময়লা ফেলা মানা"], "lights-fans-and-power": ["বাতি জ্বালানো", "বাতি নেভানো", "পাখার গতি বাড়ানো", "বিদ্যুতের তার লাগানো", "বিদ্যুতের তার খুলে রাখা", "বিদ্যুৎ চলে যাওয়া"], "bags-and-cases-for-carrying": ["বস্তা", "ঠোঙা", "পুঁটলি", "বাক্স", "তোরঙ্গ", "ঝোলা"], "mending-clothes-by-hand": ["বোতাম লাগানো", "তালি লাগানো", "সুঁইয়ে সুতা পরানো", "সুতায় গিঁট দেওয়া", "সেলাই খুলে ফেলা", "হাতা ছোট করা"], "more-actions-at-the-stove": ["পুর ভরা", "বড়া বানানো", "তেলে ফোড়ন দেওয়া", "মসলা কষানো", "আঁচ কমানো", "মাছের আঁশ ছাড়ানো"], "small-seeds-for-cooking": ["পাঁচফোড়ন", "কালোজিরা", "মেথি", "মৌরি", "পোস্তদানা", "তিলের দানা"], "edible-stems-blossoms-and-seeds": ["কচুর লতি", "কচুর মুখি", "কলার মোচা", "শালগম", "কাঁঠালের বিচি", "কুমড়ার ফুল"], "mouth-and-ear-gestures": ["মুখ হাঁ করা", "ঠোঁটে আঙুল দেওয়া", "দাঁত বের করা", "জিব বের করা", "কান পাতা", "কানে হাত চাপা"], "putting-clothes-on-and-off": ["জামা পরা", "জামা খোলা", "হাতা গোটানো", "গলায় পেঁচানো", "মাথা ঢাকা", "কোমরে গোঁজা"], "foods-served-alongside-rice": ["ভাজা ডিম", "মাছের ঝোল", "ডিমের ঝোল", "সবজি ভাজি", "ভর্তা", "আচার"], "features-for-giving-directions": ["চৌরাস্তা", "তিন রাস্তার মোড়", "গোলচত্বর", "গলির মুখ", "রাস্তার শেষ", "উড়ালপুল"], "types-of-river-boats": ["পালতোলা নৌকা", "ডিঙি", "খেয়ানৌকা", "মাছ ধরার নৌকা", "মালবাহী নৌকা", "ছইওয়ালা নৌকা"], "small-parts-of-the-face": ["চোখের পাতা", "চোখের পাপড়ি", "চোখের মণি", "কানের লতি", "নাকের ফুটো", "গালের টোল"], "small-parts-of-hands-and-feet": ["তালু", "হাতের পিঠ", "আঙুল", "বুড়ো আঙুল", "পায়ের আঙুল", "পায়ের তলা"], "polite-responses-and-requests": ["মাফ চাওয়া", "ধন্যবাদ দেওয়া", "অনুমতি চাওয়া", "হ্যাঁ বলা", "না বলা", "জোরে বলতে বলা"], "more-people-at-local-jobs": ["নাপিত", "গৃহশিক্ষক", "খবরের কাগজওয়ালা", "রংমিস্ত্রি", "মোয়াজ্জিন", "রুটিওয়ালা"], "aunts-uncles-and-nephews": ["ফুফু", "ফুফা", "খালা", "খালু", "ভাতিজা", "ভাগ্নে"], "features-around-a-mosque": ["মিনার", "গম্বুজ", "মেহরাব", "মিম্বর", "অজুখানা", "জুতার তাক"], "riverbanks-and-water-movement": ["নদীর পাড়", "স্রোত", "ঢেউ", "জোয়ার", "ভাটা", "ঘূর্ণি"], "brightness-and-clear-vision": ["আলো", "অন্ধকার", "মিটমিটে", "তীব্র আলো", "ঝাপসা", "স্পষ্ট"], "getting-around-in-the-rain": ["ঝুম বৃষ্টি", "গুঁড়ি গুঁড়ি বৃষ্টি", "রাস্তায় পানি জমা", "ছাতা মেলা", "বৃষ্টিতে ভেজা", "কাদায় পা আটকে যাওয়া"], "ways-to-keep-food": ["মাছ রোদে শুকানো", "শুঁটকি", "বরফে মাছ রাখা", "খাবার ঢেকে রাখা", "লবণ মাখিয়ে রাখা", "তেলে ডুবিয়ে রাখা"], "small-wear-and-breakage": ["জং ধরা", "পলেস্তারা খসে পড়া", "হাতল ঢিলা হওয়া", "দড়ি ছিঁড়ে যাওয়া", "গিঁট খুলে যাওয়া", "পানি উপচে পড়া"], "simple-stretching-and-footwork": ["হাত ছড়ানো", "হাত তুলে ধরা", "পা মেলে বসা", "পা ভাঁজ করে বসা", "আঙুলে ভর দিয়ে দাঁড়ানো", "পা টিপে হাঁটা"], "tree-and-stem-details": ["গাছের গুঁড়ি", "বাকল", "ডগা", "কাণ্ড", "কচি পাতা", "কাঁটা"], "materials-from-plants-and-animals": ["বেত", "নারকেলের আঁশ", "পশম", "পালক", "ঝিনুকের খোল", "মোম"], "sweet-breakfast-and-pitha": ["সুজি", "সেমাই", "খই", "মুড়কি", "চিতই পিঠা", "পাটিসাপটা"], "parts-of-a-market-fish": ["আঁশ", "মাছের কাঁটা", "ফুলকা", "পাখনা", "মাছের মাথা", "মাছের লেজ"], "six-market-pulses": ["মসুর ডাল", "মুগ ডাল", "মাষকলাই ডাল", "মটর ডাল", "খেসারি ডাল", "ছোলার ডাল"], "sending-post-and-parcels": ["ডাকবাক্স", "ডাকের ছাপ", "কাগজে মোড়ানো জিনিস", "ডাকের থলে", "নিজের ঠিকানা", "পাঠানোর ঠিকানা"], "counting-thirteen-to-eighteen": ["তেরো", "চৌদ্দ", "পনেরো", "ষোলো", "সতেরো", "আঠারো"], "baby-play-and-feeding-things": ["ঝুনঝুনি", "পুতুল", "খেলনা গাড়ি", "কাঠের ঘোড়া", "দুধ খাওয়ানোর বোতল", "বাচ্চার বুকঢাকা কাপড়"], "tree-fruit-and-sap-treats": ["নারকেল", "ডাব", "তাল", "সুপারি", "তালের শাঁস", "খেজুরের রস"], "wetland-animals-around-bangladesh": ["কাঁকড়া", "শামুক", "ঝিনুক", "কুমির", "শুশুক", "জোঁক"], "undoing-and-gathering-actions": ["গিঁট খোলা", "ছিঁড়ে ফেলা", "ছড়িয়ে দেওয়া", "গুটিয়ে নেওয়া", "ঝাঁকিয়ে নেওয়া", "ঝেড়ে ফেলা"], "rice-varieties-at-the-market": ["আতপ চাল", "সেদ্ধ চাল", "পোলাওয়ের চাল", "লাল চাল", "খুদ", "চালের গুঁড়া"], "more-neighborhood-specialty-shops": ["বইয়ের দোকান", "কাপড়ের দোকান", "জুতার দোকান", "ফলের দোকান", "ফুলের দোকান", "মাছের দোকান"], "small-places-around-the-room": ["খাটের তলা", "আলমারির ওপর", "জানালার ধার", "দরজার আড়াল", "ছাদের কিনারা", "দেয়ালের কুলুঙ্গি"], "at-a-bangladeshi-fair": ["মেলা", "নাগরদোলা", "পুতুলনাচ", "ঘোড়ার গাড়ি", "খেলনার দোকান", "মাটির খেলনা"], "making-a-clay-pot": ["মাটি মাখা", "চাকে মাটি বসানো", "পাত্রের মুখ চওড়া করা", "ভেজা পাত্র তুলে নেওয়া", "মাটির পাত্র শুকানো", "মাটির পাত্র পোড়ানো"], "plants-by-ponds-and-fields": ["কচুরিপানা", "শেওলা", "কাশফুল", "নলখাগড়া", "দূর্বা ঘাস", "শোলাগাছ"], "preparing-and-ordering-tea": ["চায়ের পাত্র", "চা পাতা", "দুধ চা", "লাল চা", "আদা চা", "লেবু চা"], "local-fabric-and-cloth-types": ["সুতি কাপড়", "রেশমি কাপড়", "মসলিন", "জামদানি", "নকশিকাঁথা", "খাদি কাপড়"], "working-with-fresh-milk": ["দুধ দোয়ানো", "দুধ ছেঁকে নেওয়া", "দুধ জ্বাল দেওয়া", "দই পাতা", "মাখন তুলে নেওয়া", "ঘি জ্বাল দেওয়া"], "helping-plants-grow": ["ডাল ছাঁটা", "গাছে কলম করা", "চারাকে খুঁটিতে বাঁধা", "ফুল তোলা", "শুকনা পাতা সরানো", "চারার টব বদলানো"], "after-meal-dishwashing": ["হাঁড়ি ভিজিয়ে রাখা", "হাঁড়ির তলা ঘষা", "থালা ধুয়ে নেওয়া", "বাটির পানি ঝরানো", "জালিতে বাসন শুকানো", "থালা একটার ওপর আরেকটা রাখা"], "plants-and-seeds-for-oil": ["সরিষার ফুল", "তিলের গাছ", "সূর্যমুখী", "চিনাবাদামের গাছ", "তিসির দানা", "চালের কুঁড়া"], "colorful-local-garden-flowers": ["গোলাপ", "বেলি ফুল", "রজনীগন্ধা", "কৃষ্ণচূড়া", "নয়নতারা", "অপরাজিতা"], "common-clinic-and-care-tools": ["জ্বর মাপার যন্ত্র", "বুক শোনার যন্ত্র", "রক্তচাপ মাপার যন্ত্র", "চোখের ওষুধ", "বগলে ভর দেওয়ার লাঠি", "দাঁত দেখার আয়না"], "close-family-relationships": ["স্বামী", "বউ", "ছেলে", "মেয়ে", "নাতি", "নাতনি"], "working-parts-of-a-boat": ["নোঙর", "হাল", "পাল", "মাস্তুল", "নৌকার পাটাতন", "নৌকার গলুই"], "washroom-fixtures-and-tools": ["হাত ধোয়ার পাত্র", "গোসলের ঝরনা", "পায়খানা", "পায়খানার ঝাড়নি", "সাবান রাখার পাত্র", "মুখ মোছার কাপড়"], "familiar-parts-of-a-car": ["গাড়ির চাকা", "গাড়ি ঘোরানোর চাকা", "পাশের আয়না", "পেছনের বাতি", "চালকের আসন", "গাড়ির সামনের কাচ"], "parts-of-a-reading-book": ["বইয়ের মলাট", "বইয়ের পিঠ", "বইয়ের পাতা", "বইয়ের ছবি", "পাতা চেনার দাগ", "সূচিপত্র"], "everyday-groups-and-pairs": ["এক জোড়া", "এক গোছা", "এক গাদা", "এক বোঝা", "এক ঝাঁক", "এক দল"], "hair-care-at-home": ["চুল শুকানোর যন্ত্র", "চুলের ঝাড়নি", "চুল ধোয়ার সাবান", "চুলের তেল", "চুলের বাঁধনি", "চুলের চিমটি"], "reading-a-bangla-newspaper": ["খবরের কাগজের প্রথম পাতা", "খবরের বড় শিরোনাম", "ছবির নিচের লেখা", "আবহাওয়ার খবর", "ছোট বিজ্ঞাপন", "খেলার খবর"], "holding-food-for-an-outing": ["খাবার নেওয়ার পাত্র", "পানির বোতল", "খাবারের ঝুড়ি", "গরম রাখার বোতল", "ঠান্ডা রাখার বাক্স", "বরফ জমানোর ছাঁচ"], "getting-through-a-crowded-place": ["সারির শেষে দাঁড়ানো", "আগে ঢুকে পড়া", "পথ আটকে দাঁড়ানো", "ফাঁক দিয়ে যাওয়া", "কাছে এগিয়ে আসা", "এক পাশে সরে যাওয়া"], "welcoming-guests-at-home": ["দরজা ধরে রাখা", "মেহমানের জন্য পাটি পাতা", "বসার আসন এগিয়ে দেওয়া", "পানি এগিয়ে দেওয়া", "খাবারের ঢাকনা সরানো", "মেহমানকে চা ঢেলে দেওয়া"], "counting-nineteen-to-twenty-four": ["উনিশ", "বিশ", "একুশ", "বাইশ", "তেইশ", "চব্বিশ"], "everyday-medicine-shop-terms": ["বড়ি", "বড়ির বোতল", "ওষুধের বাক্স", "ওষুধ মাপার চামচ", "খাওয়ার তরল ওষুধ", "ওষুধের কাগজ"], "ground-and-crushed-kitchen-spices": ["শুকনা মরিচ", "হলুদের গুঁড়া", "মরিচের গুঁড়া", "ধনে গুঁড়া", "সরিষা বাটা", "আদা বাটা"], "sewing-room-tools": ["সেলাইকল", "সুতা পেঁচানোর নলি", "সেলাইয়ের আঙুলঢাকনি", "সুঁই রাখার গদি", "সেলাইয়ের বাক্স", "জামা কাটার ছাঁদ"], "equipment-at-the-playground": ["পিছলে নামার সিঁড়ি", "ওঠানামার দোলনা", "খেলার বল", "ছোড়ার চাকতি", "খেলার জাল", "খেলার বাঁশি"], "things-on-a-performance-stage": ["মঞ্চের পর্দা", "মঞ্চের আলো", "মুখোশ", "মুকুট", "আওয়াজ বড় করার যন্ত্র", "মঞ্চে ওঠার সিঁড়ি"], "things-to-take-on-a-trip": ["পিঠের থলে", "ঘাড়ের বালিশ", "চোখ ঢাকার কাপড়", "মালে নাম লেখার চিহ্ন", "মাল মাপার যন্ত্র", "কাঁধে ঝোলানো পানির পাত্র"], "bed-linens-and-nightwear": ["লেপ", "বিছানার চাদর", "বালিশের ওয়াড়", "কোলবালিশ", "ঘুমানোর পোশাক", "মশারির খুঁটি"], "taking-and-keeping-photos": ["ছবি তোলার যন্ত্র", "ছবি তোলার কাচ", "যন্ত্র রাখার তিনপায়া", "ঝলক দেওয়ার বাতি", "ছবি রাখার বই", "ছবি বাঁধানোর কাঠ"], "parts-of-common-containers": ["বোতলের মুখ", "বোতলের ছিপি", "পেয়ালার হাতল", "হাঁড়ির হাতল", "পাত্রের তলা", "থালার কিনারা"], "buying-fabric-cut-to-size": ["কাপড় মেলে ধরা", "কাপড়ের ভাঁজ খুলে দেখা", "কাপড়ের রং মিলিয়ে দেখা", "কাপড়ে দাগ দেওয়া", "গজে কাপড় মাপা", "থান থেকে কাপড় কাটা"], "wet-cleaning-supplies": ["মেঝে মোছার ঝাড়ু", "কাচ মোছার পাত", "বাসন ধোয়ার সাবান", "বাসন মোছার কাপড়", "পানি ছিটানোর বোতল", "পানি আটকানোর হাতমোজা"], "animals-and-shells-of-the-sea": ["হাঙর", "সামুদ্রিক ঘোড়া", "ছাতামাছ", "তারামাছ", "প্রবাল", "শঙ্খ"], "small-child-care-gear": ["বাচ্চার ঠেলাগাড়ি", "বাচ্চার উঁচু আসন", "চুষনি", "কাপড়ের নেংটি", "বাচ্চার গা মোড়ানোর কাপড়", "কোলে বাঁধার কাপড়"], "ways-of-carrying-things": ["এক হাতে নেওয়া", "দুই হাতে নেওয়া", "নিচ থেকে তুলে ধরা", "মাথায় নিয়ে যাওয়া", "পিঠে বওয়া", "দুজনে ধরে নেওয়া"], "bhorta-served-with-rice": ["আলু ভর্তা", "বেগুন ভর্তা", "শুঁটকি ভর্তা", "ডাল ভর্তা", "ধনেপাতা ভর্তা", "সরিষা ভর্তা"], "ways-of-handling-money": ["জমা দেওয়া", "টাকা তোলা", "টাকা পাঠানো", "টাকা ধার নেওয়া", "ধার শোধ করা", "হিসাব মেলানো"], "organizing-paper-at-a-desk": ["কাগজ আটকানোর যন্ত্র", "কাগজের খাপ", "কাগজ ফুটো করার যন্ত্র", "কাগজ ধরার চিমটি", "কাগজ কুচি করার যন্ত্র", "কাগজ রাখার তাক"], "parts-and-problems-of-teeth": ["মাড়ি", "সামনের দাঁত", "পেছনের দাঁত", "দাঁতের ফাঁক", "দাঁতে গর্ত", "বাঁধানো দাঁত"], "cuts-at-a-bangladeshi-meat-shop": ["মুরগির রান", "মুরগির ডানা", "মুরগির কলিজা", "গরুর পাঁজর", "গরুর কিমা", "মজ্জাওয়ালা হাড়"], "street-service-vehicles": ["ময়লা নেওয়ার গাড়ি", "দমকলের গাড়ি", "রোগী নেওয়ার গাড়ি", "থানার গাড়ি", "পানি ছিটানোর গাড়ি", "মালবাহী গাড়ি"], "fire-safety-tools-around-buildings": ["আগুন নেভানোর যন্ত্র", "দমকলের নল", "আগুনের ঘণ্টা", "আগুনের খবর দেওয়ার বোতাম", "দমকলের টুপি", "আগুন ঢাকার চাদর"], "parts-of-an-everyday-umbrella": ["ছাতার কাপড়", "ছাতার শিক", "ছাতার বাঁট", "ছাতার ডাঁট", "ছাতার মাথা", "ছাতা বাঁধার ফিতা"], "ways-of-resting-and-sleeping": ["চিত হয়ে শোয়া", "উপুড় হয়ে শোয়া", "কাত হয়ে শোয়া", "নাক ডাকা", "ঢুলে পড়া", "ঘুমের মধ্যে কথা বলা"], "familiar-home-and-personal-scents": ["আতর", "গোলাপজল", "আগরবাতি", "ধূপদানি", "কর্পূর", "সুগন্ধি"], "nuts-and-dried-fruit-at-the-market": ["কাঠবাদাম", "কাজুবাদাম", "পেস্তা", "আখরোট", "কিশমিশ", "আলুবোখারা"], "objects-for-everyday-exercise": ["হাতে তোলার ওজন", "হাতলওয়ালা ওজন", "হাঁটার যন্ত্র", "ব্যায়ামের পাটি", "পা চালানোর যন্ত্র", "ব্যায়ামের টানফিতা"], "parts-inside-common-fruits": ["ফলের শাঁস", "আমের আঁটি", "আঙুরের বিচি", "লেবুর কোয়া", "আপেলের মাঝখান", "তরমুজের সাদা অংশ"], "tools-for-serving-a-meal-out": ["খাবারের তালিকা", "খাবার আনার থালা", "মরিচ পেষার কল", "চাটনির বাটি", "ঝোল রাখার পাত্র", "গরম ধরার হাতমোজা"], "writing-and-correcting-on-paper": ["লেখা কেটে দেওয়া", "বানান ঠিক করা", "দেখে দেখে লেখা", "লেখার নিচে দাগ দেওয়া", "খালি ঘর ভরা", "পাতার পাশে লেখা"], "everyday-actions-at-the-front-door": ["দরজার ঘণ্টা বাজানো", "দরজার ফুটো দিয়ে দেখা", "চাবি দিয়ে তালা খোলা", "দরজা ভেজিয়ে রাখা", "দরজা ঠেস দিয়ে রাখা", "দরজায় পা মুছে নেওয়া"], "fittings-for-a-water-line": ["নল জোড়ার প্যাঁচ", "নলের বাঁক", "কলের মাথার জালি", "কলের চাকতি", "পানি বন্ধ করার চাবি", "নলের প্যাঁচের ফিতা"], "making-and-looking-at-loaf-bread": ["খামিরের দানা", "ফুলে ওঠা খামির", "পাউরুটির ছাঁচ", "চুল্লির তক্তা", "পাউরুটির শক্ত ধার", "পাউরুটির নরম ভেতর"], "signs-around-roads-and-buildings": ["ধূমপান মানা", "এই পানি খাওয়া যাবে না", "গাড়ি রাখা মানা", "সামনে রাস্তার কাজ চলছে", "নিচে নামার পথ", "পিছলে পড়ার ভয়"], "taking-a-ride-around-town": ["গাড়ি থামাতে হাত তোলা", "গাড়িতে পা রাখা", "হাতল ধরে দাঁড়ানো", "জানালা দিয়ে বাইরে দেখা", "বসার জায়গা ছেড়ে দেওয়া", "নামার জন্য ডাকা"], "care-and-fit-of-everyday-shoes": ["জুতা চকচকে করা", "জুতার কালি", "জুতা পরিষ্কারের ঝাড়নি", "জুতায় পা ঢোকানোর পাত", "জুতার ভেতরের তলা", "জুতার গোড়া"], "people-who-service-a-home": ["পানির মিস্ত্রি", "বিদ্যুতের মিস্ত্রি", "ময়লা নেওয়ার লোক", "পোকা মারার লোক", "বাসা পরিষ্কারের লোক", "বাসা বদলের লোক"], "eyeglass-parts-and-eye-shop-objects": ["চশমার কাচ", "চশমার ডাঁটি", "নাকে ঠেকার পাটি", "চশমা মোছার কাপড়", "রোদচশমা", "চোখ মাপার ছক"], "asking-for-help-during-bangla-practice": ["আরেকবার বলেন", "একটু আস্তে বলেন", "এটার মানে কী?", "এটাকে কী বলে?", "আমি ঠিক বলেছি?", "একটু লিখে দেন"], "heights-and-reach-relative-to-the-body": ["হাতের নাগালে", "হাতের নাগালের বাইরে", "চোখের সমান", "মাথার ওপর দিয়ে", "হাঁটুপানি", "কোমরপানি"], "street-repair-equipment": ["মাটি কাটার গাড়ি", "ঢালাই মেশানোর যন্ত্র", "কাজের শক্ত টুপি", "রাস্তার কমলা চিহ্ন", "কাজের উজ্জ্বল জামা", "রাস্তা চাপার গাড়ি"], "first-conversations-with-neighbors": ["ওয়ালাইকুম আসসালাম", "কেমন আছেন?", "ভালো আছি", "আপনার নাম কী?", "আমি এখানে নতুন", "বাংলা শিখছি"], "pointing-to-things-and-places": ["এটা", "ওটা", "এগুলো", "ওগুলো", "এখানে", "ওখানে"], "first-questions-and-requests-at-a-shop": ["কত করে?", "এটা আছে?", "শেষ হয়ে গেছে", "অল্প করে দেন", "আরেকটা দেন", "থলেতে দেন"], "ordering-simple-food-and-water": ["এখানে খাব", "সঙ্গে নেব", "ঝাল কম দেন", "মাংস ছাড়া দেন", "একটু পানি দেন", "আর লাগবে না"], "counting-twenty-five-to-thirty": ["পঁচিশ", "ছাব্বিশ", "সাতাশ", "আটাশ", "উনত্রিশ", "ত্রিশ"], "finding-a-home-by-its-address": ["বাসার ঠিকানা", "রাস্তার নাম", "মহল্লা", "নিচতলা", "তিনতলার বাসা", "পাশের বাসা"], "taking-a-neighborhood-rickshaw": ["রিকশা", "রিকশাওয়ালা", "যাবেন ভাই?", "ভাড়া কত?", "দুজন যাব", "ঠিক আছে, চলেন"], "directions-with-a-bridge-and-a-turn": ["পুলের আগে", "মোড়ের পরে", "এপারে", "ওপারে", "এই রাস্তা ধরে যান", "ওই গলি দিয়ে যান"], "setting-a-day-and-a-time": ["গতকাল", "আজ", "কাল আসব", "পরশু যাব", "এখনই", "একটু পরে"], "simple-replies-when-listening": ["বুঝতে পেরেছি", "বুঝতে পারি নাই", "জানি না", "মনে আছে", "মনে পড়ছে না", "দেখি তো"], "ordinary-meals-through-the-day": ["সকালের নাশতা", "দুপুরের খাবার", "বিকেলের নাশতা", "রাতের খাবার", "তরকারি", "একসঙ্গে খাওয়া"], "noticing-when-someone-is-free": ["ব্যস্ত", "সময় আছে", "কাজ শুরু করা", "কাজ চলছে", "কাজ শেষ", "একটু বিরতি"], "pointing-out-common-pains": ["গলা ব্যথা", "কান ব্যথা", "চোখ জ্বালা", "বুক ব্যথা", "হাতে ব্যথা", "পায়ে ব্যথা"], "short-requests-to-move-an-object": ["এটা নিয়ে আসেন", "ওটা নিয়ে যান", "এখানে রেখে যান", "ফিরিয়ে দেন", "একটু সরান", "একটু ধরে রাখেন"], "everyday-likes-and-needs": ["ভালো লাগে", "ভালো লাগে না", "দরকার আছে", "দরকার নাই", "এটাই চাই", "থাক, পরে দেখব"], "reading-common-prices-in-taka": ["পঞ্চাশ টাকা", "একশ টাকা", "দুইশ টাকা", "পাঁচশ টাকা", "এক হাজার টাকা", "দুই হাজার টাকা"], "reading-hours-and-minutes": ["একটা বাজে", "সাড়ে একটা", "সোয়া দুইটা", "পৌনে তিনটা", "চারটা দশ", "পাঁচটা বাজতে দশ"], "asking-when-and-how-long": ["আজ কী বার?", "আজ কত তারিখ?", "কয়টার সময়?", "কতক্ষণ লাগবে?", "দেরি হবে", "সময়মতো"], "asking-for-urgent-everyday-help": ["একটু সাহায্য করেন", "চিকিৎসা দরকার", "থানায় খবর দেন", "বাসায় খবর দেন", "একটু বসতে দেন", "আমার সঙ্গে থাকেন"], "finding-basic-facilities-in-a-new-place": ["টয়লেট কোথায়?", "খাওয়ার পানি কোথায়?", "হাত ধোয়ার জায়গা কোথায়?", "এখানে বসতে পারি?", "বের হব কোন দিক দিয়ে?", "জুতা কোথায় রাখব?"], "exchanging-simple-messages": ["খবর পাঠান", "ছবি পাঠান", "ঠিকানা পাঠান", "কথা শুনছেন?", "কথা কেটে গেল", "দেখে জানাব"], "reporting-first-week-home-problems": ["পানি আসছে না", "গরম পানি আছে?", "পাখা চলছে না", "চাবি ঘুরছে না", "মশা ঢুকছে", "চুলা জ্বলছে না"], "people-we-mean-when-we-speak": ["আমি", "আপনি", "উনি", "আমরা", "আপনারা", "ওনারা"], "short-reactions-and-conversation-replies": ["সমস্যা নাই", "ভুল হয়েছে", "সত্যি?", "একটু দাঁড়ান", "এখন যেতে হবে", "আবার দেখা হবে"], "checking-what-to-pay-and-what-comes-back": ["মোট কত হলো?", "কিছু কম হবে?", "বাকি কত?", "ফেরত টাকা", "কাকে টাকা দেব?", "পুরোটা দিয়েছি"], "taking-a-local-bus": ["বাস এসে গেছে", "এখানে বাস ধরব", "কোথায় টিকিট কাটব?", "টিকিটটা রেখে দেন", "জানালার পাশে বসব", "ভাড়াটা নেন"], "asking-where-a-bus-goes": ["এই বাস কোথায় যায়?", "বাসটা এখানে থামে?", "বাস বদলাতে হবে?", "কোনো সিট খালি আছে?", "পরের স্টপে নামব", "এখানেই নামিয়ে দেন"], "paying-a-shop-with-a-phone": ["বিকাশে দেব", "নম্বরটা বলেন", "কিউআর কোড স্ক্যান করেন", "টাকা যায় নাই", "টাকা পেয়েছেন?", "নগদ টাকা দেব"], "finding-your-way-at-a-clinic": ["আগে কোথায় নাম লিখাব?", "ডাক্তার দেখাতে এসেছি", "নার্সকে ডাকেন", "রোগী বসে আছেন", "আমার পালা কখন?", "এখানে অপেক্ষা করেন"], "public-washroom-essentials": ["টিস্যুটা দেন", "হাত ধোয়ার সাবান", "পানি ছাড়ার বোতাম", "নল দিয়ে ধুই", "ভেতরে লোক আছে", "এটা খালি আছে"], "buying-groceries-to-cook": ["আধা কেজি", "এক কেজি", "ছোট প্যাকেট", "খোলা ডাল আছে?", "মাছটা কেটে দেন", "মাথাটা আলাদা দেন"], "finding-your-way-into-an-apartment": ["লিফট", "একতলা ওপরে", "একতলা নিচে", "ফ্ল্যাট নম্বর", "আমি মেহমান", "ভেতরে আসব?"], "working-out-whose-things-they-are": ["এটা কার?", "এটা আমার", "এটা আপনার", "এটা ওনার", "এটা আমাদের", "এটা ওনাদের"], "asking-about-medicine-instructions": ["খাওয়ার আগে", "খাওয়ার পরে", "দিনে কয়বার?", "কত দিন খাব?", "পার্শ্বপ্রতিক্রিয়া আছে?", "আগের প্রেসক্রিপশন"], "taking-an-app-ride": ["গাড়ি বুক করেন", "লোকেশন পিন", "গাড়ির নম্বর প্লেট", "ড্রাইভারকে ফোন দেন", "কোথায় দাঁড়িয়ে আছেন?", "বড় গেটের সামনে আছি"], "checking-food-ingredients-before-ordering": ["এতে কী কী আছে?", "এতে বাদাম আছে?", "আমার অ্যালার্জি আছে", "আলাদা করে দেন", "চিনি ছাড়া দেন", "বরফ ছাড়া দেন"], "buying-and-refilling-drinking-water": ["সিল করা বোতল", "সিল খোলা", "পানির ডিসপেনসার", "বোতলটা ভরে দেন", "পানির জার", "খালি জারটা নিয়ে যান"], "crossing-a-busy-street": ["লাল বাতিতে থামি", "পুলিশ থামতে বলছেন", "ওপর দিয়ে পার হই", "রাস্তা দুই ভাগে", "গাড়ি আটকে আছে", "শুধু একদিকে যায়"], "making-and-returning-phone-calls": ["নম্বর ডায়াল করেন", "ফোনটা ধরেন", "লাইন ব্যস্ত", "ফোন বন্ধ", "মিসড কল", "পরে ফোন দেব"], "checking-what-rent-includes": ["মাসে কত ভাড়া?", "গ্যাস বিল", "কারেন্ট বিল", "সার্ভিস চার্জ", "পানির বিল কি ভাড়ার মধ্যে?", "গেট কয়টায় বন্ধ হয়?"], "checking-a-route-on-foot": ["সোজা যেতে থাকেন", "সামনের মোড়ে ঘুরেন", "এই রাস্তা না", "উল্টো দিকে যাচ্ছেন", "হেঁটে যাওয়া যাবে?", "আর কত দূর?"], "reporting-repairs-to-a-landlord": ["কল থেকে পানি পড়ছে", "পানি নামছে না", "জানালা বন্ধ হয় না", "দেয়াল ভিজে গেছে", "আজই দেখতে আসবেন?", "কখন ঠিক করে দেবেন?"], "describing-what-is-wrong-at-a-clinic": ["চোখে পানি পড়ছে", "নাক দিয়ে পানি পড়ছে", "কথা বললেই হাঁপাচ্ছি", "শরীর কাঁপছে", "সকাল থেকে", "গত রাত থেকে"], "receiving-a-delivery-at-home": ["ডেলিভারির লোক", "পার্সেল এসেছে", "দরজার সামনে রাখেন", "আমি নিচে আসছি", "প্যাকেটটা ছেঁড়া", "এটা আমার পার্সেল না"], "trying-on-clothes-at-a-shop": ["এটা কী সাইজ?", "আরেকটু বড় সাইজ দেন", "পরে দেখতে পারি?", "ট্রায়াল রুম", "মাপ ঠিক আছে", "অন্য রং দেখান"], "knowing-common-city-transport": ["ট্রেন ছেড়ে যাচ্ছে", "ওপর দিয়ে চলে", "সিএনজি", "অটো", "পা দিয়ে চালাই", "হোন্ডা"], "talking-at-a-meal-as-a-guest": ["বসে খেয়ে যান", "হাত ধুয়ে আসি", "আরেকটু ভাত নেবেন?", "নিজে নিয়ে নেন", "আর খেতে পারব না", "খুব মজা হয়েছে"], "giving-your-details-on-a-form": ["পুরো নাম", "জন্মতারিখ", "ফোন নম্বর", "ইমেইল ঠিকানা", "বর্তমান ঠিকানা", "স্থায়ী ঠিকানা"], "recognizing-atm-and-card-payment-terms": ["এখানে টাকা তুলি", "কার্ডটা সঙ্গে এনেছি", "নম্বর ঢেকে টিপেন", "রসিদটা সঙ্গে নেন", "টাকা বের হয় নাই", "কার্ড আটকে গেছে"], "continuing-a-first-conversation": ["কোথায় থাকেন?", "এই পাশেই থাকি", "কোথা থেকে এসেছেন?", "ঢাকা থেকে এসেছি", "কাছেই কাজ করি", "এখানে পড়াশোনা করি"]};

@@ -137,6 +137,62 @@
    "tier": 1
   },
   {
+   "id": "taking-a-local-bus",
+   "tier": 1
+  },
+  {
+   "id": "asking-where-a-bus-goes",
+   "tier": 1
+  },
+  {
+   "id": "knowing-common-city-transport",
+   "tier": 1
+  },
+  {
+   "id": "paying-a-shop-with-a-phone",
+   "tier": 1
+  },
+  {
+   "id": "finding-your-way-at-a-clinic",
+   "tier": 1
+  },
+  {
+   "id": "public-washroom-essentials",
+   "tier": 1
+  },
+  {
+   "id": "buying-groceries-to-cook",
+   "tier": 1
+  },
+  {
+   "id": "finding-your-way-into-an-apartment",
+   "tier": 1
+  },
+  {
+   "id": "working-out-whose-things-they-are",
+   "tier": 1
+  },
+  {
+   "id": "checking-food-ingredients-before-ordering",
+   "tier": 1
+  },
+  {
+   "id": "buying-and-refilling-drinking-water",
+   "tier": 1
+  },
+  {
+   "id": "crossing-a-busy-street",
+   "tier": 1
+  },
+  {
+   "id": "checking-a-route-on-foot",
+   "tier": 1
+  },
+  {
+   "id": "continuing-a-first-conversation",
+   "tier": 1
+  },
+  {
    "id": "where-things-are",
    "tier": 2
   },
@@ -298,6 +354,50 @@
   },
   {
    "id": "counting-twenty-five-to-thirty",
+   "tier": 2
+  },
+  {
+   "id": "asking-about-medicine-instructions",
+   "tier": 2
+  },
+  {
+   "id": "taking-an-app-ride",
+   "tier": 2
+  },
+  {
+   "id": "making-and-returning-phone-calls",
+   "tier": 2
+  },
+  {
+   "id": "checking-what-rent-includes",
+   "tier": 2
+  },
+  {
+   "id": "reporting-repairs-to-a-landlord",
+   "tier": 2
+  },
+  {
+   "id": "describing-what-is-wrong-at-a-clinic",
+   "tier": 2
+  },
+  {
+   "id": "receiving-a-delivery-at-home",
+   "tier": 2
+  },
+  {
+   "id": "trying-on-clothes-at-a-shop",
+   "tier": 2
+  },
+  {
+   "id": "talking-at-a-meal-as-a-guest",
+   "tier": 2
+  },
+  {
+   "id": "giving-your-details-on-a-form",
+   "tier": 2
+  },
+  {
+   "id": "recognizing-atm-and-card-payment-terms",
    "tier": 2
   },
   {
