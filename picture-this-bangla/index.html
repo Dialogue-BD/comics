@@ -13,7 +13,7 @@
   <meta name="theme-color" content="#f8fafc">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <title>Picture This! বাংলা — Bhasha BhAI</title>
+  <title>Vocab Vai বাংলা — Bhasha BhAI</title>
   <style>
     :root {
       color-scheme: light;
@@ -145,26 +145,21 @@
       white-space: nowrap;
     }
 
-    /* Full Bhasha BhAI logo (bubbles with the stacked wordmark under them, light-background version).
-       The header bar must not grow: negative margins let the logo use part of the bar's own padding
-       while taking up only the original 42px of layout, so it is as large as the bar allows. */
+    /* Bhasha BhAI logomark (the two bubbles); the wordmark image sits beside it in .brand-copy */
     .brand-mark {
       flex: 0 0 auto;
       width: auto;
-      height: 50px;
-      margin: -4px 0;
+      height: 40px;
       object-fit: contain;
     }
 
-    /* The wordmark is in the logo now, so the text name is kept for screen readers only */
-    .brand-name.visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      clip: rect(0 0 0 0);
-      white-space: nowrap;
+    /* "Bhasha BhAI" wordmark (traced lettering from the logo), with "Vocab Vai বাংলা" under it */
+    .brand-wordmark {
+      display: block;
+      width: auto;
+      height: 20px;
     }
+
 
     .side-pill {
       display: inline-flex;
@@ -1666,9 +1661,10 @@
       .topbar { gap: 8px; padding-inline: max(10px, env(safe-area-inset-left)) max(10px, env(safe-area-inset-right)); }
       .topbar-right { gap: 4px; }
       .brand { gap: 6px; }
-      .brand-mark { width: auto; height: 42px; margin: -5px 0; }
-      /* Phones: no room beside the logo for the activity line; keep it for screen readers */
-      .brand-copy { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+      .brand-mark { width: auto; height: 30px; }
+      /* Phones: the wordmark shrinks to whatever room the buttons leave (up to 120px wide) */
+      .brand-copy { flex: 1 1 auto; }
+      .brand-wordmark { width: 100%; max-width: 120px; height: auto; }
       .back-arrow { display: none; }
       .brand-name { font-size: .81rem; }
       .brand-activity { font-size: .67rem; }
@@ -1679,14 +1675,13 @@
 
     @media (max-width: 375px) {
       .brand { gap: 3px; }
-      .brand-mark { width: auto; height: 42px; margin: -5px 0; }
-      .brand-activity .ptb-bn { display: none; }
+      .brand-mark { width: auto; height: 26px; }
       .app.nurturer-play .game-score-chip { display: none; }
     }
 
     @media (max-width: 350px) {
       .topbar { gap: 6px; padding-inline: max(8px, env(safe-area-inset-left)) max(8px, env(safe-area-inset-right)); }
-      .brand-mark { width: auto; height: 40px; margin: -5px 0; }
+      .brand-mark { width: auto; height: 22px; }
       .topbar-right { gap: 2px; }
     }
 
@@ -1863,11 +1858,11 @@
       <div class="brand">
         <a class="activity-back" href="../index.html" aria-label="Back to Dialogue activities" title="Back to Dialogue activities">
           <span class="back-arrow" aria-hidden="true">←</span>
-          <img class="brand-mark" src="brand/svg/01A-Bhasha-BhAI-Logo-On-Light.svg" alt="Bhasha BhAI" width="46" height="50">
+          <img class="brand-mark" src="brand/svg/03A-Bhasha-BhAI-Logomark.svg" alt="" width="57" height="40">
         </a>
         <span class="brand-copy">
-          <strong class="brand-name visually-hidden">Bhasha BhAI</strong>
-          <span class="brand-activity">Picture This! <span lang="bn" class="ptb-bn">বাংলা</span></span>
+          <img class="brand-wordmark" src="brand/svg/06A-Bhasha-BhAI-Wordmark-On-Light.svg" alt="Bhasha BhAI" width="154" height="20">
+          <span class="brand-activity">Vocab Vai <span lang="bn" class="ptb-bn">বাংলা</span></span>
         </span>
       </div>
       <div class="topbar-right">
@@ -1879,7 +1874,7 @@
           <span class="icon" id="theme-button-icon" aria-hidden="true">🗂️</span>
           <span class="text" id="theme-button-text">Themes</span>
         </button>
-        <button class="view-toggle game-menu-button" id="game-menu-button" type="button" aria-label="Choose a Picture This game" title="Games">
+        <button class="view-toggle game-menu-button" id="game-menu-button" type="button" aria-label="Choose a game" title="Games">
           <span class="icon">🎯</span>
           <span class="text">Games</span>
         </button>
@@ -2392,7 +2387,7 @@
         "find-pair": "Find the pair",
         "name-link": "Name the link",
         "audio-match": "Audio match"
-      }[gameMode] || "Picture This!";
+      }[gameMode] || "Vocab Vai";
     }
 
     function nurturerAudioSrc(id) {
@@ -3326,7 +3321,7 @@
       applyTransform(0, 0);
       if (gameMode !== "browse") resetGameRound();
       updateSideUI(false);
-      document.title = `${gameMode === "browse" ? current.title : gameModeName()} — Picture This! · Bhasha BhAI`;
+      document.title = `${gameMode === "browse" ? current.title : gameModeName()} — Vocab Vai · Bhasha BhAI`;
       try { localStorage.setItem("picture-this-bangla-last-card-id", cards[index].id); } catch (_) {}
       if (announce) status.textContent = gameMode === "browse" ? `New card: ${current.title}.` : `New ${gameModeName().toLocaleLowerCase()} card: ${current.title}.`;
     }

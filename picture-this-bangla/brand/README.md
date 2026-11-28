@@ -21,13 +21,14 @@ Minor improvements only:
 | `01C` / `01D` | One-ink black / white |
 | `02A`–`02D`, `02-…-Adaptive` | Horizontal lockup (mark + one-line wordmark) |
 | `03A` / `03B` / `03C` | Logomark (two bubbles) — colour, black, white |
+| `06A`–`06D`, `06-…-Adaptive` | Wordmark alone ("Bhasha BhAI", traced lettering) — on light, on dark, black, white, adaptive |
 | `04-…-Favicon` + `icons/favicon.*` | Browser tab icon |
 | `05-…-App-Icon` + `icons/app-icon-*.png` | Home-screen / apple-touch icon |
 | `00M-…-Master-Sheet` | Every variant on light, dark and one-ink grounds |
 
 Folders: `vectorcraft/` (native VectorCraft documents), `svg/`, `pdf/`, `icons/`. High-res PNGs are not kept in the repo; export them from the SVGs or VectorCraft.
 
-On the deck page: the header uses the full stacked logo, `svg/01A-Bhasha-BhAI-Logo-On-Light.svg`, sized to fit inside the existing header bar (50px; 40–42px on phones) without making the bar taller (the page is always light, so not the adaptive file); the tab icon is `icons/favicon.svg` (with `icons/favicon.ico` as fallback) and the home-screen icon is `icons/app-icon-180.png`.
+On the deck page: the header uses the logomark `svg/03A-Bhasha-BhAI-Logomark.svg` with the wordmark `svg/06A-Bhasha-BhAI-Wordmark-On-Light.svg` beside it and "Vocab Vai বাংলা" under the wordmark, all inside the original header bar (the page is always light, so not the adaptive files); the tab icon is `icons/favicon.svg` (with `icons/favicon.ico` as fallback) and the home-screen icon is `icons/app-icon-180.png`.
 
 Colours: bubbles `#8AC95A → #22B26C`, overlap `#2AAA4B → #138540`, ভ and "AI" in the bubbles `#003615`,
 wordmark `#033A17` (light) / `#F3F8EE` (dark), wordmark "AI" `#4ABA52 → #27A24C` (light) / `#7DD67C → #45C46A` (dark).
