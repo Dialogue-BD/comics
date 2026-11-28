@@ -607,6 +607,42 @@
       pointer-events: none;
     }
 
+    /* Coach Me! picture tiles (Tim, 28 Nov): the word list is hidden in Coach Me!, which left
+       a blank band at the bottom of the card. Instead, each of the six pictures is cropped out
+       of the front image and laid out as a tile that fills the card below the title. Crops and
+       tile positions are measured from each card's image at run time (applyCoachTiles), so new
+       cards need nothing extra. If measuring fails the card keeps the old layout. */
+    .item-grid.is-nurturer-mode.has-coach-tiles::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: var(--coach-panel-top, 9%);
+      background: #fff;
+      pointer-events: none;
+    }
+    .item-grid.is-nurturer-mode.has-coach-tiles .item-cell {
+      left: var(--tile-l);
+      top: var(--tile-t);
+      width: var(--tile-w);
+      height: var(--tile-h);
+      border-radius: 14px;
+    }
+    .item-grid.is-nurturer-mode.has-coach-tiles .item-cell::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 14px;
+      background-image: var(--coach-front);
+      background-repeat: no-repeat;
+      background-size: var(--pic-size) auto;
+      background-position: var(--pic-x) var(--pic-y);
+      /* White parts of the picture take on the tile's hover / found / recast tint. */
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+
     .item-listen-grid {
       position: absolute;
       z-index: 8;
@@ -3800,6 +3836,144 @@
       updateScoreChip();
     }
 
+    // Coach Me! picture tiles (Tim, 28 Nov). Every card front uses the same template: a title,
+    // six pictures in template cells (48% × 24%, rows at 8/32/56%), and the word list below.
+    // Coach Me! hides the word list, so we crop each picture out of its cell and lay the six
+    // crops out as tiles that fill the card below the title. One crop size per card, so all
+    // six pictures stay at the same scale. Measured once per image and cached.
+    const COACH_TEMPLATE_CELLS = [[1, 8], [51, 8], [1, 32], [51, 32], [1, 56], [51, 56]];
+    const coachTileCache = new Map();
+    let coachTileToken = 0;
+
+    function computeCoachTiles(img) {
+      const W = 412;
+      const H = Math.round(W * img.naturalHeight / img.naturalWidth);
+      const canvas = document.createElement("canvas");
+      canvas.width = W;
+      canvas.height = H;
+      const context = canvas.getContext("2d", { willReadFrequently: true });
+      context.drawImage(img, 0, 0, W, H);
+      const pixels = context.getImageData(0, 0, W, H).data;
+      const ink = new Uint8Array(W * H);
+      for (let p = 0, i = 0; p < ink.length; p++, i += 4) {
+        ink[p] = pixels[i] * .299 + pixels[i + 1] * .587 + pixels[i + 2] * .114 < 235 ? 1 : 0;
+      }
+      const rowHasInk = (y, x0, x1) => {
+        for (let x = x0; x < x1; x++) if (ink[y * W + x]) return true;
+        return false;
+      };
+
+      // Title: the first run of ink from the top, ended by a blank gap of at least 1% height.
+      const px0 = Math.round(W * .095);
+      const px1 = Math.round(W * .905);
+      const gapRows = Math.max(2, Math.round(H * .01));
+      const maxTitle = Math.round(H * .14);
+      let y = 0;
+      while (y < maxTitle && !rowHasInk(y, px0, px1)) y++;
+      let titleBottom = y;
+      let blank = 0;
+      for (; y < maxTitle; y++) {
+        if (rowHasInk(y, px0, px1)) { titleBottom = y + 1; blank = 0; }
+        else if (++blank >= gapRows) break;
+      }
+      if (titleBottom > H * .105 || titleBottom < H * .02) titleBottom = Math.round(H * .075);
+
+      // Ink bounds of each picture inside its template cell, padded a little.
+      const boxes = COACH_TEMPLATE_CELLS.map(([left, top], index) => {
+        const zx0 = Math.round(W * left / 100);
+        const zx1 = Math.round(W * (left + 48) / 100);
+        let zy0 = Math.round(H * top / 100);
+        const zy1 = Math.round(H * (top + 24) / 100);
+        if (index < 2) zy0 = Math.max(zy0, titleBottom + Math.round(H * .005));
+        let bx0 = zx1, by0 = zy1, bx1 = zx0, by1 = zy0;
+        for (let yy = zy0; yy < zy1; yy++) {
+          for (let xx = zx0; xx < zx1; xx++) {
+            if (!ink[yy * W + xx]) continue;
+            if (xx < bx0) bx0 = xx;
+            if (xx >= bx1) bx1 = xx + 1;
+            if (yy < by0) by0 = yy;
+            if (yy >= by1) by1 = yy + 1;
+          }
+        }
+        if (bx1 <= bx0 || by1 <= by0) { bx0 = zx0; by0 = zy0; bx1 = zx1; by1 = zy1; }
+        return {
+          zx0, zy0, zx1, zy1,
+          bx0: Math.max(zx0, bx0 - W * .01),
+          by0: Math.max(zy0, by0 - H * .008),
+          bx1: Math.min(zx1, bx1 + W * .01),
+          by1: Math.min(zy1, by1 + H * .008)
+        };
+      });
+      const cw = Math.max(...boxes.map(box => box.bx1 - box.bx0));
+      const ch = Math.max(...boxes.map(box => box.by1 - box.by0));
+
+      // Tile layout: two columns × three rows below the title, spaced evenly.
+      const panelTop = titleBottom + H * .006;
+      const areaTop = panelTop + H * .008;
+      const areaH = H * .99 - areaTop;
+      const scale = Math.min((W * .475) / cw, (areaH - 2 * H * .012) / 3 / ch, 1.9);
+      const tileW = cw * scale;
+      const tileH = ch * scale;
+      const gapX = (W * .97 - 2 * tileW) / 3;
+      const gapY = (areaH - 3 * tileH) / 4;
+      const pct = (value, total) => `${(value / total * 100).toFixed(3)}%`;
+      const tiles = boxes.map((box, index) => {
+        const cropX = Math.min(Math.max((box.bx0 + box.bx1 - cw) / 2, box.zx0), box.zx1 - cw);
+        const cropY = Math.min(Math.max((box.by0 + box.by1 - ch) / 2, box.zy0), box.zy1 - ch);
+        const column = index % 2;
+        const row = Math.floor(index / 2);
+        return {
+          left: pct(W * .015 + gapX + column * (tileW + gapX), W),
+          top: pct(areaTop + gapY + row * (tileH + gapY), H),
+          width: pct(tileW, W),
+          height: pct(tileH, H),
+          size: `${(W / cw * 100).toFixed(3)}%`,
+          x: W > cw ? pct(cropX, W - cw) : "0%",
+          y: H > ch ? pct(cropY, H - ch) : "0%"
+        };
+      });
+      return { panelTop: pct(panelTop, H), tiles };
+    }
+
+    function measureCoachTiles(src) {
+      if (coachTileCache.has(src)) return Promise.resolve(coachTileCache.get(src));
+      return new Promise(resolve => {
+        const img = new Image();
+        img.onload = () => {
+          let layout = null;
+          try { layout = computeCoachTiles(img); } catch (error) { layout = null; }
+          coachTileCache.set(src, layout);
+          resolve(layout);
+        };
+        img.onerror = () => resolve(null);
+        img.src = src;
+      });
+    }
+
+    function applyCoachTiles() {
+      const token = ++coachTileToken;
+      itemGrid.classList.remove("has-coach-tiles");
+      if (gameMode !== "items" || !frontImage.src) return;
+      const src = frontImage.src;
+      measureCoachTiles(src).then(layout => {
+        if (!layout || token !== coachTileToken || gameMode !== "items") return;
+        itemGrid.style.setProperty("--coach-front", `url("${src}")`);
+        itemGrid.style.setProperty("--coach-panel-top", layout.panelTop);
+        itemCells.forEach((cell, index) => {
+          const tile = layout.tiles[index];
+          if (!tile) return;
+          cell.style.setProperty("--tile-l", tile.left);
+          cell.style.setProperty("--tile-t", tile.top);
+          cell.style.setProperty("--tile-w", tile.width);
+          cell.style.setProperty("--tile-h", tile.height);
+          cell.style.setProperty("--pic-size", tile.size);
+          cell.style.setProperty("--pic-x", tile.x);
+          cell.style.setProperty("--pic-y", tile.y);
+        });
+        itemGrid.classList.add("has-coach-tiles");
+      });
+    }
+
     function resetGameRound() {
       if (gameMode === "browse") return;
       if (nurturerRecastTimer) {
@@ -3840,6 +4014,7 @@
       itemGrid.classList.toggle("is-pair-word", gameMode === "name-link");
       itemGrid.classList.remove("is-locked");
       itemFooterMask.hidden = gameMode !== "items";
+      applyCoachTiles();
       newGameCardButton.textContent = isLinkMode() ? "Random unseen link →" : "New card →";
 
       itemCells.forEach((cell, index) => {
