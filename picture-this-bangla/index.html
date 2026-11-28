@@ -1667,6 +1667,19 @@
     body .topbar .view-toggle.coach-button[aria-pressed="true"] { color: #fff9ea; background: rgba(24, 74, 43, .92); border-color: #dbb96e; box-shadow: inset 0 0 0 2px #dbb96e; }
     .game-score[hidden] { display: none; }
     .game-option[data-start-game="audio-match"] { grid-column: 1 / -1; }
+    /* Hint mode (Tim, 28 Nov): while a picture's word plays, light up that word in the
+       printed list at the bottom of the card. Positions come from label-boxes.js. */
+    .label-highlight {
+      position: absolute;
+      z-index: 7;
+      border-radius: 9px;
+      background: rgba(251, 191, 36, .34);
+      box-shadow: 0 0 0 3px rgba(214, 150, 24, .9), 0 0 18px rgba(251, 191, 36, .55);
+      pointer-events: none;
+      animation: label-glow 1.1s ease-in-out infinite alternate;
+    }
+    .label-highlight[hidden] { display: none; }
+    @keyframes label-glow { from { background: rgba(251, 191, 36, .26); } to { background: rgba(251, 191, 36, .44); } }
   </style>
   <link rel="stylesheet" href="../dialogue-brand.css?v=20261108-1">
   </head>
@@ -1910,6 +1923,7 @@
     const pictureThisDataRevision = Date.now();
     document.write(`<script src="deck-data.js?v=${pictureThisDataRevision}"><\/script>`);
     document.write(`<script src="question-data.js?v=${pictureThisDataRevision}"><\/script>`);
+    document.write(`<script src="label-boxes.js?v=${pictureThisDataRevision}"><\/script>`);
     document.write(`<script src="nurturer-data.js?v=${pictureThisDataRevision}"><\/script>`);
     document.write(`<script src="audio-index.js?v=${pictureThisDataRevision}"><\/script>`);
   </script>
@@ -4419,6 +4433,29 @@
         });
       });
     });
+    // Hint mode: highlight the printed word at the bottom of the card while its audio plays.
+    // Follows the hint button's own "is-speaking" state, so it lights when the word starts
+    // and clears when it finishes or is interrupted.
+    const labelBoxes = window.PT_LABEL_BOXES || {};
+    function setupLabelHighlight(grid, buttons) {
+      const highlight = document.createElement("span");
+      highlight.className = "label-highlight";
+      highlight.hidden = true;
+      highlight.setAttribute("aria-hidden", "true");
+      grid.parentElement.appendChild(highlight);
+      const sync = () => {
+        const index = buttons.findIndex(button => button.classList.contains("is-speaking"));
+        const rect = index >= 0 ? labelBoxes[cards[cardIndex]?.id]?.[index] : null;
+        if (!rect) { highlight.hidden = true; return; }
+        const [left, top, width, height] = rect;
+        Object.assign(highlight.style, { left: `${left}%`, top: `${top}%`, width: `${width}%`, height: `${height}%` });
+        highlight.hidden = false;
+      };
+      const observer = new MutationObserver(sync);
+      buttons.forEach(button => observer.observe(button, { attributes: true, attributeFilter: ["class"] }));
+    }
+    setupLabelHighlight(itemListenGrid, itemListenButtons);
+    setupLabelHighlight(dualItemListenGrid, dualItemListenButtons);
     revealGameAnswerButton.addEventListener("click", revealGameAnswer);
     newGameCardButton.addEventListener("click", newGameRound);
     endGameButton.addEventListener("click", endGame);
