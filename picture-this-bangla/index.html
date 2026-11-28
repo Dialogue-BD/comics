@@ -1841,6 +1841,10 @@
       font: inherit;
       text-align: center;
     }
+    /* iPhones zoom the whole page when a text box under 16px gets focus. */
+    @media (pointer: coarse) {
+      .card-jump input { font-size: 16px; }
+    }
     .card-jump button {
       padding: 3px 10px;
       border: 0;
@@ -2206,6 +2210,46 @@
     }
     let ptbClip = null;
 
+    // iPhone Safari (and Safari on Mac) only lets a page start sound shortly after a tap, and it
+    // judges that per audio element: one that has already played from a tap may keep playing later.
+    // So every recording goes through this single shared element. Making a new Audio() per clip left
+    // the first card Coach Me! dealt by itself silent on iPhones, because no tap was recent enough.
+    // ptbSharedClip(src) hands back a small stand-in with the bits of the Audio API the players use
+    // (addEventListener once-style, play, pause, playbackRate), all driving the shared element.
+    const ptbPlayer = new Audio();
+    ptbPlayer.preload = "auto";
+    let ptbActiveClip = null;
+    function ptbSharedClip(src) {
+      const listeners = { playing: [], ended: [], error: [] };
+      const clip = {
+        playbackRate: 1,
+        addEventListener(type, handler) { listeners[type]?.push(handler); },
+        play() {
+          ptbActiveClip = clip;
+          ptbPlayer.pause();
+          ptbPlayer.src = src;
+          ptbPlayer.defaultPlaybackRate = clip.playbackRate;
+          ptbPlayer.playbackRate = clip.playbackRate;
+          return ptbPlayer.play();
+        },
+        pause() {
+          if (ptbActiveClip !== clip) return;
+          ptbActiveClip = null;
+          ptbPlayer.pause();
+        },
+        fire(type) {
+          const handlers = listeners[type] || [];
+          listeners[type] = [];
+          handlers.forEach(handler => handler());
+        }
+      };
+      return clip;
+    }
+    // Each check confirms the event belongs to the clip now loaded, not one that was just replaced.
+    ptbPlayer.addEventListener("playing", () => { if (!ptbPlayer.paused) ptbActiveClip?.fire("playing"); });
+    ptbPlayer.addEventListener("ended", () => { if (ptbPlayer.ended) ptbActiveClip?.fire("ended"); });
+    ptbPlayer.addEventListener("error", () => { if (ptbPlayer.error) ptbActiveClip?.fire("error"); });
+
     function ptbItem(cardId, index) {
       return ptbItemsByCard[cardId]?.[index] || null;
     }
@@ -2241,7 +2285,7 @@
 
     function playRecordedAudio(src, control, announcement) {
       stopSpeech();
-      const clip = new Audio(src);
+      const clip = ptbSharedClip(src);
       ptbClip = clip;
       if (control) {
         speakingControl = control;
@@ -2718,7 +2762,7 @@
         if (token !== ptbClipQueueToken) return;
         if (position >= queue.length) { finish(); return; }
         const { source, fallback } = queue[position];
-        const clip = new Audio(source);
+        const clip = ptbSharedClip(source);
         clip.playbackRate = nurturerSlowMode ? .8 : 1;
         ptbClip = clip;
         const next = () => {
