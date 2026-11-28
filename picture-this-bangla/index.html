@@ -648,6 +648,19 @@
       outline: none;
     }
 
+    /* Title speaker: sits just right of the printed title on both faces.
+       Positions come from title-boxes.js (scripts/title_boxes.py). */
+    .question-listen-button.title-listen-button {
+      z-index: 10;
+      width: min(34px, calc(100% - var(--question-x)));
+      height: 32px;
+    }
+
+    .question-listen-button.title-listen-button .speaker-glyph {
+      width: 21px;
+      height: 21px;
+    }
+
     .question-listen-button .speaker-glyph {
       width: 18px;
       height: 18px;
@@ -1976,6 +1989,7 @@
     document.write(`<script src="deck-data.js?v=${pictureThisDataRevision}"><\/script>`);
     document.write(`<script src="question-data.js?v=${pictureThisDataRevision}"><\/script>`);
     document.write(`<script src="label-boxes.js?v=${pictureThisDataRevision}"><\/script>`);
+    document.write(`<script src="title-boxes.js?v=${pictureThisDataRevision}"><\/script>`);
     document.write(`<script src="nurturer-data.js?v=${pictureThisDataRevision}"><\/script>`);
     document.write(`<script src="audio-index.js?v=${pictureThisDataRevision}"><\/script>`);
   </script>
@@ -2022,6 +2036,12 @@
     const ptbAudioIds = new Set(Array.isArray(ptbAudio.ids) ? ptbAudio.ids : []);
     const ptbQuestionAudioIds = new Set(ptbAudio.questions?.ids || []);
     const ptbNurturerAudioIds = new Set(ptbAudio.nurturer?.ids || []);
+    const ptbTitleAudioIds = new Set(ptbAudio.titles?.ids || []);
+    const ptbTitleBoxes = window.PTB_TITLE_BOXES || {};
+
+    function ptbTitleAudioSrc(cardId) {
+      return ptbTitleAudioIds.has(cardId) ? `title-audio/${encodeURIComponent(cardId)}.mp3?v=${ptbAudio.version || ""}` : "";
+    }
     let ptbClip = null;
 
     function ptbItem(cardId, index) {
@@ -2498,6 +2518,7 @@
     let ptbClipQueueToken = 0;
     function speakText(lines, control = null, announcement = "Audio played.", onDone = null) {
       const queue = lines.flatMap(line => {
+        if (line?.src) return [{ source: line.src, gap: line.gap }];
         const source = nurturerAudioSrc(line.id);
         const fallback = nurturerFallbackSources(line);
         return source ? [{ source, fallback }] : fallback.map(source => ({ source }));
@@ -2528,7 +2549,7 @@
           if (ptbClip !== clip) return;
           ptbClip = null;
           if (position + 1 === queue.length) finish();
-          else window.setTimeout(() => playAt(position + 1), 100);
+          else window.setTimeout(() => playAt(position + 1), queue[position].gap || 100);
         };
         clip.addEventListener("ended", next, { once: true });
         const failed = () => {
@@ -2852,7 +2873,65 @@
       });
     }
 
+    // One title speaker per face (card front/back, dual front/back).
+    const titleListenButtons = (() => {
+      const hosts = [
+        frontImage.closest(".face"), backImage.closest(".face"),
+        dualFrontImage.closest(".dual-card"), dualBackImage.closest(".dual-card")
+      ];
+      return hosts.map((host, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "question-listen-button title-listen-button";
+        button.dataset.side = index % 2 ? "back" : "front";
+        button.hidden = true;
+        button.innerHTML = `<svg class="speaker-glyph" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 10v4h4l5 4V6l-5 4H4Z" fill="currentColor"></path>
+          <path d="M16 9c1 .8 1.5 1.8 1.5 3S17 14.2 16 15m2.6-8c1.7 1.4 2.6 3 2.6 5s-.9 3.6-2.6 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
+        </svg>`;
+        button.addEventListener("pointerdown", event => event.stopPropagation());
+        button.addEventListener("pointerup", event => event.stopPropagation());
+        button.addEventListener("click", event => {
+          event.stopPropagation();
+          const current = cards[cardIndex];
+          const src = ptbTitleAudioSrc(current?.id);
+          if (src) playRecordedAudio(src, button, `Title played: ${current.title}.`);
+        });
+        host?.append(button);
+        return button;
+      });
+    })();
+
+    function renderTitleControls() {
+      const current = cards[cardIndex];
+      const boxes = ptbTitleBoxes[current?.id] || {};
+      titleListenButtons.forEach(button => {
+        const box = boxes[button.dataset.side];
+        // Just right of the title's ink, centred on it; top-right corner if unmeasured.
+        const x = box ? Math.min(box[0] + box[2] + 1.2, 96) : 88;
+        const y = box ? box[1] + box[3] / 2 : 5.5;
+        button.style.setProperty("--question-x", `${x}%`);
+        button.style.setProperty("--question-y", `${y}%`);
+        button.setAttribute("aria-label", `Listen to the card title: ${current?.title || ""}`);
+        button.setAttribute("title", "Listen to the title");
+      });
+    }
+
+    function syncTitleControls() {
+      const hasTitle = Boolean(ptbTitleAudioSrc(cards[cardIndex]?.id));
+      const allowed = hasTitle && (gameMode === "browse" || gameMode === "items");
+      const questionSide = gameMode === "browse" && !isDualView && isQuestionSide();
+      titleListenButtons.forEach((button, index) => {
+        const dual = index >= 2;
+        const back = index % 2 === 1;
+        let show = allowed && (dual ? isDualView : !isDualView && back === questionSide);
+        if (gameMode === "items" && back) show = false;
+        button.hidden = !show;
+      });
+    }
+
     function syncListeningSurfaces() {
+      syncTitleControls();
       const browsing = gameMode === "browse";
       const questionSide = browsing && !isDualView && isQuestionSide();
       const hasQuestions = questionListenLayer.childElementCount > 0;
@@ -2948,6 +3027,13 @@
     }
 
     function questionControlFromPoint(clientX, clientY) {
+      for (const button of titleListenButtons) {
+        if (button.hidden) continue;
+        const bounds = button.getBoundingClientRect();
+        if (clientX >= bounds.left && clientX <= bounds.right && clientY >= bounds.top && clientY <= bounds.bottom) {
+          return button;
+        }
+      }
       const layers = [questionListenLayer, dualQuestionListenLayer];
       for (const layer of layers) {
         if (layer.hidden) continue;
@@ -3130,6 +3216,7 @@
 
       updateListeningHintButtons();
       renderQuestionControls();
+      renderTitleControls();
 
       cardCount.textContent = `Card ${index + 1} of ${cards.length}`;
       setAccentFromCardGradient(frontImage);
@@ -3634,7 +3721,9 @@
       }
       syncGameStripMeta();
       if (speakIfAuto && nurturerAutoVoice && lastNurturerPromptSpeech.length) {
-        speakText(lastNurturerPromptSpeech, null, "Nurturer prompt played.");
+        const titleSrc = foundItems.size === 0 ? ptbTitleAudioSrc(current.id) : "";
+        const speech = titleSrc ? [{ src: titleSrc, gap: 600 }, ...lastNurturerPromptSpeech] : lastNurturerPromptSpeech;
+        speakText(speech, null, "Nurturer prompt played.");
       }
     }
 
