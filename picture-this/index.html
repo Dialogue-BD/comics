@@ -1645,6 +1645,52 @@
     }
     .label-highlight[hidden] { display: none; }
     @keyframes label-glow { from { background: rgba(251, 191, 36, .26); } to { background: rgba(251, 191, 36, .44); } }
+    /* Go to a card (Tim, 28 Nov): click "Card N of M" (or press G) and type a number. */
+    .card-count-button {
+      display: inline-block;
+      padding: 1px 7px;
+      border: 0;
+      border-radius: 8px;
+      color: inherit;
+      background: transparent;
+      font: inherit;
+      cursor: pointer;
+      pointer-events: auto;
+    }
+    .card-count-button:hover strong,
+    .card-count-button:focus-visible strong { text-decoration: underline; text-underline-offset: 3px; }
+    .card-count-button:focus-visible { outline: 2px solid hsl(var(--accent) / .8); outline-offset: 1px; }
+    .card-count-button[hidden], .card-jump[hidden] { display: none; }
+    .card-jump {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 2px;
+      color: var(--ink);
+      font-size: .77rem;
+      font-weight: 800;
+      pointer-events: auto;
+    }
+    .card-jump input {
+      width: 4.6em;
+      padding: 3px 6px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      color: #101812;
+      background: #fff;
+      font: inherit;
+      text-align: center;
+    }
+    .card-jump button {
+      padding: 3px 10px;
+      border: 0;
+      border-radius: 7px;
+      color: #101812;
+      background: #dbb96e;
+      font: inherit;
+      cursor: pointer;
+    }
   </style>
   <link rel="stylesheet" href="../dialogue-brand.css?v=20261108-1">
   </head>
@@ -1758,9 +1804,15 @@
         </button>
       </div>
 
-      <div class="instructions" aria-hidden="true">
-        <strong id="card-count">Card 1 of 24</strong>
-        <span id="instructions-text">Swipe or tap to flip</span>
+      <div class="instructions">
+        <button type="button" class="card-count-button" id="card-count-button" title="Go to a card number (G)" aria-label="Go to a card number"><strong id="card-count">Card 1 of 24</strong></button>
+        <form class="card-jump" id="card-jump" hidden autocomplete="off" novalidate>
+          <label for="card-jump-input">Card</label>
+          <input id="card-jump-input" type="number" inputmode="numeric" min="1" step="1" enterkeyhint="go" aria-label="Card number">
+          <span>of <span id="card-jump-total"></span></span>
+          <button type="submit">Go</button>
+        </form>
+        <span id="instructions-text" aria-hidden="true">Swipe or tap to flip</span>
       </div>
 
       <button class="action fullscreen" id="fullscreen" type="button" aria-label="Enter fullscreen">
@@ -5522,6 +5574,41 @@
     document.addEventListener("fullscreenchange", updateFullscreenButton);
     document.addEventListener("webkitfullscreenchange", updateFullscreenButton);
 
+    // Go to a card by number: the number shown in "Card N of M" (its place in the deck).
+    const cardJumpButton = document.querySelector("#card-count-button");
+    const cardJumpForm = document.querySelector("#card-jump");
+    const cardJumpInput = document.querySelector("#card-jump-input");
+    function openCardJump() {
+      if (gameMode !== "browse" && gameMode !== "items") return;
+      cardJumpInput.max = String(cards.length);
+      cardJumpInput.value = String(cardIndex + 1);
+      document.querySelector("#card-jump-total").textContent = String(cards.length);
+      cardJumpButton.hidden = true;
+      cardJumpForm.hidden = false;
+      cardJumpInput.focus();
+      cardJumpInput.select();
+    }
+    function closeCardJump() {
+      cardJumpForm.hidden = true;
+      cardJumpButton.hidden = false;
+    }
+    cardJumpButton.addEventListener("click", event => { event.stopPropagation(); openCardJump(); });
+    cardJumpForm.addEventListener("submit", event => {
+      event.preventDefault();
+      const wanted = parseInt(cardJumpInput.value, 10);
+      closeCardJump();
+      if (!Number.isInteger(wanted)) return;
+      const target = Math.min(Math.max(wanted, 1), cards.length) - 1;
+      if (target !== cardIndex) transitionToCard(target);
+      status.textContent = `Card ${target + 1} of ${cards.length}.`;
+    });
+    cardJumpInput.addEventListener("keydown", event => {
+      event.stopPropagation();
+      if (event.key === "Escape") { event.preventDefault(); closeCardJump(); cardJumpButton.focus(); }
+    });
+    cardJumpForm.addEventListener("focusout", () => {
+      window.setTimeout(() => { if (!cardJumpForm.contains(document.activeElement)) closeCardJump(); }, 150);
+    });
     document.addEventListener("keydown", event => {
       if (!gamePicker.hidden && event.key === "Escape") {
         closeGamePicker();
@@ -5551,6 +5638,9 @@
         newRandomCard();
       } else if (event.key.toLowerCase() === "f") {
         toggleFullscreen();
+      } else if (event.key.toLowerCase() === "g") {
+        event.preventDefault();
+        openCardJump();
       }
     });
 
